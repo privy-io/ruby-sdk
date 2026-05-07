@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type email_invite_input =
+      { type: Privy::Models::EmailInviteInput::type_, value: String }
+
+    class EmailInviteInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::EmailInviteInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::EmailInviteInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::EmailInviteInput::type_,
+        value: String
+      }
+
+      type type_ = :email
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        EMAIL: :email
+
+        def self?.values: -> ::Array[Privy::Models::EmailInviteInput::type_]
+      end
+    end
+  end
+end

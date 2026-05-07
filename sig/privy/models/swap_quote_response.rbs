@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type swap_quote_response =
+      {
+        :caip2 => String,
+        est_output_amount: String,
+        gas_estimate: String,
+        input_amount: String,
+        input_token: String,
+        minimum_output_amount: String,
+        output_token: String
+      }
+
+    class SwapQuoteResponse < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      attr_accessor est_output_amount: String
+
+      attr_accessor gas_estimate: String
+
+      attr_accessor input_amount: String
+
+      attr_accessor input_token: String
+
+      attr_accessor minimum_output_amount: String
+
+      attr_accessor output_token: String
+
+      def initialize: (
+        caip2: String,
+        est_output_amount: String,
+        gas_estimate: String,
+        input_amount: String,
+        input_token: String,
+        minimum_output_amount: String,
+        output_token: String
+      ) -> void
+
+      def to_hash: -> {
+        :caip2 => String,
+        est_output_amount: String,
+        gas_estimate: String,
+        input_amount: String,
+        input_token: String,
+        minimum_output_amount: String,
+        output_token: String
+      }
+    end
+  end
+end

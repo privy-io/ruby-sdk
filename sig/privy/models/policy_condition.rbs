@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type policy_condition =
+      Privy::EthereumTransactionCondition
+      | Privy::EthereumCalldataCondition
+      | Privy::EthereumTypedDataDomainCondition
+      | Privy::EthereumTypedDataMessageCondition
+      | Privy::Ethereum7702AuthorizationCondition
+      | Privy::SolanaProgramInstructionCondition
+      | Privy::SolanaSystemProgramInstructionCondition
+      | Privy::SolanaTokenProgramInstructionCondition
+      | Privy::SystemCondition
+      | Privy::TronTransactionCondition
+      | Privy::TronCalldataCondition
+      | Privy::SuiTransactionCommandCondition
+      | Privy::SuiTransferObjectsCommandCondition
+      | Privy::ActionRequestBodyCondition
+      | Privy::AggregationCondition
+
+    module PolicyCondition
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::policy_condition]
+    end
+  end
+end

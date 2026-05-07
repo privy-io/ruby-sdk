@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type ethereum_vault_details_input = { vault_id: String }
+
+    class EthereumVaultDetailsInput < Privy::Internal::Type::BaseModel
+      attr_accessor vault_id: String
+
+      def initialize: (vault_id: String) -> void
+
+      def to_hash: -> { vault_id: String }
+    end
+  end
+end

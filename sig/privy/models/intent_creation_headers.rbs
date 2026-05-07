@@ -1,0 +1,21 @@
+module Privy
+  module Models
+    type intent_creation_headers =
+      { privy_app_id: String, privy_request_expiry: String }
+
+    class IntentCreationHeaders < Privy::Internal::Type::BaseModel
+      attr_accessor privy_app_id: String
+
+      attr_reader privy_request_expiry: String?
+
+      def privy_request_expiry=: (String) -> String
+
+      def initialize: (
+        privy_app_id: String,
+        ?privy_request_expiry: String
+      ) -> void
+
+      def to_hash: -> { privy_app_id: String, privy_request_expiry: String }
+    end
+  end
+end

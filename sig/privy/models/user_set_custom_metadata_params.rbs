@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type user_set_custom_metadata_params =
+      { user_id: String, custom_metadata: Privy::Models::custom_metadata }
+      & Privy::Internal::Type::request_parameters
+
+    class UserSetCustomMetadataParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor user_id: String
+
+      attr_accessor custom_metadata: Privy::Models::custom_metadata
+
+      def initialize: (
+        user_id: String,
+        custom_metadata: Privy::Models::custom_metadata,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        user_id: String,
+        custom_metadata: Privy::Models::custom_metadata,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

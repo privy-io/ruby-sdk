@@ -1,0 +1,13 @@
+module Privy
+  module Internal
+    class Cursor[Elem]
+      include Privy::Internal::Type::BasePage[Elem]
+
+      attr_accessor data: ::Array[Elem]?
+
+      attr_accessor next_cursor: String
+
+      def inspect: -> String
+    end
+  end
+end

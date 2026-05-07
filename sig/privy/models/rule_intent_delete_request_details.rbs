@@ -1,0 +1,52 @@
+module Privy
+  module Models
+    type rule_intent_delete_request_details =
+      {
+        method_: Privy::Models::RuleIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::RuleIntentDeleteRequestDetails::Body
+      }
+
+    class RuleIntentDeleteRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::RuleIntentDeleteRequestDetails::method_
+
+      attr_accessor url: String
+
+      attr_reader body: Privy::RuleIntentDeleteRequestDetails::Body?
+
+      def body=: (
+        Privy::RuleIntentDeleteRequestDetails::Body
+      ) -> Privy::RuleIntentDeleteRequestDetails::Body
+
+      def initialize: (
+        method_: Privy::Models::RuleIntentDeleteRequestDetails::method_,
+        url: String,
+        ?body: Privy::RuleIntentDeleteRequestDetails::Body
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::RuleIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::RuleIntentDeleteRequestDetails::Body
+      }
+
+      type method_ = :DELETE
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        DELETE: :DELETE
+
+        def self?.values: -> ::Array[Privy::Models::RuleIntentDeleteRequestDetails::method_]
+      end
+
+      type body = {  }
+
+      class Body < Privy::Internal::Type::BaseModel
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

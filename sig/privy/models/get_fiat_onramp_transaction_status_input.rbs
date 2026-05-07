@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type get_fiat_onramp_transaction_status_input =
+      { provider: Privy::Models::fiat_onramp_provider, session_id: String }
+
+    class GetFiatOnrampTransactionStatusInput < Privy::Internal::Type::BaseModel
+      attr_accessor provider: Privy::Models::fiat_onramp_provider
+
+      attr_accessor session_id: String
+
+      def initialize: (
+        provider: Privy::Models::fiat_onramp_provider,
+        session_id: String
+      ) -> void
+
+      def to_hash: -> {
+        provider: Privy::Models::fiat_onramp_provider,
+        session_id: String
+      }
+    end
+  end
+end

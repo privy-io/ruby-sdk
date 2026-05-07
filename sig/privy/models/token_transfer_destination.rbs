@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type token_transfer_destination =
+      { address: String, asset: String, chain: String }
+
+    class TokenTransferDestination < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_reader asset: String?
+
+      def asset=: (String) -> String
+
+      attr_reader chain: String?
+
+      def chain=: (String) -> String
+
+      def initialize: (address: String, ?asset: String, ?chain: String) -> void
+
+      def to_hash: -> { address: String, asset: String, chain: String }
+    end
+  end
+end

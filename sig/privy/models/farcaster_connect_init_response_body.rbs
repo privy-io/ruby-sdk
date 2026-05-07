@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type farcaster_connect_init_response_body =
+      { channel_token: String, connect_uri: String }
+
+    class FarcasterConnectInitResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor channel_token: String
+
+      attr_accessor connect_uri: String
+
+      def initialize: (channel_token: String, connect_uri: String) -> void
+
+      def to_hash: -> { channel_token: String, connect_uri: String }
+    end
+  end
+end

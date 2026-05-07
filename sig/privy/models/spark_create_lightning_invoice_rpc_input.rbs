@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type spark_create_lightning_invoice_rpc_input =
+      {
+        method_: Privy::Models::SparkCreateLightningInvoiceRpcInput::method_,
+        params: Privy::SparkCreateLightningInvoiceRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkCreateLightningInvoiceRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkCreateLightningInvoiceRpcInput::method_
+
+      attr_accessor params: Privy::SparkCreateLightningInvoiceRpcInputParams
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkCreateLightningInvoiceRpcInput::method_,
+        params: Privy::SparkCreateLightningInvoiceRpcInputParams,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkCreateLightningInvoiceRpcInput::method_,
+        params: Privy::SparkCreateLightningInvoiceRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :createLightningInvoice
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        CREATE_LIGHTNING_INVOICE: :createLightningInvoice
+
+        def self?.values: -> ::Array[Privy::Models::SparkCreateLightningInvoiceRpcInput::method_]
+      end
+    end
+  end
+end

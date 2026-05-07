@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type raw_sign_bytes_encoding = :"utf-8" | :hex | :base64
+
+    module RawSignBytesEncoding
+      extend Privy::Internal::Type::Enum
+
+      UTF_8: :"utf-8"
+      HEX: :hex
+      BASE64: :base64
+
+      def self?.values: -> ::Array[Privy::Models::raw_sign_bytes_encoding]
+    end
+  end
+end

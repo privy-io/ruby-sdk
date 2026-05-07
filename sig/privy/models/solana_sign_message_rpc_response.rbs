@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type solana_sign_message_rpc_response =
+      {
+        data: Privy::SolanaSignMessageRpcResponseData,
+        method_: Privy::Models::SolanaSignMessageRpcResponse::method_
+      }
+
+    class SolanaSignMessageRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::SolanaSignMessageRpcResponseData
+
+      attr_accessor method_: Privy::Models::SolanaSignMessageRpcResponse::method_
+
+      def initialize: (
+        data: Privy::SolanaSignMessageRpcResponseData,
+        method_: Privy::Models::SolanaSignMessageRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::SolanaSignMessageRpcResponseData,
+        method_: Privy::Models::SolanaSignMessageRpcResponse::method_
+      }
+
+      type method_ = :signMessage
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SIGN_MESSAGE: :signMessage
+
+        def self?.values: -> ::Array[Privy::Models::SolanaSignMessageRpcResponse::method_]
+      end
+    end
+  end
+end

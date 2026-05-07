@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type wallet_ethereum_asset =
+      :usdc | :"usdc.e" | :eth | :pol | :usdt | :eurc | :usdb
+
+    module WalletEthereumAsset
+      extend Privy::Internal::Type::Enum
+
+      USDC: :usdc
+      USDC_E: :"usdc.e"
+      ETH: :eth
+      POL: :pol
+      USDT: :usdt
+      EURC: :eurc
+      USDB: :usdb
+
+      def self?.values: -> ::Array[Privy::Models::wallet_ethereum_asset]
+    end
+  end
+end

@@ -1,0 +1,85 @@
+module Privy
+  module Models
+    type user_operation_completed_webhook_payload =
+      {
+        actual_gas_cost: String,
+        actual_gas_used: String,
+        block_number: Float,
+        :caip2 => String,
+        log_index: Float,
+        nonce: String,
+        paymaster: String?,
+        sender: String,
+        success: bool,
+        transaction_hash: String,
+        type: Privy::Models::UserOperationCompletedWebhookPayload::type_,
+        user_op_hash: String
+      }
+
+    class UserOperationCompletedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor actual_gas_cost: String
+
+      attr_accessor actual_gas_used: String
+
+      attr_accessor block_number: Float
+
+      attr_accessor caip2: String
+
+      attr_accessor log_index: Float
+
+      attr_accessor nonce: String
+
+      attr_accessor paymaster: String?
+
+      attr_accessor sender: String
+
+      attr_accessor success: bool
+
+      attr_accessor transaction_hash: String
+
+      attr_accessor type: Privy::Models::UserOperationCompletedWebhookPayload::type_
+
+      attr_accessor user_op_hash: String
+
+      def initialize: (
+        actual_gas_cost: String,
+        actual_gas_used: String,
+        block_number: Float,
+        caip2: String,
+        log_index: Float,
+        nonce: String,
+        paymaster: String?,
+        sender: String,
+        success: bool,
+        transaction_hash: String,
+        type: Privy::Models::UserOperationCompletedWebhookPayload::type_,
+        user_op_hash: String
+      ) -> void
+
+      def to_hash: -> {
+        actual_gas_cost: String,
+        actual_gas_used: String,
+        block_number: Float,
+        :caip2 => String,
+        log_index: Float,
+        nonce: String,
+        paymaster: String?,
+        sender: String,
+        success: bool,
+        transaction_hash: String,
+        type: Privy::Models::UserOperationCompletedWebhookPayload::type_,
+        user_op_hash: String
+      }
+
+      type type_ = :"user_operation.completed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USER_OPERATION_COMPLETED: :"user_operation.completed"
+
+        def self?.values: -> ::Array[Privy::Models::UserOperationCompletedWebhookPayload::type_]
+      end
+    end
+  end
+end

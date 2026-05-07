@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type kraken_embed_quote_execution_failed_webhook_payload =
+      {
+        failed_at: String,
+        quote_id: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedQuoteExecutionFailedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor failed_at: String
+
+      attr_accessor quote_id: String
+
+      attr_accessor reason: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        failed_at: String,
+        quote_id: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        failed_at: String,
+        quote_id: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.quote.execution_failed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_QUOTE_EXECUTION_FAILED: :"kraken_embed.quote.execution_failed"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload::type_]
+      end
+    end
+  end
+end

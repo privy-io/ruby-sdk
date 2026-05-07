@@ -1,0 +1,128 @@
+module Privy
+  module Models
+    module Wallets
+      type balance_get_response =
+        {
+          balances: ::Array[Privy::Models::Wallets::BalanceGetResponse::Balance]
+        }
+
+      class BalanceGetResponse < Privy::Internal::Type::BaseModel
+        attr_accessor balances: ::Array[Privy::Models::Wallets::BalanceGetResponse::Balance]
+
+        def initialize: (
+          balances: ::Array[Privy::Models::Wallets::BalanceGetResponse::Balance]
+        ) -> void
+
+        def to_hash: -> {
+          balances: ::Array[Privy::Models::Wallets::BalanceGetResponse::Balance]
+        }
+
+        type balance =
+          {
+            asset: Privy::Models::Wallets::BalanceGetResponse::Balance::asset,
+            chain: Privy::Models::Wallets::BalanceGetResponse::Balance::chain,
+            display_values: ::Hash[Symbol, String],
+            raw_value: String,
+            raw_value_decimals: Float
+          }
+
+        class Balance < Privy::Internal::Type::BaseModel
+          attr_accessor asset: Privy::Models::Wallets::BalanceGetResponse::Balance::asset
+
+          attr_accessor chain: Privy::Models::Wallets::BalanceGetResponse::Balance::chain
+
+          attr_accessor display_values: ::Hash[Symbol, String]
+
+          attr_accessor raw_value: String
+
+          attr_accessor raw_value_decimals: Float
+
+          def initialize: (
+            asset: Privy::Models::Wallets::BalanceGetResponse::Balance::asset,
+            chain: Privy::Models::Wallets::BalanceGetResponse::Balance::chain,
+            display_values: ::Hash[Symbol, String],
+            raw_value: String,
+            raw_value_decimals: Float
+          ) -> void
+
+          def to_hash: -> {
+            asset: Privy::Models::Wallets::BalanceGetResponse::Balance::asset,
+            chain: Privy::Models::Wallets::BalanceGetResponse::Balance::chain,
+            display_values: ::Hash[Symbol, String],
+            raw_value: String,
+            raw_value_decimals: Float
+          }
+
+          type asset =
+            :usdc
+            | :"usdc.e"
+            | :eth
+            | :pol
+            | :usdt
+            | :eurc
+            | :usdb
+            | :sol
+            | String
+
+          module Asset
+            extend Privy::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Privy::Models::Wallets::BalanceGetResponse::Balance::asset]
+
+            USDC: :usdc
+            USDC_E: :"usdc.e"
+            ETH: :eth
+            POL: :pol
+            USDT: :usdt
+            EURC: :eurc
+            USDB: :usdb
+            SOL: :sol
+          end
+
+          type chain =
+            :ethereum
+            | :arbitrum
+            | :base
+            | :tempo
+            | :linea
+            | :optimism
+            | :polygon
+            | :solana
+            | :zksync_era
+            | :sepolia
+            | :arbitrum_sepolia
+            | :base_sepolia
+            | :linea_testnet
+            | :optimism_sepolia
+            | :polygon_amoy
+            | :solana_devnet
+            | :solana_testnet
+
+          module Chain
+            extend Privy::Internal::Type::Enum
+
+            ETHEREUM: :ethereum
+            ARBITRUM: :arbitrum
+            BASE: :base
+            TEMPO: :tempo
+            LINEA: :linea
+            OPTIMISM: :optimism
+            POLYGON: :polygon
+            SOLANA: :solana
+            ZKSYNC_ERA: :zksync_era
+            SEPOLIA: :sepolia
+            ARBITRUM_SEPOLIA: :arbitrum_sepolia
+            BASE_SEPOLIA: :base_sepolia
+            LINEA_TESTNET: :linea_testnet
+            OPTIMISM_SEPOLIA: :optimism_sepolia
+            POLYGON_AMOY: :polygon_amoy
+            SOLANA_DEVNET: :solana_devnet
+            SOLANA_TESTNET: :solana_testnet
+
+            def self?.values: -> ::Array[Privy::Models::Wallets::BalanceGetResponse::Balance::chain]
+          end
+        end
+      end
+    end
+  end
+end

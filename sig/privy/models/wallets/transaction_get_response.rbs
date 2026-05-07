@@ -1,0 +1,121 @@
+module Privy
+  module Models
+    module Wallets
+      type transaction_get_response =
+        {
+          next_cursor: String?,
+          transactions: ::Array[Privy::Models::Wallets::TransactionGetResponse::Transaction]
+        }
+
+      class TransactionGetResponse < Privy::Internal::Type::BaseModel
+        attr_accessor next_cursor: String?
+
+        attr_accessor transactions: ::Array[Privy::Models::Wallets::TransactionGetResponse::Transaction]
+
+        def initialize: (
+          next_cursor: String?,
+          transactions: ::Array[Privy::Models::Wallets::TransactionGetResponse::Transaction]
+        ) -> void
+
+        def to_hash: -> {
+          next_cursor: String?,
+          transactions: ::Array[Privy::Models::Wallets::TransactionGetResponse::Transaction]
+        }
+
+        type transaction =
+          {
+            :caip2 => String,
+            created_at: Float,
+            details: Privy::Models::Wallets::TransactionGetResponse::Transaction::Details,
+            privy_transaction_id: String,
+            status: Privy::Models::Wallets::TransactionGetResponse::Transaction::status,
+            transaction_hash: String?,
+            wallet_id: String,
+            sponsored: bool,
+            user_operation_hash: String
+          }
+
+        class Transaction < Privy::Internal::Type::BaseModel
+          attr_accessor caip2: String
+
+          attr_accessor created_at: Float
+
+          attr_accessor details: Privy::Models::Wallets::TransactionGetResponse::Transaction::Details
+
+          attr_accessor privy_transaction_id: String
+
+          attr_accessor status: Privy::Models::Wallets::TransactionGetResponse::Transaction::status
+
+          attr_accessor transaction_hash: String?
+
+          attr_accessor wallet_id: String
+
+          attr_reader sponsored: bool?
+
+          def sponsored=: (bool) -> bool
+
+          attr_reader user_operation_hash: String?
+
+          def user_operation_hash=: (String) -> String
+
+          def initialize: (
+            caip2: String,
+            created_at: Float,
+            details: Privy::Models::Wallets::TransactionGetResponse::Transaction::Details,
+            privy_transaction_id: String,
+            status: Privy::Models::Wallets::TransactionGetResponse::Transaction::status,
+            transaction_hash: String?,
+            wallet_id: String,
+            ?sponsored: bool,
+            ?user_operation_hash: String
+          ) -> void
+
+          def to_hash: -> {
+            :caip2 => String,
+            created_at: Float,
+            details: Privy::Models::Wallets::TransactionGetResponse::Transaction::Details,
+            privy_transaction_id: String,
+            status: Privy::Models::Wallets::TransactionGetResponse::Transaction::status,
+            transaction_hash: String?,
+            wallet_id: String,
+            sponsored: bool,
+            user_operation_hash: String
+          }
+
+          type details = {  }
+
+          class Details < Privy::Models::TransactionDetail
+            def initialize: -> void
+
+            def to_hash: -> {  }
+          end
+
+          type status =
+            :broadcasted
+            | :confirmed
+            | :execution_reverted
+            | :failed
+            | :replaced
+            | :finalized
+            | :provider_error
+            | :pending
+
+          module Status
+            extend Privy::Internal::Type::Enum
+
+            BROADCASTED: :broadcasted
+            CONFIRMED: :confirmed
+            EXECUTION_REVERTED: :execution_reverted
+            FAILED: :failed
+            REPLACED: :replaced
+            FINALIZED: :finalized
+            PROVIDER_ERROR: :provider_error
+            PENDING: :pending
+
+            def self?.values: -> ::Array[Privy::Models::Wallets::TransactionGetResponse::Transaction::status]
+          end
+        end
+      end
+    end
+  end
+end

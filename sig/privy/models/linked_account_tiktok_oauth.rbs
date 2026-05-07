@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type linked_account_tiktok_oauth =
+      {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountTiktokOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+    class LinkedAccountTiktokOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor name: String?
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountTiktokOAuth::type_
+
+      attr_accessor username: String?
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountTiktokOAuth::type_,
+        username: String?,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountTiktokOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+      type type_ = :tiktok_oauth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TIKTOK_OAUTH: :tiktok_oauth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountTiktokOAuth::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type ethereum_send_transaction_rpc_input_params =
+      { transaction: Privy::Models::unsigned_ethereum_transaction }
+
+    class EthereumSendTransactionRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor transaction: Privy::Models::unsigned_ethereum_transaction
+
+      def initialize: (
+        transaction: Privy::Models::unsigned_ethereum_transaction
+      ) -> void
+
+      def to_hash: -> {
+        transaction: Privy::Models::unsigned_ethereum_transaction
+      }
+    end
+  end
+end

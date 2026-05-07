@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type transaction_scanning_asset_diff =
+      {
+        asset: Privy::TransactionScanningAssetInfo,
+        in_: ::Array[Privy::TransactionScanningAssetValue],
+        out: ::Array[Privy::TransactionScanningAssetValue]
+      }
+
+    class TransactionScanningAssetDiff < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::TransactionScanningAssetInfo
+
+      attr_accessor in_: ::Array[Privy::TransactionScanningAssetValue]
+
+      attr_accessor out: ::Array[Privy::TransactionScanningAssetValue]
+
+      def initialize: (
+        asset: Privy::TransactionScanningAssetInfo,
+        in_: ::Array[Privy::TransactionScanningAssetValue],
+        out: ::Array[Privy::TransactionScanningAssetValue]
+      ) -> void
+
+      def to_hash: -> {
+        asset: Privy::TransactionScanningAssetInfo,
+        in_: ::Array[Privy::TransactionScanningAssetValue],
+        out: ::Array[Privy::TransactionScanningAssetValue]
+      }
+    end
+  end
+end

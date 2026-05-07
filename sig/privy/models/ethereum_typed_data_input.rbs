@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_typed_data_input =
+      {
+        domain: Privy::Models::typed_data_domain_input_params,
+        message: ::Hash[Symbol, top],
+        primary_type: String,
+        types: Privy::Models::typed_data_types_input_params
+      }
+
+    class EthereumTypedDataInput < Privy::Internal::Type::BaseModel
+      attr_accessor domain: Privy::Models::typed_data_domain_input_params
+
+      attr_accessor message: ::Hash[Symbol, top]
+
+      attr_accessor primary_type: String
+
+      attr_accessor types: Privy::Models::typed_data_types_input_params
+
+      def initialize: (
+        domain: Privy::Models::typed_data_domain_input_params,
+        message: ::Hash[Symbol, top],
+        primary_type: String,
+        types: Privy::Models::typed_data_types_input_params
+      ) -> void
+
+      def to_hash: -> {
+        domain: Privy::Models::typed_data_domain_input_params,
+        message: ::Hash[Symbol, top],
+        primary_type: String,
+        types: Privy::Models::typed_data_types_input_params
+      }
+    end
+  end
+end

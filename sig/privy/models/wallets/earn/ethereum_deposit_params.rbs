@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    module Wallets
+      module Earn
+        type ethereum_deposit_params =
+          {
+            wallet_id: String,
+            privy_authorization_signature: String,
+            privy_idempotency_key: String,
+            privy_request_expiry: String
+          }
+          & Privy::Internal::Type::request_parameters
+
+        class EthereumDepositParams < Privy::Models::EarnDepositRequestBody
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          def wallet_id: -> String
+
+          def wallet_id=: (String _) -> String
+
+          def privy_authorization_signature: -> String?
+
+          def privy_authorization_signature=: (String _) -> String
+
+          def privy_idempotency_key: -> String?
+
+          def privy_idempotency_key=: (String _) -> String
+
+          def privy_request_expiry: -> String?
+
+          def privy_request_expiry=: (String _) -> String
+
+          def initialize: (
+            wallet_id: String,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            wallet_id: String,
+            privy_authorization_signature: String,
+            privy_idempotency_key: String,
+            privy_request_expiry: String,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

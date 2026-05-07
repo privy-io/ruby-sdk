@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    type custodial_wallet =
+      {
+        id: String,
+        address: String,
+        chain_type: Privy::Models::custodial_wallet_chain_type,
+        custody: Privy::WalletCustodian,
+        owner_id: String?,
+        additional_signers: Privy::Models::wallet_additional_signer,
+        policy_ids: ::Array[String]
+      }
+
+    class CustodialWallet < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::custodial_wallet_chain_type
+
+      attr_accessor custody: Privy::WalletCustodian
+
+      attr_accessor owner_id: String?
+
+      attr_reader additional_signers: Privy::Models::wallet_additional_signer?
+
+      def additional_signers=: (
+        Privy::Models::wallet_additional_signer
+      ) -> Privy::Models::wallet_additional_signer
+
+      attr_reader policy_ids: ::Array[String]?
+
+      def policy_ids=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        id: String,
+        address: String,
+        chain_type: Privy::Models::custodial_wallet_chain_type,
+        custody: Privy::WalletCustodian,
+        owner_id: String?,
+        ?additional_signers: Privy::Models::wallet_additional_signer,
+        ?policy_ids: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        address: String,
+        chain_type: Privy::Models::custodial_wallet_chain_type,
+        custody: Privy::WalletCustodian,
+        owner_id: String?,
+        additional_signers: Privy::Models::wallet_additional_signer,
+        policy_ids: ::Array[String]
+      }
+    end
+  end
+end

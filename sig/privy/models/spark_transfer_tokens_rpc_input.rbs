@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type spark_transfer_tokens_rpc_input =
+      {
+        method_: Privy::Models::SparkTransferTokensRpcInput::method_,
+        params: Privy::SparkTransferTokensRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkTransferTokensRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkTransferTokensRpcInput::method_
+
+      attr_accessor params: Privy::SparkTransferTokensRpcInputParams
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkTransferTokensRpcInput::method_,
+        params: Privy::SparkTransferTokensRpcInputParams,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkTransferTokensRpcInput::method_,
+        params: Privy::SparkTransferTokensRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :transferTokens
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER_TOKENS: :transferTokens
+
+        def self?.values: -> ::Array[Privy::Models::SparkTransferTokensRpcInput::method_]
+      end
+    end
+  end
+end

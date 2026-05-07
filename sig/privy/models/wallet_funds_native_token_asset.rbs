@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_funds_native_token_asset =
+      { address: nil, type: Privy::Models::WalletFundsNativeTokenAsset::type_ }
+
+    class WalletFundsNativeTokenAsset < Privy::Internal::Type::BaseModel
+      attr_accessor address: nil
+
+      attr_accessor type: Privy::Models::WalletFundsNativeTokenAsset::type_
+
+      def initialize: (
+        address: nil,
+        type: Privy::Models::WalletFundsNativeTokenAsset::type_
+      ) -> void
+
+      def to_hash: -> {
+        address: nil,
+        type: Privy::Models::WalletFundsNativeTokenAsset::type_
+      }
+
+      type type_ = :"native-token"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        NATIVE_TOKEN: :"native-token"
+
+        def self?.values: -> ::Array[Privy::Models::WalletFundsNativeTokenAsset::type_]
+      end
+    end
+  end
+end

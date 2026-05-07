@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type additional_signer_input = ::Array[Privy::AdditionalSignerItemInput]
+
+    AdditionalSignerInput: Privy::Internal::Type::Converter
+  end
+end

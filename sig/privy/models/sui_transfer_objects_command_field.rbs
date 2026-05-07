@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type sui_transfer_objects_command_field = :recipient | :amount
+
+    module SuiTransferObjectsCommandField
+      extend Privy::Internal::Type::Enum
+
+      RECIPIENT: :recipient
+      AMOUNT: :amount
+
+      def self?.values: -> ::Array[Privy::Models::sui_transfer_objects_command_field]
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type intent_authorization =
+      {
+        members: ::Array[Privy::Models::intent_authorization_member],
+        threshold: Float,
+        display_name: String
+      }
+
+    class IntentAuthorization < Privy::Internal::Type::BaseModel
+      attr_accessor members: ::Array[Privy::Models::intent_authorization_member]
+
+      attr_accessor threshold: Float
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      def initialize: (
+        members: ::Array[Privy::Models::intent_authorization_member],
+        threshold: Float,
+        ?display_name: String
+      ) -> void
+
+      def to_hash: -> {
+        members: ::Array[Privy::Models::intent_authorization_member],
+        threshold: Float,
+        display_name: String
+      }
+    end
+  end
+end

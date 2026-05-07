@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type user_owned_recovery_option =
+      :"user-passcode" | :"google-drive" | :icloud
+
+    module UserOwnedRecoveryOption
+      extend Privy::Internal::Type::Enum
+
+      USER_PASSCODE: :"user-passcode"
+      GOOGLE_DRIVE: :"google-drive"
+      ICLOUD: :icloud
+
+      def self?.values: -> ::Array[Privy::Models::user_owned_recovery_option]
+    end
+  end
+end

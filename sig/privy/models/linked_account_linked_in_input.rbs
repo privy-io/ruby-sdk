@@ -1,0 +1,46 @@
+module Privy
+  module Models
+    type linked_account_linked_in_input =
+      {
+        subject: String,
+        type: :linkedin_oauth,
+        email: String,
+        name: String,
+        vanity_name: String
+      }
+
+    class LinkedAccountLinkedInInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :linkedin_oauth
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader vanity_name: String?
+
+      def vanity_name=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        ?email: String,
+        ?name: String,
+        ?vanity_name: String,
+        ?type: :linkedin_oauth
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        type: :linkedin_oauth,
+        email: String,
+        name: String,
+        vanity_name: String
+      }
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type ethereum_earn_position_response =
+      {
+        asset: Privy::EarnAsset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      }
+
+    class EthereumEarnPositionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::EarnAsset
+
+      attr_accessor assets_in_vault: String
+
+      attr_accessor shares_in_vault: String
+
+      attr_accessor total_deposited: String
+
+      attr_accessor total_withdrawn: String
+
+      def initialize: (
+        asset: Privy::EarnAsset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      ) -> void
+
+      def to_hash: -> {
+        asset: Privy::EarnAsset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      }
+    end
+  end
+end

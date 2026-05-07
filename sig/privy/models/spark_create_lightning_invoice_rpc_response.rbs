@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type spark_create_lightning_invoice_rpc_response =
+      {
+        method_: Privy::Models::SparkCreateLightningInvoiceRpcResponse::method_,
+        data: Privy::SparkLightningReceiveRequest
+      }
+
+    class SparkCreateLightningInvoiceRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkCreateLightningInvoiceRpcResponse::method_
+
+      attr_reader data: Privy::SparkLightningReceiveRequest?
+
+      def data=: (
+        Privy::SparkLightningReceiveRequest
+      ) -> Privy::SparkLightningReceiveRequest
+
+      def initialize: (
+        method_: Privy::Models::SparkCreateLightningInvoiceRpcResponse::method_,
+        ?data: Privy::SparkLightningReceiveRequest
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkCreateLightningInvoiceRpcResponse::method_,
+        data: Privy::SparkLightningReceiveRequest
+      }
+
+      type method_ = :createLightningInvoice
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        CREATE_LIGHTNING_INVOICE: :createLightningInvoice
+
+        def self?.values: -> ::Array[Privy::Models::SparkCreateLightningInvoiceRpcResponse::method_]
+      end
+    end
+  end
+end

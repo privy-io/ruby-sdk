@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type telegram_web_app_data =
+      {
+        auth_date: Float?,
+        hash_: String,
+        user: String,
+        chat_instance: String,
+        chat_type: String,
+        query_id: String,
+        signature: String,
+        start_param: String
+      }
+
+    class TelegramWebAppData < Privy::Internal::Type::BaseModel
+      attr_accessor auth_date: Float?
+
+      attr_accessor hash_: String
+
+      attr_accessor user: String
+
+      attr_reader chat_instance: String?
+
+      def chat_instance=: (String) -> String
+
+      attr_reader chat_type: String?
+
+      def chat_type=: (String) -> String
+
+      attr_reader query_id: String?
+
+      def query_id=: (String) -> String
+
+      attr_reader signature: String?
+
+      def signature=: (String) -> String
+
+      attr_reader start_param: String?
+
+      def start_param=: (String) -> String
+
+      def initialize: (
+        auth_date: Float?,
+        hash_: String,
+        user: String,
+        ?chat_instance: String,
+        ?chat_type: String,
+        ?query_id: String,
+        ?signature: String,
+        ?start_param: String
+      ) -> void
+
+      def to_hash: -> {
+        auth_date: Float?,
+        hash_: String,
+        user: String,
+        chat_instance: String,
+        chat_type: String,
+        query_id: String,
+        signature: String,
+        start_param: String
+      }
+    end
+  end
+end

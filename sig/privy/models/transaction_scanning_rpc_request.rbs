@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type transaction_scanning_rpc_request =
+      { method_: String, params: ::Array[top] }
+
+    class TransactionScanningRpcRequest < Privy::Internal::Type::BaseModel
+      attr_accessor method_: String
+
+      attr_accessor params: ::Array[top]
+
+      def initialize: (method_: String, params: ::Array[top]) -> void
+
+      def to_hash: -> { method_: String, params: ::Array[top] }
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type kraken_embed_user_disabled_webhook_payload =
+      {
+        disabled_at: String,
+        type: Privy::Models::KrakenEmbedUserDisabledWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedUserDisabledWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor disabled_at: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedUserDisabledWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        disabled_at: String,
+        type: Privy::Models::KrakenEmbedUserDisabledWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        disabled_at: String,
+        type: Privy::Models::KrakenEmbedUserDisabledWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.user.disabled"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_USER_DISABLED: :"kraken_embed.user.disabled"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedUserDisabledWebhookPayload::type_]
+      end
+    end
+  end
+end

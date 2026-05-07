@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type smart_wallet_network_configuration_input =
+      {
+        chain_id: String,
+        bundler_url: String,
+        chain_name: String,
+        paymaster_context: Privy::AlchemyPaymasterContext,
+        paymaster_url: String,
+        rpc_url: String
+      }
+
+    class SmartWalletNetworkConfigurationInput < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: String
+
+      attr_reader bundler_url: String?
+
+      def bundler_url=: (String) -> String
+
+      attr_reader chain_name: String?
+
+      def chain_name=: (String) -> String
+
+      attr_reader paymaster_context: Privy::AlchemyPaymasterContext?
+
+      def paymaster_context=: (
+        Privy::AlchemyPaymasterContext
+      ) -> Privy::AlchemyPaymasterContext
+
+      attr_reader paymaster_url: String?
+
+      def paymaster_url=: (String) -> String
+
+      attr_reader rpc_url: String?
+
+      def rpc_url=: (String) -> String
+
+      def initialize: (
+        chain_id: String,
+        ?bundler_url: String,
+        ?chain_name: String,
+        ?paymaster_context: Privy::AlchemyPaymasterContext,
+        ?paymaster_url: String,
+        ?rpc_url: String
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: String,
+        bundler_url: String,
+        chain_name: String,
+        paymaster_context: Privy::AlchemyPaymasterContext,
+        paymaster_url: String,
+        rpc_url: String
+      }
+    end
+  end
+end

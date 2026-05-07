@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type base_action_result =
+      {
+        executed_at: Float,
+        status_code: Float,
+        authorized_by_display_name: String,
+        authorized_by_id: String
+      }
+
+    class BaseActionResult < Privy::Internal::Type::BaseModel
+      attr_accessor executed_at: Float
+
+      attr_accessor status_code: Float
+
+      attr_reader authorized_by_display_name: String?
+
+      def authorized_by_display_name=: (String) -> String
+
+      attr_reader authorized_by_id: String?
+
+      def authorized_by_id=: (String) -> String
+
+      def initialize: (
+        executed_at: Float,
+        status_code: Float,
+        ?authorized_by_display_name: String,
+        ?authorized_by_id: String
+      ) -> void
+
+      def to_hash: -> {
+        executed_at: Float,
+        status_code: Float,
+        authorized_by_display_name: String,
+        authorized_by_id: String
+      }
+    end
+  end
+end

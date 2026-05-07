@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type recovery_configuration_icloud_response =
+      { api_token: String, container_identifier: String, environment: String }
+
+    class RecoveryConfigurationICloudResponse < Privy::Internal::Type::BaseModel
+      attr_accessor api_token: String
+
+      attr_accessor container_identifier: String
+
+      attr_accessor environment: String
+
+      def initialize: (
+        api_token: String,
+        container_identifier: String,
+        environment: String
+      ) -> void
+
+      def to_hash: -> {
+        api_token: String,
+        container_identifier: String,
+        environment: String
+      }
+    end
+  end
+end

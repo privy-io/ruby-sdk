@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    type linked_account_twitch_input =
+      { subject: String, type: :twitch_oauth, username: String }
+
+    class LinkedAccountTwitchInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :twitch_oauth
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        ?username: String,
+        ?type: :twitch_oauth
+      ) -> void
+
+      def to_hash: -> { subject: String, type: :twitch_oauth, username: String }
+    end
+  end
+end

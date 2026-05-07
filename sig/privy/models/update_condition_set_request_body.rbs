@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type update_condition_set_request_body =
+      { name: String, owner: Privy::Models::owner_input?, owner_id: String? }
+
+    class UpdateConditionSetRequestBody < Privy::Internal::Type::BaseModel
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_accessor owner: Privy::Models::owner_input?
+
+      attr_accessor owner_id: String?
+
+      def initialize: (
+        ?name: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?
+      }
+    end
+  end
+end

@@ -1,0 +1,105 @@
+module Privy
+  module Models
+    type user_create_params =
+      {
+        linked_accounts: ::Array[Privy::Models::linked_account_input],
+        custom_metadata: Privy::Models::custom_metadata,
+        wallets: ::Array[Privy::UserCreateParams::Wallet]
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class UserCreateParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor linked_accounts: ::Array[Privy::Models::linked_account_input]
+
+      attr_reader custom_metadata: Privy::Models::custom_metadata?
+
+      def custom_metadata=: (
+        Privy::Models::custom_metadata
+      ) -> Privy::Models::custom_metadata
+
+      attr_reader wallets: ::Array[Privy::UserCreateParams::Wallet]?
+
+      def wallets=: (
+        ::Array[Privy::UserCreateParams::Wallet]
+      ) -> ::Array[Privy::UserCreateParams::Wallet]
+
+      def initialize: (
+        linked_accounts: ::Array[Privy::Models::linked_account_input],
+        ?custom_metadata: Privy::Models::custom_metadata,
+        ?wallets: ::Array[Privy::UserCreateParams::Wallet],
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        linked_accounts: ::Array[Privy::Models::linked_account_input],
+        custom_metadata: Privy::Models::custom_metadata,
+        wallets: ::Array[Privy::UserCreateParams::Wallet],
+        request_options: Privy::RequestOptions
+      }
+
+      type wallet =
+        {
+          chain_type: Privy::Models::wallet_chain_type,
+          additional_signers: ::Array[Privy::UserCreateParams::Wallet::AdditionalSigner],
+          create_smart_wallet: bool,
+          policy_ids: ::Array[String]
+        }
+
+      class Wallet < Privy::Internal::Type::BaseModel
+        attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+        attr_reader additional_signers: ::Array[Privy::UserCreateParams::Wallet::AdditionalSigner]?
+
+        def additional_signers=: (
+          ::Array[Privy::UserCreateParams::Wallet::AdditionalSigner]
+        ) -> ::Array[Privy::UserCreateParams::Wallet::AdditionalSigner]
+
+        attr_reader create_smart_wallet: bool?
+
+        def create_smart_wallet=: (bool) -> bool
+
+        attr_reader policy_ids: ::Array[String]?
+
+        def policy_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          chain_type: Privy::Models::wallet_chain_type,
+          ?additional_signers: ::Array[Privy::UserCreateParams::Wallet::AdditionalSigner],
+          ?create_smart_wallet: bool,
+          ?policy_ids: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          chain_type: Privy::Models::wallet_chain_type,
+          additional_signers: ::Array[Privy::UserCreateParams::Wallet::AdditionalSigner],
+          create_smart_wallet: bool,
+          policy_ids: ::Array[String]
+        }
+
+        type additional_signer =
+          { signer_id: String, override_policy_ids: ::Array[String] }
+
+        class AdditionalSigner < Privy::Internal::Type::BaseModel
+          attr_accessor signer_id: String
+
+          attr_reader override_policy_ids: ::Array[String]?
+
+          def override_policy_ids=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            signer_id: String,
+            ?override_policy_ids: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            signer_id: String,
+            override_policy_ids: ::Array[String]
+          }
+        end
+      end
+    end
+  end
+end

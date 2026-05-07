@@ -1,0 +1,76 @@
+module Privy
+  module Models
+    type bridge_usd_fiat_virtual_account_deposit_instructions =
+      {
+        asset: Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+    class BridgeUsdFiatVirtualAccountDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset
+
+      attr_accessor bank_account_number: String
+
+      attr_accessor bank_address: String
+
+      attr_accessor bank_beneficiary_address: String
+
+      attr_accessor bank_beneficiary_name: String
+
+      attr_accessor bank_name: String
+
+      attr_accessor bank_routing_number: String
+
+      attr_accessor payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+
+      def initialize: (
+        asset: Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+      ) -> void
+
+      def to_hash: -> {
+        asset: Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+      type asset = :usd
+
+      module Asset
+        extend Privy::Internal::Type::Enum
+
+        USD: :usd
+
+        def self?.values: -> ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset]
+      end
+
+      type payment_rail = :ach_push | :wire
+
+      module PaymentRail
+        extend Privy::Internal::Type::Enum
+
+        ACH_PUSH: :ach_push
+        WIRE: :wire
+
+        def self?.values: -> ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+      end
+    end
+  end
+end

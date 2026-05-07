@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type user_wallet_created_webhook_payload =
+      {
+        type: Privy::Models::UserWalletCreatedWebhookPayload::type_,
+        user: Privy::User,
+        wallet: Privy::LinkedAccountBaseWallet
+      }
+
+    class UserWalletCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::UserWalletCreatedWebhookPayload::type_
+
+      attr_accessor user: Privy::User
+
+      attr_accessor wallet: Privy::LinkedAccountBaseWallet
+
+      def initialize: (
+        type: Privy::Models::UserWalletCreatedWebhookPayload::type_,
+        user: Privy::User,
+        wallet: Privy::LinkedAccountBaseWallet
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::UserWalletCreatedWebhookPayload::type_,
+        user: Privy::User,
+        wallet: Privy::LinkedAccountBaseWallet
+      }
+
+      type type_ = :"user.wallet_created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USER_WALLET_CREATED: :"user.wallet_created"
+
+        def self?.values: -> ::Array[Privy::Models::UserWalletCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

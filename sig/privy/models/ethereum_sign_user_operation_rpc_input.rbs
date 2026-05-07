@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type ethereum_sign_user_operation_rpc_input =
+      {
+        method_: Privy::Models::EthereumSignUserOperationRpcInput::method_,
+        params: Privy::EthereumSignUserOperationRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumSignUserOperationRpcInput::chain_type,
+        wallet_id: String
+      }
+
+    class EthereumSignUserOperationRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::EthereumSignUserOperationRpcInput::method_
+
+      attr_accessor params: Privy::EthereumSignUserOperationRpcInputParams
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      attr_reader chain_type: Privy::Models::EthereumSignUserOperationRpcInput::chain_type?
+
+      def chain_type=: (
+        Privy::Models::EthereumSignUserOperationRpcInput::chain_type
+      ) -> Privy::Models::EthereumSignUserOperationRpcInput::chain_type
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        method_: Privy::Models::EthereumSignUserOperationRpcInput::method_,
+        params: Privy::EthereumSignUserOperationRpcInputParams,
+        ?address: String,
+        ?chain_type: Privy::Models::EthereumSignUserOperationRpcInput::chain_type,
+        ?wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::EthereumSignUserOperationRpcInput::method_,
+        params: Privy::EthereumSignUserOperationRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumSignUserOperationRpcInput::chain_type,
+        wallet_id: String
+      }
+
+      type method_ = :eth_signUserOperation
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        ETH_SIGN_USER_OPERATION: :eth_signUserOperation
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSignUserOperationRpcInput::method_]
+      end
+
+      type chain_type = :ethereum
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM: :ethereum
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSignUserOperationRpcInput::chain_type]
+      end
+    end
+  end
+end

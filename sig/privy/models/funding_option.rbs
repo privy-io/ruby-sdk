@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type funding_option = { method_: String, provider: String }
+
+    class FundingOption < Privy::Internal::Type::BaseModel
+      attr_accessor method_: String
+
+      attr_accessor provider: String
+
+      def initialize: (method_: String, provider: String) -> void
+
+      def to_hash: -> { method_: String, provider: String }
+    end
+  end
+end

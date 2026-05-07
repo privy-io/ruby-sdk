@@ -1,0 +1,67 @@
+module Privy
+  module Models
+    type sui_transaction_command_condition =
+      {
+        field: Privy::Models::SuiTransactionCommandCondition::field,
+        field_source: Privy::Models::SuiTransactionCommandCondition::field_source,
+        operator: Privy::Models::sui_transaction_command_operator,
+        value: Privy::Models::SuiTransactionCommandCondition::value
+      }
+
+    class SuiTransactionCommandCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::SuiTransactionCommandCondition::field
+
+      attr_accessor field_source: Privy::Models::SuiTransactionCommandCondition::field_source
+
+      attr_accessor operator: Privy::Models::sui_transaction_command_operator
+
+      attr_accessor value: Privy::Models::SuiTransactionCommandCondition::value
+
+      def initialize: (
+        field: Privy::Models::SuiTransactionCommandCondition::field,
+        field_source: Privy::Models::SuiTransactionCommandCondition::field_source,
+        operator: Privy::Models::sui_transaction_command_operator,
+        value: Privy::Models::SuiTransactionCommandCondition::value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::SuiTransactionCommandCondition::field,
+        field_source: Privy::Models::SuiTransactionCommandCondition::field_source,
+        operator: Privy::Models::sui_transaction_command_operator,
+        value: Privy::Models::SuiTransactionCommandCondition::value
+      }
+
+      type field = :commandName
+
+      module Field
+        extend Privy::Internal::Type::Enum
+
+        COMMAND_NAME: :commandName
+
+        def self?.values: -> ::Array[Privy::Models::SuiTransactionCommandCondition::field]
+      end
+
+      type field_source = :sui_transaction_command
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        SUI_TRANSACTION_COMMAND: :sui_transaction_command
+
+        def self?.values: -> ::Array[Privy::Models::SuiTransactionCommandCondition::field_source]
+      end
+
+      type value =
+        Privy::Models::sui_command_name
+        | ::Array[Privy::Models::sui_command_name]
+
+      module Value
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::SuiTransactionCommandCondition::value]
+
+        SuiCommandNameArray: Privy::Internal::Type::Converter
+      end
+    end
+  end
+end

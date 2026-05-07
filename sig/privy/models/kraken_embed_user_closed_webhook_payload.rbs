@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type kraken_embed_user_closed_webhook_payload =
+      {
+        closed_at: String,
+        type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedUserClosedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor closed_at: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        closed_at: String,
+        type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        closed_at: String,
+        type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.user.closed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_USER_CLOSED: :"kraken_embed.user.closed"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_]
+      end
+    end
+  end
+end

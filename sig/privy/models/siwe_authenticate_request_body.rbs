@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type siwe_authenticate_request_body =
+      {
+        message: String,
+        signature: String,
+        chain_id: String?,
+        connector_type: String?,
+        mode: Privy::Models::authenticate_mode_option,
+        wallet_client_type: String?
+      }
+
+    class SiweAuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_accessor chain_id: String?
+
+      attr_accessor connector_type: String?
+
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      attr_accessor wallet_client_type: String?
+
+      def initialize: (
+        message: String,
+        signature: String,
+        ?chain_id: String?,
+        ?connector_type: String?,
+        ?mode: Privy::Models::authenticate_mode_option,
+        ?wallet_client_type: String?
+      ) -> void
+
+      def to_hash: -> {
+        message: String,
+        signature: String,
+        chain_id: String?,
+        connector_type: String?,
+        mode: Privy::Models::authenticate_mode_option,
+        wallet_client_type: String?
+      }
+    end
+  end
+end

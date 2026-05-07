@@ -1,0 +1,43 @@
+module Privy
+  module Models
+    type user_unlink_linked_account_params =
+      {
+        user_id: String,
+        handle: String,
+        type: Privy::Models::linked_account_type,
+        provider: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class UserUnlinkLinkedAccountParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor user_id: String
+
+      attr_accessor handle: String
+
+      attr_accessor type: Privy::Models::linked_account_type
+
+      attr_reader provider: String?
+
+      def provider=: (String) -> String
+
+      def initialize: (
+        user_id: String,
+        handle: String,
+        type: Privy::Models::linked_account_type,
+        ?provider: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        user_id: String,
+        handle: String,
+        type: Privy::Models::linked_account_type,
+        provider: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

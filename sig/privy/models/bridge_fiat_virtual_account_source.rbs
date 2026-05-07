@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type bridge_fiat_virtual_account_source =
+      { asset: Privy::Models::bridge_source_asset }
+
+    class BridgeFiatVirtualAccountSource < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::Models::bridge_source_asset
+
+      def initialize: (asset: Privy::Models::bridge_source_asset) -> void
+
+      def to_hash: -> { asset: Privy::Models::bridge_source_asset }
+    end
+  end
+end

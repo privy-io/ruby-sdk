@@ -1,0 +1,47 @@
+module Privy
+  module Models
+    type aggregation_metric =
+      {
+        field: String,
+        field_source: String,
+        function: Privy::Models::AggregationMetric::function,
+        abi: Privy::Models::abi_schema
+      }
+
+    class AggregationMetric < Privy::Internal::Type::BaseModel
+      attr_accessor field: String
+
+      attr_accessor field_source: String
+
+      attr_accessor function: Privy::Models::AggregationMetric::function
+
+      attr_reader abi: Privy::Models::abi_schema?
+
+      def abi=: (Privy::Models::abi_schema) -> Privy::Models::abi_schema
+
+      def initialize: (
+        field: String,
+        field_source: String,
+        function: Privy::Models::AggregationMetric::function,
+        ?abi: Privy::Models::abi_schema
+      ) -> void
+
+      def to_hash: -> {
+        field: String,
+        field_source: String,
+        function: Privy::Models::AggregationMetric::function,
+        abi: Privy::Models::abi_schema
+      }
+
+      type function = :sum
+
+      module Function
+        extend Privy::Internal::Type::Enum
+
+        SUM: :sum
+
+        def self?.values: -> ::Array[Privy::Models::AggregationMetric::function]
+      end
+    end
+  end
+end

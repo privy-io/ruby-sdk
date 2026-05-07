@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type key_quorum_delete_params =
+      {
+        key_quorum_id: String,
+        privy_authorization_signature: String,
+        privy_request_expiry: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class KeyQuorumDeleteParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor key_quorum_id: String
+
+      attr_reader privy_authorization_signature: String?
+
+      def privy_authorization_signature=: (String) -> String
+
+      attr_reader privy_request_expiry: String?
+
+      def privy_request_expiry=: (String) -> String
+
+      def initialize: (
+        key_quorum_id: String,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        key_quorum_id: String,
+        privy_authorization_signature: String,
+        privy_request_expiry: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

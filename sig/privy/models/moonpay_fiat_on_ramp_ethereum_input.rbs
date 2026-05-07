@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type moonpay_fiat_on_ramp_ethereum_input =
+      { address: String, config: Privy::MoonpayFiatOnRampEthereumConfig }
+
+    class MoonpayFiatOnRampEthereumInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor config: Privy::MoonpayFiatOnRampEthereumConfig
+
+      def initialize: (
+        address: String,
+        config: Privy::MoonpayFiatOnRampEthereumConfig
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        config: Privy::MoonpayFiatOnRampEthereumConfig
+      }
+    end
+  end
+end

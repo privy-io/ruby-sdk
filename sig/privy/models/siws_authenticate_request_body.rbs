@@ -1,0 +1,64 @@
+module Privy
+  module Models
+    type siws_authenticate_request_body =
+      {
+        message: String,
+        signature: String,
+        connector_type: String?,
+        message_type: Privy::Models::SiwsAuthenticateRequestBody::message_type,
+        mode: Privy::Models::authenticate_mode_option,
+        wallet_client_type: String?
+      }
+
+    class SiwsAuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_accessor connector_type: String?
+
+      attr_reader message_type: Privy::Models::SiwsAuthenticateRequestBody::message_type?
+
+      def message_type=: (
+        Privy::Models::SiwsAuthenticateRequestBody::message_type
+      ) -> Privy::Models::SiwsAuthenticateRequestBody::message_type
+
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      attr_accessor wallet_client_type: String?
+
+      def initialize: (
+        message: String,
+        signature: String,
+        ?connector_type: String?,
+        ?message_type: Privy::Models::SiwsAuthenticateRequestBody::message_type,
+        ?mode: Privy::Models::authenticate_mode_option,
+        ?wallet_client_type: String?
+      ) -> void
+
+      def to_hash: -> {
+        message: String,
+        signature: String,
+        connector_type: String?,
+        message_type: Privy::Models::SiwsAuthenticateRequestBody::message_type,
+        mode: Privy::Models::authenticate_mode_option,
+        wallet_client_type: String?
+      }
+
+      type message_type = :transaction | :plain
+
+      module MessageType
+        extend Privy::Internal::Type::Enum
+
+        TRANSACTION: :transaction
+        PLAIN: :plain
+
+        def self?.values: -> ::Array[Privy::Models::SiwsAuthenticateRequestBody::message_type]
+      end
+    end
+  end
+end

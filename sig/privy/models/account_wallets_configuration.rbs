@@ -1,0 +1,8 @@
+module Privy
+  module Models
+    type account_wallets_configuration =
+      ::Array[Privy::AccountWalletConfigurationItem]
+
+    AccountWalletsConfiguration: Privy::Internal::Type::Converter
+  end
+end

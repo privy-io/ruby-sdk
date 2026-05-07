@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_secp256k1_sign_rpc_response =
+      {
+        data: Privy::EthereumSecp256k1SignRpcResponseData,
+        method_: Privy::Models::EthereumSecp256k1SignRpcResponse::method_
+      }
+
+    class EthereumSecp256k1SignRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::EthereumSecp256k1SignRpcResponseData
+
+      attr_accessor method_: Privy::Models::EthereumSecp256k1SignRpcResponse::method_
+
+      def initialize: (
+        data: Privy::EthereumSecp256k1SignRpcResponseData,
+        method_: Privy::Models::EthereumSecp256k1SignRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::EthereumSecp256k1SignRpcResponseData,
+        method_: Privy::Models::EthereumSecp256k1SignRpcResponse::method_
+      }
+
+      type method_ = :secp256k1_sign
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SECP256K1_SIGN: :secp256k1_sign
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSecp256k1SignRpcResponse::method_]
+      end
+    end
+  end
+end

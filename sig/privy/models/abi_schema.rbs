@@ -1,0 +1,92 @@
+module Privy
+  module Models
+    type abi_schema_item =
+      {
+        type: Privy::Models::AbiSchemaItem::type_,
+        anonymous: bool,
+        inputs: ::Array[Privy::AbiParameter],
+        name: String,
+        outputs: ::Array[Privy::AbiParameter],
+        state_mutability: Privy::Models::AbiSchemaItem::state_mutability
+      }
+
+    class AbiSchemaItem < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::AbiSchemaItem::type_
+
+      attr_reader anonymous: bool?
+
+      def anonymous=: (bool) -> bool
+
+      attr_reader inputs: ::Array[Privy::AbiParameter]?
+
+      def inputs=: (
+        ::Array[Privy::AbiParameter]
+      ) -> ::Array[Privy::AbiParameter]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader outputs: ::Array[Privy::AbiParameter]?
+
+      def outputs=: (
+        ::Array[Privy::AbiParameter]
+      ) -> ::Array[Privy::AbiParameter]
+
+      attr_reader state_mutability: Privy::Models::AbiSchemaItem::state_mutability?
+
+      def state_mutability=: (
+        Privy::Models::AbiSchemaItem::state_mutability
+      ) -> Privy::Models::AbiSchemaItem::state_mutability
+
+      def initialize: (
+        type: Privy::Models::AbiSchemaItem::type_,
+        ?anonymous: bool,
+        ?inputs: ::Array[Privy::AbiParameter],
+        ?name: String,
+        ?outputs: ::Array[Privy::AbiParameter],
+        ?state_mutability: Privy::Models::AbiSchemaItem::state_mutability
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::AbiSchemaItem::type_,
+        anonymous: bool,
+        inputs: ::Array[Privy::AbiParameter],
+        name: String,
+        outputs: ::Array[Privy::AbiParameter],
+        state_mutability: Privy::Models::AbiSchemaItem::state_mutability
+      }
+
+      type type_ = :function | :constructor | :event | :fallback | :receive
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TYPE_FUNCTION: :function
+        TYPE_CONSTRUCTOR: :constructor
+        TYPE_EVENT: :event
+        TYPE_FALLBACK: :fallback
+        TYPE_RECEIVE: :receive
+
+        def self?.values: -> ::Array[Privy::Models::AbiSchemaItem::type_]
+      end
+
+      type state_mutability = :pure | :view | :nonpayable | :payable
+
+      module StateMutability
+        extend Privy::Internal::Type::Enum
+
+        PURE: :pure
+        VIEW: :view
+        NONPAYABLE: :nonpayable
+        PAYABLE: :payable
+
+        def self?.values: -> ::Array[Privy::Models::AbiSchemaItem::state_mutability]
+      end
+    end
+
+    type abi_schema = ::Array[Privy::AbiSchemaItem]
+
+    AbiSchema: Privy::Internal::Type::Converter
+  end
+end

@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type authenticate_mode = { mode: Privy::Models::authenticate_mode_option }
+
+    class AuthenticateMode < Privy::Internal::Type::BaseModel
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      def initialize: (?mode: Privy::Models::authenticate_mode_option) -> void
+
+      def to_hash: -> { mode: Privy::Models::authenticate_mode_option }
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_code_type = :raw
+
+    module OAuthCodeType
+      extend Privy::Internal::Type::Enum
+
+      RAW: :raw
+
+      def self?.values: -> ::Array[Privy::Models::oauth_code_type]
+    end
+  end
+end

@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type wallet_additional_signer = ::Array[Privy::WalletAdditionalSignerItem]
+
+    WalletAdditionalSigner: Privy::Internal::Type::Converter
+  end
+end

@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type solana_sign_message_rpc_input =
+      {
+        method_: Privy::Models::SolanaSignMessageRpcInput::method_,
+        params: Privy::SolanaSignMessageRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::SolanaSignMessageRpcInput::chain_type,
+        wallet_id: String
+      }
+
+    class SolanaSignMessageRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SolanaSignMessageRpcInput::method_
+
+      attr_accessor params: Privy::SolanaSignMessageRpcInputParams
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      attr_reader chain_type: Privy::Models::SolanaSignMessageRpcInput::chain_type?
+
+      def chain_type=: (
+        Privy::Models::SolanaSignMessageRpcInput::chain_type
+      ) -> Privy::Models::SolanaSignMessageRpcInput::chain_type
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        method_: Privy::Models::SolanaSignMessageRpcInput::method_,
+        params: Privy::SolanaSignMessageRpcInputParams,
+        ?address: String,
+        ?chain_type: Privy::Models::SolanaSignMessageRpcInput::chain_type,
+        ?wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SolanaSignMessageRpcInput::method_,
+        params: Privy::SolanaSignMessageRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::SolanaSignMessageRpcInput::chain_type,
+        wallet_id: String
+      }
+
+      type method_ = :signMessage
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SIGN_MESSAGE: :signMessage
+
+        def self?.values: -> ::Array[Privy::Models::SolanaSignMessageRpcInput::method_]
+      end
+
+      type chain_type = :solana
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        SOLANA: :solana
+
+        def self?.values: -> ::Array[Privy::Models::SolanaSignMessageRpcInput::chain_type]
+      end
+    end
+  end
+end

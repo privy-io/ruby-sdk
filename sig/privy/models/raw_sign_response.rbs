@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type raw_sign_response =
+      {
+        data: Privy::RawSignResponseData,
+        method_: Privy::Models::RawSignResponse::method_
+      }
+
+    class RawSignResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::RawSignResponseData
+
+      attr_accessor method_: Privy::Models::RawSignResponse::method_
+
+      def initialize: (
+        data: Privy::RawSignResponseData,
+        method_: Privy::Models::RawSignResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::RawSignResponseData,
+        method_: Privy::Models::RawSignResponse::method_
+      }
+
+      type method_ = :raw_sign
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        RAW_SIGN: :raw_sign
+
+        def self?.values: -> ::Array[Privy::Models::RawSignResponse::method_]
+      end
+    end
+  end
+end

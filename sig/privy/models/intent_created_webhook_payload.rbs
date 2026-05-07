@@ -1,0 +1,78 @@
+module Privy
+  module Models
+    type intent_created_webhook_payload =
+      {
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        status: String,
+        type: Privy::Models::IntentCreatedWebhookPayload::type_,
+        authorization_details: ::Array[Privy::IntentAuthorization],
+        created_by_display_name: String,
+        created_by_id: String
+      }
+
+    class IntentCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor created_at: Float
+
+      attr_accessor expires_at: Float
+
+      attr_accessor intent_id: String
+
+      attr_accessor intent_type: Privy::Models::intent_type
+
+      attr_accessor status: String
+
+      attr_accessor type: Privy::Models::IntentCreatedWebhookPayload::type_
+
+      attr_reader authorization_details: ::Array[Privy::IntentAuthorization]?
+
+      def authorization_details=: (
+        ::Array[Privy::IntentAuthorization]
+      ) -> ::Array[Privy::IntentAuthorization]
+
+      attr_reader created_by_display_name: String?
+
+      def created_by_display_name=: (String) -> String
+
+      attr_reader created_by_id: String?
+
+      def created_by_id=: (String) -> String
+
+      def initialize: (
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        status: String,
+        type: Privy::Models::IntentCreatedWebhookPayload::type_,
+        ?authorization_details: ::Array[Privy::IntentAuthorization],
+        ?created_by_display_name: String,
+        ?created_by_id: String
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        status: String,
+        type: Privy::Models::IntentCreatedWebhookPayload::type_,
+        authorization_details: ::Array[Privy::IntentAuthorization],
+        created_by_display_name: String,
+        created_by_id: String
+      }
+
+      type type_ = :"intent.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INTENT_CREATED: :"intent.created"
+
+        def self?.values: -> ::Array[Privy::Models::IntentCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

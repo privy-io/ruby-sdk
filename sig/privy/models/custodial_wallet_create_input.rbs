@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type custodial_wallet_create_input =
+      {
+        chain_type: Privy::Models::custodial_wallet_chain_type,
+        provider: Privy::Models::custodial_wallet_provider,
+        provider_user_id: String,
+        additional_signers: Privy::Models::additional_signer_input,
+        owner: Privy::Models::owner_input?,
+        policy_ids: Privy::Models::policy_input
+      }
+
+    class CustodialWalletCreateInput < Privy::Internal::Type::BaseModel
+      attr_accessor chain_type: Privy::Models::custodial_wallet_chain_type
+
+      attr_accessor provider: Privy::Models::custodial_wallet_provider
+
+      attr_accessor provider_user_id: String
+
+      attr_reader additional_signers: Privy::Models::additional_signer_input?
+
+      def additional_signers=: (
+        Privy::Models::additional_signer_input
+      ) -> Privy::Models::additional_signer_input
+
+      attr_accessor owner: Privy::Models::owner_input?
+
+      attr_reader policy_ids: Privy::Models::policy_input?
+
+      def policy_ids=: (
+        Privy::Models::policy_input
+      ) -> Privy::Models::policy_input
+
+      def initialize: (
+        chain_type: Privy::Models::custodial_wallet_chain_type,
+        provider: Privy::Models::custodial_wallet_provider,
+        provider_user_id: String,
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?owner: Privy::Models::owner_input?,
+        ?policy_ids: Privy::Models::policy_input
+      ) -> void
+
+      def to_hash: -> {
+        chain_type: Privy::Models::custodial_wallet_chain_type,
+        provider: Privy::Models::custodial_wallet_provider,
+        provider_user_id: String,
+        additional_signers: Privy::Models::additional_signer_input,
+        owner: Privy::Models::owner_input?,
+        policy_ids: Privy::Models::policy_input
+      }
+    end
+  end
+end

@@ -1,0 +1,92 @@
+module Privy
+  module Models
+    type wallet_batch_create_result =
+      Privy::WalletBatchCreateResult::WalletBatchCreateSuccess
+      | Privy::WalletBatchCreateResult::WalletBatchCreateFailure
+
+    module WalletBatchCreateResult
+      extend Privy::Internal::Type::Union
+
+      type wallet_batch_create_success =
+        {
+          index: Float,
+          success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateSuccess::success,
+          wallet: Privy::Wallet
+        }
+
+      class WalletBatchCreateSuccess < Privy::Internal::Type::BaseModel
+        attr_accessor index: Float
+
+        attr_accessor success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateSuccess::success
+
+        attr_accessor wallet: Privy::Wallet
+
+        def initialize: (
+          index: Float,
+          success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateSuccess::success,
+          wallet: Privy::Wallet
+        ) -> void
+
+        def to_hash: -> {
+          index: Float,
+          success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateSuccess::success,
+          wallet: Privy::Wallet
+        }
+
+        type success = true
+
+        module Success
+          extend Privy::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[Privy::Models::WalletBatchCreateResult::WalletBatchCreateSuccess::success]
+        end
+      end
+
+      type wallet_batch_create_failure =
+        {
+          code: String,
+          error: String,
+          index: Float,
+          success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateFailure::success
+        }
+
+      class WalletBatchCreateFailure < Privy::Internal::Type::BaseModel
+        attr_accessor code: String
+
+        attr_accessor error: String
+
+        attr_accessor index: Float
+
+        attr_accessor success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateFailure::success
+
+        def initialize: (
+          code: String,
+          error: String,
+          index: Float,
+          success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateFailure::success
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          error: String,
+          index: Float,
+          success: Privy::Models::WalletBatchCreateResult::WalletBatchCreateFailure::success
+        }
+
+        type success = false
+
+        module Success
+          extend Privy::Internal::Type::Enum
+
+          FALSE: false
+
+          def self?.values: -> ::Array[Privy::Models::WalletBatchCreateResult::WalletBatchCreateFailure::success]
+        end
+      end
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_batch_create_result]
+    end
+  end
+end

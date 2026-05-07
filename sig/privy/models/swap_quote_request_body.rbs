@@ -1,0 +1,46 @@
+module Privy
+  module Models
+    type swap_quote_request_body =
+      {
+        base_amount: String,
+        destination: Privy::SwapQuoteDestination,
+        source: Privy::SwapSource,
+        amount_type: Privy::Models::amount_type,
+        slippage_bps: Float
+      }
+
+    class SwapQuoteRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor base_amount: String
+
+      attr_accessor destination: Privy::SwapQuoteDestination
+
+      attr_accessor source: Privy::SwapSource
+
+      attr_reader amount_type: Privy::Models::amount_type?
+
+      def amount_type=: (
+        Privy::Models::amount_type
+      ) -> Privy::Models::amount_type
+
+      attr_reader slippage_bps: Float?
+
+      def slippage_bps=: (Float) -> Float
+
+      def initialize: (
+        base_amount: String,
+        destination: Privy::SwapQuoteDestination,
+        source: Privy::SwapSource,
+        ?amount_type: Privy::Models::amount_type,
+        ?slippage_bps: Float
+      ) -> void
+
+      def to_hash: -> {
+        base_amount: String,
+        destination: Privy::SwapQuoteDestination,
+        source: Privy::SwapSource,
+        amount_type: Privy::Models::amount_type,
+        slippage_bps: Float
+      }
+    end
+  end
+end

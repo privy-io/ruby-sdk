@@ -1,0 +1,73 @@
+module Privy
+  module Models
+    type authenticated_user =
+      {
+        token: String?,
+        privy_access_token: String?,
+        refresh_token: String?,
+        session_update_action: Privy::Models::AuthenticatedUser::session_update_action,
+        user: Privy::User,
+        identity_token: String,
+        is_new_user: bool,
+        oauth_tokens: Privy::OAuthTokens
+      }
+
+    class AuthenticatedUser < Privy::Internal::Type::BaseModel
+      attr_accessor token: String?
+
+      attr_accessor privy_access_token: String?
+
+      attr_accessor refresh_token: String?
+
+      attr_accessor session_update_action: Privy::Models::AuthenticatedUser::session_update_action
+
+      attr_accessor user: Privy::User
+
+      attr_reader identity_token: String?
+
+      def identity_token=: (String) -> String
+
+      attr_reader is_new_user: bool?
+
+      def is_new_user=: (bool) -> bool
+
+      attr_reader oauth_tokens: Privy::OAuthTokens?
+
+      def oauth_tokens=: (Privy::OAuthTokens) -> Privy::OAuthTokens
+
+      def initialize: (
+        token: String?,
+        privy_access_token: String?,
+        refresh_token: String?,
+        session_update_action: Privy::Models::AuthenticatedUser::session_update_action,
+        user: Privy::User,
+        ?identity_token: String,
+        ?is_new_user: bool,
+        ?oauth_tokens: Privy::OAuthTokens
+      ) -> void
+
+      def to_hash: -> {
+        token: String?,
+        privy_access_token: String?,
+        refresh_token: String?,
+        session_update_action: Privy::Models::AuthenticatedUser::session_update_action,
+        user: Privy::User,
+        identity_token: String,
+        is_new_user: bool,
+        oauth_tokens: Privy::OAuthTokens
+      }
+
+      type session_update_action = :set | :ignore | :clear
+
+      module SessionUpdateAction
+        extend Privy::Internal::Type::Enum
+
+        SET: :set
+        IGNORE: :ignore
+        CLEAR: :clear
+
+        def self?.values: -> ::Array[Privy::Models::AuthenticatedUser::session_update_action]
+      end
+    end
+  end
+end

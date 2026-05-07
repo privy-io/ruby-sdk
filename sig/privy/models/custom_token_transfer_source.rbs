@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type custom_token_transfer_source =
+      { amount: String, asset_address: String, chain: String }
+
+    class CustomTokenTransferSource < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor asset_address: String
+
+      attr_accessor chain: String
+
+      def initialize: (
+        amount: String,
+        asset_address: String,
+        chain: String
+      ) -> void
+
+      def to_hash: -> { amount: String, asset_address: String, chain: String }
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type kraken_embed_get_quote_query_params = { user_id: String }
+
+    class KrakenEmbedGetQuoteQueryParams < Privy::Internal::Type::BaseModel
+      attr_accessor user_id: String
+
+      def initialize: (user_id: String) -> void
+
+      def to_hash: -> { user_id: String }
+    end
+  end
+end

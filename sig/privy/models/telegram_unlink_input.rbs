@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type telegram_unlink_input = { telegram_user_id: String }
+
+    class TelegramUnlinkInput < Privy::Internal::Type::BaseModel
+      attr_accessor telegram_user_id: String
+
+      def initialize: (telegram_user_id: String) -> void
+
+      def to_hash: -> { telegram_user_id: String }
+    end
+  end
+end

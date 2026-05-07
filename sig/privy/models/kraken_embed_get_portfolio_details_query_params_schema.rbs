@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type kraken_embed_get_portfolio_details_query_params_schema =
+      { quote: String }
+
+    class KrakenEmbedGetPortfolioDetailsQueryParamsSchema < Privy::Internal::Type::BaseModel
+      attr_reader quote: String?
+
+      def quote=: (String) -> String
+
+      def initialize: (?quote: String) -> void
+
+      def to_hash: -> { quote: String }
+    end
+  end
+end

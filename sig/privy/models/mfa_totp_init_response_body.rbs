@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type mfa_totp_init_response_body =
+      { totp_auth_url: String, totp_secret: String }
+
+    class MfaTotpInitResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor totp_auth_url: String
+
+      attr_accessor totp_secret: String
+
+      def initialize: (totp_auth_url: String, totp_secret: String) -> void
+
+      def to_hash: -> { totp_auth_url: String, totp_secret: String }
+    end
+  end
+end

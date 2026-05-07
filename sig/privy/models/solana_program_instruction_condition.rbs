@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type solana_program_instruction_condition =
+      {
+        field: Privy::Models::SolanaProgramInstructionCondition::field,
+        field_source: Privy::Models::SolanaProgramInstructionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class SolanaProgramInstructionCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::SolanaProgramInstructionCondition::field
+
+      attr_accessor field_source: Privy::Models::SolanaProgramInstructionCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::SolanaProgramInstructionCondition::field,
+        field_source: Privy::Models::SolanaProgramInstructionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::SolanaProgramInstructionCondition::field,
+        field_source: Privy::Models::SolanaProgramInstructionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field = :programId
+
+      module Field
+        extend Privy::Internal::Type::Enum
+
+        PROGRAM_ID: :programId
+
+        def self?.values: -> ::Array[Privy::Models::SolanaProgramInstructionCondition::field]
+      end
+
+      type field_source = :solana_program_instruction
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        SOLANA_PROGRAM_INSTRUCTION: :solana_program_instruction
+
+        def self?.values: -> ::Array[Privy::Models::SolanaProgramInstructionCondition::field_source]
+      end
+    end
+  end
+end

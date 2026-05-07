@@ -1,0 +1,62 @@
+module Privy
+  module Models
+    type linked_account_smart_wallet =
+      {
+        address: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        type: Privy::Models::LinkedAccountSmartWallet::type_,
+        verified_at: Float,
+        smart_wallet_version: String
+      }
+
+    class LinkedAccountSmartWallet < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor smart_wallet_type: Privy::Models::smart_wallet_type
+
+      attr_accessor type: Privy::Models::LinkedAccountSmartWallet::type_
+
+      attr_accessor verified_at: Float
+
+      attr_reader smart_wallet_version: String?
+
+      def smart_wallet_version=: (String) -> String
+
+      def initialize: (
+        address: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        type: Privy::Models::LinkedAccountSmartWallet::type_,
+        verified_at: Float,
+        ?smart_wallet_version: String
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        type: Privy::Models::LinkedAccountSmartWallet::type_,
+        verified_at: Float,
+        smart_wallet_version: String
+      }
+
+      type type_ = :smart_wallet
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SMART_WALLET: :smart_wallet
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountSmartWallet::type_]
+      end
+    end
+  end
+end

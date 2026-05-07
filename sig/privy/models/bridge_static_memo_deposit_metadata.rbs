@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type bridge_static_memo_deposit_metadata =
+      {
+        method_: Privy::Models::BridgeStaticMemoDepositMetadata::method_,
+        static_memo_event_id: String,
+        static_memo_id: String,
+        type: Privy::Models::BridgeStaticMemoDepositMetadata::type_
+      }
+
+    class BridgeStaticMemoDepositMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::BridgeStaticMemoDepositMetadata::method_
+
+      attr_accessor static_memo_event_id: String
+
+      attr_accessor static_memo_id: String
+
+      attr_accessor type: Privy::Models::BridgeStaticMemoDepositMetadata::type_
+
+      def initialize: (
+        method_: Privy::Models::BridgeStaticMemoDepositMetadata::method_,
+        static_memo_event_id: String,
+        static_memo_id: String,
+        type: Privy::Models::BridgeStaticMemoDepositMetadata::type_
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::BridgeStaticMemoDepositMetadata::method_,
+        static_memo_event_id: String,
+        static_memo_id: String,
+        type: Privy::Models::BridgeStaticMemoDepositMetadata::type_
+      }
+
+      type method_ = :static_memo
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        STATIC_MEMO: :static_memo
+
+        def self?.values: -> ::Array[Privy::Models::BridgeStaticMemoDepositMetadata::method_]
+      end
+
+      type type_ = :fiat_deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        FIAT_DEPOSIT: :fiat_deposit
+
+        def self?.values: -> ::Array[Privy::Models::BridgeStaticMemoDepositMetadata::type_]
+      end
+    end
+  end
+end

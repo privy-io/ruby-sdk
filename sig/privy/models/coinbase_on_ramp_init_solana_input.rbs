@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_init_solana_input =
+      {
+        addresses: ::Array[Privy::CoinbaseOnRampSolanaAddress],
+        assets: ::Array[Privy::Models::coinbase_solana_asset]
+      }
+
+    class CoinbaseOnRampInitSolanaInput < Privy::Internal::Type::BaseModel
+      attr_accessor addresses: ::Array[Privy::CoinbaseOnRampSolanaAddress]
+
+      attr_reader assets: ::Array[Privy::Models::coinbase_solana_asset]?
+
+      def assets=: (
+        ::Array[Privy::Models::coinbase_solana_asset]
+      ) -> ::Array[Privy::Models::coinbase_solana_asset]
+
+      def initialize: (
+        addresses: ::Array[Privy::CoinbaseOnRampSolanaAddress],
+        ?assets: ::Array[Privy::Models::coinbase_solana_asset]
+      ) -> void
+
+      def to_hash: -> {
+        addresses: ::Array[Privy::CoinbaseOnRampSolanaAddress],
+        assets: ::Array[Privy::Models::coinbase_solana_asset]
+      }
+    end
+  end
+end

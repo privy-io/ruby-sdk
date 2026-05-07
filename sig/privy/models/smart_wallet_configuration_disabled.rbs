@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type smart_wallet_configuration_disabled =
+      { enabled: Privy::Models::SmartWalletConfigurationDisabled::enabled }
+
+    class SmartWalletConfigurationDisabled < Privy::Internal::Type::BaseModel
+      attr_accessor enabled: Privy::Models::SmartWalletConfigurationDisabled::enabled
+
+      def initialize: (
+        enabled: Privy::Models::SmartWalletConfigurationDisabled::enabled
+      ) -> void
+
+      def to_hash: -> {
+        enabled: Privy::Models::SmartWalletConfigurationDisabled::enabled
+      }
+
+      type enabled = false
+
+      module Enabled
+        extend Privy::Internal::Type::Enum
+
+        FALSE: false
+
+        def self?.values: -> ::Array[Privy::Models::SmartWalletConfigurationDisabled::enabled]
+      end
+    end
+  end
+end

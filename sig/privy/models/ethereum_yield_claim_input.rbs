@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type ethereum_yield_claim_input = { :caip2 => String }
+
+    class EthereumYieldClaimInput < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      def initialize: (caip2: String) -> void
+
+      def to_hash: -> { :caip2 => String }
+    end
+  end
+end

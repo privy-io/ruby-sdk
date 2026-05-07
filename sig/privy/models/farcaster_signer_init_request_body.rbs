@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type farcaster_signer_init_request_body =
+      { :ed25519_public_key => String, deadline: String }
+
+    class FarcasterSignerInitRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor ed25519_public_key: String
+
+      attr_reader deadline: String?
+
+      def deadline=: (String) -> String
+
+      def initialize: (ed25519_public_key: String, ?deadline: String) -> void
+
+      def to_hash: -> { :ed25519_public_key => String, deadline: String }
+    end
+  end
+end

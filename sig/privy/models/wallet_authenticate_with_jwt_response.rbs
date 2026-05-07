@@ -1,0 +1,104 @@
+module Privy
+  module Models
+    type wallet_authenticate_with_jwt_response =
+      Privy::WalletAuthenticateWithJwtResponse::WithEncryption
+      | Privy::WalletAuthenticateWithJwtResponse::WithoutEncryption
+
+    module WalletAuthenticateWithJwtResponse
+      extend Privy::Internal::Type::Union
+
+      type with_encryption =
+        {
+          encrypted_authorization_key: Privy::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey,
+          expires_at: Float,
+          wallets: ::Array[Privy::Wallet]
+        }
+
+      class WithEncryption < Privy::Internal::Type::BaseModel
+        attr_accessor encrypted_authorization_key: Privy::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey
+
+        attr_accessor expires_at: Float
+
+        attr_accessor wallets: ::Array[Privy::Wallet]
+
+        def initialize: (
+          encrypted_authorization_key: Privy::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey,
+          expires_at: Float,
+          wallets: ::Array[Privy::Wallet]
+        ) -> void
+
+        def to_hash: -> {
+          encrypted_authorization_key: Privy::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey,
+          expires_at: Float,
+          wallets: ::Array[Privy::Wallet]
+        }
+
+        type encrypted_authorization_key =
+          {
+            ciphertext: String,
+            encapsulated_key: String,
+            encryption_type: Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey::encryption_type
+          }
+
+        class EncryptedAuthorizationKey < Privy::Internal::Type::BaseModel
+          attr_accessor ciphertext: String
+
+          attr_accessor encapsulated_key: String
+
+          attr_accessor encryption_type: Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey::encryption_type
+
+          def initialize: (
+            ciphertext: String,
+            encapsulated_key: String,
+            encryption_type: Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey::encryption_type
+          ) -> void
+
+          def to_hash: -> {
+            ciphertext: String,
+            encapsulated_key: String,
+            encryption_type: Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey::encryption_type
+          }
+
+          type encryption_type = :HPKE
+
+          module EncryptionType
+            extend Privy::Internal::Type::Enum
+
+            HPKE: :HPKE
+
+            def self?.values: -> ::Array[Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption::EncryptedAuthorizationKey::encryption_type]
+          end
+        end
+      end
+
+      type without_encryption =
+        {
+          authorization_key: String,
+          expires_at: Float,
+          wallets: ::Array[Privy::Wallet]
+        }
+
+      class WithoutEncryption < Privy::Internal::Type::BaseModel
+        attr_accessor authorization_key: String
+
+        attr_accessor expires_at: Float
+
+        attr_accessor wallets: ::Array[Privy::Wallet]
+
+        def initialize: (
+          authorization_key: String,
+          expires_at: Float,
+          wallets: ::Array[Privy::Wallet]
+        ) -> void
+
+        def to_hash: -> {
+          authorization_key: String,
+          expires_at: Float,
+          wallets: ::Array[Privy::Wallet]
+        }
+      end
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_authenticate_with_jwt_response]
+    end
+  end
+end

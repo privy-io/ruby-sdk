@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type spark_claim_static_deposit_rpc_input_params =
+      {
+        credit_amount_sats: Float,
+        signature: String,
+        transaction_id: String,
+        output_index: Float
+      }
+
+    class SparkClaimStaticDepositRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor credit_amount_sats: Float
+
+      attr_accessor signature: String
+
+      attr_accessor transaction_id: String
+
+      attr_reader output_index: Float?
+
+      def output_index=: (Float) -> Float
+
+      def initialize: (
+        credit_amount_sats: Float,
+        signature: String,
+        transaction_id: String,
+        ?output_index: Float
+      ) -> void
+
+      def to_hash: -> {
+        credit_amount_sats: Float,
+        signature: String,
+        transaction_id: String,
+        output_index: Float
+      }
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type signing_algorithm = :ECDSA | :EdDSA | :Schnorr
+
+    module SigningAlgorithm
+      extend Privy::Internal::Type::Enum
+
+      ECDSA: :ECDSA
+      ED_DSA: :EdDSA
+      SCHNORR: :Schnorr
+
+      def self?.values: -> ::Array[Privy::Models::signing_algorithm]
+    end
+  end
+end

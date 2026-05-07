@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type user_get_by_twitter_subject_params =
+      { subject: String } & Privy::Internal::Type::request_parameters
+
+    class UserGetByTwitterSubjectParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor subject: String
+
+      def initialize: (
+        subject: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

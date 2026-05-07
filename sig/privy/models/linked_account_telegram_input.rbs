@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type linked_account_telegram_input =
+      {
+        telegram_user_id: String,
+        type: :telegram,
+        first_name: String,
+        last_name: String,
+        photo_url: String,
+        username: String
+      }
+
+    class LinkedAccountTelegramInput < Privy::Internal::Type::BaseModel
+      attr_accessor telegram_user_id: String
+
+      attr_accessor type: :telegram
+
+      attr_reader first_name: String?
+
+      def first_name=: (String) -> String
+
+      attr_reader last_name: String?
+
+      def last_name=: (String) -> String
+
+      attr_reader photo_url: String?
+
+      def photo_url=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        telegram_user_id: String,
+        ?first_name: String,
+        ?last_name: String,
+        ?photo_url: String,
+        ?username: String,
+        ?type: :telegram
+      ) -> void
+
+      def to_hash: -> {
+        telegram_user_id: String,
+        type: :telegram,
+        first_name: String,
+        last_name: String,
+        photo_url: String,
+        username: String
+      }
+    end
+  end
+end

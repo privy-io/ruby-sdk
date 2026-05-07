@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type user_get_by_discord_username_params =
+      { username: String } & Privy::Internal::Type::request_parameters
+
+    class UserGetByDiscordUsernameParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor username: String
+
+      def initialize: (
+        username: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        username: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

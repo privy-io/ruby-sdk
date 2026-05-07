@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type farcaster_signer_revoked =
+      {
+        fid: String,
+        public_key: String,
+        status: Privy::Models::FarcasterSignerRevoked::status
+      }
+
+    class FarcasterSignerRevoked < Privy::Internal::Type::BaseModel
+      attr_accessor fid: String
+
+      attr_accessor public_key: String
+
+      attr_accessor status: Privy::Models::FarcasterSignerRevoked::status
+
+      def initialize: (
+        fid: String,
+        public_key: String,
+        status: Privy::Models::FarcasterSignerRevoked::status
+      ) -> void
+
+      def to_hash: -> {
+        fid: String,
+        public_key: String,
+        status: Privy::Models::FarcasterSignerRevoked::status
+      }
+
+      type status = :revoked
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        REVOKED: :revoked
+
+        def self?.values: -> ::Array[Privy::Models::FarcasterSignerRevoked::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type ethereum_yield_withdraw_input =
+      { asset_amount: String, vault_id: String }
+
+    class EthereumYieldWithdrawInput < Privy::Internal::Type::BaseModel
+      attr_accessor asset_amount: String
+
+      attr_accessor vault_id: String
+
+      def initialize: (asset_amount: String, vault_id: String) -> void
+
+      def to_hash: -> { asset_amount: String, vault_id: String }
+    end
+  end
+end

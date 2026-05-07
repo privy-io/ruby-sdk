@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type spark_rpc_input =
+      Privy::SparkTransferRpcInput
+      | Privy::SparkGetBalanceRpcInput
+      | Privy::SparkTransferTokensRpcInput
+      | Privy::SparkGetStaticDepositAddressRpcInput
+      | Privy::SparkGetClaimStaticDepositQuoteRpcInput
+      | Privy::SparkClaimStaticDepositRpcInput
+      | Privy::SparkCreateLightningInvoiceRpcInput
+      | Privy::SparkPayLightningInvoiceRpcInput
+      | Privy::SparkSignMessageWithIdentityKeyRpcInput
+
+    module SparkRpcInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::spark_rpc_input]
+    end
+  end
+end

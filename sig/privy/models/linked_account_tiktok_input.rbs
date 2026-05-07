@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type linked_account_tiktok_input =
+      { name: String?, subject: String, type: :tiktok_oauth, username: String }
+
+    class LinkedAccountTiktokInput < Privy::Internal::Type::BaseModel
+      attr_accessor name: String?
+
+      attr_accessor subject: String
+
+      attr_accessor type: :tiktok_oauth
+
+      attr_accessor username: String
+
+      def initialize: (
+        name: String?,
+        subject: String,
+        username: String,
+        ?type: :tiktok_oauth
+      ) -> void
+
+      def to_hash: -> {
+        name: String?,
+        subject: String,
+        type: :tiktok_oauth,
+        username: String
+      }
+    end
+  end
+end

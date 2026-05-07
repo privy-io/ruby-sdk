@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type oauth_tokens =
+      {
+        access_token: String,
+        provider: String,
+        access_token_expires_in_seconds: Float,
+        refresh_token: String,
+        refresh_token_expires_in_seconds: Float,
+        scopes: ::Array[String]
+      }
+
+    class OAuthTokens < Privy::Internal::Type::BaseModel
+      attr_accessor access_token: String
+
+      attr_accessor provider: String
+
+      attr_reader access_token_expires_in_seconds: Float?
+
+      def access_token_expires_in_seconds=: (Float) -> Float
+
+      attr_reader refresh_token: String?
+
+      def refresh_token=: (String) -> String
+
+      attr_reader refresh_token_expires_in_seconds: Float?
+
+      def refresh_token_expires_in_seconds=: (Float) -> Float
+
+      attr_reader scopes: ::Array[String]?
+
+      def scopes=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        access_token: String,
+        provider: String,
+        ?access_token_expires_in_seconds: Float,
+        ?refresh_token: String,
+        ?refresh_token_expires_in_seconds: Float,
+        ?scopes: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        access_token: String,
+        provider: String,
+        access_token_expires_in_seconds: Float,
+        refresh_token: String,
+        refresh_token_expires_in_seconds: Float,
+        scopes: ::Array[String]
+      }
+    end
+  end
+end

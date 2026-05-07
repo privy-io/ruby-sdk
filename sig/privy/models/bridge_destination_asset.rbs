@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type bridge_destination_asset =
+      :usdb | :usdc | :usdt | :dai | :pyusd | :eurc
+
+    module BridgeDestinationAsset
+      extend Privy::Internal::Type::Enum
+
+      USDB: :usdb
+      USDC: :usdc
+      USDT: :usdt
+      DAI: :dai
+      PYUSD: :pyusd
+      EURC: :eurc
+
+      def self?.values: -> ::Array[Privy::Models::bridge_destination_asset]
+    end
+  end
+end

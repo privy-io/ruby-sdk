@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type linked_account_discord_input =
+      { subject: String, type: :discord_oauth, username: String, email: String }
+
+    class LinkedAccountDiscordInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :discord_oauth
+
+      attr_accessor username: String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        username: String,
+        ?email: String,
+        ?type: :discord_oauth
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        type: :discord_oauth,
+        username: String,
+        email: String
+      }
+    end
+  end
+end

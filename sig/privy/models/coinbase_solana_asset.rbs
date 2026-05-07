@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type coinbase_solana_asset = :SOL | :USDC
+
+    module CoinbaseSolanaAsset
+      extend Privy::Internal::Type::Enum
+
+      SOL: :SOL
+      USDC: :USDC
+
+      def self?.values: -> ::Array[Privy::Models::coinbase_solana_asset]
+    end
+  end
+end

@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type spark_sign_message_with_identity_key_rpc_response =
+      {
+        method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse::method_,
+        data: Privy::SparkSignMessageWithIdentityKeyRpcResponseData
+      }
+
+    class SparkSignMessageWithIdentityKeyRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse::method_
+
+      attr_reader data: Privy::SparkSignMessageWithIdentityKeyRpcResponseData?
+
+      def data=: (
+        Privy::SparkSignMessageWithIdentityKeyRpcResponseData
+      ) -> Privy::SparkSignMessageWithIdentityKeyRpcResponseData
+
+      def initialize: (
+        method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse::method_,
+        ?data: Privy::SparkSignMessageWithIdentityKeyRpcResponseData
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse::method_,
+        data: Privy::SparkSignMessageWithIdentityKeyRpcResponseData
+      }
+
+      type method_ = :signMessageWithIdentityKey
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SIGN_MESSAGE_WITH_IDENTITY_KEY: :signMessageWithIdentityKey
+
+        def self?.values: -> ::Array[Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse::method_]
+      end
+    end
+  end
+end

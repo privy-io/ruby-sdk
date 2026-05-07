@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type bridge_fiat_transfer_metadata =
+      {
+        method_: Privy::Models::BridgeFiatTransferMetadata::method_,
+        transfer_id: String,
+        type: Privy::Models::BridgeFiatTransferMetadata::type_
+      }
+
+    class BridgeFiatTransferMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::BridgeFiatTransferMetadata::method_
+
+      attr_accessor transfer_id: String
+
+      attr_accessor type: Privy::Models::BridgeFiatTransferMetadata::type_
+
+      def initialize: (
+        method_: Privy::Models::BridgeFiatTransferMetadata::method_,
+        transfer_id: String,
+        type: Privy::Models::BridgeFiatTransferMetadata::type_
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::BridgeFiatTransferMetadata::method_,
+        transfer_id: String,
+        type: Privy::Models::BridgeFiatTransferMetadata::type_
+      }
+
+      type method_ = :transfer
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER: :transfer
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatTransferMetadata::method_]
+      end
+
+      type type_ = :fiat_deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        FIAT_DEPOSIT: :fiat_deposit
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatTransferMetadata::type_]
+      end
+    end
+  end
+end

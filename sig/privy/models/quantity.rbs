@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type quantity = String | Integer
+
+    module Quantity
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::quantity]
+    end
+  end
+end

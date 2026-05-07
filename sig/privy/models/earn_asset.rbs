@@ -1,0 +1,21 @@
+module Privy
+  module Models
+    type earn_asset = { address: String, decimals: Integer, symbol: String }
+
+    class EarnAsset < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor decimals: Integer
+
+      attr_accessor symbol: String
+
+      def initialize: (
+        address: String,
+        decimals: Integer,
+        symbol: String
+      ) -> void
+
+      def to_hash: -> { address: String, decimals: Integer, symbol: String }
+    end
+  end
+end

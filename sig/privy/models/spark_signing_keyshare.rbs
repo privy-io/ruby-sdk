@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type spark_signing_keyshare =
+      {
+        owner_identifiers: ::Array[String],
+        public_key: String,
+        public_shares: ::Hash[Symbol, String],
+        threshold: Float,
+        updated_time: String
+      }
+
+    class SparkSigningKeyshare < Privy::Internal::Type::BaseModel
+      attr_accessor owner_identifiers: ::Array[String]
+
+      attr_accessor public_key: String
+
+      attr_accessor public_shares: ::Hash[Symbol, String]
+
+      attr_accessor threshold: Float
+
+      attr_accessor updated_time: String
+
+      def initialize: (
+        owner_identifiers: ::Array[String],
+        public_key: String,
+        public_shares: ::Hash[Symbol, String],
+        threshold: Float,
+        updated_time: String
+      ) -> void
+
+      def to_hash: -> {
+        owner_identifiers: ::Array[String],
+        public_key: String,
+        public_shares: ::Hash[Symbol, String],
+        threshold: Float,
+        updated_time: String
+      }
+    end
+  end
+end

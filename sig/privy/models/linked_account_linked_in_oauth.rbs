@@ -1,0 +1,69 @@
+module Privy
+  module Models
+    type linked_account_linked_in_oauth =
+      {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountLinkedInOAuth::type_,
+        verified_at: Float,
+        name: String,
+        vanity_name: String
+      }
+
+    class LinkedAccountLinkedInOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor email: String?
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountLinkedInOAuth::type_
+
+      attr_accessor verified_at: Float
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader vanity_name: String?
+
+      def vanity_name=: (String) -> String
+
+      def initialize: (
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountLinkedInOAuth::type_,
+        verified_at: Float,
+        ?name: String,
+        ?vanity_name: String
+      ) -> void
+
+      def to_hash: -> {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountLinkedInOAuth::type_,
+        verified_at: Float,
+        name: String,
+        vanity_name: String
+      }
+
+      type type_ = :linkedin_oauth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        LINKEDIN_OAUTH: :linkedin_oauth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountLinkedInOAuth::type_]
+      end
+    end
+  end
+end

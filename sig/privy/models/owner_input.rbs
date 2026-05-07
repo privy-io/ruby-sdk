@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type owner_input = Privy::OwnerInputUser | Privy::OwnerInputPublicKey
+
+    module OwnerInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::owner_input]
+    end
+  end
+end

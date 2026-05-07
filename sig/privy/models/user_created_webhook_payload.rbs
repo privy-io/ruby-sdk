@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type user_created_webhook_payload =
+      {
+        type: Privy::Models::UserCreatedWebhookPayload::type_,
+        user: Privy::User
+      }
+
+    class UserCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::UserCreatedWebhookPayload::type_
+
+      attr_accessor user: Privy::User
+
+      def initialize: (
+        type: Privy::Models::UserCreatedWebhookPayload::type_,
+        user: Privy::User
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::UserCreatedWebhookPayload::type_,
+        user: Privy::User
+      }
+
+      type type_ = :"user.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USER_CREATED: :"user.created"
+
+        def self?.values: -> ::Array[Privy::Models::UserCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,46 @@
+module Privy
+  module Models
+    type oauth_init_request_body =
+      {
+        provider: Privy::Models::oauth_provider_id,
+        redirect_to: String,
+        token: String,
+        code_challenge: String,
+        state_code: String
+      }
+
+    class OAuthInitRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor provider: Privy::Models::oauth_provider_id
+
+      attr_accessor redirect_to: String
+
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader code_challenge: String?
+
+      def code_challenge=: (String) -> String
+
+      attr_reader state_code: String?
+
+      def state_code=: (String) -> String
+
+      def initialize: (
+        provider: Privy::Models::oauth_provider_id,
+        redirect_to: String,
+        ?token: String,
+        ?code_challenge: String,
+        ?state_code: String
+      ) -> void
+
+      def to_hash: -> {
+        provider: Privy::Models::oauth_provider_id,
+        redirect_to: String,
+        token: String,
+        code_challenge: String,
+        state_code: String
+      }
+    end
+  end
+end

@@ -1,0 +1,33 @@
+module Privy
+  module Models
+    type account_balance_params =
+      { testnet_mode: Privy::Models::AccountBalanceParams::testnet_mode }
+
+    class AccountBalanceParams < Privy::Internal::Type::BaseModel
+      attr_reader testnet_mode: Privy::Models::AccountBalanceParams::testnet_mode?
+
+      def testnet_mode=: (
+        Privy::Models::AccountBalanceParams::testnet_mode
+      ) -> Privy::Models::AccountBalanceParams::testnet_mode
+
+      def initialize: (
+        ?testnet_mode: Privy::Models::AccountBalanceParams::testnet_mode
+      ) -> void
+
+      def to_hash: -> {
+        testnet_mode: Privy::Models::AccountBalanceParams::testnet_mode
+      }
+
+      type testnet_mode = :true | :false
+
+      module TestnetMode
+        extend Privy::Internal::Type::Enum
+
+        TRUE: :true
+        FALSE: :false
+
+        def self?.values: -> ::Array[Privy::Models::AccountBalanceParams::testnet_mode]
+      end
+    end
+  end
+end

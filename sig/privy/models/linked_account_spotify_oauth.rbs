@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type linked_account_spotify_oauth =
+      {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountSpotifyOAuth::type_,
+        verified_at: Float
+      }
+
+    class LinkedAccountSpotifyOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor email: String?
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor name: String?
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountSpotifyOAuth::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountSpotifyOAuth::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountSpotifyOAuth::type_,
+        verified_at: Float
+      }
+
+      type type_ = :spotify_oauth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SPOTIFY_OAUTH: :spotify_oauth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountSpotifyOAuth::type_]
+      end
+    end
+  end
+end

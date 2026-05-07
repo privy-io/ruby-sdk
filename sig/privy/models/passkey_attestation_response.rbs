@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type passkey_attestation_response =
+      {
+        attestation_object: String,
+        client_data_json: String,
+        authenticator_data: String,
+        public_key: String,
+        public_key_algorithm: Float,
+        transports: ::Array[String]
+      }
+
+    class PasskeyAttestationResponse < Privy::Internal::Type::BaseModel
+      attr_accessor attestation_object: String
+
+      attr_accessor client_data_json: String
+
+      attr_reader authenticator_data: String?
+
+      def authenticator_data=: (String) -> String
+
+      attr_reader public_key: String?
+
+      def public_key=: (String) -> String
+
+      attr_reader public_key_algorithm: Float?
+
+      def public_key_algorithm=: (Float) -> Float
+
+      attr_reader transports: ::Array[String]?
+
+      def transports=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        attestation_object: String,
+        client_data_json: String,
+        ?authenticator_data: String,
+        ?public_key: String,
+        ?public_key_algorithm: Float,
+        ?transports: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        attestation_object: String,
+        client_data_json: String,
+        authenticator_data: String,
+        public_key: String,
+        public_key_algorithm: Float,
+        transports: ::Array[String]
+      }
+    end
+  end
+end

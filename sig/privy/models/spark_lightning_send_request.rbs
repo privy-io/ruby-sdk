@@ -1,0 +1,74 @@
+module Privy
+  module Models
+    type spark_lightning_send_request =
+      {
+        id: String,
+        created_at: String,
+        encoded_invoice: String,
+        fee: Privy::SparkLightningFee,
+        idempotency_key: String,
+        network: String,
+        status: String,
+        typename: String,
+        updated_at: String,
+        payment_preimage: String,
+        transfer: top
+      }
+
+    class SparkLightningSendRequest < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor encoded_invoice: String
+
+      attr_accessor fee: Privy::SparkLightningFee
+
+      attr_accessor idempotency_key: String
+
+      attr_accessor network: String
+
+      attr_accessor status: String
+
+      attr_accessor typename: String
+
+      attr_accessor updated_at: String
+
+      attr_reader payment_preimage: String?
+
+      def payment_preimage=: (String) -> String
+
+      attr_reader transfer: top?
+
+      def transfer=: (top) -> top
+
+      def initialize: (
+        id: String,
+        created_at: String,
+        encoded_invoice: String,
+        fee: Privy::SparkLightningFee,
+        idempotency_key: String,
+        network: String,
+        status: String,
+        typename: String,
+        updated_at: String,
+        ?payment_preimage: String,
+        ?transfer: top
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        encoded_invoice: String,
+        fee: Privy::SparkLightningFee,
+        idempotency_key: String,
+        network: String,
+        status: String,
+        typename: String,
+        updated_at: String,
+        payment_preimage: String,
+        transfer: top
+      }
+    end
+  end
+end

@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type wallet_action_step_type =
+      :evm_transaction
+      | :evm_user_operation
+      | :svm_transaction
+      | :external_transaction
+
+    module WalletActionStepType
+      extend Privy::Internal::Type::Enum
+
+      EVM_TRANSACTION: :evm_transaction
+      EVM_USER_OPERATION: :evm_user_operation
+      SVM_TRANSACTION: :svm_transaction
+      EXTERNAL_TRANSACTION: :external_transaction
+
+      def self?.values: -> ::Array[Privy::Models::wallet_action_step_type]
+    end
+  end
+end

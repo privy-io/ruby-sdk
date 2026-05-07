@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type get_fiat_onramp_quotes_input =
+      {
+        destination: Privy::FiatOnrampDestination,
+        environment: Privy::Models::fiat_onramp_environment,
+        source: Privy::FiatOnrampSource
+      }
+
+    class GetFiatOnrampQuotesInput < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::FiatOnrampDestination
+
+      attr_accessor environment: Privy::Models::fiat_onramp_environment
+
+      attr_accessor source: Privy::FiatOnrampSource
+
+      def initialize: (
+        destination: Privy::FiatOnrampDestination,
+        environment: Privy::Models::fiat_onramp_environment,
+        source: Privy::FiatOnrampSource
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::FiatOnrampDestination,
+        environment: Privy::Models::fiat_onramp_environment,
+        source: Privy::FiatOnrampSource
+      }
+    end
+  end
+end

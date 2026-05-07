@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type wallet_custodian = { provider: String, provider_user_id: String }
+
+    class WalletCustodian < Privy::Internal::Type::BaseModel
+      attr_accessor provider: String
+
+      attr_accessor provider_user_id: String
+
+      def initialize: (provider: String, provider_user_id: String) -> void
+
+      def to_hash: -> { provider: String, provider_user_id: String }
+    end
+  end
+end

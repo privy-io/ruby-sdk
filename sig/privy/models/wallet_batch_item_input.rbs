@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type wallet_batch_item_input =
+      {
+        chain_type: Privy::Models::wallet_chain_type,
+        additional_signers: Privy::Models::additional_signer_input,
+        display_name: String,
+        external_id: String,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?,
+        policy_ids: ::Array[String]
+      }
+
+    class WalletBatchItemInput < Privy::Internal::Type::BaseModel
+      attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+      attr_reader additional_signers: Privy::Models::additional_signer_input?
+
+      def additional_signers=: (
+        Privy::Models::additional_signer_input
+      ) -> Privy::Models::additional_signer_input
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_accessor owner: Privy::Models::owner_input?
+
+      attr_accessor owner_id: String?
+
+      attr_reader policy_ids: ::Array[String]?
+
+      def policy_ids=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        chain_type: Privy::Models::wallet_chain_type,
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?display_name: String,
+        ?external_id: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?policy_ids: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        chain_type: Privy::Models::wallet_chain_type,
+        additional_signers: Privy::Models::additional_signer_input,
+        display_name: String,
+        external_id: String,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?,
+        policy_ids: ::Array[String]
+      }
+    end
+  end
+end

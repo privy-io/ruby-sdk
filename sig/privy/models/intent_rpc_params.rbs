@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type intent_rpc_params =
+      { wallet_id: String, privy_request_expiry: String }
+      & Privy::Internal::Type::request_parameters
+
+    class IntentRpcParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor wallet_id: String
+
+      attr_reader privy_request_expiry: String?
+
+      def privy_request_expiry=: (String) -> String
+
+      def initialize: (
+        wallet_id: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        wallet_id: String,
+        privy_request_expiry: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

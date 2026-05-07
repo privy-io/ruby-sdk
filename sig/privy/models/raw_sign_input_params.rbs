@@ -1,0 +1,12 @@
+module Privy
+  module Models
+    type raw_sign_input_params =
+      Privy::RawSignHashParams | Privy::RawSignBytesParams
+
+    module RawSignInputParams
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::raw_sign_input_params]
+    end
+  end
+end

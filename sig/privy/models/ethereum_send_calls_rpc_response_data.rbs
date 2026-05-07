@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type ethereum_send_calls_rpc_response_data =
+      { :caip2 => String, transaction_id: String }
+
+    class EthereumSendCallsRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      attr_accessor transaction_id: String
+
+      def initialize: (caip2: String, transaction_id: String) -> void
+
+      def to_hash: -> { :caip2 => String, transaction_id: String }
+    end
+  end
+end

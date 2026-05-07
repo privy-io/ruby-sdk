@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_authenticate_recovery_response = { access_token: String }
+
+    class OAuthAuthenticateRecoveryResponse < Privy::Internal::Type::BaseModel
+      attr_accessor access_token: String
+
+      def initialize: (access_token: String) -> void
+
+      def to_hash: -> { access_token: String }
+    end
+  end
+end

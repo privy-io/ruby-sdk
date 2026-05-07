@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type funding_config_response_schema =
+      {
+        cross_chain_bridging_enabled: bool,
+        default_recommended_amount: String,
+        default_recommended_currency: Privy::Currency,
+        methods_: ::Array[Privy::Models::funding_method_enum],
+        options: ::Array[Privy::FundingOption],
+        prompt_funding_on_wallet_creation: bool
+      }
+
+    class FundingConfigResponseSchema < Privy::Internal::Type::BaseModel
+      attr_accessor cross_chain_bridging_enabled: bool
+
+      attr_accessor default_recommended_amount: String
+
+      attr_accessor default_recommended_currency: Privy::Currency
+
+      attr_accessor methods_: ::Array[Privy::Models::funding_method_enum]
+
+      attr_accessor options: ::Array[Privy::FundingOption]
+
+      attr_accessor prompt_funding_on_wallet_creation: bool
+
+      def initialize: (
+        cross_chain_bridging_enabled: bool,
+        default_recommended_amount: String,
+        default_recommended_currency: Privy::Currency,
+        methods_: ::Array[Privy::Models::funding_method_enum],
+        options: ::Array[Privy::FundingOption],
+        prompt_funding_on_wallet_creation: bool
+      ) -> void
+
+      def to_hash: -> {
+        cross_chain_bridging_enabled: bool,
+        default_recommended_amount: String,
+        default_recommended_currency: Privy::Currency,
+        methods_: ::Array[Privy::Models::funding_method_enum],
+        options: ::Array[Privy::FundingOption],
+        prompt_funding_on_wallet_creation: bool
+      }
+    end
+  end
+end

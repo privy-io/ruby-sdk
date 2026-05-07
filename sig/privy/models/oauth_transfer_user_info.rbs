@@ -1,0 +1,76 @@
+module Privy
+  module Models
+    type oauth_transfer_user_info =
+      {
+        subject: String,
+        email: String?,
+        embedded_wallet_addresses: ::Array[String],
+        meta: Privy::OAuthTransferUserInfoMeta,
+        name: String,
+        profile_picture_url: String,
+        smart_wallet_addresses: ::Array[String],
+        username: String,
+        vanity_name: String
+      }
+
+    class OAuthTransferUserInfo < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor email: String?
+
+      attr_reader embedded_wallet_addresses: ::Array[String]?
+
+      def embedded_wallet_addresses=: (::Array[String]) -> ::Array[String]
+
+      attr_reader meta: Privy::OAuthTransferUserInfoMeta?
+
+      def meta=: (
+        Privy::OAuthTransferUserInfoMeta
+      ) -> Privy::OAuthTransferUserInfoMeta
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader profile_picture_url: String?
+
+      def profile_picture_url=: (String) -> String
+
+      attr_reader smart_wallet_addresses: ::Array[String]?
+
+      def smart_wallet_addresses=: (::Array[String]) -> ::Array[String]
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      attr_reader vanity_name: String?
+
+      def vanity_name=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        ?email: String?,
+        ?embedded_wallet_addresses: ::Array[String],
+        ?meta: Privy::OAuthTransferUserInfoMeta,
+        ?name: String,
+        ?profile_picture_url: String,
+        ?smart_wallet_addresses: ::Array[String],
+        ?username: String,
+        ?vanity_name: String
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        email: String?,
+        embedded_wallet_addresses: ::Array[String],
+        meta: Privy::OAuthTransferUserInfoMeta,
+        name: String,
+        profile_picture_url: String,
+        smart_wallet_addresses: ::Array[String],
+        username: String,
+        vanity_name: String
+      }
+    end
+  end
+end

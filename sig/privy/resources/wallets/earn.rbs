@@ -1,0 +1,11 @@
+module Privy
+  module Resources
+    class Wallets
+      class Earn
+        attr_reader ethereum: Privy::Resources::Wallets::Earn::Ethereum
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type condition_set_request_params = { condition_set_id: String }
+
+    class ConditionSetRequestParams < Privy::Internal::Type::BaseModel
+      attr_accessor condition_set_id: String
+
+      def initialize: (condition_set_id: String) -> void
+
+      def to_hash: -> { condition_set_id: String }
+    end
+  end
+end

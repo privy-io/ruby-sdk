@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type ethereum_sign_typed_data_rpc_input_params =
+      { typed_data: Privy::EthereumTypedDataInput }
+
+    class EthereumSignTypedDataRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor typed_data: Privy::EthereumTypedDataInput
+
+      def initialize: (typed_data: Privy::EthereumTypedDataInput) -> void
+
+      def to_hash: -> { typed_data: Privy::EthereumTypedDataInput }
+    end
+  end
+end

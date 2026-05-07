@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type transfer_siwe_input =
+      {
+        address: String,
+        nonce: String,
+        chain_id: String?,
+        connector_type: String?,
+        wallet_client_type: String?
+      }
+
+    class TransferSiweInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor nonce: String
+
+      attr_accessor chain_id: String?
+
+      attr_accessor connector_type: String?
+
+      attr_accessor wallet_client_type: String?
+
+      def initialize: (
+        address: String,
+        nonce: String,
+        ?chain_id: String?,
+        ?connector_type: String?,
+        ?wallet_client_type: String?
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        nonce: String,
+        chain_id: String?,
+        connector_type: String?,
+        wallet_client_type: String?
+      }
+    end
+  end
+end

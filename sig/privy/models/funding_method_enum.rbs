@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type funding_method_enum = :moonpay | :"coinbase-onramp" | :external
+
+    module FundingMethodEnum
+      extend Privy::Internal::Type::Enum
+
+      MOONPAY: :moonpay
+      COINBASE_ONRAMP: :"coinbase-onramp"
+      EXTERNAL: :external
+
+      def self?.values: -> ::Array[Privy::Models::funding_method_enum]
+    end
+  end
+end

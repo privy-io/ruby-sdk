@@ -1,0 +1,75 @@
+module Privy
+  class Client < Privy::Internal::Transport::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    ENVIRONMENTS: {
+      production: "https://api.privy.io",
+      staging: "https://api.staging.privy.io"
+    }
+
+    attr_reader app_id: String
+
+    attr_reader app_secret: String
+
+    attr_reader wallets: Privy::Resources::Wallets
+
+    attr_reader users: Privy::Resources::Users
+
+    attr_reader policies: Privy::Resources::Policies
+
+    attr_reader transactions: Privy::Resources::Transactions
+
+    attr_reader key_quorums: Privy::Resources::KeyQuorums
+
+    attr_reader intents: Privy::Resources::Intents
+
+    attr_reader apps: Privy::Resources::Apps
+
+    attr_reader webhooks: Privy::Resources::Webhooks
+
+    attr_reader accounts: Privy::Resources::Accounts
+
+    attr_reader aggregations: Privy::Resources::Aggregations
+
+    attr_reader embedded_wallets: Privy::Resources::EmbeddedWallets
+
+    attr_reader analytics: Privy::Resources::Analytics
+
+    attr_reader client_auth: Privy::Resources::ClientAuth
+
+    attr_reader funding: Privy::Resources::Funding
+
+    attr_reader organizations: Privy::Resources::Organizations
+
+    attr_reader cross_app: Privy::Resources::CrossApp
+
+    attr_reader shared: Privy::Resources::Shared
+
+    attr_reader wallet_actions: Privy::Resources::WalletActions
+
+    attr_reader yield_: Privy::Resources::Yield
+
+    attr_reader kraken_embed: Privy::Resources::KrakenEmbed
+
+    attr_reader swaps: Privy::Resources::Swaps
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    def initialize: (
+      ?app_id: String?,
+      ?app_secret: String?,
+      ?environment: :production | :staging | nil,
+      ?base_url: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end

@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type key_quorum_update_request_body =
+      {
+        authorization_threshold: Float,
+        display_name: String,
+        key_quorum_ids: ::Array[String],
+        public_keys: ::Array[String],
+        user_ids: ::Array[String]
+      }
+
+    class KeyQuorumUpdateRequestBody < Privy::Internal::Type::BaseModel
+      attr_reader authorization_threshold: Float?
+
+      def authorization_threshold=: (Float) -> Float
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader key_quorum_ids: ::Array[String]?
+
+      def key_quorum_ids=: (::Array[String]) -> ::Array[String]
+
+      attr_reader public_keys: ::Array[String]?
+
+      def public_keys=: (::Array[String]) -> ::Array[String]
+
+      attr_reader user_ids: ::Array[String]?
+
+      def user_ids=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?authorization_threshold: Float,
+        ?display_name: String,
+        ?key_quorum_ids: ::Array[String],
+        ?public_keys: ::Array[String],
+        ?user_ids: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        authorization_threshold: Float,
+        display_name: String,
+        key_quorum_ids: ::Array[String],
+        public_keys: ::Array[String],
+        user_ids: ::Array[String]
+      }
+    end
+  end
+end

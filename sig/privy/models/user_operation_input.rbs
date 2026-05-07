@@ -1,0 +1,83 @@
+module Privy
+  module Models
+    type user_operation_input =
+      {
+        call_data: String,
+        call_gas_limit: String,
+        max_fee_per_gas: String,
+        max_priority_fee_per_gas: String,
+        nonce: String,
+        pre_verification_gas: String,
+        sender: String,
+        verification_gas_limit: String,
+        paymaster: String,
+        paymaster_data: String,
+        paymaster_post_op_gas_limit: String,
+        paymaster_verification_gas_limit: String
+      }
+
+    class UserOperationInput < Privy::Internal::Type::BaseModel
+      attr_accessor call_data: String
+
+      attr_accessor call_gas_limit: String
+
+      attr_accessor max_fee_per_gas: String
+
+      attr_accessor max_priority_fee_per_gas: String
+
+      attr_accessor nonce: String
+
+      attr_accessor pre_verification_gas: String
+
+      attr_accessor sender: String
+
+      attr_accessor verification_gas_limit: String
+
+      attr_reader paymaster: String?
+
+      def paymaster=: (String) -> String
+
+      attr_reader paymaster_data: String?
+
+      def paymaster_data=: (String) -> String
+
+      attr_reader paymaster_post_op_gas_limit: String?
+
+      def paymaster_post_op_gas_limit=: (String) -> String
+
+      attr_reader paymaster_verification_gas_limit: String?
+
+      def paymaster_verification_gas_limit=: (String) -> String
+
+      def initialize: (
+        call_data: String,
+        call_gas_limit: String,
+        max_fee_per_gas: String,
+        max_priority_fee_per_gas: String,
+        nonce: String,
+        pre_verification_gas: String,
+        sender: String,
+        verification_gas_limit: String,
+        ?paymaster: String,
+        ?paymaster_data: String,
+        ?paymaster_post_op_gas_limit: String,
+        ?paymaster_verification_gas_limit: String
+      ) -> void
+
+      def to_hash: -> {
+        call_data: String,
+        call_gas_limit: String,
+        max_fee_per_gas: String,
+        max_priority_fee_per_gas: String,
+        nonce: String,
+        pre_verification_gas: String,
+        sender: String,
+        verification_gas_limit: String,
+        paymaster: String,
+        paymaster_data: String,
+        paymaster_post_op_gas_limit: String,
+        paymaster_verification_gas_limit: String
+      }
+    end
+  end
+end

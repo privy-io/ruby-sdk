@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type ethereum_transaction_condition =
+      {
+        field: Privy::Models::EthereumTransactionCondition::field,
+        field_source: Privy::Models::EthereumTransactionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class EthereumTransactionCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::EthereumTransactionCondition::field
+
+      attr_accessor field_source: Privy::Models::EthereumTransactionCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::EthereumTransactionCondition::field,
+        field_source: Privy::Models::EthereumTransactionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::EthereumTransactionCondition::field,
+        field_source: Privy::Models::EthereumTransactionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field = :to | :value | :chain_id
+
+      module Field
+        extend Privy::Internal::Type::Enum
+
+        TO: :to
+        VALUE: :value
+        CHAIN_ID: :chain_id
+
+        def self?.values: -> ::Array[Privy::Models::EthereumTransactionCondition::field]
+      end
+
+      type field_source = :ethereum_transaction
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM_TRANSACTION: :ethereum_transaction
+
+        def self?.values: -> ::Array[Privy::Models::EthereumTransactionCondition::field_source]
+      end
+    end
+  end
+end

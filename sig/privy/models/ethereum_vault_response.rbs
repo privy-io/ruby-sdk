@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type ethereum_vault_response =
+      {
+        id: String,
+        asset_address: String,
+        :caip2 => String,
+        created_at: Float,
+        provider: Privy::Models::ethereum_yield_provider,
+        underlying_vault_address: String,
+        vault_address: String
+      }
+
+    class EthereumVaultResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor asset_address: String
+
+      attr_accessor caip2: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor provider: Privy::Models::ethereum_yield_provider
+
+      attr_accessor underlying_vault_address: String
+
+      attr_accessor vault_address: String
+
+      def initialize: (
+        id: String,
+        asset_address: String,
+        caip2: String,
+        created_at: Float,
+        provider: Privy::Models::ethereum_yield_provider,
+        underlying_vault_address: String,
+        vault_address: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        asset_address: String,
+        :caip2 => String,
+        created_at: Float,
+        provider: Privy::Models::ethereum_yield_provider,
+        underlying_vault_address: String,
+        vault_address: String
+      }
+    end
+  end
+end

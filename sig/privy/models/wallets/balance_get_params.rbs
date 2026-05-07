@@ -1,0 +1,202 @@
+module Privy
+  module Models
+    module Wallets
+      type balance_get_params =
+        {
+          wallet_id: String,
+          token: Privy::Models::Wallets::BalanceGetParams::token,
+          asset: Privy::Models::Wallets::BalanceGetParams::asset,
+          chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency
+        }
+        & Privy::Internal::Type::request_parameters
+
+      class BalanceGetParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor wallet_id: String
+
+        attr_reader token: Privy::Models::Wallets::BalanceGetParams::token?
+
+        def token=: (
+          Privy::Models::Wallets::BalanceGetParams::token
+        ) -> Privy::Models::Wallets::BalanceGetParams::token
+
+        attr_reader asset: Privy::Models::Wallets::BalanceGetParams::asset?
+
+        def asset=: (
+          Privy::Models::Wallets::BalanceGetParams::asset
+        ) -> Privy::Models::Wallets::BalanceGetParams::asset
+
+        attr_reader chain: Privy::Models::Wallets::BalanceGetParams::chain?
+
+        def chain=: (
+          Privy::Models::Wallets::BalanceGetParams::chain
+        ) -> Privy::Models::Wallets::BalanceGetParams::chain
+
+        attr_reader include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency?
+
+        def include_currency=: (
+          Privy::Models::Wallets::BalanceGetParams::include_currency
+        ) -> Privy::Models::Wallets::BalanceGetParams::include_currency
+
+        def initialize: (
+          wallet_id: String,
+          ?token: Privy::Models::Wallets::BalanceGetParams::token,
+          ?asset: Privy::Models::Wallets::BalanceGetParams::asset,
+          ?chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          ?include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          wallet_id: String,
+          token: Privy::Models::Wallets::BalanceGetParams::token,
+          asset: Privy::Models::Wallets::BalanceGetParams::asset,
+          chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency,
+          request_options: Privy::RequestOptions
+        }
+
+        type token = String | ::Array[String]
+
+        module Token
+          extend Privy::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Privy::Models::Wallets::BalanceGetParams::token]
+
+          StringArray: Privy::Internal::Type::Converter
+        end
+
+        type asset =
+          :usdc
+          | :"usdc.e"
+          | :eth
+          | :pol
+          | :usdt
+          | :eurc
+          | :usdb
+          | :sol
+          | ::Array[Privy::Models::wallet_asset]
+
+        module Asset
+          extend Privy::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Privy::Models::Wallets::BalanceGetParams::asset]
+
+          USDC: :usdc
+          USDC_E: :"usdc.e"
+          ETH: :eth
+          POL: :pol
+          USDT: :usdt
+          EURC: :eurc
+          USDB: :usdb
+          SOL: :sol
+
+          WalletAssetArray: Privy::Internal::Type::Converter
+        end
+
+        type chain =
+          :ethereum
+          | :arbitrum
+          | :base
+          | :tempo
+          | :linea
+          | :optimism
+          | :polygon
+          | :solana
+          | :zksync_era
+          | :sepolia
+          | :arbitrum_sepolia
+          | :base_sepolia
+          | :linea_testnet
+          | :optimism_sepolia
+          | :polygon_amoy
+          | :solana_devnet
+          | :solana_testnet
+          | ::Array[Privy::Models::Wallets::BalanceGetParams::Chain::union_member1]
+
+        module Chain
+          extend Privy::Internal::Type::Union
+
+          type union_member1 =
+            :ethereum
+            | :arbitrum
+            | :base
+            | :tempo
+            | :linea
+            | :optimism
+            | :polygon
+            | :solana
+            | :zksync_era
+            | :sepolia
+            | :arbitrum_sepolia
+            | :base_sepolia
+            | :linea_testnet
+            | :optimism_sepolia
+            | :polygon_amoy
+            | :solana_devnet
+            | :solana_testnet
+
+          module UnionMember1
+            extend Privy::Internal::Type::Enum
+
+            ETHEREUM: :ethereum
+            ARBITRUM: :arbitrum
+            BASE: :base
+            TEMPO: :tempo
+            LINEA: :linea
+            OPTIMISM: :optimism
+            POLYGON: :polygon
+            SOLANA: :solana
+            ZKSYNC_ERA: :zksync_era
+            SEPOLIA: :sepolia
+            ARBITRUM_SEPOLIA: :arbitrum_sepolia
+            BASE_SEPOLIA: :base_sepolia
+            LINEA_TESTNET: :linea_testnet
+            OPTIMISM_SEPOLIA: :optimism_sepolia
+            POLYGON_AMOY: :polygon_amoy
+            SOLANA_DEVNET: :solana_devnet
+            SOLANA_TESTNET: :solana_testnet
+
+            def self?.values: -> ::Array[Privy::Models::Wallets::BalanceGetParams::Chain::union_member1]
+          end
+
+          def self?.variants: -> ::Array[Privy::Models::Wallets::BalanceGetParams::chain]
+
+          ETHEREUM: :ethereum
+          ARBITRUM: :arbitrum
+          BASE: :base
+          TEMPO: :tempo
+          LINEA: :linea
+          OPTIMISM: :optimism
+          POLYGON: :polygon
+          SOLANA: :solana
+          ZKSYNC_ERA: :zksync_era
+          SEPOLIA: :sepolia
+          ARBITRUM_SEPOLIA: :arbitrum_sepolia
+          BASE_SEPOLIA: :base_sepolia
+          LINEA_TESTNET: :linea_testnet
+          OPTIMISM_SEPOLIA: :optimism_sepolia
+          POLYGON_AMOY: :polygon_amoy
+          SOLANA_DEVNET: :solana_devnet
+          SOLANA_TESTNET: :solana_testnet
+
+          UnionMember1Array: Privy::Internal::Type::Converter
+        end
+
+        type include_currency = :usd | :eur
+
+        module IncludeCurrency
+          extend Privy::Internal::Type::Enum
+
+          USD: :usd
+          EUR: :eur
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::BalanceGetParams::include_currency]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type ethereum_yield_sweep_status = :pending | :confirmed | :failed
+
+    module EthereumYieldSweepStatus
+      extend Privy::Internal::Type::Enum
+
+      PENDING: :pending
+      CONFIRMED: :confirmed
+      FAILED: :failed
+
+      def self?.values: -> ::Array[Privy::Models::ethereum_yield_sweep_status]
+    end
+  end
+end

@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type farcaster_connect_status_completed_response_body =
+      {
+        bio: String,
+        display_name: String,
+        fid: Float,
+        message: String,
+        nonce: String,
+        pfp_url: String,
+        signature: String,
+        state: Privy::Models::FarcasterConnectStatusCompletedResponseBody::state,
+        username: String
+      }
+
+    class FarcasterConnectStatusCompletedResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor bio: String
+
+      attr_accessor display_name: String
+
+      attr_accessor fid: Float
+
+      attr_accessor message: String
+
+      attr_accessor nonce: String
+
+      attr_accessor pfp_url: String
+
+      attr_accessor signature: String
+
+      attr_accessor state: Privy::Models::FarcasterConnectStatusCompletedResponseBody::state
+
+      attr_accessor username: String
+
+      def initialize: (
+        bio: String,
+        display_name: String,
+        fid: Float,
+        message: String,
+        nonce: String,
+        pfp_url: String,
+        signature: String,
+        state: Privy::Models::FarcasterConnectStatusCompletedResponseBody::state,
+        username: String
+      ) -> void
+
+      def to_hash: -> {
+        bio: String,
+        display_name: String,
+        fid: Float,
+        message: String,
+        nonce: String,
+        pfp_url: String,
+        signature: String,
+        state: Privy::Models::FarcasterConnectStatusCompletedResponseBody::state,
+        username: String
+      }
+
+      type state = :completed
+
+      module State
+        extend Privy::Internal::Type::Enum
+
+        COMPLETED: :completed
+
+        def self?.values: -> ::Array[Privy::Models::FarcasterConnectStatusCompletedResponseBody::state]
+      end
+    end
+  end
+end

@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type policy_input = ::Array[String]
+
+    PolicyInput: Privy::Internal::Type::Converter
+  end
+end

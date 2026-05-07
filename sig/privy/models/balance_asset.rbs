@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type balance_asset =
+      { amount: String, price: Privy::CurrencyAmount, symbol: String }
+
+    class BalanceAsset < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor price: Privy::CurrencyAmount
+
+      attr_accessor symbol: String
+
+      def initialize: (
+        amount: String,
+        price: Privy::CurrencyAmount,
+        symbol: String
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        price: Privy::CurrencyAmount,
+        symbol: String
+      }
+    end
+  end
+end

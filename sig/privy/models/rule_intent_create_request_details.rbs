@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type rule_intent_create_request_details =
+      {
+        body: Privy::PolicyRuleRequestBody,
+        method_: Privy::Models::RuleIntentCreateRequestDetails::method_,
+        url: String
+      }
+
+    class RuleIntentCreateRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor body: Privy::PolicyRuleRequestBody
+
+      attr_accessor method_: Privy::Models::RuleIntentCreateRequestDetails::method_
+
+      attr_accessor url: String
+
+      def initialize: (
+        body: Privy::PolicyRuleRequestBody,
+        method_: Privy::Models::RuleIntentCreateRequestDetails::method_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::PolicyRuleRequestBody,
+        method_: Privy::Models::RuleIntentCreateRequestDetails::method_,
+        url: String
+      }
+
+      type method_ = :POST
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        POST: :POST
+
+        def self?.values: -> ::Array[Privy::Models::RuleIntentCreateRequestDetails::method_]
+      end
+    end
+  end
+end

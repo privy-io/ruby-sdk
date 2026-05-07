@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type export_seed_phrase_rpc_response =
+      {
+        data: Privy::SeedPhraseExportResponse,
+        method_: Privy::Models::ExportSeedPhraseRpcResponse::method_
+      }
+
+    class ExportSeedPhraseRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::SeedPhraseExportResponse
+
+      attr_accessor method_: Privy::Models::ExportSeedPhraseRpcResponse::method_
+
+      def initialize: (
+        data: Privy::SeedPhraseExportResponse,
+        method_: Privy::Models::ExportSeedPhraseRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::SeedPhraseExportResponse,
+        method_: Privy::Models::ExportSeedPhraseRpcResponse::method_
+      }
+
+      type method_ = :exportSeedPhrase
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        EXPORT_SEED_PHRASE: :exportSeedPhrase
+
+        def self?.values: -> ::Array[Privy::Models::ExportSeedPhraseRpcResponse::method_]
+      end
+    end
+  end
+end

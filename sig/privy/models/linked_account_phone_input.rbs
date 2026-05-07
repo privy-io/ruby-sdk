@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type linked_account_phone_input = { number: String, type: :phone }
+
+    class LinkedAccountPhoneInput < Privy::Internal::Type::BaseModel
+      attr_accessor number: String
+
+      attr_accessor type: :phone
+
+      def initialize: (number: String, ?type: :phone) -> void
+
+      def to_hash: -> { number: String, type: :phone }
+    end
+  end
+end

@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type user_get_by_custom_auth_id_params =
+      { custom_user_id: String } & Privy::Internal::Type::request_parameters
+
+    class UserGetByCustomAuthIDParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor custom_user_id: String
+
+      def initialize: (
+        custom_user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        custom_user_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

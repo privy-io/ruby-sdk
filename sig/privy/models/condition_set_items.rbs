@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type condition_set_items = ::Array[Privy::ConditionSetItem]
+
+    ConditionSetItems: Privy::Internal::Type::Converter
+  end
+end

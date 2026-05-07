@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type moonpay_on_ramp_sign_response =
+      { external_transaction_id: String, signed_url: String }
+
+    class MoonpayOnRampSignResponse < Privy::Internal::Type::BaseModel
+      attr_accessor external_transaction_id: String
+
+      attr_accessor signed_url: String
+
+      def initialize: (
+        external_transaction_id: String,
+        signed_url: String
+      ) -> void
+
+      def to_hash: -> { external_transaction_id: String, signed_url: String }
+    end
+  end
+end

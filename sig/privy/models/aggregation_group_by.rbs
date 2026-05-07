@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type aggregation_group_by =
+      { field: String, field_source: String, abi: Privy::Models::abi_schema }
+
+    class AggregationGroupBy < Privy::Internal::Type::BaseModel
+      attr_accessor field: String
+
+      attr_accessor field_source: String
+
+      attr_reader abi: Privy::Models::abi_schema?
+
+      def abi=: (Privy::Models::abi_schema) -> Privy::Models::abi_schema
+
+      def initialize: (
+        field: String,
+        field_source: String,
+        ?abi: Privy::Models::abi_schema
+      ) -> void
+
+      def to_hash: -> {
+        field: String,
+        field_source: String,
+        abi: Privy::Models::abi_schema
+      }
+    end
+  end
+end

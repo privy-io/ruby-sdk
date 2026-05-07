@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type bridge_source_asset = :usd | :eur | :mxn | :brl | :gbp
+
+    module BridgeSourceAsset
+      extend Privy::Internal::Type::Enum
+
+      USD: :usd
+      EUR: :eur
+      MXN: :mxn
+      BRL: :brl
+      GBP: :gbp
+
+      def self?.values: -> ::Array[Privy::Models::bridge_source_asset]
+    end
+  end
+end

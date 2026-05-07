@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type linked_account_custom_jwt_input =
+      { custom_user_id: String, type: :custom_auth }
+
+    class LinkedAccountCustomJwtInput < Privy::Internal::Type::BaseModel
+      attr_accessor custom_user_id: String
+
+      attr_accessor type: :custom_auth
+
+      def initialize: (custom_user_id: String, ?type: :custom_auth) -> void
+
+      def to_hash: -> { custom_user_id: String, type: :custom_auth }
+    end
+  end
+end

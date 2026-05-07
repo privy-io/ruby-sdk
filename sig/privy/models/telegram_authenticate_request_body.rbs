@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type telegram_authenticate_request_body =
+      {
+        captcha_token: String,
+        mode: Privy::Models::authenticate_mode_option,
+        telegram_auth_result: Privy::TelegramAuthResult,
+        telegram_web_app_data: Privy::TelegramWebAppData
+      }
+
+    class TelegramAuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_reader captcha_token: String?
+
+      def captcha_token=: (String) -> String
+
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      attr_reader telegram_auth_result: Privy::TelegramAuthResult?
+
+      def telegram_auth_result=: (
+        Privy::TelegramAuthResult
+      ) -> Privy::TelegramAuthResult
+
+      attr_reader telegram_web_app_data: Privy::TelegramWebAppData?
+
+      def telegram_web_app_data=: (
+        Privy::TelegramWebAppData
+      ) -> Privy::TelegramWebAppData
+
+      def initialize: (
+        ?captcha_token: String,
+        ?mode: Privy::Models::authenticate_mode_option,
+        ?telegram_auth_result: Privy::TelegramAuthResult,
+        ?telegram_web_app_data: Privy::TelegramWebAppData
+      ) -> void
+
+      def to_hash: -> {
+        captcha_token: String,
+        mode: Privy::Models::authenticate_mode_option,
+        telegram_auth_result: Privy::TelegramAuthResult,
+        telegram_web_app_data: Privy::TelegramWebAppData
+      }
+    end
+  end
+end

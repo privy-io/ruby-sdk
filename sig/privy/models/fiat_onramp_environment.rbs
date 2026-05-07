@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type fiat_onramp_environment = :sandbox | :production
+
+    module FiatOnrampEnvironment
+      extend Privy::Internal::Type::Enum
+
+      SANDBOX: :sandbox
+      PRODUCTION: :production
+
+      def self?.values: -> ::Array[Privy::Models::fiat_onramp_environment]
+    end
+  end
+end

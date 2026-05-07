@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_status_response =
+      { status: Privy::Models::coinbase_on_ramp_status }
+
+    class CoinbaseOnRampStatusResponse < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::coinbase_on_ramp_status
+
+      def initialize: (status: Privy::Models::coinbase_on_ramp_status) -> void
+
+      def to_hash: -> { status: Privy::Models::coinbase_on_ramp_status }
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type currency = { chain: String, asset: Privy::Models::currency_asset }
+
+    class Currency < Privy::Internal::Type::BaseModel
+      attr_accessor chain: String
+
+      attr_reader asset: Privy::Models::currency_asset?
+
+      def asset=: (
+        Privy::Models::currency_asset
+      ) -> Privy::Models::currency_asset
+
+      def initialize: (
+        chain: String,
+        ?asset: Privy::Models::currency_asset
+      ) -> void
+
+      def to_hash: -> { chain: String, asset: Privy::Models::currency_asset }
+    end
+  end
+end

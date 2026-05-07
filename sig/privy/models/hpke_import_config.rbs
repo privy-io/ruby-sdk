@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    type hpke_import_config =
+      {
+        aad: String,
+        aead_algorithm: Privy::Models::hpke_aead_algorithm,
+        info: String
+      }
+
+    class HpkeImportConfig < Privy::Internal::Type::BaseModel
+      attr_reader aad: String?
+
+      def aad=: (String) -> String
+
+      attr_reader aead_algorithm: Privy::Models::hpke_aead_algorithm?
+
+      def aead_algorithm=: (
+        Privy::Models::hpke_aead_algorithm
+      ) -> Privy::Models::hpke_aead_algorithm
+
+      attr_reader info: String?
+
+      def info=: (String) -> String
+
+      def initialize: (
+        ?aad: String,
+        ?aead_algorithm: Privy::Models::hpke_aead_algorithm,
+        ?info: String
+      ) -> void
+
+      def to_hash: -> {
+        aad: String,
+        aead_algorithm: Privy::Models::hpke_aead_algorithm,
+        info: String
+      }
+    end
+  end
+end

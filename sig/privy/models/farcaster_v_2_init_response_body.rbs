@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type farcaster_v2_init_response_body = { expires_at: String, nonce: String }
+
+    class FarcasterV2InitResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor expires_at: String
+
+      attr_accessor nonce: String
+
+      def initialize: (expires_at: String, nonce: String) -> void
+
+      def to_hash: -> { expires_at: String, nonce: String }
+    end
+  end
+end

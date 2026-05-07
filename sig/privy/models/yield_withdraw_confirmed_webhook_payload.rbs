@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type yield_withdraw_confirmed_webhook_payload =
+      {
+        assets: String,
+        :caip2 => String,
+        owner: String,
+        receiver: String,
+        sender: String,
+        shares: String,
+        type: Privy::Models::YieldWithdrawConfirmedWebhookPayload::type_,
+        vault_address: String
+      }
+
+    class YieldWithdrawConfirmedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor assets: String
+
+      attr_accessor caip2: String
+
+      attr_accessor owner: String
+
+      attr_accessor receiver: String
+
+      attr_accessor sender: String
+
+      attr_accessor shares: String
+
+      attr_accessor type: Privy::Models::YieldWithdrawConfirmedWebhookPayload::type_
+
+      attr_accessor vault_address: String
+
+      def initialize: (
+        assets: String,
+        caip2: String,
+        owner: String,
+        receiver: String,
+        sender: String,
+        shares: String,
+        type: Privy::Models::YieldWithdrawConfirmedWebhookPayload::type_,
+        vault_address: String
+      ) -> void
+
+      def to_hash: -> {
+        assets: String,
+        :caip2 => String,
+        owner: String,
+        receiver: String,
+        sender: String,
+        shares: String,
+        type: Privy::Models::YieldWithdrawConfirmedWebhookPayload::type_,
+        vault_address: String
+      }
+
+      type type_ = :"yield.withdraw.confirmed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        YIELD_WITHDRAW_CONFIRMED: :"yield.withdraw.confirmed"
+
+        def self?.values: -> ::Array[Privy::Models::YieldWithdrawConfirmedWebhookPayload::type_]
+      end
+    end
+  end
+end

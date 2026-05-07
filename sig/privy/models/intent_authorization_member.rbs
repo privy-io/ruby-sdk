@@ -1,0 +1,142 @@
+module Privy
+  module Models
+    type intent_authorization_member =
+      Privy::IntentAuthorizationMember::UserMember
+      | Privy::IntentAuthorizationMember::KeyMember
+      | Privy::IntentAuthorizationMember::KeyQuorumMember
+
+    module IntentAuthorizationMember
+      extend Privy::Internal::Type::Union
+
+      type user_member =
+        {
+          signed_at: Float?,
+          type: Privy::Models::IntentAuthorizationMember::UserMember::type_,
+          user_id: String
+        }
+
+      class UserMember < Privy::Internal::Type::BaseModel
+        attr_accessor signed_at: Float?
+
+        attr_accessor type: Privy::Models::IntentAuthorizationMember::UserMember::type_
+
+        attr_accessor user_id: String
+
+        def initialize: (
+          signed_at: Float?,
+          type: Privy::Models::IntentAuthorizationMember::UserMember::type_,
+          user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          signed_at: Float?,
+          type: Privy::Models::IntentAuthorizationMember::UserMember::type_,
+          user_id: String
+        }
+
+        type type_ = :user
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          USER: :user
+
+          def self?.values: -> ::Array[Privy::Models::IntentAuthorizationMember::UserMember::type_]
+        end
+      end
+
+      type key_member =
+        {
+          public_key: String,
+          signed_at: Float?,
+          type: Privy::Models::IntentAuthorizationMember::KeyMember::type_
+        }
+
+      class KeyMember < Privy::Internal::Type::BaseModel
+        attr_accessor public_key: String
+
+        attr_accessor signed_at: Float?
+
+        attr_accessor type: Privy::Models::IntentAuthorizationMember::KeyMember::type_
+
+        def initialize: (
+          public_key: String,
+          signed_at: Float?,
+          type: Privy::Models::IntentAuthorizationMember::KeyMember::type_
+        ) -> void
+
+        def to_hash: -> {
+          public_key: String,
+          signed_at: Float?,
+          type: Privy::Models::IntentAuthorizationMember::KeyMember::type_
+        }
+
+        type type_ = :key
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          KEY: :key
+
+          def self?.values: -> ::Array[Privy::Models::IntentAuthorizationMember::KeyMember::type_]
+        end
+      end
+
+      type key_quorum_member =
+        {
+          key_quorum_id: String,
+          members: ::Array[Privy::Models::intent_authorization_key_quorum_member],
+          threshold: Float,
+          threshold_met: bool,
+          type: Privy::Models::IntentAuthorizationMember::KeyQuorumMember::type_,
+          display_name: String
+        }
+
+      class KeyQuorumMember < Privy::Internal::Type::BaseModel
+        attr_accessor key_quorum_id: String
+
+        attr_accessor members: ::Array[Privy::Models::intent_authorization_key_quorum_member]
+
+        attr_accessor threshold: Float
+
+        attr_accessor threshold_met: bool
+
+        attr_accessor type: Privy::Models::IntentAuthorizationMember::KeyQuorumMember::type_
+
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        def initialize: (
+          key_quorum_id: String,
+          members: ::Array[Privy::Models::intent_authorization_key_quorum_member],
+          threshold: Float,
+          threshold_met: bool,
+          type: Privy::Models::IntentAuthorizationMember::KeyQuorumMember::type_,
+          ?display_name: String
+        ) -> void
+
+        def to_hash: -> {
+          key_quorum_id: String,
+          members: ::Array[Privy::Models::intent_authorization_key_quorum_member],
+          threshold: Float,
+          threshold_met: bool,
+          type: Privy::Models::IntentAuthorizationMember::KeyQuorumMember::type_,
+          display_name: String
+        }
+
+        type type_ = :key_quorum
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          KEY_QUORUM: :key_quorum
+
+          def self?.values: -> ::Array[Privy::Models::IntentAuthorizationMember::KeyQuorumMember::type_]
+        end
+      end
+
+      def self?.variants: -> ::Array[Privy::Models::intent_authorization_member]
+    end
+  end
+end

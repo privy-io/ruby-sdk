@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type accounts_dashboard_list_response =
+      { data: ::Array[Privy::AssetAccountWithBalance], next_cursor: String? }
+
+    class AccountsDashboardListResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::AssetAccountWithBalance]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        data: ::Array[Privy::AssetAccountWithBalance],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Privy::AssetAccountWithBalance],
+        next_cursor: String?
+      }
+    end
+  end
+end

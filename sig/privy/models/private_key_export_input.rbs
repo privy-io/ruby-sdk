@@ -1,0 +1,41 @@
+module Privy
+  module Models
+    type private_key_export_input =
+      {
+        encryption_type: Privy::Models::hpke_encryption,
+        recipient_public_key: String,
+        export_seed_phrase: bool,
+        export_type: Privy::Models::export_type
+      }
+
+    class PrivateKeyExportInput < Privy::Internal::Type::BaseModel
+      attr_accessor encryption_type: Privy::Models::hpke_encryption
+
+      attr_accessor recipient_public_key: String
+
+      attr_reader export_seed_phrase: bool?
+
+      def export_seed_phrase=: (bool) -> bool
+
+      attr_reader export_type: Privy::Models::export_type?
+
+      def export_type=: (
+        Privy::Models::export_type
+      ) -> Privy::Models::export_type
+
+      def initialize: (
+        encryption_type: Privy::Models::hpke_encryption,
+        recipient_public_key: String,
+        ?export_seed_phrase: bool,
+        ?export_type: Privy::Models::export_type
+      ) -> void
+
+      def to_hash: -> {
+        encryption_type: Privy::Models::hpke_encryption,
+        recipient_public_key: String,
+        export_seed_phrase: bool,
+        export_type: Privy::Models::export_type
+      }
+    end
+  end
+end

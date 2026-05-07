@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type sui_transaction_command_operator = :eq | :in
+
+    module SuiTransactionCommandOperator
+      extend Privy::Internal::Type::Enum
+
+      EQ: :eq
+      IN: :in
+
+      def self?.values: -> ::Array[Privy::Models::sui_transaction_command_operator]
+    end
+  end
+end

@@ -1,0 +1,5 @@
+module Privy
+  module Models
+    class EvmCaip2ChainID = String
+  end
+end

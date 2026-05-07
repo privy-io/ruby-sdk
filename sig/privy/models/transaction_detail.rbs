@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type transaction_detail =
+      Privy::TransferSentTransactionDetail
+      | Privy::TransferReceivedTransactionDetail
+
+    module TransactionDetail
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transaction_detail]
+    end
+  end
+end

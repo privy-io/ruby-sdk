@@ -1,0 +1,5 @@
+module Privy
+  module Models
+    class HDPath = String
+  end
+end

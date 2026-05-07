@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type ethereum_yield_claim_id_input = { id: String }
+
+    class EthereumYieldClaimIDInput < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      def initialize: (id: String) -> void
+
+      def to_hash: -> { id: String }
+    end
+  end
+end

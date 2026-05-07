@@ -1,0 +1,41 @@
+module Privy
+  module Models
+    type oauth_link_request_body =
+      {
+        authorization_code: String,
+        state_code: String,
+        code_type: Privy::Models::oauth_code_type,
+        code_verifier: String
+      }
+
+    class OAuthLinkRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor authorization_code: String
+
+      attr_accessor state_code: String
+
+      attr_reader code_type: Privy::Models::oauth_code_type?
+
+      def code_type=: (
+        Privy::Models::oauth_code_type
+      ) -> Privy::Models::oauth_code_type
+
+      attr_reader code_verifier: String?
+
+      def code_verifier=: (String) -> String
+
+      def initialize: (
+        authorization_code: String,
+        state_code: String,
+        ?code_type: Privy::Models::oauth_code_type,
+        ?code_verifier: String
+      ) -> void
+
+      def to_hash: -> {
+        authorization_code: String,
+        state_code: String,
+        code_type: Privy::Models::oauth_code_type,
+        code_verifier: String
+      }
+    end
+  end
+end

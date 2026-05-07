@@ -1,0 +1,27 @@
+module Privy
+  module Models
+    type create_account_from_wallets_configuration_input =
+      {
+        wallets_configuration: Privy::Models::account_wallets_configuration,
+        display_name: String
+      }
+
+    class CreateAccountFromWalletsConfigurationInput < Privy::Internal::Type::BaseModel
+      attr_accessor wallets_configuration: Privy::Models::account_wallets_configuration
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      def initialize: (
+        wallets_configuration: Privy::Models::account_wallets_configuration,
+        ?display_name: String
+      ) -> void
+
+      def to_hash: -> {
+        wallets_configuration: Privy::Models::account_wallets_configuration,
+        display_name: String
+      }
+    end
+  end
+end

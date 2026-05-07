@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type external_transaction_wallet_action_step =
+      {
+        status: Privy::Models::external_transaction_wallet_action_step_status,
+        type: Privy::Models::ExternalTransactionWalletActionStep::type_,
+        failure_reason: Privy::FailureReason
+      }
+
+    class ExternalTransactionWalletActionStep < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::external_transaction_wallet_action_step_status
+
+      attr_accessor type: Privy::Models::ExternalTransactionWalletActionStep::type_
+
+      attr_reader failure_reason: Privy::FailureReason?
+
+      def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
+
+      def initialize: (
+        status: Privy::Models::external_transaction_wallet_action_step_status,
+        type: Privy::Models::ExternalTransactionWalletActionStep::type_,
+        ?failure_reason: Privy::FailureReason
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::external_transaction_wallet_action_step_status,
+        type: Privy::Models::ExternalTransactionWalletActionStep::type_,
+        failure_reason: Privy::FailureReason
+      }
+
+      type type_ = :external_transaction
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        EXTERNAL_TRANSACTION: :external_transaction
+
+        def self?.values: -> ::Array[Privy::Models::ExternalTransactionWalletActionStep::type_]
+      end
+    end
+  end
+end

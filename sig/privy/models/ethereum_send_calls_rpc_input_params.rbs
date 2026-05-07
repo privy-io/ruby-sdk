@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type ethereum_send_calls_rpc_input_params =
+      { calls: ::Array[Privy::EthereumSendCallsCall] }
+
+    class EthereumSendCallsRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor calls: ::Array[Privy::EthereumSendCallsCall]
+
+      def initialize: (calls: ::Array[Privy::EthereumSendCallsCall]) -> void
+
+      def to_hash: -> { calls: ::Array[Privy::EthereumSendCallsCall] }
+    end
+  end
+end

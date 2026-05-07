@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type transaction_scanning_response_body =
+      {
+        simulation: Privy::Models::transaction_scanning_simulation_result,
+        validation: Privy::Models::transaction_scanning_validation_result
+      }
+
+    class TransactionScanningResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor simulation: Privy::Models::transaction_scanning_simulation_result
+
+      attr_accessor validation: Privy::Models::transaction_scanning_validation_result
+
+      def initialize: (
+        simulation: Privy::Models::transaction_scanning_simulation_result,
+        validation: Privy::Models::transaction_scanning_validation_result
+      ) -> void
+
+      def to_hash: -> {
+        simulation: Privy::Models::transaction_scanning_simulation_result,
+        validation: Privy::Models::transaction_scanning_validation_result
+      }
+    end
+  end
+end

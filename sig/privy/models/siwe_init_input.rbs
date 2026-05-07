@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type siwe_init_input = { token: String, address: String }
+
+    class SiweInitInput < Privy::Internal::Type::BaseModel
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      def initialize: (?token: String, ?address: String) -> void
+
+      def to_hash: -> { token: String, address: String }
+    end
+  end
+end

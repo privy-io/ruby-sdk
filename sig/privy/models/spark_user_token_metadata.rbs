@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type spark_user_token_metadata =
+      {
+        decimals: Float,
+        max_supply: String,
+        raw_token_identifier: String,
+        token_name: String,
+        token_public_key: String,
+        token_ticker: String
+      }
+
+    class SparkUserTokenMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor decimals: Float
+
+      attr_accessor max_supply: String
+
+      attr_accessor raw_token_identifier: String
+
+      attr_accessor token_name: String
+
+      attr_accessor token_public_key: String
+
+      attr_accessor token_ticker: String
+
+      def initialize: (
+        decimals: Float,
+        max_supply: String,
+        raw_token_identifier: String,
+        token_name: String,
+        token_public_key: String,
+        token_ticker: String
+      ) -> void
+
+      def to_hash: -> {
+        decimals: Float,
+        max_supply: String,
+        raw_token_identifier: String,
+        token_name: String,
+        token_public_key: String,
+        token_ticker: String
+      }
+    end
+  end
+end

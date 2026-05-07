@@ -1,0 +1,101 @@
+module Privy
+  module Models
+    type linked_account_ethereum =
+      {
+        address: String,
+        chain_type: Privy::Models::LinkedAccountEthereum::chain_type,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountEthereum::type_,
+        verified_at: Float,
+        wallet_client: Privy::Models::LinkedAccountEthereum::wallet_client,
+        chain_id: String,
+        connector_type: String,
+        wallet_client_type: String
+      }
+
+    class LinkedAccountEthereum < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::LinkedAccountEthereum::chain_type
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor type: Privy::Models::LinkedAccountEthereum::type_
+
+      attr_accessor verified_at: Float
+
+      attr_accessor wallet_client: Privy::Models::LinkedAccountEthereum::wallet_client
+
+      attr_reader chain_id: String?
+
+      def chain_id=: (String) -> String
+
+      attr_reader connector_type: String?
+
+      def connector_type=: (String) -> String
+
+      attr_reader wallet_client_type: String?
+
+      def wallet_client_type=: (String) -> String
+
+      def initialize: (
+        address: String,
+        chain_type: Privy::Models::LinkedAccountEthereum::chain_type,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountEthereum::type_,
+        verified_at: Float,
+        wallet_client: Privy::Models::LinkedAccountEthereum::wallet_client,
+        ?chain_id: String,
+        ?connector_type: String,
+        ?wallet_client_type: String
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        chain_type: Privy::Models::LinkedAccountEthereum::chain_type,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountEthereum::type_,
+        verified_at: Float,
+        wallet_client: Privy::Models::LinkedAccountEthereum::wallet_client,
+        chain_id: String,
+        connector_type: String,
+        wallet_client_type: String
+      }
+
+      type chain_type = :ethereum
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM: :ethereum
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountEthereum::chain_type]
+      end
+
+      type type_ = :wallet
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET: :wallet
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountEthereum::type_]
+      end
+
+      type wallet_client = :unknown
+
+      module WalletClient
+        extend Privy::Internal::Type::Enum
+
+        UNKNOWN: :unknown
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountEthereum::wallet_client]
+      end
+    end
+  end
+end

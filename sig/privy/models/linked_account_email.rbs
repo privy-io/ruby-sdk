@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type linked_account_email =
+      {
+        address: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountEmail::type_,
+        verified_at: Float
+      }
+
+    class LinkedAccountEmail < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor type: Privy::Models::LinkedAccountEmail::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        address: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountEmail::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountEmail::type_,
+        verified_at: Float
+      }
+
+      type type_ = :email
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        EMAIL: :email
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountEmail::type_]
+      end
+    end
+  end
+end

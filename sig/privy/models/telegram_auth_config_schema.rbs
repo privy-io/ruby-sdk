@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type telegram_auth_config_schema =
+      {
+        bot_id: String,
+        bot_name: String,
+        link_enabled: bool,
+        seamless_auth_enabled: bool
+      }
+
+    class TelegramAuthConfigSchema < Privy::Internal::Type::BaseModel
+      attr_accessor bot_id: String
+
+      attr_accessor bot_name: String
+
+      attr_accessor link_enabled: bool
+
+      attr_accessor seamless_auth_enabled: bool
+
+      def initialize: (
+        bot_id: String,
+        bot_name: String,
+        link_enabled: bool,
+        seamless_auth_enabled: bool
+      ) -> void
+
+      def to_hash: -> {
+        bot_id: String,
+        bot_name: String,
+        link_enabled: bool,
+        seamless_auth_enabled: bool
+      }
+    end
+  end
+end

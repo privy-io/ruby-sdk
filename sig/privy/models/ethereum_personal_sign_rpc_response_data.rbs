@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_personal_sign_rpc_response_data =
+      {
+        encoding: Privy::Models::EthereumPersonalSignRpcResponseData::encoding,
+        signature: String
+      }
+
+    class EthereumPersonalSignRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::EthereumPersonalSignRpcResponseData::encoding
+
+      attr_accessor signature: String
+
+      def initialize: (
+        encoding: Privy::Models::EthereumPersonalSignRpcResponseData::encoding,
+        signature: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::EthereumPersonalSignRpcResponseData::encoding,
+        signature: String
+      }
+
+      type encoding = :hex
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        HEX: :hex
+
+        def self?.values: -> ::Array[Privy::Models::EthereumPersonalSignRpcResponseData::encoding]
+      end
+    end
+  end
+end

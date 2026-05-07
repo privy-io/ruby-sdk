@@ -1,0 +1,18 @@
+module Privy
+  module Resources
+    class Wallets
+      class Balance
+        def get: (
+          String wallet_id,
+          ?token: Privy::Models::Wallets::BalanceGetParams::token,
+          ?asset: Privy::Models::Wallets::BalanceGetParams::asset,
+          ?chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          ?include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency,
+          ?request_options: Privy::request_opts
+        ) -> Privy::Models::Wallets::BalanceGetResponse
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

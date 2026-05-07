@@ -1,0 +1,127 @@
+module Privy
+  module Resources
+    class Wallets
+      attr_reader earn: Privy::Resources::Wallets::Earn
+
+      attr_reader transactions: Privy::Resources::Wallets::Transactions
+
+      attr_reader balance: Privy::Resources::Wallets::Balance
+
+      def create: (
+        chain_type: Privy::Models::wallet_chain_type,
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?display_name: String,
+        ?external_id: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?policy_ids: Privy::Models::policy_input,
+        ?privy_idempotency_key: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
+
+      def update: (
+        String wallet_id,
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?display_name: String?,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?policy_ids: ::Array[String],
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
+
+      def list: (
+        ?authorization_key: String,
+        ?chain_type: Privy::Models::wallet_chain_type,
+        ?cursor: String,
+        ?external_id: String,
+        ?limit: Float?,
+        ?user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::Wallet]
+
+      def _init_import: (
+        body: Privy::Models::WalletInitImportParams::body,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Models::WalletInitImportResponse
+
+      def _submit_import: (
+        wallet: Privy::Models::WalletSubmitImportParams::wallet,
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?display_name: String,
+        ?external_id: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?policy_ids: Privy::Models::policy_input,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
+
+      def _transfer: (
+        String wallet_id,
+        destination: Privy::TokenTransferDestination,
+        source: Privy::Models::token_transfer_source,
+        ?amount_type: Privy::Models::amount_type,
+        ?slippage_bps: Integer,
+        ?privy_authorization_signature: String,
+        ?privy_idempotency_key: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::TransferActionResponse
+
+      def authenticate_with_jwt: (
+        encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
+        recipient_public_key: String,
+        user_jwt: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Models::wallet_authenticate_with_jwt_response
+
+      def create_wallets_with_recovery: (
+        primary_signer: Privy::WalletCreateWalletsWithRecoveryParams::PrimarySigner,
+        recovery_user: Privy::WalletCreateWalletsWithRecoveryParams::RecoveryUser,
+        wallets: ::Array[Privy::WalletCreateWalletsWithRecoveryParams::Wallet],
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletCreateWalletsWithRecoveryResponse
+
+      def export: (
+        String wallet_id,
+        encryption_type: Privy::Models::hpke_encryption,
+        recipient_public_key: String,
+        ?export_seed_phrase: bool,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletExportResponseBody
+
+      def get: (
+        String wallet_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
+
+      def get_wallet_by_address: (
+        address: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
+
+      def raw_sign: (
+        String wallet_id,
+        params: Privy::Models::raw_sign_input_params,
+        ?privy_authorization_signature: String,
+        ?privy_idempotency_key: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::RawSignResponse
+
+      def rpc: (
+        String wallet_id,
+        wallet_rpc_request_body: Privy::Models::wallet_rpc_request_body,
+        ?privy_authorization_signature: String,
+        ?privy_idempotency_key: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Models::wallet_rpc_response
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

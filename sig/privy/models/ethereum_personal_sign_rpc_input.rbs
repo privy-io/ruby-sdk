@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type ethereum_personal_sign_rpc_input =
+      {
+        method_: Privy::Models::EthereumPersonalSignRpcInput::method_,
+        params: Privy::EthereumPersonalSignRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type,
+        wallet_id: String
+      }
+
+    class EthereumPersonalSignRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::EthereumPersonalSignRpcInput::method_
+
+      attr_accessor params: Privy::EthereumPersonalSignRpcInputParams
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      attr_reader chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type?
+
+      def chain_type=: (
+        Privy::Models::EthereumPersonalSignRpcInput::chain_type
+      ) -> Privy::Models::EthereumPersonalSignRpcInput::chain_type
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        method_: Privy::Models::EthereumPersonalSignRpcInput::method_,
+        params: Privy::EthereumPersonalSignRpcInputParams,
+        ?address: String,
+        ?chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type,
+        ?wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::EthereumPersonalSignRpcInput::method_,
+        params: Privy::EthereumPersonalSignRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type,
+        wallet_id: String
+      }
+
+      type method_ = :personal_sign
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        PERSONAL_SIGN: :personal_sign
+
+        def self?.values: -> ::Array[Privy::Models::EthereumPersonalSignRpcInput::method_]
+      end
+
+      type chain_type = :ethereum
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM: :ethereum
+
+        def self?.values: -> ::Array[Privy::Models::EthereumPersonalSignRpcInput::chain_type]
+      end
+    end
+  end
+end

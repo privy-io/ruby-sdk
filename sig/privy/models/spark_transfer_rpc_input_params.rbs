@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type spark_transfer_rpc_input_params =
+      { amount_sats: Float, receiver_spark_address: String }
+
+    class SparkTransferRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor amount_sats: Float
+
+      attr_accessor receiver_spark_address: String
+
+      def initialize: (
+        amount_sats: Float,
+        receiver_spark_address: String
+      ) -> void
+
+      def to_hash: -> { amount_sats: Float, receiver_spark_address: String }
+    end
+  end
+end

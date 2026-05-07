@@ -1,0 +1,78 @@
+module Privy
+  module Resources
+    class Policies
+      def create: (
+        chain_type: Privy::Models::wallet_chain_type,
+        name: String,
+        rules: ::Array[Privy::PolicyCreateParams::Rule],
+        version: Privy::Models::PolicyCreateParams::version,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?privy_idempotency_key: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Policy
+
+      def update: (
+        String policy_id,
+        ?name: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?rules: ::Array[Privy::PolicyRuleRequestBody],
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Policy
+
+      def delete: (
+        String policy_id,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::SuccessResponse
+
+      def create_rule: (
+        String policy_id,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::PolicyRuleResponse
+
+      def delete_rule: (
+        String rule_id,
+        policy_id: String,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::SuccessResponse
+
+      def get: (
+        String policy_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Policy
+
+      def get_rule: (
+        String rule_id,
+        policy_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::PolicyRuleResponse
+
+      def update_rule: (
+        String rule_id,
+        policy_id: String,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::PolicyRuleResponse
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

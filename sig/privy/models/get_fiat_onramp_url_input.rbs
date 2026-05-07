@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type get_fiat_onramp_url_input =
+      {
+        destination: Privy::FiatOnrampDestination,
+        payment_method: String,
+        provider: Privy::Models::fiat_onramp_provider,
+        source: Privy::FiatOnrampSource,
+        redirect_url: String,
+        sub_provider: String
+      }
+
+    class GetFiatOnrampURLInput < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::FiatOnrampDestination
+
+      attr_accessor payment_method: String
+
+      attr_accessor provider: Privy::Models::fiat_onramp_provider
+
+      attr_accessor source: Privy::FiatOnrampSource
+
+      attr_reader redirect_url: String?
+
+      def redirect_url=: (String) -> String
+
+      attr_reader sub_provider: String?
+
+      def sub_provider=: (String) -> String
+
+      def initialize: (
+        destination: Privy::FiatOnrampDestination,
+        payment_method: String,
+        provider: Privy::Models::fiat_onramp_provider,
+        source: Privy::FiatOnrampSource,
+        ?redirect_url: String,
+        ?sub_provider: String
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::FiatOnrampDestination,
+        payment_method: String,
+        provider: Privy::Models::fiat_onramp_provider,
+        source: Privy::FiatOnrampSource,
+        redirect_url: String,
+        sub_provider: String
+      }
+    end
+  end
+end
