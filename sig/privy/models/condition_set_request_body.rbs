@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type condition_set_request_body =
+      { name: String, owner: Privy::Models::owner_input?, owner_id: String? }
+
+    class ConditionSetRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor owner: Privy::Models::owner_input?
+
+      attr_accessor owner_id: String?
+
+      def initialize: (
+        name: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?
+      }
+    end
+  end
+end

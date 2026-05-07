@@ -1,0 +1,145 @@
+module Privy
+  module Models
+    type linked_account_bitcoin_taproot_embedded_wallet =
+      {
+        id: String?,
+        address: String,
+        chain_id: String,
+        chain_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::chain_type,
+        connector_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::connector_type,
+        delegated: bool,
+        first_verified_at: Float?,
+        imported: bool,
+        latest_verified_at: Float?,
+        public_key: String,
+        recovery_method: Privy::Models::embedded_wallet_recovery_method,
+        type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::type_,
+        verified_at: Float,
+        wallet_client: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client,
+        wallet_client_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client_type,
+        wallet_index: Float
+      }
+
+    class LinkedAccountBitcoinTaprootEmbeddedWallet < Privy::Internal::Type::BaseModel
+      attr_accessor id: String?
+
+      attr_accessor address: String
+
+      attr_accessor chain_id: String
+
+      attr_accessor chain_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::chain_type
+
+      attr_accessor connector_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::connector_type
+
+      attr_accessor delegated: bool
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor imported: bool
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor public_key: String
+
+      attr_accessor recovery_method: Privy::Models::embedded_wallet_recovery_method
+
+      attr_accessor type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::type_
+
+      attr_accessor verified_at: Float
+
+      attr_accessor wallet_client: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client
+
+      attr_accessor wallet_client_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client_type
+
+      attr_accessor wallet_index: Float
+
+      def initialize: (
+        id: String?,
+        address: String,
+        chain_id: String,
+        chain_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::chain_type,
+        connector_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::connector_type,
+        delegated: bool,
+        first_verified_at: Float?,
+        imported: bool,
+        latest_verified_at: Float?,
+        public_key: String,
+        recovery_method: Privy::Models::embedded_wallet_recovery_method,
+        type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::type_,
+        verified_at: Float,
+        wallet_client: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client,
+        wallet_client_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client_type,
+        wallet_index: Float
+      ) -> void
+
+      def to_hash: -> {
+        id: String?,
+        address: String,
+        chain_id: String,
+        chain_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::chain_type,
+        connector_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::connector_type,
+        delegated: bool,
+        first_verified_at: Float?,
+        imported: bool,
+        latest_verified_at: Float?,
+        public_key: String,
+        recovery_method: Privy::Models::embedded_wallet_recovery_method,
+        type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::type_,
+        verified_at: Float,
+        wallet_client: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client,
+        wallet_client_type: Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client_type,
+        wallet_index: Float
+      }
+
+      type chain_type = :"bitcoin-taproot"
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        BITCOIN_TAPROOT: :"bitcoin-taproot"
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::chain_type]
+      end
+
+      type connector_type = :embedded
+
+      module ConnectorType
+        extend Privy::Internal::Type::Enum
+
+        EMBEDDED: :embedded
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::connector_type]
+      end
+
+      type type_ = :wallet
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET: :wallet
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::type_]
+      end
+
+      type wallet_client = :privy
+
+      module WalletClient
+        extend Privy::Internal::Type::Enum
+
+        PRIVY: :privy
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client]
+      end
+
+      type wallet_client_type = :privy
+
+      module WalletClientType
+        extend Privy::Internal::Type::Enum
+
+        PRIVY: :privy
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet::wallet_client_type]
+      end
+    end
+  end
+end

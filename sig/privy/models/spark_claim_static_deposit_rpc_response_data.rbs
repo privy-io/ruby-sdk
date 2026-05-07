@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type spark_claim_static_deposit_rpc_response_data = { transfer_id: String }
+
+    class SparkClaimStaticDepositRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor transfer_id: String
+
+      def initialize: (transfer_id: String) -> void
+
+      def to_hash: -> { transfer_id: String }
+    end
+  end
+end

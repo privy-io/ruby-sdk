@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type fiat_onramp_provider_error =
+      { error: String, provider: Privy::Models::fiat_onramp_provider }
+
+    class FiatOnrampProviderError < Privy::Internal::Type::BaseModel
+      attr_accessor error: String
+
+      attr_accessor provider: Privy::Models::fiat_onramp_provider
+
+      def initialize: (
+        error: String,
+        provider: Privy::Models::fiat_onramp_provider
+      ) -> void
+
+      def to_hash: -> {
+        error: String,
+        provider: Privy::Models::fiat_onramp_provider
+      }
+    end
+  end
+end

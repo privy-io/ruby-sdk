@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type get_fiat_onramp_quotes_response =
+      {
+        quotes: ::Array[Privy::FiatOnrampQuote],
+        provider_errors: ::Array[Privy::FiatOnrampProviderError]
+      }
+
+    class GetFiatOnrampQuotesResponse < Privy::Internal::Type::BaseModel
+      attr_accessor quotes: ::Array[Privy::FiatOnrampQuote]
+
+      attr_reader provider_errors: ::Array[Privy::FiatOnrampProviderError]?
+
+      def provider_errors=: (
+        ::Array[Privy::FiatOnrampProviderError]
+      ) -> ::Array[Privy::FiatOnrampProviderError]
+
+      def initialize: (
+        quotes: ::Array[Privy::FiatOnrampQuote],
+        ?provider_errors: ::Array[Privy::FiatOnrampProviderError]
+      ) -> void
+
+      def to_hash: -> {
+        quotes: ::Array[Privy::FiatOnrampQuote],
+        provider_errors: ::Array[Privy::FiatOnrampProviderError]
+      }
+    end
+  end
+end

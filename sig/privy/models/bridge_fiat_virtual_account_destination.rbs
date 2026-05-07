@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type bridge_fiat_virtual_account_destination =
+      {
+        address: String,
+        asset: Privy::Models::bridge_destination_asset,
+        chain: String
+      }
+
+    class BridgeFiatVirtualAccountDestination < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor asset: Privy::Models::bridge_destination_asset
+
+      attr_accessor chain: String
+
+      def initialize: (
+        address: String,
+        asset: Privy::Models::bridge_destination_asset,
+        chain: String
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        asset: Privy::Models::bridge_destination_asset,
+        chain: String
+      }
+    end
+  end
+end

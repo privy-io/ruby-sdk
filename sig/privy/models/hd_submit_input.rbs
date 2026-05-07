@@ -1,0 +1,67 @@
+module Privy
+  module Models
+    type hd_submit_input =
+      {
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::HDSubmitInput::entropy_type,
+        index: Integer,
+        hpke_config: Privy::HpkeImportConfig
+      }
+
+    class HDSubmitInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::wallet_import_supported_chains
+
+      attr_accessor ciphertext: String
+
+      attr_accessor encapsulated_key: String
+
+      attr_accessor encryption_type: Privy::Models::hpke_encryption
+
+      attr_accessor entropy_type: Privy::Models::HDSubmitInput::entropy_type
+
+      attr_accessor index: Integer
+
+      attr_reader hpke_config: Privy::HpkeImportConfig?
+
+      def hpke_config=: (Privy::HpkeImportConfig) -> Privy::HpkeImportConfig
+
+      def initialize: (
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::HDSubmitInput::entropy_type,
+        index: Integer,
+        ?hpke_config: Privy::HpkeImportConfig
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::HDSubmitInput::entropy_type,
+        index: Integer,
+        hpke_config: Privy::HpkeImportConfig
+      }
+
+      type entropy_type = :hd
+
+      module EntropyType
+        extend Privy::Internal::Type::Enum
+
+        HD: :hd
+
+        def self?.values: -> ::Array[Privy::Models::HDSubmitInput::entropy_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_sign_transaction_rpc_response =
+      {
+        data: Privy::EthereumSignTransactionRpcResponseData,
+        method_: Privy::Models::EthereumSignTransactionRpcResponse::method_
+      }
+
+    class EthereumSignTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::EthereumSignTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::EthereumSignTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::EthereumSignTransactionRpcResponseData,
+        method_: Privy::Models::EthereumSignTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::EthereumSignTransactionRpcResponseData,
+        method_: Privy::Models::EthereumSignTransactionRpcResponse::method_
+      }
+
+      type method_ = :eth_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        ETH_SIGN_TRANSACTION: :eth_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSignTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

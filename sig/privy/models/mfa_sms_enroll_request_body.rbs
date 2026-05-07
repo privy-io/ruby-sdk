@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type mfa_sms_enroll_request_body = { code: String, phone_number: String }
+
+    class MfaSMSEnrollRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      attr_accessor phone_number: String
+
+      def initialize: (code: String, phone_number: String) -> void
+
+      def to_hash: -> { code: String, phone_number: String }
+    end
+  end
+end

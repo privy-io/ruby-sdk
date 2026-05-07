@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type authenticate_mode_option = :"no-signup" | :"login-or-sign-up"
+
+    module AuthenticateModeOption
+      extend Privy::Internal::Type::Enum
+
+      NO_SIGNUP: :"no-signup"
+      LOGIN_OR_SIGN_UP: :"login-or-sign-up"
+
+      def self?.values: -> ::Array[Privy::Models::authenticate_mode_option]
+    end
+  end
+end

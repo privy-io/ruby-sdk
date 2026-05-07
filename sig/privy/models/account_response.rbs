@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type account_response =
+      {
+        id: String,
+        display_name: String?,
+        wallets: ::Array[Privy::AccountWallet]
+      }
+
+    class AccountResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor display_name: String?
+
+      attr_accessor wallets: ::Array[Privy::AccountWallet]
+
+      def initialize: (
+        id: String,
+        display_name: String?,
+        wallets: ::Array[Privy::AccountWallet]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        display_name: String?,
+        wallets: ::Array[Privy::AccountWallet]
+      }
+    end
+  end
+end

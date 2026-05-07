@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type transaction_scanning_request_body =
+      {
+        chain_id: String,
+        metadata: Privy::TransactionScanningMetadata,
+        request: Privy::TransactionScanningRpcRequest
+      }
+
+    class TransactionScanningRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: String
+
+      attr_accessor metadata: Privy::TransactionScanningMetadata
+
+      attr_accessor request: Privy::TransactionScanningRpcRequest
+
+      def initialize: (
+        chain_id: String,
+        metadata: Privy::TransactionScanningMetadata,
+        request: Privy::TransactionScanningRpcRequest
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: String,
+        metadata: Privy::TransactionScanningMetadata,
+        request: Privy::TransactionScanningRpcRequest
+      }
+    end
+  end
+end

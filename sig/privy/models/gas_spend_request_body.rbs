@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type gas_spend_request_body =
+      {
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String]
+      }
+
+    class GasSpendRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor end_timestamp: Float
+
+      attr_accessor start_timestamp: Float
+
+      attr_accessor wallet_ids: ::Array[String]
+
+      def initialize: (
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String]
+      }
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type recovery_type =
+      :user_passcode_derived_recovery_key
+      | :privy_passcode_derived_recovery_key
+      | :privy_generated_recovery_key
+      | :google_drive_recovery_secret
+      | :icloud_recovery_secret
+
+    module RecoveryType
+      extend Privy::Internal::Type::Enum
+
+      USER_PASSCODE_DERIVED_RECOVERY_KEY: :user_passcode_derived_recovery_key
+      PRIVY_PASSCODE_DERIVED_RECOVERY_KEY: :privy_passcode_derived_recovery_key
+      PRIVY_GENERATED_RECOVERY_KEY: :privy_generated_recovery_key
+      GOOGLE_DRIVE_RECOVERY_SECRET: :google_drive_recovery_secret
+      ICLOUD_RECOVERY_SECRET: :icloud_recovery_secret
+
+      def self?.values: -> ::Array[Privy::Models::recovery_type]
+    end
+  end
+end

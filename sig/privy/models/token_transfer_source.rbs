@@ -1,0 +1,12 @@
+module Privy
+  module Models
+    type token_transfer_source =
+      Privy::NamedTokenTransferSource | Privy::CustomTokenTransferSource
+
+    module TokenTransferSource
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::token_transfer_source]
+    end
+  end
+end

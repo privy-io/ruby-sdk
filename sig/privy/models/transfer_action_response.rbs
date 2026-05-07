@@ -1,0 +1,125 @@
+module Privy
+  module Models
+    type transfer_action_response =
+      {
+        id: String,
+        created_at: Time,
+        destination_address: String,
+        source_chain: String,
+        status: Privy::Models::wallet_action_status,
+        type: Privy::Models::TransferActionResponse::type_,
+        wallet_id: String,
+        destination_amount: String,
+        destination_asset: String,
+        destination_chain: String,
+        failure_reason: Privy::FailureReason,
+        source_amount: String,
+        source_asset: String,
+        source_asset_address: String,
+        source_asset_decimals: Integer,
+        steps: ::Array[Privy::Models::wallet_action_step]
+      }
+
+    class TransferActionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor destination_address: String
+
+      attr_accessor source_chain: String
+
+      attr_accessor status: Privy::Models::wallet_action_status
+
+      attr_accessor type: Privy::Models::TransferActionResponse::type_
+
+      attr_accessor wallet_id: String
+
+      attr_reader destination_amount: String?
+
+      def destination_amount=: (String) -> String
+
+      attr_reader destination_asset: String?
+
+      def destination_asset=: (String) -> String
+
+      attr_reader destination_chain: String?
+
+      def destination_chain=: (String) -> String
+
+      attr_reader failure_reason: Privy::FailureReason?
+
+      def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
+
+      attr_reader source_amount: String?
+
+      def source_amount=: (String) -> String
+
+      attr_reader source_asset: String?
+
+      def source_asset=: (String) -> String
+
+      attr_reader source_asset_address: String?
+
+      def source_asset_address=: (String) -> String
+
+      attr_reader source_asset_decimals: Integer?
+
+      def source_asset_decimals=: (Integer) -> Integer
+
+      attr_reader steps: ::Array[Privy::Models::wallet_action_step]?
+
+      def steps=: (
+        ::Array[Privy::Models::wallet_action_step]
+      ) -> ::Array[Privy::Models::wallet_action_step]
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        destination_address: String,
+        source_chain: String,
+        status: Privy::Models::wallet_action_status,
+        type: Privy::Models::TransferActionResponse::type_,
+        wallet_id: String,
+        ?destination_amount: String,
+        ?destination_asset: String,
+        ?destination_chain: String,
+        ?failure_reason: Privy::FailureReason,
+        ?source_amount: String,
+        ?source_asset: String,
+        ?source_asset_address: String,
+        ?source_asset_decimals: Integer,
+        ?steps: ::Array[Privy::Models::wallet_action_step]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        destination_address: String,
+        source_chain: String,
+        status: Privy::Models::wallet_action_status,
+        type: Privy::Models::TransferActionResponse::type_,
+        wallet_id: String,
+        destination_amount: String,
+        destination_asset: String,
+        destination_chain: String,
+        failure_reason: Privy::FailureReason,
+        source_amount: String,
+        source_asset: String,
+        source_asset_address: String,
+        source_asset_decimals: Integer,
+        steps: ::Array[Privy::Models::wallet_action_step]
+      }
+
+      type type_ = :transfer
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER: :transfer
+
+        def self?.values: -> ::Array[Privy::Models::TransferActionResponse::type_]
+      end
+    end
+  end
+end

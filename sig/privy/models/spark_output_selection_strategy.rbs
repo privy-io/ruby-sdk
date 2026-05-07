@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type spark_output_selection_strategy = :SMALL_FIRST | :LARGE_FIRST
+
+    module SparkOutputSelectionStrategy
+      extend Privy::Internal::Type::Enum
+
+      SMALL_FIRST: :SMALL_FIRST
+      LARGE_FIRST: :LARGE_FIRST
+
+      def self?.values: -> ::Array[Privy::Models::spark_output_selection_strategy]
+    end
+  end
+end

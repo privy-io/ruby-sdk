@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type ethereum_secp256k1_sign_rpc_input_params = { hash_: String }
+
+    class EthereumSecp256k1SignRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor hash_: String
+
+      def initialize: (hash_: String) -> void
+
+      def to_hash: -> { hash_: String }
+    end
+  end
+end

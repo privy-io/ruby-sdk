@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type user_invite_input =
+      Privy::EmailInviteInput
+      | Privy::EmailDomainInviteInput
+      | Privy::WalletInviteInput
+      | Privy::PhoneInviteInput
+
+    module UserInviteInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::user_invite_input]
+    end
+  end
+end

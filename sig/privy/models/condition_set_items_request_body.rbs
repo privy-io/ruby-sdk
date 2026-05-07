@@ -1,0 +1,8 @@
+module Privy
+  module Models
+    type condition_set_items_request_body =
+      ::Array[Privy::ConditionSetItemValueInput]
+
+    ConditionSetItemsRequestBody: Privy::Internal::Type::Converter
+  end
+end

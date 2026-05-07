@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type recovery_configuration_icloud_input =
+      { client_type: Privy::Models::icloud_client_type }
+
+    class RecoveryConfigurationICloudInput < Privy::Internal::Type::BaseModel
+      attr_accessor client_type: Privy::Models::icloud_client_type
+
+      def initialize: (client_type: Privy::Models::icloud_client_type) -> void
+
+      def to_hash: -> { client_type: Privy::Models::icloud_client_type }
+    end
+  end
+end

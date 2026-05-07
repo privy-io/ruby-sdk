@@ -1,0 +1,83 @@
+module Privy
+  module Models
+    type base_intent_response =
+      {
+        authorization_details: ::Array[Privy::IntentAuthorization],
+        created_at: Float,
+        created_by_display_name: String,
+        custom_expiry: bool,
+        expires_at: Float,
+        intent_id: String,
+        resource_id: String,
+        status: Privy::Models::intent_status,
+        created_by_id: String,
+        dismissal_reason: String,
+        dismissed_at: Float,
+        rejected_at: Float
+      }
+
+    class BaseIntentResponse < Privy::Internal::Type::BaseModel
+      attr_accessor authorization_details: ::Array[Privy::IntentAuthorization]
+
+      attr_accessor created_at: Float
+
+      attr_accessor created_by_display_name: String
+
+      attr_accessor custom_expiry: bool
+
+      attr_accessor expires_at: Float
+
+      attr_accessor intent_id: String
+
+      attr_accessor resource_id: String
+
+      attr_accessor status: Privy::Models::intent_status
+
+      attr_reader created_by_id: String?
+
+      def created_by_id=: (String) -> String
+
+      attr_reader dismissal_reason: String?
+
+      def dismissal_reason=: (String) -> String
+
+      attr_reader dismissed_at: Float?
+
+      def dismissed_at=: (Float) -> Float
+
+      attr_reader rejected_at: Float?
+
+      def rejected_at=: (Float) -> Float
+
+      def initialize: (
+        authorization_details: ::Array[Privy::IntentAuthorization],
+        created_at: Float,
+        created_by_display_name: String,
+        custom_expiry: bool,
+        expires_at: Float,
+        intent_id: String,
+        resource_id: String,
+        status: Privy::Models::intent_status,
+        ?created_by_id: String,
+        ?dismissal_reason: String,
+        ?dismissed_at: Float,
+        ?rejected_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        authorization_details: ::Array[Privy::IntentAuthorization],
+        created_at: Float,
+        created_by_display_name: String,
+        custom_expiry: bool,
+        expires_at: Float,
+        intent_id: String,
+        resource_id: String,
+        status: Privy::Models::intent_status,
+        created_by_id: String,
+        dismissal_reason: String,
+        dismissed_at: Float,
+        rejected_at: Float
+      }
+    end
+  end
+end

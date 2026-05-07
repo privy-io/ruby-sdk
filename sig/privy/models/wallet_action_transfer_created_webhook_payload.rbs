@@ -1,0 +1,98 @@
+module Privy
+  module Models
+    type wallet_action_transfer_created_webhook_payload =
+      {
+        action_type: Privy::Models::wallet_action_type,
+        destination_address: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionTransferCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String,
+        source_amount: String,
+        source_asset: String,
+        source_asset_address: String,
+        source_asset_decimals: Integer
+      }
+
+    class WalletActionTransferCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor destination_address: String
+
+      attr_accessor source_chain: String
+
+      attr_accessor status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status
+
+      attr_accessor type: Privy::Models::WalletActionTransferCreatedWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      attr_reader source_amount: String?
+
+      def source_amount=: (String) -> String
+
+      attr_reader source_asset: String?
+
+      def source_asset=: (String) -> String
+
+      attr_reader source_asset_address: String?
+
+      def source_asset_address=: (String) -> String
+
+      attr_reader source_asset_decimals: Integer?
+
+      def source_asset_decimals=: (Integer) -> Integer
+
+      def initialize: (
+        action_type: Privy::Models::wallet_action_type,
+        destination_address: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionTransferCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String,
+        ?source_amount: String,
+        ?source_asset: String,
+        ?source_asset_address: String,
+        ?source_asset_decimals: Integer
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::wallet_action_type,
+        destination_address: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionTransferCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String,
+        source_amount: String,
+        source_asset: String,
+        source_asset_address: String,
+        source_asset_decimals: Integer
+      }
+
+      type status = :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionTransferCreatedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.transfer.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_TRANSFER_CREATED: :"wallet_action.transfer.created"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionTransferCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

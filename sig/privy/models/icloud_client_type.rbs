@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type icloud_client_type = :web | :"expo-ios"
+
+    module ICloudClientType
+      extend Privy::Internal::Type::Enum
+
+      WEB: :web
+      EXPO_IOS: :"expo-ios"
+
+      def self?.values: -> ::Array[Privy::Models::icloud_client_type]
+    end
+  end
+end

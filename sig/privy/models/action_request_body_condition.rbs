@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type action_request_body_condition =
+      {
+        field: String,
+        field_source: Privy::Models::ActionRequestBodyCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class ActionRequestBodyCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: String
+
+      attr_accessor field_source: Privy::Models::ActionRequestBodyCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: String,
+        field_source: Privy::Models::ActionRequestBodyCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: String,
+        field_source: Privy::Models::ActionRequestBodyCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field_source = :action_request_body
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        ACTION_REQUEST_BODY: :action_request_body
+
+        def self?.values: -> ::Array[Privy::Models::ActionRequestBodyCondition::field_source]
+      end
+    end
+  end
+end

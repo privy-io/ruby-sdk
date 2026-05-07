@@ -1,0 +1,76 @@
+module Privy
+  module Models
+    type spark_transfer =
+      {
+        id: String,
+        leaves: ::Array[Privy::SparkTransferLeaf],
+        receiver_identity_public_key: String,
+        sender_identity_public_key: String,
+        status: String,
+        total_value: Float,
+        transfer_direction: String,
+        type: String,
+        created_time: String,
+        expiry_time: String,
+        updated_time: String
+      }
+
+    class SparkTransfer < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor leaves: ::Array[Privy::SparkTransferLeaf]
+
+      attr_accessor receiver_identity_public_key: String
+
+      attr_accessor sender_identity_public_key: String
+
+      attr_accessor status: String
+
+      attr_accessor total_value: Float
+
+      attr_accessor transfer_direction: String
+
+      attr_accessor type: String
+
+      attr_reader created_time: String?
+
+      def created_time=: (String) -> String
+
+      attr_reader expiry_time: String?
+
+      def expiry_time=: (String) -> String
+
+      attr_reader updated_time: String?
+
+      def updated_time=: (String) -> String
+
+      def initialize: (
+        id: String,
+        leaves: ::Array[Privy::SparkTransferLeaf],
+        receiver_identity_public_key: String,
+        sender_identity_public_key: String,
+        status: String,
+        total_value: Float,
+        transfer_direction: String,
+        type: String,
+        ?created_time: String,
+        ?expiry_time: String,
+        ?updated_time: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        leaves: ::Array[Privy::SparkTransferLeaf],
+        receiver_identity_public_key: String,
+        sender_identity_public_key: String,
+        status: String,
+        total_value: Float,
+        transfer_direction: String,
+        type: String,
+        created_time: String,
+        expiry_time: String,
+        updated_time: String
+      }
+    end
+  end
+end

@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type oauth_provider_id = Privy::Models::external_oauth_provider_id | String
+
+    module OAuthProviderID
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::oauth_provider_id]
+    end
+  end
+end

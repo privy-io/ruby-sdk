@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_callback_icloud_expo_input = { ck_web_auth_token: String }
+
+    class OAuthCallbackICloudExpoInput < Privy::Internal::Type::BaseModel
+      attr_accessor ck_web_auth_token: String
+
+      def initialize: (ck_web_auth_token: String) -> void
+
+      def to_hash: -> { ck_web_auth_token: String }
+    end
+  end
+end

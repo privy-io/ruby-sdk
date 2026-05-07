@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type transaction_scanning_asset_value = { usd_price: String, value: String }
+
+    class TransactionScanningAssetValue < Privy::Internal::Type::BaseModel
+      attr_reader usd_price: String?
+
+      def usd_price=: (String) -> String
+
+      attr_reader value: String?
+
+      def value=: (String) -> String
+
+      def initialize: (?usd_price: String, ?value: String) -> void
+
+      def to_hash: -> { usd_price: String, value: String }
+    end
+  end
+end

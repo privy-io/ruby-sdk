@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type smart_wallet_type =
+      :safe
+      | :kernel
+      | :light_account
+      | :biconomy
+      | :coinbase_smart_wallet
+      | :thirdweb
+      | :nexus
+
+    module SmartWalletType
+      extend Privy::Internal::Type::Enum
+
+      SAFE: :safe
+      KERNEL: :kernel
+      LIGHT_ACCOUNT: :light_account
+      BICONOMY: :biconomy
+      COINBASE_SMART_WALLET: :coinbase_smart_wallet
+      THIRDWEB: :thirdweb
+      NEXUS: :nexus
+
+      def self?.values: -> ::Array[Privy::Models::smart_wallet_type]
+    end
+  end
+end

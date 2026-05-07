@@ -1,0 +1,46 @@
+module Privy
+  module Models
+    type linked_account_line_input =
+      {
+        subject: String,
+        type: :line_oauth,
+        email: String,
+        name: String,
+        profile_picture_url: String
+      }
+
+    class LinkedAccountLineInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :line_oauth
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader profile_picture_url: String?
+
+      def profile_picture_url=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        ?email: String,
+        ?name: String,
+        ?profile_picture_url: String,
+        ?type: :line_oauth
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        type: :line_oauth,
+        email: String,
+        name: String,
+        profile_picture_url: String
+      }
+    end
+  end
+end

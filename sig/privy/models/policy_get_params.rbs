@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type policy_get_params =
+      { policy_id: String } & Privy::Internal::Type::request_parameters
+
+    class PolicyGetParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor policy_id: String
+
+      def initialize: (
+        policy_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        policy_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

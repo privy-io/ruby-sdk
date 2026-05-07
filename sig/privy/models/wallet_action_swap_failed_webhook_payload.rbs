@@ -1,0 +1,90 @@
+module Privy
+  module Models
+    type wallet_action_swap_failed_webhook_payload =
+      {
+        action_type: Privy::Models::wallet_action_type,
+        :caip2 => String,
+        failure_reason: Privy::FailureReason,
+        input_amount: String?,
+        input_token: String,
+        output_token: String,
+        status: Privy::Models::WalletActionSwapFailedWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionSwapFailedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+    class WalletActionSwapFailedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor caip2: String
+
+      attr_accessor failure_reason: Privy::FailureReason
+
+      attr_accessor input_amount: String?
+
+      attr_accessor input_token: String
+
+      attr_accessor output_token: String
+
+      attr_accessor status: Privy::Models::WalletActionSwapFailedWebhookPayload::status
+
+      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+
+      attr_accessor type: Privy::Models::WalletActionSwapFailedWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_type: Privy::Models::wallet_action_type,
+        caip2: String,
+        failure_reason: Privy::FailureReason,
+        input_amount: String?,
+        input_token: String,
+        output_token: String,
+        status: Privy::Models::WalletActionSwapFailedWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionSwapFailedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::wallet_action_type,
+        :caip2 => String,
+        failure_reason: Privy::FailureReason,
+        input_amount: String?,
+        input_token: String,
+        output_token: String,
+        status: Privy::Models::WalletActionSwapFailedWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionSwapFailedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+      type status = :failed
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionSwapFailedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.swap.failed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_SWAP_FAILED: :"wallet_action.swap.failed"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionSwapFailedWebhookPayload::type_]
+      end
+    end
+  end
+end

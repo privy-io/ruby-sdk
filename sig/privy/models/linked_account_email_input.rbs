@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type linked_account_email_input = { address: String, type: :email }
+
+    class LinkedAccountEmailInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor type: :email
+
+      def initialize: (address: String, ?type: :email) -> void
+
+      def to_hash: -> { address: String, type: :email }
+    end
+  end
+end

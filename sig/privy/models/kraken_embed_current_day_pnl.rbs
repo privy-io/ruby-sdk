@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type kraken_embed_current_day_pnl = { pnl: String, since: Time }
+
+    class KrakenEmbedCurrentDayPnl < Privy::Internal::Type::BaseModel
+      attr_accessor pnl: String
+
+      attr_accessor since: Time
+
+      def initialize: (pnl: String, since: Time) -> void
+
+      def to_hash: -> { pnl: String, since: Time }
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type passkey_authenticate_input =
+      {
+        authenticator_response: Privy::PasskeyAuthenticatorVerifyResponse,
+        challenge: String,
+        relying_party: String
+      }
+
+    class PasskeyAuthenticateInput < Privy::Internal::Type::BaseModel
+      attr_accessor authenticator_response: Privy::PasskeyAuthenticatorVerifyResponse
+
+      attr_accessor challenge: String
+
+      attr_reader relying_party: String?
+
+      def relying_party=: (String) -> String
+
+      def initialize: (
+        authenticator_response: Privy::PasskeyAuthenticatorVerifyResponse,
+        challenge: String,
+        ?relying_party: String
+      ) -> void
+
+      def to_hash: -> {
+        authenticator_response: Privy::PasskeyAuthenticatorVerifyResponse,
+        challenge: String,
+        relying_party: String
+      }
+    end
+  end
+end

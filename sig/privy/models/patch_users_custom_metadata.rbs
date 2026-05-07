@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type patch_users_custom_metadata =
+      { custom_metadata: Privy::Models::custom_metadata }
+
+    class PatchUsersCustomMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor custom_metadata: Privy::Models::custom_metadata
+
+      def initialize: (custom_metadata: Privy::Models::custom_metadata) -> void
+
+      def to_hash: -> { custom_metadata: Privy::Models::custom_metadata }
+    end
+  end
+end

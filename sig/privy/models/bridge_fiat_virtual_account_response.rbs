@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type bridge_fiat_virtual_account_response =
+      {
+        deposit_instructions: Privy::Models::bridge_fiat_virtual_account_deposit_instructions,
+        destination: Privy::BridgeFiatVirtualAccountDestination,
+        provider: Privy::Models::BridgeFiatVirtualAccountResponse::provider,
+        status: String
+      }
+
+    class BridgeFiatVirtualAccountResponse < Privy::Internal::Type::BaseModel
+      attr_accessor deposit_instructions: Privy::Models::bridge_fiat_virtual_account_deposit_instructions
+
+      attr_accessor destination: Privy::BridgeFiatVirtualAccountDestination
+
+      attr_accessor provider: Privy::Models::BridgeFiatVirtualAccountResponse::provider
+
+      attr_accessor status: String
+
+      def initialize: (
+        deposit_instructions: Privy::Models::bridge_fiat_virtual_account_deposit_instructions,
+        destination: Privy::BridgeFiatVirtualAccountDestination,
+        provider: Privy::Models::BridgeFiatVirtualAccountResponse::provider,
+        status: String
+      ) -> void
+
+      def to_hash: -> {
+        deposit_instructions: Privy::Models::bridge_fiat_virtual_account_deposit_instructions,
+        destination: Privy::BridgeFiatVirtualAccountDestination,
+        provider: Privy::Models::BridgeFiatVirtualAccountResponse::provider,
+        status: String
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatVirtualAccountResponse::provider]
+      end
+    end
+  end
+end

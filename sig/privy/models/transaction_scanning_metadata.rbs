@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type transaction_scanning_metadata = { domain: String }
+
+    class TransactionScanningMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor domain: String
+
+      def initialize: (domain: String) -> void
+
+      def to_hash: -> { domain: String }
+    end
+  end
+end

@@ -1,0 +1,107 @@
+module Privy
+  module Models
+    type policy_create_params =
+      {
+        chain_type: Privy::Models::wallet_chain_type,
+        name: String,
+        rules: ::Array[Privy::PolicyCreateParams::Rule],
+        version: Privy::Models::PolicyCreateParams::version,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?,
+        privy_idempotency_key: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class PolicyCreateParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+      attr_accessor name: String
+
+      attr_accessor rules: ::Array[Privy::PolicyCreateParams::Rule]
+
+      attr_accessor version: Privy::Models::PolicyCreateParams::version
+
+      attr_accessor owner: Privy::Models::owner_input?
+
+      attr_accessor owner_id: String?
+
+      attr_reader privy_idempotency_key: String?
+
+      def privy_idempotency_key=: (String) -> String
+
+      def initialize: (
+        chain_type: Privy::Models::wallet_chain_type,
+        name: String,
+        rules: ::Array[Privy::PolicyCreateParams::Rule],
+        version: Privy::Models::PolicyCreateParams::version,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?privy_idempotency_key: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        chain_type: Privy::Models::wallet_chain_type,
+        name: String,
+        rules: ::Array[Privy::PolicyCreateParams::Rule],
+        version: Privy::Models::PolicyCreateParams::version,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?,
+        privy_idempotency_key: String,
+        request_options: Privy::RequestOptions
+      }
+
+      type rule =
+        {
+          action: Privy::Models::policy_action,
+          conditions: ::Array[Privy::Models::policy_condition],
+          method_: Privy::Models::policy_method,
+          name: String,
+          id: String
+        }
+
+      class Rule < Privy::Internal::Type::BaseModel
+        attr_accessor action: Privy::Models::policy_action
+
+        attr_accessor conditions: ::Array[Privy::Models::policy_condition]
+
+        attr_accessor method_: Privy::Models::policy_method
+
+        attr_accessor name: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        def initialize: (
+          action: Privy::Models::policy_action,
+          conditions: ::Array[Privy::Models::policy_condition],
+          method_: Privy::Models::policy_method,
+          name: String,
+          ?id: String
+        ) -> void
+
+        def to_hash: -> {
+          action: Privy::Models::policy_action,
+          conditions: ::Array[Privy::Models::policy_condition],
+          method_: Privy::Models::policy_method,
+          name: String,
+          id: String
+        }
+      end
+
+      type version = :"1.0"
+
+      module Version
+        extend Privy::Internal::Type::Enum
+
+        VERSION_1_0: :"1.0"
+
+        def self?.values: -> ::Array[Privy::Models::PolicyCreateParams::version]
+      end
+    end
+  end
+end

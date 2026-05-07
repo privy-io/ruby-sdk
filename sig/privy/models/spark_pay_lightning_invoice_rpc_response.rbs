@@ -1,0 +1,47 @@
+module Privy
+  module Models
+    type spark_pay_lightning_invoice_rpc_response =
+      {
+        method_: Privy::Models::SparkPayLightningInvoiceRpcResponse::method_,
+        data: Privy::Models::SparkPayLightningInvoiceRpcResponse::data
+      }
+
+    class SparkPayLightningInvoiceRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkPayLightningInvoiceRpcResponse::method_
+
+      attr_reader data: Privy::Models::SparkPayLightningInvoiceRpcResponse::data?
+
+      def data=: (
+        Privy::Models::SparkPayLightningInvoiceRpcResponse::data
+      ) -> Privy::Models::SparkPayLightningInvoiceRpcResponse::data
+
+      def initialize: (
+        method_: Privy::Models::SparkPayLightningInvoiceRpcResponse::method_,
+        ?data: Privy::Models::SparkPayLightningInvoiceRpcResponse::data
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkPayLightningInvoiceRpcResponse::method_,
+        data: Privy::Models::SparkPayLightningInvoiceRpcResponse::data
+      }
+
+      type method_ = :payLightningInvoice
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        PAY_LIGHTNING_INVOICE: :payLightningInvoice
+
+        def self?.values: -> ::Array[Privy::Models::SparkPayLightningInvoiceRpcResponse::method_]
+      end
+
+      type data = Privy::SparkTransfer | Privy::SparkLightningSendRequest
+
+      module Data
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::SparkPayLightningInvoiceRpcResponse::data]
+      end
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type wallet_import_supported_chains = :ethereum | :solana
+
+    module WalletImportSupportedChains
+      extend Privy::Internal::Type::Enum
+
+      ETHEREUM: :ethereum
+      SOLANA: :solana
+
+      def self?.values: -> ::Array[Privy::Models::wallet_import_supported_chains]
+    end
+  end
+end

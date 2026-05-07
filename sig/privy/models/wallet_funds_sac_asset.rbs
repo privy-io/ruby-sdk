@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_funds_sac_asset =
+      { address: String, type: Privy::Models::WalletFundsSacAsset::type_ }
+
+    class WalletFundsSacAsset < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor type: Privy::Models::WalletFundsSacAsset::type_
+
+      def initialize: (
+        address: String,
+        type: Privy::Models::WalletFundsSacAsset::type_
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        type: Privy::Models::WalletFundsSacAsset::type_
+      }
+
+      type type_ = :sac
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SAC: :sac
+
+        def self?.values: -> ::Array[Privy::Models::WalletFundsSacAsset::type_]
+      end
+    end
+  end
+end

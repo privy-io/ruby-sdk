@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type condition_value = String | ::Array[String]
+
+    module ConditionValue
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::condition_value]
+
+      StringArray: Privy::Internal::Type::Converter
+    end
+  end
+end

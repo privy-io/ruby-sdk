@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type linked_account_phone =
+      {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        phone_number: String,
+        type: Privy::Models::LinkedAccountPhone::type_,
+        verified_at: Float,
+        number: String
+      }
+
+    class LinkedAccountPhone < Privy::Internal::Type::BaseModel
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor phone_number: String
+
+      attr_accessor type: Privy::Models::LinkedAccountPhone::type_
+
+      attr_accessor verified_at: Float
+
+      attr_reader number: String?
+
+      def number=: (String) -> String
+
+      def initialize: (
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        phone_number: String,
+        type: Privy::Models::LinkedAccountPhone::type_,
+        verified_at: Float,
+        ?number: String
+      ) -> void
+
+      def to_hash: -> {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        phone_number: String,
+        type: Privy::Models::LinkedAccountPhone::type_,
+        verified_at: Float,
+        number: String
+      }
+
+      type type_ = :phone
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PHONE: :phone
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountPhone::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type bridge_mxn_fiat_virtual_account_deposit_instructions =
+      {
+        account_holder_name: String,
+        asset: Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        clabe: String,
+        payment_rails: ::Array[Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+    class BridgeMxnFiatVirtualAccountDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_accessor account_holder_name: String
+
+      attr_accessor asset: Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::asset
+
+      attr_accessor bank_address: String
+
+      attr_accessor bank_name: String
+
+      attr_accessor clabe: String
+
+      attr_accessor payment_rails: ::Array[Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::payment_rail]
+
+      def initialize: (
+        account_holder_name: String,
+        asset: Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        clabe: String,
+        payment_rails: ::Array[Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::payment_rail]
+      ) -> void
+
+      def to_hash: -> {
+        account_holder_name: String,
+        asset: Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        clabe: String,
+        payment_rails: ::Array[Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+      type asset = :mxn
+
+      module Asset
+        extend Privy::Internal::Type::Enum
+
+        MXN: :mxn
+
+        def self?.values: -> ::Array[Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::asset]
+      end
+
+      type payment_rail = :spei
+
+      module PaymentRail
+        extend Privy::Internal::Type::Enum
+
+        SPEI: :spei
+
+        def self?.values: -> ::Array[Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions::payment_rail]
+      end
+    end
+  end
+end

@@ -1,0 +1,54 @@
+module Privy
+  module Models
+    type user =
+      {
+        id: String,
+        created_at: Float,
+        has_accepted_terms: bool,
+        is_guest: bool,
+        linked_accounts: ::Array[Privy::Models::linked_account],
+        mfa_methods: ::Array[Privy::Models::linked_mfa_method],
+        custom_metadata: Privy::Models::custom_metadata
+      }
+
+    class User < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor has_accepted_terms: bool
+
+      attr_accessor is_guest: bool
+
+      attr_accessor linked_accounts: ::Array[Privy::Models::linked_account]
+
+      attr_accessor mfa_methods: ::Array[Privy::Models::linked_mfa_method]
+
+      attr_reader custom_metadata: Privy::Models::custom_metadata?
+
+      def custom_metadata=: (
+        Privy::Models::custom_metadata
+      ) -> Privy::Models::custom_metadata
+
+      def initialize: (
+        id: String,
+        created_at: Float,
+        has_accepted_terms: bool,
+        is_guest: bool,
+        linked_accounts: ::Array[Privy::Models::linked_account],
+        mfa_methods: ::Array[Privy::Models::linked_mfa_method],
+        ?custom_metadata: Privy::Models::custom_metadata
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Float,
+        has_accepted_terms: bool,
+        is_guest: bool,
+        linked_accounts: ::Array[Privy::Models::linked_account],
+        mfa_methods: ::Array[Privy::Models::linked_mfa_method],
+        custom_metadata: Privy::Models::custom_metadata
+      }
+    end
+  end
+end

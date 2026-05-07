@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type update_account_input =
+      Privy::UpdateAccountFromWalletsConfigurationInput
+      | Privy::UpdateAccountFromWalletIDsInput
+
+    module UpdateAccountInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::update_account_input]
+    end
+  end
+end

@@ -1,0 +1,407 @@
+module Privy
+  module Models
+    type app_response =
+      {
+        id: String,
+        accent_color: String?,
+        allowed_domains: ::Array[String],
+        allowed_native_app_ids: ::Array[String],
+        allowed_native_app_url_schemes: ::Array[String],
+        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_enabled: bool,
+        apple_oauth: bool,
+        captcha_enabled: bool,
+        custom_api_url: String?,
+        custom_jwt_auth: bool,
+        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        data_classification: Privy::Models::AppResponse::data_classification,
+        disable_plus_emails: bool,
+        discord_oauth: bool,
+        email_auth: bool,
+        embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
+        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enforce_wallet_uis: bool,
+        farcaster_auth: bool,
+        farcaster_link_wallets_enabled: bool,
+        fiat_on_ramp_enabled: bool,
+        github_oauth: bool,
+        google_oauth: bool,
+        guest_auth: bool,
+        icon_url: String?,
+        instagram_oauth: bool,
+        legacy_wallet_ui_config: bool,
+        line_oauth: bool,
+        linkedin_oauth: bool,
+        logo_url: String?,
+        max_linked_wallets_per_user: Float?,
+        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        name: String,
+        passkey_auth: bool,
+        passkeys_for_signup_enabled: bool,
+        privacy_policy_url: String?,
+        require_users_accept_terms: bool?,
+        show_wallet_login_first: bool,
+        smart_wallet_config: Privy::Models::smart_wallet_configuration,
+        sms_auth: bool,
+        solana_wallet_auth: bool,
+        spotify_oauth: bool,
+        telegram_auth: bool,
+        terms_and_conditions_url: String?,
+        theme: String,
+        tiktok_oauth: bool,
+        twitch_oauth: bool,
+        twitter_oauth: bool,
+        twitter_oauth_on_mobile_enabled: bool,
+        verification_key: String,
+        wallet_auth: bool,
+        wallet_connect_cloud_project_id: String?,
+        whatsapp_enabled: bool,
+        captcha_site_key: String,
+        funding_config: Privy::FundingConfigResponseSchema,
+        telegram_auth_config: Privy::TelegramAuthConfigSchema
+      }
+
+    class AppResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor accent_color: String?
+
+      attr_accessor allowed_domains: ::Array[String]
+
+      attr_accessor allowed_native_app_ids: ::Array[String]
+
+      attr_accessor allowed_native_app_url_schemes: ::Array[String]
+
+      attr_accessor allowlist_config: Privy::AppResponse::AllowlistConfig
+
+      attr_accessor allowlist_enabled: bool
+
+      attr_accessor apple_oauth: bool
+
+      attr_accessor captcha_enabled: bool
+
+      attr_accessor custom_api_url: String?
+
+      attr_accessor custom_jwt_auth: bool
+
+      attr_accessor custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider]
+
+      attr_accessor data_classification: Privy::Models::AppResponse::data_classification
+
+      attr_accessor disable_plus_emails: bool
+
+      attr_accessor discord_oauth: bool
+
+      attr_accessor email_auth: bool
+
+      attr_accessor embedded_wallet_config: Privy::EmbeddedWalletConfigSchema
+
+      attr_accessor enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?
+
+      attr_accessor enforce_wallet_uis: bool
+
+      attr_accessor farcaster_auth: bool
+
+      attr_accessor farcaster_link_wallets_enabled: bool
+
+      attr_accessor fiat_on_ramp_enabled: bool
+
+      attr_accessor github_oauth: bool
+
+      attr_accessor google_oauth: bool
+
+      attr_accessor guest_auth: bool
+
+      attr_accessor icon_url: String?
+
+      attr_accessor instagram_oauth: bool
+
+      attr_accessor legacy_wallet_ui_config: bool
+
+      attr_accessor line_oauth: bool
+
+      attr_accessor linkedin_oauth: bool
+
+      attr_accessor logo_url: String?
+
+      attr_accessor max_linked_wallets_per_user: Float?
+
+      attr_accessor mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method]
+
+      attr_accessor name: String
+
+      attr_accessor passkey_auth: bool
+
+      attr_accessor passkeys_for_signup_enabled: bool
+
+      attr_accessor privacy_policy_url: String?
+
+      attr_accessor require_users_accept_terms: bool?
+
+      attr_accessor show_wallet_login_first: bool
+
+      attr_accessor smart_wallet_config: Privy::Models::smart_wallet_configuration
+
+      attr_accessor sms_auth: bool
+
+      attr_accessor solana_wallet_auth: bool
+
+      attr_accessor spotify_oauth: bool
+
+      attr_accessor telegram_auth: bool
+
+      attr_accessor terms_and_conditions_url: String?
+
+      attr_accessor theme: String
+
+      attr_accessor tiktok_oauth: bool
+
+      attr_accessor twitch_oauth: bool
+
+      attr_accessor twitter_oauth: bool
+
+      attr_accessor twitter_oauth_on_mobile_enabled: bool
+
+      attr_accessor verification_key: String
+
+      attr_accessor wallet_auth: bool
+
+      attr_accessor wallet_connect_cloud_project_id: String?
+
+      attr_accessor whatsapp_enabled: bool
+
+      attr_reader captcha_site_key: String?
+
+      def captcha_site_key=: (String) -> String
+
+      attr_reader funding_config: Privy::FundingConfigResponseSchema?
+
+      def funding_config=: (
+        Privy::FundingConfigResponseSchema
+      ) -> Privy::FundingConfigResponseSchema
+
+      attr_reader telegram_auth_config: Privy::TelegramAuthConfigSchema?
+
+      def telegram_auth_config=: (
+        Privy::TelegramAuthConfigSchema
+      ) -> Privy::TelegramAuthConfigSchema
+
+      def initialize: (
+        id: String,
+        accent_color: String?,
+        allowed_domains: ::Array[String],
+        allowed_native_app_ids: ::Array[String],
+        allowed_native_app_url_schemes: ::Array[String],
+        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_enabled: bool,
+        apple_oauth: bool,
+        captcha_enabled: bool,
+        custom_api_url: String?,
+        custom_jwt_auth: bool,
+        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        data_classification: Privy::Models::AppResponse::data_classification,
+        disable_plus_emails: bool,
+        discord_oauth: bool,
+        email_auth: bool,
+        embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
+        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enforce_wallet_uis: bool,
+        farcaster_auth: bool,
+        farcaster_link_wallets_enabled: bool,
+        fiat_on_ramp_enabled: bool,
+        github_oauth: bool,
+        google_oauth: bool,
+        guest_auth: bool,
+        icon_url: String?,
+        instagram_oauth: bool,
+        legacy_wallet_ui_config: bool,
+        line_oauth: bool,
+        linkedin_oauth: bool,
+        logo_url: String?,
+        max_linked_wallets_per_user: Float?,
+        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        name: String,
+        passkey_auth: bool,
+        passkeys_for_signup_enabled: bool,
+        privacy_policy_url: String?,
+        require_users_accept_terms: bool?,
+        show_wallet_login_first: bool,
+        smart_wallet_config: Privy::Models::smart_wallet_configuration,
+        sms_auth: bool,
+        solana_wallet_auth: bool,
+        spotify_oauth: bool,
+        telegram_auth: bool,
+        terms_and_conditions_url: String?,
+        theme: String,
+        tiktok_oauth: bool,
+        twitch_oauth: bool,
+        twitter_oauth: bool,
+        twitter_oauth_on_mobile_enabled: bool,
+        verification_key: String,
+        wallet_auth: bool,
+        wallet_connect_cloud_project_id: String?,
+        whatsapp_enabled: bool,
+        ?captcha_site_key: String,
+        ?funding_config: Privy::FundingConfigResponseSchema,
+        ?telegram_auth_config: Privy::TelegramAuthConfigSchema
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        accent_color: String?,
+        allowed_domains: ::Array[String],
+        allowed_native_app_ids: ::Array[String],
+        allowed_native_app_url_schemes: ::Array[String],
+        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_enabled: bool,
+        apple_oauth: bool,
+        captcha_enabled: bool,
+        custom_api_url: String?,
+        custom_jwt_auth: bool,
+        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        data_classification: Privy::Models::AppResponse::data_classification,
+        disable_plus_emails: bool,
+        discord_oauth: bool,
+        email_auth: bool,
+        embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
+        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enforce_wallet_uis: bool,
+        farcaster_auth: bool,
+        farcaster_link_wallets_enabled: bool,
+        fiat_on_ramp_enabled: bool,
+        github_oauth: bool,
+        google_oauth: bool,
+        guest_auth: bool,
+        icon_url: String?,
+        instagram_oauth: bool,
+        legacy_wallet_ui_config: bool,
+        line_oauth: bool,
+        linkedin_oauth: bool,
+        logo_url: String?,
+        max_linked_wallets_per_user: Float?,
+        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        name: String,
+        passkey_auth: bool,
+        passkeys_for_signup_enabled: bool,
+        privacy_policy_url: String?,
+        require_users_accept_terms: bool?,
+        show_wallet_login_first: bool,
+        smart_wallet_config: Privy::Models::smart_wallet_configuration,
+        sms_auth: bool,
+        solana_wallet_auth: bool,
+        spotify_oauth: bool,
+        telegram_auth: bool,
+        terms_and_conditions_url: String?,
+        theme: String,
+        tiktok_oauth: bool,
+        twitch_oauth: bool,
+        twitter_oauth: bool,
+        twitter_oauth_on_mobile_enabled: bool,
+        verification_key: String,
+        wallet_auth: bool,
+        wallet_connect_cloud_project_id: String?,
+        whatsapp_enabled: bool,
+        captcha_site_key: String,
+        funding_config: Privy::FundingConfigResponseSchema,
+        telegram_auth_config: Privy::TelegramAuthConfigSchema
+      }
+
+      type allowlist_config =
+        {
+          cta_link: String?,
+          cta_text: String?,
+          error_detail: String?,
+          error_title: String?
+        }
+
+      class AllowlistConfig < Privy::Internal::Type::BaseModel
+        attr_accessor cta_link: String?
+
+        attr_accessor cta_text: String?
+
+        attr_accessor error_detail: String?
+
+        attr_accessor error_title: String?
+
+        def initialize: (
+          cta_link: String?,
+          cta_text: String?,
+          error_detail: String?,
+          error_title: String?
+        ) -> void
+
+        def to_hash: -> {
+          cta_link: String?,
+          cta_text: String?,
+          error_detail: String?,
+          error_title: String?
+        }
+      end
+
+      type custom_oauth_provider =
+        {
+          enabled: bool,
+          provider: String,
+          provider_display_name: String,
+          provider_icon_url: String
+        }
+
+      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
+        attr_accessor enabled: bool
+
+        attr_accessor provider: String
+
+        attr_accessor provider_display_name: String
+
+        attr_accessor provider_icon_url: String
+
+        def initialize: (
+          enabled: bool,
+          provider: String,
+          provider_display_name: String,
+          provider_icon_url: String
+        ) -> void
+
+        def to_hash: -> {
+          enabled: bool,
+          provider: String,
+          provider_display_name: String,
+          provider_icon_url: String
+        }
+      end
+
+      type data_classification = :public
+
+      module DataClassification
+        extend Privy::Internal::Type::Enum
+
+        PUBLIC: :public
+
+        def self?.values: -> ::Array[Privy::Models::AppResponse::data_classification]
+      end
+
+      type enabled_captcha_provider = :turnstile | :hcaptcha
+
+      module EnabledCaptchaProvider
+        extend Privy::Internal::Type::Enum
+
+        TURNSTILE: :turnstile
+        HCAPTCHA: :hcaptcha
+
+        def self?.values: -> ::Array[Privy::Models::AppResponse::enabled_captcha_provider]
+      end
+
+      type mfa_method = :sms | :totp | :passkey
+
+      module MfaMethod
+        extend Privy::Internal::Type::Enum
+
+        SMS: :sms
+        TOTP: :totp
+        PASSKEY: :passkey
+
+        def self?.values: -> ::Array[Privy::Models::AppResponse::mfa_method]
+      end
+    end
+  end
+end

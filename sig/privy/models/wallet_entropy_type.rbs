@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type wallet_entropy_type = :hd | :"private-key"
+
+    module WalletEntropyType
+      extend Privy::Internal::Type::Enum
+
+      HD: :hd
+      PRIVATE_KEY: :"private-key"
+
+      def self?.values: -> ::Array[Privy::Models::wallet_entropy_type]
+    end
+  end
+end

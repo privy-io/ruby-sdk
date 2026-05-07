@@ -1,0 +1,35 @@
+module Privy
+  module Resources
+    class Wallets
+      class Earn
+        class Ethereum
+          attr_reader incentive: Privy::Resources::Wallets::Earn::Ethereum::Incentive
+
+          def _deposit: (
+            String wallet_id,
+            vault_id: String,
+            ?amount: String,
+            ?raw_amount: String,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::EarnDepositActionResponse
+
+          def _withdraw: (
+            String wallet_id,
+            vault_id: String,
+            ?amount: String,
+            ?raw_amount: String,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::EarnWithdrawActionResponse
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

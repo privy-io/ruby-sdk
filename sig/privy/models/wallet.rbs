@@ -1,0 +1,95 @@
+module Privy
+  module Models
+    type wallet =
+      {
+        id: String,
+        additional_signers: Privy::Models::wallet_additional_signer,
+        address: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        created_at: Float,
+        exported_at: Float?,
+        imported_at: Float?,
+        owner_id: String?,
+        policy_ids: ::Array[String],
+        authorization_threshold: Float,
+        custody: Privy::WalletCustodian,
+        display_name: String,
+        external_id: String,
+        public_key: String
+      }
+
+    class Wallet < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor additional_signers: Privy::Models::wallet_additional_signer
+
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+      attr_accessor created_at: Float
+
+      attr_accessor exported_at: Float?
+
+      attr_accessor imported_at: Float?
+
+      attr_accessor owner_id: String?
+
+      attr_accessor policy_ids: ::Array[String]
+
+      attr_reader authorization_threshold: Float?
+
+      def authorization_threshold=: (Float) -> Float
+
+      attr_reader custody: Privy::WalletCustodian?
+
+      def custody=: (Privy::WalletCustodian) -> Privy::WalletCustodian
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_reader public_key: String?
+
+      def public_key=: (String) -> String
+
+      def initialize: (
+        id: String,
+        additional_signers: Privy::Models::wallet_additional_signer,
+        address: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        created_at: Float,
+        exported_at: Float?,
+        imported_at: Float?,
+        owner_id: String?,
+        policy_ids: ::Array[String],
+        ?authorization_threshold: Float,
+        ?custody: Privy::WalletCustodian,
+        ?display_name: String,
+        ?external_id: String,
+        ?public_key: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        additional_signers: Privy::Models::wallet_additional_signer,
+        address: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        created_at: Float,
+        exported_at: Float?,
+        imported_at: Float?,
+        owner_id: String?,
+        policy_ids: ::Array[String],
+        authorization_threshold: Float,
+        custody: Privy::WalletCustodian,
+        display_name: String,
+        external_id: String,
+        public_key: String
+      }
+    end
+  end
+end

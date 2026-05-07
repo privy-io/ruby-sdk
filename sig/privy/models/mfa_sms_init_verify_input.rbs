@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type mfa_sms_init_verify_input =
+      { action: Privy::Models::MfaSMSInitVerifyInput::action }
+
+    class MfaSMSInitVerifyInput < Privy::Internal::Type::BaseModel
+      attr_accessor action: Privy::Models::MfaSMSInitVerifyInput::action
+
+      def initialize: (
+        action: Privy::Models::MfaSMSInitVerifyInput::action
+      ) -> void
+
+      def to_hash: -> { action: Privy::Models::MfaSMSInitVerifyInput::action }
+
+      type action = :verify
+
+      module Action
+        extend Privy::Internal::Type::Enum
+
+        VERIFY: :verify
+
+        def self?.values: -> ::Array[Privy::Models::MfaSMSInitVerifyInput::action]
+      end
+    end
+  end
+end

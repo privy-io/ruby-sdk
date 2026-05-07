@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type additional_signer_item_input =
+      { signer_id: String, override_policy_ids: Privy::Models::policy_input }
+
+    class AdditionalSignerItemInput < Privy::Internal::Type::BaseModel
+      attr_accessor signer_id: String
+
+      attr_reader override_policy_ids: Privy::Models::policy_input?
+
+      def override_policy_ids=: (
+        Privy::Models::policy_input
+      ) -> Privy::Models::policy_input
+
+      def initialize: (
+        signer_id: String,
+        ?override_policy_ids: Privy::Models::policy_input
+      ) -> void
+
+      def to_hash: -> {
+        signer_id: String,
+        override_policy_ids: Privy::Models::policy_input
+      }
+    end
+  end
+end

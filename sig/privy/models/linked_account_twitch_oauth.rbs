@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type linked_account_twitch_oauth =
+      {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountTwitchOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+    class LinkedAccountTwitchOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountTwitchOAuth::type_
+
+      attr_accessor username: String?
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountTwitchOAuth::type_,
+        username: String?,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountTwitchOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+      type type_ = :twitch_oauth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TWITCH_OAUTH: :twitch_oauth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountTwitchOAuth::type_]
+      end
+    end
+  end
+end

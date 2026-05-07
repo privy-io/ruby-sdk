@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_verify_response_body = { verified: bool }
+
+    class OAuthVerifyResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor verified: bool
+
+      def initialize: (verified: bool) -> void
+
+      def to_hash: -> { verified: bool }
+    end
+  end
+end

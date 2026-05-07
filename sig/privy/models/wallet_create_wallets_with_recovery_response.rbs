@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type wallet_create_wallets_with_recovery_response =
+      { recovery_user_id: String, wallets: ::Array[Privy::Wallet] }
+
+    class WalletCreateWalletsWithRecoveryResponse < Privy::Internal::Type::BaseModel
+      attr_accessor recovery_user_id: String
+
+      attr_accessor wallets: ::Array[Privy::Wallet]
+
+      def initialize: (
+        recovery_user_id: String,
+        wallets: ::Array[Privy::Wallet]
+      ) -> void
+
+      def to_hash: -> {
+        recovery_user_id: String,
+        wallets: ::Array[Privy::Wallet]
+      }
+    end
+  end
+end

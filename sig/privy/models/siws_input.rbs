@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type siws_input =
+      {
+        message: String,
+        signature: String,
+        connector_type: String?,
+        message_type: Privy::Models::SiwsInput::message_type,
+        wallet_client_type: String?
+      }
+
+    class SiwsInput < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_accessor connector_type: String?
+
+      attr_reader message_type: Privy::Models::SiwsInput::message_type?
+
+      def message_type=: (
+        Privy::Models::SiwsInput::message_type
+      ) -> Privy::Models::SiwsInput::message_type
+
+      attr_accessor wallet_client_type: String?
+
+      def initialize: (
+        message: String,
+        signature: String,
+        ?connector_type: String?,
+        ?message_type: Privy::Models::SiwsInput::message_type,
+        ?wallet_client_type: String?
+      ) -> void
+
+      def to_hash: -> {
+        message: String,
+        signature: String,
+        connector_type: String?,
+        message_type: Privy::Models::SiwsInput::message_type,
+        wallet_client_type: String?
+      }
+
+      type message_type = :transaction | :plain
+
+      module MessageType
+        extend Privy::Internal::Type::Enum
+
+        TRANSACTION: :transaction
+        PLAIN: :plain
+
+        def self?.values: -> ::Array[Privy::Models::SiwsInput::message_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type aggregation_window =
+      { seconds: Integer, type: Privy::Models::AggregationWindow::type_ }
+
+    class AggregationWindow < Privy::Internal::Type::BaseModel
+      attr_accessor seconds: Integer
+
+      attr_accessor type: Privy::Models::AggregationWindow::type_
+
+      def initialize: (
+        seconds: Integer,
+        type: Privy::Models::AggregationWindow::type_
+      ) -> void
+
+      def to_hash: -> {
+        seconds: Integer,
+        type: Privy::Models::AggregationWindow::type_
+      }
+
+      type type_ = :rolling
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        ROLLING: :rolling
+
+        def self?.values: -> ::Array[Privy::Models::AggregationWindow::type_]
+      end
+    end
+  end
+end

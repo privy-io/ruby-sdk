@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type authorization_key_role = :root | :manager | :"delegated-actions"
+
+    module AuthorizationKeyRole
+      extend Privy::Internal::Type::Enum
+
+      ROOT: :root
+      MANAGER: :manager
+      DELEGATED_ACTIONS: :"delegated-actions"
+
+      def self?.values: -> ::Array[Privy::Models::authorization_key_role]
+    end
+  end
+end

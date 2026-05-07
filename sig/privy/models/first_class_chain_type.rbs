@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type first_class_chain_type = :ethereum | :solana
+
+    module FirstClassChainType
+      extend Privy::Internal::Type::Enum
+
+      ETHEREUM: :ethereum
+      SOLANA: :solana
+
+      def self?.values: -> ::Array[Privy::Models::first_class_chain_type]
+    end
+  end
+end

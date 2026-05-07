@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type linked_account =
+      Privy::LinkedAccountEmail
+      | Privy::LinkedAccountPhone
+      | Privy::LinkedAccountEthereum
+      | Privy::LinkedAccountSolana
+      | Privy::LinkedAccountSmartWallet
+      | Privy::LinkedAccountEthereumEmbeddedWallet
+      | Privy::LinkedAccountSolanaEmbeddedWallet
+      | Privy::LinkedAccountBitcoinSegwitEmbeddedWallet
+      | Privy::LinkedAccountBitcoinTaprootEmbeddedWallet
+      | Privy::LinkedAccountCurveSigningEmbeddedWallet
+      | Privy::LinkedAccountGoogleOAuth
+      | Privy::LinkedAccountTwitterOAuth
+      | Privy::LinkedAccountDiscordOAuth
+      | Privy::LinkedAccountGitHubOAuth
+      | Privy::LinkedAccountSpotifyOAuth
+      | Privy::LinkedAccountInstagramOAuth
+      | Privy::LinkedAccountTiktokOAuth
+      | Privy::LinkedAccountLineOAuth
+      | Privy::LinkedAccountTwitchOAuth
+      | Privy::LinkedAccountLinkedInOAuth
+      | Privy::LinkedAccountAppleOAuth
+      | Privy::LinkedAccountCustomOAuth
+      | Privy::LinkedAccountCustomJwt
+      | Privy::LinkedAccountFarcaster
+      | Privy::LinkedAccountPasskey
+      | Privy::LinkedAccountTelegram
+      | Privy::LinkedAccountCrossApp
+      | Privy::LinkedAccountAuthorizationKey
+
+    module LinkedAccount
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::linked_account]
+    end
+  end
+end

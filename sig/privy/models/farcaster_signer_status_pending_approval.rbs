@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type farcaster_signer_status_pending_approval =
+      {
+        public_key: String,
+        status: Privy::Models::FarcasterSignerStatusPendingApproval::status
+      }
+
+    class FarcasterSignerStatusPendingApproval < Privy::Internal::Type::BaseModel
+      attr_accessor public_key: String
+
+      attr_accessor status: Privy::Models::FarcasterSignerStatusPendingApproval::status
+
+      def initialize: (
+        public_key: String,
+        status: Privy::Models::FarcasterSignerStatusPendingApproval::status
+      ) -> void
+
+      def to_hash: -> {
+        public_key: String,
+        status: Privy::Models::FarcasterSignerStatusPendingApproval::status
+      }
+
+      type status = :pending_approval
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING_APPROVAL: :pending_approval
+
+        def self?.values: -> ::Array[Privy::Models::FarcasterSignerStatusPendingApproval::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Privy
+  module Resources
+    class Wallets
+      class Earn
+        class Ethereum
+          class Incentive
+            def _claim: (
+              String wallet_id,
+              chain: String,
+              ?privy_authorization_signature: String,
+              ?privy_idempotency_key: String,
+              ?privy_request_expiry: String,
+              ?request_options: Privy::request_opts
+            ) -> Privy::EarnIncentiveClaimActionResponse
+
+            def initialize: (client: Privy::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

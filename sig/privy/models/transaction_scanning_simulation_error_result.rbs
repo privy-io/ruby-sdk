@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type transaction_scanning_simulation_error_result =
+      {
+        error: String,
+        status: Privy::Models::TransactionScanningSimulationErrorResult::status
+      }
+
+    class TransactionScanningSimulationErrorResult < Privy::Internal::Type::BaseModel
+      attr_accessor error: String
+
+      attr_accessor status: Privy::Models::TransactionScanningSimulationErrorResult::status
+
+      def initialize: (
+        error: String,
+        status: Privy::Models::TransactionScanningSimulationErrorResult::status
+      ) -> void
+
+      def to_hash: -> {
+        error: String,
+        status: Privy::Models::TransactionScanningSimulationErrorResult::status
+      }
+
+      type status = :Error
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        ERROR: :Error
+
+        def self?.values: -> ::Array[Privy::Models::TransactionScanningSimulationErrorResult::status]
+      end
+    end
+  end
+end

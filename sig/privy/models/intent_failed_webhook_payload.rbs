@@ -1,0 +1,74 @@
+module Privy
+  module Models
+    type intent_failed_webhook_payload =
+      {
+        action_result: Privy::BaseActionResult,
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        status: String,
+        type: Privy::Models::IntentFailedWebhookPayload::type_,
+        created_by_display_name: String,
+        created_by_id: String
+      }
+
+    class IntentFailedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_result: Privy::BaseActionResult
+
+      attr_accessor created_at: Float
+
+      attr_accessor expires_at: Float
+
+      attr_accessor intent_id: String
+
+      attr_accessor intent_type: Privy::Models::intent_type
+
+      attr_accessor status: String
+
+      attr_accessor type: Privy::Models::IntentFailedWebhookPayload::type_
+
+      attr_reader created_by_display_name: String?
+
+      def created_by_display_name=: (String) -> String
+
+      attr_reader created_by_id: String?
+
+      def created_by_id=: (String) -> String
+
+      def initialize: (
+        action_result: Privy::BaseActionResult,
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        status: String,
+        type: Privy::Models::IntentFailedWebhookPayload::type_,
+        ?created_by_display_name: String,
+        ?created_by_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_result: Privy::BaseActionResult,
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        status: String,
+        type: Privy::Models::IntentFailedWebhookPayload::type_,
+        created_by_display_name: String,
+        created_by_id: String
+      }
+
+      type type_ = :"intent.failed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INTENT_FAILED: :"intent.failed"
+
+        def self?.values: -> ::Array[Privy::Models::IntentFailedWebhookPayload::type_]
+      end
+    end
+  end
+end

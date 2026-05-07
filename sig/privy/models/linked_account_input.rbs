@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type linked_account_input =
+      Privy::LinkedAccountWalletInput
+      | Privy::LinkedAccountEmailInput
+      | Privy::LinkedAccountPhoneInput
+      | Privy::LinkedAccountGoogleInput
+      | Privy::LinkedAccountTwitterInput
+      | Privy::LinkedAccountDiscordInput
+      | Privy::LinkedAccountGitHubInput
+      | Privy::LinkedAccountSpotifyInput
+      | Privy::LinkedAccountInstagramInput
+      | Privy::LinkedAccountTiktokInput
+      | Privy::LinkedAccountLineInput
+      | Privy::LinkedAccountTwitchInput
+      | Privy::LinkedAccountAppleInput
+      | Privy::LinkedAccountLinkedInInput
+      | Privy::LinkedAccountFarcasterInput
+      | Privy::LinkedAccountTelegramInput
+      | Privy::LinkedAccountCustomJwtInput
+      | Privy::LinkedAccountPasskeyInput
+
+    module LinkedAccountInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::linked_account_input]
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_funds_erc20_asset =
+      { address: String, type: Privy::Models::WalletFundsErc20Asset::type_ }
+
+    class WalletFundsErc20Asset < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor type: Privy::Models::WalletFundsErc20Asset::type_
+
+      def initialize: (
+        address: String,
+        type: Privy::Models::WalletFundsErc20Asset::type_
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        type: Privy::Models::WalletFundsErc20Asset::type_
+      }
+
+      type type_ = :erc20
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        ERC20: :erc20
+
+        def self?.values: -> ::Array[Privy::Models::WalletFundsErc20Asset::type_]
+      end
+    end
+  end
+end

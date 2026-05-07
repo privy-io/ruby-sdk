@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type gas_spend_response_body =
+      { currency: Privy::Models::gas_spend_currency, value: String }
+
+    class GasSpendResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor currency: Privy::Models::gas_spend_currency
+
+      attr_accessor value: String
+
+      def initialize: (
+        currency: Privy::Models::gas_spend_currency,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        currency: Privy::Models::gas_spend_currency,
+        value: String
+      }
+    end
+  end
+end

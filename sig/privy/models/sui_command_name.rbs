@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type sui_command_name = :TransferObjects | :SplitCoins | :MergeCoins
+
+    module SuiCommandName
+      extend Privy::Internal::Type::Enum
+
+      TRANSFER_OBJECTS: :TransferObjects
+      SPLIT_COINS: :SplitCoins
+      MERGE_COINS: :MergeCoins
+
+      def self?.values: -> ::Array[Privy::Models::sui_command_name]
+    end
+  end
+end

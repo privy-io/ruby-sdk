@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type oauth_unlink_request_body =
+      { provider: Privy::Models::oauth_provider_id, subject: String }
+
+    class OAuthUnlinkRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor provider: Privy::Models::oauth_provider_id
+
+      attr_accessor subject: String
+
+      def initialize: (
+        provider: Privy::Models::oauth_provider_id,
+        subject: String
+      ) -> void
+
+      def to_hash: -> {
+        provider: Privy::Models::oauth_provider_id,
+        subject: String
+      }
+    end
+  end
+end

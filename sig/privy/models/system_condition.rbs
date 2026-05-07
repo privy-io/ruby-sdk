@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type system_condition =
+      {
+        field: Privy::Models::SystemCondition::field,
+        field_source: Privy::Models::SystemCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class SystemCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::SystemCondition::field
+
+      attr_accessor field_source: Privy::Models::SystemCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::SystemCondition::field,
+        field_source: Privy::Models::SystemCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::SystemCondition::field,
+        field_source: Privy::Models::SystemCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field = :current_unix_timestamp
+
+      module Field
+        extend Privy::Internal::Type::Enum
+
+        CURRENT_UNIX_TIMESTAMP: :current_unix_timestamp
+
+        def self?.values: -> ::Array[Privy::Models::SystemCondition::field]
+      end
+
+      type field_source = :system
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        SYSTEM: :system
+
+        def self?.values: -> ::Array[Privy::Models::SystemCondition::field_source]
+      end
+    end
+  end
+end

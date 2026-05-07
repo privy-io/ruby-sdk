@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type intent_type =
+      :KEY_QUORUM | :POLICY | :RULE | :RPC | :TRANSFER | :WALLET
+
+    module IntentType
+      extend Privy::Internal::Type::Enum
+
+      KEY_QUORUM: :KEY_QUORUM
+      POLICY: :POLICY
+      RULE: :RULE
+      RPC: :RPC
+      TRANSFER: :TRANSFER
+      WALLET: :WALLET
+
+      def self?.values: -> ::Array[Privy::Models::intent_type]
+    end
+  end
+end

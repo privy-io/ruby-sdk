@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type oauth_transfer_user_info_meta = { provider_app_id: String }
+
+    class OAuthTransferUserInfoMeta < Privy::Internal::Type::BaseModel
+      attr_reader provider_app_id: String?
+
+      def provider_app_id=: (String) -> String
+
+      def initialize: (?provider_app_id: String) -> void
+
+      def to_hash: -> { provider_app_id: String }
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type spark_token_balance =
+      { balance: String, token_metadata: Privy::SparkUserTokenMetadata }
+
+    class SparkTokenBalance < Privy::Internal::Type::BaseModel
+      attr_accessor balance: String
+
+      attr_accessor token_metadata: Privy::SparkUserTokenMetadata
+
+      def initialize: (
+        balance: String,
+        token_metadata: Privy::SparkUserTokenMetadata
+      ) -> void
+
+      def to_hash: -> {
+        balance: String,
+        token_metadata: Privy::SparkUserTokenMetadata
+      }
+    end
+  end
+end

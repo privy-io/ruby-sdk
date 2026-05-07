@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type spark_transfer_rpc_response =
+      {
+        method_: Privy::Models::SparkTransferRpcResponse::method_,
+        data: Privy::SparkTransfer
+      }
+
+    class SparkTransferRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkTransferRpcResponse::method_
+
+      attr_reader data: Privy::SparkTransfer?
+
+      def data=: (Privy::SparkTransfer) -> Privy::SparkTransfer
+
+      def initialize: (
+        method_: Privy::Models::SparkTransferRpcResponse::method_,
+        ?data: Privy::SparkTransfer
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkTransferRpcResponse::method_,
+        data: Privy::SparkTransfer
+      }
+
+      type method_ = :transfer
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER: :transfer
+
+        def self?.values: -> ::Array[Privy::Models::SparkTransferRpcResponse::method_]
+      end
+    end
+  end
+end

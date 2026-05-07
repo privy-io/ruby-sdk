@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type policy_create_rule_params =
+      {
+        policy_id: String,
+        privy_authorization_signature: String,
+        privy_request_expiry: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class PolicyCreateRuleParams < Privy::Models::PolicyRuleRequestBody
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      def policy_id: -> String
+
+      def policy_id=: (String _) -> String
+
+      def privy_authorization_signature: -> String?
+
+      def privy_authorization_signature=: (String _) -> String
+
+      def privy_request_expiry: -> String?
+
+      def privy_request_expiry=: (String _) -> String
+
+      def initialize: (
+        policy_id: String,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        policy_id: String,
+        privy_authorization_signature: String,
+        privy_request_expiry: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

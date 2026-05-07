@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    type bridge_fiat_customer_response =
+      {
+        has_accepted_terms: bool,
+        provider: Privy::Models::BridgeFiatCustomerResponse::provider,
+        status: Privy::Models::BridgeFiatCustomerResponse::status,
+        kyc_url: String,
+        rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
+      }
+
+    class BridgeFiatCustomerResponse < Privy::Internal::Type::BaseModel
+      attr_accessor has_accepted_terms: bool
+
+      attr_accessor provider: Privy::Models::BridgeFiatCustomerResponse::provider
+
+      attr_accessor status: Privy::Models::BridgeFiatCustomerResponse::status
+
+      attr_reader kyc_url: String?
+
+      def kyc_url=: (String) -> String
+
+      attr_reader rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]?
+
+      def rejection_reasons=: (
+        ::Array[Privy::BridgeFiatRejectionReason]
+      ) -> ::Array[Privy::BridgeFiatRejectionReason]
+
+      def initialize: (
+        has_accepted_terms: bool,
+        provider: Privy::Models::BridgeFiatCustomerResponse::provider,
+        status: Privy::Models::BridgeFiatCustomerResponse::status,
+        ?kyc_url: String,
+        ?rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
+      ) -> void
+
+      def to_hash: -> {
+        has_accepted_terms: bool,
+        provider: Privy::Models::BridgeFiatCustomerResponse::provider,
+        status: Privy::Models::BridgeFiatCustomerResponse::status,
+        kyc_url: String,
+        rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatCustomerResponse::provider]
+      end
+    end
+  end
+end

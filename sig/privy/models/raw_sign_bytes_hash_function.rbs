@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type raw_sign_bytes_hash_function = :keccak256 | :sha256 | :blake2b256
+
+    module RawSignBytesHashFunction
+      extend Privy::Internal::Type::Enum
+
+      KECCAK256: :keccak256
+      SHA256: :sha256
+      BLAKE2B256: :blake2b256
+
+      def self?.values: -> ::Array[Privy::Models::raw_sign_bytes_hash_function]
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type rule_intent_update_request_details =
+      {
+        body: Privy::PolicyRuleRequestBody,
+        method_: Privy::Models::RuleIntentUpdateRequestDetails::method_,
+        url: String
+      }
+
+    class RuleIntentUpdateRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor body: Privy::PolicyRuleRequestBody
+
+      attr_accessor method_: Privy::Models::RuleIntentUpdateRequestDetails::method_
+
+      attr_accessor url: String
+
+      def initialize: (
+        body: Privy::PolicyRuleRequestBody,
+        method_: Privy::Models::RuleIntentUpdateRequestDetails::method_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::PolicyRuleRequestBody,
+        method_: Privy::Models::RuleIntentUpdateRequestDetails::method_,
+        url: String
+      }
+
+      type method_ = :PATCH
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        PATCH: :PATCH
+
+        def self?.values: -> ::Array[Privy::Models::RuleIntentUpdateRequestDetails::method_]
+      end
+    end
+  end
+end

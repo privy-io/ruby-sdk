@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type transaction_scanning_validation_result =
+      Privy::TransactionScanningValidationErrorResult
+      | Privy::TransactionScanningValidationSuccessResult
+
+    module TransactionScanningValidationResult
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transaction_scanning_validation_result]
+    end
+  end
+end

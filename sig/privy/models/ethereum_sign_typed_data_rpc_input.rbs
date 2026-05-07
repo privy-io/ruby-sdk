@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type ethereum_sign_typed_data_rpc_input =
+      {
+        method_: Privy::Models::EthereumSignTypedDataRpcInput::method_,
+        params: Privy::EthereumSignTypedDataRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumSignTypedDataRpcInput::chain_type,
+        wallet_id: String
+      }
+
+    class EthereumSignTypedDataRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::EthereumSignTypedDataRpcInput::method_
+
+      attr_accessor params: Privy::EthereumSignTypedDataRpcInputParams
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      attr_reader chain_type: Privy::Models::EthereumSignTypedDataRpcInput::chain_type?
+
+      def chain_type=: (
+        Privy::Models::EthereumSignTypedDataRpcInput::chain_type
+      ) -> Privy::Models::EthereumSignTypedDataRpcInput::chain_type
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        method_: Privy::Models::EthereumSignTypedDataRpcInput::method_,
+        params: Privy::EthereumSignTypedDataRpcInputParams,
+        ?address: String,
+        ?chain_type: Privy::Models::EthereumSignTypedDataRpcInput::chain_type,
+        ?wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::EthereumSignTypedDataRpcInput::method_,
+        params: Privy::EthereumSignTypedDataRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumSignTypedDataRpcInput::chain_type,
+        wallet_id: String
+      }
+
+      type method_ = :eth_signTypedData_v4
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        ETH_SIGN_TYPED_DATA_V4: :eth_signTypedData_v4
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSignTypedDataRpcInput::method_]
+      end
+
+      type chain_type = :ethereum
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM: :ethereum
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSignTypedDataRpcInput::chain_type]
+      end
+    end
+  end
+end

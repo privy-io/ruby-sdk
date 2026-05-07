@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type sui_transfer_objects_command_condition =
+      {
+        field: Privy::Models::sui_transfer_objects_command_field,
+        field_source: Privy::Models::SuiTransferObjectsCommandCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class SuiTransferObjectsCommandCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::sui_transfer_objects_command_field
+
+      attr_accessor field_source: Privy::Models::SuiTransferObjectsCommandCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::sui_transfer_objects_command_field,
+        field_source: Privy::Models::SuiTransferObjectsCommandCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::sui_transfer_objects_command_field,
+        field_source: Privy::Models::SuiTransferObjectsCommandCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field_source = :sui_transfer_objects_command
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        SUI_TRANSFER_OBJECTS_COMMAND: :sui_transfer_objects_command
+
+        def self?.values: -> ::Array[Privy::Models::SuiTransferObjectsCommandCondition::field_source]
+      end
+    end
+  end
+end

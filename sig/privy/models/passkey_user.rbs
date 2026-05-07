@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type passkey_user = { id: String, display_name: String, name: String }
+
+    class PasskeyUser < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor display_name: String
+
+      attr_accessor name: String
+
+      def initialize: (id: String, display_name: String, name: String) -> void
+
+      def to_hash: -> { id: String, display_name: String, name: String }
+    end
+  end
+end

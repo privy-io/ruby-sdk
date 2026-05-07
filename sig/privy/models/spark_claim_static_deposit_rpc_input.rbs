@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type spark_claim_static_deposit_rpc_input =
+      {
+        method_: Privy::Models::SparkClaimStaticDepositRpcInput::method_,
+        params: Privy::SparkClaimStaticDepositRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkClaimStaticDepositRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkClaimStaticDepositRpcInput::method_
+
+      attr_accessor params: Privy::SparkClaimStaticDepositRpcInputParams
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkClaimStaticDepositRpcInput::method_,
+        params: Privy::SparkClaimStaticDepositRpcInputParams,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkClaimStaticDepositRpcInput::method_,
+        params: Privy::SparkClaimStaticDepositRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :claimStaticDeposit
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        CLAIM_STATIC_DEPOSIT: :claimStaticDeposit
+
+        def self?.values: -> ::Array[Privy::Models::SparkClaimStaticDepositRpcInput::method_]
+      end
+    end
+  end
+end

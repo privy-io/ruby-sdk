@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type mfa_verify_response_body = { token: String }
+
+    class MfaVerifyResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      def initialize: (token: String) -> void
+
+      def to_hash: -> { token: String }
+    end
+  end
+end

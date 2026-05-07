@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type ethereum_secp256k1_sign_rpc_input =
+      {
+        method_: Privy::Models::EthereumSecp256k1SignRpcInput::method_,
+        params: Privy::EthereumSecp256k1SignRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumSecp256k1SignRpcInput::chain_type,
+        wallet_id: String
+      }
+
+    class EthereumSecp256k1SignRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::EthereumSecp256k1SignRpcInput::method_
+
+      attr_accessor params: Privy::EthereumSecp256k1SignRpcInputParams
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      attr_reader chain_type: Privy::Models::EthereumSecp256k1SignRpcInput::chain_type?
+
+      def chain_type=: (
+        Privy::Models::EthereumSecp256k1SignRpcInput::chain_type
+      ) -> Privy::Models::EthereumSecp256k1SignRpcInput::chain_type
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        method_: Privy::Models::EthereumSecp256k1SignRpcInput::method_,
+        params: Privy::EthereumSecp256k1SignRpcInputParams,
+        ?address: String,
+        ?chain_type: Privy::Models::EthereumSecp256k1SignRpcInput::chain_type,
+        ?wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::EthereumSecp256k1SignRpcInput::method_,
+        params: Privy::EthereumSecp256k1SignRpcInputParams,
+        address: String,
+        chain_type: Privy::Models::EthereumSecp256k1SignRpcInput::chain_type,
+        wallet_id: String
+      }
+
+      type method_ = :secp256k1_sign
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SECP256K1_SIGN: :secp256k1_sign
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSecp256k1SignRpcInput::method_]
+      end
+
+      type chain_type = :ethereum
+
+      module ChainType
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM: :ethereum
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSecp256k1SignRpcInput::chain_type]
+      end
+    end
+  end
+end

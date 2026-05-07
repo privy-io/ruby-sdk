@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_init_response =
+      {
+        app_id: String,
+        channel_id: String,
+        partner_user_id: String,
+        session_token: String
+      }
+
+    class CoinbaseOnRampInitResponse < Privy::Internal::Type::BaseModel
+      attr_accessor app_id: String
+
+      attr_accessor channel_id: String
+
+      attr_accessor partner_user_id: String
+
+      attr_accessor session_token: String
+
+      def initialize: (
+        app_id: String,
+        channel_id: String,
+        partner_user_id: String,
+        session_token: String
+      ) -> void
+
+      def to_hash: -> {
+        app_id: String,
+        channel_id: String,
+        partner_user_id: String,
+        session_token: String
+      }
+    end
+  end
+end

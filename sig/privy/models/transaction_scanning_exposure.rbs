@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type transaction_scanning_exposure =
+      {
+        asset: Privy::TransactionScanningAssetInfo,
+        spenders: ::Hash[Symbol, Privy::TransactionScanningAssetValue]
+      }
+
+    class TransactionScanningExposure < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::TransactionScanningAssetInfo
+
+      attr_accessor spenders: ::Hash[Symbol, Privy::TransactionScanningAssetValue]
+
+      def initialize: (
+        asset: Privy::TransactionScanningAssetInfo,
+        spenders: ::Hash[Symbol, Privy::TransactionScanningAssetValue]
+      ) -> void
+
+      def to_hash: -> {
+        asset: Privy::TransactionScanningAssetInfo,
+        spenders: ::Hash[Symbol, Privy::TransactionScanningAssetValue]
+      }
+    end
+  end
+end

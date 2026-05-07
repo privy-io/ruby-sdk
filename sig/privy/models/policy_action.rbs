@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type policy_action = :ALLOW | :DENY
+
+    module PolicyAction
+      extend Privy::Internal::Type::Enum
+
+      ALLOW: :ALLOW
+      DENY: :DENY
+
+      def self?.values: -> ::Array[Privy::Models::policy_action]
+    end
+  end
+end

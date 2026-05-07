@@ -1,0 +1,90 @@
+module Privy
+  module Models
+    type linked_account_passkey =
+      {
+        credential_id: String,
+        enrolled_in_mfa: bool,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountPasskey::type_,
+        verified_at: Float,
+        authenticator_name: String,
+        created_with_browser: String,
+        created_with_device: String,
+        created_with_os: String,
+        public_key: String
+      }
+
+    class LinkedAccountPasskey < Privy::Internal::Type::BaseModel
+      attr_accessor credential_id: String
+
+      attr_accessor enrolled_in_mfa: bool
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor type: Privy::Models::LinkedAccountPasskey::type_
+
+      attr_accessor verified_at: Float
+
+      attr_reader authenticator_name: String?
+
+      def authenticator_name=: (String) -> String
+
+      attr_reader created_with_browser: String?
+
+      def created_with_browser=: (String) -> String
+
+      attr_reader created_with_device: String?
+
+      def created_with_device=: (String) -> String
+
+      attr_reader created_with_os: String?
+
+      def created_with_os=: (String) -> String
+
+      attr_reader public_key: String?
+
+      def public_key=: (String) -> String
+
+      def initialize: (
+        credential_id: String,
+        enrolled_in_mfa: bool,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountPasskey::type_,
+        verified_at: Float,
+        ?authenticator_name: String,
+        ?created_with_browser: String,
+        ?created_with_device: String,
+        ?created_with_os: String,
+        ?public_key: String
+      ) -> void
+
+      def to_hash: -> {
+        credential_id: String,
+        enrolled_in_mfa: bool,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountPasskey::type_,
+        verified_at: Float,
+        authenticator_name: String,
+        created_with_browser: String,
+        created_with_device: String,
+        created_with_os: String,
+        public_key: String
+      }
+
+      type type_ = :passkey
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PASSKEY: :passkey
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountPasskey::type_]
+      end
+    end
+  end
+end

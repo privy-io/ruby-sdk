@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type spark_network = :MAINNET | :REGTEST
+
+    module SparkNetwork
+      extend Privy::Internal::Type::Enum
+
+      MAINNET: :MAINNET
+      REGTEST: :REGTEST
+
+      def self?.values: -> ::Array[Privy::Models::spark_network]
+    end
+  end
+end

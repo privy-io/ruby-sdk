@@ -1,0 +1,71 @@
+module Privy
+  module Models
+    type user_search_params =
+      { body: Privy::Models::UserSearchParams::body }
+      & Privy::Internal::Type::request_parameters
+
+    class UserSearchParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor body: Privy::Models::UserSearchParams::body
+
+      def initialize: (
+        body: Privy::Models::UserSearchParams::body,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::Models::UserSearchParams::body,
+        request_options: Privy::RequestOptions
+      }
+
+      type body =
+        Privy::UserSearchParams::Body::SearchTerm
+        | Privy::UserSearchParams::Body::UnionMember1
+
+      module Body
+        extend Privy::Internal::Type::Union
+
+        type search_term = { search_term: String }
+
+        class SearchTerm < Privy::Internal::Type::BaseModel
+          attr_accessor search_term: String
+
+          def initialize: (search_term: String) -> void
+
+          def to_hash: -> { search_term: String }
+        end
+
+        type union_member1 =
+          {
+            emails: ::Array[String],
+            phone_numbers: ::Array[String],
+            wallet_addresses: ::Array[String]
+          }
+
+        class UnionMember1 < Privy::Internal::Type::BaseModel
+          attr_accessor emails: ::Array[String]
+
+          attr_accessor phone_numbers: ::Array[String]
+
+          attr_accessor wallet_addresses: ::Array[String]
+
+          def initialize: (
+            emails: ::Array[String],
+            phone_numbers: ::Array[String],
+            wallet_addresses: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            emails: ::Array[String],
+            phone_numbers: ::Array[String],
+            wallet_addresses: ::Array[String]
+          }
+        end
+
+        def self?.variants: -> ::Array[Privy::Models::UserSearchParams::body]
+      end
+    end
+  end
+end

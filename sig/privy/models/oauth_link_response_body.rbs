@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type oauth_link_response_body = { oauth_tokens: Privy::OAuthTokens }
+
+    class OAuthLinkResponseBody < Privy::Models::User
+      def oauth_tokens: -> Privy::OAuthTokens?
+
+      def oauth_tokens=: (Privy::OAuthTokens _) -> Privy::OAuthTokens
+
+      def initialize: (?oauth_tokens: Privy::OAuthTokens) -> void
+
+      def to_hash: -> { oauth_tokens: Privy::OAuthTokens }
+    end
+  end
+end

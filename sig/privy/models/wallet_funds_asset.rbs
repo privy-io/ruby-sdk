@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type wallet_funds_asset =
+      Privy::WalletFundsNativeTokenAsset
+      | Privy::WalletFundsErc20Asset
+      | Privy::WalletFundsSplAsset
+      | Privy::WalletFundsSacAsset
+
+    module WalletFundsAsset
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_funds_asset]
+    end
+  end
+end

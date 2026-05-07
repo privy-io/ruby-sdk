@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type condition_set_item_value_input = { value: String }
+
+    class ConditionSetItemValueInput < Privy::Internal::Type::BaseModel
+      attr_accessor value: String
+
+      def initialize: (value: String) -> void
+
+      def to_hash: -> { value: String }
+    end
+  end
+end

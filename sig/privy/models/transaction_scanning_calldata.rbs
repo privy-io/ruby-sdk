@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    type transaction_scanning_calldata =
+      {
+        function_selector: String,
+        function_declaration: String,
+        function_signature: String
+      }
+
+    class TransactionScanningCalldata < Privy::Internal::Type::BaseModel
+      attr_accessor function_selector: String
+
+      attr_reader function_declaration: String?
+
+      def function_declaration=: (String) -> String
+
+      attr_reader function_signature: String?
+
+      def function_signature=: (String) -> String
+
+      def initialize: (
+        function_selector: String,
+        ?function_declaration: String,
+        ?function_signature: String
+      ) -> void
+
+      def to_hash: -> {
+        function_selector: String,
+        function_declaration: String,
+        function_signature: String
+      }
+    end
+  end
+end

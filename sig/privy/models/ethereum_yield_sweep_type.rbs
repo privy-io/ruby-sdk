@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type ethereum_yield_sweep_type = :deposit | :withdraw
+
+    module EthereumYieldSweepType
+      extend Privy::Internal::Type::Enum
+
+      DEPOSIT: :deposit
+      WITHDRAW: :withdraw
+
+      def self?.values: -> ::Array[Privy::Models::ethereum_yield_sweep_type]
+    end
+  end
+end

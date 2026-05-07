@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type ethereum_send_transaction_rpc_response_data =
+      {
+        :caip2 => String,
+        hash_: String,
+        reference_id: String?,
+        transaction_id: String,
+        transaction_request: Privy::Models::unsigned_ethereum_transaction,
+        user_operation_hash: String
+      }
+
+    class EthereumSendTransactionRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      attr_accessor hash_: String
+
+      attr_accessor reference_id: String?
+
+      attr_reader transaction_id: String?
+
+      def transaction_id=: (String) -> String
+
+      attr_reader transaction_request: Privy::Models::unsigned_ethereum_transaction?
+
+      def transaction_request=: (
+        Privy::Models::unsigned_ethereum_transaction
+      ) -> Privy::Models::unsigned_ethereum_transaction
+
+      attr_reader user_operation_hash: String?
+
+      def user_operation_hash=: (String) -> String
+
+      def initialize: (
+        caip2: String,
+        hash_: String,
+        ?reference_id: String?,
+        ?transaction_id: String,
+        ?transaction_request: Privy::Models::unsigned_ethereum_transaction,
+        ?user_operation_hash: String
+      ) -> void
+
+      def to_hash: -> {
+        :caip2 => String,
+        hash_: String,
+        reference_id: String?,
+        transaction_id: String,
+        transaction_request: Privy::Models::unsigned_ethereum_transaction,
+        user_operation_hash: String
+      }
+    end
+  end
+end

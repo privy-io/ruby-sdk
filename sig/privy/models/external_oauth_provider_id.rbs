@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    type external_oauth_provider_id =
+      :google
+      | :discord
+      | :twitter
+      | :github
+      | :spotify
+      | :instagram
+      | :tiktok
+      | :linkedin
+      | :apple
+      | :line
+      | :twitch
+
+    module ExternalOAuthProviderID
+      extend Privy::Internal::Type::Enum
+
+      GOOGLE: :google
+      DISCORD: :discord
+      TWITTER: :twitter
+      GITHUB: :github
+      SPOTIFY: :spotify
+      INSTAGRAM: :instagram
+      TIKTOK: :tiktok
+      LINKEDIN: :linkedin
+      APPLE: :apple
+      LINE: :line
+      TWITCH: :twitch
+
+      def self?.values: -> ::Array[Privy::Models::external_oauth_provider_id]
+    end
+  end
+end

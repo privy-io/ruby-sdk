@@ -1,0 +1,31 @@
+module Privy
+  module Models
+    type update_account_from_wallets_configuration_input =
+      {
+        display_name: String,
+        wallets_configuration: Privy::Models::account_wallets_configuration
+      }
+
+    class UpdateAccountFromWalletsConfigurationInput < Privy::Internal::Type::BaseModel
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader wallets_configuration: Privy::Models::account_wallets_configuration?
+
+      def wallets_configuration=: (
+        Privy::Models::account_wallets_configuration
+      ) -> Privy::Models::account_wallets_configuration
+
+      def initialize: (
+        ?display_name: String,
+        ?wallets_configuration: Privy::Models::account_wallets_configuration
+      ) -> void
+
+      def to_hash: -> {
+        display_name: String,
+        wallets_configuration: Privy::Models::account_wallets_configuration
+      }
+    end
+  end
+end

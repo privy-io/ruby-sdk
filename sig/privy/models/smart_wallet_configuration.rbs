@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type smart_wallet_configuration =
+      Privy::SmartWalletConfigurationDisabled
+      | Privy::SmartWalletConfigurationEnabled
+
+    module SmartWalletConfiguration
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::smart_wallet_configuration]
+    end
+  end
+end

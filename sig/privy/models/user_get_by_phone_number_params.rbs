@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type user_get_by_phone_number_params =
+      { number: String } & Privy::Internal::Type::request_parameters
+
+    class UserGetByPhoneNumberParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor number: String
+
+      def initialize: (
+        number: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> { number: String, request_options: Privy::RequestOptions }
+    end
+  end
+end

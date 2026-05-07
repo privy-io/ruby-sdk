@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type abi_parameter =
+      {
+        type: String,
+        components: ::Array[::Hash[Symbol, top]],
+        indexed: bool,
+        internal_type: String,
+        name: String
+      }
+
+    class AbiParameter < Privy::Internal::Type::BaseModel
+      attr_accessor type: String
+
+      attr_reader components: ::Array[::Hash[Symbol, top]]?
+
+      def components=: (
+        ::Array[::Hash[Symbol, top]]
+      ) -> ::Array[::Hash[Symbol, top]]
+
+      attr_reader indexed: bool?
+
+      def indexed=: (bool) -> bool
+
+      attr_reader internal_type: String?
+
+      def internal_type=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (
+        type: String,
+        ?components: ::Array[::Hash[Symbol, top]],
+        ?indexed: bool,
+        ?internal_type: String,
+        ?name: String
+      ) -> void
+
+      def to_hash: -> {
+        type: String,
+        components: ::Array[::Hash[Symbol, top]],
+        indexed: bool,
+        internal_type: String,
+        name: String
+      }
+    end
+  end
+end

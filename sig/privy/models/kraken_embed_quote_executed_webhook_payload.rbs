@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type kraken_embed_quote_executed_webhook_payload =
+      {
+        executed_at: String,
+        quote_id: String,
+        type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedQuoteExecutedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor executed_at: String
+
+      attr_accessor quote_id: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        executed_at: String,
+        quote_id: String,
+        type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        executed_at: String,
+        quote_id: String,
+        type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.quote.executed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_QUOTE_EXECUTED: :"kraken_embed.quote.executed"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_init_ethereum_input =
+      {
+        addresses: ::Array[Privy::CoinbaseOnRampEthereumAddress],
+        assets: ::Array[Privy::Models::coinbase_ethereum_asset]
+      }
+
+    class CoinbaseOnRampInitEthereumInput < Privy::Internal::Type::BaseModel
+      attr_accessor addresses: ::Array[Privy::CoinbaseOnRampEthereumAddress]
+
+      attr_reader assets: ::Array[Privy::Models::coinbase_ethereum_asset]?
+
+      def assets=: (
+        ::Array[Privy::Models::coinbase_ethereum_asset]
+      ) -> ::Array[Privy::Models::coinbase_ethereum_asset]
+
+      def initialize: (
+        addresses: ::Array[Privy::CoinbaseOnRampEthereumAddress],
+        ?assets: ::Array[Privy::Models::coinbase_ethereum_asset]
+      ) -> void
+
+      def to_hash: -> {
+        addresses: ::Array[Privy::CoinbaseOnRampEthereumAddress],
+        assets: ::Array[Privy::Models::coinbase_ethereum_asset]
+      }
+    end
+  end
+end

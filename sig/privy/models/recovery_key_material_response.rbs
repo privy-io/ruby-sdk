@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type recovery_key_material_response =
+      {
+        file_id: String,
+        icloud_record_name: String,
+        recovery_code: String,
+        recovery_key: String,
+        recovery_key_derivation_salt: String,
+        recovery_type: Privy::Models::recovery_type
+      }
+
+    class RecoveryKeyMaterialResponse < Privy::Internal::Type::BaseModel
+      attr_accessor file_id: String
+
+      attr_accessor icloud_record_name: String
+
+      attr_accessor recovery_code: String
+
+      attr_accessor recovery_key: String
+
+      attr_accessor recovery_key_derivation_salt: String
+
+      attr_accessor recovery_type: Privy::Models::recovery_type
+
+      def initialize: (
+        file_id: String,
+        icloud_record_name: String,
+        recovery_code: String,
+        recovery_key: String,
+        recovery_key_derivation_salt: String,
+        recovery_type: Privy::Models::recovery_type
+      ) -> void
+
+      def to_hash: -> {
+        file_id: String,
+        icloud_record_name: String,
+        recovery_code: String,
+        recovery_key: String,
+        recovery_key_derivation_salt: String,
+        recovery_type: Privy::Models::recovery_type
+      }
+    end
+  end
+end

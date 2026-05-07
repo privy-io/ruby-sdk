@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type hpke_aead_algorithm = :CHACHA20_POLY1305 | :AES_GCM256
+
+    module HpkeAeadAlgorithm
+      extend Privy::Internal::Type::Enum
+
+      CHACHA20_POLY1305: :CHACHA20_POLY1305
+      AES_GCM256: :AES_GCM256
+
+      def self?.values: -> ::Array[Privy::Models::hpke_aead_algorithm]
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type raw_sign_bytes_params =
+      {
+        bytes: String,
+        encoding: Privy::Models::raw_sign_bytes_encoding,
+        hash_function: Privy::Models::raw_sign_bytes_hash_function
+      }
+
+    class RawSignBytesParams < Privy::Internal::Type::BaseModel
+      attr_accessor bytes: String
+
+      attr_accessor encoding: Privy::Models::raw_sign_bytes_encoding
+
+      attr_accessor hash_function: Privy::Models::raw_sign_bytes_hash_function
+
+      def initialize: (
+        bytes: String,
+        encoding: Privy::Models::raw_sign_bytes_encoding,
+        hash_function: Privy::Models::raw_sign_bytes_hash_function
+      ) -> void
+
+      def to_hash: -> {
+        bytes: String,
+        encoding: Privy::Models::raw_sign_bytes_encoding,
+        hash_function: Privy::Models::raw_sign_bytes_hash_function
+      }
+    end
+  end
+end

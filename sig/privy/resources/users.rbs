@@ -1,0 +1,112 @@
+module Privy
+  module Resources
+    class Users
+      def create: (
+        linked_accounts: ::Array[Privy::Models::linked_account_input],
+        ?custom_metadata: Privy::Models::custom_metadata,
+        ?wallets: ::Array[Privy::UserCreateParams::Wallet],
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def list: (
+        ?cursor: String,
+        ?limit: Float?,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::User]
+
+      def delete: (String user_id, ?request_options: Privy::request_opts) -> nil
+
+      def get: (
+        String user_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_custom_auth_id: (
+        custom_user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_discord_username: (
+        username: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_email_address: (
+        address: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_farcaster_id: (
+        fid: Float,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_github_username: (
+        username: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_phone_number: (
+        number: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_smart_wallet_address: (
+        address: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_telegram_user_id: (
+        telegram_user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_telegram_username: (
+        username: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_twitter_subject: (
+        subject: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_twitter_username: (
+        username: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def get_by_wallet_address: (
+        address: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def pregenerate_wallets: (
+        String user_id,
+        wallets: ::Array[Privy::WalletCreationInput],
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def search: (
+        body: Privy::Models::UserSearchParams::body,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def set_custom_metadata: (
+        String user_id,
+        custom_metadata: Privy::Models::custom_metadata,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def unlink_linked_account: (
+        String user_id,
+        handle: String,
+        type: Privy::Models::linked_account_type,
+        ?provider: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::User
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

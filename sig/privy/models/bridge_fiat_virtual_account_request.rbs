@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type bridge_fiat_virtual_account_request =
+      {
+        destination: Privy::BridgeFiatVirtualAccountDestination,
+        provider: Privy::Models::BridgeFiatVirtualAccountRequest::provider,
+        source: Privy::BridgeFiatVirtualAccountSource
+      }
+
+    class BridgeFiatVirtualAccountRequest < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::BridgeFiatVirtualAccountDestination
+
+      attr_accessor provider: Privy::Models::BridgeFiatVirtualAccountRequest::provider
+
+      attr_accessor source: Privy::BridgeFiatVirtualAccountSource
+
+      def initialize: (
+        destination: Privy::BridgeFiatVirtualAccountDestination,
+        provider: Privy::Models::BridgeFiatVirtualAccountRequest::provider,
+        source: Privy::BridgeFiatVirtualAccountSource
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::BridgeFiatVirtualAccountDestination,
+        provider: Privy::Models::BridgeFiatVirtualAccountRequest::provider,
+        source: Privy::BridgeFiatVirtualAccountSource
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatVirtualAccountRequest::provider]
+      end
+    end
+  end
+end

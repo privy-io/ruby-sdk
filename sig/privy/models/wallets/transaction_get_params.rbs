@@ -1,0 +1,135 @@
+module Privy
+  module Models
+    module Wallets
+      type transaction_get_params =
+        {
+          wallet_id: String,
+          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          token: Privy::Models::Wallets::TransactionGetParams::token,
+          asset: Privy::Models::Wallets::TransactionGetParams::asset,
+          cursor: String,
+          limit: Float?,
+          tx_hash: String
+        }
+        & Privy::Internal::Type::request_parameters
+
+      class TransactionGetParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor wallet_id: String
+
+        attr_accessor chain: Privy::Models::Wallets::TransactionGetParams::chain
+
+        attr_reader token: Privy::Models::Wallets::TransactionGetParams::token?
+
+        def token=: (
+          Privy::Models::Wallets::TransactionGetParams::token
+        ) -> Privy::Models::Wallets::TransactionGetParams::token
+
+        attr_reader asset: Privy::Models::Wallets::TransactionGetParams::asset?
+
+        def asset=: (
+          Privy::Models::Wallets::TransactionGetParams::asset
+        ) -> Privy::Models::Wallets::TransactionGetParams::asset
+
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
+        attr_accessor limit: Float?
+
+        attr_reader tx_hash: String?
+
+        def tx_hash=: (String) -> String
+
+        def initialize: (
+          wallet_id: String,
+          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          ?token: Privy::Models::Wallets::TransactionGetParams::token,
+          ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
+          ?cursor: String,
+          ?limit: Float?,
+          ?tx_hash: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          wallet_id: String,
+          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          token: Privy::Models::Wallets::TransactionGetParams::token,
+          asset: Privy::Models::Wallets::TransactionGetParams::asset,
+          cursor: String,
+          limit: Float?,
+          tx_hash: String,
+          request_options: Privy::RequestOptions
+        }
+
+        type chain =
+          :ethereum
+          | :arbitrum
+          | :base
+          | :tempo
+          | :linea
+          | :optimism
+          | :polygon
+          | :solana
+          | :sepolia
+
+        module Chain
+          extend Privy::Internal::Type::Enum
+
+          ETHEREUM: :ethereum
+          ARBITRUM: :arbitrum
+          BASE: :base
+          TEMPO: :tempo
+          LINEA: :linea
+          OPTIMISM: :optimism
+          POLYGON: :polygon
+          SOLANA: :solana
+          SEPOLIA: :sepolia
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::TransactionGetParams::chain]
+        end
+
+        type token = String | ::Array[String]
+
+        module Token
+          extend Privy::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Privy::Models::Wallets::TransactionGetParams::token]
+
+          TransactionTokenAddressInputArray: Privy::Internal::Type::Converter
+        end
+
+        type asset =
+          :usdc
+          | :"usdc.e"
+          | :eth
+          | :pol
+          | :usdt
+          | :eurc
+          | :usdb
+          | :sol
+          | ::Array[Privy::Models::wallet_asset]
+
+        module Asset
+          extend Privy::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Privy::Models::Wallets::TransactionGetParams::asset]
+
+          USDC: :usdc
+          USDC_E: :"usdc.e"
+          ETH: :eth
+          POL: :pol
+          USDT: :usdt
+          EURC: :eurc
+          USDB: :usdb
+          SOL: :sol
+
+          WalletAssetArray: Privy::Internal::Type::Converter
+        end
+      end
+    end
+  end
+end

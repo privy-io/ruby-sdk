@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_sign7702_authorization_rpc_response =
+      {
+        data: Privy::EthereumSign7702AuthorizationRpcResponseData,
+        method_: Privy::Models::EthereumSign7702AuthorizationRpcResponse::method_
+      }
+
+    class EthereumSign7702AuthorizationRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::EthereumSign7702AuthorizationRpcResponseData
+
+      attr_accessor method_: Privy::Models::EthereumSign7702AuthorizationRpcResponse::method_
+
+      def initialize: (
+        data: Privy::EthereumSign7702AuthorizationRpcResponseData,
+        method_: Privy::Models::EthereumSign7702AuthorizationRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::EthereumSign7702AuthorizationRpcResponseData,
+        method_: Privy::Models::EthereumSign7702AuthorizationRpcResponse::method_
+      }
+
+      type method_ = :eth_sign7702Authorization
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        ETH_SIGN7702_AUTHORIZATION: :eth_sign7702Authorization
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSign7702AuthorizationRpcResponse::method_]
+      end
+    end
+  end
+end

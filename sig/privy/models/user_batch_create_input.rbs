@@ -1,0 +1,93 @@
+module Privy
+  module Models
+    type user_batch_create_input =
+      { users: ::Array[Privy::UserBatchCreateInput::User] }
+
+    class UserBatchCreateInput < Privy::Internal::Type::BaseModel
+      attr_accessor users: ::Array[Privy::UserBatchCreateInput::User]
+
+      def initialize: (
+        users: ::Array[Privy::UserBatchCreateInput::User]
+      ) -> void
+
+      def to_hash: -> { users: ::Array[Privy::UserBatchCreateInput::User] }
+
+      type user =
+        {
+          linked_accounts: ::Array[Privy::Models::linked_account_input],
+          create_embedded_wallet: bool,
+          create_ethereum_smart_wallet: bool,
+          create_ethereum_wallet: bool,
+          create_n_embedded_wallets: Float,
+          create_n_ethereum_wallets: Float,
+          create_solana_wallet: bool,
+          custom_metadata: Privy::Models::custom_metadata,
+          wallets: ::Array[Privy::WalletCreationInput]
+        }
+
+      class User < Privy::Internal::Type::BaseModel
+        attr_accessor linked_accounts: ::Array[Privy::Models::linked_account_input]
+
+        attr_reader create_embedded_wallet: bool?
+
+        def create_embedded_wallet=: (bool) -> bool
+
+        attr_reader create_ethereum_smart_wallet: bool?
+
+        def create_ethereum_smart_wallet=: (bool) -> bool
+
+        attr_reader create_ethereum_wallet: bool?
+
+        def create_ethereum_wallet=: (bool) -> bool
+
+        attr_reader create_n_embedded_wallets: Float?
+
+        def create_n_embedded_wallets=: (Float) -> Float
+
+        attr_reader create_n_ethereum_wallets: Float?
+
+        def create_n_ethereum_wallets=: (Float) -> Float
+
+        attr_reader create_solana_wallet: bool?
+
+        def create_solana_wallet=: (bool) -> bool
+
+        attr_reader custom_metadata: Privy::Models::custom_metadata?
+
+        def custom_metadata=: (
+          Privy::Models::custom_metadata
+        ) -> Privy::Models::custom_metadata
+
+        attr_reader wallets: ::Array[Privy::WalletCreationInput]?
+
+        def wallets=: (
+          ::Array[Privy::WalletCreationInput]
+        ) -> ::Array[Privy::WalletCreationInput]
+
+        def initialize: (
+          linked_accounts: ::Array[Privy::Models::linked_account_input],
+          ?create_embedded_wallet: bool,
+          ?create_ethereum_smart_wallet: bool,
+          ?create_ethereum_wallet: bool,
+          ?create_n_embedded_wallets: Float,
+          ?create_n_ethereum_wallets: Float,
+          ?create_solana_wallet: bool,
+          ?custom_metadata: Privy::Models::custom_metadata,
+          ?wallets: ::Array[Privy::WalletCreationInput]
+        ) -> void
+
+        def to_hash: -> {
+          linked_accounts: ::Array[Privy::Models::linked_account_input],
+          create_embedded_wallet: bool,
+          create_ethereum_smart_wallet: bool,
+          create_ethereum_wallet: bool,
+          create_n_embedded_wallets: Float,
+          create_n_ethereum_wallets: Float,
+          create_solana_wallet: bool,
+          custom_metadata: Privy::Models::custom_metadata,
+          wallets: ::Array[Privy::WalletCreationInput]
+        }
+      end
+    end
+  end
+end

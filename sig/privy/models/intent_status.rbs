@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type intent_status =
+      :pending | :executed | :failed | :expired | :rejected | :dismissed
+
+    module IntentStatus
+      extend Privy::Internal::Type::Enum
+
+      PENDING: :pending
+      EXECUTED: :executed
+      FAILED: :failed
+      EXPIRED: :expired
+      REJECTED: :rejected
+      DISMISSED: :dismissed
+
+      def self?.values: -> ::Array[Privy::Models::intent_status]
+    end
+  end
+end

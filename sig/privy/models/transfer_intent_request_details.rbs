@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type transfer_intent_request_details =
+      {
+        body: Privy::TransferRequestBody,
+        method_: Privy::Models::TransferIntentRequestDetails::method_,
+        url: String
+      }
+
+    class TransferIntentRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor body: Privy::TransferRequestBody
+
+      attr_accessor method_: Privy::Models::TransferIntentRequestDetails::method_
+
+      attr_accessor url: String
+
+      def initialize: (
+        body: Privy::TransferRequestBody,
+        method_: Privy::Models::TransferIntentRequestDetails::method_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::TransferRequestBody,
+        method_: Privy::Models::TransferIntentRequestDetails::method_,
+        url: String
+      }
+
+      type method_ = :POST
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        POST: :POST
+
+        def self?.values: -> ::Array[Privy::Models::TransferIntentRequestDetails::method_]
+      end
+    end
+  end
+end

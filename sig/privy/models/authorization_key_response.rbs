@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type authorization_key_response =
+      {
+        id: String,
+        created_at: Float,
+        display_name: String?,
+        public_key: String
+      }
+
+    class AuthorizationKeyResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor display_name: String?
+
+      attr_accessor public_key: String
+
+      def initialize: (
+        id: String,
+        created_at: Float,
+        display_name: String?,
+        public_key: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Float,
+        display_name: String?,
+        public_key: String
+      }
+    end
+  end
+end

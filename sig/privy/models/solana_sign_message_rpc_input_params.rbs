@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type solana_sign_message_rpc_input_params =
+      {
+        encoding: Privy::Models::SolanaSignMessageRpcInputParams::encoding,
+        message: String
+      }
+
+    class SolanaSignMessageRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::SolanaSignMessageRpcInputParams::encoding
+
+      attr_accessor message: String
+
+      def initialize: (
+        encoding: Privy::Models::SolanaSignMessageRpcInputParams::encoding,
+        message: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::SolanaSignMessageRpcInputParams::encoding,
+        message: String
+      }
+
+      type encoding = :base64
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        BASE64: :base64
+
+        def self?.values: -> ::Array[Privy::Models::SolanaSignMessageRpcInputParams::encoding]
+      end
+    end
+  end
+end

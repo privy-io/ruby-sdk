@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type ethereum_yield_sweep_response =
+      {
+        id: String,
+        asset_amount: String?,
+        created_at: Float,
+        share_amount: String?,
+        status: Privy::Models::ethereum_yield_sweep_status,
+        type: Privy::Models::ethereum_yield_sweep_type,
+        updated_at: Float,
+        vault_id: String,
+        wallet_id: String
+      }
+
+    class EthereumYieldSweepResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor asset_amount: String?
+
+      attr_accessor created_at: Float
+
+      attr_accessor share_amount: String?
+
+      attr_accessor status: Privy::Models::ethereum_yield_sweep_status
+
+      attr_accessor type: Privy::Models::ethereum_yield_sweep_type
+
+      attr_accessor updated_at: Float
+
+      attr_accessor vault_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        id: String,
+        asset_amount: String?,
+        created_at: Float,
+        share_amount: String?,
+        status: Privy::Models::ethereum_yield_sweep_status,
+        type: Privy::Models::ethereum_yield_sweep_type,
+        updated_at: Float,
+        vault_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        asset_amount: String?,
+        created_at: Float,
+        share_amount: String?,
+        status: Privy::Models::ethereum_yield_sweep_status,
+        type: Privy::Models::ethereum_yield_sweep_type,
+        updated_at: Float,
+        vault_id: String,
+        wallet_id: String
+      }
+    end
+  end
+end

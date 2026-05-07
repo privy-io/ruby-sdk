@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type spark_sign_message_with_identity_key_rpc_input =
+      {
+        method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcInput::method_,
+        params: Privy::SparkSignMessageWithIdentityKeyRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkSignMessageWithIdentityKeyRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcInput::method_
+
+      attr_accessor params: Privy::SparkSignMessageWithIdentityKeyRpcInputParams
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcInput::method_,
+        params: Privy::SparkSignMessageWithIdentityKeyRpcInputParams,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkSignMessageWithIdentityKeyRpcInput::method_,
+        params: Privy::SparkSignMessageWithIdentityKeyRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :signMessageWithIdentityKey
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SIGN_MESSAGE_WITH_IDENTITY_KEY: :signMessageWithIdentityKey
+
+        def self?.values: -> ::Array[Privy::Models::SparkSignMessageWithIdentityKeyRpcInput::method_]
+      end
+    end
+  end
+end

@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type spark_create_lightning_invoice_rpc_input_params =
+      {
+        amount_sats: Float,
+        description_hash: String,
+        expiry_seconds: Float,
+        include_spark_address: bool,
+        memo: String,
+        receiver_identity_pubkey: String
+      }
+
+    class SparkCreateLightningInvoiceRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor amount_sats: Float
+
+      attr_reader description_hash: String?
+
+      def description_hash=: (String) -> String
+
+      attr_reader expiry_seconds: Float?
+
+      def expiry_seconds=: (Float) -> Float
+
+      attr_reader include_spark_address: bool?
+
+      def include_spark_address=: (bool) -> bool
+
+      attr_reader memo: String?
+
+      def memo=: (String) -> String
+
+      attr_reader receiver_identity_pubkey: String?
+
+      def receiver_identity_pubkey=: (String) -> String
+
+      def initialize: (
+        amount_sats: Float,
+        ?description_hash: String,
+        ?expiry_seconds: Float,
+        ?include_spark_address: bool,
+        ?memo: String,
+        ?receiver_identity_pubkey: String
+      ) -> void
+
+      def to_hash: -> {
+        amount_sats: Float,
+        description_hash: String,
+        expiry_seconds: Float,
+        include_spark_address: bool,
+        memo: String,
+        receiver_identity_pubkey: String
+      }
+    end
+  end
+end

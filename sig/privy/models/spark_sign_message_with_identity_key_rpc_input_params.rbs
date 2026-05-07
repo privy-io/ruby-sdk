@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type spark_sign_message_with_identity_key_rpc_input_params =
+      { message: String, compact: bool }
+
+    class SparkSignMessageWithIdentityKeyRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_reader compact: bool?
+
+      def compact=: (bool) -> bool
+
+      def initialize: (message: String, ?compact: bool) -> void
+
+      def to_hash: -> { message: String, compact: bool }
+    end
+  end
+end

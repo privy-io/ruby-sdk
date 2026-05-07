@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type linked_account_type =
+      :email
+      | :phone
+      | :wallet
+      | :smart_wallet
+      | :google_oauth
+      | :twitter_oauth
+      | :discord_oauth
+      | :github_oauth
+      | :spotify_oauth
+      | :instagram_oauth
+      | :tiktok_oauth
+      | :line_oauth
+      | :twitch_oauth
+      | :linkedin_oauth
+      | :apple_oauth
+      | :custom_auth
+      | :farcaster
+      | :passkey
+      | :telegram
+      | :cross_app
+      | :authorization_key
+      | String
+
+    module LinkedAccountType
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::linked_account_type]
+
+      EMAIL: :email
+      PHONE: :phone
+      WALLET: :wallet
+      SMART_WALLET: :smart_wallet
+      GOOGLE_OAUTH: :google_oauth
+      TWITTER_OAUTH: :twitter_oauth
+      DISCORD_OAUTH: :discord_oauth
+      GITHUB_OAUTH: :github_oauth
+      SPOTIFY_OAUTH: :spotify_oauth
+      INSTAGRAM_OAUTH: :instagram_oauth
+      TIKTOK_OAUTH: :tiktok_oauth
+      LINE_OAUTH: :line_oauth
+      TWITCH_OAUTH: :twitch_oauth
+      LINKEDIN_OAUTH: :linkedin_oauth
+      APPLE_OAUTH: :apple_oauth
+      CUSTOM_AUTH: :custom_auth
+      FARCASTER: :farcaster
+      PASSKEY: :passkey
+      TELEGRAM: :telegram
+      CROSS_APP: :cross_app
+      AUTHORIZATION_KEY: :authorization_key
+    end
+  end
+end

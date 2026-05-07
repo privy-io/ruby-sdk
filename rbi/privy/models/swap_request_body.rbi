@@ -1,0 +1,80 @@
+# typed: strong
+
+module Privy
+  module Models
+    class SwapRequestBody < Privy::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(Privy::SwapRequestBody, Privy::Internal::AnyHash) }
+
+      # Amount in base units (e.g., wei for ETH). Must be a non-negative integer string.
+      sig { returns(String) }
+      attr_accessor :base_amount
+
+      # The output side of a swap execution request.
+      sig { returns(Privy::SwapDestination) }
+      attr_reader :destination
+
+      sig { params(destination: Privy::SwapDestination::OrHash).void }
+      attr_writer :destination
+
+      # The input side of a swap request, including token and chain.
+      sig { returns(Privy::SwapSource) }
+      attr_reader :source
+
+      sig { params(source: Privy::SwapSource::OrHash).void }
+      attr_writer :source
+
+      # Whether the amount refers to the input token or output token.
+      sig { returns(T.nilable(Privy::AmountType::OrSymbol)) }
+      attr_reader :amount_type
+
+      sig { params(amount_type: Privy::AmountType::OrSymbol).void }
+      attr_writer :amount_type
+
+      # Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
+      sig { returns(T.nilable(Float)) }
+      attr_reader :slippage_bps
+
+      sig { params(slippage_bps: Float).void }
+      attr_writer :slippage_bps
+
+      # Input for executing a token swap.
+      sig do
+        params(
+          base_amount: String,
+          destination: Privy::SwapDestination::OrHash,
+          source: Privy::SwapSource::OrHash,
+          amount_type: Privy::AmountType::OrSymbol,
+          slippage_bps: Float
+        ).returns(T.attached_class)
+      end
+      def self.new(
+        # Amount in base units (e.g., wei for ETH). Must be a non-negative integer string.
+        base_amount:,
+        # The output side of a swap execution request.
+        destination:,
+        # The input side of a swap request, including token and chain.
+        source:,
+        # Whether the amount refers to the input token or output token.
+        amount_type: nil,
+        # Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
+        slippage_bps: nil
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            base_amount: String,
+            destination: Privy::SwapDestination,
+            source: Privy::SwapSource,
+            amount_type: Privy::AmountType::OrSymbol,
+            slippage_bps: Float
+          }
+        )
+      end
+      def to_hash
+      end
+    end
+  end
+end

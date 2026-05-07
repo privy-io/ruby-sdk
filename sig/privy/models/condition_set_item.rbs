@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type condition_set_item =
+      { id: String, condition_set_id: String, created_at: Float, value: String }
+
+    class ConditionSetItem < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor condition_set_id: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor value: String
+
+      def initialize: (
+        id: String,
+        condition_set_id: String,
+        created_at: Float,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        condition_set_id: String,
+        created_at: Float,
+        value: String
+      }
+    end
+  end
+end

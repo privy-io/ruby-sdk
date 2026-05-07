@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type hd_init_input =
+      {
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::HDInitInput::entropy_type,
+        index: Integer
+      }
+
+    class HDInitInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::wallet_import_supported_chains
+
+      attr_accessor encryption_type: Privy::Models::hpke_encryption
+
+      attr_accessor entropy_type: Privy::Models::HDInitInput::entropy_type
+
+      attr_accessor index: Integer
+
+      def initialize: (
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::HDInitInput::entropy_type,
+        index: Integer
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::HDInitInput::entropy_type,
+        index: Integer
+      }
+
+      type entropy_type = :hd
+
+      module EntropyType
+        extend Privy::Internal::Type::Enum
+
+        HD: :hd
+
+        def self?.values: -> ::Array[Privy::Models::HDInitInput::entropy_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type test_account =
+      {
+        id: String,
+        created_at: String,
+        email: String,
+        otp_code: String,
+        phone_number: String,
+        updated_at: String
+      }
+
+    class TestAccount < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor email: String
+
+      attr_accessor otp_code: String
+
+      attr_accessor phone_number: String
+
+      attr_accessor updated_at: String
+
+      def initialize: (
+        id: String,
+        created_at: String,
+        email: String,
+        otp_code: String,
+        phone_number: String,
+        updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        email: String,
+        otp_code: String,
+        phone_number: String,
+        updated_at: String
+      }
+    end
+  end
+end

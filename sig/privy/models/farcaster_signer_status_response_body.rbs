@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type farcaster_signer_status_response_body =
+      Privy::FarcasterSignerStatusPendingApproval
+      | Privy::FarcasterSignerApproved
+      | Privy::FarcasterSignerRevoked
+
+    module FarcasterSignerStatusResponseBody
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::farcaster_signer_status_response_body]
+    end
+  end
+end

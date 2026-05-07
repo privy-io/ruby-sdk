@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type wallet_import_supported_entropy_types = :"private-key" | :hd
+
+    module WalletImportSupportedEntropyTypes
+      extend Privy::Internal::Type::Enum
+
+      PRIVATE_KEY: :"private-key"
+      HD: :hd
+
+      def self?.values: -> ::Array[Privy::Models::wallet_import_supported_entropy_types]
+    end
+  end
+end

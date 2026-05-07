@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type account_wallet_ids = ::Array[String]
+
+    AccountWalletIDs: Privy::Internal::Type::Converter
+  end
+end

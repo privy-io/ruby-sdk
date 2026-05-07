@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type fiat_onramp_source = { amount: String, asset: String }
+
+    class FiatOnrampSource < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor asset: String
+
+      def initialize: (amount: String, asset: String) -> void
+
+      def to_hash: -> { amount: String, asset: String }
+    end
+  end
+end

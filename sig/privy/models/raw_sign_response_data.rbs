@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type raw_sign_response_data =
+      {
+        encoding: Privy::Models::RawSignResponseData::encoding,
+        signature: String
+      }
+
+    class RawSignResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::RawSignResponseData::encoding
+
+      attr_accessor signature: String
+
+      def initialize: (
+        encoding: Privy::Models::RawSignResponseData::encoding,
+        signature: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::RawSignResponseData::encoding,
+        signature: String
+      }
+
+      type encoding = :hex
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        HEX: :hex
+
+        def self?.values: -> ::Array[Privy::Models::RawSignResponseData::encoding]
+      end
+    end
+  end
+end

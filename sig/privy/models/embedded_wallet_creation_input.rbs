@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type embedded_wallet_creation_input =
+      { wallets: ::Array[Privy::WalletCreationInput] }
+
+    class EmbeddedWalletCreationInput < Privy::Internal::Type::BaseModel
+      attr_reader wallets: ::Array[Privy::WalletCreationInput]?
+
+      def wallets=: (
+        ::Array[Privy::WalletCreationInput]
+      ) -> ::Array[Privy::WalletCreationInput]
+
+      def initialize: (?wallets: ::Array[Privy::WalletCreationInput]) -> void
+
+      def to_hash: -> { wallets: ::Array[Privy::WalletCreationInput] }
+    end
+  end
+end

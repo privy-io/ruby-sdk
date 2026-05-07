@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type linked_account_authorization_key =
+      {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        public_key: String,
+        type: Privy::Models::LinkedAccountAuthorizationKey::type_,
+        verified_at: Float
+      }
+
+    class LinkedAccountAuthorizationKey < Privy::Internal::Type::BaseModel
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor public_key: String
+
+      attr_accessor type: Privy::Models::LinkedAccountAuthorizationKey::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        public_key: String,
+        type: Privy::Models::LinkedAccountAuthorizationKey::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        public_key: String,
+        type: Privy::Models::LinkedAccountAuthorizationKey::type_,
+        verified_at: Float
+      }
+
+      type type_ = :authorization_key
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        AUTHORIZATION_KEY: :authorization_key
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountAuthorizationKey::type_]
+      end
+    end
+  end
+end

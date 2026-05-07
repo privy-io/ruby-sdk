@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type output_with_previous_transaction_data =
+      {
+        previous_transaction_hash: String,
+        previous_transaction_vout: Float,
+        output: Privy::TokenOutput
+      }
+
+    class OutputWithPreviousTransactionData < Privy::Internal::Type::BaseModel
+      attr_accessor previous_transaction_hash: String
+
+      attr_accessor previous_transaction_vout: Float
+
+      attr_reader output: Privy::TokenOutput?
+
+      def output=: (Privy::TokenOutput) -> Privy::TokenOutput
+
+      def initialize: (
+        previous_transaction_hash: String,
+        previous_transaction_vout: Float,
+        ?output: Privy::TokenOutput
+      ) -> void
+
+      def to_hash: -> {
+        previous_transaction_hash: String,
+        previous_transaction_vout: Float,
+        output: Privy::TokenOutput
+      }
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_init_import_params =
+      { body: Privy::Models::WalletInitImportParams::body }
+      & Privy::Internal::Type::request_parameters
+
+    class WalletInitImportParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor body: Privy::Models::WalletInitImportParams::body
+
+      def initialize: (
+        body: Privy::Models::WalletInitImportParams::body,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::Models::WalletInitImportParams::body,
+        request_options: Privy::RequestOptions
+      }
+
+      type body = Privy::HDInitInput | Privy::PrivateKeyInitInput
+
+      module Body
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::WalletInitImportParams::body]
+      end
+    end
+  end
+end

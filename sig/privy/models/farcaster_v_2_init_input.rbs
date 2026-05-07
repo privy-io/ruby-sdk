@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type farcaster_v2_init_input = {  }
+
+    class FarcasterV2InitInput < Privy::Internal::Type::BaseModel
+      def initialize: -> void
+
+      def to_hash: -> {  }
+    end
+  end
+end

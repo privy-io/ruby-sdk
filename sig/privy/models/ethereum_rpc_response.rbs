@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type ethereum_rpc_response =
+      Privy::EthereumPersonalSignRpcResponse
+      | Privy::EthereumSignTypedDataRpcResponse
+      | Privy::EthereumSignTransactionRpcResponse
+      | Privy::EthereumSendTransactionRpcResponse
+      | Privy::EthereumSignUserOperationRpcResponse
+      | Privy::EthereumSign7702AuthorizationRpcResponse
+      | Privy::EthereumSecp256k1SignRpcResponse
+      | Privy::EthereumSendCallsRpcResponse
+
+    module EthereumRpcResponse
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::ethereum_rpc_response]
+    end
+  end
+end

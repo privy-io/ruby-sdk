@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type linked_account_embedded_wallet =
+      Privy::LinkedAccountEthereumEmbeddedWallet
+      | Privy::LinkedAccountSolanaEmbeddedWallet
+      | Privy::LinkedAccountBitcoinSegwitEmbeddedWallet
+      | Privy::LinkedAccountBitcoinTaprootEmbeddedWallet
+      | Privy::LinkedAccountCurveSigningEmbeddedWallet
+
+    module LinkedAccountEmbeddedWallet
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::linked_account_embedded_wallet]
+    end
+  end
+end

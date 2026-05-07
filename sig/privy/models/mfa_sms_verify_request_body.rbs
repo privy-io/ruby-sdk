@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type mfa_sms_verify_request_body = { code: String }
+
+    class MfaSMSVerifyRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      def initialize: (code: String) -> void
+
+      def to_hash: -> { code: String }
+    end
+  end
+end

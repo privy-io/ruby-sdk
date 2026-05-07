@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type fiat_virtual_account_request =
+      Privy::BridgeFiatVirtualAccountRequest
+      | Privy::BridgeSandboxFiatVirtualAccountRequest
+
+    module FiatVirtualAccountRequest
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::fiat_virtual_account_request]
+    end
+  end
+end

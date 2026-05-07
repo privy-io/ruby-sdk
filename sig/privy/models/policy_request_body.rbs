@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type policy_request_body = { policy_id: String }
+
+    class PolicyRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor policy_id: String
+
+      def initialize: (policy_id: String) -> void
+
+      def to_hash: -> { policy_id: String }
+    end
+  end
+end

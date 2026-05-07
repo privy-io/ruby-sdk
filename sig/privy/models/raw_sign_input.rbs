@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type raw_sign_input = { params: Privy::Models::raw_sign_input_params }
+
+    class RawSignInput < Privy::Internal::Type::BaseModel
+      attr_accessor params: Privy::Models::raw_sign_input_params
+
+      def initialize: (params: Privy::Models::raw_sign_input_params) -> void
+
+      def to_hash: -> { params: Privy::Models::raw_sign_input_params }
+    end
+  end
+end

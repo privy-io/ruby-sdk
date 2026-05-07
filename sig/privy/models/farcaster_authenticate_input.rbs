@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type farcaster_authenticate_input =
+      {
+        channel_token: String,
+        fid: Float,
+        message: String,
+        signature: String,
+        mode: Privy::Models::authenticate_mode_option
+      }
+
+    class FarcasterAuthenticateInput < Privy::Internal::Type::BaseModel
+      attr_accessor channel_token: String
+
+      attr_accessor fid: Float
+
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      def initialize: (
+        channel_token: String,
+        fid: Float,
+        message: String,
+        signature: String,
+        ?mode: Privy::Models::authenticate_mode_option
+      ) -> void
+
+      def to_hash: -> {
+        channel_token: String,
+        fid: Float,
+        message: String,
+        signature: String,
+        mode: Privy::Models::authenticate_mode_option
+      }
+    end
+  end
+end

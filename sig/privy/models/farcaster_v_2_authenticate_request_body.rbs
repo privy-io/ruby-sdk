@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type farcaster_v2_authenticate_request_body =
+      {
+        fid: Float,
+        message: String,
+        signature: String,
+        mode: Privy::Models::authenticate_mode_option
+      }
+
+    class FarcasterV2AuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor fid: Float
+
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      def initialize: (
+        fid: Float,
+        message: String,
+        signature: String,
+        ?mode: Privy::Models::authenticate_mode_option
+      ) -> void
+
+      def to_hash: -> {
+        fid: Float,
+        message: String,
+        signature: String,
+        mode: Privy::Models::authenticate_mode_option
+      }
+    end
+  end
+end

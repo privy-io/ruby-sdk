@@ -1,0 +1,12 @@
+module Privy
+  module Resources
+    class Transactions
+      def get: (
+        String transaction_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Transaction
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

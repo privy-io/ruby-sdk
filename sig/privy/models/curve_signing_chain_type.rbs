@@ -1,0 +1,36 @@
+module Privy
+  module Models
+    type curve_signing_chain_type =
+      :cosmos
+      | :stellar
+      | :sui
+      | :aptos
+      | :movement
+      | :tron
+      | :"bitcoin-segwit"
+      | :"bitcoin-taproot"
+      | :pearl
+      | :near
+      | :ton
+      | :starknet
+
+    module CurveSigningChainType
+      extend Privy::Internal::Type::Enum
+
+      COSMOS: :cosmos
+      STELLAR: :stellar
+      SUI: :sui
+      APTOS: :aptos
+      MOVEMENT: :movement
+      TRON: :tron
+      BITCOIN_SEGWIT: :"bitcoin-segwit"
+      BITCOIN_TAPROOT: :"bitcoin-taproot"
+      PEARL: :pearl
+      NEAR: :near
+      TON: :ton
+      STARKNET: :starknet
+
+      def self?.values: -> ::Array[Privy::Models::curve_signing_chain_type]
+    end
+  end
+end

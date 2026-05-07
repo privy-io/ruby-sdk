@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    type linked_account_apple_input =
+      { subject: String, type: :apple_oauth, email: String }
+
+    class LinkedAccountAppleInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :apple_oauth
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        ?email: String,
+        ?type: :apple_oauth
+      ) -> void
+
+      def to_hash: -> { subject: String, type: :apple_oauth, email: String }
+    end
+  end
+end

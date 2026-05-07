@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type cross_app_connection =
+      {
+        provider_app_custom_api_url: String?,
+        provider_app_custom_auth_authorize_url: String?,
+        provider_app_custom_auth_transact_url: String?,
+        provider_app_icon_url: String?,
+        provider_app_id: String,
+        provider_app_name: String,
+        read_only: bool
+      }
+
+    class CrossAppConnection < Privy::Internal::Type::BaseModel
+      attr_accessor provider_app_custom_api_url: String?
+
+      attr_accessor provider_app_custom_auth_authorize_url: String?
+
+      attr_accessor provider_app_custom_auth_transact_url: String?
+
+      attr_accessor provider_app_icon_url: String?
+
+      attr_accessor provider_app_id: String
+
+      attr_accessor provider_app_name: String
+
+      attr_accessor read_only: bool
+
+      def initialize: (
+        provider_app_custom_api_url: String?,
+        provider_app_custom_auth_authorize_url: String?,
+        provider_app_custom_auth_transact_url: String?,
+        provider_app_icon_url: String?,
+        provider_app_id: String,
+        provider_app_name: String,
+        read_only: bool
+      ) -> void
+
+      def to_hash: -> {
+        provider_app_custom_api_url: String?,
+        provider_app_custom_auth_authorize_url: String?,
+        provider_app_custom_auth_transact_url: String?,
+        provider_app_icon_url: String?,
+        provider_app_id: String,
+        provider_app_name: String,
+        read_only: bool
+      }
+    end
+  end
+end

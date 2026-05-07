@@ -1,0 +1,104 @@
+module Privy
+  module Models
+    type linked_account_farcaster =
+      {
+        fid: Float,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        owner_address: String,
+        type: Privy::Models::LinkedAccountFarcaster::type_,
+        verified_at: Float,
+        bio: String,
+        display_name: String,
+        homepage_url: String,
+        profile_picture: String,
+        profile_picture_url: String,
+        signer_public_key: String,
+        username: String
+      }
+
+    class LinkedAccountFarcaster < Privy::Internal::Type::BaseModel
+      attr_accessor fid: Float
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor owner_address: String
+
+      attr_accessor type: Privy::Models::LinkedAccountFarcaster::type_
+
+      attr_accessor verified_at: Float
+
+      attr_reader bio: String?
+
+      def bio=: (String) -> String
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader homepage_url: String?
+
+      def homepage_url=: (String) -> String
+
+      attr_reader profile_picture: String?
+
+      def profile_picture=: (String) -> String
+
+      attr_reader profile_picture_url: String?
+
+      def profile_picture_url=: (String) -> String
+
+      attr_reader signer_public_key: String?
+
+      def signer_public_key=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        fid: Float,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        owner_address: String,
+        type: Privy::Models::LinkedAccountFarcaster::type_,
+        verified_at: Float,
+        ?bio: String,
+        ?display_name: String,
+        ?homepage_url: String,
+        ?profile_picture: String,
+        ?profile_picture_url: String,
+        ?signer_public_key: String,
+        ?username: String
+      ) -> void
+
+      def to_hash: -> {
+        fid: Float,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        owner_address: String,
+        type: Privy::Models::LinkedAccountFarcaster::type_,
+        verified_at: Float,
+        bio: String,
+        display_name: String,
+        homepage_url: String,
+        profile_picture: String,
+        profile_picture_url: String,
+        signer_public_key: String,
+        username: String
+      }
+
+      type type_ = :farcaster
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        FARCASTER: :farcaster
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountFarcaster::type_]
+      end
+    end
+  end
+end

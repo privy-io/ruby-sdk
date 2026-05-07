@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type typed_data_domain_input_params = ::Hash[Symbol, top]
+
+    TypedDataDomainInputParams: Privy::Internal::Type::Converter
+  end
+end

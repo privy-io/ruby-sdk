@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type moonpay_on_ramp_sandbox_config = { use_sandbox: bool }
+
+    class MoonpayOnRampSandboxConfig < Privy::Internal::Type::BaseModel
+      attr_reader use_sandbox: bool?
+
+      def use_sandbox=: (bool) -> bool
+
+      def initialize: (?use_sandbox: bool) -> void
+
+      def to_hash: -> { use_sandbox: bool }
+    end
+  end
+end

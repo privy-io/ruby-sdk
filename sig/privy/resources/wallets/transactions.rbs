@@ -1,0 +1,20 @@
+module Privy
+  module Resources
+    class Wallets
+      class Transactions
+        def get: (
+          String wallet_id,
+          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          ?token: Privy::Models::Wallets::TransactionGetParams::token,
+          ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
+          ?cursor: String,
+          ?limit: Float?,
+          ?tx_hash: String,
+          ?request_options: Privy::request_opts
+        ) -> Privy::Models::Wallets::TransactionGetResponse
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

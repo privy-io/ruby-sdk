@@ -1,0 +1,62 @@
+module Privy
+  module Models
+    type private_key_submit_input =
+      {
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::PrivateKeySubmitInput::entropy_type,
+        hpke_config: Privy::HpkeImportConfig
+      }
+
+    class PrivateKeySubmitInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::wallet_import_supported_chains
+
+      attr_accessor ciphertext: String
+
+      attr_accessor encapsulated_key: String
+
+      attr_accessor encryption_type: Privy::Models::hpke_encryption
+
+      attr_accessor entropy_type: Privy::Models::PrivateKeySubmitInput::entropy_type
+
+      attr_reader hpke_config: Privy::HpkeImportConfig?
+
+      def hpke_config=: (Privy::HpkeImportConfig) -> Privy::HpkeImportConfig
+
+      def initialize: (
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::PrivateKeySubmitInput::entropy_type,
+        ?hpke_config: Privy::HpkeImportConfig
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        chain_type: Privy::Models::wallet_import_supported_chains,
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption,
+        entropy_type: Privy::Models::PrivateKeySubmitInput::entropy_type,
+        hpke_config: Privy::HpkeImportConfig
+      }
+
+      type entropy_type = :"private-key"
+
+      module EntropyType
+        extend Privy::Internal::Type::Enum
+
+        PRIVATE_KEY: :"private-key"
+
+        def self?.values: -> ::Array[Privy::Models::PrivateKeySubmitInput::entropy_type]
+      end
+    end
+  end
+end

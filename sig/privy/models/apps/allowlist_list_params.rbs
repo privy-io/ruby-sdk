@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    module Apps
+      type allowlist_list_params =
+        { app_id: String } & Privy::Internal::Type::request_parameters
+
+      class AllowlistListParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor app_id: String
+
+        def initialize: (
+          app_id: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          app_id: String,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

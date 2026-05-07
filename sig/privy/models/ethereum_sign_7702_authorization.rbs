@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type ethereum_sign7702_authorization =
+      {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        nonce: Privy::Models::quantity,
+        r: String,
+        s: String,
+        y_parity: Float
+      }
+
+    class EthereumSign7702Authorization < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: Privy::Models::quantity
+
+      attr_accessor contract: String
+
+      attr_accessor nonce: Privy::Models::quantity
+
+      attr_accessor r: String
+
+      attr_accessor s: String
+
+      attr_accessor y_parity: Float
+
+      def initialize: (
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        nonce: Privy::Models::quantity,
+        r: String,
+        s: String,
+        y_parity: Float
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        nonce: Privy::Models::quantity,
+        r: String,
+        s: String,
+        y_parity: Float
+      }
+    end
+  end
+end

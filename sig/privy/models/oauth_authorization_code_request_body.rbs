@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type oauth_authorization_code_request_body =
+      { code_challenge: String, redirect_to: String, state: String }
+
+    class OAuthAuthorizationCodeRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor code_challenge: String
+
+      attr_accessor redirect_to: String
+
+      attr_accessor state: String
+
+      def initialize: (
+        code_challenge: String,
+        redirect_to: String,
+        state: String
+      ) -> void
+
+      def to_hash: -> {
+        code_challenge: String,
+        redirect_to: String,
+        state: String
+      }
+    end
+  end
+end

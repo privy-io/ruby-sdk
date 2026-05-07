@@ -1,0 +1,63 @@
+module Privy
+  module Models
+    type wallet_list_params =
+      {
+        authorization_key: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        cursor: String,
+        external_id: String,
+        limit: Float?,
+        user_id: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class WalletListParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_reader authorization_key: String?
+
+      def authorization_key=: (String) -> String
+
+      attr_reader chain_type: Privy::Models::wallet_chain_type?
+
+      def chain_type=: (
+        Privy::Models::wallet_chain_type
+      ) -> Privy::Models::wallet_chain_type
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_accessor limit: Float?
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      def initialize: (
+        ?authorization_key: String,
+        ?chain_type: Privy::Models::wallet_chain_type,
+        ?cursor: String,
+        ?external_id: String,
+        ?limit: Float?,
+        ?user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        authorization_key: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        cursor: String,
+        external_id: String,
+        limit: Float?,
+        user_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

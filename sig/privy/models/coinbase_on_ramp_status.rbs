@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_status = :pending | :success | :failure
+
+    module CoinbaseOnRampStatus
+      extend Privy::Internal::Type::Enum
+
+      PENDING: :pending
+      SUCCESS: :success
+      FAILURE: :failure
+
+      def self?.values: -> ::Array[Privy::Models::coinbase_on_ramp_status]
+    end
+  end
+end

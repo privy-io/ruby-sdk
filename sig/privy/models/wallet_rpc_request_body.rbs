@@ -1,0 +1,33 @@
+module Privy
+  module Models
+    type wallet_rpc_request_body =
+      Privy::EthereumSignTransactionRpcInput
+      | Privy::EthereumSendTransactionRpcInput
+      | Privy::EthereumPersonalSignRpcInput
+      | Privy::EthereumSignTypedDataRpcInput
+      | Privy::EthereumSecp256k1SignRpcInput
+      | Privy::EthereumSign7702AuthorizationRpcInput
+      | Privy::EthereumSignUserOperationRpcInput
+      | Privy::EthereumSendCallsRpcInput
+      | Privy::SolanaSignTransactionRpcInput
+      | Privy::SolanaSignAndSendTransactionRpcInput
+      | Privy::SolanaSignMessageRpcInput
+      | Privy::SparkTransferRpcInput
+      | Privy::SparkGetBalanceRpcInput
+      | Privy::SparkTransferTokensRpcInput
+      | Privy::SparkGetStaticDepositAddressRpcInput
+      | Privy::SparkGetClaimStaticDepositQuoteRpcInput
+      | Privy::SparkClaimStaticDepositRpcInput
+      | Privy::SparkCreateLightningInvoiceRpcInput
+      | Privy::SparkPayLightningInvoiceRpcInput
+      | Privy::SparkSignMessageWithIdentityKeyRpcInput
+      | Privy::ExportPrivateKeyRpcInput
+      | Privy::ExportSeedPhraseRpcInput
+
+    module WalletRpcRequestBody
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_rpc_request_body]
+    end
+  end
+end

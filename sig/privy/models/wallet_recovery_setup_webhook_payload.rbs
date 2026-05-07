@@ -1,0 +1,71 @@
+module Privy
+  module Models
+    type wallet_recovery_setup_webhook_payload =
+      {
+        method_: Privy::Models::WalletRecoverySetupWebhookPayload::method_,
+        type: Privy::Models::WalletRecoverySetupWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String
+      }
+
+    class WalletRecoverySetupWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::WalletRecoverySetupWebhookPayload::method_
+
+      attr_accessor type: Privy::Models::WalletRecoverySetupWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      attr_accessor wallet_address: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        method_: Privy::Models::WalletRecoverySetupWebhookPayload::method_,
+        type: Privy::Models::WalletRecoverySetupWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::WalletRecoverySetupWebhookPayload::method_,
+        type: Privy::Models::WalletRecoverySetupWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String
+      }
+
+      type method_ =
+        :user_passcode_derived_recovery_key
+        | :privy_passcode_derived_recovery_key
+        | :privy_generated_recovery_key
+        | :google_drive_recovery_secret
+        | :icloud_recovery_secret
+        | :recovery_encryption_key
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        USER_PASSCODE_DERIVED_RECOVERY_KEY: :user_passcode_derived_recovery_key
+        PRIVY_PASSCODE_DERIVED_RECOVERY_KEY: :privy_passcode_derived_recovery_key
+        PRIVY_GENERATED_RECOVERY_KEY: :privy_generated_recovery_key
+        GOOGLE_DRIVE_RECOVERY_SECRET: :google_drive_recovery_secret
+        ICLOUD_RECOVERY_SECRET: :icloud_recovery_secret
+        RECOVERY_ENCRYPTION_KEY: :recovery_encryption_key
+
+        def self?.values: -> ::Array[Privy::Models::WalletRecoverySetupWebhookPayload::method_]
+      end
+
+      type type_ = :"wallet.recovery_setup"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_RECOVERY_SETUP: :"wallet.recovery_setup"
+
+        def self?.values: -> ::Array[Privy::Models::WalletRecoverySetupWebhookPayload::type_]
+      end
+    end
+  end
+end

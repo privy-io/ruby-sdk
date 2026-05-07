@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type linked_account_telegram =
+      {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        telegram_user_id: String,
+        type: Privy::Models::LinkedAccountTelegram::type_,
+        verified_at: Float,
+        first_name: String?,
+        last_name: String?,
+        photo_url: String?,
+        username: String?
+      }
+
+    class LinkedAccountTelegram < Privy::Internal::Type::BaseModel
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor telegram_user_id: String
+
+      attr_accessor type: Privy::Models::LinkedAccountTelegram::type_
+
+      attr_accessor verified_at: Float
+
+      attr_accessor first_name: String?
+
+      attr_accessor last_name: String?
+
+      attr_accessor photo_url: String?
+
+      attr_accessor username: String?
+
+      def initialize: (
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        telegram_user_id: String,
+        type: Privy::Models::LinkedAccountTelegram::type_,
+        verified_at: Float,
+        ?first_name: String?,
+        ?last_name: String?,
+        ?photo_url: String?,
+        ?username: String?
+      ) -> void
+
+      def to_hash: -> {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        telegram_user_id: String,
+        type: Privy::Models::LinkedAccountTelegram::type_,
+        verified_at: Float,
+        first_name: String?,
+        last_name: String?,
+        photo_url: String?,
+        username: String?
+      }
+
+      type type_ = :telegram
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TELEGRAM: :telegram
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountTelegram::type_]
+      end
+    end
+  end
+end

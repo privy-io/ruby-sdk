@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type wallet_batch_create_response =
+      { results: ::Array[Privy::Models::wallet_batch_create_result] }
+
+    class WalletBatchCreateResponse < Privy::Internal::Type::BaseModel
+      attr_accessor results: ::Array[Privy::Models::wallet_batch_create_result]
+
+      def initialize: (
+        results: ::Array[Privy::Models::wallet_batch_create_result]
+      ) -> void
+
+      def to_hash: -> {
+        results: ::Array[Privy::Models::wallet_batch_create_result]
+      }
+    end
+  end
+end

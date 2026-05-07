@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type solana_wallet_derivation_strategy =
+      :ENTROPY_TO_SEED | :ENTROPY_TO_MNEMONIC_TO_SEED
+
+    module SolanaWalletDerivationStrategy
+      extend Privy::Internal::Type::Enum
+
+      ENTROPY_TO_SEED: :ENTROPY_TO_SEED
+      ENTROPY_TO_MNEMONIC_TO_SEED: :ENTROPY_TO_MNEMONIC_TO_SEED
+
+      def self?.values: -> ::Array[Privy::Models::solana_wallet_derivation_strategy]
+    end
+  end
+end

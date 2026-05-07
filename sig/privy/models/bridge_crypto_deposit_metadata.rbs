@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type bridge_crypto_deposit_metadata =
+      {
+        drain_id: String,
+        liquidation_address: String,
+        liquidation_address_id: String,
+        method_: Privy::Models::BridgeCryptoDepositMetadata::method_,
+        source_wallet_address: String,
+        type: Privy::Models::BridgeCryptoDepositMetadata::type_
+      }
+
+    class BridgeCryptoDepositMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor drain_id: String
+
+      attr_accessor liquidation_address: String
+
+      attr_accessor liquidation_address_id: String
+
+      attr_accessor method_: Privy::Models::BridgeCryptoDepositMetadata::method_
+
+      attr_accessor source_wallet_address: String
+
+      attr_accessor type: Privy::Models::BridgeCryptoDepositMetadata::type_
+
+      def initialize: (
+        drain_id: String,
+        liquidation_address: String,
+        liquidation_address_id: String,
+        method_: Privy::Models::BridgeCryptoDepositMetadata::method_,
+        source_wallet_address: String,
+        type: Privy::Models::BridgeCryptoDepositMetadata::type_
+      ) -> void
+
+      def to_hash: -> {
+        drain_id: String,
+        liquidation_address: String,
+        liquidation_address_id: String,
+        method_: Privy::Models::BridgeCryptoDepositMetadata::method_,
+        source_wallet_address: String,
+        type: Privy::Models::BridgeCryptoDepositMetadata::type_
+      }
+
+      type method_ = :liquidation_address
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        LIQUIDATION_ADDRESS: :liquidation_address
+
+        def self?.values: -> ::Array[Privy::Models::BridgeCryptoDepositMetadata::method_]
+      end
+
+      type type_ = :crypto_deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        CRYPTO_DEPOSIT: :crypto_deposit
+
+        def self?.values: -> ::Array[Privy::Models::BridgeCryptoDepositMetadata::type_]
+      end
+    end
+  end
+end

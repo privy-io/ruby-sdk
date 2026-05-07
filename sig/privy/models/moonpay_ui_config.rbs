@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type moonpay_ui_config =
+      { accent_color: String, theme: Privy::Models::moonpay_ui_theme }
+
+    class MoonpayUiConfig < Privy::Internal::Type::BaseModel
+      attr_reader accent_color: String?
+
+      def accent_color=: (String) -> String
+
+      attr_reader theme: Privy::Models::moonpay_ui_theme?
+
+      def theme=: (
+        Privy::Models::moonpay_ui_theme
+      ) -> Privy::Models::moonpay_ui_theme
+
+      def initialize: (
+        ?accent_color: String,
+        ?theme: Privy::Models::moonpay_ui_theme
+      ) -> void
+
+      def to_hash: -> {
+        accent_color: String,
+        theme: Privy::Models::moonpay_ui_theme
+      }
+    end
+  end
+end

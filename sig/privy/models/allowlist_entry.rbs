@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type allowlist_entry =
+      {
+        id: String,
+        accepted_at: Float?,
+        app_id: String,
+        type: String,
+        value: String
+      }
+
+    class AllowlistEntry < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor accepted_at: Float?
+
+      attr_accessor app_id: String
+
+      attr_accessor type: String
+
+      attr_accessor value: String
+
+      def initialize: (
+        id: String,
+        accepted_at: Float?,
+        app_id: String,
+        type: String,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        accepted_at: Float?,
+        app_id: String,
+        type: String,
+        value: String
+      }
+    end
+  end
+end

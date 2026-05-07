@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type unlink_passkey_input = { credential_id: String, remove_as_mfa: bool }
+
+    class UnlinkPasskeyInput < Privy::Internal::Type::BaseModel
+      attr_accessor credential_id: String
+
+      attr_reader remove_as_mfa: bool?
+
+      def remove_as_mfa=: (bool) -> bool
+
+      def initialize: (credential_id: String, ?remove_as_mfa: bool) -> void
+
+      def to_hash: -> { credential_id: String, remove_as_mfa: bool }
+    end
+  end
+end

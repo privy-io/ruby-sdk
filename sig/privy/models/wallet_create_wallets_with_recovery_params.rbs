@@ -1,0 +1,112 @@
+module Privy
+  module Models
+    type wallet_create_wallets_with_recovery_params =
+      {
+        primary_signer: Privy::WalletCreateWalletsWithRecoveryParams::PrimarySigner,
+        recovery_user: Privy::WalletCreateWalletsWithRecoveryParams::RecoveryUser,
+        wallets: ::Array[Privy::WalletCreateWalletsWithRecoveryParams::Wallet]
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class WalletCreateWalletsWithRecoveryParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor primary_signer: Privy::WalletCreateWalletsWithRecoveryParams::PrimarySigner
+
+      attr_accessor recovery_user: Privy::WalletCreateWalletsWithRecoveryParams::RecoveryUser
+
+      attr_accessor wallets: ::Array[Privy::WalletCreateWalletsWithRecoveryParams::Wallet]
+
+      def initialize: (
+        primary_signer: Privy::WalletCreateWalletsWithRecoveryParams::PrimarySigner,
+        recovery_user: Privy::WalletCreateWalletsWithRecoveryParams::RecoveryUser,
+        wallets: ::Array[Privy::WalletCreateWalletsWithRecoveryParams::Wallet],
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        primary_signer: Privy::WalletCreateWalletsWithRecoveryParams::PrimarySigner,
+        recovery_user: Privy::WalletCreateWalletsWithRecoveryParams::RecoveryUser,
+        wallets: ::Array[Privy::WalletCreateWalletsWithRecoveryParams::Wallet],
+        request_options: Privy::RequestOptions
+      }
+
+      type primary_signer = { subject_id: String }
+
+      class PrimarySigner < Privy::Internal::Type::BaseModel
+        attr_accessor subject_id: String
+
+        def initialize: (subject_id: String) -> void
+
+        def to_hash: -> { subject_id: String }
+      end
+
+      type recovery_user =
+        {
+          linked_accounts: ::Array[Privy::Models::WalletCreateWalletsWithRecoveryParams::RecoveryUser::linked_account]
+        }
+
+      class RecoveryUser < Privy::Internal::Type::BaseModel
+        attr_accessor linked_accounts: ::Array[Privy::Models::WalletCreateWalletsWithRecoveryParams::RecoveryUser::linked_account]
+
+        def initialize: (
+          linked_accounts: ::Array[Privy::Models::WalletCreateWalletsWithRecoveryParams::RecoveryUser::linked_account]
+        ) -> void
+
+        def to_hash: -> {
+          linked_accounts: ::Array[Privy::Models::WalletCreateWalletsWithRecoveryParams::RecoveryUser::linked_account]
+        }
+
+        type linked_account =
+          Privy::LinkedAccountEmailInput | Privy::LinkedAccountCustomJwtInput
+
+        module LinkedAccount
+          extend Privy::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Privy::Models::WalletCreateWalletsWithRecoveryParams::RecoveryUser::linked_account]
+        end
+      end
+
+      type wallet =
+        {
+          chain_type: Privy::Models::wallet_chain_type,
+          display_name: String,
+          external_id: String,
+          policy_ids: Privy::Models::policy_input
+        }
+
+      class Wallet < Privy::Internal::Type::BaseModel
+        attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        attr_reader policy_ids: Privy::Models::policy_input?
+
+        def policy_ids=: (
+          Privy::Models::policy_input
+        ) -> Privy::Models::policy_input
+
+        def initialize: (
+          chain_type: Privy::Models::wallet_chain_type,
+          ?display_name: String,
+          ?external_id: String,
+          ?policy_ids: Privy::Models::policy_input
+        ) -> void
+
+        def to_hash: -> {
+          chain_type: Privy::Models::wallet_chain_type,
+          display_name: String,
+          external_id: String,
+          policy_ids: Privy::Models::policy_input
+        }
+      end
+    end
+  end
+end

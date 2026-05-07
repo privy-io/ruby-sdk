@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type spark_transfer_leaf =
+      {
+        intermediate_refund_tx: String,
+        secret_cipher: String,
+        signature: String,
+        leaf: Privy::SparkWalletLeaf
+      }
+
+    class SparkTransferLeaf < Privy::Internal::Type::BaseModel
+      attr_accessor intermediate_refund_tx: String
+
+      attr_accessor secret_cipher: String
+
+      attr_accessor signature: String
+
+      attr_reader leaf: Privy::SparkWalletLeaf?
+
+      def leaf=: (Privy::SparkWalletLeaf) -> Privy::SparkWalletLeaf
+
+      def initialize: (
+        intermediate_refund_tx: String,
+        secret_cipher: String,
+        signature: String,
+        ?leaf: Privy::SparkWalletLeaf
+      ) -> void
+
+      def to_hash: -> {
+        intermediate_refund_tx: String,
+        secret_cipher: String,
+        signature: String,
+        leaf: Privy::SparkWalletLeaf
+      }
+    end
+  end
+end

@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type ethereum_yield_claim_response =
+      {
+        id: String,
+        :caip2 => String,
+        created_at: Float,
+        rewards: ::Array[Privy::EthereumYieldClaimReward],
+        status: Privy::Models::EthereumYieldClaimResponse::status,
+        updated_at: Float
+      }
+
+    class EthereumYieldClaimResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor caip2: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor rewards: ::Array[Privy::EthereumYieldClaimReward]
+
+      attr_accessor status: Privy::Models::EthereumYieldClaimResponse::status
+
+      attr_accessor updated_at: Float
+
+      def initialize: (
+        id: String,
+        caip2: String,
+        created_at: Float,
+        rewards: ::Array[Privy::EthereumYieldClaimReward],
+        status: Privy::Models::EthereumYieldClaimResponse::status,
+        updated_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        :caip2 => String,
+        created_at: Float,
+        rewards: ::Array[Privy::EthereumYieldClaimReward],
+        status: Privy::Models::EthereumYieldClaimResponse::status,
+        updated_at: Float
+      }
+
+      type status =
+        :broadcasted
+        | :confirmed
+        | :execution_reverted
+        | :failed
+        | :replaced
+        | :finalized
+        | :provider_error
+        | :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        BROADCASTED: :broadcasted
+        CONFIRMED: :confirmed
+        EXECUTION_REVERTED: :execution_reverted
+        FAILED: :failed
+        REPLACED: :replaced
+        FINALIZED: :finalized
+        PROVIDER_ERROR: :provider_error
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::EthereumYieldClaimResponse::status]
+      end
+    end
+  end
+end

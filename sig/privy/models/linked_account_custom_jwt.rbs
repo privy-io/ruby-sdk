@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type linked_account_custom_jwt =
+      {
+        custom_user_id: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountCustomJwt::type_,
+        verified_at: Float
+      }
+
+    class LinkedAccountCustomJwt < Privy::Internal::Type::BaseModel
+      attr_accessor custom_user_id: String
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor type: Privy::Models::LinkedAccountCustomJwt::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        custom_user_id: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountCustomJwt::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        custom_user_id: String,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        type: Privy::Models::LinkedAccountCustomJwt::type_,
+        verified_at: Float
+      }
+
+      type type_ = :custom_auth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        CUSTOM_AUTH: :custom_auth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountCustomJwt::type_]
+      end
+    end
+  end
+end

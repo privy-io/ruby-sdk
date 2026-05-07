@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type farcaster_v2_init_request_body = {  }
+
+    class FarcasterV2InitRequestBody < Privy::Internal::Type::BaseModel
+      def initialize: -> void
+
+      def to_hash: -> {  }
+    end
+  end
+end

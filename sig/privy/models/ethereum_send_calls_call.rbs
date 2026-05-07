@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type ethereum_send_calls_call =
+      { to: String, data: String, value: Privy::Models::quantity }
+
+    class EthereumSendCallsCall < Privy::Internal::Type::BaseModel
+      attr_accessor to: String
+
+      attr_reader data: String?
+
+      def data=: (String) -> String
+
+      attr_reader value: Privy::Models::quantity?
+
+      def value=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      def initialize: (
+        to: String,
+        ?data: String,
+        ?value: Privy::Models::quantity
+      ) -> void
+
+      def to_hash: -> {
+        to: String,
+        data: String,
+        value: Privy::Models::quantity
+      }
+    end
+  end
+end
