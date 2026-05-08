@@ -58,3 +58,118 @@ module Privy
     end
   end
 end
+
+# Opt-in HTTP traces for integration tests.
+#
+# The Stainless-generated client has no logger option. This prepend hooks
+# Net::HTTP#set_debug_output onto the pooled connection factory so that every
+# request/response pair (status line, headers, body) goes to $stderr when
+# PRIVY_LOG_HTTP=1 is set. Unit tests use WebMock and never reach this code.
+#
+# WARNING: traces include the Authorization header, which base64-decodes to
+# app_id:app_secret. Do not paste traces into issues or share CI logs verbatim.
+module Privy
+  module Test
+    # Wraps an IO to make Net::HTTP debug output readable.
+    # Net::HTTP writes each chunk to debug_output as either a literal direction
+    # prefix ("<- " or "-> ") or a String#dump-quoted chunk ('"POST /foo HTTP/1.1\r\n..."').
+    # We track the last-seen prefix, undump the quoted chunks, then re-emit
+    # each line with the prefix attached.
+    class ReadableHTTPDebugIO
+      DIRECTION_PREFIXES = ["<- ", "-> "].freeze
+      # Matches "-> \"...dumped...\"\n" (Net::BufferedIO#rbuf_fill), capturing
+      # the direction arrow and the dumped payload (with surrounding quotes).
+      COMBINED_LINE_RE = /\A(<-|->) (".*")\n?\z/m
+
+      def initialize(sink)
+        @sink = sink
+        @prefix = ""
+      end
+
+      def <<(chunk)
+        s = chunk.to_s
+
+        # Pattern 1: bare direction prefix (Net::BufferedIO#write0 emits "<- "
+        # as its own chunk, followed by dumped payload, followed by "\n").
+        if DIRECTION_PREFIXES.include?(s)
+          @prefix = s
+          return self
+        end
+
+        # Pattern 2: combined "-> \"...\"\n" line (Net::BufferedIO#rbuf_fill
+        # writes the response line as a single chunk).
+        if (m = s.match(COMBINED_LINE_RE))
+          emit_with_prefix("#{m[1]} ", safe_undump(m[2]))
+          return self
+        end
+
+        # Pattern 3: plain LOG message ("reading N bytes...\n" etc.) or the
+        # bare "\n" terminator that follows the request-side dumped chunk.
+        unless s.start_with?('"') && s.end_with?('"')
+          return self if s.match?(/\A\s*\z/) # skip bare whitespace terminators
+          emit_with_prefix("", s.chomp)
+          return self
+        end
+
+        # Pattern 4: dumped payload following a stored @prefix (request side).
+        emit_with_prefix(@prefix, safe_undump(s))
+        self
+      end
+
+      def write(str)
+        self << str
+        str.length
+      end
+
+      private
+
+      def safe_undump(quoted)
+        undumped = quoted.undump
+        # Binary response bodies (e.g. gzipped) contain bytes that $stderr
+        # (UTF-8) cannot encode. Keep the ASCII-safe dumped form in that case.
+        undumped.dup.force_encoding(Encoding::UTF_8).valid_encoding? ? undumped : quoted
+      rescue StandardError
+        quoted
+      end
+
+      def emit_with_prefix(prefix, text)
+        lines = text.split(/\r?\n/, -1)
+        lines.each_with_index do |line, i|
+          last = (i == lines.length - 1)
+          # Skip the empty sentinel split returns for text ending in a
+          # newline; we've already terminated the previous line.
+          next if last && line.empty?
+
+          @sink << prefix << line << "\n"
+        end
+      end
+    end
+
+    module HTTPLogging
+      def connect(cert_store:, url:)
+        conn = super
+        conn.set_debug_output(Privy::Test::ReadableHTTPDebugIO.new($stderr)) if ENV["PRIVY_LOG_HTTP"] == "1"
+        conn
+      end
+    end
+  end
+end
+
+Privy::Internal::Transport::PooledNetRequester.singleton_class.prepend(Privy::Test::HTTPLogging)
+
+# When HTTP logging is enabled, disable response compression so traces show
+# readable JSON bodies instead of gzipped bytes. Prepended onto Net::HTTP#request
+# because Net::HTTPGenericRequest defaults Accept-Encoding to a gzip-preferring
+# q-list and sets @decode_content=true.
+module Privy
+  module Test
+    module DisableCompressionForLogging
+      def request(req, body = nil, &block)
+        req["Accept-Encoding"] = "identity"
+        super
+      end
+    end
+  end
+end
+
+Net::HTTP.prepend(Privy::Test::DisableCompressionForLogging) if ENV["PRIVY_LOG_HTTP"] == "1"
