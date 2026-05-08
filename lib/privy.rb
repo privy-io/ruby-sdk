@@ -922,3 +922,8 @@ require_relative "privy/public_api/services/users"
 require_relative "privy/public_api/services/policies"
 require_relative "privy/public_api/services/key_quorums"
 require_relative "privy/public_api/privy_client"
+
+# Authorization lib
+require_relative "privy/authorization/crypto"
+require_relative "privy/authorization/canonicalization"
+require_relative "privy/authorization/authorization"
