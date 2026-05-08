@@ -50,27 +50,17 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     kp = Privy::Authorization::Crypto.generate_p256_key_pair
     wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
 
-    rpc_body = {
-      method: "personal_sign",
-      chain_type: "ethereum",
-      params: {message: "hello from ruby-sdk p256 integration test", encoding: "utf-8"}
-    }
-
     ctx = Privy::Authorization::AuthorizationContext.build(
       authorization_private_keys: [kp.private_key]
     )
-    prepared = Privy::Authorization.prepare(
-      client,
-      method: :post,
-      url: "#{Privy::Test::IntegrationConfig.api_url}/v1/wallets/#{wallet.id}/rpc",
-      body: rpc_body,
-      authorization_context: ctx
-    )
-
     response = client.wallets.rpc(
       wallet.id,
-      wallet_rpc_request_body: rpc_body,
-      privy_authorization_signature: prepared.headers["privy-authorization-signature"]
+      wallet_rpc_request_body: {
+        method: "personal_sign",
+        chain_type: "ethereum",
+        params: {message: "hello from ruby-sdk p256 integration test", encoding: "utf-8"}
+      },
+      authorization_context: ctx
     )
 
     signature = response.data.signature
@@ -83,24 +73,11 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     other_kp = Privy::Authorization::Crypto.generate_p256_key_pair
     wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: owner_kp.public_key})
 
-    rpc_body = {
-      method: "personal_sign",
-      chain_type: "ethereum",
-      params: {message: "should be rejected", encoding: "utf-8"}
-    }
-
     # Sign with a key that is NOT the wallet's owner. The payload is otherwise
     # well-formed, so this exercises the server's signature-verification path
     # rather than a parse/format error.
     ctx = Privy::Authorization::AuthorizationContext.build(
       authorization_private_keys: [other_kp.private_key]
-    )
-    prepared = Privy::Authorization.prepare(
-      client,
-      method: :post,
-      url: "#{Privy::Test::IntegrationConfig.api_url}/v1/wallets/#{wallet.id}/rpc",
-      body: rpc_body,
-      authorization_context: ctx
     )
 
     # APIStatusError is the common parent of 401/403/422; we don't pin the exact
@@ -109,9 +86,39 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     assert_raises(Privy::Errors::APIStatusError) do
       client.wallets.rpc(
         wallet.id,
-        wallet_rpc_request_body: rpc_body,
-        privy_authorization_signature: prepared.headers["privy-authorization-signature"]
+        wallet_rpc_request_body: {
+          method: "personal_sign",
+          chain_type: "ethereum",
+          params: {message: "should be rejected", encoding: "utf-8"}
+        },
+        authorization_context: ctx
       )
     end
+  end
+
+  def test_rpc_personal_sign_on_p256_owned_wallet_with_sign_fn_returns_signature
+    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
+
+    # Exercises the sign_fns path: a remote-signer style callback that receives
+    # the canonicalized payload bytes and returns a base64 DER signature.
+    sign_fn = lambda do |payload|
+      Privy::Authorization.generate_signature(private_key_base64: kp.private_key, payload: payload)
+    end
+    ctx = Privy::Authorization::AuthorizationContext.build(sign_fns: [sign_fn])
+
+    response = client.wallets.rpc(
+      wallet.id,
+      wallet_rpc_request_body: {
+        method: "personal_sign",
+        chain_type: "ethereum",
+        params: {message: "hello from ruby-sdk sign_fn integration test", encoding: "utf-8"}
+      },
+      authorization_context: ctx
+    )
+
+    signature = response.data.signature
+    refute_nil(signature)
+    assert(signature.start_with?("0x"), "expected 0x-prefixed signature, got #{signature.inspect}")
   end
 end
