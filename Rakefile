@@ -27,14 +27,15 @@ multitask(:"docs:preview") do
   sh(*%w[yard server --reload --quiet --bind [::] --port], ENV.fetch("PORT", "8808"))
 end
 
-desc("Run test suites; use `TEST=path/to/test.rb` to run a specific test file")
+desc("Run test suites; use `TEST=path/to/test.rb` to run a specific test file, `TESTOPTS=-v` for verbose")
 multitask(:test) do
   rb =
     FileList[ENV.fetch("TEST", "./test/**/*_test.rb")]
     .map { "require_relative(#{_1.dump});" }
     .join
 
-  ruby(*%w[-w -e], rb, verbose: false) { fail unless _1 }
+  testopts = ENV["TESTOPTS"].to_s.shellsplit
+  ruby(*%w[-w -e], rb, "--", *testopts, verbose: false) { fail unless _1 }
 end
 
 xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
