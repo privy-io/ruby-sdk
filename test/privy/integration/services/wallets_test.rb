@@ -32,4 +32,86 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     refute_nil(signature)
     assert(signature.start_with?("0x"), "expected 0x-prefixed signature, got #{signature.inspect}")
   end
+
+  def test_create_wallet_with_p256_owner_returns_wallet_with_owner_id
+    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
+
+    refute_nil(wallet.id)
+    refute_nil(wallet.address)
+    assert_match(/^0x[a-fA-F0-9]{40}$/, wallet.address)
+    assert_equal(:ethereum, wallet.chain_type)
+    # The server synthesizes a key quorum from the P-256 public key and returns
+    # its ID here. The raw public key is not echoed back on the Wallet object.
+    refute_nil(wallet.owner_id, "expected owner_id to be set when a P-256 owner is provided")
+  end
+
+  def test_rpc_personal_sign_on_p256_owned_wallet_returns_signature
+    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
+
+    rpc_body = {
+      method: "personal_sign",
+      chain_type: "ethereum",
+      params: {message: "hello from ruby-sdk p256 integration test", encoding: "utf-8"}
+    }
+
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+    prepared = Privy::Authorization.prepare(
+      client,
+      method: :post,
+      url: "#{Privy::Test::IntegrationConfig.api_url}/v1/wallets/#{wallet.id}/rpc",
+      body: rpc_body,
+      authorization_context: ctx
+    )
+
+    response = client.wallets.rpc(
+      wallet.id,
+      wallet_rpc_request_body: rpc_body,
+      privy_authorization_signature: prepared.headers["privy-authorization-signature"]
+    )
+
+    signature = response.data.signature
+    refute_nil(signature)
+    assert(signature.start_with?("0x"), "expected 0x-prefixed signature, got #{signature.inspect}")
+  end
+
+  def test_rpc_personal_sign_on_p256_owned_wallet_with_wrong_signature_is_rejected
+    owner_kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    other_kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: owner_kp.public_key})
+
+    rpc_body = {
+      method: "personal_sign",
+      chain_type: "ethereum",
+      params: {message: "should be rejected", encoding: "utf-8"}
+    }
+
+    # Sign with a key that is NOT the wallet's owner. The payload is otherwise
+    # well-formed, so this exercises the server's signature-verification path
+    # rather than a parse/format error.
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [other_kp.private_key]
+    )
+    prepared = Privy::Authorization.prepare(
+      client,
+      method: :post,
+      url: "#{Privy::Test::IntegrationConfig.api_url}/v1/wallets/#{wallet.id}/rpc",
+      body: rpc_body,
+      authorization_context: ctx
+    )
+
+    # APIStatusError is the common parent of 401/403/422; we don't pin the exact
+    # status because the server's choice of 4xx for this case is an
+    # implementation detail we don't want to over-constrain here.
+    assert_raises(Privy::Errors::APIStatusError) do
+      client.wallets.rpc(
+        wallet.id,
+        wallet_rpc_request_body: rpc_body,
+        privy_authorization_signature: prepared.headers["privy-authorization-signature"]
+      )
+    end
+  end
 end
