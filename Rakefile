@@ -29,13 +29,34 @@ end
 
 desc("Run test suites; use `TEST=path/to/test.rb` to run a specific test file, `TESTOPTS=-v` for verbose")
 multitask(:test) do
-  rb =
-    FileList[ENV.fetch("TEST", "./test/**/*_test.rb")]
-    .map { "require_relative(#{_1.dump});" }
-    .join
+  files =
+    if ENV.key?("TEST")
+      FileList[ENV.fetch("TEST")]
+    else
+      FileList["./test/**/*_test.rb"].exclude("./test/privy/integration/**/*_test.rb")
+    end
+
+  rb = files.map { "require_relative(#{_1.dump});" }.join
 
   testopts = ENV["TESTOPTS"].to_s.shellsplit
   ruby(*%w[-w -e], rb, "--", *testopts, verbose: false) { fail unless _1 }
+end
+
+namespace :test do
+  desc("Run integration test suite against live backend")
+  multitask(:integration) do
+    files =
+      if ENV.key?("TEST")
+        FileList[ENV.fetch("TEST")]
+      else
+        FileList["./test/privy/integration/**/*_test.rb"]
+      end
+
+    rb = files.map { "require_relative(#{_1.dump});" }.join
+
+    testopts = ENV["TESTOPTS"].to_s.shellsplit
+    ruby(*%w[-w -e], rb, "--", *testopts, verbose: false) { fail unless _1 }
+  end
 end
 
 xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]

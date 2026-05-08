@@ -1,4 +1,5 @@
 *.gem
+.env
 .idea/
 .ignore
 .prism.log
