@@ -91,6 +91,76 @@ module Privy
         def self.values
         end
       end
+
+      # Status of the KYC verification process.
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Privy::BridgeFiatCustomerResponse::Status)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        NOT_FOUND =
+          T.let(
+            :not_found,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        ACTIVE =
+          T.let(
+            :active,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        AWAITING_QUESTIONNAIRE =
+          T.let(
+            :awaiting_questionnaire,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        AWAITING_UBO =
+          T.let(
+            :awaiting_ubo,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        INCOMPLETE =
+          T.let(
+            :incomplete,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        NOT_STARTED =
+          T.let(
+            :not_started,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        OFFBOARDED =
+          T.let(
+            :offboarded,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        PAUSED =
+          T.let(
+            :paused,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        REJECTED =
+          T.let(
+            :rejected,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+        UNDER_REVIEW =
+          T.let(
+            :under_review,
+            Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Privy::BridgeFiatCustomerResponse::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
     end
   end
 end
