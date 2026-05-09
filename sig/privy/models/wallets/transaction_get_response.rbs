@@ -84,7 +84,7 @@ module Privy
 
           type details = {  }
 
-          class Details < Privy::Models::TransactionDetail
+          class Details < Privy::Internal::Type::BaseModel
             def initialize: -> void
 
             def to_hash: -> {  }

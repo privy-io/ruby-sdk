@@ -87,7 +87,7 @@ module Privy
           #   @param user_operation_hash [String]
 
           # @see Privy::Models::Wallets::TransactionGetResponse::Transaction#details
-          class Details < Privy::Models::TransactionDetail
+          class Details < Privy::Internal::Type::BaseModel
             # @!method initialize
             #   Details of a wallet transaction, varying by transaction type.
           end

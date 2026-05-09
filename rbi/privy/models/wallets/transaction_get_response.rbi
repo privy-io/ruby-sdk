@@ -158,7 +158,7 @@ module Privy
           def to_hash
           end
 
-          class Details < Privy::Models::TransactionDetail
+          class Details < Privy::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
