@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Privy::AuthorizationTest < Minitest::Test
   def setup
-    @kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    @kp = Privy::Cryptography.generate_p256_key_pair
     @privy_client = Struct.new(:app_id).new("app-abc")
   end
 
