@@ -33,4 +33,5 @@ end
 
 group :test do
   gem "dotenv", "~> 3.1"
+  gem "jwt"
 end

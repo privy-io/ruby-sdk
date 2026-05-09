@@ -8,7 +8,7 @@ module Privy
     attr_reader :api
 
     # Service accessors.
-    attr_reader :wallets, :users, :policies, :key_quorums
+    attr_reader :wallets, :users, :policies, :key_quorums, :jwt_exchange
 
     def initialize(
       app_id: ENV["PRIVY_APP_ID"],
@@ -38,6 +38,7 @@ module Privy
       @users = Privy::Services::Users.new(client: @api, privy_client: self)
       @policies = Privy::Services::Policies.new(client: @api, privy_client: self)
       @key_quorums = Privy::Services::KeyQuorums.new(client: @api, privy_client: self)
+      @jwt_exchange = Privy::JwtExchangeService.new(wallets_resource: @api.wallets)
     end
   end
 end
