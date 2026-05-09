@@ -34,7 +34,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
   end
 
   def test_create_wallet_with_p256_owner_returns_wallet_with_owner_id
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
 
     refute_nil(wallet.id)
@@ -47,7 +47,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
   end
 
   def test_rpc_personal_sign_on_p256_owned_wallet_returns_signature
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
 
     ctx = Privy::Authorization::AuthorizationContext.build(
@@ -69,8 +69,8 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
   end
 
   def test_rpc_personal_sign_on_p256_owned_wallet_with_wrong_signature_is_rejected
-    owner_kp = Privy::Authorization::Crypto.generate_p256_key_pair
-    other_kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    owner_kp = Privy::Cryptography.generate_p256_key_pair
+    other_kp = Privy::Cryptography.generate_p256_key_pair
     wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: owner_kp.public_key})
 
     # Sign with a key that is NOT the wallet's owner. The payload is otherwise
@@ -97,7 +97,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
   end
 
   def test_rpc_personal_sign_on_p256_owned_wallet_with_sign_fn_returns_signature
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     wallet = client.wallets.create(chain_type: :ethereum, owner: {public_key: kp.public_key})
 
     # Exercises the sign_fns path: a remote-signer style callback that receives

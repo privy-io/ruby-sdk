@@ -2,7 +2,7 @@
 
 require_relative "../test_helper"
 
-class Privy::Authorization::CryptoTest < Minitest::Test
+class Privy::CryptographyTest < Minitest::Test
   def test_canonicalize_sorts_keys_and_strips_whitespace
     result = Privy::Authorization::Canonicalization.canonicalize({b: 1, a: [3, 2]})
     assert_equal('{"a":[3,2],"b":1}', result)
@@ -19,7 +19,7 @@ class Privy::Authorization::CryptoTest < Minitest::Test
   end
 
   def test_round_trip_signature_verifies
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     pubkey = OpenSSL::PKey.read(kp.public_key.unpack1("m0"))
     payload = "hello world"
     sig_b64 = Privy::Authorization.generate_signature(private_key_base64: kp.private_key, payload: payload)
