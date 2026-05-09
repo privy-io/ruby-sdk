@@ -7,7 +7,7 @@ require "jwt"
 class Privy::Test::Integration::JwtExchangeTest < Privy::Test::IntegrationTest
   def setup
     super
-    skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"]
+    skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"] && !ENV["JWT_AUTH_SK"].empty?
   end
 
   def test_exchange_jwt_returns_authorization_key
@@ -35,7 +35,8 @@ class Privy::Test::Integration::JwtExchangeTest < Privy::Test::IntegrationTest
   end
 
   def generate_test_jwt
-    pem = ENV.fetch("JWT_AUTH_SK").gsub('\n', "\n")
+    raw = ENV.fetch("JWT_AUTH_SK")
+    pem = raw.gsub('\n', "\n").gsub("\r", "").strip
     private_key = OpenSSL::PKey::RSA.new(pem)
     payload = {sub: jwt_auth_subject, exp: Time.now.to_i + 3600}
     JWT.encode(payload, private_key, "RS256", {typ: "JWT"})
