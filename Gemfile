@@ -30,3 +30,7 @@ group :development, :docs do
   gem "webrick"
   gem "yard"
 end
+
+group :test do
+  gem "dotenv", "~> 3.1"
+end
