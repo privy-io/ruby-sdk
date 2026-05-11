@@ -17,21 +17,24 @@ module Privy
 
       # @!attribute key_quorum_ids
       #   List of key quorum IDs that should be members of this key quorum. Key quorums
-      #   can only be nested 1 level deep.
+      #   can only be nested 1 level deep. At least one of `user_ids`, `public_keys`, or
+      #   `key_quorum_ids` is required.
       #
       #   @return [Array<String>, nil]
       optional :key_quorum_ids, Privy::Internal::Type::ArrayOf[String]
 
       # @!attribute public_keys
       #   List of P-256 public keys of the keys that should be authorized to sign on the
-      #   key quorum, in base64-encoded DER format.
+      #   key quorum, in base64-encoded DER format. At least one of `user_ids`,
+      #   `public_keys`, or `key_quorum_ids` is required.
       #
       #   @return [Array<String>, nil]
       optional :public_keys, Privy::Internal::Type::ArrayOf[String]
 
       # @!attribute user_ids
       #   List of user IDs of the users that should be authorized to sign on the key
-      #   quorum.
+      #   quorum. At least one of `user_ids`, `public_keys`, or `key_quorum_ids` is
+      #   required.
       #
       #   @return [Array<String>, nil]
       optional :user_ids, Privy::Internal::Type::ArrayOf[String]
@@ -40,7 +43,8 @@ module Privy
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KeyQuorumCreateRequestBody} for more details.
       #
-      #   Request input for creating a key quorum.
+      #   Request input for creating a key quorum. At least one of `user_ids`,
+      #   `public_keys`, or `key_quorum_ids` is required.
       #
       #   @param authorization_threshold [Float] The number of keys that must sign for an action to be valid. Must be less than o
       #

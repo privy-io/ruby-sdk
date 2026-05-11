@@ -26,7 +26,8 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
-      # Request body for creating a condition set.
+      # Request body for creating a condition set. Exactly one of `owner` or `owner_id`
+      # is required.
       sig do
         params(
           name: String,

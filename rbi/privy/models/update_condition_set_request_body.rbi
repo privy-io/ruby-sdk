@@ -29,7 +29,8 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
-      # Request body for updating a condition set.
+      # Request body for updating a condition set. At least one field must be provided.
+      # `owner` and `owner_id` are mutually exclusive.
       sig do
         params(
           name: String,

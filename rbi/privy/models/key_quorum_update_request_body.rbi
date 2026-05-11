@@ -46,7 +46,8 @@ module Privy
       sig { params(user_ids: T::Array[String]).void }
       attr_writer :user_ids
 
-      # Request input for updating an existing key quorum.
+      # Request input for updating an existing key quorum. At least one field must be
+      # provided.
       sig do
         params(
           authorization_threshold: Float,

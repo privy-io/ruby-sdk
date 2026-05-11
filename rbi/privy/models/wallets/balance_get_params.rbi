@@ -18,7 +18,8 @@ module Privy
 
         # The token contract address(es) to query in format "chain:address" (e.g.,
         # "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
-        # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v").
+        # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
+        # with `asset`/`chain` or with `include_currency`.
         sig do
           returns(T.nilable(Privy::Wallets::BalanceGetParams::Token::Variants))
         end
@@ -29,6 +30,8 @@ module Privy
         end
         attr_writer :token
 
+        # Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
+        # the query. Cannot be used with `token`.
         sig do
           returns(
             T.nilable(
@@ -52,6 +55,8 @@ module Privy
         end
         attr_writer :asset
 
+        # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+        # `asset`. Cannot be used with `token`.
         sig do
           returns(
             T.nilable(
@@ -79,6 +84,8 @@ module Privy
         end
         attr_writer :chain
 
+        # If set, balances are converted to the specified fiat currency. Not supported
+        # when `token` is provided.
         sig do
           returns(
             T.nilable(
@@ -122,10 +129,17 @@ module Privy
           wallet_id:,
           # The token contract address(es) to query in format "chain:address" (e.g.,
           # "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
-          # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v").
+          # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
+          # with `asset`/`chain` or with `include_currency`.
           token: nil,
+          # Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
+          # the query. Cannot be used with `token`.
           asset: nil,
+          # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+          # `asset`. Cannot be used with `token`.
           chain: nil,
+          # If set, balances are converted to the specified fiat currency. Not supported
+          # when `token` is provided.
           include_currency: nil,
           request_options: {}
         )
@@ -159,7 +173,8 @@ module Privy
 
         # The token contract address(es) to query in format "chain:address" (e.g.,
         # "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
-        # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v").
+        # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
+        # with `asset`/`chain` or with `include_currency`.
         module Token
           extend Privy::Internal::Type::Union
 
@@ -180,6 +195,8 @@ module Privy
             )
         end
 
+        # Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
+        # the query. Cannot be used with `token`.
         module Asset
           extend Privy::Internal::Type::Union
 
@@ -232,6 +249,8 @@ module Privy
             )
         end
 
+        # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+        # `asset`. Cannot be used with `token`.
         module Chain
           extend Privy::Internal::Type::Union
 
@@ -454,6 +473,8 @@ module Privy
             )
         end
 
+        # If set, balances are converted to the specified fiat currency. Not supported
+        # when `token` is provided.
         module IncludeCurrency
           extend Privy::Internal::Type::Enum
 

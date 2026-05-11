@@ -46,6 +46,7 @@ module Privy
         solana_wallet_auth: bool,
         spotify_oauth: bool,
         telegram_auth: bool,
+        telegram_oauth: bool,
         terms_and_conditions_url: String?,
         theme: String,
         tiktok_oauth: bool,
@@ -150,6 +151,8 @@ module Privy
 
       attr_accessor telegram_auth: bool
 
+      attr_accessor telegram_oauth: bool
+
       attr_accessor terms_and_conditions_url: String?
 
       attr_accessor theme: String
@@ -231,6 +234,7 @@ module Privy
         solana_wallet_auth: bool,
         spotify_oauth: bool,
         telegram_auth: bool,
+        telegram_oauth: bool,
         terms_and_conditions_url: String?,
         theme: String,
         tiktok_oauth: bool,
@@ -291,6 +295,7 @@ module Privy
         solana_wallet_auth: bool,
         spotify_oauth: bool,
         telegram_auth: bool,
+        telegram_oauth: bool,
         terms_and_conditions_url: String?,
         theme: String,
         tiktok_oauth: bool,

@@ -8,11 +8,15 @@ module Privy
           T.any(Privy::GasSpendRequestBody, Privy::Internal::AnyHash)
         end
 
-      # Unix timestamp in milliseconds, exclusive.
+      # Unix timestamp in milliseconds, exclusive. Must be greater than or equal to
+      # `start_timestamp`, and the range from `start_timestamp` to `end_timestamp` must
+      # not exceed 30 days.
       sig { returns(Float) }
       attr_accessor :end_timestamp
 
-      # Unix timestamp in milliseconds, inclusive.
+      # Unix timestamp in milliseconds, inclusive. Must be less than or equal to
+      # `end_timestamp`, and the range from `start_timestamp` to `end_timestamp` must
+      # not exceed 30 days.
       sig { returns(Float) }
       attr_accessor :start_timestamp
 
@@ -20,7 +24,8 @@ module Privy
       sig { returns(T::Array[String]) }
       attr_accessor :wallet_ids
 
-      # Query parameters for getting gas spend for a set of wallets.
+      # Query parameters for getting gas spend for a set of wallets. The time range from
+      # `start_timestamp` to `end_timestamp` must not exceed 30 days.
       sig do
         params(
           end_timestamp: Float,
@@ -29,9 +34,13 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # Unix timestamp in milliseconds, exclusive.
+        # Unix timestamp in milliseconds, exclusive. Must be greater than or equal to
+        # `start_timestamp`, and the range from `start_timestamp` to `end_timestamp` must
+        # not exceed 30 days.
         end_timestamp:,
-        # Unix timestamp in milliseconds, inclusive.
+        # Unix timestamp in milliseconds, inclusive. Must be less than or equal to
+        # `end_timestamp`, and the range from `start_timestamp` to `end_timestamp` must
+        # not exceed 30 days.
         start_timestamp:,
         # List of wallet IDs to query gas spend for. Maximum 100.
         wallet_ids:

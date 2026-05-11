@@ -109,7 +109,8 @@ module Privy
             )
           end
 
-        # Request input for updating an existing key quorum.
+        # Request input for updating an existing key quorum. At least one field must be
+        # provided.
         sig { returns(Privy::KeyQuorumUpdateRequestBody) }
         attr_reader :body
 
@@ -137,7 +138,8 @@ module Privy
           ).returns(T.attached_class)
         end
         def self.new(
-          # Request input for updating an existing key quorum.
+          # Request input for updating an existing key quorum. At least one field must be
+          # provided.
           body:,
           method_:,
           url:

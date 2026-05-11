@@ -22,6 +22,12 @@ module Privy
       attr_accessor :reference_id
 
       sig { returns(T.nilable(String)) }
+      attr_reader :signed_transaction
+
+      sig { params(signed_transaction: String).void }
+      attr_writer :signed_transaction
+
+      sig { returns(T.nilable(String)) }
       attr_reader :transaction_id
 
       sig { params(transaction_id: String).void }
@@ -33,6 +39,7 @@ module Privy
           caip2: String,
           hash_: String,
           reference_id: T.nilable(String),
+          signed_transaction: String,
           transaction_id: String
         ).returns(T.attached_class)
       end
@@ -41,6 +48,7 @@ module Privy
         caip2:,
         hash_:,
         reference_id: nil,
+        signed_transaction: nil,
         transaction_id: nil
       )
       end
@@ -51,6 +59,7 @@ module Privy
             caip2: String,
             hash_: String,
             reference_id: T.nilable(String),
+            signed_transaction: String,
             transaction_id: String
           }
         )

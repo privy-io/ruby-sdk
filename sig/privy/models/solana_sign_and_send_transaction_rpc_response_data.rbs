@@ -5,6 +5,7 @@ module Privy
         :caip2 => String,
         hash_: String,
         reference_id: String?,
+        signed_transaction: String,
         transaction_id: String
       }
 
@@ -15,6 +16,10 @@ module Privy
 
       attr_accessor reference_id: String?
 
+      attr_reader signed_transaction: String?
+
+      def signed_transaction=: (String) -> String
+
       attr_reader transaction_id: String?
 
       def transaction_id=: (String) -> String
@@ -23,6 +28,7 @@ module Privy
         caip2: String,
         hash_: String,
         ?reference_id: String?,
+        ?signed_transaction: String,
         ?transaction_id: String
       ) -> void
 
@@ -30,6 +36,7 @@ module Privy
         :caip2 => String,
         hash_: String,
         reference_id: String?,
+        signed_transaction: String,
         transaction_id: String
       }
     end

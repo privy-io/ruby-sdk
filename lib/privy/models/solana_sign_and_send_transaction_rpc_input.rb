@@ -30,6 +30,11 @@ module Privy
       #   @return [Symbol, Privy::Models::SolanaSignAndSendTransactionRpcInput::ChainType, nil]
       optional :chain_type, enum: -> { Privy::SolanaSignAndSendTransactionRpcInput::ChainType }
 
+      # @!attribute optimistic_broadcast
+      #
+      #   @return [Boolean, nil]
+      optional :optimistic_broadcast, Privy::Internal::Type::Boolean
+
       # @!attribute reference_id
       #
       #   @return [String, nil]
@@ -45,7 +50,7 @@ module Privy
       #   @return [String, nil]
       optional :wallet_id, String
 
-      # @!method initialize(caip2:, method_:, params:, address: nil, chain_type: nil, reference_id: nil, sponsor: nil, wallet_id: nil)
+      # @!method initialize(caip2:, method_:, params:, address: nil, chain_type: nil, optimistic_broadcast: nil, reference_id: nil, sponsor: nil, wallet_id: nil)
       #   Executes the SVM `signAndSendTransaction` RPC to sign and broadcast a
       #   transaction.
       #
@@ -58,6 +63,8 @@ module Privy
       #   @param address [String]
       #
       #   @param chain_type [Symbol, Privy::Models::SolanaSignAndSendTransactionRpcInput::ChainType]
+      #
+      #   @param optimistic_broadcast [Boolean]
       #
       #   @param reference_id [String]
       #

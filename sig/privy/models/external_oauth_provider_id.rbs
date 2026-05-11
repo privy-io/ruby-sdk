@@ -12,6 +12,7 @@ module Privy
       | :apple
       | :line
       | :twitch
+      | :telegram
 
     module ExternalOAuthProviderID
       extend Privy::Internal::Type::Enum
@@ -27,6 +28,7 @@ module Privy
       APPLE: :apple
       LINE: :line
       TWITCH: :twitch
+      TELEGRAM: :telegram
 
       def self?.values: -> ::Array[Privy::Models::external_oauth_provider_id]
     end

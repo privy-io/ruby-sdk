@@ -7,6 +7,7 @@ module Privy
         params: Privy::SolanaSignAndSendTransactionRpcInputParams,
         address: String,
         chain_type: Privy::Models::SolanaSignAndSendTransactionRpcInput::chain_type,
+        optimistic_broadcast: bool,
         reference_id: String,
         sponsor: bool,
         wallet_id: String
@@ -29,6 +30,10 @@ module Privy
         Privy::Models::SolanaSignAndSendTransactionRpcInput::chain_type
       ) -> Privy::Models::SolanaSignAndSendTransactionRpcInput::chain_type
 
+      attr_reader optimistic_broadcast: bool?
+
+      def optimistic_broadcast=: (bool) -> bool
+
       attr_reader reference_id: String?
 
       def reference_id=: (String) -> String
@@ -47,6 +52,7 @@ module Privy
         params: Privy::SolanaSignAndSendTransactionRpcInputParams,
         ?address: String,
         ?chain_type: Privy::Models::SolanaSignAndSendTransactionRpcInput::chain_type,
+        ?optimistic_broadcast: bool,
         ?reference_id: String,
         ?sponsor: bool,
         ?wallet_id: String
@@ -58,6 +64,7 @@ module Privy
         params: Privy::SolanaSignAndSendTransactionRpcInputParams,
         address: String,
         chain_type: Privy::Models::SolanaSignAndSendTransactionRpcInput::chain_type,
+        optimistic_broadcast: bool,
         reference_id: String,
         sponsor: bool,
         wallet_id: String

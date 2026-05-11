@@ -54,6 +54,12 @@ module Privy
       end
       attr_writer :chain_type
 
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :optimistic_broadcast
+
+      sig { params(optimistic_broadcast: T::Boolean).void }
+      attr_writer :optimistic_broadcast
+
       sig { returns(T.nilable(String)) }
       attr_reader :reference_id
 
@@ -83,6 +89,7 @@ module Privy
           address: String,
           chain_type:
             Privy::SolanaSignAndSendTransactionRpcInput::ChainType::OrSymbol,
+          optimistic_broadcast: T::Boolean,
           reference_id: String,
           sponsor: T::Boolean,
           wallet_id: String
@@ -96,6 +103,7 @@ module Privy
         params:,
         address: nil,
         chain_type: nil,
+        optimistic_broadcast: nil,
         reference_id: nil,
         sponsor: nil,
         wallet_id: nil
@@ -112,6 +120,7 @@ module Privy
             address: String,
             chain_type:
               Privy::SolanaSignAndSendTransactionRpcInput::ChainType::OrSymbol,
+            optimistic_broadcast: T::Boolean,
             reference_id: String,
             sponsor: T::Boolean,
             wallet_id: String

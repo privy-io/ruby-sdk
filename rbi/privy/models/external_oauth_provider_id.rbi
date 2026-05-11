@@ -22,6 +22,7 @@ module Privy
       APPLE = T.let(:apple, Privy::ExternalOAuthProviderID::TaggedSymbol)
       LINE = T.let(:line, Privy::ExternalOAuthProviderID::TaggedSymbol)
       TWITCH = T.let(:twitch, Privy::ExternalOAuthProviderID::TaggedSymbol)
+      TELEGRAM = T.let(:telegram, Privy::ExternalOAuthProviderID::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Privy::ExternalOAuthProviderID::TaggedSymbol])
