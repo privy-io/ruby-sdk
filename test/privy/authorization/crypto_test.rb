@@ -22,7 +22,7 @@ class Privy::CryptographyTest < Minitest::Test
     kp = Privy::Cryptography.generate_p256_key_pair
     pubkey = OpenSSL::PKey.read(kp.public_key.unpack1("m0"))
     payload = "hello world"
-    sig_b64 = Privy::Authorization.generate_signature(private_key_base64: kp.private_key, payload: payload)
+    sig_b64 = Privy::Authorization.generate_authorization_signature(private_key_base64: kp.private_key, payload: payload)
     der = sig_b64.unpack1("m0")
     digest = OpenSSL::Digest.new("SHA256").digest(payload)
     assert(pubkey.dsa_verify_asn1(digest, der))
