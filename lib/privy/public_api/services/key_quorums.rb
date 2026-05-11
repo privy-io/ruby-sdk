@@ -3,6 +3,8 @@
 module Privy
   module Services
     class KeyQuorums < Privy::Resources::KeyQuorums
+      include AuthorizationSupport
+
       attr_reader :privy_client
 
       def initialize(client:, privy_client:)
