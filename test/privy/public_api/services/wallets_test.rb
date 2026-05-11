@@ -91,7 +91,7 @@ class Privy::Services::WalletsTest < Minitest::Test
       captured_sig = req.headers["Privy-Authorization-Signature"]
     end
 
-    expected_payload = Privy::Authorization.format_request(
+    expected_payload = Privy::Authorization.format_request_for_authorization_signature(
       Privy::Authorization::WalletApiRequestSignatureInput.build(
         method: :patch,
         url: "#{BASE_URL}/v1/wallets/w-1",
@@ -158,7 +158,7 @@ class Privy::Services::WalletsTest < Minitest::Test
       refute(req.headers.key?("Privy-Idempotency-Key"))
     end
 
-    expected_payload = Privy::Authorization.format_request(
+    expected_payload = Privy::Authorization.format_request_for_authorization_signature(
       Privy::Authorization::WalletApiRequestSignatureInput.build(
         method: :post,
         url: "#{BASE_URL}/v1/wallets/w-1/rpc",
@@ -190,7 +190,7 @@ class Privy::Services::WalletsTest < Minitest::Test
       captured_sig = req.headers["Privy-Authorization-Signature"]
     end
 
-    expected_payload = Privy::Authorization.format_request(
+    expected_payload = Privy::Authorization.format_request_for_authorization_signature(
       Privy::Authorization::WalletApiRequestSignatureInput.build(
         method: :post,
         url: "#{BASE_URL}/v1/wallets/w-1/rpc",
