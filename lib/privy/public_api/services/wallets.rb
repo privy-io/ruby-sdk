@@ -3,6 +3,8 @@
 module Privy
   module Services
     class Wallets < Privy::Resources::Wallets
+      include AuthorizationSupport
+
       attr_reader :privy_client
 
       def initialize(client:, privy_client:)
@@ -50,22 +52,6 @@ module Privy
         )
         merge_prepared_headers!(params, prepared)
         super
-      end
-
-      private
-
-      # Must byte-match the URL the server canonicalizes over; the generated
-      # transport joins base_url + path via URI.join, which produces
-      # "<scheme>://<host>[:port]/<path>" regardless of trailing slash.
-      def signed_url(path)
-        base = privy_client.api.base_url.to_s.chomp("/")
-        "#{base}/#{path}"
-      end
-
-      def merge_prepared_headers!(params, prepared)
-        prepared.headers.each do |header_name, value|
-          params[header_name.tr("-", "_").to_sym] = value
-        end
       end
     end
   end
