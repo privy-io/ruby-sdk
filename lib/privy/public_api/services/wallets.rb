@@ -3,8 +3,6 @@
 module Privy
   module Services
     class Wallets < Privy::Resources::Wallets
-      include AuthorizationSupport
-
       attr_reader :privy_client
 
       def initialize(client:, privy_client:)
@@ -25,7 +23,7 @@ module Privy
         return super if authorization_context.nil?
 
         body = params.except(:request_options)
-        prepared = Privy::Authorization.prepare(
+        prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
           url: signed_url("v1/wallets/#{wallet_id}"),
@@ -42,7 +40,7 @@ module Privy
         idempotency_key = params.delete(:idempotency_key)
         return super if authorization_context.nil? && idempotency_key.nil?
 
-        prepared = Privy::Authorization.prepare(
+        prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
           url: signed_url("v1/wallets/#{wallet_id}/rpc"),
@@ -52,6 +50,19 @@ module Privy
         )
         merge_prepared_headers!(params, prepared)
         super
+      end
+
+      private
+
+      def signed_url(path)
+        base = privy_client.api.base_url.to_s.chomp("/")
+        "#{base}/#{path}"
+      end
+
+      def merge_prepared_headers!(params, prepared)
+        prepared.headers.each do |header_name, value|
+          params[header_name.tr("-", "_").to_sym] = value
+        end
       end
     end
   end
