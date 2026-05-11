@@ -28,7 +28,7 @@ module Privy
 
     module_function
 
-    def format_request(input)
+    def format_request_for_authorization_signature(input)
       payload = {
         version: input.version,
         method: input.method,
@@ -39,19 +39,19 @@ module Privy
       Privy::Authorization::Canonicalization.canonicalize(payload).b
     end
 
-    def generate_signature(private_key_base64:, payload:)
+    def generate_authorization_signature(private_key_base64:, payload:)
       key = Privy::Cryptography.import_pkcs8_private_key(private_key_base64)
       digest = OpenSSL::Digest.new("SHA256").digest(payload)
       der = key.dsa_sign_asn1(digest)
       [der].pack("m0")
     end
 
-    def generate_signatures(_privy_client, input:, context:)
-      payload = format_request(input)
+    def generate_authorization_signatures(_privy_client, input:, context:)
+      payload = format_request_for_authorization_signature(input)
 
       precomputed = context.signatures.dup
       key_sigs = context.authorization_private_keys.map do |pk|
-        generate_signature(private_key_base64: pk, payload: payload)
+        generate_authorization_signature(private_key_base64: pk, payload: payload)
       end
       fn_sigs = context.sign_fns.map { |fn| fn.call(payload) }
 
@@ -80,7 +80,7 @@ module Privy
         headers: {"privy-app-id" => privy_client.app_id}.merge(headers)
       )
 
-      signatures = generate_signatures(privy_client, input: signature_input, context: ctx)
+      signatures = generate_authorization_signatures(privy_client, input: signature_input, context: ctx)
       headers["privy-authorization-signature"] = signatures.join(",") unless signatures.empty?
 
       PreparedRequest.new(headers: headers)
