@@ -160,6 +160,9 @@ module Privy
       sig { returns(T::Boolean) }
       attr_accessor :telegram_auth
 
+      sig { returns(T::Boolean) }
+      attr_accessor :telegram_oauth
+
       sig { returns(T.nilable(String)) }
       attr_accessor :terms_and_conditions_url
 
@@ -269,6 +272,7 @@ module Privy
           solana_wallet_auth: T::Boolean,
           spotify_oauth: T::Boolean,
           telegram_auth: T::Boolean,
+          telegram_oauth: T::Boolean,
           terms_and_conditions_url: T.nilable(String),
           theme: String,
           tiktok_oauth: T::Boolean,
@@ -333,6 +337,7 @@ module Privy
         solana_wallet_auth:,
         spotify_oauth:,
         telegram_auth:,
+        telegram_oauth:,
         terms_and_conditions_url:,
         theme:,
         tiktok_oauth:,
@@ -403,6 +408,7 @@ module Privy
             solana_wallet_auth: T::Boolean,
             spotify_oauth: T::Boolean,
             telegram_auth: T::Boolean,
+            telegram_oauth: T::Boolean,
             terms_and_conditions_url: T.nilable(String),
             theme: String,
             tiktok_oauth: T::Boolean,

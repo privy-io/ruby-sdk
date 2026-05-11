@@ -27,7 +27,8 @@ module Privy
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::UpdateConditionSetRequestBody} for more details.
       #
-      #   Request body for updating a condition set.
+      #   Request body for updating a condition set. At least one field must be provided.
+      #   `owner` and `owner_id` are mutually exclusive.
       #
       #   @param name [String] Name to assign to condition set.
       #

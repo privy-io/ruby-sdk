@@ -17,22 +17,29 @@ module Privy
         # @!attribute token
         #   The token contract address(es) to query in format "chain:address" (e.g.,
         #   "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
-        #   "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v").
+        #   "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
+        #   with `asset`/`chain` or with `include_currency`.
         #
         #   @return [String, Array<String>, nil]
         optional :token, union: -> { Privy::Wallets::BalanceGetParams::Token }
 
         # @!attribute asset
+        #   Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
+        #   the query. Cannot be used with `token`.
         #
         #   @return [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset, nil]
         optional :asset, union: -> { Privy::Wallets::BalanceGetParams::Asset }
 
         # @!attribute chain
+        #   Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+        #   `asset`. Cannot be used with `token`.
         #
         #   @return [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain, nil]
         optional :chain, union: -> { Privy::Wallets::BalanceGetParams::Chain }
 
         # @!attribute include_currency
+        #   If set, balances are converted to the specified fiat currency. Not supported
+        #   when `token` is provided.
         #
         #   @return [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency, nil]
         optional :include_currency, enum: -> { Privy::Wallets::BalanceGetParams::IncludeCurrency }
@@ -45,17 +52,18 @@ module Privy
         #
         #   @param token [String, Array<String>] The token contract address(es) to query in format "chain:address" (e.g., "base:0
         #
-        #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset]
+        #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
-        #   @param chain [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain]
+        #   @param chain [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
         #
-        #   @param include_currency [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency]
+        #   @param include_currency [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency] If set, balances are converted to the specified fiat currency. Not supported whe
         #
         #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
 
         # The token contract address(es) to query in format "chain:address" (e.g.,
         # "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
-        # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v").
+        # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
+        # with `asset`/`chain` or with `include_currency`.
         module Token
           extend Privy::Internal::Type::Union
 
@@ -70,6 +78,8 @@ module Privy
           StringArray = Privy::Internal::Type::ArrayOf[String]
         end
 
+        # Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
+        # the query. Cannot be used with `token`.
         module Asset
           extend Privy::Internal::Type::Union
 
@@ -115,6 +125,8 @@ module Privy
           WalletAssetArray = Privy::Internal::Type::ArrayOf[enum: -> { Privy::WalletAsset }]
         end
 
+        # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+        # `asset`. Cannot be used with `token`.
         module Chain
           extend Privy::Internal::Type::Union
 
@@ -218,6 +230,8 @@ module Privy
             Privy::Internal::Type::ArrayOf[enum: -> { Privy::Wallets::BalanceGetParams::Chain::UnionMember1 }]
         end
 
+        # If set, balances are converted to the specified fiat currency. Not supported
+        # when `token` is provided.
         module IncludeCurrency
           extend Privy::Internal::Type::Enum
 

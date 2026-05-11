@@ -21,13 +21,16 @@ module Privy
         authorization_threshold: nil,
         display_name: nil,
         # List of key quorum IDs that should be members of this key quorum. Key quorums
-        # can only be nested 1 level deep.
+        # can only be nested 1 level deep. At least one of `user_ids`, `public_keys`, or
+        # `key_quorum_ids` is required.
         key_quorum_ids: nil,
         # List of P-256 public keys of the keys that should be authorized to sign on the
-        # key quorum, in base64-encoded DER format.
+        # key quorum, in base64-encoded DER format. At least one of `user_ids`,
+        # `public_keys`, or `key_quorum_ids` is required.
         public_keys: nil,
         # List of user IDs of the users that should be authorized to sign on the key
-        # quorum.
+        # quorum. At least one of `user_ids`, `public_keys`, or `key_quorum_ids` is
+        # required.
         user_ids: nil,
         request_options: {}
       )

@@ -58,6 +58,7 @@ class Privy::Test::Resources::AppsTest < Privy::Test::ResourceTest
         solana_wallet_auth: Privy::Internal::Type::Boolean,
         spotify_oauth: Privy::Internal::Type::Boolean,
         telegram_auth: Privy::Internal::Type::Boolean,
+        telegram_oauth: Privy::Internal::Type::Boolean,
         terms_and_conditions_url: String | nil,
         theme: String,
         tiktok_oauth: Privy::Internal::Type::Boolean,

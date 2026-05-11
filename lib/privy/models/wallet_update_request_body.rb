@@ -40,7 +40,8 @@ module Privy
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletUpdateRequestBody} for more details.
       #
-      #   Request body for updating a wallet.
+      #   Request body for updating a wallet. `owner` and `owner_id` are mutually
+      #   exclusive.
       #
       #   @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Additional signers for the wallet.
       #

@@ -45,7 +45,8 @@ module Privy
       sig { params(policy_ids: T::Array[String]).void }
       attr_writer :policy_ids
 
-      # Request body for updating a wallet.
+      # Request body for updating a wallet. `owner` and `owner_id` are mutually
+      # exclusive.
       sig do
         params(
           additional_signers:

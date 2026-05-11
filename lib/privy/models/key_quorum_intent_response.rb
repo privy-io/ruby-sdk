@@ -54,7 +54,8 @@ module Privy
 
       class RequestDetails < Privy::Internal::Type::BaseModel
         # @!attribute body
-        #   Request input for updating an existing key quorum.
+        #   Request input for updating an existing key quorum. At least one field must be
+        #   provided.
         #
         #   @return [Privy::Models::KeyQuorumUpdateRequestBody]
         required :body, -> { Privy::KeyQuorumUpdateRequestBody }
@@ -74,10 +75,13 @@ module Privy
         required :url, String
 
         # @!method initialize(body:, method_:, url:)
+        #   Some parameter documentations has been truncated, see
+        #   {Privy::Models::KeyQuorumIntentResponse::RequestDetails} for more details.
+        #
         #   The original key quorum update request that would be sent to the key quorum
         #   endpoint
         #
-        #   @param body [Privy::Models::KeyQuorumUpdateRequestBody] Request input for updating an existing key quorum.
+        #   @param body [Privy::Models::KeyQuorumUpdateRequestBody] Request input for updating an existing key quorum. At least one field must be pr
         #
         #   @param method_ [Symbol, Privy::Models::KeyQuorumIntentResponse::RequestDetails::Method]
         #

@@ -17,6 +17,7 @@ module Privy
       APPLE = :apple
       LINE = :line
       TWITCH = :twitch
+      TELEGRAM = :telegram
 
       # @!method self.values
       #   @return [Array<Symbol>]

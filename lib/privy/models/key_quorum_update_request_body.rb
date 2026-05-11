@@ -40,7 +40,8 @@ module Privy
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KeyQuorumUpdateRequestBody} for more details.
       #
-      #   Request input for updating an existing key quorum.
+      #   Request input for updating an existing key quorum. At least one field must be
+      #   provided.
       #
       #   @param authorization_threshold [Float] The number of keys that must sign for an action to be valid. Must be less than o
       #
