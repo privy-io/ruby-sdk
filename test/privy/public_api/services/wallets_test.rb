@@ -50,7 +50,7 @@ class Privy::Services::WalletsTest < Minitest::Test
 
   def test_create_without_idempotency_sends_no_idempotency_header
     stub_json(:post, "#{BASE_URL}/v1/wallets", body: wallet_response_body)
-    build_client.wallets.create(chain_type: :ethereum)
+    build_client.wallets.create(wallet_create_params: {chain_type: :ethereum})
     assert_requested(:post, "#{BASE_URL}/v1/wallets") do |req|
       refute(req.headers.key?("Privy-Idempotency-Key"))
     end
@@ -58,7 +58,7 @@ class Privy::Services::WalletsTest < Minitest::Test
 
   def test_create_forwards_idempotency_key_as_header
     stub_json(:post, "#{BASE_URL}/v1/wallets", body: wallet_response_body)
-    build_client.wallets.create(chain_type: :ethereum, idempotency_key: "idem-1")
+    build_client.wallets.create(wallet_create_params: {chain_type: :ethereum}, idempotency_key: "idem-1")
     assert_requested(:post, "#{BASE_URL}/v1/wallets") do |req|
       assert_equal("idem-1", req.headers["Privy-Idempotency-Key"])
     end
@@ -68,7 +68,7 @@ class Privy::Services::WalletsTest < Minitest::Test
 
   def test_update_without_auth_context_sends_no_signature_header
     stub_json(:patch, "#{BASE_URL}/v1/wallets/w-1", body: wallet_response_body(display_name: "new"))
-    build_client.wallets.update("w-1", display_name: "new")
+    build_client.wallets.update("w-1", wallet_update_params: {display_name: "new"})
     assert_requested(:patch, "#{BASE_URL}/v1/wallets/w-1") do |req|
       refute(req.headers.key?("Privy-Authorization-Signature"))
     end
@@ -80,7 +80,7 @@ class Privy::Services::WalletsTest < Minitest::Test
 
     build_client.wallets.update(
       "w-1",
-      display_name: "new",
+      wallet_update_params: {display_name: "new"},
       authorization_context: Privy::Authorization::AuthorizationContext.build(
         authorization_private_keys: [kp.private_key]
       )
