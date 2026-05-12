@@ -134,4 +134,35 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
 
     client.policies.delete(policy.id)
   end
+
+  def test_delete_owned_policy
+    kp = Privy::Cryptography.generate_p256_key_pair
+
+    policy = client.policies.create(
+      policy_create_params: {
+        version: "1.0",
+        name: "RubySDK Policies Delete Test",
+        chain_type: "ethereum",
+        rules: [],
+        owner: {public_key: kp.public_key}
+      }
+    )
+    refute_nil(policy.id)
+
+    # Verify it exists
+    fetched = client.policies.get(policy.id)
+    assert_equal(policy.id, fetched.id)
+
+    # Delete with authorization
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+    result = client.policies.delete(policy.id, authorization_context: ctx)
+    assert_equal(true, result.success)
+
+    # Verify it no longer exists
+    assert_raises(Privy::Errors::APIStatusError) do
+      client.policies.get(policy.id)
+    end
+  end
 end
