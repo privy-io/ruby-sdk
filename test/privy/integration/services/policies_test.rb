@@ -53,6 +53,10 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
     assert_equal("RubySDK Idempotency Test", response1.name)
     assert_equal(:ethereum, response1.chain_type)
 
+    # Wait for the server to finish processing the first request; otherwise the
+    # second call returns "Previous request with matching idempotency key is still in progress."
+    sleep(1)
+
     response2 = client.policies.create(
       policy_create_params: {
         version: "1.0",
