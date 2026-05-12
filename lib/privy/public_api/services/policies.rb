@@ -151,6 +151,55 @@ module Privy
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(policy_id, combined_params)
       end
+
+      # Update a rule by policy ID and rule ID.
+      #
+      # @example Update a rule's action to DENY
+      #   client.policies.update_rule("rule-id", policy_id: "policy-id",
+      #     policy_update_rule_params: {
+      #       name: "Updated rule",
+      #       method: "eth_sendTransaction",
+      #       action: "DENY",
+      #       conditions: [{
+      #         field_source: "ethereum_transaction",
+      #         field: "to",
+      #         operator: "eq",
+      #         value: "0x0000000000000000000000000000000000000001"
+      #       }]
+      #     }, authorization_context: ctx)
+      #
+      # @param rule_id [String] ID of the rule to update.
+      # @param policy_id [String] ID of the policy the rule belongs to.
+      # @param policy_update_rule_params [Hash] Body parameters for the rule update.
+      # @option policy_update_rule_params [String] :name Rule name (required).
+      # @option policy_update_rule_params [String] :method RPC method the rule applies to (required).
+      # @option policy_update_rule_params [String] :action Action when the rule matches ("ALLOW" or "DENY", required).
+      # @option policy_update_rule_params [Array<Hash>] :conditions Array of condition objects (required).
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::PolicyRuleResponse]
+      def update_rule(
+        rule_id,
+        policy_id:,
+        policy_update_rule_params:,
+        authorization_context: nil,
+        request_options: nil
+      )
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :patch,
+          url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}/rules/#{rule_id}"),
+          body: policy_update_rule_params,
+          authorization_context: authorization_context
+        )
+        combined_params = policy_update_rule_params.merge(
+          policy_id: policy_id,
+          request_options: request_options
+        )
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+        super(rule_id, combined_params)
+      end
     end
   end
 end
