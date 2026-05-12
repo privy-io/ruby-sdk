@@ -37,6 +37,7 @@ module Privy
             Privy::UserOperationCompletedWebhookPayload,
             Privy::IntentCreatedWebhookPayload,
             Privy::IntentAuthorizedWebhookPayload,
+            Privy::IntentRejectedWebhookPayload,
             Privy::IntentExecutedWebhookPayload,
             Privy::IntentFailedWebhookPayload,
             Privy::WalletActionSwapCreatedWebhookPayload,

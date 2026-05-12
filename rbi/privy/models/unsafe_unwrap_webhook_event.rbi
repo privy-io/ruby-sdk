@@ -13,6 +13,7 @@ module Privy
             Privy::IntentCreatedWebhookPayload,
             Privy::IntentExecutedWebhookPayload,
             Privy::IntentFailedWebhookPayload,
+            Privy::IntentRejectedWebhookPayload,
             Privy::MfaDisabledWebhookPayload,
             Privy::MfaEnabledWebhookPayload,
             Privy::TransactionBroadcastedWebhookPayload,

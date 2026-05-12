@@ -1,0 +1,74 @@
+module Privy
+  module Models
+    type intent_rejected_webhook_payload =
+      {
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        rejected_at: Float,
+        status: String,
+        type: Privy::Models::IntentRejectedWebhookPayload::type_,
+        created_by_display_name: String,
+        created_by_id: String
+      }
+
+    class IntentRejectedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor created_at: Float
+
+      attr_accessor expires_at: Float
+
+      attr_accessor intent_id: String
+
+      attr_accessor intent_type: Privy::Models::intent_type
+
+      attr_accessor rejected_at: Float
+
+      attr_accessor status: String
+
+      attr_accessor type: Privy::Models::IntentRejectedWebhookPayload::type_
+
+      attr_reader created_by_display_name: String?
+
+      def created_by_display_name=: (String) -> String
+
+      attr_reader created_by_id: String?
+
+      def created_by_id=: (String) -> String
+
+      def initialize: (
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        rejected_at: Float,
+        status: String,
+        type: Privy::Models::IntentRejectedWebhookPayload::type_,
+        ?created_by_display_name: String,
+        ?created_by_id: String
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Float,
+        expires_at: Float,
+        intent_id: String,
+        intent_type: Privy::Models::intent_type,
+        rejected_at: Float,
+        status: String,
+        type: Privy::Models::IntentRejectedWebhookPayload::type_,
+        created_by_display_name: String,
+        created_by_id: String
+      }
+
+      type type_ = :"intent.rejected"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INTENT_REJECTED: :"intent.rejected"
+
+        def self?.values: -> ::Array[Privy::Models::IntentRejectedWebhookPayload::type_]
+      end
+    end
+  end
+end
