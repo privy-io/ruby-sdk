@@ -113,6 +113,44 @@ module Privy
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(policy_id, combined_params)
       end
+
+      # Create a new rule for a policy.
+      #
+      # @example Add an allowlist rule to a policy
+      #   client.policies.create_rule("policy-id", policy_create_rule_params: {
+      #     name: "Allow transfers to known address",
+      #     method: "eth_sendTransaction",
+      #     action: "ALLOW",
+      #     conditions: [{
+      #       field_source: "ethereum_transaction",
+      #       field: "to",
+      #       operator: "eq",
+      #       value: "0x0000000000000000000000000000000000000001"
+      #     }]
+      #   }, authorization_context: ctx)
+      #
+      # @param policy_id [String] ID of the policy to add the rule to.
+      # @param policy_create_rule_params [Hash] Body parameters for rule creation.
+      # @option policy_create_rule_params [String] :name Rule name (required).
+      # @option policy_create_rule_params [String] :method RPC method the rule applies to (required).
+      # @option policy_create_rule_params [String] :action Action when the rule matches ("ALLOW" or "DENY", required).
+      # @option policy_create_rule_params [Array<Hash>] :conditions Array of condition objects (required).
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::PolicyRuleResponse]
+      def create_rule(policy_id, policy_create_rule_params:, authorization_context: nil, request_options: nil)
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :post,
+          url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}/rules"),
+          body: policy_create_rule_params,
+          authorization_context: authorization_context
+        )
+        combined_params = policy_create_rule_params.merge(request_options: request_options)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+        super(policy_id, combined_params)
+      end
     end
   end
 end
