@@ -165,4 +165,63 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
       client.policies.get(policy.id)
     end
   end
+
+  def test_create_rule
+    kp = Privy::Cryptography.generate_p256_key_pair
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+
+    policy = client.policies.create(
+      policy_create_params: {
+        version: "1.0",
+        name: "RubySDK Create Rule Test",
+        chain_type: "ethereum",
+        rules: [
+          {
+            name: "Restrict ETH transfers to a maximum value",
+            method: "eth_sendTransaction",
+            action: "ALLOW",
+            conditions: [
+              {
+                field_source: "ethereum_transaction",
+                field: "value",
+                operator: "lte",
+                value: "0x2386F26FC10000"
+              }
+            ]
+          }
+        ],
+        owner: {public_key: kp.public_key}
+      }
+    )
+    original_rule_id = policy.rules[0].id
+
+    response = client.policies.create_rule(
+      policy.id,
+      policy_create_rule_params: {
+        name: "Allow transfers to known address",
+        method: "eth_sendTransaction",
+        action: "ALLOW",
+        conditions: [
+          {
+            field_source: "ethereum_transaction",
+            field: "to",
+            operator: "eq",
+            value: "0x0000000000000000000000000000000000000001"
+          }
+        ]
+      },
+      authorization_context: ctx
+    )
+    refute_nil(response.id)
+
+    fetched = client.policies.get(policy.id)
+    assert_equal(2, fetched.rules.length)
+    assert_equal(original_rule_id, fetched.rules[0].id)
+    assert_equal(response.id, fetched.rules[1].id)
+    assert_equal("Allow transfers to known address", fetched.rules[1].name)
+
+    client.policies.delete(policy.id, authorization_context: ctx)
+  end
 end
