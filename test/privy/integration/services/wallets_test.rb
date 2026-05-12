@@ -166,4 +166,73 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
       "expected 0x-prefixed signed tx, got #{signed_transaction.inspect}"
     )
   end
+
+  # --- raw_sign tests ---
+
+  RAW_SIGN_HASH = "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+
+  def test_raw_sign_on_ownerless_wallet_returns_signature
+    wallet = client.wallets.create(wallet_create_params: {chain_type: :tron})
+
+    response = client.wallets.raw_sign(
+      wallet.id,
+      raw_sign_input: {params: {hash: RAW_SIGN_HASH}}
+    )
+
+    refute_nil(response.data.signature)
+    assert_equal(:hex, response.data.encoding)
+  end
+
+  def test_raw_sign_on_p256_owned_wallet_returns_signature
+    kp = Privy::Cryptography.generate_p256_key_pair
+    wallet = client.wallets.create(wallet_create_params: {chain_type: :tron, owner: {public_key: kp.public_key}})
+
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+    response = client.wallets.raw_sign(
+      wallet.id,
+      raw_sign_input: {params: {hash: RAW_SIGN_HASH}},
+      authorization_context: ctx
+    )
+
+    refute_nil(response.data.signature)
+    assert_equal(:hex, response.data.encoding)
+  end
+
+  def test_raw_sign_on_user_owned_wallet_returns_signature
+    skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"] && !ENV["JWT_AUTH_SK"].empty?
+
+    user = client.users.get_by_custom_auth_id(custom_user_id: jwt_auth_subject)
+    wallet = client.wallets.create(wallet_create_params: {chain_type: :tron, owner: {user_id: user.id}})
+    jwt = generate_test_jwt
+
+    ctx = Privy::Authorization::AuthorizationContext.build(user_jwts: [jwt])
+    response = client.wallets.raw_sign(
+      wallet.id,
+      raw_sign_input: {params: {hash: RAW_SIGN_HASH}},
+      authorization_context: ctx
+    )
+
+    refute_nil(response.data.signature)
+    assert_equal(:hex, response.data.encoding)
+  end
+
+  # --- transfer tests ---
+
+  def test_transfer_on_ownerless_wallet
+    skip("Skipped to avoid transferring real funds")
+
+    wallet = client.wallets.create(wallet_create_params: {chain_type: :ethereum})
+
+    response = client.wallets.transfer(
+      wallet.id,
+      wallet_transfer_params: {
+        source: {asset: "usdc", amount: "0.01", chain: "base"},
+        destination: {address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2"}
+      }
+    )
+
+    refute_nil(response)
+  end
 end
