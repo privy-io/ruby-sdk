@@ -98,4 +98,40 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
 
     client.policies.delete(response.id)
   end
+
+  def test_update_policy_owner
+    kp = Privy::Cryptography.generate_p256_key_pair
+
+    # Create an ownerless policy
+    policy = client.policies.create(
+      policy_create_params: {
+        version: "1.0",
+        name: "RubySDK Policies Update Test",
+        chain_type: "ethereum",
+        rules: []
+      }
+    )
+    refute_nil(policy.id)
+    assert_nil(policy.owner_id)
+
+    # Update the owner to a P-256 key
+    policy2 = client.policies.update(
+      policy.id,
+      policy_update_params: {owner: {public_key: kp.public_key}}
+    )
+    refute_nil(policy2.owner_id)
+
+    # Remove the owner (requires authorization)
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+    policy3 = client.policies.update(
+      policy.id,
+      policy_update_params: {owner: nil},
+      authorization_context: ctx
+    )
+    assert_nil(policy3.owner_id)
+
+    client.policies.delete(policy.id)
+  end
 end
