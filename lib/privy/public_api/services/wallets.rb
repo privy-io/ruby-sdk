@@ -110,6 +110,81 @@ module Privy
         super(wallet_id, combined_params)
       end
 
+      # Sign a hash or raw bytes with a wallet by wallet ID.
+      #
+      # @example Sign a pre-computed hash
+      #   client.wallets.raw_sign("wallet-id", raw_sign_input: {
+      #     params: {hash: "0x1234...abcdef"}
+      #   })
+      #
+      # @example Sign raw bytes with a hash function
+      #   client.wallets.raw_sign("wallet-id", raw_sign_input: {
+      #     params: {bytes: "0a0234ea...", encoding: "hex", hash_function: "sha256"}
+      #   }, authorization_context: ctx)
+      #
+      # @param wallet_id [String] ID of the wallet to sign with.
+      # @param raw_sign_input [Hash] Body parameters for the raw_sign operation (RawSignInput shape).
+      # @option raw_sign_input [Hash] :params The signing parameters (required). Either {hash:} or {bytes:, encoding:, hash_function:}.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::RawSignResponse]
+      def raw_sign(wallet_id, raw_sign_input:, authorization_context: nil, idempotency_key: nil, request_options: nil)
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :post,
+          url: signed_url("v1/wallets/#{wallet_id}/raw_sign"),
+          body: raw_sign_input,
+          authorization_context: authorization_context,
+          idempotency_key: idempotency_key
+        )
+        combined_params = raw_sign_input.merge(request_options: request_options)
+        merge_prepared_headers!(combined_params, prepared.headers)
+        super(wallet_id, combined_params)
+      end
+
+      # Transfer tokens from a wallet to a destination address.
+      #
+      # @example Transfer USDC on Base
+      #   client.wallets.transfer("wallet-id", wallet_transfer_params: {
+      #     source: {asset: "usdc", amount: "10.5", chain: "base"},
+      #     destination: {address: "0xB00F...28a2"}
+      #   })
+      #
+      # @example Cross-asset transfer with slippage
+      #   client.wallets.transfer("wallet-id", wallet_transfer_params: {
+      #     source: {asset: "usdc", amount: "10.5", chain: "base"},
+      #     destination: {address: "0xB00F...28a2", asset: "usdt", chain: "ethereum"},
+      #     amount_type: "exact_input",
+      #     slippage_bps: 100
+      #   }, authorization_context: ctx)
+      #
+      # @param wallet_id [String] ID of the wallet to transfer from.
+      # @param wallet_transfer_params [Hash] Body parameters for the transfer operation.
+      # @option wallet_transfer_params [Hash] :source Source asset, amount, and chain (required).
+      # @option wallet_transfer_params [Hash] :destination Destination address, and optionally asset and chain (required).
+      # @option wallet_transfer_params [String] :amount_type Whether amount refers to input or output token ("exact_input" or "exact_output").
+      # @option wallet_transfer_params [Integer] :slippage_bps Maximum allowed slippage in basis points (1 bps = 0.01%).
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::TransferActionResponse]
+      def transfer(wallet_id, wallet_transfer_params:, authorization_context: nil, idempotency_key: nil, request_options: nil)
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :post,
+          url: signed_url("v1/wallets/#{wallet_id}/transfer"),
+          body: wallet_transfer_params,
+          authorization_context: authorization_context,
+          idempotency_key: idempotency_key
+        )
+        combined_params = wallet_transfer_params.merge(request_options: request_options)
+        merge_prepared_headers!(combined_params, prepared.headers)
+        _transfer(wallet_id, combined_params)
+      end
+
       private
 
       def signed_url(path)
@@ -118,7 +193,10 @@ module Privy
       end
 
       def merge_prepared_headers!(params, headers)
-        params[:privy_authorization_signature] = headers["privy-authorization-signature"] if headers["privy-authorization-signature"]
+        if headers["privy-authorization-signature"]
+          params[:privy_authorization_signature] =
+            headers["privy-authorization-signature"]
+        end
         params[:privy_idempotency_key] = headers["privy-idempotency-key"] if headers["privy-idempotency-key"]
         params[:privy_request_expiry] = headers["privy-request-expiry"] if headers["privy-request-expiry"]
       end
