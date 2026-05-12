@@ -650,6 +650,8 @@ module Privy
 
   IntentListParams = Privy::Models::IntentListParams
 
+  IntentRejectedWebhookPayload = Privy::Models::IntentRejectedWebhookPayload
+
   IntentResponse = Privy::Models::IntentResponse
 
   IntentRpcParams = Privy::Models::IntentRpcParams
