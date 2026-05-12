@@ -284,4 +284,48 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
 
     client.policies.delete(policy.id, authorization_context: ctx)
   end
+
+  def test_delete_rule
+    kp = Privy::Cryptography.generate_p256_key_pair
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+
+    policy = client.policies.create(
+      policy_create_params: {
+        version: "1.0",
+        name: "RubySDK Delete Rule Test",
+        chain_type: "ethereum",
+        rules: [
+          {
+            name: "Restrict ETH transfers to a maximum value",
+            method: "eth_sendTransaction",
+            action: "ALLOW",
+            conditions: [
+              {
+                field_source: "ethereum_transaction",
+                field: "value",
+                operator: "lte",
+                value: "0x2386F26FC10000"
+              }
+            ]
+          }
+        ],
+        owner: {public_key: kp.public_key}
+      }
+    )
+    rule_id = policy.rules[0].id
+
+    result = client.policies.delete_rule(
+      rule_id,
+      policy_id: policy.id,
+      authorization_context: ctx
+    )
+    assert_equal(true, result.success)
+
+    fetched = client.policies.get(policy.id)
+    assert_equal(0, fetched.rules.length)
+
+    client.policies.delete(policy.id, authorization_context: ctx)
+  end
 end
