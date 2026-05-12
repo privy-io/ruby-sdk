@@ -61,12 +61,12 @@ module Privy
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
-          url: signed_url("v1/wallets/#{wallet_id}"),
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}"),
           body: wallet_update_params,
           authorization_context: authorization_context
         )
         combined_params = wallet_update_params.merge(request_options: request_options)
-        merge_prepared_headers!(combined_params, prepared.headers)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(wallet_id, combined_params)
       end
 
@@ -96,17 +96,23 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::WalletRpcResponse]
-      def rpc(wallet_id, wallet_rpc_request_body:, authorization_context: nil, idempotency_key: nil, request_options: nil)
+      def rpc(
+        wallet_id,
+        wallet_rpc_request_body:,
+        authorization_context: nil,
+        idempotency_key: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
-          url: signed_url("v1/wallets/#{wallet_id}/rpc"),
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/rpc"),
           body: wallet_rpc_request_body,
           authorization_context: authorization_context,
           idempotency_key: idempotency_key
         )
         combined_params = {wallet_rpc_request_body: wallet_rpc_request_body, request_options: request_options}
-        merge_prepared_headers!(combined_params, prepared.headers)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(wallet_id, combined_params)
       end
 
@@ -130,17 +136,23 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::RawSignResponse]
-      def raw_sign(wallet_id, raw_sign_input:, authorization_context: nil, idempotency_key: nil, request_options: nil)
+      def raw_sign(
+        wallet_id,
+        raw_sign_input:,
+        authorization_context: nil,
+        idempotency_key: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
-          url: signed_url("v1/wallets/#{wallet_id}/raw_sign"),
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/raw_sign"),
           body: raw_sign_input,
           authorization_context: authorization_context,
           idempotency_key: idempotency_key
         )
         combined_params = raw_sign_input.merge(request_options: request_options)
-        merge_prepared_headers!(combined_params, prepared.headers)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(wallet_id, combined_params)
       end
 
@@ -171,34 +183,24 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::TransferActionResponse]
-      def transfer(wallet_id, wallet_transfer_params:, authorization_context: nil, idempotency_key: nil, request_options: nil)
+      def transfer(
+        wallet_id,
+        wallet_transfer_params:,
+        authorization_context: nil,
+        idempotency_key: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
-          url: signed_url("v1/wallets/#{wallet_id}/transfer"),
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/transfer"),
           body: wallet_transfer_params,
           authorization_context: authorization_context,
           idempotency_key: idempotency_key
         )
         combined_params = wallet_transfer_params.merge(request_options: request_options)
-        merge_prepared_headers!(combined_params, prepared.headers)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         _transfer(wallet_id, combined_params)
-      end
-
-      private
-
-      def signed_url(path)
-        base = privy_client.api.base_url.to_s.chomp("/")
-        "#{base}/#{path}"
-      end
-
-      def merge_prepared_headers!(params, headers)
-        if headers["privy-authorization-signature"]
-          params[:privy_authorization_signature] =
-            headers["privy-authorization-signature"]
-        end
-        params[:privy_idempotency_key] = headers["privy-idempotency-key"] if headers["privy-idempotency-key"]
-        params[:privy_request_expiry] = headers["privy-request-expiry"] if headers["privy-request-expiry"]
       end
     end
   end
