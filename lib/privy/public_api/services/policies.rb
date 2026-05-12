@@ -200,6 +200,33 @@ module Privy
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(rule_id, combined_params)
       end
+
+      # Delete a rule by policy ID and rule ID.
+      #
+      # @example Delete a rule from a policy
+      #   client.policies.delete_rule("rule-id", policy_id: "policy-id",
+      #     authorization_context: ctx)
+      #
+      # @param rule_id [String] ID of the rule to delete.
+      # @param policy_id [String] ID of the policy the rule belongs to.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::SuccessResponse]
+      def delete_rule(rule_id, policy_id:, authorization_context: nil, request_options: nil)
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :delete,
+          url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}/rules/#{rule_id}"),
+          body: "",
+          authorization_context: authorization_context
+        )
+        # Workaround: same Content-Type issue as delete — see comment there.
+        opts = (request_options || {}).merge(extra_headers: {"Content-Type" => nil})
+        combined_params = {policy_id: policy_id, request_options: opts}
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+        super(rule_id, combined_params)
+      end
     end
   end
 end
