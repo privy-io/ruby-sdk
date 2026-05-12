@@ -21,7 +21,7 @@ module Privy
 
         def create_user_owned_wallet
           user = client.users.get_by_custom_auth_id(custom_user_id: jwt_auth_subject)
-          client.wallets.create(chain_type: :ethereum, owner: {user_id: user.id})
+          client.wallets.create(wallet_create_params: {chain_type: :ethereum, owner: {user_id: user.id}})
         end
       end
     end
