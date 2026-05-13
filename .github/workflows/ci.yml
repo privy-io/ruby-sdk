@@ -108,4 +108,5 @@ jobs:
           TEST_APP_SECRET: ${{ secrets.TEST_APP_SECRET }}
           JWT_AUTH_SK: ${{ secrets.JWT_AUTH_SK }}
           TEST_APP_TEST_ACCOUNT_OTP: ${{ secrets.TEST_APP_TEST_ACCOUNT_OTP }}
+          TESTOPTS: "-v"
         run: bundle exec rake test:integration
