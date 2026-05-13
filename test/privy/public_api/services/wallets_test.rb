@@ -133,7 +133,11 @@ class Privy::Services::WalletsTest < Minitest::Test
 
   def test_rpc_with_idempotency_key_only_sends_idempotency_header
     stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/rpc", body: RPC_RESPONSE_BODY)
-    build_client.wallets.rpc("w-1", wallet_rpc_request_body: rpc_body, idempotency_key: "idem-rpc")
+    build_client.wallets.rpc(
+      "w-1",
+      wallet_rpc_request_body: rpc_body,
+      options: Privy::PrivyRequestOptions.build(idempotency_key: "idem-rpc")
+    )
     assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/rpc") do |req|
       assert_equal("idem-rpc", req.headers["Privy-Idempotency-Key"])
       refute(req.headers.key?("Privy-Authorization-Signature"))
@@ -147,8 +151,10 @@ class Privy::Services::WalletsTest < Minitest::Test
     build_client.wallets.rpc(
       "w-1",
       wallet_rpc_request_body: rpc_body,
-      authorization_context: Privy::Authorization::AuthorizationContext.build(
-        authorization_private_keys: [kp.private_key]
+      options: Privy::PrivyRequestOptions.build(
+        authorization_context: Privy::Authorization::AuthorizationContext.build(
+          authorization_private_keys: [kp.private_key]
+        )
       )
     )
 
@@ -178,9 +184,11 @@ class Privy::Services::WalletsTest < Minitest::Test
     build_client.wallets.rpc(
       "w-1",
       wallet_rpc_request_body: rpc_body,
-      idempotency_key: "idem-both",
-      authorization_context: Privy::Authorization::AuthorizationContext.build(
-        authorization_private_keys: [kp.private_key]
+      options: Privy::PrivyRequestOptions.build(
+        idempotency_key: "idem-both",
+        authorization_context: Privy::Authorization::AuthorizationContext.build(
+          authorization_private_keys: [kp.private_key]
+        )
       )
     )
 

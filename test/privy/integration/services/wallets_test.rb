@@ -32,7 +32,12 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
 
   def test_create_wallet_with_p256_owner_returns_wallet_with_owner_id
     kp = Privy::Cryptography.generate_p256_key_pair
-    wallet = client.wallets.create(wallet_create_params: {chain_type: :ethereum, owner: {public_key: kp.public_key}})
+    wallet = client.wallets.create(
+      wallet_create_params: {
+        chain_type: :ethereum,
+        owner: {public_key: kp.public_key}
+      }
+    )
 
     refute_nil(wallet.id)
     refute_nil(wallet.address)
@@ -43,7 +48,12 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
 
   def test_rpc_personal_sign_on_p256_owned_wallet_returns_signature
     kp = Privy::Cryptography.generate_p256_key_pair
-    wallet = client.wallets.create(wallet_create_params: {chain_type: :ethereum, owner: {public_key: kp.public_key}})
+    wallet = client.wallets.create(
+      wallet_create_params: {
+        chain_type: :ethereum,
+        owner: {public_key: kp.public_key}
+      }
+    )
 
     ctx = Privy::Authorization::AuthorizationContext.build(
       authorization_private_keys: [kp.private_key]
@@ -55,7 +65,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
         chain_type: "ethereum",
         params: {message: "hello from ruby-sdk p256 integration test", encoding: "utf-8"}
       },
-      authorization_context: ctx
+      options: Privy::PrivyRequestOptions.build(authorization_context: ctx)
     )
 
     signature = response.data.signature
@@ -66,7 +76,12 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
   def test_rpc_personal_sign_on_p256_owned_wallet_with_wrong_signature_is_rejected
     owner_kp = Privy::Cryptography.generate_p256_key_pair
     other_kp = Privy::Cryptography.generate_p256_key_pair
-    wallet = client.wallets.create(wallet_create_params: {chain_type: :ethereum, owner: {public_key: owner_kp.public_key}})
+    wallet = client.wallets.create(
+      wallet_create_params: {
+        chain_type: :ethereum,
+        owner: {public_key: owner_kp.public_key}
+      }
+    )
 
     ctx = Privy::Authorization::AuthorizationContext.build(
       authorization_private_keys: [other_kp.private_key]
@@ -80,14 +95,19 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
           chain_type: "ethereum",
           params: {message: "should be rejected", encoding: "utf-8"}
         },
-        authorization_context: ctx
+        options: Privy::PrivyRequestOptions.build(authorization_context: ctx)
       )
     end
   end
 
   def test_rpc_personal_sign_on_p256_owned_wallet_with_sign_fn_returns_signature
     kp = Privy::Cryptography.generate_p256_key_pair
-    wallet = client.wallets.create(wallet_create_params: {chain_type: :ethereum, owner: {public_key: kp.public_key}})
+    wallet = client.wallets.create(
+      wallet_create_params: {
+        chain_type: :ethereum,
+        owner: {public_key: kp.public_key}
+      }
+    )
 
     sign_fn = lambda do |payload|
       Privy::Authorization.generate_authorization_signature(
@@ -104,7 +124,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
         chain_type: "ethereum",
         params: {message: "hello from ruby-sdk sign_fn integration test", encoding: "utf-8"}
       },
-      authorization_context: ctx
+      options: Privy::PrivyRequestOptions.build(authorization_context: ctx)
     )
 
     signature = response.data.signature
@@ -128,7 +148,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
         chain_type: "ethereum",
         params: {message: "hello from ruby-sdk user_jwts test", encoding: "utf-8"}
       },
-      authorization_context: ctx
+      options: Privy::PrivyRequestOptions.build(authorization_context: ctx)
     )
 
     signature = response.data.signature
@@ -156,7 +176,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
           }
         }
       },
-      authorization_context: ctx
+      options: Privy::PrivyRequestOptions.build(authorization_context: ctx)
     )
 
     signed_transaction = response.data.signed_transaction
@@ -185,7 +205,12 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
 
   def test_raw_sign_on_p256_owned_wallet_returns_signature
     kp = Privy::Cryptography.generate_p256_key_pair
-    wallet = client.wallets.create(wallet_create_params: {chain_type: :tron, owner: {public_key: kp.public_key}})
+    wallet = client.wallets.create(
+      wallet_create_params: {
+        chain_type: :tron,
+        owner: {public_key: kp.public_key}
+      }
+    )
 
     ctx = Privy::Authorization::AuthorizationContext.build(
       authorization_private_keys: [kp.private_key]

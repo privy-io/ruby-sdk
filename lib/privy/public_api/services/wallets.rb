@@ -79,39 +79,38 @@ module Privy
       #     params: {message: "hello", encoding: "utf-8"}
       #   })
       #
-      # @example Sign a transaction with authorization
+      # @example Sign a transaction with authorization and idempotency
       #   client.wallets.rpc("wallet-id", wallet_rpc_request_body: {
       #     method: "eth_signTransaction",
       #     chain_type: "ethereum",
       #     params: {transaction: {to: "0x...", value: "0x0", chain_id: 1}}
-      #   }, authorization_context: ctx)
+      #   }, options: Privy::PrivyRequestOptions.build(
+      #     authorization_context: ctx,
+      #     idempotency_key: "idem-1"
+      #   ))
       #
       # @param wallet_id [String] ID of the wallet.
       # @param wallet_rpc_request_body [Hash] The RPC request body, discriminated by :method.
       # @option wallet_rpc_request_body [String] :method The RPC method name (e.g. "personal_sign", "eth_signTransaction").
       # @option wallet_rpc_request_body [String] :chain_type The chain type (e.g. "ethereum", "solana").
       # @option wallet_rpc_request_body [Hash] :params Method-specific parameters.
-      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
-      # @param idempotency_key [String, nil] Ensures the request is executed only once.
-      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      # @param options [Privy::PrivyRequestOptions, nil] Authorization, idempotency, and transport options.
       #
       # @return [Privy::Models::WalletRpcResponse]
-      def rpc(
-        wallet_id,
-        wallet_rpc_request_body:,
-        authorization_context: nil,
-        idempotency_key: nil,
-        request_options: nil
-      )
+      def rpc(wallet_id, wallet_rpc_request_body:, options: nil)
+        opts = options || Privy::PrivyRequestOptions.build
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
           url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/rpc"),
           body: wallet_rpc_request_body,
-          authorization_context: authorization_context,
-          idempotency_key: idempotency_key
+          authorization_context: opts.authorization_context,
+          idempotency_key: opts.idempotency_key
         )
-        combined_params = {wallet_rpc_request_body: wallet_rpc_request_body, request_options: request_options}
+        combined_params = {
+          wallet_rpc_request_body: wallet_rpc_request_body,
+          request_options: opts.request_options
+        }
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(wallet_id, combined_params)
       end

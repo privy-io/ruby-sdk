@@ -917,6 +917,7 @@ require_relative "privy/resources/webhooks"
 require_relative "privy/resources/yield_"
 
 # Custom layer on top of the generated client.
+require_relative "privy/public_api/privy_request_options"
 require_relative "privy/public_api/services/wallets"
 require_relative "privy/public_api/services/users"
 require_relative "privy/public_api/services/policies"
