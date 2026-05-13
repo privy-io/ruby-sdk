@@ -30,6 +30,20 @@ module Privy
 
     module_function
 
+    def signed_url(privy_client, path)
+      base = privy_client.api.base_url.to_s.chomp("/")
+      "#{base}/#{path}"
+    end
+
+    def merge_prepared_headers!(params, headers)
+      if headers["privy-authorization-signature"]
+        params[:privy_authorization_signature] =
+          headers["privy-authorization-signature"]
+      end
+      params[:privy_idempotency_key] = headers["privy-idempotency-key"] if headers["privy-idempotency-key"]
+      params[:privy_request_expiry] = headers["privy-request-expiry"] if headers["privy-request-expiry"]
+    end
+
     def format_request_for_authorization_signature(input)
       payload = {
         version: input.version,
@@ -57,7 +71,8 @@ module Privy
     # 4. Sign functions (callbacks that receive the canonicalized payload)
     def generate_authorization_signatures(privy_client, input:, context:)
       if context.user_jwts.any? && privy_client.nil?
-        raise ArgumentError, "privy_client is required when user_jwts are provided in the authorization context"
+        raise ArgumentError,
+              "privy_client is required when user_jwts are provided in the authorization context"
       end
 
       # Canonicalize the request into a deterministic byte string for signing
