@@ -103,7 +103,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     # Exercises the sign_fns path: a remote-signer style callback that receives
     # the canonicalized payload bytes and returns a base64 DER signature.
     sign_fn = lambda do |payload|
-      Privy::Authorization.generate_signature(private_key_base64: kp.private_key, payload: payload)
+      Privy::Authorization.generate_authorization_signature(private_key_base64: kp.private_key, payload: payload)
     end
     ctx = Privy::Authorization::AuthorizationContext.build(sign_fns: [sign_fn])
 
