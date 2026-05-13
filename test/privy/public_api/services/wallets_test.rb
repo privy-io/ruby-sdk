@@ -87,8 +87,10 @@ class Privy::Services::WalletsTest < Minitest::Test
     )
 
     captured_sig = nil
+    captured_expiry = nil
     assert_requested(:patch, "#{BASE_URL}/v1/wallets/w-1") do |req|
       captured_sig = req.headers["Privy-Authorization-Signature"]
+      captured_expiry = req.headers["Privy-Request-Expiry"]
     end
 
     expected_payload = Privy::Authorization.format_request_for_authorization_signature(
@@ -96,7 +98,10 @@ class Privy::Services::WalletsTest < Minitest::Test
         method: :patch,
         url: "#{BASE_URL}/v1/wallets/w-1",
         body: {display_name: "new"},
-        headers: {"privy-app-id" => "app-abc"}
+        headers: {
+          "privy-app-id" => "app-abc",
+          "privy-request-expiry" => captured_expiry
+        }
       )
     )
     pub = OpenSSL::PKey.read(kp.public_key.unpack1("m0"))
@@ -153,8 +158,10 @@ class Privy::Services::WalletsTest < Minitest::Test
     )
 
     captured_sig = nil
+    captured_expiry = nil
     assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/rpc") do |req|
       captured_sig = req.headers["Privy-Authorization-Signature"]
+      captured_expiry = req.headers["Privy-Request-Expiry"]
       refute(req.headers.key?("Privy-Idempotency-Key"))
     end
 
@@ -163,7 +170,10 @@ class Privy::Services::WalletsTest < Minitest::Test
         method: :post,
         url: "#{BASE_URL}/v1/wallets/w-1/rpc",
         body: rpc_body,
-        headers: {"privy-app-id" => "app-abc"}
+        headers: {
+          "privy-app-id" => "app-abc",
+          "privy-request-expiry" => captured_expiry
+        }
       )
     )
     pub = OpenSSL::PKey.read(kp.public_key.unpack1("m0"))
@@ -185,9 +195,11 @@ class Privy::Services::WalletsTest < Minitest::Test
     )
 
     captured_sig = nil
+    captured_expiry = nil
     assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/rpc") do |req|
       assert_equal("idem-both", req.headers["Privy-Idempotency-Key"])
       captured_sig = req.headers["Privy-Authorization-Signature"]
+      captured_expiry = req.headers["Privy-Request-Expiry"]
     end
 
     expected_payload = Privy::Authorization.format_request_for_authorization_signature(
@@ -197,7 +209,8 @@ class Privy::Services::WalletsTest < Minitest::Test
         body: rpc_body,
         headers: {
           "privy-app-id" => "app-abc",
-          "privy-idempotency-key" => "idem-both"
+          "privy-idempotency-key" => "idem-both",
+          "privy-request-expiry" => captured_expiry
         }
       )
     )
@@ -207,5 +220,117 @@ class Privy::Services::WalletsTest < Minitest::Test
       pub.dsa_verify_asn1(digest, captured_sig.unpack1("m0")),
       "signature must cover idempotency-key header"
     )
+  end
+
+  # --- request_expiry on update ----------------------------------------------
+
+  def test_update_default_request_expiry_is_auto_set
+    stub_json(:patch, "#{BASE_URL}/v1/wallets/w-1", body: wallet_response_body(display_name: "n"))
+    before = Process.clock_gettime(Process::CLOCK_REALTIME, :millisecond)
+    build_client.wallets.update("w-1", wallet_update_params: {display_name: "n"})
+    assert_requested(:patch, "#{BASE_URL}/v1/wallets/w-1") do |req|
+      sent = req.headers["Privy-Request-Expiry"].to_i
+      assert_in_delta(before + (15 * 60 * 1_000), sent, 5_000)
+    end
+  end
+
+  def test_update_per_call_request_expiry_overrides_default
+    stub_json(:patch, "#{BASE_URL}/v1/wallets/w-1", body: wallet_response_body(display_name: "n"))
+    build_client.wallets.update(
+      "w-1",
+      wallet_update_params: {display_name: "n"},
+      request_expiry: 1_750_000_000_000
+    )
+    assert_requested(:patch, "#{BASE_URL}/v1/wallets/w-1") do |req|
+      assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
+    end
+  end
+
+  def test_update_disabled_options_omit_header
+    client = Privy::PrivyClient.new(
+      app_id: "app-abc",
+      app_secret: "secret",
+      environment: :staging,
+      request_expiry: Privy::PrivyRequestExpiryOptions.build(disabled: true)
+    )
+    stub_json(:patch, "#{BASE_URL}/v1/wallets/w-1", body: wallet_response_body(display_name: "n"))
+    client.wallets.update("w-1", wallet_update_params: {display_name: "n"})
+    assert_requested(:patch, "#{BASE_URL}/v1/wallets/w-1") do |req|
+      refute(req.headers.key?("Privy-Request-Expiry"))
+    end
+  end
+
+  def test_update_disabled_options_still_honor_explicit_override
+    client = Privy::PrivyClient.new(
+      app_id: "app-abc",
+      app_secret: "secret",
+      environment: :staging,
+      request_expiry: Privy::PrivyRequestExpiryOptions.build(disabled: true)
+    )
+    stub_json(:patch, "#{BASE_URL}/v1/wallets/w-1", body: wallet_response_body(display_name: "n"))
+    client.wallets.update(
+      "w-1",
+      wallet_update_params: {display_name: "n"},
+      request_expiry: 1_750_000_000_000
+    )
+    assert_requested(:patch, "#{BASE_URL}/v1/wallets/w-1") do |req|
+      assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
+    end
+  end
+
+  # --- request_expiry on rpc / raw_sign / transfer ---------------------------
+
+  RAW_SIGN_RESPONSE_BODY = {
+    method: "raw_sign",
+    data: {encoding: "hex", signature: "0xdeadbeef"}
+  }.to_json
+
+  TRANSFER_RESPONSE_BODY = {
+    id: "wa-1",
+    created_at: "2026-01-01T00:00:00Z",
+    destination_address: "0x0000000000000000000000000000000000000001",
+    source_chain: "base",
+    status: "submitted",
+    type: "transfer",
+    wallet_id: "w-1"
+  }.to_json
+
+  def test_rpc_per_call_request_expiry_overrides_default
+    stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/rpc", body: RPC_RESPONSE_BODY)
+    build_client.wallets.rpc(
+      "w-1",
+      wallet_rpc_request_body: rpc_body,
+      request_expiry: 1_750_000_000_000
+    )
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/rpc") do |req|
+      assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
+    end
+  end
+
+  def test_raw_sign_per_call_request_expiry_overrides_default
+    stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/raw_sign", body: RAW_SIGN_RESPONSE_BODY)
+    build_client.wallets.raw_sign(
+      "w-1",
+      raw_sign_input: {params: {hash: "0x1234"}},
+      request_expiry: 1_750_000_000_000
+    )
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/raw_sign") do |req|
+      assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
+    end
+  end
+
+  def test_transfer_per_call_request_expiry_overrides_default
+    stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/transfer", body: TRANSFER_RESPONSE_BODY)
+    build_client.wallets.transfer(
+      "w-1",
+      wallet_transfer_params: {
+        source: {asset: "usdc", amount: "1", chain: "base"},
+        destination: {address: "0x0000000000000000000000000000000000000001"}
+      },
+      request_expiry: 1_750_000_000_000
+    )
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/transfer") do |req|
+      assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
+    end
   end
 end
