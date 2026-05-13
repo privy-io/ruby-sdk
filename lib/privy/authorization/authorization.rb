@@ -40,7 +40,7 @@ module Privy
     end
 
     def generate_signature(private_key_base64:, payload:)
-      key = Privy::Authorization::Crypto.import_pkcs8_private_key(private_key_base64)
+      key = Privy::Cryptography.import_pkcs8_private_key(private_key_base64)
       digest = OpenSSL::Digest.new("SHA256").digest(payload)
       der = key.dsa_sign_asn1(digest)
       [der].pack("m0")

@@ -75,7 +75,7 @@ class Privy::Services::WalletsTest < Minitest::Test
   end
 
   def test_update_with_auth_context_signs_canonical_payload
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     stub_json(:patch, "#{BASE_URL}/v1/wallets/w-1", body: wallet_response_body(display_name: "new"))
 
     build_client.wallets.update(
@@ -141,7 +141,7 @@ class Privy::Services::WalletsTest < Minitest::Test
   end
 
   def test_rpc_with_auth_context_signs_body_and_sends_sig_header
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/rpc", body: RPC_RESPONSE_BODY)
 
     build_client.wallets.rpc(
@@ -172,7 +172,7 @@ class Privy::Services::WalletsTest < Minitest::Test
   end
 
   def test_rpc_with_auth_context_and_idempotency_signs_over_idempotency_header
-    kp = Privy::Authorization::Crypto.generate_p256_key_pair
+    kp = Privy::Cryptography.generate_p256_key_pair
     stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/rpc", body: RPC_RESPONSE_BODY)
 
     build_client.wallets.rpc(

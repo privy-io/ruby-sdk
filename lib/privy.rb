@@ -927,7 +927,6 @@ require_relative "privy/public_api/privy_client"
 require_relative "privy/cryptography"
 
 # Authorization lib
-require_relative "privy/authorization/crypto"
 require_relative "privy/authorization/canonicalization"
 require_relative "privy/authorization/authorization"
 require_relative "privy/authorization/jwt_exchange"
