@@ -64,21 +64,42 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
     cleanup_key_quorum(key_quorum.id, [kp1.private_key, kp2.private_key])
   end
 
+  def test_delete_key_quorum
+    kp1 = Privy::Cryptography.generate_p256_key_pair
+    kp2 = Privy::Cryptography.generate_p256_key_pair
+
+    key_quorum = client.key_quorums.create(
+      key_quorum_create_params: {
+        public_keys: [kp1.public_key, kp2.public_key],
+        display_name: "2 of 2 Delete Test",
+        authorization_threshold: 2
+      }
+    )
+    refute_nil(key_quorum.id)
+
+    # Verify it exists
+    fetched = client.key_quorums.get(key_quorum.id)
+    assert_equal(key_quorum.id, fetched.id)
+
+    # Delete with authorization
+    ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp1.private_key, kp2.private_key]
+    )
+    result = client.key_quorums.delete(key_quorum.id, authorization_context: ctx)
+    assert_equal(true, result.success)
+
+    # Verify it no longer exists
+    assert_raises(Privy::Errors::APIStatusError) do
+      client.key_quorums.get(key_quorum.id)
+    end
+  end
+
   private
 
   def cleanup_key_quorum(id, private_keys)
     ctx = Privy::Authorization::AuthorizationContext.build(
       authorization_private_keys: private_keys
     )
-    prepared = Privy::Authorization.prepare_request(
-      client,
-      method: :delete,
-      url: Privy::Authorization.signed_url(client, "v1/key_quorums/#{id}"),
-      body: "",
-      authorization_context: ctx
-    )
-    params = {request_options: {extra_headers: {"Content-Type" => nil}}}
-    Privy::Authorization.merge_prepared_headers!(params, prepared.headers)
-    client.key_quorums.delete(id, params)
+    client.key_quorums.delete(id, authorization_context: ctx)
   end
 end
