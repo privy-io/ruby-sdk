@@ -2,6 +2,7 @@
 
 require "dotenv/load"
 require_relative "../test_helper"
+require_relative "support/jwt_helpers"
 
 module Privy
   module Test
@@ -37,6 +38,8 @@ module Privy
     # for the test duration and exposes a memoized PrivyClient pointed at the
     # configured API URL.
     class IntegrationTest < Minitest::Test
+      include Privy::Test::Integration::JwtHelpers
+
       def setup
         unless Privy::Test::IntegrationConfig.configured?
           skip(Privy::Test::IntegrationConfig.skip_reason)

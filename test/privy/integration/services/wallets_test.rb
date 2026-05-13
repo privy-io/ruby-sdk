@@ -103,7 +103,10 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     # Exercises the sign_fns path: a remote-signer style callback that receives
     # the canonicalized payload bytes and returns a base64 DER signature.
     sign_fn = lambda do |payload|
-      Privy::Authorization.generate_authorization_signature(private_key_base64: kp.private_key, payload: payload)
+      Privy::Authorization.generate_authorization_signature(
+        private_key_base64: kp.private_key,
+        payload: payload
+      )
     end
     ctx = Privy::Authorization::AuthorizationContext.build(sign_fns: [sign_fn])
 
@@ -120,5 +123,60 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     signature = response.data.signature
     refute_nil(signature)
     assert(signature.start_with?("0x"), "expected 0x-prefixed signature, got #{signature.inspect}")
+  end
+
+  # --- User-owned wallet tests (JWT authorization) ---
+
+  def test_rpc_personal_sign_on_user_owned_wallet_with_jwt_returns_signature
+    skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"] && !ENV["JWT_AUTH_SK"].empty?
+
+    wallet = create_user_owned_wallet
+    jwt = generate_test_jwt
+
+    ctx = Privy::Authorization::AuthorizationContext.build(user_jwts: [jwt])
+    response = client.wallets.rpc(
+      wallet.id,
+      wallet_rpc_request_body: {
+        method: "personal_sign",
+        chain_type: "ethereum",
+        params: {message: "hello from ruby-sdk user_jwts test", encoding: "utf-8"}
+      },
+      authorization_context: ctx
+    )
+
+    signature = response.data.signature
+    refute_nil(signature)
+    assert(signature.start_with?("0x"), "expected 0x-prefixed signature, got #{signature.inspect}")
+  end
+
+  def test_rpc_sign_transaction_on_user_owned_wallet_with_jwt_returns_signed_tx
+    skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"] && !ENV["JWT_AUTH_SK"].empty?
+
+    wallet = create_user_owned_wallet
+    jwt = generate_test_jwt
+
+    ctx = Privy::Authorization::AuthorizationContext.build(user_jwts: [jwt])
+    response = client.wallets.rpc(
+      wallet.id,
+      wallet_rpc_request_body: {
+        method: "eth_signTransaction",
+        chain_type: "ethereum",
+        params: {
+          transaction: {
+            to: "0x0000000000000000000000000000000000000000",
+            value: "0x0",
+            chain_id: 11_155_111
+          }
+        }
+      },
+      authorization_context: ctx
+    )
+
+    signed_transaction = response.data.signed_transaction
+    refute_nil(signed_transaction)
+    assert(
+      signed_transaction.start_with?("0x"),
+      "expected 0x-prefixed signed tx, got #{signed_transaction.inspect}"
+    )
   end
 end

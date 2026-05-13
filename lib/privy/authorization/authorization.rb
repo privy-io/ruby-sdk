@@ -4,16 +4,18 @@ require "openssl"
 
 module Privy
   module Authorization
-    AuthorizationContext = Data.define(:authorization_private_keys, :signatures, :sign_fns) do
+    AuthorizationContext = Data.define(:authorization_private_keys, :signatures, :sign_fns, :user_jwts) do
       def self.build(
         authorization_private_keys: [],
         signatures: [],
-        sign_fns: []
+        sign_fns: [],
+        user_jwts: []
       )
         new(
           authorization_private_keys: authorization_private_keys,
           signatures: signatures,
-          sign_fns: sign_fns
+          sign_fns: sign_fns,
+          user_jwts: user_jwts
         )
       end
     end
@@ -46,11 +48,30 @@ module Privy
       [der].pack("m0")
     end
 
-    def generate_authorization_signatures(_privy_client, input:, context:)
+    # Generates all authorization signatures for a request.
+    #
+    # Signatures come from four sources, combined in this order:
+    # 1. Precomputed signatures passed directly in the context
+    # 2. Explicit private keys provided in authorization_private_keys
+    # 3. Private keys obtained by exchanging user JWTs via HPKE
+    # 4. Sign functions (callbacks that receive the canonicalized payload)
+    def generate_authorization_signatures(privy_client, input:, context:)
+      if context.user_jwts.any? && privy_client.nil?
+        raise ArgumentError, "privy_client is required when user_jwts are provided in the authorization context"
+      end
+
+      # Canonicalize the request into a deterministic byte string for signing
       payload = format_request_for_authorization_signature(input)
 
+      # Exchange each user JWT for an ephemeral P-256 private key via HPKE.
+      # Results are cached by JwtExchangeService so repeated calls are cheap.
+      jwt_keys = context.user_jwts.map do |jwt|
+        privy_client.jwt_exchange.exchange_jwt_for_authorization_key(jwt)
+      end
+      all_private_keys = context.authorization_private_keys + jwt_keys
+
       precomputed = context.signatures.dup
-      key_sigs = context.authorization_private_keys.map do |pk|
+      key_sigs = all_private_keys.map do |pk|
         generate_authorization_signature(private_key_base64: pk, payload: payload)
       end
       fn_sigs = context.sign_fns.map { |fn| fn.call(payload) }
