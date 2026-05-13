@@ -23,7 +23,7 @@ module Privy
         return super if authorization_context.nil?
 
         body = params.except(:request_options)
-        prepared = Privy::Authorization.prepare(
+        prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
           url: signed_url("v1/wallets/#{wallet_id}"),
@@ -40,7 +40,7 @@ module Privy
         idempotency_key = params.delete(:idempotency_key)
         return super if authorization_context.nil? && idempotency_key.nil?
 
-        prepared = Privy::Authorization.prepare(
+        prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
           url: signed_url("v1/wallets/#{wallet_id}/rpc"),
@@ -54,9 +54,6 @@ module Privy
 
       private
 
-      # Must byte-match the URL the server canonicalizes over; the generated
-      # transport joins base_url + path via URI.join, which produces
-      # "<scheme>://<host>[:port]/<path>" regardless of trailing slash.
       def signed_url(path)
         base = privy_client.api.base_url.to_s.chomp("/")
         "#{base}/#{path}"

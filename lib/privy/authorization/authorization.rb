@@ -70,16 +70,15 @@ module Privy
       end
       all_private_keys = context.authorization_private_keys + jwt_keys
 
-      precomputed = context.signatures.dup
       key_sigs = all_private_keys.map do |pk|
         generate_authorization_signature(private_key_base64: pk, payload: payload)
       end
       fn_sigs = context.sign_fns.map { |fn| fn.call(payload) }
 
-      precomputed + key_sigs + fn_sigs
+      key_sigs + fn_sigs + context.signatures
     end
 
-    def prepare(
+    def prepare_request(
       privy_client,
       method:,
       url:,

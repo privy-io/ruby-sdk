@@ -9,7 +9,7 @@ class Privy::AuthorizationTest < Minitest::Test
   end
 
   def test_prepare_with_no_context_returns_no_sig_header
-    prepared = Privy::Authorization.prepare(
+    prepared = Privy::Authorization.prepare_request(
       @privy_client,
       method: :patch,
       url: "https://api.privy.io/v1/wallets/w-1",
@@ -21,7 +21,7 @@ class Privy::AuthorizationTest < Minitest::Test
 
   def test_prepare_with_private_key_signs_and_includes_expiry
     ctx = Privy::Authorization::AuthorizationContext.build(authorization_private_keys: [@kp.private_key])
-    prepared = Privy::Authorization.prepare(
+    prepared = Privy::Authorization.prepare_request(
       @privy_client,
       method: :patch,
       url: "https://api.privy.io/v1/wallets/w-1",
@@ -35,7 +35,7 @@ class Privy::AuthorizationTest < Minitest::Test
 
   def test_prepare_passes_through_precomputed_signatures
     ctx = Privy::Authorization::AuthorizationContext.build(signatures: %w[sig1 sig2])
-    prepared = Privy::Authorization.prepare(
+    prepared = Privy::Authorization.prepare_request(
       @privy_client,
       method: :post,
       url: "https://api.privy.io/v1/foo",
@@ -55,7 +55,7 @@ class Privy::AuthorizationTest < Minitest::Test
         }
       ]
     )
-    prepared = Privy::Authorization.prepare(
+    prepared = Privy::Authorization.prepare_request(
       @privy_client,
       method: :post,
       url: "https://api.privy.io/v1/foo",
