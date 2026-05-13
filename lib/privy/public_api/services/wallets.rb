@@ -10,46 +10,104 @@ module Privy
         @privy_client = privy_client
       end
 
-      def create(params = {})
-        params = params.dup
-        idempotency_key = params.delete(:idempotency_key)
-        params[:privy_idempotency_key] = idempotency_key if idempotency_key
-        super
+      # Create a new wallet on the requested chain and for the requested owner.
+      #
+      # @example Create an ownerless Ethereum wallet
+      #   client.wallets.create(wallet_create_params: {chain_type: :ethereum})
+      #
+      # @example Create a wallet with a P-256 key owner
+      #   client.wallets.create(wallet_create_params: {
+      #     chain_type: :ethereum,
+      #     owner: {public_key: base64_p256_public_key}
+      #   })
+      #
+      # @param wallet_create_params [Hash] Body parameters for wallet creation.
+      # @option wallet_create_params [Symbol] :chain_type The wallet chain type (required).
+      # @option wallet_create_params [Hash, nil] :owner Owner specified as {user_id:} or {public_key:}.
+      # @option wallet_create_params [String, nil] :owner_id Key quorum ID to set as owner.
+      # @option wallet_create_params [Array<String>, nil] :policy_ids Up to one policy ID to enforce.
+      # @option wallet_create_params [String, nil] :display_name A human-readable label for the wallet.
+      # @option wallet_create_params [String, nil] :external_id Customer-provided identifier for external mapping.
+      # @option wallet_create_params [Array<Hash>, nil] :additional_signers Additional signers for the wallet.
+      # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::Wallet]
+      def create(wallet_create_params:, idempotency_key: nil, request_options: nil)
+        combined_params = wallet_create_params.merge(request_options: request_options)
+        combined_params[:privy_idempotency_key] = idempotency_key if idempotency_key
+        super(combined_params)
       end
 
-      def update(wallet_id, params = {})
-        params = params.dup
-        authorization_context = params.delete(:authorization_context)
-        return super if authorization_context.nil?
-
-        body = params.except(:request_options)
+      # Update a wallet's policies or authorization key configuration.
+      #
+      # @example Update wallet policies
+      #   client.wallets.update("wallet-id", wallet_update_params: {
+      #     policy_ids: ["policy-id"]
+      #   }, authorization_context: ctx)
+      #
+      # @param wallet_id [String] ID of the wallet to update.
+      # @param wallet_update_params [Hash] Body parameters for the update.
+      # @option wallet_update_params [Hash, nil] :owner New owner specified as {user_id:} or {public_key:}.
+      # @option wallet_update_params [String, nil] :owner_id Key quorum ID to set as owner.
+      # @option wallet_update_params [Array<String>, nil] :policy_ids New policy IDs to enforce on the wallet.
+      # @option wallet_update_params [String, nil] :display_name A human-readable label for the wallet. Set to nil to clear.
+      # @option wallet_update_params [Array<Hash>, nil] :additional_signers Additional signers for the wallet.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::Wallet]
+      def update(wallet_id, wallet_update_params:, authorization_context: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
           url: signed_url("v1/wallets/#{wallet_id}"),
-          body: body,
+          body: wallet_update_params,
           authorization_context: authorization_context
         )
-        merge_prepared_headers!(params, prepared)
-        super
+        combined_params = wallet_update_params.merge(request_options: request_options)
+        merge_prepared_headers!(combined_params, prepared.headers)
+        super(wallet_id, combined_params)
       end
 
-      def rpc(wallet_id, params = {})
-        params = params.dup
-        authorization_context = params.delete(:authorization_context)
-        idempotency_key = params.delete(:idempotency_key)
-        return super if authorization_context.nil? && idempotency_key.nil?
-
+      # Sign a message or transaction with a wallet by wallet ID.
+      #
+      # @example Personal sign on an ownerless wallet
+      #   client.wallets.rpc("wallet-id", wallet_rpc_request_body: {
+      #     method: "personal_sign",
+      #     chain_type: "ethereum",
+      #     params: {message: "hello", encoding: "utf-8"}
+      #   })
+      #
+      # @example Sign a transaction with authorization
+      #   client.wallets.rpc("wallet-id", wallet_rpc_request_body: {
+      #     method: "eth_signTransaction",
+      #     chain_type: "ethereum",
+      #     params: {transaction: {to: "0x...", value: "0x0", chain_id: 1}}
+      #   }, authorization_context: ctx)
+      #
+      # @param wallet_id [String] ID of the wallet.
+      # @param wallet_rpc_request_body [Hash] The RPC request body, discriminated by :method.
+      # @option wallet_rpc_request_body [String] :method The RPC method name (e.g. "personal_sign", "eth_signTransaction").
+      # @option wallet_rpc_request_body [String] :chain_type The chain type (e.g. "ethereum", "solana").
+      # @option wallet_rpc_request_body [Hash] :params Method-specific parameters.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::WalletRpcResponse]
+      def rpc(wallet_id, wallet_rpc_request_body:, authorization_context: nil, idempotency_key: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
           url: signed_url("v1/wallets/#{wallet_id}/rpc"),
-          body: params[:wallet_rpc_request_body],
+          body: wallet_rpc_request_body,
           authorization_context: authorization_context,
           idempotency_key: idempotency_key
         )
-        merge_prepared_headers!(params, prepared)
-        super
+        combined_params = {wallet_rpc_request_body: wallet_rpc_request_body, request_options: request_options}
+        merge_prepared_headers!(combined_params, prepared.headers)
+        super(wallet_id, combined_params)
       end
 
       private
@@ -59,10 +117,10 @@ module Privy
         "#{base}/#{path}"
       end
 
-      def merge_prepared_headers!(params, prepared)
-        prepared.headers.each do |header_name, value|
-          params[header_name.tr("-", "_").to_sym] = value
-        end
+      def merge_prepared_headers!(params, headers)
+        params[:privy_authorization_signature] = headers["privy-authorization-signature"] if headers["privy-authorization-signature"]
+        params[:privy_idempotency_key] = headers["privy-idempotency-key"] if headers["privy-idempotency-key"]
+        params[:privy_request_expiry] = headers["privy-request-expiry"] if headers["privy-request-expiry"]
       end
     end
   end
