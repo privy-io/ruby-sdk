@@ -54,16 +54,20 @@ module Privy
       # @option wallet_update_params [String, nil] :display_name A human-readable label for the wallet. Set to nil to clear.
       # @option wallet_update_params [Array<Hash>, nil] :additional_signers Additional signers for the wallet.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::Wallet]
-      def update(wallet_id, wallet_update_params:, authorization_context: nil, request_options: nil)
+      def update(wallet_id, wallet_update_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
           url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}"),
           body: wallet_update_params,
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = wallet_update_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
@@ -93,6 +97,9 @@ module Privy
       # @option wallet_rpc_request_body [Hash] :params Method-specific parameters.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
       # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::WalletRpcResponse]
@@ -101,6 +108,7 @@ module Privy
         wallet_rpc_request_body:,
         authorization_context: nil,
         idempotency_key: nil,
+        request_expiry: nil,
         request_options: nil
       )
         prepared = Privy::Authorization.prepare_request(
@@ -109,7 +117,8 @@ module Privy
           url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/rpc"),
           body: wallet_rpc_request_body,
           authorization_context: authorization_context,
-          idempotency_key: idempotency_key
+          idempotency_key: idempotency_key,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = {wallet_rpc_request_body: wallet_rpc_request_body, request_options: request_options}
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
@@ -133,6 +142,9 @@ module Privy
       # @option raw_sign_input [Hash] :params The signing parameters (required). Either {hash:} or {bytes:, encoding:, hash_function:}.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
       # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::RawSignResponse]
@@ -141,6 +153,7 @@ module Privy
         raw_sign_input:,
         authorization_context: nil,
         idempotency_key: nil,
+        request_expiry: nil,
         request_options: nil
       )
         prepared = Privy::Authorization.prepare_request(
@@ -149,7 +162,8 @@ module Privy
           url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/raw_sign"),
           body: raw_sign_input,
           authorization_context: authorization_context,
-          idempotency_key: idempotency_key
+          idempotency_key: idempotency_key,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = raw_sign_input.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
@@ -180,6 +194,9 @@ module Privy
       # @option wallet_transfer_params [Integer] :slippage_bps Maximum allowed slippage in basis points (1 bps = 0.01%).
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
       # @param idempotency_key [String, nil] Ensures the request is executed only once.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::TransferActionResponse]
@@ -188,6 +205,7 @@ module Privy
         wallet_transfer_params:,
         authorization_context: nil,
         idempotency_key: nil,
+        request_expiry: nil,
         request_options: nil
       )
         prepared = Privy::Authorization.prepare_request(
@@ -196,7 +214,8 @@ module Privy
           url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/transfer"),
           body: wallet_transfer_params,
           authorization_context: authorization_context,
-          idempotency_key: idempotency_key
+          idempotency_key: idempotency_key,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = wallet_transfer_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
