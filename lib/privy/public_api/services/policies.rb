@@ -111,13 +111,7 @@ module Privy
           authorization_context: authorization_context,
           request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
-        # Workaround: the Stainless-generated Ruby client sends Content-Type: application/json on
-        # every request (lib/privy/internal/transport/base_client.rb:204), even bodyless DELETEs.
-        # The server's authorization signature verification fails when this header is present with
-        # no body. The Node/Go HTTP clients don't send it for bodyless requests. Remove this once
-        # Stainless fixes the Ruby generator to skip Content-Type on bodyless requests.
-        opts = (request_options || {}).merge(extra_headers: {"Content-Type" => nil})
-        combined_params = {request_options: opts}
+        combined_params = {request_options: request_options}
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(policy_id, combined_params)
       end
@@ -242,9 +236,7 @@ module Privy
           authorization_context: authorization_context,
           request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
-        # Workaround: same Content-Type issue as delete — see comment there.
-        opts = (request_options || {}).merge(extra_headers: {"Content-Type" => nil})
-        combined_params = {policy_id: policy_id, request_options: opts}
+        combined_params = {policy_id: policy_id, request_options: request_options}
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(rule_id, combined_params)
       end

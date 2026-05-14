@@ -81,13 +81,7 @@ module Privy
           body: "",
           authorization_context: authorization_context
         )
-        # Workaround: the Stainless-generated Ruby client sends Content-Type: application/json on
-        # every request (lib/privy/internal/transport/base_client.rb:204), even bodyless DELETEs.
-        # The server's authorization signature verification fails when this header is present with
-        # no body. The Node/Go HTTP clients don't send it for bodyless requests. Remove this once
-        # Stainless fixes the Ruby generator to skip Content-Type on bodyless requests.
-        opts = (request_options || {}).merge(extra_headers: {"Content-Type" => nil})
-        combined_params = {request_options: opts}
+        combined_params = {request_options: request_options}
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(key_quorum_id, combined_params)
       end
