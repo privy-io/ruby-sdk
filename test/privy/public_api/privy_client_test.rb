@@ -66,4 +66,21 @@ class Privy::PrivyClientTest < Minitest::Test
     client = build_client
     refute_nil(client.compute_request_expiry)
   end
+
+  def test_default_authorization_key_cache_max_capacity_uses_service_default
+    client = Privy::PrivyClient.new(app_id: "app-123", app_secret: "secret", environment: :staging)
+    configured = client.jwt_exchange.cache_max_capacity
+    assert_equal(Privy::JwtExchangeService::DEFAULT_CACHE_MAX_CAPACITY, configured)
+  end
+
+  def test_authorization_key_cache_max_capacity_is_forwarded_to_jwt_exchange
+    client = Privy::PrivyClient.new(
+      app_id: "app-123",
+      app_secret: "secret",
+      environment: :staging,
+      authorization_key_cache_max_capacity: 7
+    )
+    configured = client.jwt_exchange.cache_max_capacity
+    assert_equal(7, configured)
+  end
 end

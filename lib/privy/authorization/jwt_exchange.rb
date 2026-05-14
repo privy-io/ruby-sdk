@@ -4,7 +4,11 @@ require "base64"
 
 module Privy
   class JwtExchangeService
-    def initialize(wallets_resource:, cache_max_capacity: 1000)
+    DEFAULT_CACHE_MAX_CAPACITY = 1000
+
+    attr_reader :cache_max_capacity
+
+    def initialize(wallets_resource:, cache_max_capacity: DEFAULT_CACHE_MAX_CAPACITY)
       @wallets = wallets_resource
       @hpke_recipient = Privy::Cryptography::HpkeRecipient.new
       @cache = {}

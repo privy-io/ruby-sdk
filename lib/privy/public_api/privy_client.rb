@@ -26,7 +26,8 @@ module Privy
       timeout: Privy::Client::DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: Privy::Client::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: Privy::Client::DEFAULT_MAX_RETRY_DELAY,
-      request_expiry: Privy::PrivyRequestExpiryOptions.build
+      request_expiry: Privy::PrivyRequestExpiryOptions.build,
+      authorization_key_cache_max_capacity: Privy::JwtExchangeService::DEFAULT_CACHE_MAX_CAPACITY
     )
       @app_id = app_id
       @app_secret = app_secret
@@ -47,7 +48,10 @@ module Privy
       @users = Privy::Services::Users.new(client: @api, privy_client: self)
       @policies = Privy::Services::Policies.new(client: @api, privy_client: self)
       @key_quorums = Privy::Services::KeyQuorums.new(client: @api, privy_client: self)
-      @jwt_exchange = Privy::JwtExchangeService.new(wallets_resource: @api.wallets)
+      @jwt_exchange = Privy::JwtExchangeService.new(
+        wallets_resource: @api.wallets,
+        cache_max_capacity: authorization_key_cache_max_capacity
+      )
     end
 
     # Resolves the absolute Unix-ms timestamp to send as `privy-request-expiry`.
