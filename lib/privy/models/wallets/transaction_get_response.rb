@@ -34,8 +34,8 @@ module Privy
           # @!attribute details
           #   Details of a wallet transaction, varying by transaction type.
           #
-          #   @return [Privy::Models::TransferSentTransactionDetail, Privy::Models::TransferReceivedTransactionDetail]
-          required :details, union: -> { Privy::Models::TransactionDetail }
+          #   @return [Privy::Models::Wallets::TransactionGetResponse::Transaction::Details]
+          required :details, -> { Privy::Models::Wallets::TransactionGetResponse::Transaction::Details }
 
           # @!attribute privy_transaction_id
           #
@@ -72,7 +72,7 @@ module Privy
           #
           #   @param created_at [Float]
           #
-          #   @param details [Privy::Models::TransferSentTransactionDetail, Privy::Models::TransferReceivedTransactionDetail] Details of a wallet transaction, varying by transaction type.
+          #   @param details [Privy::Models::Wallets::TransactionGetResponse::Transaction::Details] Details of a wallet transaction, varying by transaction type.
           #
           #   @param privy_transaction_id [String]
           #
@@ -85,6 +85,12 @@ module Privy
           #   @param sponsored [Boolean]
           #
           #   @param user_operation_hash [String]
+
+          # @see Privy::Models::Wallets::TransactionGetResponse::Transaction#details
+          class Details < Privy::Internal::Type::BaseModel
+            # @!method initialize
+            #   Details of a wallet transaction, varying by transaction type.
+          end
 
           # @see Privy::Models::Wallets::TransactionGetResponse::Transaction#status
           module Status

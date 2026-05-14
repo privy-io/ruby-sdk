@@ -68,13 +68,18 @@ module Privy
           # Details of a wallet transaction, varying by transaction type.
           sig do
             returns(
-              T.any(
-                Privy::TransferSentTransactionDetail,
-                Privy::TransferReceivedTransactionDetail
-              )
+              Privy::Models::Wallets::TransactionGetResponse::Transaction::Details
             )
           end
-          attr_accessor :details
+          attr_reader :details
+
+          sig do
+            params(
+              details:
+                Privy::Models::Wallets::TransactionGetResponse::Transaction::Details::OrHash
+            ).void
+          end
+          attr_writer :details
 
           sig { returns(String) }
           attr_accessor :privy_transaction_id
@@ -109,10 +114,7 @@ module Privy
               caip2: String,
               created_at: Float,
               details:
-                T.any(
-                  Privy::TransferSentTransactionDetail::OrHash,
-                  Privy::TransferReceivedTransactionDetail::OrHash
-                ),
+                Privy::Models::Wallets::TransactionGetResponse::Transaction::Details::OrHash,
               privy_transaction_id: String,
               status:
                 Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::OrSymbol,
@@ -142,10 +144,7 @@ module Privy
                 caip2: String,
                 created_at: Float,
                 details:
-                  T.any(
-                    Privy::TransferSentTransactionDetail,
-                    Privy::TransferReceivedTransactionDetail
-                  ),
+                  Privy::Models::Wallets::TransactionGetResponse::Transaction::Details,
                 privy_transaction_id: String,
                 status:
                   Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol,
@@ -157,6 +156,25 @@ module Privy
             )
           end
           def to_hash
+          end
+
+          class Details < Privy::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Privy::Models::Wallets::TransactionGetResponse::Transaction::Details,
+                  Privy::Internal::AnyHash
+                )
+              end
+
+            # Details of a wallet transaction, varying by transaction type.
+            sig { returns(T.attached_class) }
+            def self.new
+            end
+
+            sig { override.returns({}) }
+            def to_hash
+            end
           end
 
           module Status
