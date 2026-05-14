@@ -81,6 +81,38 @@ module Privy
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         super(policy_id, combined_params)
       end
+
+      # Delete a policy by policy ID.
+      #
+      # @example Delete an ownerless policy
+      #   client.policies.delete("policy-id")
+      #
+      # @example Delete an owned policy (requires authorization)
+      #   client.policies.delete("policy-id", authorization_context: ctx)
+      #
+      # @param policy_id [String] ID of the policy to delete.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::SuccessResponse]
+      def delete(policy_id, authorization_context: nil, request_options: nil)
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :delete,
+          url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}"),
+          body: "",
+          authorization_context: authorization_context
+        )
+        # Workaround: the Stainless-generated Ruby client sends Content-Type: application/json on
+        # every request (lib/privy/internal/transport/base_client.rb:204), even bodyless DELETEs.
+        # The server's authorization signature verification fails when this header is present with
+        # no body. The Node/Go HTTP clients don't send it for bodyless requests. Remove this once
+        # Stainless fixes the Ruby generator to skip Content-Type on bodyless requests.
+        opts = (request_options || {}).merge(extra_headers: {"Content-Type" => nil})
+        combined_params = {request_options: opts}
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+        super(policy_id, combined_params)
+      end
     end
   end
 end
