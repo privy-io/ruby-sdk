@@ -33,7 +33,9 @@ module Privy
         # returns it. Subsequent calls within the same test return the same user.
         def jwt_auth_user
           @jwt_auth_user ||= client.users.create(
-            linked_accounts: [{type: :custom_auth, custom_user_id: jwt_auth_subject}]
+            user_create_params: {
+              linked_accounts: [{type: :custom_auth, custom_user_id: jwt_auth_subject}]
+            }
           )
         end
 
