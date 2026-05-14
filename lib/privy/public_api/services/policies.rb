@@ -66,16 +66,20 @@ module Privy
       # @option policy_update_params [String, nil] :owner_id Key quorum ID to set as owner.
       # @option policy_update_params [Array<Hash>, nil] :rules New rules for the policy.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::Policy]
-      def update(policy_id, policy_update_params:, authorization_context: nil, request_options: nil)
+      def update(policy_id, policy_update_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
           url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}"),
           body: policy_update_params,
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = policy_update_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
@@ -92,16 +96,20 @@ module Privy
       #
       # @param policy_id [String] ID of the policy to delete.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::SuccessResponse]
-      def delete(policy_id, authorization_context: nil, request_options: nil)
+      def delete(policy_id, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :delete,
           url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}"),
           body: "",
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         # Workaround: the Stainless-generated Ruby client sends Content-Type: application/json on
         # every request (lib/privy/internal/transport/base_client.rb:204), even bodyless DELETEs.
@@ -136,16 +144,20 @@ module Privy
       # @option policy_create_rule_params [String] :action Action when the rule matches ("ALLOW" or "DENY", required).
       # @option policy_create_rule_params [Array<Hash>] :conditions Array of condition objects (required).
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::PolicyRuleResponse]
-      def create_rule(policy_id, policy_create_rule_params:, authorization_context: nil, request_options: nil)
+      def create_rule(policy_id, policy_create_rule_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
           url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}/rules"),
           body: policy_create_rule_params,
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = policy_create_rule_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
@@ -176,6 +188,9 @@ module Privy
       # @option policy_update_rule_params [String] :action Action when the rule matches ("ALLOW" or "DENY", required).
       # @option policy_update_rule_params [Array<Hash>] :conditions Array of condition objects (required).
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::PolicyRuleResponse]
@@ -184,6 +199,7 @@ module Privy
         policy_id:,
         policy_update_rule_params:,
         authorization_context: nil,
+        request_expiry: nil,
         request_options: nil
       )
         prepared = Privy::Authorization.prepare_request(
@@ -191,7 +207,8 @@ module Privy
           method: :patch,
           url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}/rules/#{rule_id}"),
           body: policy_update_rule_params,
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = policy_update_rule_params.merge(
           policy_id: policy_id,
@@ -210,16 +227,20 @@ module Privy
       # @param rule_id [String] ID of the rule to delete.
       # @param policy_id [String] ID of the policy the rule belongs to.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned policies.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::SuccessResponse]
-      def delete_rule(rule_id, policy_id:, authorization_context: nil, request_options: nil)
+      def delete_rule(rule_id, policy_id:, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :delete,
           url: Privy::Authorization.signed_url(privy_client, "v1/policies/#{policy_id}/rules/#{rule_id}"),
           body: "",
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         # Workaround: same Content-Type issue as delete — see comment there.
         opts = (request_options || {}).merge(extra_headers: {"Content-Type" => nil})
