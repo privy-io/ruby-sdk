@@ -203,8 +203,7 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
   def test_raw_sign_on_user_owned_wallet_returns_signature
     skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"] && !ENV["JWT_AUTH_SK"].empty?
 
-    user = client.users.get_by_custom_auth_id(custom_user_id: jwt_auth_subject)
-    wallet = client.wallets.create(wallet_create_params: {chain_type: :tron, owner: {user_id: user.id}})
+    wallet = create_user_owned_wallet(chain_type: :tron)
     jwt = generate_test_jwt
 
     ctx = Privy::Authorization::AuthorizationContext.build(user_jwts: [jwt])
