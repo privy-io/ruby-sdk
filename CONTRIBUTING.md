@@ -43,7 +43,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git in your `Gemfile`:
 
 ```ruby
-gem "privy", git: "https://github.com/privy-io/ruby-sdk"
+gem "privy_ruby", git: "https://github.com/privy-io/ruby-sdk"
 ```
 
 Alternatively, reference local copy of the repo:
@@ -53,7 +53,7 @@ $ git clone -- 'https://github.com/privy-io/ruby-sdk' '<path-to-repo>'
 ```
 
 ```ruby
-gem "privy", path: "<path-to-repo>"
+gem "privy_ruby", path: "<path-to-repo>"
 ```
 
 ## Running commands

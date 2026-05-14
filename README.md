@@ -6,7 +6,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/privy).
+Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/privy_ruby).
 
 The REST API documentation can be found on [docs.privy.io](https://docs.privy.io).
 
@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "privy", "~> 0.0.1"
+gem "privy_ruby", "~> 0.0.1"
 ```
 
 <!-- x-release-please-end -->
