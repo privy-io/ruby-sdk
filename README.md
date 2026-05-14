@@ -137,6 +137,41 @@ On timeout, `Privy::Errors::APITimeoutError` is raised.
 
 Note that requests that time out are retried by default.
 
+### Configuring request expiry
+
+Authorized methods on `Privy::PrivyClient` (`wallets.update` / `rpc` / `raw_sign` / `transfer`, `policies.update` / `delete` / `create_rule` / `update_rule` / `delete_rule`, `key_quorums.update` / `delete`) auto-set the `privy-request-expiry` header to 15 minutes from now by default.
+
+Override the default at the client level:
+
+```ruby
+client = Privy::PrivyClient.new(
+  app_id: ENV["PRIVY_APP_ID"],
+  app_secret: ENV["PRIVY_APP_SECRET"],
+  request_expiry: Privy::PrivyRequestExpiryOptions.build(default_ms: 60_000)
+)
+```
+
+Disable the auto-set entirely:
+
+```ruby
+client = Privy::PrivyClient.new(
+  app_id: ENV["PRIVY_APP_ID"],
+  app_secret: ENV["PRIVY_APP_SECRET"],
+  request_expiry: Privy::PrivyRequestExpiryOptions.build(disabled: true)
+)
+```
+
+Override on a single call (absolute Unix-ms timestamp; takes precedence over both `default_ms` and `disabled`):
+
+```ruby
+client.wallets.rpc(
+  wallet.id,
+  wallet_rpc_request_body: {...},
+  authorization_context: ctx,
+  request_expiry: Process.clock_gettime(Process::CLOCK_REALTIME, :millisecond) + 60_000
+)
+```
+
 ## Advanced concepts
 
 ### BaseModel
