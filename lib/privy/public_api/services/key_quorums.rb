@@ -47,16 +47,20 @@ module Privy
       # @option key_quorum_update_params [Array<String>, nil] :user_ids User IDs to authorize.
       # @option key_quorum_update_params [Array<String>, nil] :key_quorum_ids Nested key quorum IDs.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for signing.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::KeyQuorum]
-      def update(key_quorum_id, key_quorum_update_params:, authorization_context: nil, request_options: nil)
+      def update(key_quorum_id, key_quorum_update_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
           url: Privy::Authorization.signed_url(privy_client, "v1/key_quorums/#{key_quorum_id}"),
           body: key_quorum_update_params,
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = key_quorum_update_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
@@ -70,16 +74,20 @@ module Privy
       #
       # @param key_quorum_id [String] ID of the key quorum to delete.
       # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for signing.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::SuccessResponse]
-      def delete(key_quorum_id, authorization_context: nil, request_options: nil)
+      def delete(key_quorum_id, authorization_context: nil, request_expiry: nil, request_options: nil)
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :delete,
           url: Privy::Authorization.signed_url(privy_client, "v1/key_quorums/#{key_quorum_id}"),
           body: "",
-          authorization_context: authorization_context
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
         )
         combined_params = {request_options: request_options}
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
