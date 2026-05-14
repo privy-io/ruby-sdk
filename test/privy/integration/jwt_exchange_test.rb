@@ -6,6 +6,10 @@ class Privy::Test::Integration::JwtExchangeTest < Privy::Test::IntegrationTest
   def setup
     super
     skip("JWT_AUTH_SK not set") unless ENV["JWT_AUTH_SK"] && !ENV["JWT_AUTH_SK"].empty?
+
+    # /wallets/authenticate (which jwt_exchange wraps) rejects JWTs for users
+    # that don't own any wallet. Ensure the freshly-minted user has one.
+    create_user_owned_wallet
   end
 
   def test_exchange_jwt_returns_authorization_key
