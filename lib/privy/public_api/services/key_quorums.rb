@@ -31,6 +31,37 @@ module Privy
       def create(key_quorum_create_params:, request_options: nil)
         super(key_quorum_create_params.merge(request_options: request_options))
       end
+
+      # Update a key quorum by key quorum ID.
+      #
+      # @example Update authorization threshold to 1-of-2
+      #   client.key_quorums.update("key-quorum-id",
+      #     key_quorum_update_params: {authorization_threshold: 1},
+      #     authorization_context: ctx)
+      #
+      # @param key_quorum_id [String] ID of the key quorum to update.
+      # @param key_quorum_update_params [Hash] Body parameters for the update.
+      # @option key_quorum_update_params [Integer, nil] :authorization_threshold Number of keys required to sign.
+      # @option key_quorum_update_params [String, nil] :display_name Human-readable label.
+      # @option key_quorum_update_params [Array<String>, nil] :public_keys P-256 public keys to authorize.
+      # @option key_quorum_update_params [Array<String>, nil] :user_ids User IDs to authorize.
+      # @option key_quorum_update_params [Array<String>, nil] :key_quorum_ids Nested key quorum IDs.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for signing.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::KeyQuorum]
+      def update(key_quorum_id, key_quorum_update_params:, authorization_context: nil, request_options: nil)
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :patch,
+          url: Privy::Authorization.signed_url(privy_client, "v1/key_quorums/#{key_quorum_id}"),
+          body: key_quorum_update_params,
+          authorization_context: authorization_context
+        )
+        combined_params = key_quorum_update_params.merge(request_options: request_options)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+        super(key_quorum_id, combined_params)
+      end
     end
   end
 end
