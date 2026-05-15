@@ -110,4 +110,4 @@ walk_tree "$DIST_DIR"
 echo "::endgroup::"
 
 echo -e "${GREEN}Gem artifacts uploaded to Stainless storage.${NC}"
-echo -e "\033[32mInstallation: bundle remove privy && bundle add privy --source 'https://pkg.stainless.com/s/privy-api-client-ruby/$SHA'\033[0m"
+echo -e "\033[32mInstallation: bundle remove privy_ruby && bundle add privy_ruby --source 'https://pkg.stainless.com/s/privy-api-client-ruby/$SHA'\033[0m"

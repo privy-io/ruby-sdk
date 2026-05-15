@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    privy (0.0.1)
+    privy_ruby (0.0.1)
       cgi
       connection_pool
 
@@ -210,7 +210,7 @@ DEPENDENCIES
   minitest-hooks
   minitest-proveit
   minitest-rg
-  privy!
+  privy_ruby!
   rake
   rbs
   redcarpet

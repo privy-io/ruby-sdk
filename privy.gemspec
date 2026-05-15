@@ -3,12 +3,12 @@
 require_relative "lib/privy/version"
 
 Gem::Specification.new do |s|
-  s.name = "privy"
+  s.name = "privy_ruby"
   s.version = Privy::VERSION
   s.summary = "Ruby library to access the Privy API API"
   s.authors = ["Privy API"]
   s.email = "support@privy.io"
-  s.homepage = "https://gemdocs.org/gems/privy"
+  s.homepage = "https://gemdocs.org/gems/privy_ruby"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/privy-io/ruby-sdk"
   s.metadata["rubygems_mfa_required"] = false.to_s

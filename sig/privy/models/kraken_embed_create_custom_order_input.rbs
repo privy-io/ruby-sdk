@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type kraken_embed_create_custom_order_input =
+      {
+        action: Privy::KrakenEmbedCustomOrderAction,
+        name: String,
+        trigger: Privy::KrakenEmbedCustomOrderTrigger,
+        user_id: String
+      }
+
+    class KrakenEmbedCreateCustomOrderInput < Privy::Internal::Type::BaseModel
+      attr_accessor action: Privy::KrakenEmbedCustomOrderAction
+
+      attr_accessor name: String
+
+      attr_accessor trigger: Privy::KrakenEmbedCustomOrderTrigger
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        action: Privy::KrakenEmbedCustomOrderAction,
+        name: String,
+        trigger: Privy::KrakenEmbedCustomOrderTrigger,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action: Privy::KrakenEmbedCustomOrderAction,
+        name: String,
+        trigger: Privy::KrakenEmbedCustomOrderTrigger,
+        user_id: String
+      }
+    end
+  end
+end

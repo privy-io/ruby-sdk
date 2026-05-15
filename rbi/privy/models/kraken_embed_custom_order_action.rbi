@@ -1,0 +1,98 @@
+# typed: strong
+
+module Privy
+  module Models
+    class KrakenEmbedCustomOrderAction < Privy::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(Privy::KrakenEmbedCustomOrderAction, Privy::Internal::AnyHash)
+        end
+
+      # Asset amount for custom order actions.
+      sig { returns(Privy::KrakenEmbedCustomOrderAmount) }
+      attr_reader :amount
+
+      sig { params(amount: Privy::KrakenEmbedCustomOrderAmount::OrHash).void }
+      attr_writer :amount
+
+      sig { returns(String) }
+      attr_accessor :fee_bps
+
+      # Target asset for the other side of the custom order trade.
+      sig { returns(Privy::KrakenEmbedCustomOrderQuoteAsset) }
+      attr_reader :quote
+
+      sig do
+        params(quote: Privy::KrakenEmbedCustomOrderQuoteAsset::OrHash).void
+      end
+      attr_writer :quote
+
+      sig { returns(String) }
+      attr_accessor :spread_bps
+
+      sig { returns(Privy::KrakenEmbedCustomOrderAction::Type::OrSymbol) }
+      attr_accessor :type
+
+      # Trade action for a custom order.
+      sig do
+        params(
+          amount: Privy::KrakenEmbedCustomOrderAmount::OrHash,
+          fee_bps: String,
+          quote: Privy::KrakenEmbedCustomOrderQuoteAsset::OrHash,
+          spread_bps: String,
+          type: Privy::KrakenEmbedCustomOrderAction::Type::OrSymbol
+        ).returns(T.attached_class)
+      end
+      def self.new(
+        # Asset amount for custom order actions.
+        amount:,
+        fee_bps:,
+        # Target asset for the other side of the custom order trade.
+        quote:,
+        spread_bps:,
+        type:
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            amount: Privy::KrakenEmbedCustomOrderAmount,
+            fee_bps: String,
+            quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
+            spread_bps: String,
+            type: Privy::KrakenEmbedCustomOrderAction::Type::OrSymbol
+          }
+        )
+      end
+      def to_hash
+      end
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Privy::KrakenEmbedCustomOrderAction::Type)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        RECEIVE =
+          T.let(
+            :receive,
+            Privy::KrakenEmbedCustomOrderAction::Type::TaggedSymbol
+          )
+        SPEND =
+          T.let(:spend, Privy::KrakenEmbedCustomOrderAction::Type::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Privy::KrakenEmbedCustomOrderAction::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+    end
+  end
+end

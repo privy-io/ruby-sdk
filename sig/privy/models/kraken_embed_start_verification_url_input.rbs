@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_start_verification_url_input =
+      Privy::KrakenEmbedStartIdentityVerificationURLInput
+      | Privy::KrakenEmbedStartAddressVerificationURLInput
+      | Privy::KrakenEmbedStartLivenessVerificationURLInput
+
+    module KrakenEmbedStartVerificationURLInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::kraken_embed_start_verification_url_input]
+    end
+  end
+end

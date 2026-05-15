@@ -1,0 +1,74 @@
+module Privy
+  module Models
+    type kraken_embed_start_identity_verification_url_input =
+      {
+        front_url: String,
+        type: Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::type_,
+        back_url: String?,
+        debug: Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug,
+        metadata: Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
+      }
+
+    class KrakenEmbedStartIdentityVerificationURLInput < Privy::Internal::Type::BaseModel
+      attr_accessor front_url: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::type_
+
+      attr_accessor back_url: String?
+
+      attr_reader debug: Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug?
+
+      def debug=: (
+        Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug
+      ) -> Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug
+
+      attr_reader metadata: Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata?
+
+      def metadata=: (
+        Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
+      ) -> Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
+
+      def initialize: (
+        front_url: String,
+        type: Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::type_,
+        ?back_url: String?,
+        ?debug: Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug,
+        ?metadata: Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
+      ) -> void
+
+      def to_hash: -> {
+        front_url: String,
+        type: Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::type_,
+        back_url: String?,
+        debug: Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug,
+        metadata: Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
+      }
+
+      type type_ = :proof_of_identity
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PROOF_OF_IDENTITY: :proof_of_identity
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::type_]
+      end
+
+      type debug = {  }
+
+      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+
+      type metadata = {  }
+
+      class Metadata < Privy::Models::KrakenEmbedStartIdentityMetadata
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

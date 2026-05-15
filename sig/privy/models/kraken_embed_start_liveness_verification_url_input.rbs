@@ -1,0 +1,62 @@
+module Privy
+  module Models
+    type kraken_embed_start_liveness_verification_url_input =
+      {
+        center_url: String,
+        left_url: String,
+        right_url: String,
+        type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_,
+        debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+      }
+
+    class KrakenEmbedStartLivenessVerificationURLInput < Privy::Internal::Type::BaseModel
+      attr_accessor center_url: String
+
+      attr_accessor left_url: String
+
+      attr_accessor right_url: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_
+
+      attr_reader debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug?
+
+      def debug=: (
+        Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+      ) -> Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+
+      def initialize: (
+        center_url: String,
+        left_url: String,
+        right_url: String,
+        type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_,
+        ?debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+      ) -> void
+
+      def to_hash: -> {
+        center_url: String,
+        left_url: String,
+        right_url: String,
+        type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_,
+        debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+      }
+
+      type type_ = :proof_of_liveness
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PROOF_OF_LIVENESS: :proof_of_liveness
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_]
+      end
+
+      type debug = {  }
+
+      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

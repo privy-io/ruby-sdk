@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type kraken_embed_start_verification_debug =
+      { outcome: Privy::Models::KrakenEmbedStartVerificationDebug::outcome? }
+
+    class KrakenEmbedStartVerificationDebug < Privy::Internal::Type::BaseModel
+      attr_accessor outcome: Privy::Models::KrakenEmbedStartVerificationDebug::outcome?
+
+      def initialize: (
+        ?outcome: Privy::Models::KrakenEmbedStartVerificationDebug::outcome?
+      ) -> void
+
+      def to_hash: -> {
+        outcome: Privy::Models::KrakenEmbedStartVerificationDebug::outcome?
+      }
+
+      type outcome = :failed
+
+      module Outcome
+        extend Privy::Internal::Type::Enum
+
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedStartVerificationDebug::outcome]
+      end
+    end
+  end
+end

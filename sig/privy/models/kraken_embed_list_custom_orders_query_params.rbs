@@ -1,0 +1,61 @@
+module Privy
+  module Models
+    type kraken_embed_list_custom_orders_query_params =
+      {
+        user_id: String,
+        cursor: String,
+        statuses: Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses
+      }
+
+    class KrakenEmbedListCustomOrdersQueryParams < Privy::Internal::Type::BaseModel
+      attr_accessor user_id: String
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader statuses: Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses?
+
+      def statuses=: (
+        Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses
+      ) -> Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses
+
+      def initialize: (
+        user_id: String,
+        ?cursor: String,
+        ?statuses: Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses
+      ) -> void
+
+      def to_hash: -> {
+        user_id: String,
+        cursor: String,
+        statuses: Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses
+      }
+
+      type statuses =
+        ::Array[Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::union_member0]
+        | String
+
+      module Statuses
+        extend Privy::Internal::Type::Union
+
+        type union_member0 = :active | :paused | :cancelled | :completed
+
+        module UnionMember0
+          extend Privy::Internal::Type::Enum
+
+          ACTIVE: :active
+          PAUSED: :paused
+          CANCELLED: :cancelled
+          COMPLETED: :completed
+
+          def self?.values: -> ::Array[Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::union_member0]
+        end
+
+        def self?.variants: -> ::Array[Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses]
+
+        UnionMember0Array: Privy::Internal::Type::Converter
+      end
+    end
+  end
+end
