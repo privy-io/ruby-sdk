@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_get_custom_order_result =
+      { order: Privy::KrakenEmbedCustomOrder }
+
+    class KrakenEmbedGetCustomOrderResult < Privy::Internal::Type::BaseModel
+      attr_accessor order: Privy::KrakenEmbedCustomOrder
+
+      def initialize: (order: Privy::KrakenEmbedCustomOrder) -> void
+
+      def to_hash: -> { order: Privy::KrakenEmbedCustomOrder }
+    end
+  end
+end

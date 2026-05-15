@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_list_custom_orders_result =
+      { orders: ::Array[Privy::KrakenEmbedCustomOrder] }
+
+    class KrakenEmbedListCustomOrdersResult < Privy::Internal::Type::BaseModel
+      attr_accessor orders: ::Array[Privy::KrakenEmbedCustomOrder]
+
+      def initialize: (orders: ::Array[Privy::KrakenEmbedCustomOrder]) -> void
+
+      def to_hash: -> { orders: ::Array[Privy::KrakenEmbedCustomOrder] }
+    end
+  end
+end

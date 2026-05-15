@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_start_verification_url_result =
+      { verification_id: String }
+
+    class KrakenEmbedStartVerificationURLResult < Privy::Internal::Type::BaseModel
+      attr_accessor verification_id: String
+
+      def initialize: (verification_id: String) -> void
+
+      def to_hash: -> { verification_id: String }
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type kraken_embed_start_verification_url_response =
+      { result: Privy::KrakenEmbedStartVerificationURLResponse::Result }
+
+    class KrakenEmbedStartVerificationURLResponse < Privy::Internal::Type::BaseModel
+      attr_accessor result: Privy::KrakenEmbedStartVerificationURLResponse::Result
+
+      def initialize: (
+        result: Privy::KrakenEmbedStartVerificationURLResponse::Result
+      ) -> void
+
+      def to_hash: -> {
+        result: Privy::KrakenEmbedStartVerificationURLResponse::Result
+      }
+
+      type result = {  }
+
+      class Result < Privy::Models::KrakenEmbedStartVerificationURLResult
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

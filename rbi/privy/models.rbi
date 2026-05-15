@@ -725,10 +725,71 @@ module Privy
 
   KeyQuorumUpdateRequestBody = Privy::Models::KeyQuorumUpdateRequestBody
 
+  KrakenEmbedCancelCustomOrderInput =
+    Privy::Models::KrakenEmbedCancelCustomOrderInput
+
+  KrakenEmbedCancelCustomOrderPath =
+    Privy::Models::KrakenEmbedCancelCustomOrderPath
+
+  KrakenEmbedCancelCustomOrderResponse =
+    Privy::Models::KrakenEmbedCancelCustomOrderResponse
+
+  KrakenEmbedCancelCustomOrderResult =
+    Privy::Models::KrakenEmbedCancelCustomOrderResult
+
+  KrakenEmbedCreateCustomOrderInput =
+    Privy::Models::KrakenEmbedCreateCustomOrderInput
+
+  KrakenEmbedCreateCustomOrderResponse =
+    Privy::Models::KrakenEmbedCreateCustomOrderResponse
+
+  KrakenEmbedCreateCustomOrderResult =
+    Privy::Models::KrakenEmbedCreateCustomOrderResult
+
   KrakenEmbedCurrentDayPnl = Privy::Models::KrakenEmbedCurrentDayPnl
+
+  KrakenEmbedCustomOrder = Privy::Models::KrakenEmbedCustomOrder
+
+  KrakenEmbedCustomOrderAction = Privy::Models::KrakenEmbedCustomOrderAction
+
+  KrakenEmbedCustomOrderAmount = Privy::Models::KrakenEmbedCustomOrderAmount
+
+  KrakenEmbedCustomOrderOccurrence =
+    Privy::Models::KrakenEmbedCustomOrderOccurrence
+
+  KrakenEmbedCustomOrderOccurrenceExecutedAction =
+    Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
+
+  KrakenEmbedCustomOrderOccurrenceTrigger =
+    Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger
+
+  KrakenEmbedCustomOrderQuoteAsset =
+    Privy::Models::KrakenEmbedCustomOrderQuoteAsset
+
+  KrakenEmbedCustomOrderStatus = Privy::Models::KrakenEmbedCustomOrderStatus
+
+  KrakenEmbedCustomOrderTrigger = Privy::Models::KrakenEmbedCustomOrderTrigger
 
   KrakenEmbedGetAssetListQueryParamsSchema =
     Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
+
+  KrakenEmbedGetCustomOrderHistoryQueryParams =
+    Privy::Models::KrakenEmbedGetCustomOrderHistoryQueryParams
+
+  KrakenEmbedGetCustomOrderHistoryResponse =
+    Privy::Models::KrakenEmbedGetCustomOrderHistoryResponse
+
+  KrakenEmbedGetCustomOrderHistoryResult =
+    Privy::Models::KrakenEmbedGetCustomOrderHistoryResult
+
+  KrakenEmbedGetCustomOrderQueryParams =
+    Privy::Models::KrakenEmbedGetCustomOrderQueryParams
+
+  KrakenEmbedGetCustomOrderResponse =
+    Privy::Models::KrakenEmbedGetCustomOrderResponse
+
+  KrakenEmbedGetCustomOrderResult =
+    Privy::Models::KrakenEmbedGetCustomOrderResult
 
   KrakenEmbedGetPortfolioDetailsQueryParamsSchema =
     Privy::Models::KrakenEmbedGetPortfolioDetailsQueryParamsSchema
@@ -744,6 +805,15 @@ module Privy
 
   KrakenEmbedGetQuoteQueryParams = Privy::Models::KrakenEmbedGetQuoteQueryParams
 
+  KrakenEmbedListCustomOrdersQueryParams =
+    Privy::Models::KrakenEmbedListCustomOrdersQueryParams
+
+  KrakenEmbedListCustomOrdersResponse =
+    Privy::Models::KrakenEmbedListCustomOrdersResponse
+
+  KrakenEmbedListCustomOrdersResult =
+    Privy::Models::KrakenEmbedListCustomOrdersResult
+
   KrakenEmbedQuoteCancelledWebhookPayload =
     Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload
 
@@ -752,6 +822,35 @@ module Privy
 
   KrakenEmbedQuoteExecutionFailedWebhookPayload =
     Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload
+
+  KrakenEmbedStartAddressMetadata =
+    Privy::Models::KrakenEmbedStartAddressMetadata
+
+  KrakenEmbedStartAddressVerificationURLInput =
+    Privy::Models::KrakenEmbedStartAddressVerificationURLInput
+
+  KrakenEmbedStartIdentityInfo = Privy::Models::KrakenEmbedStartIdentityInfo
+
+  KrakenEmbedStartIdentityMetadata =
+    Privy::Models::KrakenEmbedStartIdentityMetadata
+
+  KrakenEmbedStartIdentityVerificationURLInput =
+    Privy::Models::KrakenEmbedStartIdentityVerificationURLInput
+
+  KrakenEmbedStartLivenessVerificationURLInput =
+    Privy::Models::KrakenEmbedStartLivenessVerificationURLInput
+
+  KrakenEmbedStartVerificationDebug =
+    Privy::Models::KrakenEmbedStartVerificationDebug
+
+  KrakenEmbedStartVerificationURLInput =
+    Privy::Models::KrakenEmbedStartVerificationURLInput
+
+  KrakenEmbedStartVerificationURLResponse =
+    Privy::Models::KrakenEmbedStartVerificationURLResponse
+
+  KrakenEmbedStartVerificationURLResult =
+    Privy::Models::KrakenEmbedStartVerificationURLResult
 
   KrakenEmbedUserClosedWebhookPayload =
     Privy::Models::KrakenEmbedUserClosedWebhookPayload

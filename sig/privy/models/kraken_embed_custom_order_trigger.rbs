@@ -1,0 +1,61 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_trigger =
+      {
+        base_asset: String,
+        condition: Privy::Models::KrakenEmbedCustomOrderTrigger::condition,
+        quote_asset: String,
+        target_price: String,
+        type: Privy::Models::KrakenEmbedCustomOrderTrigger::type_
+      }
+
+    class KrakenEmbedCustomOrderTrigger < Privy::Internal::Type::BaseModel
+      attr_accessor base_asset: String
+
+      attr_accessor condition: Privy::Models::KrakenEmbedCustomOrderTrigger::condition
+
+      attr_accessor quote_asset: String
+
+      attr_accessor target_price: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderTrigger::type_
+
+      def initialize: (
+        base_asset: String,
+        condition: Privy::Models::KrakenEmbedCustomOrderTrigger::condition,
+        quote_asset: String,
+        target_price: String,
+        type: Privy::Models::KrakenEmbedCustomOrderTrigger::type_
+      ) -> void
+
+      def to_hash: -> {
+        base_asset: String,
+        condition: Privy::Models::KrakenEmbedCustomOrderTrigger::condition,
+        quote_asset: String,
+        target_price: String,
+        type: Privy::Models::KrakenEmbedCustomOrderTrigger::type_
+      }
+
+      type condition = :gte | :lte
+
+      module Condition
+        extend Privy::Internal::Type::Enum
+
+        GTE: :gte
+        LTE: :lte
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderTrigger::condition]
+      end
+
+      type type_ = :price
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PRICE: :price
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderTrigger::type_]
+      end
+    end
+  end
+end

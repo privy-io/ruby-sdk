@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order =
+      {
+        id: String,
+        action: Privy::KrakenEmbedCustomOrderAction,
+        created_at: Time,
+        name: String,
+        status: Privy::KrakenEmbedCustomOrderStatus,
+        trigger: Privy::KrakenEmbedCustomOrderTrigger,
+        updated_at: Time
+      }
+
+    class KrakenEmbedCustomOrder < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor action: Privy::KrakenEmbedCustomOrderAction
+
+      attr_accessor created_at: Time
+
+      attr_accessor name: String
+
+      attr_accessor status: Privy::KrakenEmbedCustomOrderStatus
+
+      attr_accessor trigger: Privy::KrakenEmbedCustomOrderTrigger
+
+      attr_accessor updated_at: Time
+
+      def initialize: (
+        id: String,
+        action: Privy::KrakenEmbedCustomOrderAction,
+        created_at: Time,
+        name: String,
+        status: Privy::KrakenEmbedCustomOrderStatus,
+        trigger: Privy::KrakenEmbedCustomOrderTrigger,
+        updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        action: Privy::KrakenEmbedCustomOrderAction,
+        created_at: Time,
+        name: String,
+        status: Privy::KrakenEmbedCustomOrderStatus,
+        trigger: Privy::KrakenEmbedCustomOrderTrigger,
+        updated_at: Time
+      }
+    end
+  end
+end

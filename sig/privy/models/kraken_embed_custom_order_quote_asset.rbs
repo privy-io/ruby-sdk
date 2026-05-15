@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_quote_asset = { asset: String }
+
+    class KrakenEmbedCustomOrderQuoteAsset < Privy::Internal::Type::BaseModel
+      attr_accessor asset: String
+
+      def initialize: (asset: String) -> void
+
+      def to_hash: -> { asset: String }
+    end
+  end
+end
