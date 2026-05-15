@@ -581,6 +581,8 @@ module Privy
 
   class IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
 
+  class IntentAuthorizeInput = Privy::Models::IntentAuthorizeInput
+
   class IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
 
   class IntentCreatePolicyRuleParams = Privy::Models::IntentCreatePolicyRuleParams
