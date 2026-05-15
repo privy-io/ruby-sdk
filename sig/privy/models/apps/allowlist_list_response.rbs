@@ -1,0 +1,9 @@
+module Privy
+  module Models
+    module Apps
+      type allowlist_list_response = ::Array[Privy::AllowlistEntry]
+
+      AllowlistListResponse: Privy::Internal::Type::Converter
+    end
+  end
+end

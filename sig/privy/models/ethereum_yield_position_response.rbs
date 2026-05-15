@@ -1,0 +1,52 @@
+module Privy
+  module Models
+    type ethereum_yield_position_response =
+      {
+        asset: Privy::EthereumYieldPositionResponse::Asset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      }
+
+    class EthereumYieldPositionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::EthereumYieldPositionResponse::Asset
+
+      attr_accessor assets_in_vault: String
+
+      attr_accessor shares_in_vault: String
+
+      attr_accessor total_deposited: String
+
+      attr_accessor total_withdrawn: String
+
+      def initialize: (
+        asset: Privy::EthereumYieldPositionResponse::Asset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      ) -> void
+
+      def to_hash: -> {
+        asset: Privy::EthereumYieldPositionResponse::Asset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      }
+
+      type asset = { address: String, symbol: String }
+
+      class Asset < Privy::Internal::Type::BaseModel
+        attr_accessor address: String
+
+        attr_accessor symbol: String
+
+        def initialize: (address: String, symbol: String) -> void
+
+        def to_hash: -> { address: String, symbol: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type siwe_input =
+      {
+        message: String,
+        signature: String,
+        chain_id: String?,
+        connector_type: String?,
+        wallet_client_type: String?
+      }
+
+    class SiweInput < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_accessor chain_id: String?
+
+      attr_accessor connector_type: String?
+
+      attr_accessor wallet_client_type: String?
+
+      def initialize: (
+        message: String,
+        signature: String,
+        ?chain_id: String?,
+        ?connector_type: String?,
+        ?wallet_client_type: String?
+      ) -> void
+
+      def to_hash: -> {
+        message: String,
+        signature: String,
+        chain_id: String?,
+        connector_type: String?,
+        wallet_client_type: String?
+      }
+    end
+  end
+end

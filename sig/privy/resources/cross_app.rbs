@@ -1,0 +1,7 @@
+module Privy
+  module Resources
+    class CrossApp
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

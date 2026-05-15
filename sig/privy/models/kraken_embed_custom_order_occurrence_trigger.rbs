@@ -1,0 +1,31 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_occurrence_trigger =
+      { type: Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger::type_ }
+
+    class KrakenEmbedCustomOrderOccurrenceTrigger < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger::type_
+
+      def initialize: (
+        type: Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger::type_
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger::type_
+      }
+
+      type type_ = :time | :price | :crypto_deposit | :market_open
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TIME: :time
+        PRICE: :price
+        CRYPTO_DEPOSIT: :crypto_deposit
+        MARKET_OPEN: :market_open
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type bridge_fiat_deposit_metadata =
+      {
+        activity_id: String,
+        method_: Privy::Models::BridgeFiatDepositMetadata::method_,
+        type: Privy::Models::BridgeFiatDepositMetadata::type_,
+        virtual_account_id: String
+      }
+
+    class BridgeFiatDepositMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor activity_id: String
+
+      attr_accessor method_: Privy::Models::BridgeFiatDepositMetadata::method_
+
+      attr_accessor type: Privy::Models::BridgeFiatDepositMetadata::type_
+
+      attr_accessor virtual_account_id: String
+
+      def initialize: (
+        activity_id: String,
+        method_: Privy::Models::BridgeFiatDepositMetadata::method_,
+        type: Privy::Models::BridgeFiatDepositMetadata::type_,
+        virtual_account_id: String
+      ) -> void
+
+      def to_hash: -> {
+        activity_id: String,
+        method_: Privy::Models::BridgeFiatDepositMetadata::method_,
+        type: Privy::Models::BridgeFiatDepositMetadata::type_,
+        virtual_account_id: String
+      }
+
+      type method_ = :virtual_account
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        VIRTUAL_ACCOUNT: :virtual_account
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatDepositMetadata::method_]
+      end
+
+      type type_ = :fiat_deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        FIAT_DEPOSIT: :fiat_deposit
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatDepositMetadata::type_]
+      end
+    end
+  end
+end

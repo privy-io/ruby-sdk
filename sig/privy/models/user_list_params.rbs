@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type user_list_params =
+      { cursor: String, limit: Float? }
+      & Privy::Internal::Type::request_parameters
+
+    class UserListParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_accessor limit: Float?
+
+      def initialize: (
+        ?cursor: String,
+        ?limit: Float?,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cursor: String,
+        limit: Float?,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

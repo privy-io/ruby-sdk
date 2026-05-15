@@ -1,0 +1,26 @@
+module Privy
+  module Resources
+    class Apps
+      class Allowlist
+        def create: (
+          String app_id,
+          user_invite_input: Privy::Models::user_invite_input,
+          ?request_options: Privy::request_opts
+        ) -> Privy::AllowlistEntry
+
+        def list: (
+          String app_id,
+          ?request_options: Privy::request_opts
+        ) -> Privy::Models::Apps::allowlist_list_response
+
+        def delete: (
+          String app_id,
+          user_invite_input: Privy::Models::user_invite_input,
+          ?request_options: Privy::request_opts
+        ) -> Privy::AllowlistDeletionResponse
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

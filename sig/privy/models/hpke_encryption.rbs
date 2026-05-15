@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type hpke_encryption = :HPKE
+
+    module HpkeEncryption
+      extend Privy::Internal::Type::Enum
+
+      HPKE: :HPKE
+
+      def self?.values: -> ::Array[Privy::Models::hpke_encryption]
+    end
+  end
+end

@@ -1,0 +1,73 @@
+module Privy
+  module Models
+    type spark_lightning_receive_request =
+      {
+        id: String,
+        created_at: String,
+        network: String,
+        status: String,
+        typename: String,
+        updated_at: String,
+        invoice: top,
+        payment_preimage: String,
+        receiver_identity_public_key: String,
+        transfer: top
+      }
+
+    class SparkLightningReceiveRequest < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor network: String
+
+      attr_accessor status: String
+
+      attr_accessor typename: String
+
+      attr_accessor updated_at: String
+
+      attr_reader invoice: top?
+
+      def invoice=: (top) -> top
+
+      attr_reader payment_preimage: String?
+
+      def payment_preimage=: (String) -> String
+
+      attr_reader receiver_identity_public_key: String?
+
+      def receiver_identity_public_key=: (String) -> String
+
+      attr_reader transfer: top?
+
+      def transfer=: (top) -> top
+
+      def initialize: (
+        id: String,
+        created_at: String,
+        network: String,
+        status: String,
+        typename: String,
+        updated_at: String,
+        ?invoice: top,
+        ?payment_preimage: String,
+        ?receiver_identity_public_key: String,
+        ?transfer: top
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        network: String,
+        status: String,
+        typename: String,
+        updated_at: String,
+        invoice: top,
+        payment_preimage: String,
+        receiver_identity_public_key: String,
+        transfer: top
+      }
+    end
+  end
+end

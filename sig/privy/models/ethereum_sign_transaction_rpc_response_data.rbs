@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_sign_transaction_rpc_response_data =
+      {
+        encoding: Privy::Models::EthereumSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      }
+
+    class EthereumSignTransactionRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::EthereumSignTransactionRpcResponseData::encoding
+
+      attr_accessor signed_transaction: String
+
+      def initialize: (
+        encoding: Privy::Models::EthereumSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::EthereumSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      }
+
+      type encoding = :rlp
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        RLP: :rlp
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSignTransactionRpcResponseData::encoding]
+      end
+    end
+  end
+end

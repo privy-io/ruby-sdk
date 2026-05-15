@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type transaction_replaced_webhook_payload =
+      {
+        :caip2 => String,
+        transaction_hash: String,
+        transaction_id: String,
+        type: Privy::Models::TransactionReplacedWebhookPayload::type_,
+        wallet_id: String,
+        reference_id: String?
+      }
+
+    class TransactionReplacedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      attr_accessor transaction_hash: String
+
+      attr_accessor transaction_id: String
+
+      attr_accessor type: Privy::Models::TransactionReplacedWebhookPayload::type_
+
+      attr_accessor wallet_id: String
+
+      attr_accessor reference_id: String?
+
+      def initialize: (
+        caip2: String,
+        transaction_hash: String,
+        transaction_id: String,
+        type: Privy::Models::TransactionReplacedWebhookPayload::type_,
+        wallet_id: String,
+        ?reference_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        :caip2 => String,
+        transaction_hash: String,
+        transaction_id: String,
+        type: Privy::Models::TransactionReplacedWebhookPayload::type_,
+        wallet_id: String,
+        reference_id: String?
+      }
+
+      type type_ = :"transaction.replaced"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TRANSACTION_REPLACED: :"transaction.replaced"
+
+        def self?.values: -> ::Array[Privy::Models::TransactionReplacedWebhookPayload::type_]
+      end
+    end
+  end
+end

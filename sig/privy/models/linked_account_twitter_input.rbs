@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type linked_account_twitter_input =
+      {
+        name: String,
+        subject: String,
+        type: :twitter_oauth,
+        username: String,
+        profile_picture_url: String
+      }
+
+    class LinkedAccountTwitterInput < Privy::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor subject: String
+
+      attr_accessor type: :twitter_oauth
+
+      attr_accessor username: String
+
+      attr_reader profile_picture_url: String?
+
+      def profile_picture_url=: (String) -> String
+
+      def initialize: (
+        name: String,
+        subject: String,
+        username: String,
+        ?profile_picture_url: String,
+        ?type: :twitter_oauth
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        subject: String,
+        type: :twitter_oauth,
+        username: String,
+        profile_picture_url: String
+      }
+    end
+  end
+end

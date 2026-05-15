@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_solana_address =
+      {
+        address: String,
+        blockchains: ::Array[Privy::Models::coinbase_blockchain]
+      }
+
+    class CoinbaseOnRampSolanaAddress < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor blockchains: ::Array[Privy::Models::coinbase_blockchain]
+
+      def initialize: (
+        address: String,
+        blockchains: ::Array[Privy::Models::coinbase_blockchain]
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        blockchains: ::Array[Privy::Models::coinbase_blockchain]
+      }
+    end
+  end
+end

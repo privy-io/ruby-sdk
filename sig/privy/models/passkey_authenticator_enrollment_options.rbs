@@ -1,0 +1,76 @@
+module Privy
+  module Models
+    type passkey_authenticator_enrollment_options =
+      {
+        challenge: String,
+        pub_key_cred_params: ::Array[Privy::PasskeyPubKeyCredParam],
+        rp: Privy::PasskeyRelyingParty,
+        user: Privy::PasskeyUser,
+        attestation: String,
+        authenticator_selection: Privy::PasskeyAuthenticatorSelection,
+        exclude_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
+        extensions: Privy::PasskeyEnrollmentExtensions,
+        timeout: Float
+      }
+
+    class PasskeyAuthenticatorEnrollmentOptions < Privy::Internal::Type::BaseModel
+      attr_accessor challenge: String
+
+      attr_accessor pub_key_cred_params: ::Array[Privy::PasskeyPubKeyCredParam]
+
+      attr_accessor rp: Privy::PasskeyRelyingParty
+
+      attr_accessor user: Privy::PasskeyUser
+
+      attr_reader attestation: String?
+
+      def attestation=: (String) -> String
+
+      attr_reader authenticator_selection: Privy::PasskeyAuthenticatorSelection?
+
+      def authenticator_selection=: (
+        Privy::PasskeyAuthenticatorSelection
+      ) -> Privy::PasskeyAuthenticatorSelection
+
+      attr_reader exclude_credentials: ::Array[Privy::PasskeyCredentialDescriptor]?
+
+      def exclude_credentials=: (
+        ::Array[Privy::PasskeyCredentialDescriptor]
+      ) -> ::Array[Privy::PasskeyCredentialDescriptor]
+
+      attr_reader extensions: Privy::PasskeyEnrollmentExtensions?
+
+      def extensions=: (
+        Privy::PasskeyEnrollmentExtensions
+      ) -> Privy::PasskeyEnrollmentExtensions
+
+      attr_reader timeout: Float?
+
+      def timeout=: (Float) -> Float
+
+      def initialize: (
+        challenge: String,
+        pub_key_cred_params: ::Array[Privy::PasskeyPubKeyCredParam],
+        rp: Privy::PasskeyRelyingParty,
+        user: Privy::PasskeyUser,
+        ?attestation: String,
+        ?authenticator_selection: Privy::PasskeyAuthenticatorSelection,
+        ?exclude_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
+        ?extensions: Privy::PasskeyEnrollmentExtensions,
+        ?timeout: Float
+      ) -> void
+
+      def to_hash: -> {
+        challenge: String,
+        pub_key_cred_params: ::Array[Privy::PasskeyPubKeyCredParam],
+        rp: Privy::PasskeyRelyingParty,
+        user: Privy::PasskeyUser,
+        attestation: String,
+        authenticator_selection: Privy::PasskeyAuthenticatorSelection,
+        exclude_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
+        extensions: Privy::PasskeyEnrollmentExtensions,
+        timeout: Float
+      }
+    end
+  end
+end

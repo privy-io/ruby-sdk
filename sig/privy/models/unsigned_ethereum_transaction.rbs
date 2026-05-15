@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type unsigned_ethereum_transaction =
+      Privy::UnsignedStandardEthereumTransaction
+      | Privy::UnsignedTempoTransaction
+
+    module UnsignedEthereumTransaction
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::unsigned_ethereum_transaction]
+    end
+  end
+end

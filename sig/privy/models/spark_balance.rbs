@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type spark_balance =
+      {
+        balance: String,
+        token_balances: ::Hash[Symbol, Privy::SparkTokenBalance]
+      }
+
+    class SparkBalance < Privy::Internal::Type::BaseModel
+      attr_accessor balance: String
+
+      attr_accessor token_balances: ::Hash[Symbol, Privy::SparkTokenBalance]
+
+      def initialize: (
+        balance: String,
+        token_balances: ::Hash[Symbol, Privy::SparkTokenBalance]
+      ) -> void
+
+      def to_hash: -> {
+        balance: String,
+        token_balances: ::Hash[Symbol, Privy::SparkTokenBalance]
+      }
+    end
+  end
+end

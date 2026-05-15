@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type kraken_embed_user_verified_webhook_payload =
+      {
+        type: Privy::Models::KrakenEmbedUserVerifiedWebhookPayload::type_,
+        user_id: String,
+        verified_at: String
+      }
+
+    class KrakenEmbedUserVerifiedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::KrakenEmbedUserVerifiedWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      attr_accessor verified_at: String
+
+      def initialize: (
+        type: Privy::Models::KrakenEmbedUserVerifiedWebhookPayload::type_,
+        user_id: String,
+        verified_at: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::KrakenEmbedUserVerifiedWebhookPayload::type_,
+        user_id: String,
+        verified_at: String
+      }
+
+      type type_ = :"kraken_embed.user.verified"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_USER_VERIFIED: :"kraken_embed.user.verified"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedUserVerifiedWebhookPayload::type_]
+      end
+    end
+  end
+end

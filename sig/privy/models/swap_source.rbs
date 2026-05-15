@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type swap_source = { asset_address: String, :caip2 => String }
+
+    class SwapSource < Privy::Internal::Type::BaseModel
+      attr_accessor asset_address: String
+
+      attr_accessor caip2: String
+
+      def initialize: (asset_address: String, caip2: String) -> void
+
+      def to_hash: -> { asset_address: String, :caip2 => String }
+    end
+  end
+end

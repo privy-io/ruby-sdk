@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type transaction_scanning_validation_success_result =
+      {
+        result_type: String,
+        status: Privy::Models::TransactionScanningValidationSuccessResult::status
+      }
+
+    class TransactionScanningValidationSuccessResult < Privy::Internal::Type::BaseModel
+      attr_accessor result_type: String
+
+      attr_accessor status: Privy::Models::TransactionScanningValidationSuccessResult::status
+
+      def initialize: (
+        result_type: String,
+        status: Privy::Models::TransactionScanningValidationSuccessResult::status
+      ) -> void
+
+      def to_hash: -> {
+        result_type: String,
+        status: Privy::Models::TransactionScanningValidationSuccessResult::status
+      }
+
+      type status = :Success
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        SUCCESS: :Success
+
+        def self?.values: -> ::Array[Privy::Models::TransactionScanningValidationSuccessResult::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type allowlist_deletion_response = { message: String }
+
+    class AllowlistDeletionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      def initialize: (message: String) -> void
+
+      def to_hash: -> { message: String }
+    end
+  end
+end

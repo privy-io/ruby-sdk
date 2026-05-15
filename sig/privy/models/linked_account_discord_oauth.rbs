@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type linked_account_discord_oauth =
+      {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountDiscordOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+    class LinkedAccountDiscordOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor email: String?
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountDiscordOAuth::type_
+
+      attr_accessor username: String?
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountDiscordOAuth::type_,
+        username: String?,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: Privy::Models::LinkedAccountDiscordOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+      type type_ = :discord_oauth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        DISCORD_OAUTH: :discord_oauth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountDiscordOAuth::type_]
+      end
+    end
+  end
+end

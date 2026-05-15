@@ -1,0 +1,146 @@
+module Privy
+  module Models
+    type unsigned_tempo_transaction =
+      {
+        calls: ::Array[Privy::TempoCall],
+        type: Privy::Models::UnsignedTempoTransaction::type_,
+        aa_authorization_list: ::Array[Privy::TempoAaAuthorization],
+        access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList],
+        chain_id: Privy::Models::quantity,
+        fee_payer_signature: Privy::TempoFeePayerSignature,
+        fee_token: String,
+        from: String,
+        gas_limit: Privy::Models::quantity,
+        max_fee_per_gas: Privy::Models::quantity,
+        max_priority_fee_per_gas: Privy::Models::quantity,
+        nonce: Privy::Models::quantity,
+        nonce_key: Privy::Models::quantity,
+        valid_after: Privy::Models::quantity,
+        valid_before: Privy::Models::quantity
+      }
+
+    class UnsignedTempoTransaction < Privy::Internal::Type::BaseModel
+      attr_accessor calls: ::Array[Privy::TempoCall]
+
+      attr_accessor type: Privy::Models::UnsignedTempoTransaction::type_
+
+      attr_reader aa_authorization_list: ::Array[Privy::TempoAaAuthorization]?
+
+      def aa_authorization_list=: (
+        ::Array[Privy::TempoAaAuthorization]
+      ) -> ::Array[Privy::TempoAaAuthorization]
+
+      attr_reader access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList]?
+
+      def access_list=: (
+        ::Array[Privy::UnsignedTempoTransaction::AccessList]
+      ) -> ::Array[Privy::UnsignedTempoTransaction::AccessList]
+
+      attr_reader chain_id: Privy::Models::quantity?
+
+      def chain_id=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      attr_reader fee_payer_signature: Privy::TempoFeePayerSignature?
+
+      def fee_payer_signature=: (
+        Privy::TempoFeePayerSignature
+      ) -> Privy::TempoFeePayerSignature
+
+      attr_reader fee_token: String?
+
+      def fee_token=: (String) -> String
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader gas_limit: Privy::Models::quantity?
+
+      def gas_limit=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      attr_reader max_fee_per_gas: Privy::Models::quantity?
+
+      def max_fee_per_gas=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      attr_reader max_priority_fee_per_gas: Privy::Models::quantity?
+
+      def max_priority_fee_per_gas=: (
+        Privy::Models::quantity
+      ) -> Privy::Models::quantity
+
+      attr_reader nonce: Privy::Models::quantity?
+
+      def nonce=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      attr_reader nonce_key: Privy::Models::quantity?
+
+      def nonce_key=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      attr_reader valid_after: Privy::Models::quantity?
+
+      def valid_after=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      attr_reader valid_before: Privy::Models::quantity?
+
+      def valid_before=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      def initialize: (
+        calls: ::Array[Privy::TempoCall],
+        type: Privy::Models::UnsignedTempoTransaction::type_,
+        ?aa_authorization_list: ::Array[Privy::TempoAaAuthorization],
+        ?access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList],
+        ?chain_id: Privy::Models::quantity,
+        ?fee_payer_signature: Privy::TempoFeePayerSignature,
+        ?fee_token: String,
+        ?from: String,
+        ?gas_limit: Privy::Models::quantity,
+        ?max_fee_per_gas: Privy::Models::quantity,
+        ?max_priority_fee_per_gas: Privy::Models::quantity,
+        ?nonce: Privy::Models::quantity,
+        ?nonce_key: Privy::Models::quantity,
+        ?valid_after: Privy::Models::quantity,
+        ?valid_before: Privy::Models::quantity
+      ) -> void
+
+      def to_hash: -> {
+        calls: ::Array[Privy::TempoCall],
+        type: Privy::Models::UnsignedTempoTransaction::type_,
+        aa_authorization_list: ::Array[Privy::TempoAaAuthorization],
+        access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList],
+        chain_id: Privy::Models::quantity,
+        fee_payer_signature: Privy::TempoFeePayerSignature,
+        fee_token: String,
+        from: String,
+        gas_limit: Privy::Models::quantity,
+        max_fee_per_gas: Privy::Models::quantity,
+        max_priority_fee_per_gas: Privy::Models::quantity,
+        nonce: Privy::Models::quantity,
+        nonce_key: Privy::Models::quantity,
+        valid_after: Privy::Models::quantity,
+        valid_before: Privy::Models::quantity
+      }
+
+      type type_ = Float
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TYPE_118: 118
+
+        def self?.values: -> ::Array[Privy::Models::UnsignedTempoTransaction::type_]
+      end
+
+      type access_list = { address: String, storage_keys: ::Array[String] }
+
+      class AccessList < Privy::Internal::Type::BaseModel
+        attr_accessor address: String
+
+        attr_accessor storage_keys: ::Array[String]
+
+        def initialize: (address: String, storage_keys: ::Array[String]) -> void
+
+        def to_hash: -> { address: String, storage_keys: ::Array[String] }
+      end
+    end
+  end
+end

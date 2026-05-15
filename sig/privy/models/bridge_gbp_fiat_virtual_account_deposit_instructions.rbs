@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type bridge_gbp_fiat_virtual_account_deposit_instructions =
+      {
+        account_holder_name: String,
+        account_number: String,
+        asset: Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        payment_rails: ::Array[Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::payment_rail],
+        sort_code: String
+      }
+
+    class BridgeGbpFiatVirtualAccountDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_accessor account_holder_name: String
+
+      attr_accessor account_number: String
+
+      attr_accessor asset: Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::asset
+
+      attr_accessor bank_address: String
+
+      attr_accessor bank_name: String
+
+      attr_accessor payment_rails: ::Array[Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::payment_rail]
+
+      attr_accessor sort_code: String
+
+      def initialize: (
+        account_holder_name: String,
+        account_number: String,
+        asset: Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        payment_rails: ::Array[Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::payment_rail],
+        sort_code: String
+      ) -> void
+
+      def to_hash: -> {
+        account_holder_name: String,
+        account_number: String,
+        asset: Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        payment_rails: ::Array[Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::payment_rail],
+        sort_code: String
+      }
+
+      type asset = :gbp
+
+      module Asset
+        extend Privy::Internal::Type::Enum
+
+        GBP: :gbp
+
+        def self?.values: -> ::Array[Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::asset]
+      end
+
+      type payment_rail = :faster_payments
+
+      module PaymentRail
+        extend Privy::Internal::Type::Enum
+
+        FASTER_PAYMENTS: :faster_payments
+
+        def self?.values: -> ::Array[Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions::payment_rail]
+      end
+    end
+  end
+end

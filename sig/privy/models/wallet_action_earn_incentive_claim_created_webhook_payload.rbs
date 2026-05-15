@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type wallet_action_earn_incentive_claim_created_webhook_payload =
+      {
+        action_type: Privy::Models::wallet_action_type,
+        chain: String,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+    class WalletActionEarnIncentiveClaimCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor chain: String
+
+      attr_accessor rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?
+
+      attr_accessor status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status
+
+      attr_accessor type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_type: Privy::Models::wallet_action_type,
+        chain: String,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::wallet_action_type,
+        chain: String,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+      type status = :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.earn_incentive_claim.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_EARN_INCENTIVE_CLAIM_CREATED: :"wallet_action.earn_incentive_claim.created"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

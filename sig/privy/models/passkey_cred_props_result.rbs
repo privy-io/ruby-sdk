@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type passkey_cred_props_result = { rk: bool }
+
+    class PasskeyCredPropsResult < Privy::Internal::Type::BaseModel
+      attr_reader rk: bool?
+
+      def rk=: (bool) -> bool
+
+      def initialize: (?rk: bool) -> void
+
+      def to_hash: -> { rk: bool }
+    end
+  end
+end

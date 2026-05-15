@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type solana_sign_transaction_rpc_response_data =
+      {
+        encoding: Privy::Models::SolanaSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      }
+
+    class SolanaSignTransactionRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::SolanaSignTransactionRpcResponseData::encoding
+
+      attr_accessor signed_transaction: String
+
+      def initialize: (
+        encoding: Privy::Models::SolanaSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::SolanaSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      }
+
+      type encoding = :base64
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        BASE64: :base64
+
+        def self?.values: -> ::Array[Privy::Models::SolanaSignTransactionRpcResponseData::encoding]
+      end
+    end
+  end
+end

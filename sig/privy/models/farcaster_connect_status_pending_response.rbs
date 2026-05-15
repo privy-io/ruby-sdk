@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type farcaster_connect_status_pending_response =
+      {
+        nonce: String,
+        state: Privy::Models::FarcasterConnectStatusPendingResponse::state
+      }
+
+    class FarcasterConnectStatusPendingResponse < Privy::Internal::Type::BaseModel
+      attr_accessor nonce: String
+
+      attr_accessor state: Privy::Models::FarcasterConnectStatusPendingResponse::state
+
+      def initialize: (
+        nonce: String,
+        state: Privy::Models::FarcasterConnectStatusPendingResponse::state
+      ) -> void
+
+      def to_hash: -> {
+        nonce: String,
+        state: Privy::Models::FarcasterConnectStatusPendingResponse::state
+      }
+
+      type state = :pending
+
+      module State
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::FarcasterConnectStatusPendingResponse::state]
+      end
+    end
+  end
+end

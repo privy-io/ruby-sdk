@@ -1,0 +1,102 @@
+module Privy
+  module Resources
+    class Intents
+      def list: (
+        ?created_by_id: String,
+        ?current_user_has_signed: Privy::Models::IntentListParams::current_user_has_signed,
+        ?cursor: String,
+        ?intent_type: Privy::Models::intent_type,
+        ?limit: Float?,
+        ?pending_member_id: String,
+        ?resource_id: String,
+        ?sort_by: Privy::Models::IntentListParams::sort_by,
+        ?status: Privy::Models::intent_status,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::Models::intent_response]
+
+      def create_policy_rule: (
+        String policy_id,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::RuleIntentResponse
+
+      def delete_policy_rule: (
+        String rule_id,
+        policy_id: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::RuleIntentResponse
+
+      def get: (
+        String intent_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Models::intent_response
+
+      def rpc: (
+        String wallet_id,
+        wallet_rpc_request_body: Privy::Models::wallet_rpc_request_body,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::RpcIntentResponse
+
+      def transfer: (
+        String wallet_id,
+        destination: Privy::TokenTransferDestination,
+        source: Privy::Models::token_transfer_source,
+        ?amount_type: Privy::Models::amount_type,
+        ?slippage_bps: Integer,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::TransferIntentResponse
+
+      def update_key_quorum: (
+        String key_quorum_id,
+        ?authorization_threshold: Float,
+        ?display_name: String,
+        ?key_quorum_ids: ::Array[String],
+        ?public_keys: ::Array[String],
+        ?user_ids: ::Array[String],
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::KeyQuorumIntentResponse
+
+      def update_policy: (
+        String policy_id,
+        ?name: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?rules: ::Array[Privy::PolicyRuleRequestBody],
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::PolicyIntentResponse
+
+      def update_policy_rule: (
+        String rule_id,
+        policy_id: String,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::RuleIntentResponse
+
+      def update_wallet: (
+        String wallet_id,
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?display_name: String?,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?policy_ids: ::Array[String],
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletIntentResponse
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

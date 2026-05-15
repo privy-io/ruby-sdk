@@ -1,0 +1,94 @@
+module Privy
+  module Models
+    type funds_withdrawn_webhook_payload =
+      {
+        amount: String,
+        asset: Privy::Models::wallet_funds_asset,
+        block: Privy::FundsWithdrawnWebhookPayload::Block,
+        :caip2 => String,
+        idempotency_key: String,
+        recipient: String,
+        sender: String,
+        transaction_hash: String,
+        type: Privy::Models::FundsWithdrawnWebhookPayload::type_,
+        wallet_id: String,
+        transaction_fee: String
+      }
+
+    class FundsWithdrawnWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor asset: Privy::Models::wallet_funds_asset
+
+      attr_accessor block: Privy::FundsWithdrawnWebhookPayload::Block
+
+      attr_accessor caip2: String
+
+      attr_accessor idempotency_key: String
+
+      attr_accessor recipient: String
+
+      attr_accessor sender: String
+
+      attr_accessor transaction_hash: String
+
+      attr_accessor type: Privy::Models::FundsWithdrawnWebhookPayload::type_
+
+      attr_accessor wallet_id: String
+
+      attr_reader transaction_fee: String?
+
+      def transaction_fee=: (String) -> String
+
+      def initialize: (
+        amount: String,
+        asset: Privy::Models::wallet_funds_asset,
+        block: Privy::FundsWithdrawnWebhookPayload::Block,
+        caip2: String,
+        idempotency_key: String,
+        recipient: String,
+        sender: String,
+        transaction_hash: String,
+        type: Privy::Models::FundsWithdrawnWebhookPayload::type_,
+        wallet_id: String,
+        ?transaction_fee: String
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        asset: Privy::Models::wallet_funds_asset,
+        block: Privy::FundsWithdrawnWebhookPayload::Block,
+        :caip2 => String,
+        idempotency_key: String,
+        recipient: String,
+        sender: String,
+        transaction_hash: String,
+        type: Privy::Models::FundsWithdrawnWebhookPayload::type_,
+        wallet_id: String,
+        transaction_fee: String
+      }
+
+      type block = { number: Float, timestamp: Float }
+
+      class Block < Privy::Internal::Type::BaseModel
+        attr_accessor number: Float
+
+        attr_accessor timestamp: Float
+
+        def initialize: (number: Float, timestamp: Float) -> void
+
+        def to_hash: -> { number: Float, timestamp: Float }
+      end
+
+      type type_ = :"wallet.funds_withdrawn"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_FUNDS_WITHDRAWN: :"wallet.funds_withdrawn"
+
+        def self?.values: -> ::Array[Privy::Models::FundsWithdrawnWebhookPayload::type_]
+      end
+    end
+  end
+end

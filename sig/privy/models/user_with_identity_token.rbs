@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type user_with_identity_token =
+      { identity_token: String?, user: Privy::User }
+
+    class UserWithIdentityToken < Privy::Internal::Type::BaseModel
+      attr_accessor identity_token: String?
+
+      attr_accessor user: Privy::User
+
+      def initialize: (identity_token: String?, user: Privy::User) -> void
+
+      def to_hash: -> { identity_token: String?, user: Privy::User }
+    end
+  end
+end

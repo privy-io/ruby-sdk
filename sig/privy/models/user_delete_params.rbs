@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type user_delete_params =
+      { user_id: String } & Privy::Internal::Type::request_parameters
+
+    class UserDeleteParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        user_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

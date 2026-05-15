@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type linked_account_custom_oauth =
+      {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: String,
+        verified_at: Float,
+        email: String,
+        name: String,
+        profile_picture_url: String,
+        username: String
+      }
+
+    class LinkedAccountCustomOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor subject: String
+
+      attr_accessor type: String
+
+      attr_accessor verified_at: Float
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader profile_picture_url: String?
+
+      def profile_picture_url=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: String,
+        verified_at: Float,
+        ?email: String,
+        ?name: String,
+        ?profile_picture_url: String,
+        ?username: String
+      ) -> void
+
+      def to_hash: -> {
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        subject: String,
+        type: String,
+        verified_at: Float,
+        email: String,
+        name: String,
+        profile_picture_url: String,
+        username: String
+      }
+    end
+  end
+end

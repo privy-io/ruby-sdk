@@ -1,0 +1,48 @@
+module Privy
+  module Models
+    type kraken_embed_start_identity_info =
+      {
+        date_of_birth: Date?,
+        full_name: Privy::KrakenEmbedStartIdentityInfo::FullName?
+      }
+
+    class KrakenEmbedStartIdentityInfo < Privy::Internal::Type::BaseModel
+      attr_accessor date_of_birth: Date?
+
+      attr_accessor full_name: Privy::KrakenEmbedStartIdentityInfo::FullName?
+
+      def initialize: (
+        ?date_of_birth: Date?,
+        ?full_name: Privy::KrakenEmbedStartIdentityInfo::FullName?
+      ) -> void
+
+      def to_hash: -> {
+        date_of_birth: Date?,
+        full_name: Privy::KrakenEmbedStartIdentityInfo::FullName?
+      }
+
+      type full_name =
+        { first_name: String, last_name: String, middle_name: String? }
+
+      class FullName < Privy::Internal::Type::BaseModel
+        attr_accessor first_name: String
+
+        attr_accessor last_name: String
+
+        attr_accessor middle_name: String?
+
+        def initialize: (
+          first_name: String,
+          last_name: String,
+          ?middle_name: String?
+        ) -> void
+
+        def to_hash: -> {
+          first_name: String,
+          last_name: String,
+          middle_name: String?
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type passkey_authenticator_enrollment_response =
+      {
+        id: String,
+        client_extension_results: Privy::PasskeyClientExtensionResults,
+        raw_id: String,
+        response: Privy::PasskeyAttestationResponse,
+        type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_,
+        authenticator_attachment: String
+      }
+
+    class PasskeyAuthenticatorEnrollmentResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor client_extension_results: Privy::PasskeyClientExtensionResults
+
+      attr_accessor raw_id: String
+
+      attr_accessor response: Privy::PasskeyAttestationResponse
+
+      attr_accessor type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_
+
+      attr_reader authenticator_attachment: String?
+
+      def authenticator_attachment=: (String) -> String
+
+      def initialize: (
+        id: String,
+        client_extension_results: Privy::PasskeyClientExtensionResults,
+        raw_id: String,
+        response: Privy::PasskeyAttestationResponse,
+        type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_,
+        ?authenticator_attachment: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        client_extension_results: Privy::PasskeyClientExtensionResults,
+        raw_id: String,
+        response: Privy::PasskeyAttestationResponse,
+        type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_,
+        authenticator_attachment: String
+      }
+
+      type type_ = :"public-key"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PUBLIC_KEY: :"public-key"
+
+        def self?.values: -> ::Array[Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_]
+      end
+    end
+  end
+end

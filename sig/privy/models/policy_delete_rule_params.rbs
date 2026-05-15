@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type policy_delete_rule_params =
+      {
+        policy_id: String,
+        rule_id: String,
+        privy_authorization_signature: String,
+        privy_request_expiry: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class PolicyDeleteRuleParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor policy_id: String
+
+      attr_accessor rule_id: String
+
+      attr_reader privy_authorization_signature: String?
+
+      def privy_authorization_signature=: (String) -> String
+
+      attr_reader privy_request_expiry: String?
+
+      def privy_request_expiry=: (String) -> String
+
+      def initialize: (
+        policy_id: String,
+        rule_id: String,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        policy_id: String,
+        rule_id: String,
+        privy_authorization_signature: String,
+        privy_request_expiry: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

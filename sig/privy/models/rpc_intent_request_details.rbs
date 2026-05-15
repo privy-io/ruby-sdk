@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type rpc_intent_request_details =
+      {
+        body: Privy::Models::wallet_rpc_request_body,
+        method_: Privy::Models::RpcIntentRequestDetails::method_,
+        url: String
+      }
+
+    class RpcIntentRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor body: Privy::Models::wallet_rpc_request_body
+
+      attr_accessor method_: Privy::Models::RpcIntentRequestDetails::method_
+
+      attr_accessor url: String
+
+      def initialize: (
+        body: Privy::Models::wallet_rpc_request_body,
+        method_: Privy::Models::RpcIntentRequestDetails::method_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::Models::wallet_rpc_request_body,
+        method_: Privy::Models::RpcIntentRequestDetails::method_,
+        url: String
+      }
+
+      type method_ = :POST
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        POST: :POST
+
+        def self?.values: -> ::Array[Privy::Models::RpcIntentRequestDetails::method_]
+      end
+    end
+  end
+end

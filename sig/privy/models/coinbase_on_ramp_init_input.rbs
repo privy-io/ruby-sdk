@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type coinbase_on_ramp_init_input =
+      Privy::CoinbaseOnRampInitEthereumInput
+      | Privy::CoinbaseOnRampInitSolanaInput
+
+    module CoinbaseOnRampInitInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::coinbase_on_ramp_init_input]
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type spark_sign_message_with_identity_key_rpc_response_data =
+      { signature: String }
+
+    class SparkSignMessageWithIdentityKeyRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor signature: String
+
+      def initialize: (signature: String) -> void
+
+      def to_hash: -> { signature: String }
+    end
+  end
+end

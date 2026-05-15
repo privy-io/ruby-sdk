@@ -1,0 +1,71 @@
+module Privy
+  module Models
+    type moonpay_on_ramp_sign_input =
+      Privy::MoonpayOnRampSignInput::MoonpayFiatOnRampEthereumInput
+      | Privy::MoonpayOnRampSignInput::MoonpayFiatOnRampSolanaInput
+
+    module MoonpayOnRampSignInput
+      extend Privy::Internal::Type::Union
+
+      type moonpay_fiat_on_ramp_ethereum_input =
+        {
+          use_sandbox: bool,
+          address: String,
+          config: Privy::MoonpayFiatOnRampEthereumConfig
+        }
+
+      class MoonpayFiatOnRampEthereumInput < Privy::Internal::Type::BaseModel
+        attr_reader use_sandbox: bool?
+
+        def use_sandbox=: (bool) -> bool
+
+        attr_accessor address: String
+
+        attr_accessor config: Privy::MoonpayFiatOnRampEthereumConfig
+
+        def initialize: (
+          address: String,
+          config: Privy::MoonpayFiatOnRampEthereumConfig,
+          ?use_sandbox: bool
+        ) -> void
+
+        def to_hash: -> {
+          use_sandbox: bool,
+          address: String,
+          config: Privy::MoonpayFiatOnRampEthereumConfig
+        }
+      end
+
+      type moonpay_fiat_on_ramp_solana_input =
+        {
+          use_sandbox: bool,
+          address: String,
+          config: Privy::MoonpayFiatOnRampSolanaConfig
+        }
+
+      class MoonpayFiatOnRampSolanaInput < Privy::Internal::Type::BaseModel
+        attr_reader use_sandbox: bool?
+
+        def use_sandbox=: (bool) -> bool
+
+        attr_accessor address: String
+
+        attr_accessor config: Privy::MoonpayFiatOnRampSolanaConfig
+
+        def initialize: (
+          address: String,
+          config: Privy::MoonpayFiatOnRampSolanaConfig,
+          ?use_sandbox: bool
+        ) -> void
+
+        def to_hash: -> {
+          use_sandbox: bool,
+          address: String,
+          config: Privy::MoonpayFiatOnRampSolanaConfig
+        }
+      end
+
+      def self?.variants: -> ::Array[Privy::Models::moonpay_on_ramp_sign_input]
+    end
+  end
+end

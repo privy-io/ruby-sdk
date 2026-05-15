@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type condition_set_items_response =
+      { items: ::Array[Privy::ConditionSetItem], next_cursor: String? }
+
+    class ConditionSetItemsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor items: ::Array[Privy::ConditionSetItem]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        items: ::Array[Privy::ConditionSetItem],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        items: ::Array[Privy::ConditionSetItem],
+        next_cursor: String?
+      }
+    end
+  end
+end

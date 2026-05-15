@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type yield_deposit_confirmed_webhook_payload =
+      {
+        assets: String,
+        :caip2 => String,
+        owner: String,
+        sender: String,
+        shares: String,
+        type: Privy::Models::YieldDepositConfirmedWebhookPayload::type_,
+        vault_address: String
+      }
+
+    class YieldDepositConfirmedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor assets: String
+
+      attr_accessor caip2: String
+
+      attr_accessor owner: String
+
+      attr_accessor sender: String
+
+      attr_accessor shares: String
+
+      attr_accessor type: Privy::Models::YieldDepositConfirmedWebhookPayload::type_
+
+      attr_accessor vault_address: String
+
+      def initialize: (
+        assets: String,
+        caip2: String,
+        owner: String,
+        sender: String,
+        shares: String,
+        type: Privy::Models::YieldDepositConfirmedWebhookPayload::type_,
+        vault_address: String
+      ) -> void
+
+      def to_hash: -> {
+        assets: String,
+        :caip2 => String,
+        owner: String,
+        sender: String,
+        shares: String,
+        type: Privy::Models::YieldDepositConfirmedWebhookPayload::type_,
+        vault_address: String
+      }
+
+      type type_ = :"yield.deposit.confirmed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        YIELD_DEPOSIT_CONFIRMED: :"yield.deposit.confirmed"
+
+        def self?.values: -> ::Array[Privy::Models::YieldDepositConfirmedWebhookPayload::type_]
+      end
+    end
+  end
+end

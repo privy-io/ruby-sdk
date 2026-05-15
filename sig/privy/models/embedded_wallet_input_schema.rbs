@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type embedded_wallet_input_schema =
+      {
+        create_on_login: Privy::Models::embedded_wallet_create_on_login,
+        ethereum: Privy::EmbeddedWalletChainConfig,
+        solana: Privy::EmbeddedWalletChainConfig,
+        user_owned_recovery_options: ::Array[Privy::Models::user_owned_recovery_option],
+        require_user_owned_recovery_on_create: bool,
+        require_user_password_on_create: bool
+      }
+
+    class EmbeddedWalletInputSchema < Privy::Internal::Type::BaseModel
+      attr_accessor create_on_login: Privy::Models::embedded_wallet_create_on_login
+
+      attr_accessor ethereum: Privy::EmbeddedWalletChainConfig
+
+      attr_accessor solana: Privy::EmbeddedWalletChainConfig
+
+      attr_accessor user_owned_recovery_options: ::Array[Privy::Models::user_owned_recovery_option]
+
+      attr_reader require_user_owned_recovery_on_create: bool?
+
+      def require_user_owned_recovery_on_create=: (bool) -> bool
+
+      attr_reader require_user_password_on_create: bool?
+
+      def require_user_password_on_create=: (bool) -> bool
+
+      def initialize: (
+        create_on_login: Privy::Models::embedded_wallet_create_on_login,
+        ethereum: Privy::EmbeddedWalletChainConfig,
+        solana: Privy::EmbeddedWalletChainConfig,
+        user_owned_recovery_options: ::Array[Privy::Models::user_owned_recovery_option],
+        ?require_user_owned_recovery_on_create: bool,
+        ?require_user_password_on_create: bool
+      ) -> void
+
+      def to_hash: -> {
+        create_on_login: Privy::Models::embedded_wallet_create_on_login,
+        ethereum: Privy::EmbeddedWalletChainConfig,
+        solana: Privy::EmbeddedWalletChainConfig,
+        user_owned_recovery_options: ::Array[Privy::Models::user_owned_recovery_option],
+        require_user_owned_recovery_on_create: bool,
+        require_user_password_on_create: bool
+      }
+    end
+  end
+end

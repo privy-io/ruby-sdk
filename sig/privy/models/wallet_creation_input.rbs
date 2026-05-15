@@ -1,0 +1,43 @@
+module Privy
+  module Models
+    type wallet_creation_input =
+      {
+        chain_type: Privy::Models::wallet_chain_type,
+        additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem],
+        create_smart_wallet: bool,
+        policy_ids: ::Array[String]
+      }
+
+    class WalletCreationInput < Privy::Internal::Type::BaseModel
+      attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+      attr_reader additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem]?
+
+      def additional_signers=: (
+        ::Array[Privy::WalletCreationAdditionalSignerItem]
+      ) -> ::Array[Privy::WalletCreationAdditionalSignerItem]
+
+      attr_reader create_smart_wallet: bool?
+
+      def create_smart_wallet=: (bool) -> bool
+
+      attr_reader policy_ids: ::Array[String]?
+
+      def policy_ids=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        chain_type: Privy::Models::wallet_chain_type,
+        ?additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem],
+        ?create_smart_wallet: bool,
+        ?policy_ids: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        chain_type: Privy::Models::wallet_chain_type,
+        additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem],
+        create_smart_wallet: bool,
+        policy_ids: ::Array[String]
+      }
+    end
+  end
+end

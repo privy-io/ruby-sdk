@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_send_transaction_rpc_response =
+      {
+        data: Privy::EthereumSendTransactionRpcResponseData,
+        method_: Privy::Models::EthereumSendTransactionRpcResponse::method_
+      }
+
+    class EthereumSendTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::EthereumSendTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::EthereumSendTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::EthereumSendTransactionRpcResponseData,
+        method_: Privy::Models::EthereumSendTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::EthereumSendTransactionRpcResponseData,
+        method_: Privy::Models::EthereumSendTransactionRpcResponse::method_
+      }
+
+      type method_ = :eth_sendTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        ETH_SEND_TRANSACTION: :eth_sendTransaction
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSendTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

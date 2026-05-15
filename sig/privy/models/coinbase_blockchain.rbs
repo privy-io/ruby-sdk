@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type coinbase_blockchain =
+      :ethereum
+      | :bitcoin
+      | :base
+      | :avacchain
+      | :optimism
+      | :solana
+      | :polygon
+      | :arbitrum
+      | :stellar
+      | :monad
+
+    module CoinbaseBlockchain
+      extend Privy::Internal::Type::Enum
+
+      ETHEREUM: :ethereum
+      BITCOIN: :bitcoin
+      BASE: :base
+      AVACCHAIN: :avacchain
+      OPTIMISM: :optimism
+      SOLANA: :solana
+      POLYGON: :polygon
+      ARBITRUM: :arbitrum
+      STELLAR: :stellar
+      MONAD: :monad
+
+      def self?.values: -> ::Array[Privy::Models::coinbase_blockchain]
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_init_response_body = { url: String }
+
+    class OAuthInitResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor url: String
+
+      def initialize: (url: String) -> void
+
+      def to_hash: -> { url: String }
+    end
+  end
+end

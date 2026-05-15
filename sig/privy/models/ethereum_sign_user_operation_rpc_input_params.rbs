@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type ethereum_sign_user_operation_rpc_input_params =
+      {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        user_operation: Privy::UserOperationInput
+      }
+
+    class EthereumSignUserOperationRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: Privy::Models::quantity
+
+      attr_accessor contract: String
+
+      attr_accessor user_operation: Privy::UserOperationInput
+
+      def initialize: (
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        user_operation: Privy::UserOperationInput
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        user_operation: Privy::UserOperationInput
+      }
+    end
+  end
+end

@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type ethereum7702_authorization_condition =
+      {
+        field: Privy::Models::Ethereum7702AuthorizationCondition::field,
+        field_source: Privy::Models::Ethereum7702AuthorizationCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class Ethereum7702AuthorizationCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::Ethereum7702AuthorizationCondition::field
+
+      attr_accessor field_source: Privy::Models::Ethereum7702AuthorizationCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::Ethereum7702AuthorizationCondition::field,
+        field_source: Privy::Models::Ethereum7702AuthorizationCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::Ethereum7702AuthorizationCondition::field,
+        field_source: Privy::Models::Ethereum7702AuthorizationCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field = :contract
+
+      module Field
+        extend Privy::Internal::Type::Enum
+
+        CONTRACT: :contract
+
+        def self?.values: -> ::Array[Privy::Models::Ethereum7702AuthorizationCondition::field]
+      end
+
+      type field_source = :ethereum_7702_authorization
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM_7702_AUTHORIZATION: :ethereum_7702_authorization
+
+        def self?.values: -> ::Array[Privy::Models::Ethereum7702AuthorizationCondition::field_source]
+      end
+    end
+  end
+end

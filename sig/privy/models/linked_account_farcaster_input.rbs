@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type linked_account_farcaster_input =
+      {
+        fid: Integer,
+        owner_address: String,
+        type: :farcaster,
+        bio: String,
+        display_name: String,
+        homepage_url: String,
+        profile_picture_url: String,
+        username: String
+      }
+
+    class LinkedAccountFarcasterInput < Privy::Internal::Type::BaseModel
+      attr_accessor fid: Integer
+
+      attr_accessor owner_address: String
+
+      attr_accessor type: :farcaster
+
+      attr_reader bio: String?
+
+      def bio=: (String) -> String
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader homepage_url: String?
+
+      def homepage_url=: (String) -> String
+
+      attr_reader profile_picture_url: String?
+
+      def profile_picture_url=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        fid: Integer,
+        owner_address: String,
+        ?bio: String,
+        ?display_name: String,
+        ?homepage_url: String,
+        ?profile_picture_url: String,
+        ?username: String,
+        ?type: :farcaster
+      ) -> void
+
+      def to_hash: -> {
+        fid: Integer,
+        owner_address: String,
+        type: :farcaster,
+        bio: String,
+        display_name: String,
+        homepage_url: String,
+        profile_picture_url: String,
+        username: String
+      }
+    end
+  end
+end

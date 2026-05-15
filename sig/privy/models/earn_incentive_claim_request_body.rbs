@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type earn_incentive_claim_request_body = { chain: String }
+
+    class EarnIncentiveClaimRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor chain: String
+
+      def initialize: (chain: String) -> void
+
+      def to_hash: -> { chain: String }
+    end
+  end
+end

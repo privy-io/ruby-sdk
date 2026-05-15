@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type spark_get_balance_rpc_response =
+      {
+        method_: Privy::Models::SparkGetBalanceRpcResponse::method_,
+        data: Privy::SparkBalance
+      }
+
+    class SparkGetBalanceRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkGetBalanceRpcResponse::method_
+
+      attr_reader data: Privy::SparkBalance?
+
+      def data=: (Privy::SparkBalance) -> Privy::SparkBalance
+
+      def initialize: (
+        method_: Privy::Models::SparkGetBalanceRpcResponse::method_,
+        ?data: Privy::SparkBalance
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkGetBalanceRpcResponse::method_,
+        data: Privy::SparkBalance
+      }
+
+      type method_ = :getBalance
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        GET_BALANCE: :getBalance
+
+        def self?.values: -> ::Array[Privy::Models::SparkGetBalanceRpcResponse::method_]
+      end
+    end
+  end
+end

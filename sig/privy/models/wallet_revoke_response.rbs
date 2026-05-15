@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type wallet_revoke_response = { message: String }
+
+    class WalletRevokeResponse < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      def initialize: (message: String) -> void
+
+      def to_hash: -> { message: String }
+    end
+  end
+end

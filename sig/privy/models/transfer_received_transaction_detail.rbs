@@ -1,0 +1,136 @@
+module Privy
+  module Models
+    type transfer_received_transaction_detail =
+      {
+        asset: Privy::Models::TransferReceivedTransactionDetail::asset,
+        chain: Privy::Models::TransferReceivedTransactionDetail::chain,
+        display_values: ::Hash[Symbol, String],
+        raw_value: String,
+        raw_value_decimals: Float,
+        recipient: String,
+        recipient_privy_user_id: String?,
+        sender: String,
+        sender_privy_user_id: String?,
+        type: Privy::Models::TransferReceivedTransactionDetail::type_
+      }
+
+    class TransferReceivedTransactionDetail < Privy::Internal::Type::BaseModel
+      attr_accessor asset: Privy::Models::TransferReceivedTransactionDetail::asset
+
+      attr_accessor chain: Privy::Models::TransferReceivedTransactionDetail::chain
+
+      attr_accessor display_values: ::Hash[Symbol, String]
+
+      attr_accessor raw_value: String
+
+      attr_accessor raw_value_decimals: Float
+
+      attr_accessor recipient: String
+
+      attr_accessor recipient_privy_user_id: String?
+
+      attr_accessor sender: String
+
+      attr_accessor sender_privy_user_id: String?
+
+      attr_accessor type: Privy::Models::TransferReceivedTransactionDetail::type_
+
+      def initialize: (
+        asset: Privy::Models::TransferReceivedTransactionDetail::asset,
+        chain: Privy::Models::TransferReceivedTransactionDetail::chain,
+        display_values: ::Hash[Symbol, String],
+        raw_value: String,
+        raw_value_decimals: Float,
+        recipient: String,
+        recipient_privy_user_id: String?,
+        sender: String,
+        sender_privy_user_id: String?,
+        type: Privy::Models::TransferReceivedTransactionDetail::type_
+      ) -> void
+
+      def to_hash: -> {
+        asset: Privy::Models::TransferReceivedTransactionDetail::asset,
+        chain: Privy::Models::TransferReceivedTransactionDetail::chain,
+        display_values: ::Hash[Symbol, String],
+        raw_value: String,
+        raw_value_decimals: Float,
+        recipient: String,
+        recipient_privy_user_id: String?,
+        sender: String,
+        sender_privy_user_id: String?,
+        type: Privy::Models::TransferReceivedTransactionDetail::type_
+      }
+
+      type asset =
+        :usdc | :"usdc.e" | :eth | :pol | :usdt | :eurc | :usdb | :sol | String
+
+      module Asset
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::TransferReceivedTransactionDetail::asset]
+
+        USDC: :usdc
+        USDC_E: :"usdc.e"
+        ETH: :eth
+        POL: :pol
+        USDT: :usdt
+        EURC: :eurc
+        USDB: :usdb
+        SOL: :sol
+      end
+
+      type chain =
+        :ethereum
+        | :arbitrum
+        | :base
+        | :tempo
+        | :linea
+        | :optimism
+        | :polygon
+        | :solana
+        | :zksync_era
+        | :sepolia
+        | :arbitrum_sepolia
+        | :base_sepolia
+        | :linea_testnet
+        | :optimism_sepolia
+        | :polygon_amoy
+        | :solana_devnet
+        | :solana_testnet
+
+      module Chain
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM: :ethereum
+        ARBITRUM: :arbitrum
+        BASE: :base
+        TEMPO: :tempo
+        LINEA: :linea
+        OPTIMISM: :optimism
+        POLYGON: :polygon
+        SOLANA: :solana
+        ZKSYNC_ERA: :zksync_era
+        SEPOLIA: :sepolia
+        ARBITRUM_SEPOLIA: :arbitrum_sepolia
+        BASE_SEPOLIA: :base_sepolia
+        LINEA_TESTNET: :linea_testnet
+        OPTIMISM_SEPOLIA: :optimism_sepolia
+        POLYGON_AMOY: :polygon_amoy
+        SOLANA_DEVNET: :solana_devnet
+        SOLANA_TESTNET: :solana_testnet
+
+        def self?.values: -> ::Array[Privy::Models::TransferReceivedTransactionDetail::chain]
+      end
+
+      type type_ = :transfer_received
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER_RECEIVED: :transfer_received
+
+        def self?.values: -> ::Array[Privy::Models::TransferReceivedTransactionDetail::type_]
+      end
+    end
+  end
+end

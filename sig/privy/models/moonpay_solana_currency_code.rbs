@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type moonpay_solana_currency_code = :SOL | :USDC_SOL
+
+    module MoonpaySolanaCurrencyCode
+      extend Privy::Internal::Type::Enum
+
+      SOL: :SOL
+      USDC_SOL: :USDC_SOL
+
+      def self?.values: -> ::Array[Privy::Models::moonpay_solana_currency_code]
+    end
+  end
+end

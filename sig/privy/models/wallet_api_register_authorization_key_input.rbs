@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_api_register_authorization_key_input =
+      {
+        public_key: String,
+        display_name: String,
+        role: Privy::Models::authorization_key_role?
+      }
+
+    class WalletAPIRegisterAuthorizationKeyInput < Privy::Internal::Type::BaseModel
+      attr_accessor public_key: String
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_accessor role: Privy::Models::authorization_key_role?
+
+      def initialize: (
+        public_key: String,
+        ?display_name: String,
+        ?role: Privy::Models::authorization_key_role?
+      ) -> void
+
+      def to_hash: -> {
+        public_key: String,
+        display_name: String,
+        role: Privy::Models::authorization_key_role?
+      }
+    end
+  end
+end

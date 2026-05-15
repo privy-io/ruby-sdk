@@ -1,0 +1,36 @@
+module Privy
+  module Models
+    type app_get_gas_spend_params =
+      {
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String]
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class AppGetGasSpendParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor end_timestamp: Float
+
+      attr_accessor start_timestamp: Float
+
+      attr_accessor wallet_ids: ::Array[String]
+
+      def initialize: (
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String],
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String],
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

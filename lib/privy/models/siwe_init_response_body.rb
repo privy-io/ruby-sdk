@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+module Privy
+  module Models
+    class SiweInitResponseBody < Privy::Internal::Type::BaseModel
+      # @!attribute address
+      #
+      #   @return [String]
+      required :address, String
+
+      # @!attribute expires_at
+      #
+      #   @return [String]
+      required :expires_at, String
+
+      # @!attribute nonce
+      #
+      #   @return [String]
+      required :nonce, String
+
+      # @!method initialize(address:, expires_at:, nonce:)
+      #   The response body for initiating a SIWE ceremony.
+      #
+      #   @param address [String]
+      #   @param expires_at [String]
+      #   @param nonce [String]
+    end
+  end
+end

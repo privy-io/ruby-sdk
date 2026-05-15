@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type farcaster_signer_approved =
+      {
+        fid: String,
+        public_key: String,
+        status: Privy::Models::FarcasterSignerApproved::status
+      }
+
+    class FarcasterSignerApproved < Privy::Internal::Type::BaseModel
+      attr_accessor fid: String
+
+      attr_accessor public_key: String
+
+      attr_accessor status: Privy::Models::FarcasterSignerApproved::status
+
+      def initialize: (
+        fid: String,
+        public_key: String,
+        status: Privy::Models::FarcasterSignerApproved::status
+      ) -> void
+
+      def to_hash: -> {
+        fid: String,
+        public_key: String,
+        status: Privy::Models::FarcasterSignerApproved::status
+      }
+
+      type status = :approved
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        APPROVED: :approved
+
+        def self?.values: -> ::Array[Privy::Models::FarcasterSignerApproved::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type linked_account_cross_app =
+      {
+        embedded_wallets: ::Array[Privy::CrossAppEmbeddedWallet],
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        provider_app_id: String,
+        smart_wallets: ::Array[Privy::CrossAppSmartWallet],
+        subject: String,
+        type: Privy::Models::LinkedAccountCrossApp::type_,
+        verified_at: Float
+      }
+
+    class LinkedAccountCrossApp < Privy::Internal::Type::BaseModel
+      attr_accessor embedded_wallets: ::Array[Privy::CrossAppEmbeddedWallet]
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor provider_app_id: String
+
+      attr_accessor smart_wallets: ::Array[Privy::CrossAppSmartWallet]
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountCrossApp::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        embedded_wallets: ::Array[Privy::CrossAppEmbeddedWallet],
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        provider_app_id: String,
+        smart_wallets: ::Array[Privy::CrossAppSmartWallet],
+        subject: String,
+        type: Privy::Models::LinkedAccountCrossApp::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        embedded_wallets: ::Array[Privy::CrossAppEmbeddedWallet],
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        provider_app_id: String,
+        smart_wallets: ::Array[Privy::CrossAppSmartWallet],
+        subject: String,
+        type: Privy::Models::LinkedAccountCrossApp::type_,
+        verified_at: Float
+      }
+
+      type type_ = :cross_app
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        CROSS_APP: :cross_app
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountCrossApp::type_]
+      end
+    end
+  end
+end

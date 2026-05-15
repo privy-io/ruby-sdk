@@ -1,0 +1,68 @@
+module Privy
+  module Models
+    type aggregation =
+      {
+        id: String,
+        created_at: Float,
+        method_: Privy::Models::aggregation_method,
+        metric: Privy::AggregationMetric,
+        name: String,
+        owner_id: String?,
+        window: Privy::AggregationWindow,
+        conditions: ::Array[Privy::Models::policy_condition],
+        group_by: ::Array[Privy::AggregationGroupBy]
+      }
+
+    class Aggregation < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor method_: Privy::Models::aggregation_method
+
+      attr_accessor metric: Privy::AggregationMetric
+
+      attr_accessor name: String
+
+      attr_accessor owner_id: String?
+
+      attr_accessor window: Privy::AggregationWindow
+
+      attr_reader conditions: ::Array[Privy::Models::policy_condition]?
+
+      def conditions=: (
+        ::Array[Privy::Models::policy_condition]
+      ) -> ::Array[Privy::Models::policy_condition]
+
+      attr_reader group_by: ::Array[Privy::AggregationGroupBy]?
+
+      def group_by=: (
+        ::Array[Privy::AggregationGroupBy]
+      ) -> ::Array[Privy::AggregationGroupBy]
+
+      def initialize: (
+        id: String,
+        created_at: Float,
+        method_: Privy::Models::aggregation_method,
+        metric: Privy::AggregationMetric,
+        name: String,
+        owner_id: String?,
+        window: Privy::AggregationWindow,
+        ?conditions: ::Array[Privy::Models::policy_condition],
+        ?group_by: ::Array[Privy::AggregationGroupBy]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Float,
+        method_: Privy::Models::aggregation_method,
+        metric: Privy::AggregationMetric,
+        name: String,
+        owner_id: String?,
+        window: Privy::AggregationWindow,
+        conditions: ::Array[Privy::Models::policy_condition],
+        group_by: ::Array[Privy::AggregationGroupBy]
+      }
+    end
+  end
+end

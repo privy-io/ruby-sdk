@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type tempo_aa_authorization =
+      {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        nonce: Privy::Models::quantity,
+        signature: String
+      }
+
+    class TempoAaAuthorization < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: Privy::Models::quantity
+
+      attr_accessor contract: String
+
+      attr_accessor nonce: Privy::Models::quantity
+
+      attr_accessor signature: String
+
+      def initialize: (
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        nonce: Privy::Models::quantity,
+        signature: String
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        nonce: Privy::Models::quantity,
+        signature: String
+      }
+    end
+  end
+end

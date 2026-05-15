@@ -1,0 +1,132 @@
+module Privy
+  module Models
+    type policy_intent_response =
+      {
+        intent_type: Privy::Models::PolicyIntentResponse::intent_type,
+        request_details: Privy::PolicyIntentResponse::RequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Policy
+      }
+
+    class PolicyIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::PolicyIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::PolicyIntentResponse::intent_type _
+      ) -> Privy::Models::PolicyIntentResponse::intent_type
+
+      def request_details: -> Privy::PolicyIntentResponse::RequestDetails
+
+      def request_details=: (
+        Privy::PolicyIntentResponse::RequestDetails _
+      ) -> Privy::PolicyIntentResponse::RequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::Policy?
+
+      def current_resource_data=: (Privy::Policy _) -> Privy::Policy
+
+      def initialize: (
+        intent_type: Privy::Models::PolicyIntentResponse::intent_type,
+        request_details: Privy::PolicyIntentResponse::RequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::Policy
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::PolicyIntentResponse::intent_type,
+        request_details: Privy::PolicyIntentResponse::RequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Policy
+      }
+
+      type intent_type = :POLICY
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        POLICY: :POLICY
+
+        def self?.values: -> ::Array[Privy::Models::PolicyIntentResponse::intent_type]
+      end
+
+      type request_details =
+        {
+          body: Privy::PolicyIntentResponse::RequestDetails::Body,
+          method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_,
+          url: String
+        }
+
+      class RequestDetails < Privy::Internal::Type::BaseModel
+        attr_accessor body: Privy::PolicyIntentResponse::RequestDetails::Body
+
+        attr_accessor method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_
+
+        attr_accessor url: String
+
+        def initialize: (
+          body: Privy::PolicyIntentResponse::RequestDetails::Body,
+          method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_,
+          url: String
+        ) -> void
+
+        def to_hash: -> {
+          body: Privy::PolicyIntentResponse::RequestDetails::Body,
+          method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_,
+          url: String
+        }
+
+        type body =
+          {
+            name: String,
+            owner: Privy::Models::owner_input?,
+            owner_id: String?,
+            rules: ::Array[Privy::PolicyRuleRequestBody]
+          }
+
+        class Body < Privy::Internal::Type::BaseModel
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_accessor owner: Privy::Models::owner_input?
+
+          attr_accessor owner_id: String?
+
+          attr_reader rules: ::Array[Privy::PolicyRuleRequestBody]?
+
+          def rules=: (
+            ::Array[Privy::PolicyRuleRequestBody]
+          ) -> ::Array[Privy::PolicyRuleRequestBody]
+
+          def initialize: (
+            ?name: String,
+            ?owner: Privy::Models::owner_input?,
+            ?owner_id: String?,
+            ?rules: ::Array[Privy::PolicyRuleRequestBody]
+          ) -> void
+
+          def to_hash: -> {
+            name: String,
+            owner: Privy::Models::owner_input?,
+            owner_id: String?,
+            rules: ::Array[Privy::PolicyRuleRequestBody]
+          }
+        end
+
+        type method_ = :PATCH
+
+        module Method
+          extend Privy::Internal::Type::Enum
+
+          PATCH: :PATCH
+
+          def self?.values: -> ::Array[Privy::Models::PolicyIntentResponse::RequestDetails::method_]
+        end
+      end
+    end
+  end
+end

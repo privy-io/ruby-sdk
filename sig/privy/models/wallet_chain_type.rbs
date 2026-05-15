@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type wallet_chain_type =
+      :ethereum
+      | :solana
+      | :cosmos
+      | :stellar
+      | :sui
+      | :aptos
+      | :movement
+      | :tron
+      | :"bitcoin-segwit"
+      | :"bitcoin-taproot"
+      | :pearl
+      | :near
+      | :ton
+      | :starknet
+      | :spark
+
+    module WalletChainType
+      extend Privy::Internal::Type::Enum
+
+      ETHEREUM: :ethereum
+      SOLANA: :solana
+      COSMOS: :cosmos
+      STELLAR: :stellar
+      SUI: :sui
+      APTOS: :aptos
+      MOVEMENT: :movement
+      TRON: :tron
+      BITCOIN_SEGWIT: :"bitcoin-segwit"
+      BITCOIN_TAPROOT: :"bitcoin-taproot"
+      PEARL: :pearl
+      NEAR: :near
+      TON: :ton
+      STARKNET: :starknet
+      SPARK: :spark
+
+      def self?.values: -> ::Array[Privy::Models::wallet_chain_type]
+    end
+  end
+end

@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type bridge_eur_fiat_virtual_account_deposit_instructions =
+      {
+        account_holder_name: String,
+        asset: Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        bic: String,
+        iban: String,
+        payment_rails: ::Array[Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+    class BridgeEurFiatVirtualAccountDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_accessor account_holder_name: String
+
+      attr_accessor asset: Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::asset
+
+      attr_accessor bank_address: String
+
+      attr_accessor bank_name: String
+
+      attr_accessor bic: String
+
+      attr_accessor iban: String
+
+      attr_accessor payment_rails: ::Array[Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::payment_rail]
+
+      def initialize: (
+        account_holder_name: String,
+        asset: Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        bic: String,
+        iban: String,
+        payment_rails: ::Array[Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::payment_rail]
+      ) -> void
+
+      def to_hash: -> {
+        account_holder_name: String,
+        asset: Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        bic: String,
+        iban: String,
+        payment_rails: ::Array[Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+      type asset = :eur
+
+      module Asset
+        extend Privy::Internal::Type::Enum
+
+        EUR: :eur
+
+        def self?.values: -> ::Array[Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::asset]
+      end
+
+      type payment_rail = :sepa
+
+      module PaymentRail
+        extend Privy::Internal::Type::Enum
+
+        SEPA: :sepa
+
+        def self?.values: -> ::Array[Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions::payment_rail]
+      end
+    end
+  end
+end

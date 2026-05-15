@@ -1,0 +1,153 @@
+module Privy
+  module Models
+    type wallet_intent_response =
+      {
+        intent_type: Privy::Models::WalletIntentResponse::intent_type,
+        request_details: Privy::WalletIntentResponse::RequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Wallet
+      }
+
+    class WalletIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::WalletIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::WalletIntentResponse::intent_type _
+      ) -> Privy::Models::WalletIntentResponse::intent_type
+
+      def request_details: -> Privy::WalletIntentResponse::RequestDetails
+
+      def request_details=: (
+        Privy::WalletIntentResponse::RequestDetails _
+      ) -> Privy::WalletIntentResponse::RequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::Wallet?
+
+      def current_resource_data=: (Privy::Wallet _) -> Privy::Wallet
+
+      def initialize: (
+        intent_type: Privy::Models::WalletIntentResponse::intent_type,
+        request_details: Privy::WalletIntentResponse::RequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::Wallet
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::WalletIntentResponse::intent_type,
+        request_details: Privy::WalletIntentResponse::RequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Wallet
+      }
+
+      type intent_type = :WALLET
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        WALLET: :WALLET
+
+        def self?.values: -> ::Array[Privy::Models::WalletIntentResponse::intent_type]
+      end
+
+      type request_details =
+        {
+          body: Privy::WalletIntentResponse::RequestDetails::Body,
+          method_: Privy::Models::WalletIntentResponse::RequestDetails::method_,
+          url: String
+        }
+
+      class RequestDetails < Privy::Internal::Type::BaseModel
+        attr_accessor body: Privy::WalletIntentResponse::RequestDetails::Body
+
+        attr_accessor method_: Privy::Models::WalletIntentResponse::RequestDetails::method_
+
+        attr_accessor url: String
+
+        def initialize: (
+          body: Privy::WalletIntentResponse::RequestDetails::Body,
+          method_: Privy::Models::WalletIntentResponse::RequestDetails::method_,
+          url: String
+        ) -> void
+
+        def to_hash: -> {
+          body: Privy::WalletIntentResponse::RequestDetails::Body,
+          method_: Privy::Models::WalletIntentResponse::RequestDetails::method_,
+          url: String
+        }
+
+        type body =
+          {
+            additional_signers: Privy::Models::additional_signer_input,
+            authorization_key_ids: ::Array[String],
+            authorization_threshold: Float,
+            display_name: String?,
+            owner: Privy::Models::owner_input?,
+            owner_id: String?,
+            policy_ids: Privy::Models::policy_input
+          }
+
+        class Body < Privy::Internal::Type::BaseModel
+          attr_reader additional_signers: Privy::Models::additional_signer_input?
+
+          def additional_signers=: (
+            Privy::Models::additional_signer_input
+          ) -> Privy::Models::additional_signer_input
+
+          attr_reader authorization_key_ids: ::Array[String]?
+
+          def authorization_key_ids=: (::Array[String]) -> ::Array[String]
+
+          attr_reader authorization_threshold: Float?
+
+          def authorization_threshold=: (Float) -> Float
+
+          attr_accessor display_name: String?
+
+          attr_accessor owner: Privy::Models::owner_input?
+
+          attr_accessor owner_id: String?
+
+          attr_reader policy_ids: Privy::Models::policy_input?
+
+          def policy_ids=: (
+            Privy::Models::policy_input
+          ) -> Privy::Models::policy_input
+
+          def initialize: (
+            ?additional_signers: Privy::Models::additional_signer_input,
+            ?authorization_key_ids: ::Array[String],
+            ?authorization_threshold: Float,
+            ?display_name: String?,
+            ?owner: Privy::Models::owner_input?,
+            ?owner_id: String?,
+            ?policy_ids: Privy::Models::policy_input
+          ) -> void
+
+          def to_hash: -> {
+            additional_signers: Privy::Models::additional_signer_input,
+            authorization_key_ids: ::Array[String],
+            authorization_threshold: Float,
+            display_name: String?,
+            owner: Privy::Models::owner_input?,
+            owner_id: String?,
+            policy_ids: Privy::Models::policy_input
+          }
+        end
+
+        type method_ = :PATCH
+
+        module Method
+          extend Privy::Internal::Type::Enum
+
+          PATCH: :PATCH
+
+          def self?.values: -> ::Array[Privy::Models::WalletIntentResponse::RequestDetails::method_]
+        end
+      end
+    end
+  end
+end

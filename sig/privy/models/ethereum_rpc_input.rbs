@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type ethereum_rpc_input =
+      Privy::EthereumSignTransactionRpcInput
+      | Privy::EthereumSendTransactionRpcInput
+      | Privy::EthereumPersonalSignRpcInput
+      | Privy::EthereumSignTypedDataRpcInput
+      | Privy::EthereumSecp256k1SignRpcInput
+      | Privy::EthereumSign7702AuthorizationRpcInput
+      | Privy::EthereumSignUserOperationRpcInput
+      | Privy::EthereumSendCallsRpcInput
+
+    module EthereumRpcInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::ethereum_rpc_input]
+    end
+  end
+end

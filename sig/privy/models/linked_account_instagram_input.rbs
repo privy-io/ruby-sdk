@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type linked_account_instagram_input =
+      { subject: String, type: :instagram_oauth, username: String }
+
+    class LinkedAccountInstagramInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :instagram_oauth
+
+      attr_accessor username: String
+
+      def initialize: (
+        subject: String,
+        username: String,
+        ?type: :instagram_oauth
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        type: :instagram_oauth,
+        username: String
+      }
+    end
+  end
+end

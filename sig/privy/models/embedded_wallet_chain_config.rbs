@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type embedded_wallet_chain_config =
+      { create_on_login: Privy::Models::embedded_wallet_create_on_login }
+
+    class EmbeddedWalletChainConfig < Privy::Internal::Type::BaseModel
+      attr_accessor create_on_login: Privy::Models::embedded_wallet_create_on_login
+
+      def initialize: (
+        create_on_login: Privy::Models::embedded_wallet_create_on_login
+      ) -> void
+
+      def to_hash: -> {
+        create_on_login: Privy::Models::embedded_wallet_create_on_login
+      }
+    end
+  end
+end

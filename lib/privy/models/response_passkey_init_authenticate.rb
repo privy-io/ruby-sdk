@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+module Privy
+  module Models
+    class ResponsePasskeyInitAuthenticate < Privy::Internal::Type::BaseModel
+      # @!attribute options
+      #   WebAuthn authentication options as defined by the Web Authentication
+      #   specification.
+      #
+      #   @return [Privy::Models::PasskeyAuthenticatorVerifyOptions]
+      required :options, -> { Privy::PasskeyAuthenticatorVerifyOptions }
+
+      # @!attribute relying_party
+      #
+      #   @return [String, nil]
+      optional :relying_party, String
+
+      # @!method initialize(options:, relying_party: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::ResponsePasskeyInitAuthenticate} for more details.
+      #
+      #   Response for initiating a passkey authentication ceremony.
+      #
+      #   @param options [Privy::Models::PasskeyAuthenticatorVerifyOptions] WebAuthn authentication options as defined by the Web Authentication specificati
+      #
+      #   @param relying_party [String]
+    end
+  end
+end

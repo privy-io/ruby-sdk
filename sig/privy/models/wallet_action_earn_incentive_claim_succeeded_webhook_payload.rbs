@@ -1,0 +1,75 @@
+module Privy
+  module Models
+    type wallet_action_earn_incentive_claim_succeeded_webhook_payload =
+      {
+        action_type: Privy::Models::wallet_action_type,
+        chain: String,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+    class WalletActionEarnIncentiveClaimSucceededWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor chain: String
+
+      attr_accessor rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?
+
+      attr_accessor status: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::status
+
+      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+
+      attr_accessor type: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_type: Privy::Models::wallet_action_type,
+        chain: String,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::wallet_action_type,
+        chain: String,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+      type status = :succeeded
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        SUCCEEDED: :succeeded
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.earn_incentive_claim.succeeded"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_EARN_INCENTIVE_CLAIM_SUCCEEDED: :"wallet_action.earn_incentive_claim.succeeded"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::type_]
+      end
+    end
+  end
+end

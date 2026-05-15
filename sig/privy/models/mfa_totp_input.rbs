@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type mfa_totp_input = { code: String }
+
+    class MfaTotpInput < Privy::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      def initialize: (code: String) -> void
+
+      def to_hash: -> { code: String }
+    end
+  end
+end

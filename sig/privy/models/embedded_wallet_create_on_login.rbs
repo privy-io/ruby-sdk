@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type embedded_wallet_create_on_login =
+      :"users-without-wallets" | :"all-users" | :off
+
+    module EmbeddedWalletCreateOnLogin
+      extend Privy::Internal::Type::Enum
+
+      USERS_WITHOUT_WALLETS: :"users-without-wallets"
+      ALL_USERS: :"all-users"
+      OFF: :off
+
+      def self?.values: -> ::Array[Privy::Models::embedded_wallet_create_on_login]
+    end
+  end
+end

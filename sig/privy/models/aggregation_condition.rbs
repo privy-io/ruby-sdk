@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type aggregation_condition =
+      {
+        field: String,
+        field_source: Privy::Models::AggregationCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class AggregationCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: String
+
+      attr_accessor field_source: Privy::Models::AggregationCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: String,
+        field_source: Privy::Models::AggregationCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: String,
+        field_source: Privy::Models::AggregationCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field_source = :reference
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        REFERENCE: :reference
+
+        def self?.values: -> ::Array[Privy::Models::AggregationCondition::field_source]
+      end
+    end
+  end
+end

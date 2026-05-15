@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type currency_amount =
+      { currency: Privy::Models::CurrencyAmount::currency, value: String }
+
+    class CurrencyAmount < Privy::Internal::Type::BaseModel
+      attr_accessor currency: Privy::Models::CurrencyAmount::currency
+
+      attr_accessor value: String
+
+      def initialize: (
+        currency: Privy::Models::CurrencyAmount::currency,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        currency: Privy::Models::CurrencyAmount::currency,
+        value: String
+      }
+
+      type currency = :usd
+
+      module Currency
+        extend Privy::Internal::Type::Enum
+
+        USD: :usd
+
+        def self?.values: -> ::Array[Privy::Models::CurrencyAmount::currency]
+      end
+    end
+  end
+end

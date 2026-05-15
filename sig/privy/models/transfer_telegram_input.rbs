@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    type transfer_telegram_input =
+      {
+        nonce: String,
+        telegram_auth_result: Privy::TelegramAuthResult,
+        telegram_web_app_data: Privy::TelegramWebAppData
+      }
+
+    class TransferTelegramInput < Privy::Internal::Type::BaseModel
+      attr_accessor nonce: String
+
+      attr_reader telegram_auth_result: Privy::TelegramAuthResult?
+
+      def telegram_auth_result=: (
+        Privy::TelegramAuthResult
+      ) -> Privy::TelegramAuthResult
+
+      attr_reader telegram_web_app_data: Privy::TelegramWebAppData?
+
+      def telegram_web_app_data=: (
+        Privy::TelegramWebAppData
+      ) -> Privy::TelegramWebAppData
+
+      def initialize: (
+        nonce: String,
+        ?telegram_auth_result: Privy::TelegramAuthResult,
+        ?telegram_web_app_data: Privy::TelegramWebAppData
+      ) -> void
+
+      def to_hash: -> {
+        nonce: String,
+        telegram_auth_result: Privy::TelegramAuthResult,
+        telegram_web_app_data: Privy::TelegramWebAppData
+      }
+    end
+  end
+end

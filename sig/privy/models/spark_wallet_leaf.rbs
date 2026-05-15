@@ -1,0 +1,81 @@
+module Privy
+  module Models
+    type spark_wallet_leaf =
+      {
+        id: String,
+        network: Privy::Models::spark_network,
+        node_tx: String,
+        owner_identity_public_key: String,
+        refund_tx: String,
+        status: String,
+        tree_id: String,
+        value: Float,
+        verifying_public_key: String,
+        vout: Float,
+        parent_node_id: String,
+        signing_keyshare: Privy::SparkSigningKeyshare
+      }
+
+    class SparkWalletLeaf < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor network: Privy::Models::spark_network
+
+      attr_accessor node_tx: String
+
+      attr_accessor owner_identity_public_key: String
+
+      attr_accessor refund_tx: String
+
+      attr_accessor status: String
+
+      attr_accessor tree_id: String
+
+      attr_accessor value: Float
+
+      attr_accessor verifying_public_key: String
+
+      attr_accessor vout: Float
+
+      attr_reader parent_node_id: String?
+
+      def parent_node_id=: (String) -> String
+
+      attr_reader signing_keyshare: Privy::SparkSigningKeyshare?
+
+      def signing_keyshare=: (
+        Privy::SparkSigningKeyshare
+      ) -> Privy::SparkSigningKeyshare
+
+      def initialize: (
+        id: String,
+        network: Privy::Models::spark_network,
+        node_tx: String,
+        owner_identity_public_key: String,
+        refund_tx: String,
+        status: String,
+        tree_id: String,
+        value: Float,
+        verifying_public_key: String,
+        vout: Float,
+        ?parent_node_id: String,
+        ?signing_keyshare: Privy::SparkSigningKeyshare
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        network: Privy::Models::spark_network,
+        node_tx: String,
+        owner_identity_public_key: String,
+        refund_tx: String,
+        status: String,
+        tree_id: String,
+        value: Float,
+        verifying_public_key: String,
+        vout: Float,
+        parent_node_id: String,
+        signing_keyshare: Privy::SparkSigningKeyshare
+      }
+    end
+  end
+end

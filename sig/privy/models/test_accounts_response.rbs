@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type test_accounts_response = { data: ::Array[Privy::TestAccount] }
+
+    class TestAccountsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::TestAccount]
+
+      def initialize: (data: ::Array[Privy::TestAccount]) -> void
+
+      def to_hash: -> { data: ::Array[Privy::TestAccount] }
+    end
+  end
+end

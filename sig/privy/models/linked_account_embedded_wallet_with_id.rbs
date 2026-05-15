@@ -1,0 +1,206 @@
+module Privy
+  module Models
+    type linked_account_embedded_wallet_with_id =
+      Privy::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet
+      | Privy::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet
+      | Privy::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet
+      | Privy::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet
+      | Privy::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet
+
+    module LinkedAccountEmbeddedWalletWithID
+      extend Privy::Internal::Type::Union
+
+      type linked_account_ethereum_embedded_wallet =
+        {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method
+        }
+
+      class LinkedAccountEthereumEmbeddedWallet < Privy::Models::LinkedAccountEthereumEmbeddedWallet
+        def id: -> String
+
+        def id=: (String _) -> String
+
+        def recovery_method: -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method
+
+        def recovery_method=: (
+          Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method _
+        ) -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method
+
+        def initialize: (
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method
+        }
+
+        type recovery_method = :"privy-v2"
+
+        module RecoveryMethod
+          extend Privy::Internal::Type::Enum
+
+          PRIVY_V2: :"privy-v2"
+
+          def self?.values: -> ::Array[Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountEthereumEmbeddedWallet::recovery_method]
+        end
+      end
+
+      type linked_account_solana_embedded_wallet =
+        {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method
+        }
+
+      class LinkedAccountSolanaEmbeddedWallet < Privy::Models::LinkedAccountSolanaEmbeddedWallet
+        def id: -> String
+
+        def id=: (String _) -> String
+
+        def recovery_method: -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method
+
+        def recovery_method=: (
+          Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method _
+        ) -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method
+
+        def initialize: (
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method
+        }
+
+        type recovery_method = :"privy-v2"
+
+        module RecoveryMethod
+          extend Privy::Internal::Type::Enum
+
+          PRIVY_V2: :"privy-v2"
+
+          def self?.values: -> ::Array[Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountSolanaEmbeddedWallet::recovery_method]
+        end
+      end
+
+      type linked_account_bitcoin_segwit_embedded_wallet =
+        {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method
+        }
+
+      class LinkedAccountBitcoinSegwitEmbeddedWallet < Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet
+        def id: -> String
+
+        def id=: (String _) -> String
+
+        def recovery_method: -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method
+
+        def recovery_method=: (
+          Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method _
+        ) -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method
+
+        def initialize: (
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method
+        }
+
+        type recovery_method = :"privy-v2"
+
+        module RecoveryMethod
+          extend Privy::Internal::Type::Enum
+
+          PRIVY_V2: :"privy-v2"
+
+          def self?.values: -> ::Array[Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinSegwitEmbeddedWallet::recovery_method]
+        end
+      end
+
+      type linked_account_bitcoin_taproot_embedded_wallet =
+        {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method
+        }
+
+      class LinkedAccountBitcoinTaprootEmbeddedWallet < Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet
+        def id: -> String
+
+        def id=: (String _) -> String
+
+        def recovery_method: -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method
+
+        def recovery_method=: (
+          Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method _
+        ) -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method
+
+        def initialize: (
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method
+        }
+
+        type recovery_method = :"privy-v2"
+
+        module RecoveryMethod
+          extend Privy::Internal::Type::Enum
+
+          PRIVY_V2: :"privy-v2"
+
+          def self?.values: -> ::Array[Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountBitcoinTaprootEmbeddedWallet::recovery_method]
+        end
+      end
+
+      type linked_account_curve_signing_embedded_wallet =
+        {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method
+        }
+
+      class LinkedAccountCurveSigningEmbeddedWallet < Privy::Models::LinkedAccountCurveSigningEmbeddedWallet
+        def id: -> String
+
+        def id=: (String _) -> String
+
+        def recovery_method: -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method
+
+        def recovery_method=: (
+          Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method _
+        ) -> Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method
+
+        def initialize: (
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          recovery_method: Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method
+        }
+
+        type recovery_method = :"privy-v2"
+
+        module RecoveryMethod
+          extend Privy::Internal::Type::Enum
+
+          PRIVY_V2: :"privy-v2"
+
+          def self?.values: -> ::Array[Privy::Models::LinkedAccountEmbeddedWalletWithID::LinkedAccountCurveSigningEmbeddedWallet::recovery_method]
+        end
+      end
+
+      def self?.variants: -> ::Array[Privy::Models::linked_account_embedded_wallet_with_id]
+    end
+  end
+end

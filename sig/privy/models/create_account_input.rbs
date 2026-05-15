@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type create_account_input =
+      Privy::CreateAccountFromWalletsConfigurationInput
+      | Privy::CreateAccountFromWalletIDsInput
+
+    module CreateAccountInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::create_account_input]
+    end
+  end
+end

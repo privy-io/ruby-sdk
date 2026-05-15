@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type rule_intent_request_details =
+      Privy::RuleIntentCreateRequestDetails
+      | Privy::RuleIntentUpdateRequestDetails
+      | Privy::RuleIntentDeleteRequestDetails
+
+    module RuleIntentRequestDetails
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::rule_intent_request_details]
+    end
+  end
+end

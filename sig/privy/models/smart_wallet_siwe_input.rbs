@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type smart_wallet_siwe_input =
+      {
+        message: String,
+        signature: String,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        smart_wallet_version: String
+      }
+
+    class SmartWalletSiweInput < Privy::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      attr_accessor smart_wallet_type: Privy::Models::smart_wallet_type
+
+      attr_reader smart_wallet_version: String?
+
+      def smart_wallet_version=: (String) -> String
+
+      def initialize: (
+        message: String,
+        signature: String,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        ?smart_wallet_version: String
+      ) -> void
+
+      def to_hash: -> {
+        message: String,
+        signature: String,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        smart_wallet_version: String
+      }
+    end
+  end
+end

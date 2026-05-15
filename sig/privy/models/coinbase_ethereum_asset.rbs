@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type coinbase_ethereum_asset = :eth | :ETH | :USDC | :POL | :MON
+
+    module CoinbaseEthereumAsset
+      extend Privy::Internal::Type::Enum
+
+      ETH: :eth
+      ETH_2: :ETH
+      USDC: :USDC
+      POL: :POL
+      MON: :MON
+
+      def self?.values: -> ::Array[Privy::Models::coinbase_ethereum_asset]
+    end
+  end
+end

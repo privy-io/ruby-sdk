@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_amount =
+      {
+        amount: String,
+        asset: String,
+        asset_class: Privy::Models::KrakenEmbedCustomOrderAmount::asset_class
+      }
+
+    class KrakenEmbedCustomOrderAmount < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor asset: String
+
+      attr_reader asset_class: Privy::Models::KrakenEmbedCustomOrderAmount::asset_class?
+
+      def asset_class=: (
+        Privy::Models::KrakenEmbedCustomOrderAmount::asset_class
+      ) -> Privy::Models::KrakenEmbedCustomOrderAmount::asset_class
+
+      def initialize: (
+        amount: String,
+        asset: String,
+        ?asset_class: Privy::Models::KrakenEmbedCustomOrderAmount::asset_class
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        asset: String,
+        asset_class: Privy::Models::KrakenEmbedCustomOrderAmount::asset_class
+      }
+
+      type asset_class = :currency
+
+      module AssetClass
+        extend Privy::Internal::Type::Enum
+
+        CURRENCY: :currency
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderAmount::asset_class]
+      end
+    end
+  end
+end

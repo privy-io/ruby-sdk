@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type bridge_metadata =
+      Privy::BridgeCryptoDepositMetadata
+      | Privy::BridgeRefundMetadata
+      | Privy::BridgeFiatDepositMetadata
+      | Privy::BridgeCryptoTransferMetadata
+      | Privy::BridgeFiatTransferMetadata
+      | Privy::BridgeTransferRefundMetadata
+      | Privy::BridgeStaticMemoDepositMetadata
+
+    module BridgeMetadata
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::bridge_metadata]
+    end
+  end
+end

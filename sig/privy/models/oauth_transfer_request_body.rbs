@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type oauth_transfer_request_body =
+      { nonce: String, user_info: Privy::OAuthTransferUserInfo }
+
+    class OAuthTransferRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor nonce: String
+
+      attr_accessor user_info: Privy::OAuthTransferUserInfo
+
+      def initialize: (
+        nonce: String,
+        user_info: Privy::OAuthTransferUserInfo
+      ) -> void
+
+      def to_hash: -> { nonce: String, user_info: Privy::OAuthTransferUserInfo }
+    end
+  end
+end

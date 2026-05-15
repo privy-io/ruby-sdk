@@ -1,0 +1,52 @@
+module Privy
+  module Models
+    type mfa_disabled_webhook_payload =
+      {
+        method_: Privy::Models::MfaDisabledWebhookPayload::method_,
+        type: Privy::Models::MfaDisabledWebhookPayload::type_,
+        user_id: String
+      }
+
+    class MfaDisabledWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::MfaDisabledWebhookPayload::method_
+
+      attr_accessor type: Privy::Models::MfaDisabledWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        method_: Privy::Models::MfaDisabledWebhookPayload::method_,
+        type: Privy::Models::MfaDisabledWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::MfaDisabledWebhookPayload::method_,
+        type: Privy::Models::MfaDisabledWebhookPayload::type_,
+        user_id: String
+      }
+
+      type method_ = :sms | :totp | :passkey
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        SMS: :sms
+        TOTP: :totp
+        PASSKEY: :passkey
+
+        def self?.values: -> ::Array[Privy::Models::MfaDisabledWebhookPayload::method_]
+      end
+
+      type type_ = :"mfa.disabled"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        MFA_DISABLED: :"mfa.disabled"
+
+        def self?.values: -> ::Array[Privy::Models::MfaDisabledWebhookPayload::type_]
+      end
+    end
+  end
+end

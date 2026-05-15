@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type spark_rpc_response =
+      Privy::SparkTransferRpcResponse
+      | Privy::SparkGetBalanceRpcResponse
+      | Privy::SparkTransferTokensRpcResponse
+      | Privy::SparkGetStaticDepositAddressRpcResponse
+      | Privy::SparkGetClaimStaticDepositQuoteRpcResponse
+      | Privy::SparkClaimStaticDepositRpcResponse
+      | Privy::SparkCreateLightningInvoiceRpcResponse
+      | Privy::SparkPayLightningInvoiceRpcResponse
+      | Privy::SparkSignMessageWithIdentityKeyRpcResponse
+
+    module SparkRpcResponse
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::spark_rpc_response]
+    end
+  end
+end

@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    type fiat_onramp_provider =
+      :meld
+      | :"meld-sandbox"
+      | :moonpay
+      | :"moonpay-sandbox"
+      | :coinbase
+      | :"coinbase-sandbox"
+
+    module FiatOnrampProvider
+      extend Privy::Internal::Type::Enum
+
+      MELD: :meld
+      MELD_SANDBOX: :"meld-sandbox"
+      MOONPAY: :moonpay
+      MOONPAY_SANDBOX: :"moonpay-sandbox"
+      COINBASE: :coinbase
+      COINBASE_SANDBOX: :"coinbase-sandbox"
+
+      def self?.values: -> ::Array[Privy::Models::fiat_onramp_provider]
+    end
+  end
+end

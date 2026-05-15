@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type bridge_crypto_transfer_metadata =
+      {
+        method_: Privy::Models::BridgeCryptoTransferMetadata::method_,
+        source_wallet_address: String,
+        transfer_id: String,
+        type: Privy::Models::BridgeCryptoTransferMetadata::type_
+      }
+
+    class BridgeCryptoTransferMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::BridgeCryptoTransferMetadata::method_
+
+      attr_accessor source_wallet_address: String
+
+      attr_accessor transfer_id: String
+
+      attr_accessor type: Privy::Models::BridgeCryptoTransferMetadata::type_
+
+      def initialize: (
+        method_: Privy::Models::BridgeCryptoTransferMetadata::method_,
+        source_wallet_address: String,
+        transfer_id: String,
+        type: Privy::Models::BridgeCryptoTransferMetadata::type_
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::BridgeCryptoTransferMetadata::method_,
+        source_wallet_address: String,
+        transfer_id: String,
+        type: Privy::Models::BridgeCryptoTransferMetadata::type_
+      }
+
+      type method_ = :transfer
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER: :transfer
+
+        def self?.values: -> ::Array[Privy::Models::BridgeCryptoTransferMetadata::method_]
+      end
+
+      type type_ = :crypto_deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        CRYPTO_DEPOSIT: :crypto_deposit
+
+        def self?.values: -> ::Array[Privy::Models::BridgeCryptoTransferMetadata::type_]
+      end
+    end
+  end
+end

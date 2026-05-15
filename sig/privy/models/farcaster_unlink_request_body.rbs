@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type farcaster_unlink_request_body = { fid: Float }
+
+    class FarcasterUnlinkRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor fid: Float
+
+      def initialize: (fid: Float) -> void
+
+      def to_hash: -> { fid: Float }
+    end
+  end
+end

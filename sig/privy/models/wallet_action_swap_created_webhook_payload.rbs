@@ -1,0 +1,80 @@
+module Privy
+  module Models
+    type wallet_action_swap_created_webhook_payload =
+      {
+        action_type: Privy::Models::wallet_action_type,
+        :caip2 => String,
+        input_amount: String?,
+        input_token: String,
+        output_token: String,
+        status: Privy::Models::WalletActionSwapCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionSwapCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+    class WalletActionSwapCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor caip2: String
+
+      attr_accessor input_amount: String?
+
+      attr_accessor input_token: String
+
+      attr_accessor output_token: String
+
+      attr_accessor status: Privy::Models::WalletActionSwapCreatedWebhookPayload::status
+
+      attr_accessor type: Privy::Models::WalletActionSwapCreatedWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_type: Privy::Models::wallet_action_type,
+        caip2: String,
+        input_amount: String?,
+        input_token: String,
+        output_token: String,
+        status: Privy::Models::WalletActionSwapCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionSwapCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::wallet_action_type,
+        :caip2 => String,
+        input_amount: String?,
+        input_token: String,
+        output_token: String,
+        status: Privy::Models::WalletActionSwapCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionSwapCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+      type status = :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionSwapCreatedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.swap.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_SWAP_CREATED: :"wallet_action.swap.created"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionSwapCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

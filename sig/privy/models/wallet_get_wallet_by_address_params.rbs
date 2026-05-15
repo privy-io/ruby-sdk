@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type wallet_get_wallet_by_address_params =
+      {  } & Privy::Internal::Type::request_parameters
+
+    class WalletGetWalletByAddressParams < Privy::Models::GetByWalletAddressRequestBody
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Privy::request_opts) -> void
+
+      def to_hash: -> { request_options: Privy::RequestOptions }
+    end
+  end
+end

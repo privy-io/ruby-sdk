@@ -1,0 +1,26 @@
+module Privy
+  module Resources
+    class Apps
+      attr_reader allowlist: Privy::Resources::Apps::Allowlist
+
+      def get: (
+        String app_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::AppResponse
+
+      def get_gas_spend: (
+        end_timestamp: Float,
+        start_timestamp: Float,
+        wallet_ids: ::Array[String],
+        ?request_options: Privy::request_opts
+      ) -> Privy::GasSpendResponseBody
+
+      def get_test_credentials: (
+        String app_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::TestAccountsResponse
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

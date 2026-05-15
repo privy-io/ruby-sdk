@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type user_get_by_farcaster_id_params =
+      { fid: Float } & Privy::Internal::Type::request_parameters
+
+    class UserGetByFarcasterIDParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor fid: Float
+
+      def initialize: (
+        fid: Float,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> { fid: Float, request_options: Privy::RequestOptions }
+    end
+  end
+end

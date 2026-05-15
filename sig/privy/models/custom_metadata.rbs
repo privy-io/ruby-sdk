@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type custom_metadata_item = String | Float | bool
+
+    module CustomMetadataItem
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::custom_metadata_item]
+    end
+
+    type custom_metadata = ::Hash[Symbol, Privy::Models::custom_metadata_item]
+
+    CustomMetadata: Privy::Internal::Type::Converter
+  end
+end

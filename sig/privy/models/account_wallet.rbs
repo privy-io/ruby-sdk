@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type account_wallet =
+      {
+        id: String,
+        address: String,
+        chain_type: Privy::Models::first_class_chain_type,
+        custody: Privy::WalletCustodian
+      }
+
+    class AccountWallet < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor address: String
+
+      attr_accessor chain_type: Privy::Models::first_class_chain_type
+
+      attr_reader custody: Privy::WalletCustodian?
+
+      def custody=: (Privy::WalletCustodian) -> Privy::WalletCustodian
+
+      def initialize: (
+        id: String,
+        address: String,
+        chain_type: Privy::Models::first_class_chain_type,
+        ?custody: Privy::WalletCustodian
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        address: String,
+        chain_type: Privy::Models::first_class_chain_type,
+        custody: Privy::WalletCustodian
+      }
+    end
+  end
+end

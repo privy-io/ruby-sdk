@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type moonpay_fiat_on_ramp_solana_input =
+      { address: String, config: Privy::MoonpayFiatOnRampSolanaConfig }
+
+    class MoonpayFiatOnRampSolanaInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor config: Privy::MoonpayFiatOnRampSolanaConfig
+
+      def initialize: (
+        address: String,
+        config: Privy::MoonpayFiatOnRampSolanaConfig
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        config: Privy::MoonpayFiatOnRampSolanaConfig
+      }
+    end
+  end
+end

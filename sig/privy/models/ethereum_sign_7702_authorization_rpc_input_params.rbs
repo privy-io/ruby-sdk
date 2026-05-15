@@ -1,0 +1,51 @@
+module Privy
+  module Models
+    type ethereum_sign7702_authorization_rpc_input_params =
+      {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        executor: Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor,
+        nonce: Privy::Models::quantity
+      }
+
+    class EthereumSign7702AuthorizationRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: Privy::Models::quantity
+
+      attr_accessor contract: String
+
+      attr_reader executor: Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor?
+
+      def executor=: (
+        Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor
+      ) -> Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor
+
+      attr_reader nonce: Privy::Models::quantity?
+
+      def nonce=: (Privy::Models::quantity) -> Privy::Models::quantity
+
+      def initialize: (
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        ?executor: Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor,
+        ?nonce: Privy::Models::quantity
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: Privy::Models::quantity,
+        contract: String,
+        executor: Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor,
+        nonce: Privy::Models::quantity
+      }
+
+      type executor = :self
+
+      module Executor
+        extend Privy::Internal::Type::Enum
+
+        SELF: :self
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSign7702AuthorizationRpcInputParams::executor]
+      end
+    end
+  end
+end

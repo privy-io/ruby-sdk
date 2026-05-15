@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type solana_rpc_input =
+      Privy::SolanaSignTransactionRpcInput
+      | Privy::SolanaSignAndSendTransactionRpcInput
+      | Privy::SolanaSignMessageRpcInput
+
+    module SolanaRpcInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::solana_rpc_input]
+    end
+  end
+end

@@ -1,0 +1,59 @@
+module Privy
+  module Models
+    type passkey_authenticator_verify_options =
+      {
+        challenge: String,
+        allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
+        extensions: Privy::PasskeyVerifyExtensions,
+        rp_id: String,
+        timeout: Float,
+        user_verification: String
+      }
+
+    class PasskeyAuthenticatorVerifyOptions < Privy::Internal::Type::BaseModel
+      attr_accessor challenge: String
+
+      attr_reader allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor]?
+
+      def allow_credentials=: (
+        ::Array[Privy::PasskeyCredentialDescriptor]
+      ) -> ::Array[Privy::PasskeyCredentialDescriptor]
+
+      attr_reader extensions: Privy::PasskeyVerifyExtensions?
+
+      def extensions=: (
+        Privy::PasskeyVerifyExtensions
+      ) -> Privy::PasskeyVerifyExtensions
+
+      attr_reader rp_id: String?
+
+      def rp_id=: (String) -> String
+
+      attr_reader timeout: Float?
+
+      def timeout=: (Float) -> Float
+
+      attr_reader user_verification: String?
+
+      def user_verification=: (String) -> String
+
+      def initialize: (
+        challenge: String,
+        ?allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
+        ?extensions: Privy::PasskeyVerifyExtensions,
+        ?rp_id: String,
+        ?timeout: Float,
+        ?user_verification: String
+      ) -> void
+
+      def to_hash: -> {
+        challenge: String,
+        allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
+        extensions: Privy::PasskeyVerifyExtensions,
+        rp_id: String,
+        timeout: Float,
+        user_verification: String
+      }
+    end
+  end
+end

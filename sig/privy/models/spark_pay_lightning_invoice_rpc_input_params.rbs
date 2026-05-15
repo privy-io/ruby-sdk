@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type spark_pay_lightning_invoice_rpc_input_params =
+      {
+        invoice: String,
+        max_fee_sats: Float,
+        amount_sats_to_send: Float,
+        prefer_spark: bool
+      }
+
+    class SparkPayLightningInvoiceRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor invoice: String
+
+      attr_accessor max_fee_sats: Float
+
+      attr_reader amount_sats_to_send: Float?
+
+      def amount_sats_to_send=: (Float) -> Float
+
+      attr_reader prefer_spark: bool?
+
+      def prefer_spark=: (bool) -> bool
+
+      def initialize: (
+        invoice: String,
+        max_fee_sats: Float,
+        ?amount_sats_to_send: Float,
+        ?prefer_spark: bool
+      ) -> void
+
+      def to_hash: -> {
+        invoice: String,
+        max_fee_sats: Float,
+        amount_sats_to_send: Float,
+        prefer_spark: bool
+      }
+    end
+  end
+end

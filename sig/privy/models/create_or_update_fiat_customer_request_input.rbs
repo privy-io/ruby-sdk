@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type create_or_update_fiat_customer_request_input =
+      {
+        has_accepted_terms: bool,
+        provider: Privy::Models::onramp_provider,
+        kyc_redirect_url: String
+      }
+
+    class CreateOrUpdateFiatCustomerRequestInput < Privy::Internal::Type::BaseModel
+      attr_accessor has_accepted_terms: bool
+
+      attr_accessor provider: Privy::Models::onramp_provider
+
+      attr_reader kyc_redirect_url: String?
+
+      def kyc_redirect_url=: (String) -> String
+
+      def initialize: (
+        has_accepted_terms: bool,
+        provider: Privy::Models::onramp_provider,
+        ?kyc_redirect_url: String
+      ) -> void
+
+      def to_hash: -> {
+        has_accepted_terms: bool,
+        provider: Privy::Models::onramp_provider,
+        kyc_redirect_url: String
+      }
+    end
+  end
+end

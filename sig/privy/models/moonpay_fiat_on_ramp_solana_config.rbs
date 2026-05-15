@@ -1,0 +1,54 @@
+module Privy
+  module Models
+    type moonpay_fiat_on_ramp_solana_config =
+      {
+        currency_code: Privy::Models::moonpay_solana_currency_code,
+        email: String,
+        payment_method: Privy::Models::moonpay_payment_method,
+        quote_currency_amount: Float,
+        ui_config: Privy::MoonpayUiConfig
+      }
+
+    class MoonpayFiatOnRampSolanaConfig < Privy::Internal::Type::BaseModel
+      attr_reader currency_code: Privy::Models::moonpay_solana_currency_code?
+
+      def currency_code=: (
+        Privy::Models::moonpay_solana_currency_code
+      ) -> Privy::Models::moonpay_solana_currency_code
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader payment_method: Privy::Models::moonpay_payment_method?
+
+      def payment_method=: (
+        Privy::Models::moonpay_payment_method
+      ) -> Privy::Models::moonpay_payment_method
+
+      attr_reader quote_currency_amount: Float?
+
+      def quote_currency_amount=: (Float) -> Float
+
+      attr_reader ui_config: Privy::MoonpayUiConfig?
+
+      def ui_config=: (Privy::MoonpayUiConfig) -> Privy::MoonpayUiConfig
+
+      def initialize: (
+        ?currency_code: Privy::Models::moonpay_solana_currency_code,
+        ?email: String,
+        ?payment_method: Privy::Models::moonpay_payment_method,
+        ?quote_currency_amount: Float,
+        ?ui_config: Privy::MoonpayUiConfig
+      ) -> void
+
+      def to_hash: -> {
+        currency_code: Privy::Models::moonpay_solana_currency_code,
+        email: String,
+        payment_method: Privy::Models::moonpay_payment_method,
+        quote_currency_amount: Float,
+        ui_config: Privy::MoonpayUiConfig
+      }
+    end
+  end
+end

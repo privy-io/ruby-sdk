@@ -1,0 +1,80 @@
+module Privy
+  module Models
+    type transaction_scanning_params =
+      {
+        block_tag: String,
+        calldata: Privy::TransactionScanningCalldata,
+        chain: String,
+        data: String,
+        from: String,
+        gas: String,
+        gas_price: String,
+        to: String,
+        value: String
+      }
+
+    class TransactionScanningParams < Privy::Internal::Type::BaseModel
+      attr_reader block_tag: String?
+
+      def block_tag=: (String) -> String
+
+      attr_reader calldata: Privy::TransactionScanningCalldata?
+
+      def calldata=: (
+        Privy::TransactionScanningCalldata
+      ) -> Privy::TransactionScanningCalldata
+
+      attr_reader chain: String?
+
+      def chain=: (String) -> String
+
+      attr_reader data: String?
+
+      def data=: (String) -> String
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader gas: String?
+
+      def gas=: (String) -> String
+
+      attr_reader gas_price: String?
+
+      def gas_price=: (String) -> String
+
+      attr_reader to: String?
+
+      def to=: (String) -> String
+
+      attr_reader value: String?
+
+      def value=: (String) -> String
+
+      def initialize: (
+        ?block_tag: String,
+        ?calldata: Privy::TransactionScanningCalldata,
+        ?chain: String,
+        ?data: String,
+        ?from: String,
+        ?gas: String,
+        ?gas_price: String,
+        ?to: String,
+        ?value: String
+      ) -> void
+
+      def to_hash: -> {
+        block_tag: String,
+        calldata: Privy::TransactionScanningCalldata,
+        chain: String,
+        data: String,
+        from: String,
+        gas: String,
+        gas_price: String,
+        to: String,
+        value: String
+      }
+    end
+  end
+end

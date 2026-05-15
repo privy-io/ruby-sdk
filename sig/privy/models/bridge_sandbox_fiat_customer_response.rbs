@@ -1,0 +1,85 @@
+module Privy
+  module Models
+    type bridge_sandbox_fiat_customer_response =
+      {
+        has_accepted_terms: bool,
+        provider: Privy::Models::BridgeSandboxFiatCustomerResponse::provider,
+        status: Privy::Models::BridgeSandboxFiatCustomerResponse::status,
+        kyc_url: String,
+        rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
+      }
+
+    class BridgeSandboxFiatCustomerResponse < Privy::Internal::Type::BaseModel
+      attr_accessor has_accepted_terms: bool
+
+      attr_accessor provider: Privy::Models::BridgeSandboxFiatCustomerResponse::provider
+
+      attr_accessor status: Privy::Models::BridgeSandboxFiatCustomerResponse::status
+
+      attr_reader kyc_url: String?
+
+      def kyc_url=: (String) -> String
+
+      attr_reader rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]?
+
+      def rejection_reasons=: (
+        ::Array[Privy::BridgeFiatRejectionReason]
+      ) -> ::Array[Privy::BridgeFiatRejectionReason]
+
+      def initialize: (
+        has_accepted_terms: bool,
+        provider: Privy::Models::BridgeSandboxFiatCustomerResponse::provider,
+        status: Privy::Models::BridgeSandboxFiatCustomerResponse::status,
+        ?kyc_url: String,
+        ?rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
+      ) -> void
+
+      def to_hash: -> {
+        has_accepted_terms: bool,
+        provider: Privy::Models::BridgeSandboxFiatCustomerResponse::provider,
+        status: Privy::Models::BridgeSandboxFiatCustomerResponse::status,
+        kyc_url: String,
+        rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
+      }
+
+      type provider = :"bridge-sandbox"
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE_SANDBOX: :"bridge-sandbox"
+
+        def self?.values: -> ::Array[Privy::Models::BridgeSandboxFiatCustomerResponse::provider]
+      end
+
+      type status =
+        :not_found
+        | :active
+        | :awaiting_questionnaire
+        | :awaiting_ubo
+        | :incomplete
+        | :not_started
+        | :offboarded
+        | :paused
+        | :rejected
+        | :under_review
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        NOT_FOUND: :not_found
+        ACTIVE: :active
+        AWAITING_QUESTIONNAIRE: :awaiting_questionnaire
+        AWAITING_UBO: :awaiting_ubo
+        INCOMPLETE: :incomplete
+        NOT_STARTED: :not_started
+        OFFBOARDED: :offboarded
+        PAUSED: :paused
+        REJECTED: :rejected
+        UNDER_REVIEW: :under_review
+
+        def self?.values: -> ::Array[Privy::Models::BridgeSandboxFiatCustomerResponse::status]
+      end
+    end
+  end
+end

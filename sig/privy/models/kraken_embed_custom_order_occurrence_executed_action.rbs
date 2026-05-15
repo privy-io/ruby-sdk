@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_occurrence_executed_action =
+      { quote_id: String }
+
+    class KrakenEmbedCustomOrderOccurrenceExecutedAction < Privy::Internal::Type::BaseModel
+      attr_accessor quote_id: String
+
+      def initialize: (quote_id: String) -> void
+
+      def to_hash: -> { quote_id: String }
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type solana_rpc_response =
+      Privy::SolanaSignMessageRpcResponse
+      | Privy::SolanaSignTransactionRpcResponse
+      | Privy::SolanaSignAndSendTransactionRpcResponse
+
+    module SolanaRpcResponse
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::solana_rpc_response]
+    end
+  end
+end

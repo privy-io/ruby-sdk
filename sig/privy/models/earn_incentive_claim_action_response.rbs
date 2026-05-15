@@ -1,0 +1,76 @@
+module Privy
+  module Models
+    type earn_incentive_claim_action_response =
+      {
+        id: String,
+        chain: String,
+        created_at: Time,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::wallet_action_status,
+        type: Privy::Models::EarnIncentiveClaimActionResponse::type_,
+        wallet_id: String,
+        failure_reason: Privy::FailureReason,
+        steps: ::Array[Privy::Models::wallet_action_step]
+      }
+
+    class EarnIncentiveClaimActionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor chain: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?
+
+      attr_accessor status: Privy::Models::wallet_action_status
+
+      attr_accessor type: Privy::Models::EarnIncentiveClaimActionResponse::type_
+
+      attr_accessor wallet_id: String
+
+      attr_reader failure_reason: Privy::FailureReason?
+
+      def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
+
+      attr_reader steps: ::Array[Privy::Models::wallet_action_step]?
+
+      def steps=: (
+        ::Array[Privy::Models::wallet_action_step]
+      ) -> ::Array[Privy::Models::wallet_action_step]
+
+      def initialize: (
+        id: String,
+        chain: String,
+        created_at: Time,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::wallet_action_status,
+        type: Privy::Models::EarnIncentiveClaimActionResponse::type_,
+        wallet_id: String,
+        ?failure_reason: Privy::FailureReason,
+        ?steps: ::Array[Privy::Models::wallet_action_step]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        chain: String,
+        created_at: Time,
+        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        status: Privy::Models::wallet_action_status,
+        type: Privy::Models::EarnIncentiveClaimActionResponse::type_,
+        wallet_id: String,
+        failure_reason: Privy::FailureReason,
+        steps: ::Array[Privy::Models::wallet_action_step]
+      }
+
+      type type_ = :earn_incentive_claim
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        EARN_INCENTIVE_CLAIM: :earn_incentive_claim
+
+        def self?.values: -> ::Array[Privy::Models::EarnIncentiveClaimActionResponse::type_]
+      end
+    end
+  end
+end

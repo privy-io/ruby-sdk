@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type fiat_onramp_transaction_status =
+      :pending
+      | :processing
+      | :completed
+      | :failed
+      | :cancelled
+      | :refunded
+      | :unknown
+
+    module FiatOnrampTransactionStatus
+      extend Privy::Internal::Type::Enum
+
+      PENDING: :pending
+      PROCESSING: :processing
+      COMPLETED: :completed
+      FAILED: :failed
+      CANCELLED: :cancelled
+      REFUNDED: :refunded
+      UNKNOWN: :unknown
+
+      def self?.values: -> ::Array[Privy::Models::fiat_onramp_transaction_status]
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type linked_account_google_input =
+      { email: String, name: String, subject: String, type: :google_oauth }
+
+    class LinkedAccountGoogleInput < Privy::Internal::Type::BaseModel
+      attr_accessor email: String
+
+      attr_accessor name: String
+
+      attr_accessor subject: String
+
+      attr_accessor type: :google_oauth
+
+      def initialize: (
+        email: String,
+        name: String,
+        subject: String,
+        ?type: :google_oauth
+      ) -> void
+
+      def to_hash: -> {
+        email: String,
+        name: String,
+        subject: String,
+        type: :google_oauth
+      }
+    end
+  end
+end

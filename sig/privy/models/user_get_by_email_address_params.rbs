@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type user_get_by_email_address_params =
+      { address: String } & Privy::Internal::Type::request_parameters
+
+    class UserGetByEmailAddressParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor address: String
+
+      def initialize: (
+        address: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type export_type = :display | :client
+
+    module ExportType
+      extend Privy::Internal::Type::Enum
+
+      DISPLAY: :display
+      CLIENT: :client
+
+      def self?.values: -> ::Array[Privy::Models::export_type]
+    end
+  end
+end

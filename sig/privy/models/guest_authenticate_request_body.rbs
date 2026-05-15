@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type guest_authenticate_request_body = { guest_credential: String }
+
+    class GuestAuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor guest_credential: String
+
+      def initialize: (guest_credential: String) -> void
+
+      def to_hash: -> { guest_credential: String }
+    end
+  end
+end

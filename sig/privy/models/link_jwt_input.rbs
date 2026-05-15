@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type link_jwt_input = { token: String }
+
+    class LinkJwtInput < Privy::Internal::Type::BaseModel
+      attr_reader token: String?
+
+      def token=: (String) -> String
+
+      def initialize: (?token: String) -> void
+
+      def to_hash: -> { token: String }
+    end
+  end
+end

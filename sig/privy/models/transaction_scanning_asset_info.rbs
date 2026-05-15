@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type transaction_scanning_asset_info =
+      {
+        decimals: Float,
+        logo_url: String,
+        name: String,
+        symbol: String,
+        type: String
+      }
+
+    class TransactionScanningAssetInfo < Privy::Internal::Type::BaseModel
+      attr_reader decimals: Float?
+
+      def decimals=: (Float) -> Float
+
+      attr_reader logo_url: String?
+
+      def logo_url=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader symbol: String?
+
+      def symbol=: (String) -> String
+
+      attr_reader type: String?
+
+      def type=: (String) -> String
+
+      def initialize: (
+        ?decimals: Float,
+        ?logo_url: String,
+        ?name: String,
+        ?symbol: String,
+        ?type: String
+      ) -> void
+
+      def to_hash: -> {
+        decimals: Float,
+        logo_url: String,
+        name: String,
+        symbol: String,
+        type: String
+      }
+    end
+  end
+end

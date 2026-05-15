@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    type embedded_wallet_recovery_method =
+      :privy
+      | :"user-passcode"
+      | :"google-drive"
+      | :icloud
+      | :"recovery-encryption-key"
+      | :"privy-v2"
+
+    module EmbeddedWalletRecoveryMethod
+      extend Privy::Internal::Type::Enum
+
+      PRIVY: :privy
+      USER_PASSCODE: :"user-passcode"
+      GOOGLE_DRIVE: :"google-drive"
+      ICLOUD: :icloud
+      RECOVERY_ENCRYPTION_KEY: :"recovery-encryption-key"
+      PRIVY_V2: :"privy-v2"
+
+      def self?.values: -> ::Array[Privy::Models::embedded_wallet_recovery_method]
+    end
+  end
+end

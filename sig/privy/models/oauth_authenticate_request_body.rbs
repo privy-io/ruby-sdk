@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type oauth_authenticate_request_body =
+      {
+        authorization_code: String,
+        state_code: String,
+        code_type: Privy::Models::oauth_code_type,
+        code_verifier: String,
+        mode: Privy::Models::authenticate_mode_option
+      }
+
+    class OAuthAuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor authorization_code: String
+
+      attr_accessor state_code: String
+
+      attr_reader code_type: Privy::Models::oauth_code_type?
+
+      def code_type=: (
+        Privy::Models::oauth_code_type
+      ) -> Privy::Models::oauth_code_type
+
+      attr_reader code_verifier: String?
+
+      def code_verifier=: (String) -> String
+
+      attr_reader mode: Privy::Models::authenticate_mode_option?
+
+      def mode=: (
+        Privy::Models::authenticate_mode_option
+      ) -> Privy::Models::authenticate_mode_option
+
+      def initialize: (
+        authorization_code: String,
+        state_code: String,
+        ?code_type: Privy::Models::oauth_code_type,
+        ?code_verifier: String,
+        ?mode: Privy::Models::authenticate_mode_option
+      ) -> void
+
+      def to_hash: -> {
+        authorization_code: String,
+        state_code: String,
+        code_type: Privy::Models::oauth_code_type,
+        code_verifier: String,
+        mode: Privy::Models::authenticate_mode_option
+      }
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type wallet_batch_create_input =
+      { wallets: ::Array[Privy::WalletBatchItemInput] }
+
+    class WalletBatchCreateInput < Privy::Internal::Type::BaseModel
+      attr_accessor wallets: ::Array[Privy::WalletBatchItemInput]
+
+      def initialize: (wallets: ::Array[Privy::WalletBatchItemInput]) -> void
+
+      def to_hash: -> { wallets: ::Array[Privy::WalletBatchItemInput] }
+    end
+  end
+end

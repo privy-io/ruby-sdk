@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type currency_asset = :"native-currency" | :USDC
+
+    module CurrencyAsset
+      extend Privy::Internal::Type::Enum
+
+      NATIVE_CURRENCY: :"native-currency"
+      USDC: :USDC
+
+      def self?.values: -> ::Array[Privy::Models::currency_asset]
+    end
+  end
+end

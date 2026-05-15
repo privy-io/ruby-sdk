@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type svm_wallet_action_step_status =
+      :preparing
+      | :queued
+      | :pending
+      | :confirmed
+      | :finalized
+      | :rejected
+      | :reverted
+      | :failed
+
+    module SvmWalletActionStepStatus
+      extend Privy::Internal::Type::Enum
+
+      PREPARING: :preparing
+      QUEUED: :queued
+      PENDING: :pending
+      CONFIRMED: :confirmed
+      FINALIZED: :finalized
+      REJECTED: :rejected
+      REVERTED: :reverted
+      FAILED: :failed
+
+      def self?.values: -> ::Array[Privy::Models::svm_wallet_action_step_status]
+    end
+  end
+end

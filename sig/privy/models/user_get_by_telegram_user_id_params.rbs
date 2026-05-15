@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type user_get_by_telegram_user_id_params =
+      { telegram_user_id: String } & Privy::Internal::Type::request_parameters
+
+    class UserGetByTelegramUserIDParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor telegram_user_id: String
+
+      def initialize: (
+        telegram_user_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        telegram_user_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,89 @@
+module Privy
+  module Models
+    type transaction =
+      {
+        id: String,
+        :caip2 => String,
+        created_at: Float,
+        status: Privy::Models::Transaction::status,
+        transaction_hash: String?,
+        wallet_id: String,
+        reference_id: String?,
+        sponsored: bool,
+        user_operation_hash: String
+      }
+
+    class Transaction < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor caip2: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor status: Privy::Models::Transaction::status
+
+      attr_accessor transaction_hash: String?
+
+      attr_accessor wallet_id: String
+
+      attr_accessor reference_id: String?
+
+      attr_reader sponsored: bool?
+
+      def sponsored=: (bool) -> bool
+
+      attr_reader user_operation_hash: String?
+
+      def user_operation_hash=: (String) -> String
+
+      def initialize: (
+        id: String,
+        caip2: String,
+        created_at: Float,
+        status: Privy::Models::Transaction::status,
+        transaction_hash: String?,
+        wallet_id: String,
+        ?reference_id: String?,
+        ?sponsored: bool,
+        ?user_operation_hash: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        :caip2 => String,
+        created_at: Float,
+        status: Privy::Models::Transaction::status,
+        transaction_hash: String?,
+        wallet_id: String,
+        reference_id: String?,
+        sponsored: bool,
+        user_operation_hash: String
+      }
+
+      type status =
+        :broadcasted
+        | :confirmed
+        | :execution_reverted
+        | :failed
+        | :replaced
+        | :finalized
+        | :provider_error
+        | :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        BROADCASTED: :broadcasted
+        CONFIRMED: :confirmed
+        EXECUTION_REVERTED: :execution_reverted
+        FAILED: :failed
+        REPLACED: :replaced
+        FINALIZED: :finalized
+        PROVIDER_ERROR: :provider_error
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::Transaction::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type curve_type = :secp256k1 | :ed25519 | :starknet
+
+    module CurveType
+      extend Privy::Internal::Type::Enum
+
+      SECP256K1: :secp256k1
+      ED25519: :ed25519
+      STARKNET: :starknet
+
+      def self?.values: -> ::Array[Privy::Models::curve_type]
+    end
+  end
+end

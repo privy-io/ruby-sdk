@@ -1,0 +1,129 @@
+# frozen_string_literal: true
+
+module Privy
+  module Models
+    class FundsWithdrawnWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute amount
+      #   The amount transferred, as a stringified bigint.
+      #
+      #   @return [String]
+      required :amount, String
+
+      # @!attribute asset
+      #   An asset involved in a wallet transfer.
+      #
+      #   @return [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset]
+      required :asset, union: -> { Privy::WalletFundsAsset }
+
+      # @!attribute block
+      #
+      #   @return [Privy::Models::FundsWithdrawnWebhookPayload::Block]
+      required :block, -> { Privy::FundsWithdrawnWebhookPayload::Block }
+
+      # @!attribute caip2
+      #   The CAIP-2 chain identifier.
+      #
+      #   @return [String]
+      required :caip2, String
+
+      # @!attribute idempotency_key
+      #   A unique key for this event.
+      #
+      #   @return [String]
+      required :idempotency_key, String
+
+      # @!attribute recipient
+      #   The recipient address.
+      #
+      #   @return [String]
+      required :recipient, String
+
+      # @!attribute sender
+      #   The sender address.
+      #
+      #   @return [String]
+      required :sender, String
+
+      # @!attribute transaction_hash
+      #   The blockchain transaction hash.
+      #
+      #   @return [String]
+      required :transaction_hash, String
+
+      # @!attribute type
+      #   The type of webhook event.
+      #
+      #   @return [Symbol, Privy::Models::FundsWithdrawnWebhookPayload::Type]
+      required :type, enum: -> { Privy::FundsWithdrawnWebhookPayload::Type }
+
+      # @!attribute wallet_id
+      #   The ID of the wallet.
+      #
+      #   @return [String]
+      required :wallet_id, String
+
+      # @!attribute transaction_fee
+      #   The transaction fee paid, as a stringified bigint in the chain's native token.
+      #
+      #   @return [String, nil]
+      optional :transaction_fee, String
+
+      # @!method initialize(amount:, asset:, block:, caip2:, idempotency_key:, recipient:, sender:, transaction_hash:, type:, wallet_id:, transaction_fee: nil)
+      #   Payload for the wallet.funds_withdrawn webhook event.
+      #
+      #   @param amount [String] The amount transferred, as a stringified bigint.
+      #
+      #   @param asset [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset] An asset involved in a wallet transfer.
+      #
+      #   @param block [Privy::Models::FundsWithdrawnWebhookPayload::Block]
+      #
+      #   @param caip2 [String] The CAIP-2 chain identifier.
+      #
+      #   @param idempotency_key [String] A unique key for this event.
+      #
+      #   @param recipient [String] The recipient address.
+      #
+      #   @param sender [String] The sender address.
+      #
+      #   @param transaction_hash [String] The blockchain transaction hash.
+      #
+      #   @param type [Symbol, Privy::Models::FundsWithdrawnWebhookPayload::Type] The type of webhook event.
+      #
+      #   @param wallet_id [String] The ID of the wallet.
+      #
+      #   @param transaction_fee [String] The transaction fee paid, as a stringified bigint in the chain's native token.
+
+      # @see Privy::Models::FundsWithdrawnWebhookPayload#block
+      class Block < Privy::Internal::Type::BaseModel
+        # @!attribute number
+        #   The block number.
+        #
+        #   @return [Float]
+        required :number, Float
+
+        # @!attribute timestamp
+        #   The block timestamp.
+        #
+        #   @return [Float]
+        required :timestamp, Float
+
+        # @!method initialize(number:, timestamp:)
+        #   @param number [Float] The block number.
+        #
+        #   @param timestamp [Float] The block timestamp.
+      end
+
+      # The type of webhook event.
+      #
+      # @see Privy::Models::FundsWithdrawnWebhookPayload#type
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_FUNDS_WITHDRAWN = :"wallet.funds_withdrawn"
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+    end
+  end
+end

@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type bridge_brl_fiat_virtual_account_deposit_instructions =
+      {
+        account_holder_name: String,
+        asset: Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        br_code: String,
+        payment_rails: ::Array[Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+    class BridgeBrlFiatVirtualAccountDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_accessor account_holder_name: String
+
+      attr_accessor asset: Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::asset
+
+      attr_accessor bank_address: String
+
+      attr_accessor bank_name: String
+
+      attr_accessor br_code: String
+
+      attr_accessor payment_rails: ::Array[Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::payment_rail]
+
+      def initialize: (
+        account_holder_name: String,
+        asset: Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        br_code: String,
+        payment_rails: ::Array[Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::payment_rail]
+      ) -> void
+
+      def to_hash: -> {
+        account_holder_name: String,
+        asset: Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::asset,
+        bank_address: String,
+        bank_name: String,
+        br_code: String,
+        payment_rails: ::Array[Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::payment_rail]
+      }
+
+      type asset = :brl
+
+      module Asset
+        extend Privy::Internal::Type::Enum
+
+        BRL: :brl
+
+        def self?.values: -> ::Array[Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::asset]
+      end
+
+      type payment_rail = :pix
+
+      module PaymentRail
+        extend Privy::Internal::Type::Enum
+
+        PIX: :pix
+
+        def self?.values: -> ::Array[Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions::payment_rail]
+      end
+    end
+  end
+end

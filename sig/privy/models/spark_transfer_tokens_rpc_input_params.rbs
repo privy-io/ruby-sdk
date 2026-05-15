@@ -1,0 +1,48 @@
+module Privy
+  module Models
+    type spark_transfer_tokens_rpc_input_params =
+      {
+        receiver_spark_address: String,
+        token_amount: Float,
+        token_identifier: String,
+        output_selection_strategy: Privy::Models::spark_output_selection_strategy,
+        selected_outputs: ::Array[Privy::OutputWithPreviousTransactionData]
+      }
+
+    class SparkTransferTokensRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor receiver_spark_address: String
+
+      attr_accessor token_amount: Float
+
+      attr_accessor token_identifier: String
+
+      attr_reader output_selection_strategy: Privy::Models::spark_output_selection_strategy?
+
+      def output_selection_strategy=: (
+        Privy::Models::spark_output_selection_strategy
+      ) -> Privy::Models::spark_output_selection_strategy
+
+      attr_reader selected_outputs: ::Array[Privy::OutputWithPreviousTransactionData]?
+
+      def selected_outputs=: (
+        ::Array[Privy::OutputWithPreviousTransactionData]
+      ) -> ::Array[Privy::OutputWithPreviousTransactionData]
+
+      def initialize: (
+        receiver_spark_address: String,
+        token_amount: Float,
+        token_identifier: String,
+        ?output_selection_strategy: Privy::Models::spark_output_selection_strategy,
+        ?selected_outputs: ::Array[Privy::OutputWithPreviousTransactionData]
+      ) -> void
+
+      def to_hash: -> {
+        receiver_spark_address: String,
+        token_amount: Float,
+        token_identifier: String,
+        output_selection_strategy: Privy::Models::spark_output_selection_strategy,
+        selected_outputs: ::Array[Privy::OutputWithPreviousTransactionData]
+      }
+    end
+  end
+end

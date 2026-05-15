@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type export_seed_phrase_rpc_input =
+      {
+        address: String,
+        method_: Privy::Models::ExportSeedPhraseRpcInput::method_,
+        params: Privy::SeedPhraseExportInput
+      }
+
+    class ExportSeedPhraseRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor method_: Privy::Models::ExportSeedPhraseRpcInput::method_
+
+      attr_accessor params: Privy::SeedPhraseExportInput
+
+      def initialize: (
+        address: String,
+        method_: Privy::Models::ExportSeedPhraseRpcInput::method_,
+        params: Privy::SeedPhraseExportInput
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        method_: Privy::Models::ExportSeedPhraseRpcInput::method_,
+        params: Privy::SeedPhraseExportInput
+      }
+
+      type method_ = :exportSeedPhrase
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        EXPORT_SEED_PHRASE: :exportSeedPhrase
+
+        def self?.values: -> ::Array[Privy::Models::ExportSeedPhraseRpcInput::method_]
+      end
+    end
+  end
+end

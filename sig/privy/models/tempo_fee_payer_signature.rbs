@@ -1,0 +1,41 @@
+module Privy
+  module Models
+    type tempo_fee_payer_signature =
+      {
+        r: String,
+        s: String,
+        y_parity: Privy::Models::TempoFeePayerSignature::y_parity
+      }
+
+    class TempoFeePayerSignature < Privy::Internal::Type::BaseModel
+      attr_accessor r: String
+
+      attr_accessor s: String
+
+      attr_accessor y_parity: Privy::Models::TempoFeePayerSignature::y_parity
+
+      def initialize: (
+        r: String,
+        s: String,
+        y_parity: Privy::Models::TempoFeePayerSignature::y_parity
+      ) -> void
+
+      def to_hash: -> {
+        r: String,
+        s: String,
+        y_parity: Privy::Models::TempoFeePayerSignature::y_parity
+      }
+
+      type y_parity = Float
+
+      module YParity
+        extend Privy::Internal::Type::Enum
+
+        Y_PARITY_0: 0
+        Y_PARITY_1: 1
+
+        def self?.values: -> ::Array[Privy::Models::TempoFeePayerSignature::y_parity]
+      end
+    end
+  end
+end

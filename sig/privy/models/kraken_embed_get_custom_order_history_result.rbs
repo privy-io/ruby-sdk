@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type kraken_embed_get_custom_order_history_result =
+      { history: ::Array[Privy::KrakenEmbedCustomOrderOccurrence] }
+
+    class KrakenEmbedGetCustomOrderHistoryResult < Privy::Internal::Type::BaseModel
+      attr_accessor history: ::Array[Privy::KrakenEmbedCustomOrderOccurrence]
+
+      def initialize: (
+        history: ::Array[Privy::KrakenEmbedCustomOrderOccurrence]
+      ) -> void
+
+      def to_hash: -> {
+        history: ::Array[Privy::KrakenEmbedCustomOrderOccurrence]
+      }
+    end
+  end
+end

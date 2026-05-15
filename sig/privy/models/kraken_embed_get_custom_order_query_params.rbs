@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type kraken_embed_get_custom_order_query_params =
+      { order_id: String, user_id: String }
+
+    class KrakenEmbedGetCustomOrderQueryParams < Privy::Internal::Type::BaseModel
+      attr_accessor order_id: String
+
+      attr_accessor user_id: String
+
+      def initialize: (order_id: String, user_id: String) -> void
+
+      def to_hash: -> { order_id: String, user_id: String }
+    end
+  end
+end

@@ -1,0 +1,147 @@
+module Privy
+  module Models
+    type kraken_embed_get_asset_list_query_params_schema =
+      {
+        filter_assets: ::Array[String],
+        filter_platform_statuses: ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status],
+        filter_tradable_only: bool?,
+        filter_user: String,
+        lang: String,
+        page_number: Integer,
+        page_size: Integer,
+        quote: String,
+        sort: Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort
+      }
+
+    class KrakenEmbedGetAssetListQueryParamsSchema < Privy::Internal::Type::BaseModel
+      attr_reader filter_assets: ::Array[String]?
+
+      def filter_assets=: (::Array[String]) -> ::Array[String]
+
+      attr_reader filter_platform_statuses: ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status]?
+
+      def filter_platform_statuses=: (
+        ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status]
+      ) -> ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status]
+
+      attr_accessor filter_tradable_only: bool?
+
+      attr_reader filter_user: String?
+
+      def filter_user=: (String) -> String
+
+      attr_reader lang: String?
+
+      def lang=: (String) -> String
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader quote: String?
+
+      def quote=: (String) -> String
+
+      attr_reader sort: Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort?
+
+      def sort=: (
+        Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort
+      ) -> Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort
+
+      def initialize: (
+        ?filter_assets: ::Array[String],
+        ?filter_platform_statuses: ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status],
+        ?filter_tradable_only: bool?,
+        ?filter_user: String,
+        ?lang: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?quote: String,
+        ?sort: Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort
+      ) -> void
+
+      def to_hash: -> {
+        filter_assets: ::Array[String],
+        filter_platform_statuses: ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status],
+        filter_tradable_only: bool?,
+        filter_user: String,
+        lang: String,
+        page_number: Integer,
+        page_size: Integer,
+        quote: String,
+        sort: Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort
+      }
+
+      type filter_platform_status =
+        :enabled
+        | :deposit_only
+        | :withdrawal_only
+        | :funding_temporarily_disabled
+        | :disabled
+        | String
+
+      module FilterPlatformStatus
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::filter_platform_status]
+
+        ENABLED: :enabled
+        DEPOSIT_ONLY: :deposit_only
+        WITHDRAWAL_ONLY: :withdrawal_only
+        FUNDING_TEMPORARILY_DISABLED: :funding_temporarily_disabled
+        DISABLED: :disabled
+      end
+
+      type sort =
+        :trending
+        | :market_cap_rank
+        | :"-market_cap_rank"
+        | :symbol
+        | :"-symbol"
+        | :name
+        | :"-name"
+        | :change_percent_1h
+        | :"-change_percent_1h"
+        | :change_percent_24h
+        | :"-change_percent_24h"
+        | :change_percent_7d
+        | :"-change_percent_7d"
+        | :change_percent_30d
+        | :"-change_percent_30d"
+        | :change_percent_1y
+        | :"-change_percent_1y"
+        | :listing_date
+        | :"-listing_date"
+
+      module Sort
+        extend Privy::Internal::Type::Enum
+
+        TRENDING: :trending
+        MARKET_CAP_RANK: :market_cap_rank
+        MINUS_MARKET_CAP_RANK: :"-market_cap_rank"
+        SYMBOL: :symbol
+        MINUS_SYMBOL: :"-symbol"
+        NAME: :name
+        MINUS_NAME: :"-name"
+        CHANGE_PERCENT_1H: :change_percent_1h
+        MINUS_CHANGE_PERCENT_1_H: :"-change_percent_1h"
+        CHANGE_PERCENT_24H: :change_percent_24h
+        MINUS_CHANGE_PERCENT_24_H: :"-change_percent_24h"
+        CHANGE_PERCENT_7D: :change_percent_7d
+        MINUS_CHANGE_PERCENT_7_D: :"-change_percent_7d"
+        CHANGE_PERCENT_30D: :change_percent_30d
+        MINUS_CHANGE_PERCENT_30_D: :"-change_percent_30d"
+        CHANGE_PERCENT_1Y: :change_percent_1y
+        MINUS_CHANGE_PERCENT_1_Y: :"-change_percent_1y"
+        LISTING_DATE: :listing_date
+        MINUS_LISTING_DATE: :"-listing_date"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::sort]
+      end
+    end
+  end
+end

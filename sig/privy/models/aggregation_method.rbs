@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type aggregation_method = :eth_signTransaction | :eth_signUserOperation
+
+    module AggregationMethod
+      extend Privy::Internal::Type::Enum
+
+      ETH_SIGN_TRANSACTION: :eth_signTransaction
+      ETH_SIGN_USER_OPERATION: :eth_signUserOperation
+
+      def self?.values: -> ::Array[Privy::Models::aggregation_method]
+    end
+  end
+end

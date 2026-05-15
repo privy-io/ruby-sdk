@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type wallet_authenticate_request_body =
+      {
+        encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
+        recipient_public_key: String,
+        user_jwt: String
+      }
+
+    class WalletAuthenticateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type
+
+      attr_accessor recipient_public_key: String
+
+      attr_accessor user_jwt: String
+
+      def initialize: (
+        encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
+        recipient_public_key: String,
+        user_jwt: String
+      ) -> void
+
+      def to_hash: -> {
+        encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
+        recipient_public_key: String,
+        user_jwt: String
+      }
+
+      type encryption_type = :HPKE
+
+      module EncryptionType
+        extend Privy::Internal::Type::Enum
+
+        HPKE: :HPKE
+
+        def self?.values: -> ::Array[Privy::Models::WalletAuthenticateRequestBody::encryption_type]
+      end
+    end
+  end
+end

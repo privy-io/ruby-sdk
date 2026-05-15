@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type transaction_scanning_simulation_success_result =
+      {
+        assets_diffs: ::Array[Privy::TransactionScanningAssetDiff],
+        exposures: ::Array[Privy::TransactionScanningExposure],
+        status: Privy::Models::TransactionScanningSimulationSuccessResult::status,
+        params: Privy::TransactionScanningParams
+      }
+
+    class TransactionScanningSimulationSuccessResult < Privy::Internal::Type::BaseModel
+      attr_accessor assets_diffs: ::Array[Privy::TransactionScanningAssetDiff]
+
+      attr_accessor exposures: ::Array[Privy::TransactionScanningExposure]
+
+      attr_accessor status: Privy::Models::TransactionScanningSimulationSuccessResult::status
+
+      attr_reader params: Privy::TransactionScanningParams?
+
+      def params=: (
+        Privy::TransactionScanningParams
+      ) -> Privy::TransactionScanningParams
+
+      def initialize: (
+        assets_diffs: ::Array[Privy::TransactionScanningAssetDiff],
+        exposures: ::Array[Privy::TransactionScanningExposure],
+        status: Privy::Models::TransactionScanningSimulationSuccessResult::status,
+        ?params: Privy::TransactionScanningParams
+      ) -> void
+
+      def to_hash: -> {
+        assets_diffs: ::Array[Privy::TransactionScanningAssetDiff],
+        exposures: ::Array[Privy::TransactionScanningExposure],
+        status: Privy::Models::TransactionScanningSimulationSuccessResult::status,
+        params: Privy::TransactionScanningParams
+      }
+
+      type status = :Success
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        SUCCESS: :Success
+
+        def self?.values: -> ::Array[Privy::Models::TransactionScanningSimulationSuccessResult::status]
+      end
+    end
+  end
+end

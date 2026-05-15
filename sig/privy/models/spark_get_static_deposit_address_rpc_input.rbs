@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type spark_get_static_deposit_address_rpc_input =
+      {
+        method_: Privy::Models::SparkGetStaticDepositAddressRpcInput::method_,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkGetStaticDepositAddressRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkGetStaticDepositAddressRpcInput::method_
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkGetStaticDepositAddressRpcInput::method_,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkGetStaticDepositAddressRpcInput::method_,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :getStaticDepositAddress
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        GET_STATIC_DEPOSIT_ADDRESS: :getStaticDepositAddress
+
+        def self?.values: -> ::Array[Privy::Models::SparkGetStaticDepositAddressRpcInput::method_]
+      end
+    end
+  end
+end

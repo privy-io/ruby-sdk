@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type ethereum_send_calls_rpc_response =
+      {
+        data: Privy::EthereumSendCallsRpcResponseData,
+        method_: Privy::Models::EthereumSendCallsRpcResponse::method_
+      }
+
+    class EthereumSendCallsRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::EthereumSendCallsRpcResponseData
+
+      attr_accessor method_: Privy::Models::EthereumSendCallsRpcResponse::method_
+
+      def initialize: (
+        data: Privy::EthereumSendCallsRpcResponseData,
+        method_: Privy::Models::EthereumSendCallsRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::EthereumSendCallsRpcResponseData,
+        method_: Privy::Models::EthereumSendCallsRpcResponse::method_
+      }
+
+      type method_ = :wallet_sendCalls
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        WALLET_SEND_CALLS: :wallet_sendCalls
+
+        def self?.values: -> ::Array[Privy::Models::EthereumSendCallsRpcResponse::method_]
+      end
+    end
+  end
+end

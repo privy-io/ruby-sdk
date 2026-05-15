@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type passkey_assertion_response =
+      {
+        authenticator_data: String,
+        client_data_json: String,
+        signature: String,
+        user_handle: String
+      }
+
+    class PasskeyAssertionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor authenticator_data: String
+
+      attr_accessor client_data_json: String
+
+      attr_accessor signature: String
+
+      attr_reader user_handle: String?
+
+      def user_handle=: (String) -> String
+
+      def initialize: (
+        authenticator_data: String,
+        client_data_json: String,
+        signature: String,
+        ?user_handle: String
+      ) -> void
+
+      def to_hash: -> {
+        authenticator_data: String,
+        client_data_json: String,
+        signature: String,
+        user_handle: String
+      }
+    end
+  end
+end

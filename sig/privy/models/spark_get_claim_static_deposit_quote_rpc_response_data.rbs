@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type spark_get_claim_static_deposit_quote_rpc_response_data =
+      {
+        credit_amount_sats: Float,
+        network: String,
+        output_index: Float,
+        signature: String,
+        transaction_id: String
+      }
+
+    class SparkGetClaimStaticDepositQuoteRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor credit_amount_sats: Float
+
+      attr_accessor network: String
+
+      attr_accessor output_index: Float
+
+      attr_accessor signature: String
+
+      attr_accessor transaction_id: String
+
+      def initialize: (
+        credit_amount_sats: Float,
+        network: String,
+        output_index: Float,
+        signature: String,
+        transaction_id: String
+      ) -> void
+
+      def to_hash: -> {
+        credit_amount_sats: Float,
+        network: String,
+        output_index: Float,
+        signature: String,
+        transaction_id: String
+      }
+    end
+  end
+end

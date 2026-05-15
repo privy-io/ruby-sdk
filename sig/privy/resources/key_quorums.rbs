@@ -1,0 +1,40 @@
+module Privy
+  module Resources
+    class KeyQuorums
+      def create: (
+        ?authorization_threshold: Float,
+        ?display_name: String,
+        ?key_quorum_ids: ::Array[String],
+        ?public_keys: ::Array[String],
+        ?user_ids: ::Array[String],
+        ?request_options: Privy::request_opts
+      ) -> Privy::KeyQuorum
+
+      def update: (
+        String key_quorum_id,
+        ?authorization_threshold: Float,
+        ?display_name: String,
+        ?key_quorum_ids: ::Array[String],
+        ?public_keys: ::Array[String],
+        ?user_ids: ::Array[String],
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::KeyQuorum
+
+      def delete: (
+        String key_quorum_id,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::SuccessResponse
+
+      def get: (
+        String key_quorum_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::KeyQuorum
+
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

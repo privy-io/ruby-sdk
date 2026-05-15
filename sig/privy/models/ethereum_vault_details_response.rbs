@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type ethereum_vault_details_response =
+      {
+        id: String,
+        app_apy: Float?,
+        asset_address: String,
+        available_liquidity_usd: Float?,
+        :caip2 => String,
+        name: String,
+        provider: Privy::Models::ethereum_yield_provider,
+        tvl_usd: Float?,
+        user_apy: Float?,
+        vault_address: String
+      }
+
+    class EthereumVaultDetailsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor app_apy: Float?
+
+      attr_accessor asset_address: String
+
+      attr_accessor available_liquidity_usd: Float?
+
+      attr_accessor caip2: String
+
+      attr_accessor name: String
+
+      attr_accessor provider: Privy::Models::ethereum_yield_provider
+
+      attr_accessor tvl_usd: Float?
+
+      attr_accessor user_apy: Float?
+
+      attr_accessor vault_address: String
+
+      def initialize: (
+        id: String,
+        app_apy: Float?,
+        asset_address: String,
+        available_liquidity_usd: Float?,
+        caip2: String,
+        name: String,
+        provider: Privy::Models::ethereum_yield_provider,
+        tvl_usd: Float?,
+        user_apy: Float?,
+        vault_address: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        app_apy: Float?,
+        asset_address: String,
+        available_liquidity_usd: Float?,
+        :caip2 => String,
+        name: String,
+        provider: Privy::Models::ethereum_yield_provider,
+        tvl_usd: Float?,
+        user_apy: Float?,
+        vault_address: String
+      }
+    end
+  end
+end

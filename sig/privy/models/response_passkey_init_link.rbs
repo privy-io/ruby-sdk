@@ -1,0 +1,27 @@
+module Privy
+  module Models
+    type response_passkey_init_link =
+      {
+        options: Privy::PasskeyAuthenticatorEnrollmentOptions,
+        relying_party: String
+      }
+
+    class ResponsePasskeyInitLink < Privy::Internal::Type::BaseModel
+      attr_accessor options: Privy::PasskeyAuthenticatorEnrollmentOptions
+
+      attr_reader relying_party: String?
+
+      def relying_party=: (String) -> String
+
+      def initialize: (
+        options: Privy::PasskeyAuthenticatorEnrollmentOptions,
+        ?relying_party: String
+      ) -> void
+
+      def to_hash: -> {
+        options: Privy::PasskeyAuthenticatorEnrollmentOptions,
+        relying_party: String
+      }
+    end
+  end
+end

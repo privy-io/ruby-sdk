@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_verify_request_body = { prat: String }
+
+    class OAuthVerifyRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor prat: String
+
+      def initialize: (prat: String) -> void
+
+      def to_hash: -> { prat: String }
+    end
+  end
+end

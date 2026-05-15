@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type fiat_onramp_destination =
+      { address: String, asset: String, chain: String }
+
+    class FiatOnrampDestination < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor asset: String
+
+      attr_accessor chain: String
+
+      def initialize: (address: String, asset: String, chain: String) -> void
+
+      def to_hash: -> { address: String, asset: String, chain: String }
+    end
+  end
+end

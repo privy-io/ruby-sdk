@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type moonpay_ui_theme = :light | :dark
+
+    module MoonpayUiTheme
+      extend Privy::Internal::Type::Enum
+
+      LIGHT: :light
+      DARK: :dark
+
+      def self?.values: -> ::Array[Privy::Models::moonpay_ui_theme]
+    end
+  end
+end

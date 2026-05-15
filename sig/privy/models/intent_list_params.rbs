@@ -1,0 +1,113 @@
+module Privy
+  module Models
+    type intent_list_params =
+      {
+        created_by_id: String,
+        current_user_has_signed: Privy::Models::IntentListParams::current_user_has_signed,
+        cursor: String,
+        intent_type: Privy::Models::intent_type,
+        limit: Float?,
+        pending_member_id: String,
+        resource_id: String,
+        sort_by: Privy::Models::IntentListParams::sort_by,
+        status: Privy::Models::intent_status
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class IntentListParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_reader created_by_id: String?
+
+      def created_by_id=: (String) -> String
+
+      attr_reader current_user_has_signed: Privy::Models::IntentListParams::current_user_has_signed?
+
+      def current_user_has_signed=: (
+        Privy::Models::IntentListParams::current_user_has_signed
+      ) -> Privy::Models::IntentListParams::current_user_has_signed
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader intent_type: Privy::Models::intent_type?
+
+      def intent_type=: (
+        Privy::Models::intent_type
+      ) -> Privy::Models::intent_type
+
+      attr_accessor limit: Float?
+
+      attr_reader pending_member_id: String?
+
+      def pending_member_id=: (String) -> String
+
+      attr_reader resource_id: String?
+
+      def resource_id=: (String) -> String
+
+      attr_reader sort_by: Privy::Models::IntentListParams::sort_by?
+
+      def sort_by=: (
+        Privy::Models::IntentListParams::sort_by
+      ) -> Privy::Models::IntentListParams::sort_by
+
+      attr_reader status: Privy::Models::intent_status?
+
+      def status=: (
+        Privy::Models::intent_status
+      ) -> Privy::Models::intent_status
+
+      def initialize: (
+        ?created_by_id: String,
+        ?current_user_has_signed: Privy::Models::IntentListParams::current_user_has_signed,
+        ?cursor: String,
+        ?intent_type: Privy::Models::intent_type,
+        ?limit: Float?,
+        ?pending_member_id: String,
+        ?resource_id: String,
+        ?sort_by: Privy::Models::IntentListParams::sort_by,
+        ?status: Privy::Models::intent_status,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        created_by_id: String,
+        current_user_has_signed: Privy::Models::IntentListParams::current_user_has_signed,
+        cursor: String,
+        intent_type: Privy::Models::intent_type,
+        limit: Float?,
+        pending_member_id: String,
+        resource_id: String,
+        sort_by: Privy::Models::IntentListParams::sort_by,
+        status: Privy::Models::intent_status,
+        request_options: Privy::RequestOptions
+      }
+
+      type current_user_has_signed = :true | :false
+
+      module CurrentUserHasSigned
+        extend Privy::Internal::Type::Enum
+
+        TRUE: :true
+        FALSE: :false
+
+        def self?.values: -> ::Array[Privy::Models::IntentListParams::current_user_has_signed]
+      end
+
+      type sort_by = :created_at_desc | :expires_at_asc | :updated_at_desc
+
+      module SortBy
+        extend Privy::Internal::Type::Enum
+
+        CREATED_AT_DESC: :created_at_desc
+        EXPIRES_AT_ASC: :expires_at_asc
+        UPDATED_AT_DESC: :updated_at_desc
+
+        def self?.values: -> ::Array[Privy::Models::IntentListParams::sort_by]
+      end
+    end
+  end
+end

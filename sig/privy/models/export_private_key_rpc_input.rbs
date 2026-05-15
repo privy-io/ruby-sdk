@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type export_private_key_rpc_input =
+      {
+        address: String,
+        method_: Privy::Models::ExportPrivateKeyRpcInput::method_,
+        params: Privy::PrivateKeyExportInput
+      }
+
+    class ExportPrivateKeyRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor method_: Privy::Models::ExportPrivateKeyRpcInput::method_
+
+      attr_accessor params: Privy::PrivateKeyExportInput
+
+      def initialize: (
+        address: String,
+        method_: Privy::Models::ExportPrivateKeyRpcInput::method_,
+        params: Privy::PrivateKeyExportInput
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        method_: Privy::Models::ExportPrivateKeyRpcInput::method_,
+        params: Privy::PrivateKeyExportInput
+      }
+
+      type method_ = :exportPrivateKey
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        EXPORT_PRIVATE_KEY: :exportPrivateKey
+
+        def self?.values: -> ::Array[Privy::Models::ExportPrivateKeyRpcInput::method_]
+      end
+    end
+  end
+end

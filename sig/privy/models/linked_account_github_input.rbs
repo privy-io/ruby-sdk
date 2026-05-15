@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type linked_account_github_input =
+      {
+        subject: String,
+        type: :github_oauth,
+        username: String,
+        email: String,
+        name: String
+      }
+
+    class LinkedAccountGitHubInput < Privy::Internal::Type::BaseModel
+      attr_accessor subject: String
+
+      attr_accessor type: :github_oauth
+
+      attr_accessor username: String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (
+        subject: String,
+        username: String,
+        ?email: String,
+        ?name: String,
+        ?type: :github_oauth
+      ) -> void
+
+      def to_hash: -> {
+        subject: String,
+        type: :github_oauth,
+        username: String,
+        email: String,
+        name: String
+      }
+    end
+  end
+end

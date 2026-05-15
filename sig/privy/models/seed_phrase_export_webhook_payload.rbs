@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type seed_phrase_export_webhook_payload =
+      {
+        type: Privy::Models::SeedPhraseExportWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String,
+        export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source
+      }
+
+    class SeedPhraseExportWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::SeedPhraseExportWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      attr_accessor wallet_address: String
+
+      attr_accessor wallet_id: String
+
+      attr_reader export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source?
+
+      def export_source=: (
+        Privy::Models::SeedPhraseExportWebhookPayload::export_source
+      ) -> Privy::Models::SeedPhraseExportWebhookPayload::export_source
+
+      def initialize: (
+        type: Privy::Models::SeedPhraseExportWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String,
+        ?export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::SeedPhraseExportWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String,
+        export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source
+      }
+
+      type type_ = :"wallet.seed_phrase_export"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_SEED_PHRASE_EXPORT: :"wallet.seed_phrase_export"
+
+        def self?.values: -> ::Array[Privy::Models::SeedPhraseExportWebhookPayload::type_]
+      end
+
+      type export_source = :display | :client
+
+      module ExportSource
+        extend Privy::Internal::Type::Enum
+
+        DISPLAY: :display
+        CLIENT: :client
+
+        def self?.values: -> ::Array[Privy::Models::SeedPhraseExportWebhookPayload::export_source]
+      end
+    end
+  end
+end

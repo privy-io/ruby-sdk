@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type embedded_wallet_config_schema =
+      { mode: Privy::Models::embedded_wallet_mode }
+
+    class EmbeddedWalletConfigSchema < Privy::Models::EmbeddedWalletInputSchema
+      def mode: -> Privy::Models::embedded_wallet_mode
+
+      def mode=: (
+        Privy::Models::embedded_wallet_mode _
+      ) -> Privy::Models::embedded_wallet_mode
+
+      def initialize: (mode: Privy::Models::embedded_wallet_mode) -> void
+
+      def to_hash: -> { mode: Privy::Models::embedded_wallet_mode }
+    end
+  end
+end

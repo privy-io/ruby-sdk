@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type passkey_mfa_method =
+      { type: Privy::Models::PasskeyMfaMethod::type_, verified_at: Float }
+
+    class PasskeyMfaMethod < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::PasskeyMfaMethod::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        type: Privy::Models::PasskeyMfaMethod::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::PasskeyMfaMethod::type_,
+        verified_at: Float
+      }
+
+      type type_ = :passkey
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PASSKEY: :passkey
+
+        def self?.values: -> ::Array[Privy::Models::PasskeyMfaMethod::type_]
+      end
+    end
+  end
+end

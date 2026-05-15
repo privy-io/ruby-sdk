@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type bridge_refund_metadata =
+      {
+        drain_id: String,
+        liquidation_address_id: String,
+        method_: Privy::Models::BridgeRefundMetadata::method_,
+        original_transaction_hash: String,
+        type: Privy::Models::BridgeRefundMetadata::type_
+      }
+
+    class BridgeRefundMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor drain_id: String
+
+      attr_accessor liquidation_address_id: String
+
+      attr_accessor method_: Privy::Models::BridgeRefundMetadata::method_
+
+      attr_accessor original_transaction_hash: String
+
+      attr_accessor type: Privy::Models::BridgeRefundMetadata::type_
+
+      def initialize: (
+        drain_id: String,
+        liquidation_address_id: String,
+        method_: Privy::Models::BridgeRefundMetadata::method_,
+        original_transaction_hash: String,
+        type: Privy::Models::BridgeRefundMetadata::type_
+      ) -> void
+
+      def to_hash: -> {
+        drain_id: String,
+        liquidation_address_id: String,
+        method_: Privy::Models::BridgeRefundMetadata::method_,
+        original_transaction_hash: String,
+        type: Privy::Models::BridgeRefundMetadata::type_
+      }
+
+      type method_ = :liquidation_address
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        LIQUIDATION_ADDRESS: :liquidation_address
+
+        def self?.values: -> ::Array[Privy::Models::BridgeRefundMetadata::method_]
+      end
+
+      type type_ = :refund
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        REFUND: :refund
+
+        def self?.values: -> ::Array[Privy::Models::BridgeRefundMetadata::type_]
+      end
+    end
+  end
+end

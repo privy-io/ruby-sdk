@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type cross_app_connections_response =
+      {
+        connections: ::Array[Privy::CrossAppConnection],
+        data_classification: Privy::Models::CrossAppConnectionsResponse::data_classification
+      }
+
+    class CrossAppConnectionsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor connections: ::Array[Privy::CrossAppConnection]
+
+      attr_accessor data_classification: Privy::Models::CrossAppConnectionsResponse::data_classification
+
+      def initialize: (
+        connections: ::Array[Privy::CrossAppConnection],
+        data_classification: Privy::Models::CrossAppConnectionsResponse::data_classification
+      ) -> void
+
+      def to_hash: -> {
+        connections: ::Array[Privy::CrossAppConnection],
+        data_classification: Privy::Models::CrossAppConnectionsResponse::data_classification
+      }
+
+      type data_classification = :public
+
+      module DataClassification
+        extend Privy::Internal::Type::Enum
+
+        PUBLIC: :public
+
+        def self?.values: -> ::Array[Privy::Models::CrossAppConnectionsResponse::data_classification]
+      end
+    end
+  end
+end

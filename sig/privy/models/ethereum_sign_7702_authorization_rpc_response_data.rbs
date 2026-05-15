@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type ethereum_sign7702_authorization_rpc_response_data =
+      { authorization: Privy::EthereumSign7702Authorization }
+
+    class EthereumSign7702AuthorizationRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor authorization: Privy::EthereumSign7702Authorization
+
+      def initialize: (
+        authorization: Privy::EthereumSign7702Authorization
+      ) -> void
+
+      def to_hash: -> { authorization: Privy::EthereumSign7702Authorization }
+    end
+  end
+end

@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type mfa_sms_init_enroll_input =
+      {
+        action: Privy::Models::MfaSMSInitEnrollInput::action,
+        phone_number: String
+      }
+
+    class MfaSMSInitEnrollInput < Privy::Internal::Type::BaseModel
+      attr_accessor action: Privy::Models::MfaSMSInitEnrollInput::action
+
+      attr_accessor phone_number: String
+
+      def initialize: (
+        action: Privy::Models::MfaSMSInitEnrollInput::action,
+        phone_number: String
+      ) -> void
+
+      def to_hash: -> {
+        action: Privy::Models::MfaSMSInitEnrollInput::action,
+        phone_number: String
+      }
+
+      type action = :enroll
+
+      module Action
+        extend Privy::Internal::Type::Enum
+
+        ENROLL: :enroll
+
+        def self?.values: -> ::Array[Privy::Models::MfaSMSInitEnrollInput::action]
+      end
+    end
+  end
+end

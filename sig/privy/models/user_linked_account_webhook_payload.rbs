@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type user_linked_account_webhook_payload =
+      {
+        account: Privy::Models::linked_account,
+        type: Privy::Models::UserLinkedAccountWebhookPayload::type_,
+        user: Privy::User
+      }
+
+    class UserLinkedAccountWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor account: Privy::Models::linked_account
+
+      attr_accessor type: Privy::Models::UserLinkedAccountWebhookPayload::type_
+
+      attr_accessor user: Privy::User
+
+      def initialize: (
+        account: Privy::Models::linked_account,
+        type: Privy::Models::UserLinkedAccountWebhookPayload::type_,
+        user: Privy::User
+      ) -> void
+
+      def to_hash: -> {
+        account: Privy::Models::linked_account,
+        type: Privy::Models::UserLinkedAccountWebhookPayload::type_,
+        user: Privy::User
+      }
+
+      type type_ = :"user.linked_account"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USER_LINKED_ACCOUNT: :"user.linked_account"
+
+        def self?.values: -> ::Array[Privy::Models::UserLinkedAccountWebhookPayload::type_]
+      end
+    end
+  end
+end

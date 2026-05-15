@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type spark_get_claim_static_deposit_quote_rpc_response =
+      {
+        method_: Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse::method_,
+        data: Privy::SparkGetClaimStaticDepositQuoteRpcResponseData
+      }
+
+    class SparkGetClaimStaticDepositQuoteRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse::method_
+
+      attr_reader data: Privy::SparkGetClaimStaticDepositQuoteRpcResponseData?
+
+      def data=: (
+        Privy::SparkGetClaimStaticDepositQuoteRpcResponseData
+      ) -> Privy::SparkGetClaimStaticDepositQuoteRpcResponseData
+
+      def initialize: (
+        method_: Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse::method_,
+        ?data: Privy::SparkGetClaimStaticDepositQuoteRpcResponseData
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse::method_,
+        data: Privy::SparkGetClaimStaticDepositQuoteRpcResponseData
+      }
+
+      type method_ = :getClaimStaticDepositQuote
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        GET_CLAIM_STATIC_DEPOSIT_QUOTE: :getClaimStaticDepositQuote
+
+        def self?.values: -> ::Array[Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse::method_]
+      end
+    end
+  end
+end

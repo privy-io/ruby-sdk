@@ -1,0 +1,51 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_action =
+      {
+        amount: Privy::KrakenEmbedCustomOrderAmount,
+        fee_bps: String,
+        quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
+        spread_bps: String,
+        type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+      }
+
+    class KrakenEmbedCustomOrderAction < Privy::Internal::Type::BaseModel
+      attr_accessor amount: Privy::KrakenEmbedCustomOrderAmount
+
+      attr_accessor fee_bps: String
+
+      attr_accessor quote: Privy::KrakenEmbedCustomOrderQuoteAsset
+
+      attr_accessor spread_bps: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+
+      def initialize: (
+        amount: Privy::KrakenEmbedCustomOrderAmount,
+        fee_bps: String,
+        quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
+        spread_bps: String,
+        type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+      ) -> void
+
+      def to_hash: -> {
+        amount: Privy::KrakenEmbedCustomOrderAmount,
+        fee_bps: String,
+        quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
+        spread_bps: String,
+        type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+      }
+
+      type type_ = :receive | :spend
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        RECEIVE: :receive
+        SPEND: :spend
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderAction::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,59 @@
+module Privy
+  module Models
+    type intent_update_policy_params =
+      {
+        policy_id: String,
+        name: String,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?,
+        rules: ::Array[Privy::PolicyRuleRequestBody],
+        privy_request_expiry: String
+      }
+      & Privy::Internal::Type::request_parameters
+
+    class IntentUpdatePolicyParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_accessor policy_id: String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_accessor owner: Privy::Models::owner_input?
+
+      attr_accessor owner_id: String?
+
+      attr_reader rules: ::Array[Privy::PolicyRuleRequestBody]?
+
+      def rules=: (
+        ::Array[Privy::PolicyRuleRequestBody]
+      ) -> ::Array[Privy::PolicyRuleRequestBody]
+
+      attr_reader privy_request_expiry: String?
+
+      def privy_request_expiry=: (String) -> String
+
+      def initialize: (
+        policy_id: String,
+        ?name: String,
+        ?owner: Privy::Models::owner_input?,
+        ?owner_id: String?,
+        ?rules: ::Array[Privy::PolicyRuleRequestBody],
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        policy_id: String,
+        name: String,
+        owner: Privy::Models::owner_input?,
+        owner_id: String?,
+        rules: ::Array[Privy::PolicyRuleRequestBody],
+        privy_request_expiry: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

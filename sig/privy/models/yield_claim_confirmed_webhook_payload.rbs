@@ -1,0 +1,73 @@
+module Privy
+  module Models
+    type yield_claim_confirmed_webhook_payload =
+      {
+        :caip2 => String,
+        rewards: ::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward],
+        transaction_id: String,
+        type: Privy::Models::YieldClaimConfirmedWebhookPayload::type_,
+        wallet_id: String
+      }
+
+    class YieldClaimConfirmedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      attr_accessor rewards: ::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward]
+
+      attr_accessor transaction_id: String
+
+      attr_accessor type: Privy::Models::YieldClaimConfirmedWebhookPayload::type_
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        caip2: String,
+        rewards: ::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward],
+        transaction_id: String,
+        type: Privy::Models::YieldClaimConfirmedWebhookPayload::type_,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        :caip2 => String,
+        rewards: ::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward],
+        transaction_id: String,
+        type: Privy::Models::YieldClaimConfirmedWebhookPayload::type_,
+        wallet_id: String
+      }
+
+      type reward =
+        { amount: String, token_address: String, token_symbol: String }
+
+      class Reward < Privy::Internal::Type::BaseModel
+        attr_accessor amount: String
+
+        attr_accessor token_address: String
+
+        attr_accessor token_symbol: String
+
+        def initialize: (
+          amount: String,
+          token_address: String,
+          token_symbol: String
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          token_address: String,
+          token_symbol: String
+        }
+      end
+
+      type type_ = :"yield.claim.confirmed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        YIELD_CLAIM_CONFIRMED: :"yield.claim.confirmed"
+
+        def self?.values: -> ::Array[Privy::Models::YieldClaimConfirmedWebhookPayload::type_]
+      end
+    end
+  end
+end

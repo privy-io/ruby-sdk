@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type wallet_recovered_webhook_payload =
+      {
+        type: Privy::Models::WalletRecoveredWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String
+      }
+
+    class WalletRecoveredWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::WalletRecoveredWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      attr_accessor wallet_address: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        type: Privy::Models::WalletRecoveredWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::WalletRecoveredWebhookPayload::type_,
+        user_id: String,
+        wallet_address: String,
+        wallet_id: String
+      }
+
+      type type_ = :"wallet.recovered"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_RECOVERED: :"wallet.recovered"
+
+        def self?.values: -> ::Array[Privy::Models::WalletRecoveredWebhookPayload::type_]
+      end
+    end
+  end
+end

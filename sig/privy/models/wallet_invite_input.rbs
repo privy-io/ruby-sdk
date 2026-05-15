@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_invite_input =
+      { type: Privy::Models::WalletInviteInput::type_, value: String }
+
+    class WalletInviteInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::WalletInviteInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::WalletInviteInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::WalletInviteInput::type_,
+        value: String
+      }
+
+      type type_ = :wallet
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET: :wallet
+
+        def self?.values: -> ::Array[Privy::Models::WalletInviteInput::type_]
+      end
+    end
+  end
+end

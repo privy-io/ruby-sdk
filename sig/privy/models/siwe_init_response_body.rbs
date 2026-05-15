@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type siwe_init_response_body =
+      { address: String, expires_at: String, nonce: String }
+
+    class SiweInitResponseBody < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor expires_at: String
+
+      attr_accessor nonce: String
+
+      def initialize: (
+        address: String,
+        expires_at: String,
+        nonce: String
+      ) -> void
+
+      def to_hash: -> { address: String, expires_at: String, nonce: String }
+    end
+  end
+end

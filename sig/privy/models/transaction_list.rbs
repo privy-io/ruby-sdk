@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type transaction_list = { transactions: ::Array[Privy::Transaction] }
+
+    class TransactionList < Privy::Internal::Type::BaseModel
+      attr_accessor transactions: ::Array[Privy::Transaction]
+
+      def initialize: (transactions: ::Array[Privy::Transaction]) -> void
+
+      def to_hash: -> { transactions: ::Array[Privy::Transaction] }
+    end
+  end
+end

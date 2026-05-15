@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    type balance_response =
+      {
+        assets: ::Array[Privy::BalanceAsset],
+        total: Privy::CurrencyAmount,
+        assets_by_chain: ::Array[Privy::BalanceAssetByChain]
+      }
+
+    class BalanceResponse < Privy::Internal::Type::BaseModel
+      attr_accessor assets: ::Array[Privy::BalanceAsset]
+
+      attr_accessor total: Privy::CurrencyAmount
+
+      attr_reader assets_by_chain: ::Array[Privy::BalanceAssetByChain]?
+
+      def assets_by_chain=: (
+        ::Array[Privy::BalanceAssetByChain]
+      ) -> ::Array[Privy::BalanceAssetByChain]
+
+      def initialize: (
+        assets: ::Array[Privy::BalanceAsset],
+        total: Privy::CurrencyAmount,
+        ?assets_by_chain: ::Array[Privy::BalanceAssetByChain]
+      ) -> void
+
+      def to_hash: -> {
+        assets: ::Array[Privy::BalanceAsset],
+        total: Privy::CurrencyAmount,
+        assets_by_chain: ::Array[Privy::BalanceAssetByChain]
+      }
+    end
+  end
+end

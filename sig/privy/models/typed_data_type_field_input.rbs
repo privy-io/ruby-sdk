@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type typed_data_type_field_input = { name: String, type: String }
+
+    class TypedDataTypeFieldInput < Privy::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor type: String
+
+      def initialize: (name: String, type: String) -> void
+
+      def to_hash: -> { name: String, type: String }
+    end
+  end
+end

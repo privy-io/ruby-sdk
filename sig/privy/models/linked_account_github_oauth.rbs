@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type linked_account_github_oauth =
+      {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountGitHubOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+    class LinkedAccountGitHubOAuth < Privy::Internal::Type::BaseModel
+      attr_accessor email: String?
+
+      attr_accessor first_verified_at: Float?
+
+      attr_accessor latest_verified_at: Float?
+
+      attr_accessor name: String?
+
+      attr_accessor subject: String
+
+      attr_accessor type: Privy::Models::LinkedAccountGitHubOAuth::type_
+
+      attr_accessor username: String?
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountGitHubOAuth::type_,
+        username: String?,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        email: String?,
+        first_verified_at: Float?,
+        latest_verified_at: Float?,
+        name: String?,
+        subject: String,
+        type: Privy::Models::LinkedAccountGitHubOAuth::type_,
+        username: String?,
+        verified_at: Float
+      }
+
+      type type_ = :github_oauth
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        GITHUB_OAUTH: :github_oauth
+
+        def self?.values: -> ::Array[Privy::Models::LinkedAccountGitHubOAuth::type_]
+      end
+    end
+  end
+end

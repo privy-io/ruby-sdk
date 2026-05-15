@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type farcaster_link_input =
+      { channel_token: String, fid: Float, message: String, signature: String }
+
+    class FarcasterLinkInput < Privy::Internal::Type::BaseModel
+      attr_accessor channel_token: String
+
+      attr_accessor fid: Float
+
+      attr_accessor message: String
+
+      attr_accessor signature: String
+
+      def initialize: (
+        channel_token: String,
+        fid: Float,
+        message: String,
+        signature: String
+      ) -> void
+
+      def to_hash: -> {
+        channel_token: String,
+        fid: Float,
+        message: String,
+        signature: String
+      }
+    end
+  end
+end

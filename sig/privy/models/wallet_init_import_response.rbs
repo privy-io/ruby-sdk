@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type wallet_init_import_response =
+      {
+        encryption_public_key: String,
+        encryption_type: Privy::Models::hpke_encryption
+      }
+
+    class WalletInitImportResponse < Privy::Internal::Type::BaseModel
+      attr_accessor encryption_public_key: String
+
+      attr_accessor encryption_type: Privy::Models::hpke_encryption
+
+      def initialize: (
+        encryption_public_key: String,
+        encryption_type: Privy::Models::hpke_encryption
+      ) -> void
+
+      def to_hash: -> {
+        encryption_public_key: String,
+        encryption_type: Privy::Models::hpke_encryption
+      }
+    end
+  end
+end

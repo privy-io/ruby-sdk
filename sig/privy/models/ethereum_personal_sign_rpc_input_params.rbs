@@ -1,0 +1,36 @@
+module Privy
+  module Models
+    type ethereum_personal_sign_rpc_input_params =
+      {
+        encoding: Privy::Models::EthereumPersonalSignRpcInputParams::encoding,
+        message: String
+      }
+
+    class EthereumPersonalSignRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::EthereumPersonalSignRpcInputParams::encoding
+
+      attr_accessor message: String
+
+      def initialize: (
+        encoding: Privy::Models::EthereumPersonalSignRpcInputParams::encoding,
+        message: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::EthereumPersonalSignRpcInputParams::encoding,
+        message: String
+      }
+
+      type encoding = :"utf-8" | :hex
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        UTF_8: :"utf-8"
+        HEX: :hex
+
+        def self?.values: -> ::Array[Privy::Models::EthereumPersonalSignRpcInputParams::encoding]
+      end
+    end
+  end
+end

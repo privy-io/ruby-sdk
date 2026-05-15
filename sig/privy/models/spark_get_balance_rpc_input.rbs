@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type spark_get_balance_rpc_input =
+      {
+        method_: Privy::Models::SparkGetBalanceRpcInput::method_,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkGetBalanceRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkGetBalanceRpcInput::method_
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkGetBalanceRpcInput::method_,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkGetBalanceRpcInput::method_,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :getBalance
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        GET_BALANCE: :getBalance
+
+        def self?.values: -> ::Array[Privy::Models::SparkGetBalanceRpcInput::method_]
+      end
+    end
+  end
+end

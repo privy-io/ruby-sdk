@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type smart_wallet_configuration_input_enabled =
+      {
+        configured_networks: ::Array[Privy::SmartWalletNetworkConfigurationInput],
+        enabled: Privy::Models::SmartWalletConfigurationInputEnabled::enabled,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        smart_wallet_version: String?
+      }
+
+    class SmartWalletConfigurationInputEnabled < Privy::Internal::Type::BaseModel
+      attr_accessor configured_networks: ::Array[Privy::SmartWalletNetworkConfigurationInput]
+
+      attr_accessor enabled: Privy::Models::SmartWalletConfigurationInputEnabled::enabled
+
+      attr_accessor smart_wallet_type: Privy::Models::smart_wallet_type
+
+      attr_accessor smart_wallet_version: String?
+
+      def initialize: (
+        configured_networks: ::Array[Privy::SmartWalletNetworkConfigurationInput],
+        enabled: Privy::Models::SmartWalletConfigurationInputEnabled::enabled,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        ?smart_wallet_version: String?
+      ) -> void
+
+      def to_hash: -> {
+        configured_networks: ::Array[Privy::SmartWalletNetworkConfigurationInput],
+        enabled: Privy::Models::SmartWalletConfigurationInputEnabled::enabled,
+        smart_wallet_type: Privy::Models::smart_wallet_type,
+        smart_wallet_version: String?
+      }
+
+      type enabled = true
+
+      module Enabled
+        extend Privy::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Privy::Models::SmartWalletConfigurationInputEnabled::enabled]
+      end
+    end
+  end
+end

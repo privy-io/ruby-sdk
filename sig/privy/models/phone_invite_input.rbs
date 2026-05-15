@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type phone_invite_input =
+      { type: Privy::Models::PhoneInviteInput::type_, value: String }
+
+    class PhoneInviteInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::PhoneInviteInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::PhoneInviteInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::PhoneInviteInput::type_,
+        value: String
+      }
+
+      type type_ = :phone
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PHONE: :phone
+
+        def self?.values: -> ::Array[Privy::Models::PhoneInviteInput::type_]
+      end
+    end
+  end
+end

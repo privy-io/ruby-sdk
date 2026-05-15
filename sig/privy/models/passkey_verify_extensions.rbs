@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type passkey_verify_extensions =
+      { app_id: String, cred_props: bool, hmac_create_secret: bool }
+
+    class PasskeyVerifyExtensions < Privy::Internal::Type::BaseModel
+      attr_reader app_id: String?
+
+      def app_id=: (String) -> String
+
+      attr_reader cred_props: bool?
+
+      def cred_props=: (bool) -> bool
+
+      attr_reader hmac_create_secret: bool?
+
+      def hmac_create_secret=: (bool) -> bool
+
+      def initialize: (
+        ?app_id: String,
+        ?cred_props: bool,
+        ?hmac_create_secret: bool
+      ) -> void
+
+      def to_hash: -> {
+        app_id: String,
+        cred_props: bool,
+        hmac_create_secret: bool
+      }
+    end
+  end
+end

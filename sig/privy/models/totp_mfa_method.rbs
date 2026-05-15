@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type totp_mfa_method =
+      { type: Privy::Models::TotpMfaMethod::type_, verified_at: Float }
+
+    class TotpMfaMethod < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::TotpMfaMethod::type_
+
+      attr_accessor verified_at: Float
+
+      def initialize: (
+        type: Privy::Models::TotpMfaMethod::type_,
+        verified_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::TotpMfaMethod::type_,
+        verified_at: Float
+      }
+
+      type type_ = :totp
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TOTP: :totp
+
+        def self?.values: -> ::Array[Privy::Models::TotpMfaMethod::type_]
+      end
+    end
+  end
+end

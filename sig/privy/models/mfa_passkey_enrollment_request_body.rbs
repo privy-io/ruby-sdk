@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    type mfa_passkey_enrollment_request_body =
+      { credential_ids: ::Array[String], remove_for_login: bool }
+
+    class MfaPasskeyEnrollmentRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor credential_ids: ::Array[String]
+
+      attr_reader remove_for_login: bool?
+
+      def remove_for_login=: (bool) -> bool
+
+      def initialize: (
+        credential_ids: ::Array[String],
+        ?remove_for_login: bool
+      ) -> void
+
+      def to_hash: -> {
+        credential_ids: ::Array[String],
+        remove_for_login: bool
+      }
+    end
+  end
+end

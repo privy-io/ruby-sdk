@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type policy_rule_response =
+      {
+        id: String,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String
+      }
+
+    class PolicyRuleResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor action: Privy::Models::policy_action
+
+      attr_accessor conditions: ::Array[Privy::Models::policy_condition]
+
+      attr_accessor method_: Privy::Models::policy_method
+
+      attr_accessor name: String
+
+      def initialize: (
+        id: String,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        action: Privy::Models::policy_action,
+        conditions: ::Array[Privy::Models::policy_condition],
+        method_: Privy::Models::policy_method,
+        name: String
+      }
+    end
+  end
+end

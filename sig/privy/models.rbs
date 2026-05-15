@@ -1,0 +1,1725 @@
+module Privy
+  class AbiParameter = Privy::Models::AbiParameter
+
+  AbiSchema: Privy::Internal::Type::Converter
+
+  class AbiSchemaItem = Privy::Models::AbiSchemaItem
+
+  class AccountBalanceParams = Privy::Models::AccountBalanceParams
+
+  class AccountBalanceResponse = Privy::Models::AccountBalanceResponse
+
+  class AccountDisplayName = Privy::Models::AccountDisplayName
+
+  class AccountResponse = Privy::Models::AccountResponse
+
+  class AccountsDashboardListResponse = Privy::Models::AccountsDashboardListResponse
+
+  class AccountsListResponse = Privy::Models::AccountsListResponse
+
+  class AccountWallet = Privy::Models::AccountWallet
+
+  class AccountWalletConfigurationItem = Privy::Models::AccountWalletConfigurationItem
+
+  AccountWalletIDs: Privy::Internal::Type::Converter
+
+  AccountWalletsConfiguration: Privy::Internal::Type::Converter
+
+  class ActionRequestBodyCondition = Privy::Models::ActionRequestBodyCondition
+
+  AdditionalSignerInput: Privy::Internal::Type::Converter
+
+  class AdditionalSignerItemInput = Privy::Models::AdditionalSignerItemInput
+
+  class Address = Privy::Models::Address
+
+  class Aggregation = Privy::Models::Aggregation
+
+  class AggregationCondition = Privy::Models::AggregationCondition
+
+  class AggregationGroupBy = Privy::Models::AggregationGroupBy
+
+  class AggregationInput = Privy::Models::AggregationInput
+
+  module AggregationMethod = Privy::Models::AggregationMethod
+
+  class AggregationMetric = Privy::Models::AggregationMetric
+
+  class AggregationWindow = Privy::Models::AggregationWindow
+
+  class AlchemyPaymasterContext = Privy::Models::AlchemyPaymasterContext
+
+  class AllowlistDeletionResponse = Privy::Models::AllowlistDeletionResponse
+
+  class AllowlistEntry = Privy::Models::AllowlistEntry
+
+  module AmountType = Privy::Models::AmountType
+
+  class AnalyticsEventInput = Privy::Models::AnalyticsEventInput
+
+  class AppGetGasSpendParams = Privy::Models::AppGetGasSpendParams
+
+  class AppGetParams = Privy::Models::AppGetParams
+
+  class AppGetTestCredentialsParams = Privy::Models::AppGetTestCredentialsParams
+
+  class AppResponse = Privy::Models::AppResponse
+
+  module Apps = Privy::Models::Apps
+
+  class AssetAccountWithBalance = Privy::Models::AssetAccountWithBalance
+
+  class AuthenticatedUser = Privy::Models::AuthenticatedUser
+
+  class AuthenticateJwtInput = Privy::Models::AuthenticateJwtInput
+
+  class AuthenticateMode = Privy::Models::AuthenticateMode
+
+  module AuthenticateModeOption = Privy::Models::AuthenticateModeOption
+
+  class AuthenticateSiweInput = Privy::Models::AuthenticateSiweInput
+
+  class AuthenticateSiwsInput = Privy::Models::AuthenticateSiwsInput
+
+  class AuthorizationKeyDashboardResponse = Privy::Models::AuthorizationKeyDashboardResponse
+
+  class AuthorizationKeyResponse = Privy::Models::AuthorizationKeyResponse
+
+  module AuthorizationKeyRole = Privy::Models::AuthorizationKeyRole
+
+  class BalanceAsset = Privy::Models::BalanceAsset
+
+  class BalanceAssetByChain = Privy::Models::BalanceAssetByChain
+
+  class BalanceResponse = Privy::Models::BalanceResponse
+
+  class BaseActionResult = Privy::Models::BaseActionResult
+
+  class BaseIntentResponse = Privy::Models::BaseIntentResponse
+
+  class BridgeBrlFiatVirtualAccountDepositInstructions = Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
+
+  class BridgeCryptoDepositMetadata = Privy::Models::BridgeCryptoDepositMetadata
+
+  class BridgeCryptoTransferMetadata = Privy::Models::BridgeCryptoTransferMetadata
+
+  module BridgeDestinationAsset = Privy::Models::BridgeDestinationAsset
+
+  class BridgeEurFiatVirtualAccountDepositInstructions = Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions
+
+  class BridgeFiatCustomerResponse = Privy::Models::BridgeFiatCustomerResponse
+
+  class BridgeFiatDepositMetadata = Privy::Models::BridgeFiatDepositMetadata
+
+  class BridgeFiatRejectionReason = Privy::Models::BridgeFiatRejectionReason
+
+  class BridgeFiatTransferMetadata = Privy::Models::BridgeFiatTransferMetadata
+
+  module BridgeFiatVirtualAccountDepositInstructions = Privy::Models::BridgeFiatVirtualAccountDepositInstructions
+
+  class BridgeFiatVirtualAccountDestination = Privy::Models::BridgeFiatVirtualAccountDestination
+
+  class BridgeFiatVirtualAccountRequest = Privy::Models::BridgeFiatVirtualAccountRequest
+
+  class BridgeFiatVirtualAccountResponse = Privy::Models::BridgeFiatVirtualAccountResponse
+
+  class BridgeFiatVirtualAccountSource = Privy::Models::BridgeFiatVirtualAccountSource
+
+  class BridgeGbpFiatVirtualAccountDepositInstructions = Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions
+
+  module BridgeMetadata = Privy::Models::BridgeMetadata
+
+  class BridgeMxnFiatVirtualAccountDepositInstructions = Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions
+
+  module BridgeOnrampProvider = Privy::Models::BridgeOnrampProvider
+
+  class BridgeRefundMetadata = Privy::Models::BridgeRefundMetadata
+
+  class BridgeSandboxFiatCustomerResponse = Privy::Models::BridgeSandboxFiatCustomerResponse
+
+  class BridgeSandboxFiatVirtualAccountRequest = Privy::Models::BridgeSandboxFiatVirtualAccountRequest
+
+  class BridgeSandboxFiatVirtualAccountResponse = Privy::Models::BridgeSandboxFiatVirtualAccountResponse
+
+  module BridgeSourceAsset = Privy::Models::BridgeSourceAsset
+
+  class BridgeStaticMemoDepositMetadata = Privy::Models::BridgeStaticMemoDepositMetadata
+
+  class BridgeTransferRefundMetadata = Privy::Models::BridgeTransferRefundMetadata
+
+  class BridgeUsdFiatVirtualAccountDepositInstructions = Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions
+
+  class Caip2 = Privy::Models::Caip2
+
+  class Caip2ChainID = Privy::Models::Caip2ChainID
+
+  module CoinbaseBlockchain = Privy::Models::CoinbaseBlockchain
+
+  module CoinbaseEthereumAsset = Privy::Models::CoinbaseEthereumAsset
+
+  class CoinbaseOnRampEthereumAddress = Privy::Models::CoinbaseOnRampEthereumAddress
+
+  class CoinbaseOnRampInitEthereumInput = Privy::Models::CoinbaseOnRampInitEthereumInput
+
+  module CoinbaseOnRampInitInput = Privy::Models::CoinbaseOnRampInitInput
+
+  class CoinbaseOnRampInitResponse = Privy::Models::CoinbaseOnRampInitResponse
+
+  class CoinbaseOnRampInitSolanaInput = Privy::Models::CoinbaseOnRampInitSolanaInput
+
+  class CoinbaseOnRampSolanaAddress = Privy::Models::CoinbaseOnRampSolanaAddress
+
+  module CoinbaseOnRampStatus = Privy::Models::CoinbaseOnRampStatus
+
+  class CoinbaseOnRampStatusResponse = Privy::Models::CoinbaseOnRampStatusResponse
+
+  module CoinbaseSolanaAsset = Privy::Models::CoinbaseSolanaAsset
+
+  module ConditionOperator = Privy::Models::ConditionOperator
+
+  class ConditionSet = Privy::Models::ConditionSet
+
+  class ConditionSetAuthorizationHeaders = Privy::Models::ConditionSetAuthorizationHeaders
+
+  class ConditionSetItem = Privy::Models::ConditionSetItem
+
+  class ConditionSetItemRequestParams = Privy::Models::ConditionSetItemRequestParams
+
+  ConditionSetItems: Privy::Internal::Type::Converter
+
+  ConditionSetItemsRequestBody: Privy::Internal::Type::Converter
+
+  class ConditionSetItemsResponse = Privy::Models::ConditionSetItemsResponse
+
+  class ConditionSetItemValueInput = Privy::Models::ConditionSetItemValueInput
+
+  class ConditionSetRequestBody = Privy::Models::ConditionSetRequestBody
+
+  class ConditionSetRequestParams = Privy::Models::ConditionSetRequestParams
+
+  module ConditionValue = Privy::Models::ConditionValue
+
+  class CreateAccountFromWalletIDsInput = Privy::Models::CreateAccountFromWalletIDsInput
+
+  class CreateAccountFromWalletsConfigurationInput = Privy::Models::CreateAccountFromWalletsConfigurationInput
+
+  module CreateAccountInput = Privy::Models::CreateAccountInput
+
+  class CreateOrganizationSecretResponse = Privy::Models::CreateOrganizationSecretResponse
+
+  class CreateOrUpdateFiatCustomerRequestInput = Privy::Models::CreateOrUpdateFiatCustomerRequestInput
+
+  class CrossAppConnection = Privy::Models::CrossAppConnection
+
+  class CrossAppConnectionsResponse = Privy::Models::CrossAppConnectionsResponse
+
+  class CrossAppEmbeddedWallet = Privy::Models::CrossAppEmbeddedWallet
+
+  class CrossAppSmartWallet = Privy::Models::CrossAppSmartWallet
+
+  class CryptoCurrencyCode = Privy::Models::CryptoCurrencyCode
+
+  class Currency = Privy::Models::Currency
+
+  class CurrencyAmount = Privy::Models::CurrencyAmount
+
+  module CurrencyAsset = Privy::Models::CurrencyAsset
+
+  module CurveSigningChainType = Privy::Models::CurveSigningChainType
+
+  module CurveType = Privy::Models::CurveType
+
+  class CustodialWallet = Privy::Models::CustodialWallet
+
+  module CustodialWalletChainType = Privy::Models::CustodialWalletChainType
+
+  class CustodialWalletCreateInput = Privy::Models::CustodialWalletCreateInput
+
+  module CustodialWalletProvider = Privy::Models::CustodialWalletProvider
+
+  type custom_metadata_item = Privy::Models::custom_metadata_item
+
+  class CustomJwtAuthenticateRequestBody = Privy::Models::CustomJwtAuthenticateRequestBody
+
+  class CustomJwtLinkRequestBody = Privy::Models::CustomJwtLinkRequestBody
+
+  CustomMetadata: Privy::Internal::Type::Converter
+
+  class CustomOAuthProviderID = Privy::Models::CustomOAuthProviderID
+
+  class CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
+
+  class EarnAsset = Privy::Models::EarnAsset
+
+  class EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
+
+  class EarnDepositRequestBody = Privy::Models::EarnDepositRequestBody
+
+  class EarnIncentiveClaimActionResponse = Privy::Models::EarnIncentiveClaimActionResponse
+
+  class EarnIncentiveClaimRequestBody = Privy::Models::EarnIncentiveClaimRequestBody
+
+  class EarnIncetiveClaimRewardEntry = Privy::Models::EarnIncetiveClaimRewardEntry
+
+  class EarnWithdrawActionResponse = Privy::Models::EarnWithdrawActionResponse
+
+  class EarnWithdrawRequestBody = Privy::Models::EarnWithdrawRequestBody
+
+  class EmailDomain = Privy::Models::EmailDomain
+
+  class EmailDomainInviteInput = Privy::Models::EmailDomainInviteInput
+
+  class EmailInviteInput = Privy::Models::EmailInviteInput
+
+  class EmbeddedWalletChainConfig = Privy::Models::EmbeddedWalletChainConfig
+
+  class EmbeddedWalletConfigSchema = Privy::Models::EmbeddedWalletConfigSchema
+
+  module EmbeddedWalletCreateOnLogin = Privy::Models::EmbeddedWalletCreateOnLogin
+
+  class EmbeddedWalletCreationInput = Privy::Models::EmbeddedWalletCreationInput
+
+  class EmbeddedWalletInputSchema = Privy::Models::EmbeddedWalletInputSchema
+
+  module EmbeddedWalletMode = Privy::Models::EmbeddedWalletMode
+
+  module EmbeddedWalletRecoveryMethod = Privy::Models::EmbeddedWalletRecoveryMethod
+
+  class Ethereum7702AuthorizationCondition = Privy::Models::Ethereum7702AuthorizationCondition
+
+  class EthereumCalldataCondition = Privy::Models::EthereumCalldataCondition
+
+  class EthereumEarnPositionQuery = Privy::Models::EthereumEarnPositionQuery
+
+  class EthereumEarnPositionResponse = Privy::Models::EthereumEarnPositionResponse
+
+  module EthereumEarnProvider = Privy::Models::EthereumEarnProvider
+
+  class EthereumEarnVaultDetailsResponse = Privy::Models::EthereumEarnVaultDetailsResponse
+
+  class EthereumPersonalSignRpcInput = Privy::Models::EthereumPersonalSignRpcInput
+
+  class EthereumPersonalSignRpcInputParams = Privy::Models::EthereumPersonalSignRpcInputParams
+
+  class EthereumPersonalSignRpcResponse = Privy::Models::EthereumPersonalSignRpcResponse
+
+  class EthereumPersonalSignRpcResponseData = Privy::Models::EthereumPersonalSignRpcResponseData
+
+  module EthereumRpcInput = Privy::Models::EthereumRpcInput
+
+  module EthereumRpcResponse = Privy::Models::EthereumRpcResponse
+
+  class EthereumSecp256k1SignRpcInput = Privy::Models::EthereumSecp256k1SignRpcInput
+
+  class EthereumSecp256k1SignRpcInputParams = Privy::Models::EthereumSecp256k1SignRpcInputParams
+
+  class EthereumSecp256k1SignRpcResponse = Privy::Models::EthereumSecp256k1SignRpcResponse
+
+  class EthereumSecp256k1SignRpcResponseData = Privy::Models::EthereumSecp256k1SignRpcResponseData
+
+  class EthereumSendCallsCall = Privy::Models::EthereumSendCallsCall
+
+  class EthereumSendCallsRpcInput = Privy::Models::EthereumSendCallsRpcInput
+
+  class EthereumSendCallsRpcInputParams = Privy::Models::EthereumSendCallsRpcInputParams
+
+  class EthereumSendCallsRpcResponse = Privy::Models::EthereumSendCallsRpcResponse
+
+  class EthereumSendCallsRpcResponseData = Privy::Models::EthereumSendCallsRpcResponseData
+
+  class EthereumSendTransactionRpcInput = Privy::Models::EthereumSendTransactionRpcInput
+
+  class EthereumSendTransactionRpcInputParams = Privy::Models::EthereumSendTransactionRpcInputParams
+
+  class EthereumSendTransactionRpcResponse = Privy::Models::EthereumSendTransactionRpcResponse
+
+  class EthereumSendTransactionRpcResponseData = Privy::Models::EthereumSendTransactionRpcResponseData
+
+  class EthereumSign7702Authorization = Privy::Models::EthereumSign7702Authorization
+
+  class EthereumSign7702AuthorizationRpcInput = Privy::Models::EthereumSign7702AuthorizationRpcInput
+
+  class EthereumSign7702AuthorizationRpcInputParams = Privy::Models::EthereumSign7702AuthorizationRpcInputParams
+
+  class EthereumSign7702AuthorizationRpcResponse = Privy::Models::EthereumSign7702AuthorizationRpcResponse
+
+  class EthereumSign7702AuthorizationRpcResponseData = Privy::Models::EthereumSign7702AuthorizationRpcResponseData
+
+  class EthereumSignTransactionRpcInput = Privy::Models::EthereumSignTransactionRpcInput
+
+  class EthereumSignTransactionRpcInputParams = Privy::Models::EthereumSignTransactionRpcInputParams
+
+  class EthereumSignTransactionRpcResponse = Privy::Models::EthereumSignTransactionRpcResponse
+
+  class EthereumSignTransactionRpcResponseData = Privy::Models::EthereumSignTransactionRpcResponseData
+
+  class EthereumSignTypedDataRpcInput = Privy::Models::EthereumSignTypedDataRpcInput
+
+  class EthereumSignTypedDataRpcInputParams = Privy::Models::EthereumSignTypedDataRpcInputParams
+
+  class EthereumSignTypedDataRpcResponse = Privy::Models::EthereumSignTypedDataRpcResponse
+
+  class EthereumSignTypedDataRpcResponseData = Privy::Models::EthereumSignTypedDataRpcResponseData
+
+  class EthereumSignUserOperationRpcInput = Privy::Models::EthereumSignUserOperationRpcInput
+
+  class EthereumSignUserOperationRpcInputParams = Privy::Models::EthereumSignUserOperationRpcInputParams
+
+  class EthereumSignUserOperationRpcResponse = Privy::Models::EthereumSignUserOperationRpcResponse
+
+  class EthereumSignUserOperationRpcResponseData = Privy::Models::EthereumSignUserOperationRpcResponseData
+
+  class EthereumTransactionCondition = Privy::Models::EthereumTransactionCondition
+
+  class EthereumTypedDataDomainCondition = Privy::Models::EthereumTypedDataDomainCondition
+
+  class EthereumTypedDataInput = Privy::Models::EthereumTypedDataInput
+
+  class EthereumTypedDataMessageCondition = Privy::Models::EthereumTypedDataMessageCondition
+
+  class EthereumVaultDetailsInput = Privy::Models::EthereumVaultDetailsInput
+
+  class EthereumVaultDetailsResponse = Privy::Models::EthereumVaultDetailsResponse
+
+  class EthereumVaultPosition = Privy::Models::EthereumVaultPosition
+
+  class EthereumVaultResponse = Privy::Models::EthereumVaultResponse
+
+  class EthereumYieldClaimIDInput = Privy::Models::EthereumYieldClaimIDInput
+
+  class EthereumYieldClaimInput = Privy::Models::EthereumYieldClaimInput
+
+  class EthereumYieldClaimResponse = Privy::Models::EthereumYieldClaimResponse
+
+  class EthereumYieldClaimReward = Privy::Models::EthereumYieldClaimReward
+
+  class EthereumYieldDepositInput = Privy::Models::EthereumYieldDepositInput
+
+  class EthereumYieldPositionResponse = Privy::Models::EthereumYieldPositionResponse
+
+  class EthereumYieldPositionsInput = Privy::Models::EthereumYieldPositionsInput
+
+  module EthereumYieldProvider = Privy::Models::EthereumYieldProvider
+
+  class EthereumYieldSweepIDInput = Privy::Models::EthereumYieldSweepIDInput
+
+  class EthereumYieldSweepResponse = Privy::Models::EthereumYieldSweepResponse
+
+  module EthereumYieldSweepStatus = Privy::Models::EthereumYieldSweepStatus
+
+  module EthereumYieldSweepType = Privy::Models::EthereumYieldSweepType
+
+  class EthereumYieldWithdrawInput = Privy::Models::EthereumYieldWithdrawInput
+
+  class EvmCaip2ChainID = Privy::Models::EvmCaip2ChainID
+
+  class EvmTransactionWalletActionStep = Privy::Models::EvmTransactionWalletActionStep
+
+  class EvmUserOperationWalletActionStep = Privy::Models::EvmUserOperationWalletActionStep
+
+  module EvmWalletActionStepStatus = Privy::Models::EvmWalletActionStepStatus
+
+  class ExportPrivateKeyRpcInput = Privy::Models::ExportPrivateKeyRpcInput
+
+  class ExportPrivateKeyRpcResponse = Privy::Models::ExportPrivateKeyRpcResponse
+
+  class ExportSeedPhraseRpcInput = Privy::Models::ExportSeedPhraseRpcInput
+
+  class ExportSeedPhraseRpcResponse = Privy::Models::ExportSeedPhraseRpcResponse
+
+  module ExportType = Privy::Models::ExportType
+
+  module ExtendedChainType = Privy::Models::ExtendedChainType
+
+  module ExternalOAuthProviderID = Privy::Models::ExternalOAuthProviderID
+
+  class ExternalTransactionWalletActionStep = Privy::Models::ExternalTransactionWalletActionStep
+
+  module ExternalTransactionWalletActionStepStatus = Privy::Models::ExternalTransactionWalletActionStepStatus
+
+  class FailureReason = Privy::Models::FailureReason
+
+  class FarcasterAuthenticateInput = Privy::Models::FarcasterAuthenticateInput
+
+  class FarcasterAuthenticateRequestBody = Privy::Models::FarcasterAuthenticateRequestBody
+
+  class FarcasterConnectInitResponse = Privy::Models::FarcasterConnectInitResponse
+
+  class FarcasterConnectInitResponseBody = Privy::Models::FarcasterConnectInitResponseBody
+
+  class FarcasterConnectStatusCompletedResponse = Privy::Models::FarcasterConnectStatusCompletedResponse
+
+  class FarcasterConnectStatusCompletedResponseBody = Privy::Models::FarcasterConnectStatusCompletedResponseBody
+
+  class FarcasterConnectStatusPendingResponse = Privy::Models::FarcasterConnectStatusPendingResponse
+
+  class FarcasterConnectStatusPendingResponseBody = Privy::Models::FarcasterConnectStatusPendingResponseBody
+
+  class FarcasterInitInput = Privy::Models::FarcasterInitInput
+
+  class FarcasterInitRequestBody = Privy::Models::FarcasterInitRequestBody
+
+  class FarcasterLinkInput = Privy::Models::FarcasterLinkInput
+
+  class FarcasterLinkRequestBody = Privy::Models::FarcasterLinkRequestBody
+
+  class FarcasterSignerApproved = Privy::Models::FarcasterSignerApproved
+
+  class FarcasterSignerInitPendingApproval = Privy::Models::FarcasterSignerInitPendingApproval
+
+  class FarcasterSignerInitRequestBody = Privy::Models::FarcasterSignerInitRequestBody
+
+  module FarcasterSignerInitResponseBody = Privy::Models::FarcasterSignerInitResponseBody
+
+  class FarcasterSignerRevoked = Privy::Models::FarcasterSignerRevoked
+
+  class FarcasterSignerStatusPendingApproval = Privy::Models::FarcasterSignerStatusPendingApproval
+
+  module FarcasterSignerStatusResponseBody = Privy::Models::FarcasterSignerStatusResponseBody
+
+  class FarcasterUnlinkInput = Privy::Models::FarcasterUnlinkInput
+
+  class FarcasterUnlinkRequestBody = Privy::Models::FarcasterUnlinkRequestBody
+
+  class FarcasterV2AuthenticateInput = Privy::Models::FarcasterV2AuthenticateInput
+
+  class FarcasterV2AuthenticateRequestBody = Privy::Models::FarcasterV2AuthenticateRequestBody
+
+  class FarcasterV2InitInput = Privy::Models::FarcasterV2InitInput
+
+  class FarcasterV2InitRequestBody = Privy::Models::FarcasterV2InitRequestBody
+
+  class FarcasterV2InitResponse = Privy::Models::FarcasterV2InitResponse
+
+  class FarcasterV2InitResponseBody = Privy::Models::FarcasterV2InitResponseBody
+
+  class FiatAmount = Privy::Models::FiatAmount
+
+  class FiatCurrencyCode = Privy::Models::FiatCurrencyCode
+
+  module FiatCustomerResponse = Privy::Models::FiatCustomerResponse
+
+  class FiatOnrampDestination = Privy::Models::FiatOnrampDestination
+
+  module FiatOnrampEnvironment = Privy::Models::FiatOnrampEnvironment
+
+  module FiatOnrampProvider = Privy::Models::FiatOnrampProvider
+
+  class FiatOnrampProviderError = Privy::Models::FiatOnrampProviderError
+
+  class FiatOnrampQuote = Privy::Models::FiatOnrampQuote
+
+  class FiatOnrampSource = Privy::Models::FiatOnrampSource
+
+  module FiatOnrampTransactionStatus = Privy::Models::FiatOnrampTransactionStatus
+
+  module FiatVirtualAccountRequest = Privy::Models::FiatVirtualAccountRequest
+
+  module FiatVirtualAccountResponse = Privy::Models::FiatVirtualAccountResponse
+
+  module FirstClassChainType = Privy::Models::FirstClassChainType
+
+  class FundingConfigResponseSchema = Privy::Models::FundingConfigResponseSchema
+
+  module FundingMethodEnum = Privy::Models::FundingMethodEnum
+
+  class FundingOption = Privy::Models::FundingOption
+
+  class FundsDepositedWebhookPayload = Privy::Models::FundsDepositedWebhookPayload
+
+  class FundsWithdrawnWebhookPayload = Privy::Models::FundsWithdrawnWebhookPayload
+
+  module GasSpendCurrency = Privy::Models::GasSpendCurrency
+
+  class GasSpendRequestBody = Privy::Models::GasSpendRequestBody
+
+  class GasSpendResponseBody = Privy::Models::GasSpendResponseBody
+
+  class GasSponsorshipConfiguration = Privy::Models::GasSponsorshipConfiguration
+
+  class GasSponsorshipConfigurationInput = Privy::Models::GasSponsorshipConfigurationInput
+
+  class GetByWalletAddressRequestBody = Privy::Models::GetByWalletAddressRequestBody
+
+  class GetFiatCustomerRequestInput = Privy::Models::GetFiatCustomerRequestInput
+
+  class GetFiatOnrampQuotesInput = Privy::Models::GetFiatOnrampQuotesInput
+
+  class GetFiatOnrampQuotesResponse = Privy::Models::GetFiatOnrampQuotesResponse
+
+  class GetFiatOnrampTransactionStatusInput = Privy::Models::GetFiatOnrampTransactionStatusInput
+
+  class GetFiatOnrampTransactionStatusResponse = Privy::Models::GetFiatOnrampTransactionStatusResponse
+
+  class GetFiatOnrampURLInput = Privy::Models::GetFiatOnrampURLInput
+
+  class GetFiatOnrampURLResponse = Privy::Models::GetFiatOnrampURLResponse
+
+  class GuestAuthenticateRequestBody = Privy::Models::GuestAuthenticateRequestBody
+
+  class HDInitInput = Privy::Models::HDInitInput
+
+  class HDPath = Privy::Models::HDPath
+
+  class HDSubmitInput = Privy::Models::HDSubmitInput
+
+  class Hex = Privy::Models::Hex
+
+  module HpkeAeadAlgorithm = Privy::Models::HpkeAeadAlgorithm
+
+  module HpkeEncryption = Privy::Models::HpkeEncryption
+
+  class HpkeImportConfig = Privy::Models::HpkeImportConfig
+
+  module ICloudClientType = Privy::Models::ICloudClientType
+
+  class IntentAuthorization = Privy::Models::IntentAuthorization
+
+  module IntentAuthorizationKeyQuorumMember = Privy::Models::IntentAuthorizationKeyQuorumMember
+
+  module IntentAuthorizationMember = Privy::Models::IntentAuthorizationMember
+
+  class IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
+
+  class IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
+
+  class IntentCreatePolicyRuleParams = Privy::Models::IntentCreatePolicyRuleParams
+
+  class IntentCreationHeaders = Privy::Models::IntentCreationHeaders
+
+  class IntentDeletePolicyRuleParams = Privy::Models::IntentDeletePolicyRuleParams
+
+  class IntentExecutedWebhookPayload = Privy::Models::IntentExecutedWebhookPayload
+
+  class IntentFailedWebhookPayload = Privy::Models::IntentFailedWebhookPayload
+
+  class IntentGetParams = Privy::Models::IntentGetParams
+
+  class IntentListParams = Privy::Models::IntentListParams
+
+  class IntentRejectedWebhookPayload = Privy::Models::IntentRejectedWebhookPayload
+
+  module IntentResponse = Privy::Models::IntentResponse
+
+  class IntentRpcParams = Privy::Models::IntentRpcParams
+
+  module IntentStatus = Privy::Models::IntentStatus
+
+  class IntentTransferParams = Privy::Models::IntentTransferParams
+
+  module IntentType = Privy::Models::IntentType
+
+  class IntentUpdateKeyQuorumParams = Privy::Models::IntentUpdateKeyQuorumParams
+
+  class IntentUpdatePolicyParams = Privy::Models::IntentUpdatePolicyParams
+
+  class IntentUpdatePolicyRuleParams = Privy::Models::IntentUpdatePolicyRuleParams
+
+  class IntentUpdateWalletParams = Privy::Models::IntentUpdateWalletParams
+
+  class KeyQuorum = Privy::Models::KeyQuorum
+
+  class KeyQuorumAuthorizationHeaders = Privy::Models::KeyQuorumAuthorizationHeaders
+
+  class KeyQuorumCreateParams = Privy::Models::KeyQuorumCreateParams
+
+  class KeyQuorumCreateRequestBody = Privy::Models::KeyQuorumCreateRequestBody
+
+  class KeyQuorumDeleteParams = Privy::Models::KeyQuorumDeleteParams
+
+  class KeyQuorumGetParams = Privy::Models::KeyQuorumGetParams
+
+  class KeyQuorumID = Privy::Models::KeyQuorumID
+
+  class KeyQuorumIntentResponse = Privy::Models::KeyQuorumIntentResponse
+
+  class KeyQuorumUpdateParams = Privy::Models::KeyQuorumUpdateParams
+
+  class KeyQuorumUpdateRequestBody = Privy::Models::KeyQuorumUpdateRequestBody
+
+  class KrakenEmbedCancelCustomOrderInput = Privy::Models::KrakenEmbedCancelCustomOrderInput
+
+  class KrakenEmbedCancelCustomOrderPath = Privy::Models::KrakenEmbedCancelCustomOrderPath
+
+  class KrakenEmbedCancelCustomOrderResponse = Privy::Models::KrakenEmbedCancelCustomOrderResponse
+
+  class KrakenEmbedCancelCustomOrderResult = Privy::Models::KrakenEmbedCancelCustomOrderResult
+
+  class KrakenEmbedCreateCustomOrderInput = Privy::Models::KrakenEmbedCreateCustomOrderInput
+
+  class KrakenEmbedCreateCustomOrderResponse = Privy::Models::KrakenEmbedCreateCustomOrderResponse
+
+  class KrakenEmbedCreateCustomOrderResult = Privy::Models::KrakenEmbedCreateCustomOrderResult
+
+  class KrakenEmbedCurrentDayPnl = Privy::Models::KrakenEmbedCurrentDayPnl
+
+  class KrakenEmbedCustomOrder = Privy::Models::KrakenEmbedCustomOrder
+
+  class KrakenEmbedCustomOrderAction = Privy::Models::KrakenEmbedCustomOrderAction
+
+  class KrakenEmbedCustomOrderAmount = Privy::Models::KrakenEmbedCustomOrderAmount
+
+  class KrakenEmbedCustomOrderOccurrence = Privy::Models::KrakenEmbedCustomOrderOccurrence
+
+  class KrakenEmbedCustomOrderOccurrenceExecutedAction = Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
+
+  class KrakenEmbedCustomOrderOccurrenceTrigger = Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger
+
+  class KrakenEmbedCustomOrderQuoteAsset = Privy::Models::KrakenEmbedCustomOrderQuoteAsset
+
+  class KrakenEmbedCustomOrderStatus = Privy::Models::KrakenEmbedCustomOrderStatus
+
+  class KrakenEmbedCustomOrderTrigger = Privy::Models::KrakenEmbedCustomOrderTrigger
+
+  class KrakenEmbedGetAssetListQueryParamsSchema = Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
+
+  class KrakenEmbedGetCustomOrderHistoryQueryParams = Privy::Models::KrakenEmbedGetCustomOrderHistoryQueryParams
+
+  class KrakenEmbedGetCustomOrderHistoryResponse = Privy::Models::KrakenEmbedGetCustomOrderHistoryResponse
+
+  class KrakenEmbedGetCustomOrderHistoryResult = Privy::Models::KrakenEmbedGetCustomOrderHistoryResult
+
+  class KrakenEmbedGetCustomOrderQueryParams = Privy::Models::KrakenEmbedGetCustomOrderQueryParams
+
+  class KrakenEmbedGetCustomOrderResponse = Privy::Models::KrakenEmbedGetCustomOrderResponse
+
+  class KrakenEmbedGetCustomOrderResult = Privy::Models::KrakenEmbedGetCustomOrderResult
+
+  class KrakenEmbedGetPortfolioDetailsQueryParamsSchema = Privy::Models::KrakenEmbedGetPortfolioDetailsQueryParamsSchema
+
+  class KrakenEmbedGetPortfolioSummaryQueryParams = Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams
+
+  class KrakenEmbedGetPortfolioSummaryResponse = Privy::Models::KrakenEmbedGetPortfolioSummaryResponse
+
+  class KrakenEmbedGetPortfolioTransactionsQueryParamsSchema = Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema
+
+  class KrakenEmbedGetQuoteQueryParams = Privy::Models::KrakenEmbedGetQuoteQueryParams
+
+  class KrakenEmbedListCustomOrdersQueryParams = Privy::Models::KrakenEmbedListCustomOrdersQueryParams
+
+  class KrakenEmbedListCustomOrdersResponse = Privy::Models::KrakenEmbedListCustomOrdersResponse
+
+  class KrakenEmbedListCustomOrdersResult = Privy::Models::KrakenEmbedListCustomOrdersResult
+
+  class KrakenEmbedQuoteCancelledWebhookPayload = Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload
+
+  class KrakenEmbedQuoteExecutedWebhookPayload = Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload
+
+  class KrakenEmbedQuoteExecutionFailedWebhookPayload = Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload
+
+  class KrakenEmbedStartAddressMetadata = Privy::Models::KrakenEmbedStartAddressMetadata
+
+  class KrakenEmbedStartAddressVerificationURLInput = Privy::Models::KrakenEmbedStartAddressVerificationURLInput
+
+  class KrakenEmbedStartIdentityInfo = Privy::Models::KrakenEmbedStartIdentityInfo
+
+  class KrakenEmbedStartIdentityMetadata = Privy::Models::KrakenEmbedStartIdentityMetadata
+
+  class KrakenEmbedStartIdentityVerificationURLInput = Privy::Models::KrakenEmbedStartIdentityVerificationURLInput
+
+  class KrakenEmbedStartLivenessVerificationURLInput = Privy::Models::KrakenEmbedStartLivenessVerificationURLInput
+
+  class KrakenEmbedStartVerificationDebug = Privy::Models::KrakenEmbedStartVerificationDebug
+
+  module KrakenEmbedStartVerificationURLInput = Privy::Models::KrakenEmbedStartVerificationURLInput
+
+  class KrakenEmbedStartVerificationURLResponse = Privy::Models::KrakenEmbedStartVerificationURLResponse
+
+  class KrakenEmbedStartVerificationURLResult = Privy::Models::KrakenEmbedStartVerificationURLResult
+
+  class KrakenEmbedUserClosedWebhookPayload = Privy::Models::KrakenEmbedUserClosedWebhookPayload
+
+  class KrakenEmbedUserDisabledWebhookPayload = Privy::Models::KrakenEmbedUserDisabledWebhookPayload
+
+  class KrakenEmbedUserVerifiedWebhookPayload = Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
+
+  module LinkedAccount = Privy::Models::LinkedAccount
+
+  class LinkedAccountAppleInput = Privy::Models::LinkedAccountAppleInput
+
+  class LinkedAccountAppleOAuth = Privy::Models::LinkedAccountAppleOAuth
+
+  class LinkedAccountAuthorizationKey = Privy::Models::LinkedAccountAuthorizationKey
+
+  class LinkedAccountBaseWallet = Privy::Models::LinkedAccountBaseWallet
+
+  class LinkedAccountBitcoinSegwitEmbeddedWallet = Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet
+
+  class LinkedAccountBitcoinTaprootEmbeddedWallet = Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet
+
+  class LinkedAccountCrossApp = Privy::Models::LinkedAccountCrossApp
+
+  class LinkedAccountCurveSigningEmbeddedWallet = Privy::Models::LinkedAccountCurveSigningEmbeddedWallet
+
+  class LinkedAccountCustomJwt = Privy::Models::LinkedAccountCustomJwt
+
+  class LinkedAccountCustomJwtInput = Privy::Models::LinkedAccountCustomJwtInput
+
+  class LinkedAccountCustomOAuth = Privy::Models::LinkedAccountCustomOAuth
+
+  class LinkedAccountDiscordInput = Privy::Models::LinkedAccountDiscordInput
+
+  class LinkedAccountDiscordOAuth = Privy::Models::LinkedAccountDiscordOAuth
+
+  class LinkedAccountEmail = Privy::Models::LinkedAccountEmail
+
+  class LinkedAccountEmailInput = Privy::Models::LinkedAccountEmailInput
+
+  module LinkedAccountEmbeddedWallet = Privy::Models::LinkedAccountEmbeddedWallet
+
+  module LinkedAccountEmbeddedWalletWithID = Privy::Models::LinkedAccountEmbeddedWalletWithID
+
+  class LinkedAccountEthereum = Privy::Models::LinkedAccountEthereum
+
+  class LinkedAccountEthereumEmbeddedWallet = Privy::Models::LinkedAccountEthereumEmbeddedWallet
+
+  class LinkedAccountFarcaster = Privy::Models::LinkedAccountFarcaster
+
+  class LinkedAccountFarcasterInput = Privy::Models::LinkedAccountFarcasterInput
+
+  class LinkedAccountGitHubInput = Privy::Models::LinkedAccountGitHubInput
+
+  class LinkedAccountGitHubOAuth = Privy::Models::LinkedAccountGitHubOAuth
+
+  class LinkedAccountGoogleInput = Privy::Models::LinkedAccountGoogleInput
+
+  class LinkedAccountGoogleOAuth = Privy::Models::LinkedAccountGoogleOAuth
+
+  module LinkedAccountInput = Privy::Models::LinkedAccountInput
+
+  class LinkedAccountInstagramInput = Privy::Models::LinkedAccountInstagramInput
+
+  class LinkedAccountInstagramOAuth = Privy::Models::LinkedAccountInstagramOAuth
+
+  class LinkedAccountLineInput = Privy::Models::LinkedAccountLineInput
+
+  class LinkedAccountLineOAuth = Privy::Models::LinkedAccountLineOAuth
+
+  class LinkedAccountLinkedInInput = Privy::Models::LinkedAccountLinkedInInput
+
+  class LinkedAccountLinkedInOAuth = Privy::Models::LinkedAccountLinkedInOAuth
+
+  class LinkedAccountPasskey = Privy::Models::LinkedAccountPasskey
+
+  class LinkedAccountPasskeyInput = Privy::Models::LinkedAccountPasskeyInput
+
+  class LinkedAccountPhone = Privy::Models::LinkedAccountPhone
+
+  class LinkedAccountPhoneInput = Privy::Models::LinkedAccountPhoneInput
+
+  class LinkedAccountSmartWallet = Privy::Models::LinkedAccountSmartWallet
+
+  class LinkedAccountSolana = Privy::Models::LinkedAccountSolana
+
+  class LinkedAccountSolanaEmbeddedWallet = Privy::Models::LinkedAccountSolanaEmbeddedWallet
+
+  class LinkedAccountSpotifyInput = Privy::Models::LinkedAccountSpotifyInput
+
+  class LinkedAccountSpotifyOAuth = Privy::Models::LinkedAccountSpotifyOAuth
+
+  class LinkedAccountTelegram = Privy::Models::LinkedAccountTelegram
+
+  class LinkedAccountTelegramInput = Privy::Models::LinkedAccountTelegramInput
+
+  class LinkedAccountTiktokInput = Privy::Models::LinkedAccountTiktokInput
+
+  class LinkedAccountTiktokOAuth = Privy::Models::LinkedAccountTiktokOAuth
+
+  class LinkedAccountTwitchInput = Privy::Models::LinkedAccountTwitchInput
+
+  class LinkedAccountTwitchOAuth = Privy::Models::LinkedAccountTwitchOAuth
+
+  class LinkedAccountTwitterInput = Privy::Models::LinkedAccountTwitterInput
+
+  class LinkedAccountTwitterOAuth = Privy::Models::LinkedAccountTwitterOAuth
+
+  module LinkedAccountType = Privy::Models::LinkedAccountType
+
+  class LinkedAccountWalletInput = Privy::Models::LinkedAccountWalletInput
+
+  module LinkedMfaMethod = Privy::Models::LinkedMfaMethod
+
+  class LinkJwtInput = Privy::Models::LinkJwtInput
+
+  class MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
+
+  class MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
+
+  class MfaPasskeyEnrollmentRequestBody = Privy::Models::MfaPasskeyEnrollmentRequestBody
+
+  class MfaPasskeyInitRequestBody = Privy::Models::MfaPasskeyInitRequestBody
+
+  class MfaPasskeyInitResponseBody = Privy::Models::MfaPasskeyInitResponseBody
+
+  class MfaPasskeyVerifyRequestBody = Privy::Models::MfaPasskeyVerifyRequestBody
+
+  class MfaSMSEnrollRequestBody = Privy::Models::MfaSMSEnrollRequestBody
+
+  class MfaSMSInitEnrollInput = Privy::Models::MfaSMSInitEnrollInput
+
+  module MfaSMSInitRequestBody = Privy::Models::MfaSMSInitRequestBody
+
+  class MfaSMSInitVerifyInput = Privy::Models::MfaSMSInitVerifyInput
+
+  class MfaSMSVerifyRequestBody = Privy::Models::MfaSMSVerifyRequestBody
+
+  class MfaTotpInitResponseBody = Privy::Models::MfaTotpInitResponseBody
+
+  class MfaTotpInput = Privy::Models::MfaTotpInput
+
+  class MfaVerifyResponseBody = Privy::Models::MfaVerifyResponseBody
+
+  module MoonpayCurrencyCode = Privy::Models::MoonpayCurrencyCode
+
+  class MoonpayFiatOnRampEthereumConfig = Privy::Models::MoonpayFiatOnRampEthereumConfig
+
+  class MoonpayFiatOnRampEthereumInput = Privy::Models::MoonpayFiatOnRampEthereumInput
+
+  class MoonpayFiatOnRampSolanaConfig = Privy::Models::MoonpayFiatOnRampSolanaConfig
+
+  class MoonpayFiatOnRampSolanaInput = Privy::Models::MoonpayFiatOnRampSolanaInput
+
+  class MoonpayOnRampSandboxConfig = Privy::Models::MoonpayOnRampSandboxConfig
+
+  module MoonpayOnRampSignInput = Privy::Models::MoonpayOnRampSignInput
+
+  class MoonpayOnRampSignResponse = Privy::Models::MoonpayOnRampSignResponse
+
+  module MoonpayPaymentMethod = Privy::Models::MoonpayPaymentMethod
+
+  module MoonpaySolanaCurrencyCode = Privy::Models::MoonpaySolanaCurrencyCode
+
+  class MoonpayUiConfig = Privy::Models::MoonpayUiConfig
+
+  module MoonpayUiTheme = Privy::Models::MoonpayUiTheme
+
+  class NamedTokenTransferSource = Privy::Models::NamedTokenTransferSource
+
+  class OAuthAuthenticateRecoveryResponse = Privy::Models::OAuthAuthenticateRecoveryResponse
+
+  class OAuthAuthenticateRequestBody = Privy::Models::OAuthAuthenticateRequestBody
+
+  class OAuthAuthorizationCodeRequestBody = Privy::Models::OAuthAuthorizationCodeRequestBody
+
+  class OAuthCallbackICloudExpoInput = Privy::Models::OAuthCallbackICloudExpoInput
+
+  module OAuthCodeType = Privy::Models::OAuthCodeType
+
+  class OAuthInitICloudRecoveryInput = Privy::Models::OAuthInitICloudRecoveryInput
+
+  class OAuthInitRecoveryInput = Privy::Models::OAuthInitRecoveryInput
+
+  class OAuthInitRequestBody = Privy::Models::OAuthInitRequestBody
+
+  class OAuthInitResponseBody = Privy::Models::OAuthInitResponseBody
+
+  class OAuthLinkRequestBody = Privy::Models::OAuthLinkRequestBody
+
+  class OAuthLinkResponseBody = Privy::Models::OAuthLinkResponseBody
+
+  module OAuthProviderID = Privy::Models::OAuthProviderID
+
+  class OAuthTokens = Privy::Models::OAuthTokens
+
+  class OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
+
+  class OAuthTransferUserInfo = Privy::Models::OAuthTransferUserInfo
+
+  class OAuthTransferUserInfoMeta = Privy::Models::OAuthTransferUserInfoMeta
+
+  class OAuthUnlinkRequestBody = Privy::Models::OAuthUnlinkRequestBody
+
+  class OAuthVerifyRequestBody = Privy::Models::OAuthVerifyRequestBody
+
+  class OAuthVerifyResponseBody = Privy::Models::OAuthVerifyResponseBody
+
+  module OnrampProvider = Privy::Models::OnrampProvider
+
+  class OptionalRefreshTokenInput = Privy::Models::OptionalRefreshTokenInput
+
+  class OrganizationSecretIDInput = Privy::Models::OrganizationSecretIDInput
+
+  class OrganizationSecretsListResponse = Privy::Models::OrganizationSecretsListResponse
+
+  class OrganizationSecretView = Privy::Models::OrganizationSecretView
+
+  class OutputWithPreviousTransactionData = Privy::Models::OutputWithPreviousTransactionData
+
+  class OwnerIDInput = Privy::Models::OwnerIDInput
+
+  module OwnerInput = Privy::Models::OwnerInput
+
+  class OwnerInputPublicKey = Privy::Models::OwnerInputPublicKey
+
+  class OwnerInputUser = Privy::Models::OwnerInputUser
+
+  class P256PublicKey = Privy::Models::P256PublicKey
+
+  class PasskeyAssertionResponse = Privy::Models::PasskeyAssertionResponse
+
+  class PasskeyAttestationResponse = Privy::Models::PasskeyAttestationResponse
+
+  class PasskeyAuthenticateInput = Privy::Models::PasskeyAuthenticateInput
+
+  class PasskeyAuthenticatorEnrollmentOptions = Privy::Models::PasskeyAuthenticatorEnrollmentOptions
+
+  class PasskeyAuthenticatorEnrollmentResponse = Privy::Models::PasskeyAuthenticatorEnrollmentResponse
+
+  class PasskeyAuthenticatorSelection = Privy::Models::PasskeyAuthenticatorSelection
+
+  class PasskeyAuthenticatorVerifyOptions = Privy::Models::PasskeyAuthenticatorVerifyOptions
+
+  class PasskeyAuthenticatorVerifyResponse = Privy::Models::PasskeyAuthenticatorVerifyResponse
+
+  class PasskeyClientExtensionResults = Privy::Models::PasskeyClientExtensionResults
+
+  class PasskeyCredentialDescriptor = Privy::Models::PasskeyCredentialDescriptor
+
+  class PasskeyCredPropsResult = Privy::Models::PasskeyCredPropsResult
+
+  class PasskeyEnrollmentExtensions = Privy::Models::PasskeyEnrollmentExtensions
+
+  class PasskeyInitInput = Privy::Models::PasskeyInitInput
+
+  class PasskeyLinkInput = Privy::Models::PasskeyLinkInput
+
+  class PasskeyMfaMethod = Privy::Models::PasskeyMfaMethod
+
+  class PasskeyPubKeyCredParam = Privy::Models::PasskeyPubKeyCredParam
+
+  class PasskeyRegisterInput = Privy::Models::PasskeyRegisterInput
+
+  class PasskeyRelyingParty = Privy::Models::PasskeyRelyingParty
+
+  class PasskeyUser = Privy::Models::PasskeyUser
+
+  class PasskeyVerifyExtensions = Privy::Models::PasskeyVerifyExtensions
+
+  class PasswordlessAuthenticateRequestBody = Privy::Models::PasswordlessAuthenticateRequestBody
+
+  class PasswordlessInitRequestBody = Privy::Models::PasswordlessInitRequestBody
+
+  class PasswordlessLinkRequestBody = Privy::Models::PasswordlessLinkRequestBody
+
+  class PasswordlessSMSAuthenticateRequestBody = Privy::Models::PasswordlessSMSAuthenticateRequestBody
+
+  class PasswordlessSMSInitRequestBody = Privy::Models::PasswordlessSMSInitRequestBody
+
+  class PasswordlessSMSLinkRequestBody = Privy::Models::PasswordlessSMSLinkRequestBody
+
+  class PasswordlessSMSTransferRequestBody = Privy::Models::PasswordlessSMSTransferRequestBody
+
+  class PasswordlessSMSUnlinkRequestBody = Privy::Models::PasswordlessSMSUnlinkRequestBody
+
+  class PasswordlessSMSUpdateRequestBody = Privy::Models::PasswordlessSMSUpdateRequestBody
+
+  class PasswordlessTransferRequestBody = Privy::Models::PasswordlessTransferRequestBody
+
+  class PasswordlessUnlinkRequestBody = Privy::Models::PasswordlessUnlinkRequestBody
+
+  class PasswordlessUpdateRequestBody = Privy::Models::PasswordlessUpdateRequestBody
+
+  class PatchUsersCustomMetadata = Privy::Models::PatchUsersCustomMetadata
+
+  class PhoneInviteInput = Privy::Models::PhoneInviteInput
+
+  class Policy = Privy::Models::Policy
+
+  module PolicyAction = Privy::Models::PolicyAction
+
+  class PolicyAuthorizationHeaders = Privy::Models::PolicyAuthorizationHeaders
+
+  module PolicyCondition = Privy::Models::PolicyCondition
+
+  class PolicyCreateParams = Privy::Models::PolicyCreateParams
+
+  class PolicyCreateRuleParams = Privy::Models::PolicyCreateRuleParams
+
+  class PolicyDeleteParams = Privy::Models::PolicyDeleteParams
+
+  class PolicyDeleteRuleParams = Privy::Models::PolicyDeleteRuleParams
+
+  class PolicyGetParams = Privy::Models::PolicyGetParams
+
+  class PolicyGetRuleParams = Privy::Models::PolicyGetRuleParams
+
+  PolicyInput: Privy::Internal::Type::Converter
+
+  class PolicyIntentRequestDetails = Privy::Models::PolicyIntentRequestDetails
+
+  class PolicyIntentResponse = Privy::Models::PolicyIntentResponse
+
+  module PolicyMethod = Privy::Models::PolicyMethod
+
+  class PolicyRequestBody = Privy::Models::PolicyRequestBody
+
+  class PolicyRuleRequestBody = Privy::Models::PolicyRuleRequestBody
+
+  class PolicyRuleRequestParams = Privy::Models::PolicyRuleRequestParams
+
+  class PolicyRuleResponse = Privy::Models::PolicyRuleResponse
+
+  class PolicyUpdateParams = Privy::Models::PolicyUpdateParams
+
+  class PolicyUpdateRuleParams = Privy::Models::PolicyUpdateRuleParams
+
+  class PrivateKeyExportInput = Privy::Models::PrivateKeyExportInput
+
+  class PrivateKeyExportResponse = Privy::Models::PrivateKeyExportResponse
+
+  class PrivateKeyExportWebhookPayload = Privy::Models::PrivateKeyExportWebhookPayload
+
+  class PrivateKeyInitInput = Privy::Models::PrivateKeyInitInput
+
+  class PrivateKeySubmitInput = Privy::Models::PrivateKeySubmitInput
+
+  class PrivyOAuthProviderID = Privy::Models::PrivyOAuthProviderID
+
+  module Quantity = Privy::Models::Quantity
+
+  module RawSignBytesEncoding = Privy::Models::RawSignBytesEncoding
+
+  module RawSignBytesHashFunction = Privy::Models::RawSignBytesHashFunction
+
+  class RawSignBytesParams = Privy::Models::RawSignBytesParams
+
+  class RawSignHashParams = Privy::Models::RawSignHashParams
+
+  class RawSignInput = Privy::Models::RawSignInput
+
+  module RawSignInputParams = Privy::Models::RawSignInputParams
+
+  class RawSignResponse = Privy::Models::RawSignResponse
+
+  class RawSignResponseData = Privy::Models::RawSignResponseData
+
+  class RecipientPublicKey = Privy::Models::RecipientPublicKey
+
+  class RecoveryConfigurationICloudInput = Privy::Models::RecoveryConfigurationICloudInput
+
+  class RecoveryConfigurationICloudResponse = Privy::Models::RecoveryConfigurationICloudResponse
+
+  class RecoveryKeyMaterialInput = Privy::Models::RecoveryKeyMaterialInput
+
+  class RecoveryKeyMaterialResponse = Privy::Models::RecoveryKeyMaterialResponse
+
+  module RecoveryType = Privy::Models::RecoveryType
+
+  class ResponsePasskeyInitAuthenticate = Privy::Models::ResponsePasskeyInitAuthenticate
+
+  class ResponsePasskeyInitLink = Privy::Models::ResponsePasskeyInitLink
+
+  class ResponsePasskeyInitRegister = Privy::Models::ResponsePasskeyInitRegister
+
+  class RpcIntentRequestDetails = Privy::Models::RpcIntentRequestDetails
+
+  class RpcIntentResponse = Privy::Models::RpcIntentResponse
+
+  class RuleIntentCreateRequestDetails = Privy::Models::RuleIntentCreateRequestDetails
+
+  class RuleIntentDeleteRequestDetails = Privy::Models::RuleIntentDeleteRequestDetails
+
+  module RuleIntentRequestDetails = Privy::Models::RuleIntentRequestDetails
+
+  class RuleIntentResponse = Privy::Models::RuleIntentResponse
+
+  class RuleIntentUpdateRequestDetails = Privy::Models::RuleIntentUpdateRequestDetails
+
+  class SeedPhraseExportInput = Privy::Models::SeedPhraseExportInput
+
+  class SeedPhraseExportResponse = Privy::Models::SeedPhraseExportResponse
+
+  class SeedPhraseExportWebhookPayload = Privy::Models::SeedPhraseExportWebhookPayload
+
+  module SigningAlgorithm = Privy::Models::SigningAlgorithm
+
+  class SiweAddressInput = Privy::Models::SiweAddressInput
+
+  class SiweAuthenticateRequestBody = Privy::Models::SiweAuthenticateRequestBody
+
+  class SiweInitInput = Privy::Models::SiweInitInput
+
+  class SiweInitRequestBody = Privy::Models::SiweInitRequestBody
+
+  class SiweInitResponseBody = Privy::Models::SiweInitResponseBody
+
+  class SiweInput = Privy::Models::SiweInput
+
+  class SiweLinkRequestBody = Privy::Models::SiweLinkRequestBody
+
+  class SiweLinkSmartWalletRequestBody = Privy::Models::SiweLinkSmartWalletRequestBody
+
+  class SiweNonce = Privy::Models::SiweNonce
+
+  class SiweUnlinkRequestBody = Privy::Models::SiweUnlinkRequestBody
+
+  class SiwsAddressInput = Privy::Models::SiwsAddressInput
+
+  class SiwsAuthenticateRequestBody = Privy::Models::SiwsAuthenticateRequestBody
+
+  class SiwsInitInput = Privy::Models::SiwsInitInput
+
+  class SiwsInitRequestBody = Privy::Models::SiwsInitRequestBody
+
+  class SiwsInitResponseBody = Privy::Models::SiwsInitResponseBody
+
+  class SiwsInput = Privy::Models::SiwsInput
+
+  class SiwsLinkRequestBody = Privy::Models::SiwsLinkRequestBody
+
+  class SiwsNonce = Privy::Models::SiwsNonce
+
+  class SiwsUnlinkRequestBody = Privy::Models::SiwsUnlinkRequestBody
+
+  module SmartWalletConfiguration = Privy::Models::SmartWalletConfiguration
+
+  class SmartWalletConfigurationDisabled = Privy::Models::SmartWalletConfigurationDisabled
+
+  class SmartWalletConfigurationEnabled = Privy::Models::SmartWalletConfigurationEnabled
+
+  module SmartWalletConfigurationInput = Privy::Models::SmartWalletConfigurationInput
+
+  class SmartWalletConfigurationInputEnabled = Privy::Models::SmartWalletConfigurationInputEnabled
+
+  class SmartWalletNetworkConfiguration = Privy::Models::SmartWalletNetworkConfiguration
+
+  class SmartWalletNetworkConfigurationInput = Privy::Models::SmartWalletNetworkConfigurationInput
+
+  class SmartWalletSiweInput = Privy::Models::SmartWalletSiweInput
+
+  module SmartWalletType = Privy::Models::SmartWalletType
+
+  class SMSMfaMethod = Privy::Models::SMSMfaMethod
+
+  class SolanaProgramInstructionCondition = Privy::Models::SolanaProgramInstructionCondition
+
+  module SolanaRpcInput = Privy::Models::SolanaRpcInput
+
+  module SolanaRpcResponse = Privy::Models::SolanaRpcResponse
+
+  class SolanaSignAndSendTransactionRpcInput = Privy::Models::SolanaSignAndSendTransactionRpcInput
+
+  class SolanaSignAndSendTransactionRpcInputParams = Privy::Models::SolanaSignAndSendTransactionRpcInputParams
+
+  class SolanaSignAndSendTransactionRpcResponse = Privy::Models::SolanaSignAndSendTransactionRpcResponse
+
+  class SolanaSignAndSendTransactionRpcResponseData = Privy::Models::SolanaSignAndSendTransactionRpcResponseData
+
+  class SolanaSignMessageRpcInput = Privy::Models::SolanaSignMessageRpcInput
+
+  class SolanaSignMessageRpcInputParams = Privy::Models::SolanaSignMessageRpcInputParams
+
+  class SolanaSignMessageRpcResponse = Privy::Models::SolanaSignMessageRpcResponse
+
+  class SolanaSignMessageRpcResponseData = Privy::Models::SolanaSignMessageRpcResponseData
+
+  class SolanaSignTransactionRpcInput = Privy::Models::SolanaSignTransactionRpcInput
+
+  class SolanaSignTransactionRpcInputParams = Privy::Models::SolanaSignTransactionRpcInputParams
+
+  class SolanaSignTransactionRpcResponse = Privy::Models::SolanaSignTransactionRpcResponse
+
+  class SolanaSignTransactionRpcResponseData = Privy::Models::SolanaSignTransactionRpcResponseData
+
+  class SolanaSystemProgramInstructionCondition = Privy::Models::SolanaSystemProgramInstructionCondition
+
+  class SolanaTokenProgramInstructionCondition = Privy::Models::SolanaTokenProgramInstructionCondition
+
+  module SolanaWalletDerivationStrategy = Privy::Models::SolanaWalletDerivationStrategy
+
+  class SparkBalance = Privy::Models::SparkBalance
+
+  class SparkClaimStaticDepositRpcInput = Privy::Models::SparkClaimStaticDepositRpcInput
+
+  class SparkClaimStaticDepositRpcInputParams = Privy::Models::SparkClaimStaticDepositRpcInputParams
+
+  class SparkClaimStaticDepositRpcResponse = Privy::Models::SparkClaimStaticDepositRpcResponse
+
+  class SparkClaimStaticDepositRpcResponseData = Privy::Models::SparkClaimStaticDepositRpcResponseData
+
+  class SparkCreateLightningInvoiceRpcInput = Privy::Models::SparkCreateLightningInvoiceRpcInput
+
+  class SparkCreateLightningInvoiceRpcInputParams = Privy::Models::SparkCreateLightningInvoiceRpcInputParams
+
+  class SparkCreateLightningInvoiceRpcResponse = Privy::Models::SparkCreateLightningInvoiceRpcResponse
+
+  class SparkGetBalanceRpcInput = Privy::Models::SparkGetBalanceRpcInput
+
+  class SparkGetBalanceRpcResponse = Privy::Models::SparkGetBalanceRpcResponse
+
+  class SparkGetClaimStaticDepositQuoteRpcInput = Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput
+
+  class SparkGetClaimStaticDepositQuoteRpcInputParams = Privy::Models::SparkGetClaimStaticDepositQuoteRpcInputParams
+
+  class SparkGetClaimStaticDepositQuoteRpcResponse = Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse
+
+  class SparkGetClaimStaticDepositQuoteRpcResponseData = Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponseData
+
+  class SparkGetStaticDepositAddressRpcInput = Privy::Models::SparkGetStaticDepositAddressRpcInput
+
+  class SparkGetStaticDepositAddressRpcResponse = Privy::Models::SparkGetStaticDepositAddressRpcResponse
+
+  class SparkGetStaticDepositAddressRpcResponseData = Privy::Models::SparkGetStaticDepositAddressRpcResponseData
+
+  class SparkLightningFee = Privy::Models::SparkLightningFee
+
+  class SparkLightningReceiveRequest = Privy::Models::SparkLightningReceiveRequest
+
+  class SparkLightningSendRequest = Privy::Models::SparkLightningSendRequest
+
+  module SparkNetwork = Privy::Models::SparkNetwork
+
+  module SparkOutputSelectionStrategy = Privy::Models::SparkOutputSelectionStrategy
+
+  class SparkPayLightningInvoiceRpcInput = Privy::Models::SparkPayLightningInvoiceRpcInput
+
+  class SparkPayLightningInvoiceRpcInputParams = Privy::Models::SparkPayLightningInvoiceRpcInputParams
+
+  class SparkPayLightningInvoiceRpcResponse = Privy::Models::SparkPayLightningInvoiceRpcResponse
+
+  module SparkRpcInput = Privy::Models::SparkRpcInput
+
+  module SparkRpcResponse = Privy::Models::SparkRpcResponse
+
+  class SparkSigningKeyshare = Privy::Models::SparkSigningKeyshare
+
+  class SparkSignMessageWithIdentityKeyRpcInput = Privy::Models::SparkSignMessageWithIdentityKeyRpcInput
+
+  class SparkSignMessageWithIdentityKeyRpcInputParams = Privy::Models::SparkSignMessageWithIdentityKeyRpcInputParams
+
+  class SparkSignMessageWithIdentityKeyRpcResponse = Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse
+
+  class SparkSignMessageWithIdentityKeyRpcResponseData = Privy::Models::SparkSignMessageWithIdentityKeyRpcResponseData
+
+  class SparkTokenBalance = Privy::Models::SparkTokenBalance
+
+  class SparkTransfer = Privy::Models::SparkTransfer
+
+  class SparkTransferLeaf = Privy::Models::SparkTransferLeaf
+
+  class SparkTransferRpcInput = Privy::Models::SparkTransferRpcInput
+
+  class SparkTransferRpcInputParams = Privy::Models::SparkTransferRpcInputParams
+
+  class SparkTransferRpcResponse = Privy::Models::SparkTransferRpcResponse
+
+  class SparkTransferTokensRpcInput = Privy::Models::SparkTransferTokensRpcInput
+
+  class SparkTransferTokensRpcInputParams = Privy::Models::SparkTransferTokensRpcInputParams
+
+  class SparkTransferTokensRpcResponse = Privy::Models::SparkTransferTokensRpcResponse
+
+  class SparkTransferTokensRpcResponseData = Privy::Models::SparkTransferTokensRpcResponseData
+
+  class SparkUserTokenMetadata = Privy::Models::SparkUserTokenMetadata
+
+  class SparkWalletLeaf = Privy::Models::SparkWalletLeaf
+
+  class SuccessResponse = Privy::Models::SuccessResponse
+
+  module SuiCommandName = Privy::Models::SuiCommandName
+
+  class SuiTransactionCommandCondition = Privy::Models::SuiTransactionCommandCondition
+
+  module SuiTransactionCommandOperator = Privy::Models::SuiTransactionCommandOperator
+
+  class SuiTransferObjectsCommandCondition = Privy::Models::SuiTransferObjectsCommandCondition
+
+  module SuiTransferObjectsCommandField = Privy::Models::SuiTransferObjectsCommandField
+
+  class SvmTransactionWalletActionStep = Privy::Models::SvmTransactionWalletActionStep
+
+  module SvmWalletActionStepStatus = Privy::Models::SvmWalletActionStepStatus
+
+  class SwapActionResponse = Privy::Models::SwapActionResponse
+
+  class SwapDestination = Privy::Models::SwapDestination
+
+  class SwapQuoteDestination = Privy::Models::SwapQuoteDestination
+
+  class SwapQuoteRequestBody = Privy::Models::SwapQuoteRequestBody
+
+  class SwapQuoteResponse = Privy::Models::SwapQuoteResponse
+
+  class SwapRequestBody = Privy::Models::SwapRequestBody
+
+  class SwapSource = Privy::Models::SwapSource
+
+  class SystemCondition = Privy::Models::SystemCondition
+
+  class TelegramAuthConfigSchema = Privy::Models::TelegramAuthConfigSchema
+
+  class TelegramAuthenticateInput = Privy::Models::TelegramAuthenticateInput
+
+  class TelegramAuthenticateRequestBody = Privy::Models::TelegramAuthenticateRequestBody
+
+  class TelegramAuthResult = Privy::Models::TelegramAuthResult
+
+  class TelegramLinkRequestBody = Privy::Models::TelegramLinkRequestBody
+
+  class TelegramUnlinkInput = Privy::Models::TelegramUnlinkInput
+
+  class TelegramUnlinkRequestBody = Privy::Models::TelegramUnlinkRequestBody
+
+  class TelegramWebAppData = Privy::Models::TelegramWebAppData
+
+  class TempoAaAuthorization = Privy::Models::TempoAaAuthorization
+
+  class TempoCall = Privy::Models::TempoCall
+
+  class TempoFeePayerSignature = Privy::Models::TempoFeePayerSignature
+
+  class TestAccount = Privy::Models::TestAccount
+
+  class TestAccountsResponse = Privy::Models::TestAccountsResponse
+
+  class TokenOutput = Privy::Models::TokenOutput
+
+  class TokenTransferDestination = Privy::Models::TokenTransferDestination
+
+  module TokenTransferSource = Privy::Models::TokenTransferSource
+
+  class TotpMfaMethod = Privy::Models::TotpMfaMethod
+
+  class Transaction = Privy::Models::Transaction
+
+  class TransactionBroadcastedWebhookPayload = Privy::Models::TransactionBroadcastedWebhookPayload
+
+  class TransactionConfirmedWebhookPayload = Privy::Models::TransactionConfirmedWebhookPayload
+
+  module TransactionDetail = Privy::Models::TransactionDetail
+
+  class TransactionExecutionRevertedWebhookPayload = Privy::Models::TransactionExecutionRevertedWebhookPayload
+
+  class TransactionFailedWebhookPayload = Privy::Models::TransactionFailedWebhookPayload
+
+  class TransactionGetParams = Privy::Models::TransactionGetParams
+
+  class TransactionList = Privy::Models::TransactionList
+
+  class TransactionProviderErrorWebhookPayload = Privy::Models::TransactionProviderErrorWebhookPayload
+
+  class TransactionReplacedWebhookPayload = Privy::Models::TransactionReplacedWebhookPayload
+
+  class TransactionScanningAssetDiff = Privy::Models::TransactionScanningAssetDiff
+
+  class TransactionScanningAssetInfo = Privy::Models::TransactionScanningAssetInfo
+
+  class TransactionScanningAssetValue = Privy::Models::TransactionScanningAssetValue
+
+  class TransactionScanningCalldata = Privy::Models::TransactionScanningCalldata
+
+  class TransactionScanningExposure = Privy::Models::TransactionScanningExposure
+
+  class TransactionScanningMetadata = Privy::Models::TransactionScanningMetadata
+
+  class TransactionScanningParams = Privy::Models::TransactionScanningParams
+
+  class TransactionScanningRequestBody = Privy::Models::TransactionScanningRequestBody
+
+  class TransactionScanningResponseBody = Privy::Models::TransactionScanningResponseBody
+
+  class TransactionScanningRpcRequest = Privy::Models::TransactionScanningRpcRequest
+
+  class TransactionScanningSimulationErrorResult = Privy::Models::TransactionScanningSimulationErrorResult
+
+  module TransactionScanningSimulationResult = Privy::Models::TransactionScanningSimulationResult
+
+  class TransactionScanningSimulationSuccessResult = Privy::Models::TransactionScanningSimulationSuccessResult
+
+  class TransactionScanningValidationErrorResult = Privy::Models::TransactionScanningValidationErrorResult
+
+  module TransactionScanningValidationResult = Privy::Models::TransactionScanningValidationResult
+
+  class TransactionScanningValidationSuccessResult = Privy::Models::TransactionScanningValidationSuccessResult
+
+  class TransactionStillPendingWebhookPayload = Privy::Models::TransactionStillPendingWebhookPayload
+
+  class TransactionTokenAddressInput = Privy::Models::TransactionTokenAddressInput
+
+  class TransferActionResponse = Privy::Models::TransferActionResponse
+
+  class TransferFarcasterInput = Privy::Models::TransferFarcasterInput
+
+  class TransferIntentRequestDetails = Privy::Models::TransferIntentRequestDetails
+
+  class TransferIntentResponse = Privy::Models::TransferIntentResponse
+
+  class TransferReceivedTransactionDetail = Privy::Models::TransferReceivedTransactionDetail
+
+  class TransferRequestBody = Privy::Models::TransferRequestBody
+
+  class TransferSentTransactionDetail = Privy::Models::TransferSentTransactionDetail
+
+  class TransferSiweInput = Privy::Models::TransferSiweInput
+
+  class TransferSiwsInput = Privy::Models::TransferSiwsInput
+
+  class TransferTelegramInput = Privy::Models::TransferTelegramInput
+
+  class TronCalldataCondition = Privy::Models::TronCalldataCondition
+
+  class TronTransactionCondition = Privy::Models::TronTransactionCondition
+
+  TypedDataDomainInputParams: Privy::Internal::Type::Converter
+
+  class TypedDataTypeFieldInput = Privy::Models::TypedDataTypeFieldInput
+
+  TypedDataTypesInputParams: Privy::Internal::Type::Converter
+
+  class UnlinkPasskeyInput = Privy::Models::UnlinkPasskeyInput
+
+  module UnsafeUnwrapWebhookEvent = Privy::Models::UnsafeUnwrapWebhookEvent
+
+  module UnsignedEthereumTransaction = Privy::Models::UnsignedEthereumTransaction
+
+  class UnsignedStandardEthereumTransaction = Privy::Models::UnsignedStandardEthereumTransaction
+
+  class UnsignedTempoTransaction = Privy::Models::UnsignedTempoTransaction
+
+  class UpdateAccountFromWalletIDsInput = Privy::Models::UpdateAccountFromWalletIDsInput
+
+  class UpdateAccountFromWalletsConfigurationInput = Privy::Models::UpdateAccountFromWalletsConfigurationInput
+
+  module UpdateAccountInput = Privy::Models::UpdateAccountInput
+
+  class UpdateConditionSetRequestBody = Privy::Models::UpdateConditionSetRequestBody
+
+  class UpdateOrganizationSecretSigningKeyInput = Privy::Models::UpdateOrganizationSecretSigningKeyInput
+
+  class User = Privy::Models::User
+
+  class UserAuthenticatedWebhookPayload = Privy::Models::UserAuthenticatedWebhookPayload
+
+  class UserBatchCreateInput = Privy::Models::UserBatchCreateInput
+
+  class UserCreatedWebhookPayload = Privy::Models::UserCreatedWebhookPayload
+
+  class UserCreateParams = Privy::Models::UserCreateParams
+
+  class UserDeleteParams = Privy::Models::UserDeleteParams
+
+  class UserGetByCustomAuthIDParams = Privy::Models::UserGetByCustomAuthIDParams
+
+  class UserGetByDiscordUsernameParams = Privy::Models::UserGetByDiscordUsernameParams
+
+  class UserGetByEmailAddressParams = Privy::Models::UserGetByEmailAddressParams
+
+  class UserGetByFarcasterIDParams = Privy::Models::UserGetByFarcasterIDParams
+
+  class UserGetByGitHubUsernameParams = Privy::Models::UserGetByGitHubUsernameParams
+
+  class UserGetByPhoneNumberParams = Privy::Models::UserGetByPhoneNumberParams
+
+  class UserGetBySmartWalletAddressParams = Privy::Models::UserGetBySmartWalletAddressParams
+
+  class UserGetByTelegramUserIDParams = Privy::Models::UserGetByTelegramUserIDParams
+
+  class UserGetByTelegramUsernameParams = Privy::Models::UserGetByTelegramUsernameParams
+
+  class UserGetByTwitterSubjectParams = Privy::Models::UserGetByTwitterSubjectParams
+
+  class UserGetByTwitterUsernameParams = Privy::Models::UserGetByTwitterUsernameParams
+
+  class UserGetByWalletAddressParams = Privy::Models::UserGetByWalletAddressParams
+
+  class UserGetParams = Privy::Models::UserGetParams
+
+  module UserInviteInput = Privy::Models::UserInviteInput
+
+  class UserLinkedAccountWebhookPayload = Privy::Models::UserLinkedAccountWebhookPayload
+
+  class UserListParams = Privy::Models::UserListParams
+
+  class UserOperationCompletedWebhookPayload = Privy::Models::UserOperationCompletedWebhookPayload
+
+  class UserOperationInput = Privy::Models::UserOperationInput
+
+  module UserOwnedRecoveryOption = Privy::Models::UserOwnedRecoveryOption
+
+  class UserPregenerateWalletsParams = Privy::Models::UserPregenerateWalletsParams
+
+  class UserSearchParams = Privy::Models::UserSearchParams
+
+  class UserSetCustomMetadataParams = Privy::Models::UserSetCustomMetadataParams
+
+  class UserTransferredAccountWebhookPayload = Privy::Models::UserTransferredAccountWebhookPayload
+
+  class UserUnlinkedAccountWebhookPayload = Privy::Models::UserUnlinkedAccountWebhookPayload
+
+  class UserUnlinkLinkedAccountParams = Privy::Models::UserUnlinkLinkedAccountParams
+
+  class UserUpdatedAccountWebhookPayload = Privy::Models::UserUpdatedAccountWebhookPayload
+
+  class UserWalletCreatedWebhookPayload = Privy::Models::UserWalletCreatedWebhookPayload
+
+  class UserWithIdentityToken = Privy::Models::UserWithIdentityToken
+
+  class Wallet = Privy::Models::Wallet
+
+  class WalletActionEarnDepositCreatedWebhookPayload = Privy::Models::WalletActionEarnDepositCreatedWebhookPayload
+
+  class WalletActionEarnDepositFailedWebhookPayload = Privy::Models::WalletActionEarnDepositFailedWebhookPayload
+
+  class WalletActionEarnDepositRejectedWebhookPayload = Privy::Models::WalletActionEarnDepositRejectedWebhookPayload
+
+  class WalletActionEarnDepositSucceededWebhookPayload = Privy::Models::WalletActionEarnDepositSucceededWebhookPayload
+
+  class WalletActionEarnIncentiveClaimCreatedWebhookPayload = Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload
+
+  class WalletActionEarnIncentiveClaimFailedWebhookPayload = Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload
+
+  class WalletActionEarnIncentiveClaimRejectedWebhookPayload = Privy::Models::WalletActionEarnIncentiveClaimRejectedWebhookPayload
+
+  class WalletActionEarnIncentiveClaimSucceededWebhookPayload = Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload
+
+  class WalletActionEarnWithdrawCreatedWebhookPayload = Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload
+
+  class WalletActionEarnWithdrawFailedWebhookPayload = Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload
+
+  class WalletActionEarnWithdrawRejectedWebhookPayload = Privy::Models::WalletActionEarnWithdrawRejectedWebhookPayload
+
+  class WalletActionEarnWithdrawSucceededWebhookPayload = Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload
+
+  module WalletActionResponse = Privy::Models::WalletActionResponse
+
+  module WalletActionStatus = Privy::Models::WalletActionStatus
+
+  module WalletActionStep = Privy::Models::WalletActionStep
+
+  module WalletActionStepType = Privy::Models::WalletActionStepType
+
+  class WalletActionSwapCreatedWebhookPayload = Privy::Models::WalletActionSwapCreatedWebhookPayload
+
+  class WalletActionSwapFailedWebhookPayload = Privy::Models::WalletActionSwapFailedWebhookPayload
+
+  class WalletActionSwapRejectedWebhookPayload = Privy::Models::WalletActionSwapRejectedWebhookPayload
+
+  class WalletActionSwapSucceededWebhookPayload = Privy::Models::WalletActionSwapSucceededWebhookPayload
+
+  class WalletActionTransferCreatedWebhookPayload = Privy::Models::WalletActionTransferCreatedWebhookPayload
+
+  class WalletActionTransferFailedWebhookPayload = Privy::Models::WalletActionTransferFailedWebhookPayload
+
+  class WalletActionTransferRejectedWebhookPayload = Privy::Models::WalletActionTransferRejectedWebhookPayload
+
+  class WalletActionTransferSucceededWebhookPayload = Privy::Models::WalletActionTransferSucceededWebhookPayload
+
+  module WalletActionType = Privy::Models::WalletActionType
+
+  WalletAdditionalSigner: Privy::Internal::Type::Converter
+
+  class WalletAdditionalSignerItem = Privy::Models::WalletAdditionalSignerItem
+
+  class WalletAPIRegisterAuthorizationKeyInput = Privy::Models::WalletAPIRegisterAuthorizationKeyInput
+
+  class WalletAPIRevokeAuthorizationKeyInput = Privy::Models::WalletAPIRevokeAuthorizationKeyInput
+
+  module WalletAsset = Privy::Models::WalletAsset
+
+  class WalletAuthenticateRequestBody = Privy::Models::WalletAuthenticateRequestBody
+
+  class WalletAuthenticateWithJwtParams = Privy::Models::WalletAuthenticateWithJwtParams
+
+  module WalletAuthenticateWithJwtResponse = Privy::Models::WalletAuthenticateWithJwtResponse
+
+  class WalletAuthorizationHeaders = Privy::Models::WalletAuthorizationHeaders
+
+  class WalletBatchCreateInput = Privy::Models::WalletBatchCreateInput
+
+  class WalletBatchCreateResponse = Privy::Models::WalletBatchCreateResponse
+
+  module WalletBatchCreateResult = Privy::Models::WalletBatchCreateResult
+
+  class WalletBatchItemInput = Privy::Models::WalletBatchItemInput
+
+  module WalletChainType = Privy::Models::WalletChainType
+
+  class WalletCreateParams = Privy::Models::WalletCreateParams
+
+  class WalletCreateWalletsWithRecoveryParams = Privy::Models::WalletCreateWalletsWithRecoveryParams
+
+  class WalletCreateWalletsWithRecoveryResponse = Privy::Models::WalletCreateWalletsWithRecoveryResponse
+
+  class WalletCreationAdditionalSignerItem = Privy::Models::WalletCreationAdditionalSignerItem
+
+  class WalletCreationInput = Privy::Models::WalletCreationInput
+
+  class WalletCustodian = Privy::Models::WalletCustodian
+
+  module WalletEntropyType = Privy::Models::WalletEntropyType
+
+  module WalletEthereumAsset = Privy::Models::WalletEthereumAsset
+
+  class WalletExportParams = Privy::Models::WalletExportParams
+
+  class WalletExportRequestBody = Privy::Models::WalletExportRequestBody
+
+  class WalletExportResponseBody = Privy::Models::WalletExportResponseBody
+
+  module WalletFundsAsset = Privy::Models::WalletFundsAsset
+
+  class WalletFundsErc20Asset = Privy::Models::WalletFundsErc20Asset
+
+  class WalletFundsNativeTokenAsset = Privy::Models::WalletFundsNativeTokenAsset
+
+  class WalletFundsSacAsset = Privy::Models::WalletFundsSacAsset
+
+  class WalletFundsSplAsset = Privy::Models::WalletFundsSplAsset
+
+  class WalletGetParams = Privy::Models::WalletGetParams
+
+  class WalletGetWalletByAddressParams = Privy::Models::WalletGetWalletByAddressParams
+
+  class WalletImportInitResponse = Privy::Models::WalletImportInitResponse
+
+  module WalletImportSupportedChains = Privy::Models::WalletImportSupportedChains
+
+  module WalletImportSupportedEntropyTypes = Privy::Models::WalletImportSupportedEntropyTypes
+
+  class WalletInitImportParams = Privy::Models::WalletInitImportParams
+
+  class WalletIntentResponse = Privy::Models::WalletIntentResponse
+
+  class WalletInviteInput = Privy::Models::WalletInviteInput
+
+  class WalletListParams = Privy::Models::WalletListParams
+
+  class WalletRawSignParams = Privy::Models::WalletRawSignParams
+
+  class WalletRecoveredWebhookPayload = Privy::Models::WalletRecoveredWebhookPayload
+
+  class WalletRecoverySetupWebhookPayload = Privy::Models::WalletRecoverySetupWebhookPayload
+
+  class WalletRevokeResponse = Privy::Models::WalletRevokeResponse
+
+  class WalletRpcParams = Privy::Models::WalletRpcParams
+
+  module WalletRpcRequestBody = Privy::Models::WalletRpcRequestBody
+
+  module WalletRpcResponse = Privy::Models::WalletRpcResponse
+
+  module Wallets = Privy::Models::Wallets
+
+  module WalletSolanaAsset = Privy::Models::WalletSolanaAsset
+
+  class WalletSubmitImportParams = Privy::Models::WalletSubmitImportParams
+
+  class WalletTransferParams = Privy::Models::WalletTransferParams
+
+  class WalletUpdateParams = Privy::Models::WalletUpdateParams
+
+  class WalletUpdateRequestBody = Privy::Models::WalletUpdateRequestBody
+
+  module WebhookPayload = Privy::Models::WebhookPayload
+
+  class WebhookUnsafeUnwrapParams = Privy::Models::WebhookUnsafeUnwrapParams
+
+  class YieldAuthorizationHeaders = Privy::Models::YieldAuthorizationHeaders
+
+  class YieldClaimConfirmedWebhookPayload = Privy::Models::YieldClaimConfirmedWebhookPayload
+
+  class YieldDepositConfirmedWebhookPayload = Privy::Models::YieldDepositConfirmedWebhookPayload
+
+  class YieldWithdrawConfirmedWebhookPayload = Privy::Models::YieldWithdrawConfirmedWebhookPayload
+end

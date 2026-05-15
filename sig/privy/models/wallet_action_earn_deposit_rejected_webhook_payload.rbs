@@ -1,0 +1,116 @@
+module Privy
+  module Models
+    type wallet_action_earn_deposit_rejected_webhook_payload =
+      {
+        action_type: Privy::Models::wallet_action_type,
+        asset_address: String,
+        :caip2 => String,
+        failure_reason: Privy::FailureReason,
+        raw_amount: String,
+        status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_,
+        vault_address: String,
+        vault_id: String,
+        wallet_action_id: String,
+        wallet_id: String,
+        amount: String,
+        asset: String,
+        decimals: Integer
+      }
+
+    class WalletActionEarnDepositRejectedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor asset_address: String
+
+      attr_accessor caip2: String
+
+      attr_accessor failure_reason: Privy::FailureReason
+
+      attr_accessor raw_amount: String
+
+      attr_accessor status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status
+
+      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+
+      attr_accessor type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_
+
+      attr_accessor vault_address: String
+
+      attr_accessor vault_id: String
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      attr_reader amount: String?
+
+      def amount=: (String) -> String
+
+      attr_reader asset: String?
+
+      def asset=: (String) -> String
+
+      attr_reader decimals: Integer?
+
+      def decimals=: (Integer) -> Integer
+
+      def initialize: (
+        action_type: Privy::Models::wallet_action_type,
+        asset_address: String,
+        caip2: String,
+        failure_reason: Privy::FailureReason,
+        raw_amount: String,
+        status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_,
+        vault_address: String,
+        vault_id: String,
+        wallet_action_id: String,
+        wallet_id: String,
+        ?amount: String,
+        ?asset: String,
+        ?decimals: Integer
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::wallet_action_type,
+        asset_address: String,
+        :caip2 => String,
+        failure_reason: Privy::FailureReason,
+        raw_amount: String,
+        status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status,
+        steps: ::Array[Privy::Models::wallet_action_step],
+        type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_,
+        vault_address: String,
+        vault_id: String,
+        wallet_action_id: String,
+        wallet_id: String,
+        amount: String,
+        asset: String,
+        decimals: Integer
+      }
+
+      type status = :rejected
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.earn_deposit.rejected"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_EARN_DEPOSIT_REJECTED: :"wallet_action.earn_deposit.rejected"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_]
+      end
+    end
+  end
+end

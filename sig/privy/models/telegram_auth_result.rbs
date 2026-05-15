@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    type telegram_auth_result =
+      {
+        id: Float?,
+        auth_date: Float?,
+        first_name: String,
+        hash_: String,
+        last_name: String,
+        photo_url: String,
+        username: String
+      }
+
+    class TelegramAuthResult < Privy::Internal::Type::BaseModel
+      attr_accessor id: Float?
+
+      attr_accessor auth_date: Float?
+
+      attr_accessor first_name: String
+
+      attr_accessor hash_: String
+
+      attr_reader last_name: String?
+
+      def last_name=: (String) -> String
+
+      attr_reader photo_url: String?
+
+      def photo_url=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        id: Float?,
+        auth_date: Float?,
+        first_name: String,
+        hash_: String,
+        ?last_name: String,
+        ?photo_url: String,
+        ?username: String
+      ) -> void
+
+      def to_hash: -> {
+        id: Float?,
+        auth_date: Float?,
+        first_name: String,
+        hash_: String,
+        last_name: String,
+        photo_url: String,
+        username: String
+      }
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type recovery_key_material_input = { chain_type: String }
+
+    class RecoveryKeyMaterialInput < Privy::Internal::Type::BaseModel
+      attr_reader chain_type: String?
+
+      def chain_type=: (String) -> String
+
+      def initialize: (?chain_type: String) -> void
+
+      def to_hash: -> { chain_type: String }
+    end
+  end
+end

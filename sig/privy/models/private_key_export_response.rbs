@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type private_key_export_response =
+      {
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption
+      }
+
+    class PrivateKeyExportResponse < Privy::Internal::Type::BaseModel
+      attr_accessor ciphertext: String
+
+      attr_accessor encapsulated_key: String
+
+      attr_accessor encryption_type: Privy::Models::hpke_encryption
+
+      def initialize: (
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption
+      ) -> void
+
+      def to_hash: -> {
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::hpke_encryption
+      }
+    end
+  end
+end

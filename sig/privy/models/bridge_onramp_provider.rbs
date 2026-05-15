@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type bridge_onramp_provider = :bridge | :"bridge-sandbox"
+
+    module BridgeOnrampProvider
+      extend Privy::Internal::Type::Enum
+
+      BRIDGE: :bridge
+      BRIDGE_SANDBOX: :"bridge-sandbox"
+
+      def self?.values: -> ::Array[Privy::Models::bridge_onramp_provider]
+    end
+  end
+end

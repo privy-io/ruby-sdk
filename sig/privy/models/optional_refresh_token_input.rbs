@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type optional_refresh_token_input = { refresh_token: String }
+
+    class OptionalRefreshTokenInput < Privy::Internal::Type::BaseModel
+      attr_reader refresh_token: String?
+
+      def refresh_token=: (String) -> String
+
+      def initialize: (?refresh_token: String) -> void
+
+      def to_hash: -> { refresh_token: String }
+    end
+  end
+end

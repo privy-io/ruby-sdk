@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    type extended_chain_type =
+      :cosmos
+      | :stellar
+      | :sui
+      | :aptos
+      | :movement
+      | :tron
+      | :"bitcoin-segwit"
+      | :"bitcoin-taproot"
+      | :pearl
+      | :near
+      | :ton
+      | :starknet
+      | :spark
+
+    module ExtendedChainType
+      extend Privy::Internal::Type::Enum
+
+      COSMOS: :cosmos
+      STELLAR: :stellar
+      SUI: :sui
+      APTOS: :aptos
+      MOVEMENT: :movement
+      TRON: :tron
+      BITCOIN_SEGWIT: :"bitcoin-segwit"
+      BITCOIN_TAPROOT: :"bitcoin-taproot"
+      PEARL: :pearl
+      NEAR: :near
+      TON: :ton
+      STARKNET: :starknet
+      SPARK: :spark
+
+      def self?.values: -> ::Array[Privy::Models::extended_chain_type]
+    end
+  end
+end
