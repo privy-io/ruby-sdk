@@ -7,6 +7,7 @@ module Privy
       extend Privy::Internal::Type::Enum
 
       PENDING = :pending
+      PROCESSING = :processing
       EXECUTED = :executed
       FAILED = :failed
       EXPIRED = :expired
