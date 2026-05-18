@@ -1,6 +1,6 @@
 module Privy
   module Models
-    type transfer_request_body =
+    type transfer_quote_request_body =
       {
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
@@ -9,7 +9,7 @@ module Privy
         slippage_bps: Integer
       }
 
-    class TransferRequestBody < Privy::Internal::Type::BaseModel
+    class TransferQuoteRequestBody < Privy::Internal::Type::BaseModel
       attr_accessor destination: Privy::TokenTransferDestination
 
       attr_accessor source: Privy::Models::token_transfer_source

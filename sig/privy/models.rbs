@@ -249,6 +249,8 @@ module Privy
 
   class CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
 
+  class DeveloperFee = Privy::Models::DeveloperFee
+
   class EarnAsset = Privy::Models::EarnAsset
 
   class EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
@@ -492,6 +494,10 @@ module Privy
   class FarcasterV2InitResponse = Privy::Models::FarcasterV2InitResponse
 
   class FarcasterV2InitResponseBody = Privy::Models::FarcasterV2InitResponseBody
+
+  class FeeConfiguration = Privy::Models::FeeConfiguration
+
+  module FeeLineItem = Privy::Models::FeeLineItem
 
   class FiatAmount = Privy::Models::FiatAmount
 
@@ -1075,6 +1081,8 @@ module Privy
 
   class PrivateKeySubmitInput = Privy::Models::PrivateKeySubmitInput
 
+  class PrivyFee = Privy::Models::PrivyFee
+
   class PrivyOAuthProviderID = Privy::Models::PrivyOAuthProviderID
 
   module Quantity = Privy::Models::Quantity
@@ -1106,6 +1114,8 @@ module Privy
   class RecoveryKeyMaterialResponse = Privy::Models::RecoveryKeyMaterialResponse
 
   module RecoveryType = Privy::Models::RecoveryType
+
+  class RelayerFee = Privy::Models::RelayerFee
 
   class ResponsePasskeyInitAuthenticate = Privy::Models::ResponsePasskeyInitAuthenticate
 
@@ -1381,6 +1391,8 @@ module Privy
 
   module TokenTransferSource = Privy::Models::TokenTransferSource
 
+  class TotalFeeConfigurationBps = Privy::Models::TotalFeeConfigurationBps
+
   class TotpMfaMethod = Privy::Models::TotpMfaMethod
 
   class Transaction = Privy::Models::Transaction
@@ -1446,6 +1458,10 @@ module Privy
   class TransferIntentRequestDetails = Privy::Models::TransferIntentRequestDetails
 
   class TransferIntentResponse = Privy::Models::TransferIntentResponse
+
+  class TransferQuoteRequestBody = Privy::Models::TransferQuoteRequestBody
+
+  class TransferQuoteResponse = Privy::Models::TransferQuoteResponse
 
   class TransferReceivedTransactionDetail = Privy::Models::TransferReceivedTransactionDetail
 

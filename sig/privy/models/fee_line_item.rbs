@@ -1,0 +1,12 @@
+module Privy
+  module Models
+    type fee_line_item =
+      Privy::RelayerFee | Privy::PrivyFee | Privy::DeveloperFee
+
+    module FeeLineItem
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::fee_line_item]
+    end
+  end
+end
