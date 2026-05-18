@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type total_fee_configuration_bps =
+      { type: Privy::Models::TotalFeeConfigurationBps::type_, value: Integer }
+
+    class TotalFeeConfigurationBps < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::TotalFeeConfigurationBps::type_
+
+      attr_accessor value: Integer
+
+      def initialize: (
+        type: Privy::Models::TotalFeeConfigurationBps::type_,
+        value: Integer
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::TotalFeeConfigurationBps::type_,
+        value: Integer
+      }
+
+      type type_ = :total_fee_bps
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TOTAL_FEE_BPS: :total_fee_bps
+
+        def self?.values: -> ::Array[Privy::Models::TotalFeeConfigurationBps::type_]
+      end
+    end
+  end
+end

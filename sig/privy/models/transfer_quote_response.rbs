@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type transfer_quote_response =
+      {
+        destination: Privy::TokenTransferDestination,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_output_amount: String,
+        expires_at: Float,
+        source: Privy::Models::token_transfer_source,
+        amount_type: Privy::Models::amount_type
+      }
+
+    class TransferQuoteResponse < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::TokenTransferDestination
+
+      attr_accessor estimated_fees: ::Array[Privy::Models::fee_line_item]
+
+      attr_accessor estimated_output_amount: String
+
+      attr_accessor expires_at: Float
+
+      attr_accessor source: Privy::Models::token_transfer_source
+
+      attr_reader amount_type: Privy::Models::amount_type?
+
+      def amount_type=: (
+        Privy::Models::amount_type
+      ) -> Privy::Models::amount_type
+
+      def initialize: (
+        destination: Privy::TokenTransferDestination,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_output_amount: String,
+        expires_at: Float,
+        source: Privy::Models::token_transfer_source,
+        ?amount_type: Privy::Models::amount_type
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::TokenTransferDestination,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_output_amount: String,
+        expires_at: Float,
+        source: Privy::Models::token_transfer_source,
+        amount_type: Privy::Models::amount_type
+      }
+    end
+  end
+end

@@ -69,6 +69,12 @@ module Privy
       #   @return [Privy::Models::FailureReason, nil]
       optional :failure_reason, -> { Privy::FailureReason }
 
+      # @!attribute fees
+      #   Fees paid for the transfer.
+      #
+      #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil]
+      optional :fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
+
       # @!attribute source_amount
       #   Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
       #   cross-chain transfers until the source amount is determined.
@@ -103,7 +109,7 @@ module Privy
       #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
-      # @!method initialize(id:, created_at:, destination_address:, source_chain:, status:, type:, wallet_id:, destination_amount: nil, destination_asset: nil, destination_chain: nil, failure_reason: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
+      # @!method initialize(id:, created_at:, destination_address:, source_chain:, status:, type:, wallet_id:, destination_amount: nil, destination_asset: nil, destination_chain: nil, failure_reason: nil, fees: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferActionResponse} for more details.
       #
@@ -130,6 +136,8 @@ module Privy
       #   @param destination_chain [String] Destination chain for cross-chain transfers. Omitted for same-chain transfers.
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #
+      #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Fees paid for the transfer.
       #
       #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output c
       #

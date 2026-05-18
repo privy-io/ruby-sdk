@@ -2,10 +2,10 @@
 
 module Privy
   module Models
-    class TransferRequestBody < Privy::Internal::Type::BaseModel
+    class TransferQuoteRequestBody < Privy::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(Privy::TransferRequestBody, Privy::Internal::AnyHash)
+          T.any(Privy::TransferQuoteRequestBody, Privy::Internal::AnyHash)
         end
 
       # The destination address for a token transfer. Optionally specify a different
@@ -18,11 +18,18 @@ module Privy
 
       # The source asset, amount, and chain for a token transfer. Specify either `asset`
       # (named) or `asset_address` (custom), not both.
-      sig { returns(Privy::TokenTransferSource::Variants) }
+      sig do
+        returns(
+          T.any(
+            Privy::NamedTokenTransferSource,
+            Privy::CustomTokenTransferSource
+          )
+        )
+      end
       attr_accessor :source
 
       # Whether the amount refers to the input token or output token.
-      sig { returns(T.nilable(Privy::AmountType::TaggedSymbol)) }
+      sig { returns(T.nilable(Privy::AmountType::OrSymbol)) }
       attr_reader :amount_type
 
       sig { params(amount_type: Privy::AmountType::OrSymbol).void }
@@ -42,7 +49,8 @@ module Privy
       sig { params(slippage_bps: Integer).void }
       attr_writer :slippage_bps
 
-      # Request body for initiating a sponsored token transfer from an embedded wallet.
+      # Request body for requesting a quote for a cross-asset or cross-chain (DADC)
+      # transfer.
       sig do
         params(
           destination: Privy::TokenTransferDestination::OrHash,
@@ -76,8 +84,12 @@ module Privy
         override.returns(
           {
             destination: Privy::TokenTransferDestination,
-            source: Privy::TokenTransferSource::Variants,
-            amount_type: Privy::AmountType::TaggedSymbol,
+            source:
+              T.any(
+                Privy::NamedTokenTransferSource,
+                Privy::CustomTokenTransferSource
+              ),
+            amount_type: Privy::AmountType::OrSymbol,
             fee_configuration: Privy::FeeConfiguration,
             slippage_bps: Integer
           }

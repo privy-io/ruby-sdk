@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    class TransferRequestBody < Privy::Internal::Type::BaseModel
+    class TransferQuoteRequestBody < Privy::Internal::Type::BaseModel
       # @!attribute destination
       #   The destination address for a token transfer. Optionally specify a different
       #   asset or chain for cross-asset or cross-chain transfers.
@@ -37,9 +37,10 @@ module Privy
 
       # @!method initialize(destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Privy::Models::TransferRequestBody} for more details.
+      #   {Privy::Models::TransferQuoteRequestBody} for more details.
       #
-      #   Request body for initiating a sponsored token transfer from an embedded wallet.
+      #   Request body for requesting a quote for a cross-asset or cross-chain (DADC)
+      #   transfer.
       #
       #   @param destination [Privy::Models::TokenTransferDestination] The destination address for a token transfer. Optionally specify a different ass
       #
