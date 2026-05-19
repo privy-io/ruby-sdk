@@ -1619,6 +1619,10 @@ module Privy
 
   TempoFeePayerSignature = Privy::Models::TempoFeePayerSignature
 
+  TempoTransactionCondition = Privy::Models::TempoTransactionCondition
+
+  TempoTransactionConditionField = Privy::Models::TempoTransactionConditionField
+
   TestAccount = Privy::Models::TestAccount
 
   TestAccountsResponse = Privy::Models::TestAccountsResponse

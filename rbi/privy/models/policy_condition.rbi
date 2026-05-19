@@ -14,6 +14,7 @@ module Privy
             Privy::EthereumTypedDataDomainCondition,
             Privy::EthereumTypedDataMessageCondition,
             Privy::Ethereum7702AuthorizationCondition,
+            Privy::TempoTransactionCondition,
             Privy::SolanaProgramInstructionCondition,
             Privy::SolanaSystemProgramInstructionCondition,
             Privy::SolanaTokenProgramInstructionCondition,

@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type tempo_transaction_condition =
+      {
+        field: Privy::Models::tempo_transaction_condition_field,
+        field_source: Privy::Models::TempoTransactionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class TempoTransactionCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::tempo_transaction_condition_field
+
+      attr_accessor field_source: Privy::Models::TempoTransactionCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::tempo_transaction_condition_field,
+        field_source: Privy::Models::TempoTransactionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::tempo_transaction_condition_field,
+        field_source: Privy::Models::TempoTransactionCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field_source = :tempo_transaction
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        TEMPO_TRANSACTION: :tempo_transaction
+
+        def self?.values: -> ::Array[Privy::Models::TempoTransactionCondition::field_source]
+      end
+    end
+  end
+end
