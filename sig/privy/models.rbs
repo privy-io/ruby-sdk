@@ -1413,6 +1413,10 @@ module Privy
 
   class TempoFeePayerSignature = Privy::Models::TempoFeePayerSignature
 
+  class TempoTransactionCondition = Privy::Models::TempoTransactionCondition
+
+  module TempoTransactionConditionField = Privy::Models::TempoTransactionConditionField
+
   class TestAccount = Privy::Models::TestAccount
 
   class TestAccountsResponse = Privy::Models::TestAccountsResponse
