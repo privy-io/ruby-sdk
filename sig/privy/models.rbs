@@ -679,6 +679,14 @@ module Privy
 
   class KrakenEmbedCustomOrderTrigger = Privy::Models::KrakenEmbedCustomOrderTrigger
 
+  class KrakenEmbedEarnAmount = Privy::Models::KrakenEmbedEarnAmount
+
+  class KrakenEmbedEarnAprEstimate = Privy::Models::KrakenEmbedEarnAprEstimate
+
+  class KrakenEmbedEarnAsset = Privy::Models::KrakenEmbedEarnAsset
+
+  class KrakenEmbedEarnUserAllocation = Privy::Models::KrakenEmbedEarnUserAllocation
+
   class KrakenEmbedGetAssetListQueryParamsSchema = Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
 
   class KrakenEmbedGetCustomOrderHistoryQueryParams = Privy::Models::KrakenEmbedGetCustomOrderHistoryQueryParams
@@ -692,6 +700,22 @@ module Privy
   class KrakenEmbedGetCustomOrderResponse = Privy::Models::KrakenEmbedGetCustomOrderResponse
 
   class KrakenEmbedGetCustomOrderResult = Privy::Models::KrakenEmbedGetCustomOrderResult
+
+  class KrakenEmbedGetEarnAssetsKrakenResponse = Privy::Models::KrakenEmbedGetEarnAssetsKrakenResponse
+
+  class KrakenEmbedGetEarnAssetsQueryParams = Privy::Models::KrakenEmbedGetEarnAssetsQueryParams
+
+  class KrakenEmbedGetEarnAssetsResponse = Privy::Models::KrakenEmbedGetEarnAssetsResponse
+
+  class KrakenEmbedGetEarnAssetsResult = Privy::Models::KrakenEmbedGetEarnAssetsResult
+
+  class KrakenEmbedGetEarnSummaryKrakenResponse = Privy::Models::KrakenEmbedGetEarnSummaryKrakenResponse
+
+  class KrakenEmbedGetEarnSummaryQueryParams = Privy::Models::KrakenEmbedGetEarnSummaryQueryParams
+
+  class KrakenEmbedGetEarnSummaryResponse = Privy::Models::KrakenEmbedGetEarnSummaryResponse
+
+  class KrakenEmbedGetEarnSummaryResult = Privy::Models::KrakenEmbedGetEarnSummaryResult
 
   class KrakenEmbedGetPortfolioDetailsQueryParamsSchema = Privy::Models::KrakenEmbedGetPortfolioDetailsQueryParamsSchema
 
@@ -734,6 +758,14 @@ module Privy
   class KrakenEmbedStartVerificationURLResponse = Privy::Models::KrakenEmbedStartVerificationURLResponse
 
   class KrakenEmbedStartVerificationURLResult = Privy::Models::KrakenEmbedStartVerificationURLResult
+
+  class KrakenEmbedToggleAutoEarnKrakenResponse = Privy::Models::KrakenEmbedToggleAutoEarnKrakenResponse
+
+  class KrakenEmbedToggleAutoEarnQueryParams = Privy::Models::KrakenEmbedToggleAutoEarnQueryParams
+
+  class KrakenEmbedToggleAutoEarnResponse = Privy::Models::KrakenEmbedToggleAutoEarnResponse
+
+  class KrakenEmbedUpcomingReward = Privy::Models::KrakenEmbedUpcomingReward
 
   class KrakenEmbedUserClosedWebhookPayload = Privy::Models::KrakenEmbedUserClosedWebhookPayload
 

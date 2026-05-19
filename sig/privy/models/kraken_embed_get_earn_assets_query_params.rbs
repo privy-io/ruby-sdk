@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type kraken_embed_get_earn_assets_query_params =
+      { assets: ::Array[String], currency: String, user: String }
+
+    class KrakenEmbedGetEarnAssetsQueryParams < Privy::Internal::Type::BaseModel
+      attr_reader assets: ::Array[String]?
+
+      def assets=: (::Array[String]) -> ::Array[String]
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader user: String?
+
+      def user=: (String) -> String
+
+      def initialize: (
+        ?assets: ::Array[String],
+        ?currency: String,
+        ?user: String
+      ) -> void
+
+      def to_hash: -> {
+        assets: ::Array[String],
+        currency: String,
+        user: String
+      }
+    end
+  end
+end
