@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type kraken_embed_get_earn_summary_response =
+      { data: Privy::KrakenEmbedGetEarnSummaryKrakenResponse }
+
+    class KrakenEmbedGetEarnSummaryResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::KrakenEmbedGetEarnSummaryKrakenResponse
+
+      def initialize: (
+        data: Privy::KrakenEmbedGetEarnSummaryKrakenResponse
+      ) -> void
+
+      def to_hash: -> { data: Privy::KrakenEmbedGetEarnSummaryKrakenResponse }
+    end
+  end
+end

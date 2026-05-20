@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type intent_authorize_input = { signature: String, timestamp: Float }
+
+    class IntentAuthorizeInput < Privy::Internal::Type::BaseModel
+      attr_accessor signature: String
+
+      attr_accessor timestamp: Float
+
+      def initialize: (signature: String, timestamp: Float) -> void
+
+      def to_hash: -> { signature: String, timestamp: Float }
+    end
+  end
+end

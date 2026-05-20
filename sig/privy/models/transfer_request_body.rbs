@@ -5,6 +5,7 @@ module Privy
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
         amount_type: Privy::Models::amount_type,
+        fee_configuration: Privy::FeeConfiguration,
         slippage_bps: Integer
       }
 
@@ -19,6 +20,12 @@ module Privy
         Privy::Models::amount_type
       ) -> Privy::Models::amount_type
 
+      attr_reader fee_configuration: Privy::FeeConfiguration?
+
+      def fee_configuration=: (
+        Privy::FeeConfiguration
+      ) -> Privy::FeeConfiguration
+
       attr_reader slippage_bps: Integer?
 
       def slippage_bps=: (Integer) -> Integer
@@ -27,6 +34,7 @@ module Privy
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
         ?amount_type: Privy::Models::amount_type,
+        ?fee_configuration: Privy::FeeConfiguration,
         ?slippage_bps: Integer
       ) -> void
 
@@ -34,6 +42,7 @@ module Privy
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
         amount_type: Privy::Models::amount_type,
+        fee_configuration: Privy::FeeConfiguration,
         slippage_bps: Integer
       }
     end

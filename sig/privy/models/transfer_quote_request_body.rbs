@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type transfer_quote_request_body =
+      {
+        destination: Privy::TokenTransferDestination,
+        source: Privy::Models::token_transfer_source,
+        amount_type: Privy::Models::amount_type,
+        fee_configuration: Privy::FeeConfiguration,
+        slippage_bps: Integer
+      }
+
+    class TransferQuoteRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::TokenTransferDestination
+
+      attr_accessor source: Privy::Models::token_transfer_source
+
+      attr_reader amount_type: Privy::Models::amount_type?
+
+      def amount_type=: (
+        Privy::Models::amount_type
+      ) -> Privy::Models::amount_type
+
+      attr_reader fee_configuration: Privy::FeeConfiguration?
+
+      def fee_configuration=: (
+        Privy::FeeConfiguration
+      ) -> Privy::FeeConfiguration
+
+      attr_reader slippage_bps: Integer?
+
+      def slippage_bps=: (Integer) -> Integer
+
+      def initialize: (
+        destination: Privy::TokenTransferDestination,
+        source: Privy::Models::token_transfer_source,
+        ?amount_type: Privy::Models::amount_type,
+        ?fee_configuration: Privy::FeeConfiguration,
+        ?slippage_bps: Integer
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::TokenTransferDestination,
+        source: Privy::Models::token_transfer_source,
+        amount_type: Privy::Models::amount_type,
+        fee_configuration: Privy::FeeConfiguration,
+        slippage_bps: Integer
+      }
+    end
+  end
+end

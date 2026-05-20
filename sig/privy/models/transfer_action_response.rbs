@@ -13,6 +13,7 @@ module Privy
         destination_asset: String,
         destination_chain: String,
         failure_reason: Privy::FailureReason,
+        fees: ::Array[Privy::Models::fee_line_item],
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -51,6 +52,12 @@ module Privy
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
 
+      attr_reader fees: ::Array[Privy::Models::fee_line_item]?
+
+      def fees=: (
+        ::Array[Privy::Models::fee_line_item]
+      ) -> ::Array[Privy::Models::fee_line_item]
+
       attr_reader source_amount: String?
 
       def source_amount=: (String) -> String
@@ -85,6 +92,7 @@ module Privy
         ?destination_asset: String,
         ?destination_chain: String,
         ?failure_reason: Privy::FailureReason,
+        ?fees: ::Array[Privy::Models::fee_line_item],
         ?source_amount: String,
         ?source_asset: String,
         ?source_asset_address: String,
@@ -104,6 +112,7 @@ module Privy
         destination_asset: String,
         destination_chain: String,
         failure_reason: Privy::FailureReason,
+        fees: ::Array[Privy::Models::fee_line_item],
         source_amount: String,
         source_asset: String,
         source_asset_address: String,

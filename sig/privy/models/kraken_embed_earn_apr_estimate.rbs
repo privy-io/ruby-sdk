@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type kraken_embed_earn_apr_estimate = { high: String, low: String }
+
+    class KrakenEmbedEarnAprEstimate < Privy::Internal::Type::BaseModel
+      attr_accessor high: String
+
+      attr_accessor low: String
+
+      def initialize: (high: String, low: String) -> void
+
+      def to_hash: -> { high: String, low: String }
+    end
+  end
+end

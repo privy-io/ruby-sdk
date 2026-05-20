@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type kraken_embed_earn_amount = { converted: String, native: String }
+
+    class KrakenEmbedEarnAmount < Privy::Internal::Type::BaseModel
+      attr_accessor converted: String
+
+      attr_accessor native: String
+
+      def initialize: (converted: String, native: String) -> void
+
+      def to_hash: -> { converted: String, native: String }
+    end
+  end
+end
