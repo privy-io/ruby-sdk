@@ -249,6 +249,8 @@ module Privy
 
   class CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
 
+  class DeveloperFee = Privy::Models::DeveloperFee
+
   class EarnAsset = Privy::Models::EarnAsset
 
   class EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
@@ -493,6 +495,10 @@ module Privy
 
   class FarcasterV2InitResponseBody = Privy::Models::FarcasterV2InitResponseBody
 
+  class FeeConfiguration = Privy::Models::FeeConfiguration
+
+  module FeeLineItem = Privy::Models::FeeLineItem
+
   class FiatAmount = Privy::Models::FiatAmount
 
   class FiatCurrencyCode = Privy::Models::FiatCurrencyCode
@@ -580,6 +586,8 @@ module Privy
   module IntentAuthorizationMember = Privy::Models::IntentAuthorizationMember
 
   class IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
+
+  class IntentAuthorizeInput = Privy::Models::IntentAuthorizeInput
 
   class IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
 
@@ -671,6 +679,14 @@ module Privy
 
   class KrakenEmbedCustomOrderTrigger = Privy::Models::KrakenEmbedCustomOrderTrigger
 
+  class KrakenEmbedEarnAmount = Privy::Models::KrakenEmbedEarnAmount
+
+  class KrakenEmbedEarnAprEstimate = Privy::Models::KrakenEmbedEarnAprEstimate
+
+  class KrakenEmbedEarnAsset = Privy::Models::KrakenEmbedEarnAsset
+
+  class KrakenEmbedEarnUserAllocation = Privy::Models::KrakenEmbedEarnUserAllocation
+
   class KrakenEmbedGetAssetListQueryParamsSchema = Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
 
   class KrakenEmbedGetCustomOrderHistoryQueryParams = Privy::Models::KrakenEmbedGetCustomOrderHistoryQueryParams
@@ -684,6 +700,22 @@ module Privy
   class KrakenEmbedGetCustomOrderResponse = Privy::Models::KrakenEmbedGetCustomOrderResponse
 
   class KrakenEmbedGetCustomOrderResult = Privy::Models::KrakenEmbedGetCustomOrderResult
+
+  class KrakenEmbedGetEarnAssetsKrakenResponse = Privy::Models::KrakenEmbedGetEarnAssetsKrakenResponse
+
+  class KrakenEmbedGetEarnAssetsQueryParams = Privy::Models::KrakenEmbedGetEarnAssetsQueryParams
+
+  class KrakenEmbedGetEarnAssetsResponse = Privy::Models::KrakenEmbedGetEarnAssetsResponse
+
+  class KrakenEmbedGetEarnAssetsResult = Privy::Models::KrakenEmbedGetEarnAssetsResult
+
+  class KrakenEmbedGetEarnSummaryKrakenResponse = Privy::Models::KrakenEmbedGetEarnSummaryKrakenResponse
+
+  class KrakenEmbedGetEarnSummaryQueryParams = Privy::Models::KrakenEmbedGetEarnSummaryQueryParams
+
+  class KrakenEmbedGetEarnSummaryResponse = Privy::Models::KrakenEmbedGetEarnSummaryResponse
+
+  class KrakenEmbedGetEarnSummaryResult = Privy::Models::KrakenEmbedGetEarnSummaryResult
 
   class KrakenEmbedGetPortfolioDetailsQueryParamsSchema = Privy::Models::KrakenEmbedGetPortfolioDetailsQueryParamsSchema
 
@@ -726,6 +758,14 @@ module Privy
   class KrakenEmbedStartVerificationURLResponse = Privy::Models::KrakenEmbedStartVerificationURLResponse
 
   class KrakenEmbedStartVerificationURLResult = Privy::Models::KrakenEmbedStartVerificationURLResult
+
+  class KrakenEmbedToggleAutoEarnKrakenResponse = Privy::Models::KrakenEmbedToggleAutoEarnKrakenResponse
+
+  class KrakenEmbedToggleAutoEarnQueryParams = Privy::Models::KrakenEmbedToggleAutoEarnQueryParams
+
+  class KrakenEmbedToggleAutoEarnResponse = Privy::Models::KrakenEmbedToggleAutoEarnResponse
+
+  class KrakenEmbedUpcomingReward = Privy::Models::KrakenEmbedUpcomingReward
 
   class KrakenEmbedUserClosedWebhookPayload = Privy::Models::KrakenEmbedUserClosedWebhookPayload
 
@@ -1073,6 +1113,8 @@ module Privy
 
   class PrivateKeySubmitInput = Privy::Models::PrivateKeySubmitInput
 
+  class PrivyFee = Privy::Models::PrivyFee
+
   class PrivyOAuthProviderID = Privy::Models::PrivyOAuthProviderID
 
   module Quantity = Privy::Models::Quantity
@@ -1104,6 +1146,8 @@ module Privy
   class RecoveryKeyMaterialResponse = Privy::Models::RecoveryKeyMaterialResponse
 
   module RecoveryType = Privy::Models::RecoveryType
+
+  class RelayerFee = Privy::Models::RelayerFee
 
   class ResponsePasskeyInitAuthenticate = Privy::Models::ResponsePasskeyInitAuthenticate
 
@@ -1379,6 +1423,8 @@ module Privy
 
   module TokenTransferSource = Privy::Models::TokenTransferSource
 
+  class TotalFeeConfigurationBps = Privy::Models::TotalFeeConfigurationBps
+
   class TotpMfaMethod = Privy::Models::TotpMfaMethod
 
   class Transaction = Privy::Models::Transaction
@@ -1444,6 +1490,10 @@ module Privy
   class TransferIntentRequestDetails = Privy::Models::TransferIntentRequestDetails
 
   class TransferIntentResponse = Privy::Models::TransferIntentResponse
+
+  class TransferQuoteRequestBody = Privy::Models::TransferQuoteRequestBody
+
+  class TransferQuoteResponse = Privy::Models::TransferQuoteResponse
 
   class TransferReceivedTransactionDetail = Privy::Models::TransferReceivedTransactionDetail
 

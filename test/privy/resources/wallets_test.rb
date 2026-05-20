@@ -188,6 +188,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         destination_asset: String | nil,
         destination_chain: String | nil,
         failure_reason: Privy::FailureReason | nil,
+        fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         source_amount: String | nil,
         source_asset: String | nil,
         source_asset_address: String | nil,

@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type kraken_embed_toggle_auto_earn_kraken_response =
+      { error: ::Array[top], errors: ::Array[top], result: nil }
+
+    class KrakenEmbedToggleAutoEarnKrakenResponse < Privy::Internal::Type::BaseModel
+      attr_reader error: ::Array[top]?
+
+      def error=: (::Array[top]) -> ::Array[top]
+
+      attr_reader errors: ::Array[top]?
+
+      def errors=: (::Array[top]) -> ::Array[top]
+
+      attr_accessor result: nil
+
+      def initialize: (
+        ?error: ::Array[top],
+        ?errors: ::Array[top],
+        ?result: nil
+      ) -> void
+
+      def to_hash: -> { error: ::Array[top], errors: ::Array[top], result: nil }
+    end
+  end
+end

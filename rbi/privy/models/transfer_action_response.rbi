@@ -64,6 +64,24 @@ module Privy
       sig { params(failure_reason: Privy::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
+      # Fees paid for the transfer.
+      sig { returns(T.nilable(T::Array[Privy::FeeLineItem::Variants])) }
+      attr_reader :fees
+
+      sig do
+        params(
+          fees:
+            T::Array[
+              T.any(
+                Privy::RelayerFee::OrHash,
+                Privy::PrivyFee::OrHash,
+                Privy::DeveloperFee::OrHash
+              )
+            ]
+        ).void
+      end
+      attr_writer :fees
+
       # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
       # cross-chain transfers until the source amount is determined.
       sig { returns(T.nilable(String)) }
@@ -129,6 +147,14 @@ module Privy
           destination_asset: String,
           destination_chain: String,
           failure_reason: Privy::FailureReason::OrHash,
+          fees:
+            T::Array[
+              T.any(
+                Privy::RelayerFee::OrHash,
+                Privy::PrivyFee::OrHash,
+                Privy::DeveloperFee::OrHash
+              )
+            ],
           source_amount: String,
           source_asset: String,
           source_asset_address: String,
@@ -167,6 +193,8 @@ module Privy
         destination_chain: nil,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason: nil,
+        # Fees paid for the transfer.
+        fees: nil,
         # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
         # cross-chain transfers until the source amount is determined.
         source_amount: nil,
@@ -198,6 +226,7 @@ module Privy
             destination_asset: String,
             destination_chain: String,
             failure_reason: Privy::FailureReason,
+            fees: T::Array[Privy::FeeLineItem::Variants],
             source_amount: String,
             source_asset: String,
             source_asset_address: String,

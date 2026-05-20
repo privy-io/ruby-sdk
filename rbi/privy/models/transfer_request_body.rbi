@@ -28,6 +28,13 @@ module Privy
       sig { params(amount_type: Privy::AmountType::OrSymbol).void }
       attr_writer :amount_type
 
+      # Total fees assessed on a transfer, in BPS
+      sig { returns(T.nilable(Privy::FeeConfiguration)) }
+      attr_reader :fee_configuration
+
+      sig { params(fee_configuration: Privy::FeeConfiguration::OrHash).void }
+      attr_writer :fee_configuration
+
       # Maximum allowed slippage in basis points (1 bps = 0.01%).
       sig { returns(T.nilable(Integer)) }
       attr_reader :slippage_bps
@@ -45,6 +52,7 @@ module Privy
               Privy::CustomTokenTransferSource::OrHash
             ),
           amount_type: Privy::AmountType::OrSymbol,
+          fee_configuration: Privy::FeeConfiguration::OrHash,
           slippage_bps: Integer
         ).returns(T.attached_class)
       end
@@ -57,6 +65,8 @@ module Privy
         source:,
         # Whether the amount refers to the input token or output token.
         amount_type: nil,
+        # Total fees assessed on a transfer, in BPS
+        fee_configuration: nil,
         # Maximum allowed slippage in basis points (1 bps = 0.01%).
         slippage_bps: nil
       )
@@ -68,6 +78,7 @@ module Privy
             destination: Privy::TokenTransferDestination,
             source: Privy::TokenTransferSource::Variants,
             amount_type: Privy::AmountType::TaggedSymbol,
+            fee_configuration: Privy::FeeConfiguration,
             slippage_bps: Integer
           }
         )

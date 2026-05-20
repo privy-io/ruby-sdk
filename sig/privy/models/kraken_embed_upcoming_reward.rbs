@@ -1,0 +1,43 @@
+module Privy
+  module Models
+    type kraken_embed_upcoming_reward =
+      {
+        accumulated_amount: Privy::KrakenEmbedEarnAmount,
+        asset: String,
+        date: Time,
+        estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+      }
+
+    class KrakenEmbedUpcomingReward < Privy::Internal::Type::BaseModel
+      attr_accessor accumulated_amount: Privy::KrakenEmbedEarnAmount
+
+      attr_accessor asset: String
+
+      attr_accessor date: Time
+
+      attr_accessor estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+
+      def initialize: (
+        accumulated_amount: Privy::KrakenEmbedEarnAmount,
+        asset: String,
+        date: Time,
+        estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+      ) -> void
+
+      def to_hash: -> {
+        accumulated_amount: Privy::KrakenEmbedEarnAmount,
+        asset: String,
+        date: Time,
+        estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+      }
+
+      type estimated_pending_amount = {  }
+
+      class EstimatedPendingAmount < Privy::Models::KrakenEmbedEarnAmount
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

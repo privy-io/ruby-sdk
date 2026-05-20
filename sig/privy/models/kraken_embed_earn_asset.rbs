@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type kraken_embed_earn_asset =
+      {
+        apr_estimate: Privy::KrakenEmbedEarnAsset::AprEstimate,
+        user_allocation: Privy::KrakenEmbedEarnAsset::UserAllocation
+      }
+
+    class KrakenEmbedEarnAsset < Privy::Internal::Type::BaseModel
+      attr_accessor apr_estimate: Privy::KrakenEmbedEarnAsset::AprEstimate
+
+      attr_reader user_allocation: Privy::KrakenEmbedEarnAsset::UserAllocation?
+
+      def user_allocation=: (
+        Privy::KrakenEmbedEarnAsset::UserAllocation
+      ) -> Privy::KrakenEmbedEarnAsset::UserAllocation
+
+      def initialize: (
+        apr_estimate: Privy::KrakenEmbedEarnAsset::AprEstimate,
+        ?user_allocation: Privy::KrakenEmbedEarnAsset::UserAllocation
+      ) -> void
+
+      def to_hash: -> {
+        apr_estimate: Privy::KrakenEmbedEarnAsset::AprEstimate,
+        user_allocation: Privy::KrakenEmbedEarnAsset::UserAllocation
+      }
+
+      type apr_estimate = {  }
+
+      class AprEstimate < Privy::Models::KrakenEmbedEarnAprEstimate
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+
+      type user_allocation = {  }
+
+      class UserAllocation < Privy::Models::KrakenEmbedEarnUserAllocation
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type relayer_fee =
+      {
+        amount: String,
+        type: Privy::Models::RelayerFee::type_,
+        recipient: String
+      }
+
+    class RelayerFee < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor type: Privy::Models::RelayerFee::type_
+
+      attr_reader recipient: String?
+
+      def recipient=: (String) -> String
+
+      def initialize: (
+        amount: String,
+        type: Privy::Models::RelayerFee::type_,
+        ?recipient: String
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        type: Privy::Models::RelayerFee::type_,
+        recipient: String
+      }
+
+      type type_ = :relayer
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        RELAYER: :relayer
+
+        def self?.values: -> ::Array[Privy::Models::RelayerFee::type_]
+      end
+    end
+  end
+end
