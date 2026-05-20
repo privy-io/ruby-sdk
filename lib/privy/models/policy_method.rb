@@ -10,6 +10,7 @@ module Privy
       ETH_SIGN_TRANSACTION = :eth_signTransaction
       ETH_SIGN_USER_OPERATION = :eth_signUserOperation
       ETH_SIGN_TYPED_DATA_V4 = :eth_signTypedData_v4
+      PERSONAL_SIGN = :personal_sign
       ETH_SIGN7702_AUTHORIZATION = :eth_sign7702Authorization
       WALLET_SEND_CALLS = :wallet_sendCalls
       SIGN_TRANSACTION = :signTransaction

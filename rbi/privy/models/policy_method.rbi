@@ -17,6 +17,7 @@ module Privy
         T.let(:eth_signUserOperation, Privy::PolicyMethod::TaggedSymbol)
       ETH_SIGN_TYPED_DATA_V4 =
         T.let(:eth_signTypedData_v4, Privy::PolicyMethod::TaggedSymbol)
+      PERSONAL_SIGN = T.let(:personal_sign, Privy::PolicyMethod::TaggedSymbol)
       ETH_SIGN7702_AUTHORIZATION =
         T.let(:eth_sign7702Authorization, Privy::PolicyMethod::TaggedSymbol)
       WALLET_SEND_CALLS =
