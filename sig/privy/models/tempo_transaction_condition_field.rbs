@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type tempo_transaction_condition_field =
+      :fee_token
+      | :fee_payer_signature
+      | :nonce_key
+      | :valid_before
+      | :valid_after
+
+    module TempoTransactionConditionField
+      extend Privy::Internal::Type::Enum
+
+      FEE_TOKEN: :fee_token
+      FEE_PAYER_SIGNATURE: :fee_payer_signature
+      NONCE_KEY: :nonce_key
+      VALID_BEFORE: :valid_before
+      VALID_AFTER: :valid_after
+
+      def self?.values: -> ::Array[Privy::Models::tempo_transaction_condition_field]
+    end
+  end
+end

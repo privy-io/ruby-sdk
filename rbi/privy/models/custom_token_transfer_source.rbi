@@ -10,7 +10,7 @@ module Privy
 
       # Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5
       # USDC, "0.01" for 0.01 ETH). Not in the smallest on-chain unit (wei, lamports,
-      # etc.).
+      # etc.). Maximum 100 characters.
       sig { returns(String) }
       attr_accessor :amount
 
@@ -35,7 +35,7 @@ module Privy
       def self.new(
         # Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5
         # USDC, "0.01" for 0.01 ETH). Not in the smallest on-chain unit (wei, lamports,
-        # etc.).
+        # etc.). Maximum 100 characters.
         amount:,
         # The token contract address (EVM) or mint address (Solana) of the asset to
         # transfer.

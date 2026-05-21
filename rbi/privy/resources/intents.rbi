@@ -50,6 +50,7 @@ module Privy
                 Privy::EthereumTypedDataDomainCondition::OrHash,
                 Privy::EthereumTypedDataMessageCondition::OrHash,
                 Privy::Ethereum7702AuthorizationCondition::OrHash,
+                Privy::TempoTransactionCondition::OrHash,
                 Privy::SolanaProgramInstructionCondition::OrHash,
                 Privy::SolanaSystemProgramInstructionCondition::OrHash,
                 Privy::SolanaTokenProgramInstructionCondition::OrHash,
@@ -181,6 +182,7 @@ module Privy
               Privy::CustomTokenTransferSource::OrHash
             ),
           amount_type: Privy::AmountType::OrSymbol,
+          fee_configuration: Privy::FeeConfiguration::OrHash,
           slippage_bps: Integer,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
@@ -197,6 +199,8 @@ module Privy
         source:,
         # Body param: Whether the amount refers to the input token or output token.
         amount_type: nil,
+        # Body param: Total fees assessed on a transfer, in BPS
+        fee_configuration: nil,
         # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%).
         slippage_bps: nil,
         # Header param: Request expiry. Value is a Unix timestamp in milliseconds
@@ -298,6 +302,7 @@ module Privy
                 Privy::EthereumTypedDataDomainCondition::OrHash,
                 Privy::EthereumTypedDataMessageCondition::OrHash,
                 Privy::Ethereum7702AuthorizationCondition::OrHash,
+                Privy::TempoTransactionCondition::OrHash,
                 Privy::SolanaProgramInstructionCondition::OrHash,
                 Privy::SolanaSystemProgramInstructionCondition::OrHash,
                 Privy::SolanaTokenProgramInstructionCondition::OrHash,

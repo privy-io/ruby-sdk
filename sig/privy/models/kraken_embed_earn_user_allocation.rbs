@@ -1,0 +1,46 @@
+module Privy
+  module Models
+    type kraken_embed_earn_user_allocation =
+      {
+        total_allocated: Privy::KrakenEmbedEarnUserAllocation::TotalAllocated,
+        total_rewarded: Privy::KrakenEmbedEarnUserAllocation::TotalRewarded,
+        upcoming_reward_date: Time?
+      }
+
+    class KrakenEmbedEarnUserAllocation < Privy::Internal::Type::BaseModel
+      attr_accessor total_allocated: Privy::KrakenEmbedEarnUserAllocation::TotalAllocated
+
+      attr_accessor total_rewarded: Privy::KrakenEmbedEarnUserAllocation::TotalRewarded
+
+      attr_accessor upcoming_reward_date: Time?
+
+      def initialize: (
+        total_allocated: Privy::KrakenEmbedEarnUserAllocation::TotalAllocated,
+        total_rewarded: Privy::KrakenEmbedEarnUserAllocation::TotalRewarded,
+        ?upcoming_reward_date: Time?
+      ) -> void
+
+      def to_hash: -> {
+        total_allocated: Privy::KrakenEmbedEarnUserAllocation::TotalAllocated,
+        total_rewarded: Privy::KrakenEmbedEarnUserAllocation::TotalRewarded,
+        upcoming_reward_date: Time?
+      }
+
+      type total_allocated = {  }
+
+      class TotalAllocated < Privy::Models::KrakenEmbedEarnAmount
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+
+      type total_rewarded = {  }
+
+      class TotalRewarded < Privy::Models::KrakenEmbedEarnAmount
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

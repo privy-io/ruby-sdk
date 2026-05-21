@@ -10,6 +10,7 @@ module Privy
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       PENDING = T.let(:pending, Privy::IntentStatus::TaggedSymbol)
+      PROCESSING = T.let(:processing, Privy::IntentStatus::TaggedSymbol)
       EXECUTED = T.let(:executed, Privy::IntentStatus::TaggedSymbol)
       FAILED = T.let(:failed, Privy::IntentStatus::TaggedSymbol)
       EXPIRED = T.let(:expired, Privy::IntentStatus::TaggedSymbol)

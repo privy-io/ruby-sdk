@@ -62,6 +62,7 @@ module Privy
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
         ?amount_type: Privy::Models::amount_type,
+        ?fee_configuration: Privy::FeeConfiguration,
         ?slippage_bps: Integer,
         ?privy_authorization_signature: String,
         ?privy_idempotency_key: String,

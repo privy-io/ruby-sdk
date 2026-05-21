@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type kraken_embed_toggle_auto_earn_query_params = { want_enabled: bool }
+
+    class KrakenEmbedToggleAutoEarnQueryParams < Privy::Internal::Type::BaseModel
+      attr_accessor want_enabled: bool
+
+      def initialize: (want_enabled: bool) -> void
+
+      def to_hash: -> { want_enabled: bool }
+    end
+  end
+end

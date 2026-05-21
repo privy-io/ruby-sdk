@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type kraken_embed_get_earn_assets_result =
+      { assets: ::Hash[Symbol, Privy::KrakenEmbedEarnAsset] }
+
+    class KrakenEmbedGetEarnAssetsResult < Privy::Internal::Type::BaseModel
+      attr_accessor assets: ::Hash[Symbol, Privy::KrakenEmbedEarnAsset]
+
+      def initialize: (
+        assets: ::Hash[Symbol, Privy::KrakenEmbedEarnAsset]
+      ) -> void
+
+      def to_hash: -> { assets: ::Hash[Symbol, Privy::KrakenEmbedEarnAsset] }
+    end
+  end
+end

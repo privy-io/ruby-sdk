@@ -56,7 +56,7 @@ module Privy
       #
       # @param action [Symbol, Privy::Models::PolicyAction] Body param: The action to take when a policy rule matches.
       #
-      # @param conditions [Array<Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition>] Body param
+      # @param conditions [Array<Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition>] Body param
       #
       # @param method_ [Symbol, Privy::Models::PolicyMethod] Body param: Method the rule applies to.
       #
@@ -174,7 +174,7 @@ module Privy
       # Create an intent to execute a token transfer via a wallet. The intent must be
       # authorized by either the wallet owner or signers before it can be executed.
       #
-      # @overload transfer(wallet_id, destination:, source:, amount_type: nil, slippage_bps: nil, privy_request_expiry: nil, request_options: {})
+      # @overload transfer(wallet_id, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_request_expiry: nil, request_options: {})
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
@@ -183,6 +183,8 @@ module Privy
       # @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] Body param: The source asset, amount, and chain for a token transfer. Specify ei
       #
       # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
+      #
+      # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
       #
       # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%).
       #
@@ -298,7 +300,7 @@ module Privy
       #
       # @param action [Symbol, Privy::Models::PolicyAction] Body param: The action to take when a policy rule matches.
       #
-      # @param conditions [Array<Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition>] Body param
+      # @param conditions [Array<Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition>] Body param
       #
       # @param method_ [Symbol, Privy::Models::PolicyMethod] Body param: Method the rule applies to.
       #

@@ -23,6 +23,9 @@ module Privy
       # Allowed contract addresses for eth_sign7702Authorization requests.
       variant :ethereum_7702_authorization, -> { Privy::Ethereum7702AuthorizationCondition }
 
+      # A Tempo (type 118) transaction-level field. Evaluated once per transaction (not per call).
+      variant :tempo_transaction, -> { Privy::TempoTransactionCondition }
+
       # Solana Program attributes, enables allowlisting Solana Programs.
       variant :solana_program_instruction, -> { Privy::SolanaProgramInstructionCondition }
 
@@ -54,7 +57,7 @@ module Privy
       variant :reference, -> { Privy::AggregationCondition }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition)]
+      #   @return [Array(Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition)]
     end
   end
 end
