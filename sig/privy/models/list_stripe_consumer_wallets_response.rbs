@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type list_stripe_consumer_wallets_response =
+      { data: ::Array[Privy::StripeConsumerWallet] }
+
+    class ListStripeConsumerWalletsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::StripeConsumerWallet]
+
+      def initialize: (data: ::Array[Privy::StripeConsumerWallet]) -> void
+
+      def to_hash: -> { data: ::Array[Privy::StripeConsumerWallet] }
+    end
+  end
+end

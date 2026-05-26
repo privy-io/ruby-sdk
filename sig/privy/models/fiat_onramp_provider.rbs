@@ -7,6 +7,8 @@ module Privy
       | :"moonpay-sandbox"
       | :coinbase
       | :"coinbase-sandbox"
+      | :stripe
+      | :"stripe-sandbox"
 
     module FiatOnrampProvider
       extend Privy::Internal::Type::Enum
@@ -17,6 +19,8 @@ module Privy
       MOONPAY_SANDBOX: :"moonpay-sandbox"
       COINBASE: :coinbase
       COINBASE_SANDBOX: :"coinbase-sandbox"
+      STRIPE: :stripe
+      STRIPE_SANDBOX: :"stripe-sandbox"
 
       def self?.values: -> ::Array[Privy::Models::fiat_onramp_provider]
     end

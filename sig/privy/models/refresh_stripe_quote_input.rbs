@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type refresh_stripe_quote_input = { auth_intent_id: String }
+
+    class RefreshStripeQuoteInput < Privy::Internal::Type::BaseModel
+      attr_accessor auth_intent_id: String
+
+      def initialize: (auth_intent_id: String) -> void
+
+      def to_hash: -> { auth_intent_id: String }
+    end
+  end
+end

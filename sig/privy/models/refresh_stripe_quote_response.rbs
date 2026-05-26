@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type refresh_stripe_quote_response = { quote: Privy::StripeQuote }
+
+    class RefreshStripeQuoteResponse < Privy::Internal::Type::BaseModel
+      attr_accessor quote: Privy::StripeQuote
+
+      def initialize: (quote: Privy::StripeQuote) -> void
+
+      def to_hash: -> { quote: Privy::StripeQuote }
+    end
+  end
+end

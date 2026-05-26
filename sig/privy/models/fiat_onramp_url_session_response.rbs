@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type fiat_onramp_url_session_response =
+      {
+        session_id: String,
+        type: Privy::Models::FiatOnrampURLSessionResponse::type_,
+        url: String
+      }
+
+    class FiatOnrampURLSessionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor session_id: String
+
+      attr_accessor type: Privy::Models::FiatOnrampURLSessionResponse::type_
+
+      attr_accessor url: String
+
+      def initialize: (
+        session_id: String,
+        type: Privy::Models::FiatOnrampURLSessionResponse::type_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        session_id: String,
+        type: Privy::Models::FiatOnrampURLSessionResponse::type_,
+        url: String
+      }
+
+      type type_ = :url
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        URL: :url
+
+        def self?.values: -> ::Array[Privy::Models::FiatOnrampURLSessionResponse::type_]
+      end
+    end
+  end
+end

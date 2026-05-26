@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type create_link_auth_intent_input = {  }
+
+    class CreateLinkAuthIntentInput < Privy::Internal::Type::BaseModel
+      def initialize: -> void
+
+      def to_hash: -> {  }
+    end
+  end
+end

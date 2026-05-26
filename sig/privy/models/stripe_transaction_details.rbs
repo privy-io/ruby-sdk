@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type stripe_transaction_details = { last_error: String? }
+
+    class StripeTransactionDetails < Privy::Internal::Type::BaseModel
+      attr_accessor last_error: String?
+
+      def initialize: (?last_error: String?) -> void
+
+      def to_hash: -> { last_error: String? }
+    end
+  end
+end

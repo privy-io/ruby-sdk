@@ -2,22 +2,20 @@
 
 module Privy
   module Models
-    class GetFiatOnrampURLResponse < Privy::Internal::Type::BaseModel
-      # @!attribute session_id
-      #
-      #   @return [String]
-      required :session_id, String
+    # Provider session initialization — either a hosted URL or embedded SDK config.
+    module GetFiatOnrampURLResponse
+      extend Privy::Internal::Type::Union
 
-      # @!attribute url
-      #
-      #   @return [String]
-      required :url, String
+      discriminator :type
 
-      # @!method initialize(session_id:, url:)
-      #   The response containing a fiat onramp provider session URL.
-      #
-      #   @param session_id [String]
-      #   @param url [String]
+      # Provider session initialization for popup-based providers.
+      variant :url, -> { Privy::FiatOnrampURLSessionResponse }
+
+      # Provider session initialization for embedded SDK providers (Stripe).
+      variant :"stripe-sdk", -> { Privy::FiatOnrampStripeSDKSessionResponse }
+
+      # @!method self.variants
+      #   @return [Array(Privy::Models::FiatOnrampURLSessionResponse, Privy::Models::FiatOnrampStripeSDKSessionResponse)]
     end
   end
 end

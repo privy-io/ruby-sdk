@@ -71,6 +71,9 @@ module Privy
     sig { returns(Privy::Resources::ClientAuth) }
     attr_reader :client_auth
 
+    sig { returns(Privy::Resources::Onramps) }
+    attr_reader :onramps
+
     sig { returns(Privy::Resources::Funding) }
     attr_reader :funding
 

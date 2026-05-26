@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type stripe_consumer_wallet =
+      { id: String, network: String, wallet_address: String }
+
+    class StripeConsumerWallet < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor network: String
+
+      attr_accessor wallet_address: String
+
+      def initialize: (
+        id: String,
+        network: String,
+        wallet_address: String
+      ) -> void
+
+      def to_hash: -> { id: String, network: String, wallet_address: String }
+    end
+  end
+end
