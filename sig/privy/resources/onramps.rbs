@@ -1,0 +1,7 @@
+module Privy
+  module Resources
+    class Onramps
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

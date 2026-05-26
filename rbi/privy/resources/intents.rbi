@@ -67,7 +67,7 @@ module Privy
           name: String,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::RuleIntentResponse)
+        ).returns(Privy::RuleMutateIntentResponse)
       end
       def create_policy_rule(
         # Path param: ID of the policy.
@@ -95,7 +95,7 @@ module Privy
           policy_id: String,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::RuleIntentResponse)
+        ).returns(Privy::RuleDeleteIntentResponse)
       end
       def delete_policy_rule(
         # Path param: ID of the rule.
@@ -319,7 +319,7 @@ module Privy
           name: String,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::RuleIntentResponse)
+        ).returns(Privy::RuleMutateIntentResponse)
       end
       def update_policy_rule(
         # Path param: ID of the rule.

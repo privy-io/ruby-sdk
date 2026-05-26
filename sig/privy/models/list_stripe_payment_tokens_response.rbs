@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type list_stripe_payment_tokens_response =
+      { data: ::Array[Privy::StripePaymentToken] }
+
+    class ListStripePaymentTokensResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::StripePaymentToken]
+
+      def initialize: (data: ::Array[Privy::StripePaymentToken]) -> void
+
+      def to_hash: -> { data: ::Array[Privy::StripePaymentToken] }
+    end
+  end
+end

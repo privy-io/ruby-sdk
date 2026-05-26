@@ -66,7 +66,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::RuleIntentResponse]
+      # @return [Privy::Models::RuleMutateIntentResponse]
       #
       # @see Privy::Models::IntentCreatePolicyRuleParams
       def create_policy_rule(policy_id, params)
@@ -77,7 +77,7 @@ module Privy
           path: ["v1/intents/policies/%1$s/rules", policy_id],
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Privy::RuleIntentResponse,
+          model: Privy::RuleMutateIntentResponse,
           options: options
         )
       end
@@ -98,7 +98,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::RuleIntentResponse]
+      # @return [Privy::Models::RuleDeleteIntentResponse]
       #
       # @see Privy::Models::IntentDeletePolicyRuleParams
       def delete_policy_rule(rule_id, params)
@@ -111,7 +111,7 @@ module Privy
           method: :delete,
           path: ["v1/intents/policies/%1$s/rules/%2$s", policy_id, rule_id],
           headers: parsed.transform_keys(privy_request_expiry: "privy-request-expiry"),
-          model: Privy::RuleIntentResponse,
+          model: Privy::RuleDeleteIntentResponse,
           options: options
         )
       end
@@ -310,7 +310,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::RuleIntentResponse]
+      # @return [Privy::Models::RuleMutateIntentResponse]
       #
       # @see Privy::Models::IntentUpdatePolicyRuleParams
       def update_policy_rule(rule_id, params)
@@ -325,7 +325,7 @@ module Privy
           path: ["v1/intents/policies/%1$s/rules/%2$s", policy_id, rule_id],
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Privy::RuleIntentResponse,
+          model: Privy::RuleMutateIntentResponse,
           options: options
         )
       end

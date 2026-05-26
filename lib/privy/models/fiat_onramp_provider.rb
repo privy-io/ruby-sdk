@@ -12,6 +12,8 @@ module Privy
       MOONPAY_SANDBOX = :"moonpay-sandbox"
       COINBASE = :coinbase
       COINBASE_SANDBOX = :"coinbase-sandbox"
+      STRIPE = :stripe
+      STRIPE_SANDBOX = :"stripe-sandbox"
 
       # @!method self.values
       #   @return [Array<Symbol>]

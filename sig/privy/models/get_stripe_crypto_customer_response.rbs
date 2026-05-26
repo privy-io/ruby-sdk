@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type get_stripe_crypto_customer_response =
+      { id: String, verifications: ::Array[Privy::StripeVerification] }
+
+    class GetStripeCryptoCustomerResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_reader verifications: ::Array[Privy::StripeVerification]?
+
+      def verifications=: (
+        ::Array[Privy::StripeVerification]
+      ) -> ::Array[Privy::StripeVerification]
+
+      def initialize: (
+        id: String,
+        ?verifications: ::Array[Privy::StripeVerification]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        verifications: ::Array[Privy::StripeVerification]
+      }
+    end
+  end
+end

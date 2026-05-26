@@ -2,7 +2,6 @@
 
 module Privy
   module Models
-    # @see Privy::Resources::Intents#create_policy_rule
     class RuleIntentResponse < Privy::Models::BaseIntentResponse
       # @!attribute intent_type
       #

@@ -2,25 +2,22 @@
 
 module Privy
   module Models
-    class GetFiatOnrampURLResponse < Privy::Internal::Type::BaseModel
-      OrHash =
+    # Provider session initialization — either a hosted URL or embedded SDK config.
+    module GetFiatOnrampURLResponse
+      extend Privy::Internal::Type::Union
+
+      Variants =
         T.type_alias do
-          T.any(Privy::GetFiatOnrampURLResponse, Privy::Internal::AnyHash)
+          T.any(
+            Privy::FiatOnrampURLSessionResponse,
+            Privy::FiatOnrampStripeSDKSessionResponse
+          )
         end
 
-      sig { returns(String) }
-      attr_accessor :session_id
-
-      sig { returns(String) }
-      attr_accessor :url
-
-      # The response containing a fiat onramp provider session URL.
-      sig { params(session_id: String, url: String).returns(T.attached_class) }
-      def self.new(session_id:, url:)
+      sig do
+        override.returns(T::Array[Privy::GetFiatOnrampURLResponse::Variants])
       end
-
-      sig { override.returns({ session_id: String, url: String }) }
-      def to_hash
+      def self.variants
       end
     end
   end

@@ -72,6 +72,9 @@ module Privy
     # @return [Privy::Resources::ClientAuth]
     attr_reader :client_auth
 
+    # @return [Privy::Resources::Onramps]
+    attr_reader :onramps
+
     # @return [Privy::Resources::Funding]
     attr_reader :funding
 
@@ -190,6 +193,7 @@ module Privy
       @embedded_wallets = Privy::Resources::EmbeddedWallets.new(client: self)
       @analytics = Privy::Resources::Analytics.new(client: self)
       @client_auth = Privy::Resources::ClientAuth.new(client: self)
+      @onramps = Privy::Resources::Onramps.new(client: self)
       @funding = Privy::Resources::Funding.new(client: self)
       @organizations = Privy::Resources::Organizations.new(client: self)
       @cross_app = Privy::Resources::CrossApp.new(client: self)

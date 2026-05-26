@@ -43,6 +43,8 @@ module Privy
 
     attr_reader client_auth: Privy::Resources::ClientAuth
 
+    attr_reader onramps: Privy::Resources::Onramps
+
     attr_reader funding: Privy::Resources::Funding
 
     attr_reader organizations: Privy::Resources::Organizations

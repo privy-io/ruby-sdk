@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type onramp_session_params =
+      {
+        crypto_customer_id: String,
+        destination_currency: String,
+        destination_network: String,
+        payment_token: String,
+        source_amount: String,
+        source_currency: String,
+        wallet_address: String
+      }
+
+    class OnrampSessionParams < Privy::Internal::Type::BaseModel
+      attr_accessor crypto_customer_id: String
+
+      attr_accessor destination_currency: String
+
+      attr_accessor destination_network: String
+
+      attr_accessor payment_token: String
+
+      attr_accessor source_amount: String
+
+      attr_accessor source_currency: String
+
+      attr_accessor wallet_address: String
+
+      def initialize: (
+        crypto_customer_id: String,
+        destination_currency: String,
+        destination_network: String,
+        payment_token: String,
+        source_amount: String,
+        source_currency: String,
+        wallet_address: String
+      ) -> void
+
+      def to_hash: -> {
+        crypto_customer_id: String,
+        destination_currency: String,
+        destination_network: String,
+        payment_token: String,
+        source_amount: String,
+        source_currency: String,
+        wallet_address: String
+      }
+    end
+  end
+end

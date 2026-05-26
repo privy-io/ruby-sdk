@@ -18,6 +18,9 @@ module Privy
       COINBASE = T.let(:coinbase, Privy::FiatOnrampProvider::TaggedSymbol)
       COINBASE_SANDBOX =
         T.let(:"coinbase-sandbox", Privy::FiatOnrampProvider::TaggedSymbol)
+      STRIPE = T.let(:stripe, Privy::FiatOnrampProvider::TaggedSymbol)
+      STRIPE_SANDBOX =
+        T.let(:"stripe-sandbox", Privy::FiatOnrampProvider::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Privy::FiatOnrampProvider::TaggedSymbol])

@@ -22,14 +22,14 @@ module Privy
         name: String,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
-      ) -> Privy::RuleIntentResponse
+      ) -> Privy::RuleMutateIntentResponse
 
       def delete_policy_rule: (
         String rule_id,
         policy_id: String,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
-      ) -> Privy::RuleIntentResponse
+      ) -> Privy::RuleDeleteIntentResponse
 
       def get: (
         String intent_id,
@@ -84,7 +84,7 @@ module Privy
         name: String,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
-      ) -> Privy::RuleIntentResponse
+      ) -> Privy::RuleMutateIntentResponse
 
       def update_wallet: (
         String wallet_id,

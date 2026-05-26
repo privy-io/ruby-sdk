@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type create_stripe_onramp_session_response =
+      { id: String, session_id: String }
+
+    class CreateStripeOnrampSessionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor session_id: String
+
+      def initialize: (id: String, session_id: String) -> void
+
+      def to_hash: -> { id: String, session_id: String }
+    end
+  end
+end

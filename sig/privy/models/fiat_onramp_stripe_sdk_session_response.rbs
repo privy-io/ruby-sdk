@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type fiat_onramp_stripe_sdk_session_response =
+      {
+        network: String,
+        publishable_key: String,
+        session_id: String,
+        type: Privy::Models::FiatOnrampStripeSDKSessionResponse::type_
+      }
+
+    class FiatOnrampStripeSDKSessionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor network: String
+
+      attr_accessor publishable_key: String
+
+      attr_accessor session_id: String
+
+      attr_accessor type: Privy::Models::FiatOnrampStripeSDKSessionResponse::type_
+
+      def initialize: (
+        network: String,
+        publishable_key: String,
+        session_id: String,
+        type: Privy::Models::FiatOnrampStripeSDKSessionResponse::type_
+      ) -> void
+
+      def to_hash: -> {
+        network: String,
+        publishable_key: String,
+        session_id: String,
+        type: Privy::Models::FiatOnrampStripeSDKSessionResponse::type_
+      }
+
+      type type_ = :"stripe-sdk"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        STRIPE_SDK: :"stripe-sdk"
+
+        def self?.values: -> ::Array[Privy::Models::FiatOnrampStripeSDKSessionResponse::type_]
+      end
+    end
+  end
+end
