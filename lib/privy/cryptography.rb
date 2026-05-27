@@ -48,5 +48,26 @@ module Privy
         OpenSSL::PKey.read(@public_key_spki)
       end
     end
+
+    HpkeEncryptedPayload = Data.define(:encapsulated_key, :ciphertext)
+
+    class HpkeSender
+      def initialize
+        @hpke = HPKE.new(HPKE::DHKEM_P256_HKDF_SHA256, HPKE::HKDF_SHA256, HPKE::CHACHA20_POLY1305)
+      end
+
+      # Encrypts a payload for a recipient using HPKE base mode.
+      #
+      # @param public_key_spki [String] Raw DER bytes of the recipient's SPKI-encoded public key
+      # @param payload [String] Raw plaintext bytes
+      # @return [Privy::Cryptography::HpkeEncryptedPayload]
+      def encrypt(public_key_spki, payload)
+        recipient_public_key = OpenSSL::PKey.read(public_key_spki)
+        encrypted = @hpke.setup_base_s(recipient_public_key, "")
+        ciphertext = encrypted.fetch(:context_s).seal("", payload)
+
+        HpkeEncryptedPayload.new(encapsulated_key: encrypted.fetch(:enc), ciphertext: ciphertext)
+      end
+    end
   end
 end

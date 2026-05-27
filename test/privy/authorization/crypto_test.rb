@@ -30,4 +30,11 @@ class Privy::CryptographyTest < Minitest::Test
     digest = OpenSSL::Digest.new("SHA256").digest(payload)
     assert(pubkey.dsa_verify_asn1(digest, der))
   end
+
+  def test_hpke_sender_recipient_round_trip
+    recipient = Privy::Cryptography::HpkeRecipient.new
+    encrypted = Privy::Cryptography::HpkeSender.new.encrypt(recipient.public_key_spki, "secret")
+
+    assert_equal("secret", recipient.decrypt(encrypted.encapsulated_key, encrypted.ciphertext))
+  end
 end

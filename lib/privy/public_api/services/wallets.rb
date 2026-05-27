@@ -39,6 +39,70 @@ module Privy
         super(combined_params)
       end
 
+      # Import an externally generated wallet by encrypting its entropy with HPKE.
+      #
+      # @param wallet [Hash] Import wallet parameters plus :private_key entropy.
+      # @option wallet [String] :private_key Private key or seed phrase entropy to import.
+      # @option wallet [String, Symbol] :entropy_type "hd" or "private-key".
+      # @option wallet [String, Symbol] :chain_type "ethereum" or "solana".
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::Wallet]
+      def import(
+        wallet:,
+        additional_signers: nil,
+        display_name: nil,
+        external_id: nil,
+        owner: nil,
+        owner_id: nil,
+        policy_ids: nil,
+        request_options: nil
+      )
+        import_wallet = wallet.transform_keys { |key| key.respond_to?(:to_sym) ? key.to_sym : key }
+        private_key = import_wallet.delete(:private_key)
+        raise Privy::Errors::Error, "wallet.private_key is required" if private_key.nil?
+
+        private_key_bytes = Privy::WalletEntropy.entropy_to_bytes(
+          entropy: private_key,
+          entropy_type: import_wallet.fetch(:entropy_type),
+          chain_type: import_wallet.fetch(:chain_type)
+        )
+
+        init_response = _init_import(
+          body: import_wallet.merge(encryption_type: "HPKE"),
+          request_options: request_options
+        )
+        unless init_response.encryption_type.to_s == "HPKE"
+          raise Privy::Errors::Error, "Invalid encryption type: #{init_response.encryption_type}"
+        end
+
+        encrypted = Privy::Cryptography::HpkeSender.new.encrypt(
+          Base64.strict_decode64(init_response.encryption_public_key),
+          private_key_bytes
+        )
+
+        submit_params = {
+          wallet: import_wallet.merge(
+            encryption_type: "HPKE",
+            encapsulated_key: Base64.strict_encode64(encrypted.encapsulated_key),
+            ciphertext: Base64.strict_encode64(encrypted.ciphertext)
+          ),
+          request_options: request_options
+        }
+        {
+          additional_signers: additional_signers,
+          display_name: display_name,
+          external_id: external_id,
+          owner: owner,
+          owner_id: owner_id,
+          policy_ids: policy_ids
+        }.each do |key, value|
+          submit_params[key] = value unless value.nil?
+        end
+
+        _submit_import(submit_params)
+      end
+
       # Update a wallet's policies or authorization key configuration.
       #
       # @example Update wallet policies

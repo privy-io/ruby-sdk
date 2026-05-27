@@ -81,6 +81,76 @@ class Privy::Services::WalletsTest < Minitest::Test
     end
   end
 
+  # --- import ----------------------------------------------------------------
+
+  def test_import_initializes_encrypts_and_submits_wallet_entropy
+    recipient = Privy::Cryptography::HpkeRecipient.new
+    stub_json(
+      :post,
+      "#{BASE_URL}/v1/wallets/import/init",
+      body: {
+        encryption_type: "HPKE",
+        encryption_public_key: Base64.strict_encode64(recipient.public_key_spki)
+      }.to_json
+    )
+    stub_json(:post, "#{BASE_URL}/v1/wallets/import/submit", body: wallet_response_body(imported_at: 1.0))
+
+    response = build_client.wallets.import(
+      wallet: {
+        address: "0x0000000000000000000000000000000000000001",
+        chain_type: :ethereum,
+        entropy_type: :"private-key",
+        private_key: "0x000102ff"
+      },
+      display_name: "Imported wallet"
+    )
+
+    assert_equal("w-1", response.id)
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/import/init") do |req|
+      body = parse_json_body(req)
+      refute(body.key?("private_key"))
+      assert_equal("HPKE", body.fetch("encryption_type"))
+      assert_equal("private-key", body.fetch("entropy_type"))
+    end
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/import/submit") do |req|
+      body = parse_json_body(req)
+      wallet = body.fetch("wallet")
+      refute(wallet.key?("private_key"))
+      assert_equal("Imported wallet", body.fetch("display_name"))
+      assert_equal("HPKE", wallet.fetch("encryption_type"))
+
+      decrypted = recipient.decrypt(
+        Base64.strict_decode64(wallet.fetch("encapsulated_key")),
+        Base64.strict_decode64(wallet.fetch("ciphertext"))
+      )
+      assert_equal([0, 1, 2, 255].pack("C*"), decrypted)
+    end
+  end
+
+  def test_import_rejects_non_hpke_init_response
+    stub_json(
+      :post,
+      "#{BASE_URL}/v1/wallets/import/init",
+      body: {
+        encryption_type: "OTHER",
+        encryption_public_key: Base64.strict_encode64(Privy::Cryptography::HpkeRecipient.new.public_key_spki)
+      }.to_json
+    )
+
+    error = assert_raises(Privy::Errors::Error) do
+      build_client.wallets.import(
+        wallet: {
+          address: "0x0000000000000000000000000000000000000001",
+          chain_type: :ethereum,
+          entropy_type: :"private-key",
+          private_key: "0x000102ff"
+        }
+      )
+    end
+
+    assert_equal("Invalid encryption type: OTHER", error.message)
+  end
+
   # --- update -----------------------------------------------------------------
 
   def test_update_without_auth_context_sends_no_signature_header
