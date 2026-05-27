@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_cancelled_webhook_payload =
+      {
+        cancelled_at: String,
+        custom_order_id: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedCustomOrderCancelledWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor cancelled_at: String
+
+      attr_accessor custom_order_id: String
+
+      attr_accessor reason: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        cancelled_at: String,
+        custom_order_id: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        cancelled_at: String,
+        custom_order_id: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.custom_order.cancelled"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_CUSTOM_ORDER_CANCELLED: :"kraken_embed.custom_order.cancelled"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_]
+      end
+    end
+  end
+end

@@ -261,6 +261,10 @@ module Privy
 
   class EarnAsset = Privy::Models::EarnAsset
 
+  class EarnClaimedRewardsQuery = Privy::Models::EarnClaimedRewardsQuery
+
+  class EarnClaimedRewardsResponse = Privy::Models::EarnClaimedRewardsResponse
+
   class EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
 
   class EarnDepositRequestBody = Privy::Models::EarnDepositRequestBody
@@ -682,6 +686,12 @@ module Privy
   class KrakenEmbedCustomOrderAction = Privy::Models::KrakenEmbedCustomOrderAction
 
   class KrakenEmbedCustomOrderAmount = Privy::Models::KrakenEmbedCustomOrderAmount
+
+  class KrakenEmbedCustomOrderCancelledWebhookPayload = Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload
+
+  class KrakenEmbedCustomOrderExecutedWebhookPayload = Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload
+
+  class KrakenEmbedCustomOrderExecutionFailedWebhookPayload = Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload
 
   class KrakenEmbedCustomOrderOccurrence = Privy::Models::KrakenEmbedCustomOrderOccurrence
 
