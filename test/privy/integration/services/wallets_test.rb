@@ -242,6 +242,118 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
     assert_equal(:hex, response.data.encoding)
   end
 
+  # --- export and import roundtrip tests ---
+
+  def test_round_trip_ethereum_wallet_through_imported_private_key_exports_same_key
+    generated = Privy::Test::Integration::WalletEntropyFactory.ethereum_private_key
+    import_kp = Privy::Cryptography.generate_p256_key_pair
+
+    imported = client.wallets.import(
+      wallet: {
+        chain_type: generated.chain_type,
+        address: generated.address,
+        entropy_type: generated.entropy_type,
+        private_key: generated.private_key
+      },
+      owner: {public_key: import_kp.public_key}
+    )
+
+    assert_equal(generated.chain_type, imported.chain_type)
+    assert_equal(generated.address.downcase, imported.address.downcase)
+
+    exported = client.wallets.export_private_key(
+      imported.id,
+      authorization_context: Privy::Authorization::AuthorizationContext.build(
+        authorization_private_keys: [import_kp.private_key]
+      )
+    )
+
+    assert_equal(generated.private_key, exported.fetch(:private_key))
+  end
+
+  def test_round_trip_solana_wallet_through_imported_private_key_exports_same_key
+    generated = Privy::Test::Integration::WalletEntropyFactory.solana_private_key
+    import_kp = Privy::Cryptography.generate_p256_key_pair
+
+    imported = client.wallets.import(
+      wallet: {
+        chain_type: generated.chain_type,
+        address: generated.address,
+        entropy_type: generated.entropy_type,
+        private_key: generated.private_key
+      },
+      owner: {public_key: import_kp.public_key}
+    )
+
+    assert_equal(generated.chain_type, imported.chain_type)
+    assert_equal(generated.address, imported.address)
+
+    exported = client.wallets.export_private_key(
+      imported.id,
+      authorization_context: Privy::Authorization::AuthorizationContext.build(
+        authorization_private_keys: [import_kp.private_key]
+      )
+    )
+
+    assert_equal(generated.private_key, exported.fetch(:private_key))
+  end
+
+  def test_round_trip_ethereum_wallet_through_imported_seed_phrase_exports_same_seed_phrase
+    generated = Privy::Test::Integration::WalletEntropyFactory.ethereum_seed_phrase
+    import_kp = Privy::Cryptography.generate_p256_key_pair
+
+    imported = client.wallets.import(
+      wallet: {
+        chain_type: generated.chain_type,
+        address: generated.address,
+        entropy_type: generated.entropy_type,
+        private_key: generated.private_key,
+        index: generated.index
+      },
+      owner: {public_key: import_kp.public_key}
+    )
+
+    assert_equal(generated.chain_type, imported.chain_type)
+    assert_equal(generated.address.downcase, imported.address.downcase)
+
+    exported = client.wallets.export_seed_phrase(
+      imported.id,
+      authorization_context: Privy::Authorization::AuthorizationContext.build(
+        authorization_private_keys: [import_kp.private_key]
+      )
+    )
+
+    assert_equal(generated.private_key, exported.fetch(:seed_phrase))
+  end
+
+  def test_round_trip_solana_wallet_through_imported_seed_phrase_exports_same_seed_phrase
+    generated = Privy::Test::Integration::WalletEntropyFactory.solana_seed_phrase
+    import_kp = Privy::Cryptography.generate_p256_key_pair
+
+    imported = client.wallets.import(
+      wallet: {
+        chain_type: generated.chain_type,
+        address: generated.address,
+        entropy_type: generated.entropy_type,
+        private_key: generated.private_key,
+        index: generated.index
+      },
+      owner: {public_key: import_kp.public_key}
+    )
+
+    assert_equal(generated.chain_type, imported.chain_type)
+    assert_equal(generated.address, imported.address)
+
+    exported = client.wallets.export_seed_phrase(
+      imported.id,
+      authorization_context: Privy::Authorization::AuthorizationContext.build(
+        authorization_private_keys: [import_kp.private_key]
+      )
+    )
+
+    assert_equal(generated.private_key, exported.fetch(:seed_phrase))
+  end
+
   # --- transfer tests ---
 
   def test_transfer_on_ownerless_wallet
