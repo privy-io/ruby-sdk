@@ -253,7 +253,13 @@ class Privy::Test::Integration::WalletsTest < Privy::Test::IntegrationTest
       wallet.id,
       wallet_transfer_params: {
         source: {asset: "usdc", amount: "0.01", chain: "base"},
-        destination: {address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2"}
+        destination: {
+          address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2",
+          asset: "usdt",
+          chain: "ethereum"
+        },
+        amount_type: "exact_input",
+        slippage_bps: 100
       }
     )
 

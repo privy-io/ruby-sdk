@@ -421,6 +421,67 @@ class Privy::Services::WalletsTest < Minitest::Test
     end
   end
 
+  def test_transfer_cross_asset_exact_input_sends_body
+    stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/transfer", body: TRANSFER_RESPONSE_BODY)
+    build_client.wallets.transfer(
+      "w-1",
+      wallet_transfer_params: {
+        source: {asset: "usdc", amount: "10.5", chain: "base"},
+        destination: {
+          address: "0x0000000000000000000000000000000000000001",
+          asset: "usdt",
+          chain: "ethereum"
+        },
+        amount_type: "exact_input",
+        slippage_bps: 100
+      }
+    )
+
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/transfer") do |req|
+      body = parse_json_body(req)
+      assert_equal("usdt", body.fetch("destination").fetch("asset"))
+      assert_equal("ethereum", body.fetch("destination").fetch("chain"))
+      assert_equal("exact_input", body.fetch("amount_type"))
+      assert_equal(100, body.fetch("slippage_bps"))
+    end
+  end
+
+  def test_transfer_exact_output_sends_body
+    stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/transfer", body: TRANSFER_RESPONSE_BODY)
+    build_client.wallets.transfer(
+      "w-1",
+      wallet_transfer_params: {
+        source: {asset: "usdc", amount: "10.5", chain: "base"},
+        destination: {
+          address: "0x0000000000000000000000000000000000000001",
+          asset: "eth",
+          chain: "ethereum"
+        },
+        amount_type: "exact_output"
+      }
+    )
+
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/transfer") do |req|
+      assert_equal("exact_output", parse_json_body(req).fetch("amount_type"))
+    end
+  end
+
+  def test_transfer_with_idempotency_key_sends_header
+    stub_json(:post, "#{BASE_URL}/v1/wallets/w-1/transfer", body: TRANSFER_RESPONSE_BODY)
+    build_client.wallets.transfer(
+      "w-1",
+      wallet_transfer_params: {
+        source: {asset: "usdc", amount: "1", chain: "base"},
+        destination: {address: "0x0000000000000000000000000000000000000001"}
+      },
+      idempotency_key: "idem-transfer"
+    )
+
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/transfer") do |req|
+      assert_equal("idem-transfer", req.headers["Privy-Idempotency-Key"])
+    end
+  end
+
   # --- export ----------------------------------------------------------------
 
   def test_export_decrypts_private_key_response
