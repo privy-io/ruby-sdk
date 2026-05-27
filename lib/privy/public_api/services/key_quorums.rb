@@ -53,7 +53,13 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::KeyQuorum]
-      def update(key_quorum_id, key_quorum_update_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
+      def update(
+        key_quorum_id,
+        key_quorum_update_params:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
