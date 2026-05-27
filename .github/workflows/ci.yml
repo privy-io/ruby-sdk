@@ -70,6 +70,11 @@ jobs:
 
       - name: Run lints
         run: ./scripts/lint
+
+      - name: Check formatting
+        run: |-
+          bundle exec rake format
+          git diff --exit-code
   test:
     timeout-minutes: 10
     name: test
