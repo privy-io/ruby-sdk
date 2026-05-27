@@ -300,6 +300,10 @@ module Privy
 
   EarnAsset = Privy::Models::EarnAsset
 
+  EarnClaimedRewardsQuery = Privy::Models::EarnClaimedRewardsQuery
+
+  EarnClaimedRewardsResponse = Privy::Models::EarnClaimedRewardsResponse
+
   EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
 
   EarnDepositRequestBody = Privy::Models::EarnDepositRequestBody
@@ -780,6 +784,15 @@ module Privy
   KrakenEmbedCustomOrderAction = Privy::Models::KrakenEmbedCustomOrderAction
 
   KrakenEmbedCustomOrderAmount = Privy::Models::KrakenEmbedCustomOrderAmount
+
+  KrakenEmbedCustomOrderCancelledWebhookPayload =
+    Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload
+
+  KrakenEmbedCustomOrderExecutedWebhookPayload =
+    Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload
+
+  KrakenEmbedCustomOrderExecutionFailedWebhookPayload =
+    Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload
 
   KrakenEmbedCustomOrderOccurrence =
     Privy::Models::KrakenEmbedCustomOrderOccurrence
