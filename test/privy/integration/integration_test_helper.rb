@@ -3,6 +3,7 @@
 require "dotenv/load"
 require_relative "../test_helper"
 require_relative "support/jwt_helpers"
+require_relative "support/wallet_entropy_factory"
 
 module Privy
   module Test
