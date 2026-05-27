@@ -227,6 +227,76 @@ module Privy
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         _transfer(wallet_id, combined_params)
       end
+
+      # Export a wallet's private key or seed phrase via HPKE.
+      #
+      # @param wallet_id [String] ID of the wallet to export.
+      # @param export_seed_phrase [Boolean, nil] Whether to export the seed phrase instead of the private key.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the request expires.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Hash] {private_key: String}
+      def export(
+        wallet_id,
+        export_seed_phrase: nil,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
+        recipient = Privy::Cryptography::HpkeRecipient.new
+        export_params = {
+          encryption_type: "HPKE",
+          recipient_public_key: Base64.strict_encode64(recipient.public_key_spki)
+        }
+        export_params[:export_seed_phrase] = export_seed_phrase unless export_seed_phrase.nil?
+
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :post,
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/export"),
+          body: export_params,
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
+        )
+        combined_params = export_params.merge(request_options: request_options)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+
+        response = super(wallet_id, combined_params)
+        private_key = recipient.decrypt(
+          Base64.strict_decode64(response.encapsulated_key),
+          Base64.strict_decode64(response.ciphertext)
+        )
+
+        {private_key: private_key.force_encoding(Encoding::UTF_8)}
+      end
+
+      # Export a wallet's private key via HPKE.
+      #
+      # @return [Hash] {private_key: String}
+      def export_private_key(wallet_id, authorization_context: nil, request_expiry: nil, request_options: nil)
+        export(
+          wallet_id,
+          export_seed_phrase: false,
+          authorization_context: authorization_context,
+          request_expiry: request_expiry,
+          request_options: request_options
+        )
+      end
+
+      # Export a wallet's seed phrase via HPKE.
+      #
+      # @return [Hash] {seed_phrase: String}
+      def export_seed_phrase(wallet_id, authorization_context: nil, request_expiry: nil, request_options: nil)
+        exported = export(
+          wallet_id,
+          export_seed_phrase: true,
+          authorization_context: authorization_context,
+          request_expiry: request_expiry,
+          request_options: request_options
+        )
+        {seed_phrase: exported.fetch(:private_key)}
+      end
     end
   end
 end

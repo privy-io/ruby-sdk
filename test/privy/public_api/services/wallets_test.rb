@@ -46,6 +46,23 @@ class Privy::Services::WalletsTest < Minitest::Test
     )
   end
 
+  def parse_json_body(request)
+    JSON.parse(request.body)
+  end
+
+  def hpke_encrypt_for_recipient(recipient_public_key_base64, plaintext)
+    hpke = HPKE.new(HPKE::DHKEM_P256_HKDF_SHA256, HPKE::HKDF_SHA256, HPKE::CHACHA20_POLY1305)
+    recipient_public_key = OpenSSL::PKey.read(Base64.strict_decode64(recipient_public_key_base64))
+    encrypted = hpke.setup_base_s(recipient_public_key, "")
+    ciphertext = encrypted.fetch(:context_s).seal("", plaintext)
+
+    {
+      encryption_type: "HPKE",
+      encapsulated_key: Base64.strict_encode64(encrypted.fetch(:enc)),
+      ciphertext: Base64.strict_encode64(ciphertext)
+    }.to_json
+  end
+
   # --- create -----------------------------------------------------------------
 
   def test_create_without_idempotency_sends_no_idempotency_header
@@ -330,6 +347,82 @@ class Privy::Services::WalletsTest < Minitest::Test
       request_expiry: 1_750_000_000_000
     )
     assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/transfer") do |req|
+      assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
+    end
+  end
+
+  # --- export ----------------------------------------------------------------
+
+  def test_export_decrypts_private_key_response
+    stub_request(:post, "#{BASE_URL}/v1/wallets/w-1/export").to_return do |request|
+      body = parse_json_body(request)
+      {
+        status: 200,
+        body: hpke_encrypt_for_recipient(body.fetch("recipient_public_key"), "0xprivate"),
+        headers: {"content-type" => "application/json"}
+      }
+    end
+
+    response = build_client.wallets.export("w-1")
+
+    assert_equal({private_key: "0xprivate"}, response)
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/export") do |req|
+      body = parse_json_body(req)
+      assert_equal("HPKE", body.fetch("encryption_type"))
+      assert_match(%r{\A[A-Za-z0-9+/]+=*\z}, body.fetch("recipient_public_key"))
+      refute(body.key?("export_seed_phrase"))
+    end
+  end
+
+  def test_export_private_key_requests_private_key
+    stub_request(:post, "#{BASE_URL}/v1/wallets/w-1/export").to_return do |request|
+      body = parse_json_body(request)
+      {
+        status: 200,
+        body: hpke_encrypt_for_recipient(body.fetch("recipient_public_key"), "0xprivate"),
+        headers: {"content-type" => "application/json"}
+      }
+    end
+
+    response = build_client.wallets.export_private_key("w-1")
+
+    assert_equal({private_key: "0xprivate"}, response)
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/export") do |req|
+      assert_equal(false, parse_json_body(req).fetch("export_seed_phrase"))
+    end
+  end
+
+  def test_export_seed_phrase_maps_private_key_payload_to_seed_phrase
+    stub_request(:post, "#{BASE_URL}/v1/wallets/w-1/export").to_return do |request|
+      body = parse_json_body(request)
+      {
+        status: 200,
+        body: hpke_encrypt_for_recipient(body.fetch("recipient_public_key"), "test test test junk"),
+        headers: {"content-type" => "application/json"}
+      }
+    end
+
+    response = build_client.wallets.export_seed_phrase("w-1")
+
+    assert_equal({seed_phrase: "test test test junk"}, response)
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/export") do |req|
+      assert_equal(true, parse_json_body(req).fetch("export_seed_phrase"))
+    end
+  end
+
+  def test_export_per_call_request_expiry_overrides_default
+    stub_request(:post, "#{BASE_URL}/v1/wallets/w-1/export").to_return do |request|
+      body = parse_json_body(request)
+      {
+        status: 200,
+        body: hpke_encrypt_for_recipient(body.fetch("recipient_public_key"), "0xprivate"),
+        headers: {"content-type" => "application/json"}
+      }
+    end
+
+    build_client.wallets.export("w-1", request_expiry: 1_750_000_000_000)
+
+    assert_requested(:post, "#{BASE_URL}/v1/wallets/w-1/export") do |req|
       assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
     end
   end
