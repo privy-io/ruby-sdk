@@ -8,12 +8,18 @@ module Privy
           T.any(Privy::CreateLinkAuthIntentInput, Privy::Internal::AnyHash)
         end
 
+      sig { returns(T.nilable(String)) }
+      attr_reader :email
+
+      sig { params(email: String).void }
+      attr_writer :email
+
       # Input for creating a Link auth intent to initiate Stripe onramp authentication.
-      sig { returns(T.attached_class) }
-      def self.new
+      sig { params(email: String).returns(T.attached_class) }
+      def self.new(email: nil)
       end
 
-      sig { override.returns({}) }
+      sig { override.returns({ email: String }) }
       def to_hash
       end
     end

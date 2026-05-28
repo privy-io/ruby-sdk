@@ -8,20 +8,60 @@ module Privy
           T.any(Privy::CreateLinkAuthIntentResponse, Privy::Internal::AnyHash)
         end
 
-      # The Link auth intent ID used to initiate authentication.
-      sig { returns(String) }
-      attr_accessor :id
+      # Auth intent created. Pass id to authenticate().
+      sig do
+        returns(
+          T.any(Privy::LinkAuthIntentCreated, Privy::LinkAuthIntentNoAccount)
+        )
+      end
+      attr_accessor :data
 
       # The created Link auth intent.
-      sig { params(id: String).returns(T.attached_class) }
+      sig do
+        params(
+          data:
+            T.any(
+              Privy::LinkAuthIntentCreated::OrHash,
+              Privy::LinkAuthIntentNoAccount::OrHash
+            )
+        ).returns(T.attached_class)
+      end
       def self.new(
-        # The Link auth intent ID used to initiate authentication.
-        id:
+        # Auth intent created. Pass id to authenticate().
+        data:
       )
       end
 
-      sig { override.returns({ id: String }) }
+      sig do
+        override.returns(
+          {
+            data:
+              T.any(
+                Privy::LinkAuthIntentCreated,
+                Privy::LinkAuthIntentNoAccount
+              )
+          }
+        )
+      end
       def to_hash
+      end
+
+      # Auth intent created. Pass id to authenticate().
+      module Data
+        extend Privy::Internal::Type::Union
+
+        Variants =
+          T.type_alias do
+            T.any(Privy::LinkAuthIntentCreated, Privy::LinkAuthIntentNoAccount)
+          end
+
+        sig do
+          override.returns(
+            T::Array[Privy::CreateLinkAuthIntentResponse::Data::Variants]
+          )
+        end
+        def self.variants
+        end
       end
     end
   end

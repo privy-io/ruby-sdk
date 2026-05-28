@@ -3,21 +3,37 @@
 module Privy
   module Models
     class GetStripeCryptoCustomerResponse < Privy::Internal::Type::BaseModel
-      # @!attribute id
+      # @!attribute data
+      #   Active onramp session with customer verifications.
       #
-      #   @return [String]
-      required :id, String
+      #   @return [Privy::Models::StripeCryptoCustomerActive, Privy::Models::StripeCryptoCustomerExpired, Privy::Models::StripeCryptoCustomerNone]
+      required :data, union: -> { Privy::GetStripeCryptoCustomerResponse::Data }
 
-      # @!attribute verifications
+      # @!method initialize(data:)
+      #   Stripe onramp session status and customer verification info.
       #
-      #   @return [Array<Privy::Models::StripeVerification>, nil]
-      optional :verifications, -> { Privy::Internal::Type::ArrayOf[Privy::StripeVerification] }
+      #   @param data [Privy::Models::StripeCryptoCustomerActive, Privy::Models::StripeCryptoCustomerExpired, Privy::Models::StripeCryptoCustomerNone] Active onramp session with customer verifications.
 
-      # @!method initialize(id:, verifications: nil)
-      #   A Stripe CryptoCustomer with verification status.
+      # Active onramp session with customer verifications.
       #
-      #   @param id [String]
-      #   @param verifications [Array<Privy::Models::StripeVerification>]
+      # @see Privy::Models::GetStripeCryptoCustomerResponse#data
+      module Data
+        extend Privy::Internal::Type::Union
+
+        discriminator :status
+
+        # Active onramp session with customer verifications.
+        variant :active, -> { Privy::StripeCryptoCustomerActive }
+
+        # Expired onramp session. Token refresh failed, re-authentication required.
+        variant :expired, -> { Privy::StripeCryptoCustomerExpired }
+
+        # No onramp session. User must authenticate via Link.
+        variant :none, -> { Privy::StripeCryptoCustomerNone }
+
+        # @!method self.variants
+        #   @return [Array(Privy::Models::StripeCryptoCustomerActive, Privy::Models::StripeCryptoCustomerExpired, Privy::Models::StripeCryptoCustomerNone)]
+      end
     end
   end
 end

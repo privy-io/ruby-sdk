@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type stripe_onramp_session_status = :active | :expired | :none
+
+    module StripeOnrampSessionStatus
+      extend Privy::Internal::Type::Enum
+
+      ACTIVE: :active
+      EXPIRED: :expired
+      NONE: :none
+
+      def self?.values: -> ::Array[Privy::Models::stripe_onramp_session_status]
+    end
+  end
+end

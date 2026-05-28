@@ -433,6 +433,10 @@ module Privy
 
   module EvmWalletActionStepStatus = Privy::Models::EvmWalletActionStepStatus
 
+  class ExchangeStripeTokensInput = Privy::Models::ExchangeStripeTokensInput
+
+  class ExchangeStripeTokensResponse = Privy::Models::ExchangeStripeTokensResponse
+
   class ExportPrivateKeyRpcInput = Privy::Models::ExportPrivateKeyRpcInput
 
   class ExportPrivateKeyRpcResponse = Privy::Models::ExportPrivateKeyRpcResponse
@@ -576,8 +580,6 @@ module Privy
   class GetFiatOnrampURLInput = Privy::Models::GetFiatOnrampURLInput
 
   module GetFiatOnrampURLResponse = Privy::Models::GetFiatOnrampURLResponse
-
-  class GetStripeCryptoCustomerInput = Privy::Models::GetStripeCryptoCustomerInput
 
   class GetStripeCryptoCustomerResponse = Privy::Models::GetStripeCryptoCustomerResponse
 
@@ -798,6 +800,10 @@ module Privy
   class KrakenEmbedUserDisabledWebhookPayload = Privy::Models::KrakenEmbedUserDisabledWebhookPayload
 
   class KrakenEmbedUserVerifiedWebhookPayload = Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
+
+  class LinkAuthIntentCreated = Privy::Models::LinkAuthIntentCreated
+
+  class LinkAuthIntentNoAccount = Privy::Models::LinkAuthIntentNoAccount
 
   module LinkedAccount = Privy::Models::LinkedAccount
 
@@ -1179,8 +1185,6 @@ module Privy
 
   module RecoveryType = Privy::Models::RecoveryType
 
-  class RefreshStripeQuoteInput = Privy::Models::RefreshStripeQuoteInput
-
   class RefreshStripeQuoteResponse = Privy::Models::RefreshStripeQuoteResponse
 
   class RelayerFee = Privy::Models::RelayerFee
@@ -1401,9 +1405,15 @@ module Privy
 
   class StripeConsumerWallet = Privy::Models::StripeConsumerWallet
 
-  class StripeOnrampCheckoutInput = Privy::Models::StripeOnrampCheckoutInput
+  class StripeCryptoCustomerActive = Privy::Models::StripeCryptoCustomerActive
+
+  class StripeCryptoCustomerExpired = Privy::Models::StripeCryptoCustomerExpired
+
+  class StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
 
   class StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse
+
+  module StripeOnrampSessionStatus = Privy::Models::StripeOnrampSessionStatus
 
   class StripePaymentToken = Privy::Models::StripePaymentToken
 

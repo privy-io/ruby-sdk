@@ -486,6 +486,10 @@ module Privy
 
   EvmWalletActionStepStatus = Privy::Models::EvmWalletActionStepStatus
 
+  ExchangeStripeTokensInput = Privy::Models::ExchangeStripeTokensInput
+
+  ExchangeStripeTokensResponse = Privy::Models::ExchangeStripeTokensResponse
+
   ExportPrivateKeyRpcInput = Privy::Models::ExportPrivateKeyRpcInput
 
   ExportPrivateKeyRpcResponse = Privy::Models::ExportPrivateKeyRpcResponse
@@ -629,8 +633,6 @@ module Privy
   GetFiatOnrampURLInput = Privy::Models::GetFiatOnrampURLInput
 
   GetFiatOnrampURLResponse = Privy::Models::GetFiatOnrampURLResponse
-
-  GetStripeCryptoCustomerInput = Privy::Models::GetStripeCryptoCustomerInput
 
   GetStripeCryptoCustomerResponse = Privy::Models::GetStripeCryptoCustomerResponse
 
@@ -860,6 +862,10 @@ module Privy
   KrakenEmbedUserDisabledWebhookPayload = Privy::Models::KrakenEmbedUserDisabledWebhookPayload
 
   KrakenEmbedUserVerifiedWebhookPayload = Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
+
+  LinkAuthIntentCreated = Privy::Models::LinkAuthIntentCreated
+
+  LinkAuthIntentNoAccount = Privy::Models::LinkAuthIntentNoAccount
 
   LinkedAccount = Privy::Models::LinkedAccount
 
@@ -1242,8 +1248,6 @@ module Privy
 
   RecoveryType = Privy::Models::RecoveryType
 
-  RefreshStripeQuoteInput = Privy::Models::RefreshStripeQuoteInput
-
   RefreshStripeQuoteResponse = Privy::Models::RefreshStripeQuoteResponse
 
   RelayerFee = Privy::Models::RelayerFee
@@ -1468,9 +1472,15 @@ module Privy
 
   StripeConsumerWallet = Privy::Models::StripeConsumerWallet
 
-  StripeOnrampCheckoutInput = Privy::Models::StripeOnrampCheckoutInput
+  StripeCryptoCustomerActive = Privy::Models::StripeCryptoCustomerActive
+
+  StripeCryptoCustomerExpired = Privy::Models::StripeCryptoCustomerExpired
+
+  StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
 
   StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse
+
+  StripeOnrampSessionStatus = Privy::Models::StripeOnrampSessionStatus
 
   StripePaymentToken = Privy::Models::StripePaymentToken
 

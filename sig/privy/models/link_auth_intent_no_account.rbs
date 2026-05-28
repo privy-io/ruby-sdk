@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type link_auth_intent_no_account =
+      { status: Privy::Models::LinkAuthIntentNoAccount::status }
+
+    class LinkAuthIntentNoAccount < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::LinkAuthIntentNoAccount::status
+
+      def initialize: (
+        status: Privy::Models::LinkAuthIntentNoAccount::status
+      ) -> void
+
+      def to_hash: -> { status: Privy::Models::LinkAuthIntentNoAccount::status }
+
+      type status = :no_account
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        NO_ACCOUNT: :no_account
+
+        def self?.values: -> ::Array[Privy::Models::LinkAuthIntentNoAccount::status]
+      end
+    end
+  end
+end
