@@ -1,13 +1,26 @@
 module Privy
   module Models
-    type create_link_auth_intent_response = { id: String }
+    type create_link_auth_intent_response =
+      { data: Privy::Models::CreateLinkAuthIntentResponse::data }
 
     class CreateLinkAuthIntentResponse < Privy::Internal::Type::BaseModel
-      attr_accessor id: String
+      attr_accessor data: Privy::Models::CreateLinkAuthIntentResponse::data
 
-      def initialize: (id: String) -> void
+      def initialize: (
+        data: Privy::Models::CreateLinkAuthIntentResponse::data
+      ) -> void
 
-      def to_hash: -> { id: String }
+      def to_hash: -> {
+        data: Privy::Models::CreateLinkAuthIntentResponse::data
+      }
+
+      type data = Privy::LinkAuthIntentCreated | Privy::LinkAuthIntentNoAccount
+
+      module Data
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::CreateLinkAuthIntentResponse::data]
+      end
     end
   end
 end

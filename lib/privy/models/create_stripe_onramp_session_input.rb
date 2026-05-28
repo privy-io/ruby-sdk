@@ -3,11 +3,6 @@
 module Privy
   module Models
     class CreateStripeOnrampSessionInput < Privy::Internal::Type::BaseModel
-      # @!attribute auth_intent_id
-      #
-      #   @return [String]
-      required :auth_intent_id, String
-
       # @!attribute environment
       #   Whether to use the sandbox or production environment for fiat onramp.
       #
@@ -25,10 +20,8 @@ module Privy
       #   @return [String]
       required :session_id, String
 
-      # @!method initialize(auth_intent_id:, environment:, session:, session_id:)
+      # @!method initialize(environment:, session:, session_id:)
       #   Input for creating a Stripe onramp session.
-      #
-      #   @param auth_intent_id [String]
       #
       #   @param environment [Symbol, Privy::Models::FiatOnrampEnvironment] Whether to use the sandbox or production environment for fiat onramp.
       #

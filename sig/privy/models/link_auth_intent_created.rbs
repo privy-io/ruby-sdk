@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type link_auth_intent_created =
+      { id: String, status: Privy::Models::LinkAuthIntentCreated::status }
+
+    class LinkAuthIntentCreated < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor status: Privy::Models::LinkAuthIntentCreated::status
+
+      def initialize: (
+        id: String,
+        status: Privy::Models::LinkAuthIntentCreated::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        status: Privy::Models::LinkAuthIntentCreated::status
+      }
+
+      type status = :created
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        CREATED: :created
+
+        def self?.values: -> ::Array[Privy::Models::LinkAuthIntentCreated::status]
+      end
+    end
+  end
+end

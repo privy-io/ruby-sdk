@@ -1,11 +1,15 @@
 module Privy
   module Models
-    type create_link_auth_intent_input = {  }
+    type create_link_auth_intent_input = { email: String }
 
     class CreateLinkAuthIntentInput < Privy::Internal::Type::BaseModel
-      def initialize: -> void
+      attr_reader email: String?
 
-      def to_hash: -> {  }
+      def email=: (String) -> String
+
+      def initialize: (?email: String) -> void
+
+      def to_hash: -> { email: String }
     end
   end
 end
