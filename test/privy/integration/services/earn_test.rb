@@ -146,6 +146,10 @@ class Privy::Test::Integration::EarnTest < Privy::Test::IntegrationTest
       idempotency_key: idempotency_key
     )
 
-    assert_equal(first.id, repeat.id, "expected the second call with same idempotency key to return same action")
+    assert_equal(
+      first.id,
+      repeat.id,
+      "expected the second call with same idempotency key to return same action"
+    )
   end
 end
