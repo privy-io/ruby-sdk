@@ -1022,6 +1022,7 @@ require_relative "privy/public_api/services/wallets"
 require_relative "privy/public_api/services/users"
 require_relative "privy/public_api/services/policies"
 require_relative "privy/public_api/services/key_quorums"
+require_relative "privy/public_api/services/transactions"
 require_relative "privy/public_api/privy_request_expiry_options"
 require_relative "privy/public_api/privy_client"
 
