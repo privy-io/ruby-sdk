@@ -647,11 +647,6 @@ module Privy
 
   GasSpendResponseBody = Privy::Models::GasSpendResponseBody
 
-  GasSponsorshipConfiguration = Privy::Models::GasSponsorshipConfiguration
-
-  GasSponsorshipConfigurationInput =
-    Privy::Models::GasSponsorshipConfigurationInput
-
   GetByWalletAddressRequestBody = Privy::Models::GetByWalletAddressRequestBody
 
   GetFiatCustomerRequestInput = Privy::Models::GetFiatCustomerRequestInput

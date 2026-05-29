@@ -1,0 +1,34 @@
+module Privy
+  module Resources
+    class Wallets
+      class Swap
+        def execute: (
+          String wallet_id,
+          base_amount: String,
+          destination: Privy::SwapDestination,
+          source: Privy::SwapSource,
+          ?amount_type: Privy::Models::amount_type,
+          ?fee_configuration: Privy::FeeConfiguration,
+          ?slippage_bps: Float,
+          ?privy_authorization_signature: String,
+          ?privy_idempotency_key: String,
+          ?request_options: Privy::request_opts
+        ) -> Privy::SwapActionResponse
+
+        def quote: (
+          String wallet_id,
+          base_amount: String,
+          destination: Privy::SwapQuoteDestination,
+          source: Privy::SwapSource,
+          ?amount_type: Privy::Models::amount_type,
+          ?fee_configuration: Privy::FeeConfiguration,
+          ?slippage_bps: Float,
+          ?privy_authorization_signature: String,
+          ?request_options: Privy::request_opts
+        ) -> Privy::SwapQuoteResponse
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

@@ -1,6 +1,7 @@
 module Privy
   module Models
-    type swap_destination = { asset_address: String, :caip2 => String }
+    type swap_destination =
+      { asset_address: String, :caip2 => String, destination_address: String }
 
     class SwapDestination < Privy::Internal::Type::BaseModel
       attr_accessor asset_address: String
@@ -9,9 +10,21 @@ module Privy
 
       def caip2=: (String) -> String
 
-      def initialize: (asset_address: String, ?caip2: String) -> void
+      attr_reader destination_address: String?
 
-      def to_hash: -> { asset_address: String, :caip2 => String }
+      def destination_address=: (String) -> String
+
+      def initialize: (
+        asset_address: String,
+        ?caip2: String,
+        ?destination_address: String
+      ) -> void
+
+      def to_hash: -> {
+        asset_address: String,
+        :caip2 => String,
+        destination_address: String
+      }
     end
   end
 end

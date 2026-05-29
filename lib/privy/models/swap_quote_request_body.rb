@@ -27,6 +27,12 @@ module Privy
       #   @return [Symbol, Privy::Models::AmountType, nil]
       optional :amount_type, enum: -> { Privy::AmountType }
 
+      # @!attribute fee_configuration
+      #   Total fees assessed on a transfer, in BPS
+      #
+      #   @return [Privy::Models::FeeConfiguration, nil]
+      optional :fee_configuration, -> { Privy::FeeConfiguration }
+
       # @!attribute slippage_bps
       #   Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If omitted,
       #   auto-slippage is used.
@@ -34,7 +40,7 @@ module Privy
       #   @return [Float, nil]
       optional :slippage_bps, Float
 
-      # @!method initialize(base_amount:, destination:, source:, amount_type: nil, slippage_bps: nil)
+      # @!method initialize(base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::SwapQuoteRequestBody} for more details.
       #
@@ -47,6 +53,8 @@ module Privy
       #   @param source [Privy::Models::SwapSource] The input side of a swap request, including token and chain.
       #
       #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
+      #
+      #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
       #
       #   @param slippage_bps [Float] Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If omitted, auto
     end

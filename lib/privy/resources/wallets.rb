@@ -14,6 +14,10 @@ module Privy
       # @return [Privy::Resources::Wallets::Balance]
       attr_reader :balance
 
+      # Operations for swapping tokens within wallets
+      # @return [Privy::Resources::Wallets::Swap]
+      attr_reader :swap
+
       # Some parameter documentations has been truncated, see
       # {Privy::Models::WalletCreateParams} for more details.
       #
@@ -247,7 +251,8 @@ module Privy
       # Some parameter documentations has been truncated, see
       # {Privy::Models::WalletAuthenticateWithJwtParams} for more details.
       #
-      # Obtain a session key to enable wallet access.
+      # Exchange a user JWT for a session key authorized to act on the user's wallets.
+      # Returns the encrypted authorization key and the list of wallets it can access.
       #
       # @overload authenticate_with_jwt(encryption_type:, recipient_public_key:, user_jwt:, request_options: {})
       #
@@ -275,7 +280,9 @@ module Privy
 
       # @deprecated
       #
-      # Create wallets with an associated recovery user.
+      # Create one or more wallets associated with a recovery user, so the user can
+      # later regain wallet access via the linked accounts. Deprecated; prefer the
+      # standard wallet creation flow combined with a separate recovery setup.
       #
       # @overload create_wallets_with_recovery(primary_signer:, recovery_user:, wallets:, request_options: {})
       #
@@ -467,6 +474,7 @@ module Privy
         @earn = Privy::Resources::Wallets::Earn.new(client: client)
         @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
         @balance = Privy::Resources::Wallets::Balance.new(client: client)
+        @swap = Privy::Resources::Wallets::Swap.new(client: client)
       end
     end
   end

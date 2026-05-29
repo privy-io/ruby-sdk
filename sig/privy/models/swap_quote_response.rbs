@@ -8,7 +8,10 @@ module Privy
         input_amount: String,
         input_token: String,
         minimum_output_amount: String,
-        output_token: String
+        output_token: String,
+        :destination_caip2 => String,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        expires_at: Float
       }
 
     class SwapQuoteResponse < Privy::Internal::Type::BaseModel
@@ -26,6 +29,20 @@ module Privy
 
       attr_accessor output_token: String
 
+      attr_reader destination_caip2: String?
+
+      def destination_caip2=: (String) -> String
+
+      attr_reader estimated_fees: ::Array[Privy::Models::fee_line_item]?
+
+      def estimated_fees=: (
+        ::Array[Privy::Models::fee_line_item]
+      ) -> ::Array[Privy::Models::fee_line_item]
+
+      attr_reader expires_at: Float?
+
+      def expires_at=: (Float) -> Float
+
       def initialize: (
         caip2: String,
         est_output_amount: String,
@@ -33,7 +50,10 @@ module Privy
         input_amount: String,
         input_token: String,
         minimum_output_amount: String,
-        output_token: String
+        output_token: String,
+        ?destination_caip2: String,
+        ?estimated_fees: ::Array[Privy::Models::fee_line_item],
+        ?expires_at: Float
       ) -> void
 
       def to_hash: -> {
@@ -43,7 +63,10 @@ module Privy
         input_amount: String,
         input_token: String,
         minimum_output_amount: String,
-        output_token: String
+        output_token: String,
+        :destination_caip2 => String,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        expires_at: Float
       }
     end
   end
