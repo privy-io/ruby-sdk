@@ -313,10 +313,6 @@ module Privy
 
   EarnAsset = Privy::Models::EarnAsset
 
-  EarnClaimedRewardsQuery = Privy::Models::EarnClaimedRewardsQuery
-
-  EarnClaimedRewardsResponse = Privy::Models::EarnClaimedRewardsResponse
-
   EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
 
   EarnDepositRequestBody = Privy::Models::EarnDepositRequestBody
@@ -324,6 +320,12 @@ module Privy
   EarnIncentiveClaimActionResponse = Privy::Models::EarnIncentiveClaimActionResponse
 
   EarnIncentiveClaimRequestBody = Privy::Models::EarnIncentiveClaimRequestBody
+
+  EarnIncentiveRewardEntry = Privy::Models::EarnIncentiveRewardEntry
+
+  EarnIncentiveRewardsQuery = Privy::Models::EarnIncentiveRewardsQuery
+
+  EarnIncentiveRewardsResponse = Privy::Models::EarnIncentiveRewardsResponse
 
   EarnIncetiveClaimRewardEntry = Privy::Models::EarnIncetiveClaimRewardEntry
 
