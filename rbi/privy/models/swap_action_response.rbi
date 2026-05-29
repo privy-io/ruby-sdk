@@ -37,15 +37,22 @@ module Privy
       attr_accessor :output_token
 
       # Status of a wallet action.
-      sig { returns(Privy::WalletActionStatus::OrSymbol) }
+      sig { returns(Privy::WalletActionStatus::TaggedSymbol) }
       attr_accessor :status
 
-      sig { returns(Privy::SwapActionResponse::Type::OrSymbol) }
+      sig { returns(Privy::SwapActionResponse::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The ID of the wallet involved in the action.
       sig { returns(String) }
       attr_accessor :wallet_id
+
+      # Destination chain CAIP-2 identifier. Present for cross-chain swaps.
+      sig { returns(T.nilable(String)) }
+      attr_reader :destination_caip2
+
+      sig { params(destination_caip2: String).void }
+      attr_writer :destination_caip2
 
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(T.nilable(Privy::FailureReason)) }
@@ -55,20 +62,7 @@ module Privy
       attr_writer :failure_reason
 
       # The steps of the wallet action. Only returned if `?include=steps` is provided.
-      sig do
-        returns(
-          T.nilable(
-            T::Array[
-              T.any(
-                Privy::EvmTransactionWalletActionStep,
-                Privy::EvmUserOperationWalletActionStep,
-                Privy::SvmTransactionWalletActionStep,
-                Privy::ExternalTransactionWalletActionStep
-              )
-            ]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Array[Privy::WalletActionStep::Variants])) }
       attr_reader :steps
 
       sig do
@@ -99,6 +93,7 @@ module Privy
           status: Privy::WalletActionStatus::OrSymbol,
           type: Privy::SwapActionResponse::Type::OrSymbol,
           wallet_id: String,
+          destination_caip2: String,
           failure_reason: Privy::FailureReason::OrHash,
           steps:
             T::Array[
@@ -131,6 +126,8 @@ module Privy
         type:,
         # The ID of the wallet involved in the action.
         wallet_id:,
+        # Destination chain CAIP-2 identifier. Present for cross-chain swaps.
+        destination_caip2: nil,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason: nil,
         # The steps of the wallet action. Only returned if `?include=steps` is provided.
@@ -148,19 +145,12 @@ module Privy
             input_token: String,
             output_amount: T.nilable(String),
             output_token: String,
-            status: Privy::WalletActionStatus::OrSymbol,
-            type: Privy::SwapActionResponse::Type::OrSymbol,
+            status: Privy::WalletActionStatus::TaggedSymbol,
+            type: Privy::SwapActionResponse::Type::TaggedSymbol,
             wallet_id: String,
+            destination_caip2: String,
             failure_reason: Privy::FailureReason,
-            steps:
-              T::Array[
-                T.any(
-                  Privy::EvmTransactionWalletActionStep,
-                  Privy::EvmUserOperationWalletActionStep,
-                  Privy::SvmTransactionWalletActionStep,
-                  Privy::ExternalTransactionWalletActionStep
-                )
-              ]
+            steps: T::Array[Privy::WalletActionStep::Variants]
           }
         )
       end

@@ -7,6 +7,8 @@ module Privy
 
       attr_reader balance: Privy::Resources::Wallets::Balance
 
+      attr_reader swap: Privy::Resources::Wallets::Swap
+
       def create: (
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: Privy::Models::additional_signer_input,

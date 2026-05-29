@@ -6,6 +6,7 @@ module Privy
         destination: Privy::SwapQuoteDestination,
         source: Privy::SwapSource,
         amount_type: Privy::Models::amount_type,
+        fee_configuration: Privy::FeeConfiguration,
         slippage_bps: Float
       }
 
@@ -22,6 +23,12 @@ module Privy
         Privy::Models::amount_type
       ) -> Privy::Models::amount_type
 
+      attr_reader fee_configuration: Privy::FeeConfiguration?
+
+      def fee_configuration=: (
+        Privy::FeeConfiguration
+      ) -> Privy::FeeConfiguration
+
       attr_reader slippage_bps: Float?
 
       def slippage_bps=: (Float) -> Float
@@ -31,6 +38,7 @@ module Privy
         destination: Privy::SwapQuoteDestination,
         source: Privy::SwapSource,
         ?amount_type: Privy::Models::amount_type,
+        ?fee_configuration: Privy::FeeConfiguration,
         ?slippage_bps: Float
       ) -> void
 
@@ -39,6 +47,7 @@ module Privy
         destination: Privy::SwapQuoteDestination,
         source: Privy::SwapSource,
         amount_type: Privy::Models::amount_type,
+        fee_configuration: Privy::FeeConfiguration,
         slippage_bps: Float
       }
     end

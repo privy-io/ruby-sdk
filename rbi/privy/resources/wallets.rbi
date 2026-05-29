@@ -14,6 +14,10 @@ module Privy
       sig { returns(Privy::Resources::Wallets::Balance) }
       attr_reader :balance
 
+      # Operations for swapping tokens within wallets
+      sig { returns(Privy::Resources::Wallets::Swap) }
+      attr_reader :swap
+
       # Creates a new wallet on the requested chain and for the requested owner.
       sig do
         params(
@@ -249,7 +253,8 @@ module Privy
       )
       end
 
-      # Obtain a session key to enable wallet access.
+      # Exchange a user JWT for a session key authorized to act on the user's wallets.
+      # Returns the encrypted authorization key and the list of wallets it can access.
       sig do
         params(
           encryption_type:
@@ -272,7 +277,9 @@ module Privy
       )
       end
 
-      # Create wallets with an associated recovery user.
+      # Create one or more wallets associated with a recovery user, so the user can
+      # later regain wallet access via the linked accounts. Deprecated; prefer the
+      # standard wallet creation flow combined with a separate recovery setup.
       sig do
         params(
           primary_signer:

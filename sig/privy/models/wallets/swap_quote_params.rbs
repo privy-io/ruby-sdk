@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    module Wallets
+      type swap_quote_params =
+        { wallet_id: String, privy_authorization_signature: String }
+        & Privy::Internal::Type::request_parameters
+
+      class SwapQuoteParams < Privy::Models::SwapQuoteRequestBody
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        def wallet_id: -> String
+
+        def wallet_id=: (String _) -> String
+
+        def privy_authorization_signature: -> String?
+
+        def privy_authorization_signature=: (String _) -> String
+
+        def initialize: (
+          wallet_id: String,
+          ?privy_authorization_signature: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          wallet_id: String,
+          privy_authorization_signature: String,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end
