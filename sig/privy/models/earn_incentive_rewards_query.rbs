@@ -1,8 +1,8 @@
 module Privy
   module Models
-    type earn_claimed_rewards_query = { chain: String }
+    type earn_incentive_rewards_query = { chain: String }
 
-    class EarnClaimedRewardsQuery < Privy::Internal::Type::BaseModel
+    class EarnIncentiveRewardsQuery < Privy::Internal::Type::BaseModel
       attr_accessor chain: String
 
       def initialize: (chain: String) -> void
