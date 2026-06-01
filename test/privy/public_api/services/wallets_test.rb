@@ -333,4 +333,39 @@ class Privy::Services::WalletsTest < Minitest::Test
       assert_equal("1750000000000", req.headers["Privy-Request-Expiry"])
     end
   end
+
+  # --- export: encryption_type validation ------------------------------------
+
+  def test_export_raises_when_response_encryption_type_is_not_hpke
+    stub_json(
+      :post,
+      "#{BASE_URL}/v1/wallets/w-1/export",
+      body: {
+        ciphertext: Base64.strict_encode64("x"),
+        encapsulated_key: Base64.strict_encode64("y"),
+        encryption_type: "AES-GCM"
+      }.to_json
+    )
+    err = assert_raises(Privy::Errors::Error) do
+      build_client.wallets.export("w-1")
+    end
+    assert_match(/encryption type/i, err.message)
+  end
+
+  # --- import: caller-supplied hpke_config -----------------------------------
+
+  def test_import_rejects_caller_supplied_hpke_config
+    err = assert_raises(Privy::Errors::Error) do
+      build_client.wallets.import(
+        wallet: {
+          private_key: "0x#{'1'.rjust(64, '0')}",
+          entropy_type: "private-key",
+          chain_type: "ethereum",
+          address: "0x0000000000000000000000000000000000000001",
+          hpke_config: {kem: "DHKEM_P256_HKDF_SHA256"}
+        }
+      )
+    end
+    assert_match(/hpke_config/i, err.message)
+  end
 end

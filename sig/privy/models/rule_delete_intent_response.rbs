@@ -1,0 +1,66 @@
+module Privy
+  module Models
+    type rule_delete_intent_response =
+      {
+        intent_type: Privy::Models::RuleDeleteIntentResponse::intent_type,
+        request_details: Privy::RuleIntentDeleteRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::PolicyRuleResponse,
+        policy: Privy::Policy
+      }
+
+    class RuleDeleteIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::RuleDeleteIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::RuleDeleteIntentResponse::intent_type _
+      ) -> Privy::Models::RuleDeleteIntentResponse::intent_type
+
+      def request_details: -> Privy::RuleIntentDeleteRequestDetails
+
+      def request_details=: (
+        Privy::RuleIntentDeleteRequestDetails _
+      ) -> Privy::RuleIntentDeleteRequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::PolicyRuleResponse?
+
+      def current_resource_data=: (
+        Privy::PolicyRuleResponse _
+      ) -> Privy::PolicyRuleResponse
+
+      def policy: -> Privy::Policy?
+
+      def policy=: (Privy::Policy _) -> Privy::Policy
+
+      def initialize: (
+        intent_type: Privy::Models::RuleDeleteIntentResponse::intent_type,
+        request_details: Privy::RuleIntentDeleteRequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::PolicyRuleResponse,
+        ?policy: Privy::Policy
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::RuleDeleteIntentResponse::intent_type,
+        request_details: Privy::RuleIntentDeleteRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::PolicyRuleResponse,
+        policy: Privy::Policy
+      }
+
+      type intent_type = :RULE
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        RULE: :RULE
+
+        def self?.values: -> ::Array[Privy::Models::RuleDeleteIntentResponse::intent_type]
+      end
+    end
+  end
+end

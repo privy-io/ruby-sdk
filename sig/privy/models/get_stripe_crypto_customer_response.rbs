@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type get_stripe_crypto_customer_response =
+      { data: Privy::Models::GetStripeCryptoCustomerResponse::data }
+
+    class GetStripeCryptoCustomerResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::Models::GetStripeCryptoCustomerResponse::data
+
+      def initialize: (
+        data: Privy::Models::GetStripeCryptoCustomerResponse::data
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::Models::GetStripeCryptoCustomerResponse::data
+      }
+
+      type data =
+        Privy::StripeCryptoCustomerActive
+        | Privy::StripeCryptoCustomerExpired
+        | Privy::StripeCryptoCustomerNone
+
+      module Data
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::GetStripeCryptoCustomerResponse::data]
+      end
+    end
+  end
+end

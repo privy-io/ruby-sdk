@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type stripe_crypto_customer_none =
+      { status: Privy::Models::StripeCryptoCustomerNone::status }
+
+    class StripeCryptoCustomerNone < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::StripeCryptoCustomerNone::status
+
+      def initialize: (
+        status: Privy::Models::StripeCryptoCustomerNone::status
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::StripeCryptoCustomerNone::status
+      }
+
+      type status = :none
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        NONE: :none
+
+        def self?.values: -> ::Array[Privy::Models::StripeCryptoCustomerNone::status]
+      end
+    end
+  end
+end

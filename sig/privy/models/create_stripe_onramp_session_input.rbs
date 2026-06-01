@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type create_stripe_onramp_session_input =
+      {
+        environment: Privy::Models::fiat_onramp_environment,
+        session: Privy::OnrampSessionParams,
+        session_id: String
+      }
+
+    class CreateStripeOnrampSessionInput < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::fiat_onramp_environment
+
+      attr_accessor session: Privy::OnrampSessionParams
+
+      attr_accessor session_id: String
+
+      def initialize: (
+        environment: Privy::Models::fiat_onramp_environment,
+        session: Privy::OnrampSessionParams,
+        session_id: String
+      ) -> void
+
+      def to_hash: -> {
+        environment: Privy::Models::fiat_onramp_environment,
+        session: Privy::OnrampSessionParams,
+        session_id: String
+      }
+    end
+  end
+end

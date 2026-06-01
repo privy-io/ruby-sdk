@@ -62,6 +62,12 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
+      # @!attribute destination_caip2
+      #   Destination chain CAIP-2 identifier. Present for cross-chain swaps.
+      #
+      #   @return [String, nil]
+      optional :destination_caip2, String
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
@@ -74,7 +80,7 @@ module Privy
       #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
-      # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, failure_reason: nil, steps: nil)
+      # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_caip2: nil, failure_reason: nil, steps: nil)
       #   Response for a swap action.
       #
       #   @param id [String] The ID of the wallet action.
@@ -96,6 +102,8 @@ module Privy
       #   @param type [Symbol, Privy::Models::SwapActionResponse::Type]
       #
       #   @param wallet_id [String] The ID of the wallet involved in the action.
+      #
+      #   @param destination_caip2 [String] Destination chain CAIP-2 identifier. Present for cross-chain swaps.
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #

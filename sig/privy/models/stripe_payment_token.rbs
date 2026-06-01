@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type stripe_payment_token = { id: String, type: String }
+
+    class StripePaymentToken < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor type: String
+
+      def initialize: (id: String, type: String) -> void
+
+      def to_hash: -> { id: String, type: String }
+    end
+  end
+end

@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_executed_webhook_payload =
+      {
+        custom_order_id: String,
+        executed_at: String,
+        type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedCustomOrderExecutedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor custom_order_id: String
+
+      attr_accessor executed_at: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        custom_order_id: String,
+        executed_at: String,
+        type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        custom_order_id: String,
+        executed_at: String,
+        type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.custom_order.executed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_CUSTOM_ORDER_EXECUTED: :"kraken_embed.custom_order.executed"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_]
+      end
+    end
+  end
+end

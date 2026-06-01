@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type stripe_onramp_checkout_response =
+      {
+        client_secret: String,
+        transaction_details: Privy::StripeTransactionDetails
+      }
+
+    class StripeOnrampCheckoutResponse < Privy::Internal::Type::BaseModel
+      attr_accessor client_secret: String
+
+      attr_reader transaction_details: Privy::StripeTransactionDetails?
+
+      def transaction_details=: (
+        Privy::StripeTransactionDetails
+      ) -> Privy::StripeTransactionDetails
+
+      def initialize: (
+        client_secret: String,
+        ?transaction_details: Privy::StripeTransactionDetails
+      ) -> void
+
+      def to_hash: -> {
+        client_secret: String,
+        transaction_details: Privy::StripeTransactionDetails
+      }
+    end
+  end
+end

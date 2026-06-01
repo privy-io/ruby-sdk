@@ -44,7 +44,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Privy::RuleIntentResponse
+      response => Privy::RuleMutateIntentResponse
     end
   end
 
@@ -54,7 +54,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
     response = @privy_api.intents.delete_policy_rule("rule_id", policy_id: "policy_id")
 
     assert_pattern do
-      response => Privy::RuleIntentResponse
+      response => Privy::RuleDeleteIntentResponse
     end
   end
 
@@ -142,7 +142,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Privy::RuleIntentResponse
+      response => Privy::RuleMutateIntentResponse
     end
   end
 

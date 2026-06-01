@@ -12,6 +12,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
+        :destination_caip2 => String,
         failure_reason: Privy::FailureReason,
         steps: ::Array[Privy::Models::wallet_action_step]
       }
@@ -37,6 +38,10 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_reader destination_caip2: String?
+
+      def destination_caip2=: (String) -> String
+
       attr_reader failure_reason: Privy::FailureReason?
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
@@ -58,6 +63,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
+        ?destination_caip2: String,
         ?failure_reason: Privy::FailureReason,
         ?steps: ::Array[Privy::Models::wallet_action_step]
       ) -> void
@@ -73,6 +79,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
+        :destination_caip2 => String,
         failure_reason: Privy::FailureReason,
         steps: ::Array[Privy::Models::wallet_action_step]
       }

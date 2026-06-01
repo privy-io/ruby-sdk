@@ -256,9 +256,17 @@ module Privy
 
   CreateAccountInput = Privy::Models::CreateAccountInput
 
+  CreateLinkAuthIntentInput = Privy::Models::CreateLinkAuthIntentInput
+
+  CreateLinkAuthIntentResponse = Privy::Models::CreateLinkAuthIntentResponse
+
   CreateOrganizationSecretResponse = Privy::Models::CreateOrganizationSecretResponse
 
   CreateOrUpdateFiatCustomerRequestInput = Privy::Models::CreateOrUpdateFiatCustomerRequestInput
+
+  CreateStripeOnrampSessionInput = Privy::Models::CreateStripeOnrampSessionInput
+
+  CreateStripeOnrampSessionResponse = Privy::Models::CreateStripeOnrampSessionResponse
 
   CrossAppConnection = Privy::Models::CrossAppConnection
 
@@ -303,6 +311,8 @@ module Privy
 
   DeveloperFee = Privy::Models::DeveloperFee
 
+  DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
+
   EarnAsset = Privy::Models::EarnAsset
 
   EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
@@ -312,6 +322,12 @@ module Privy
   EarnIncentiveClaimActionResponse = Privy::Models::EarnIncentiveClaimActionResponse
 
   EarnIncentiveClaimRequestBody = Privy::Models::EarnIncentiveClaimRequestBody
+
+  EarnIncentiveRewardEntry = Privy::Models::EarnIncentiveRewardEntry
+
+  EarnIncentiveRewardsQuery = Privy::Models::EarnIncentiveRewardsQuery
+
+  EarnIncentiveRewardsResponse = Privy::Models::EarnIncentiveRewardsResponse
 
   EarnIncetiveClaimRewardEntry = Privy::Models::EarnIncetiveClaimRewardEntry
 
@@ -474,6 +490,10 @@ module Privy
 
   EvmWalletActionStepStatus = Privy::Models::EvmWalletActionStepStatus
 
+  ExchangeStripeTokensInput = Privy::Models::ExchangeStripeTokensInput
+
+  ExchangeStripeTokensResponse = Privy::Models::ExchangeStripeTokensResponse
+
   ExportPrivateKeyRpcInput = Privy::Models::ExportPrivateKeyRpcInput
 
   ExportPrivateKeyRpcResponse = Privy::Models::ExportPrivateKeyRpcResponse
@@ -570,7 +590,11 @@ module Privy
 
   FiatOnrampSource = Privy::Models::FiatOnrampSource
 
+  FiatOnrampStripeSDKSessionResponse = Privy::Models::FiatOnrampStripeSDKSessionResponse
+
   FiatOnrampTransactionStatus = Privy::Models::FiatOnrampTransactionStatus
+
+  FiatOnrampURLSessionResponse = Privy::Models::FiatOnrampURLSessionResponse
 
   FiatVirtualAccountRequest = Privy::Models::FiatVirtualAccountRequest
 
@@ -594,10 +618,6 @@ module Privy
 
   GasSpendResponseBody = Privy::Models::GasSpendResponseBody
 
-  GasSponsorshipConfiguration = Privy::Models::GasSponsorshipConfiguration
-
-  GasSponsorshipConfigurationInput = Privy::Models::GasSponsorshipConfigurationInput
-
   GetByWalletAddressRequestBody = Privy::Models::GetByWalletAddressRequestBody
 
   GetFiatCustomerRequestInput = Privy::Models::GetFiatCustomerRequestInput
@@ -613,6 +633,8 @@ module Privy
   GetFiatOnrampURLInput = Privy::Models::GetFiatOnrampURLInput
 
   GetFiatOnrampURLResponse = Privy::Models::GetFiatOnrampURLResponse
+
+  GetStripeCryptoCustomerResponse = Privy::Models::GetStripeCryptoCustomerResponse
 
   GuestAuthenticateRequestBody = Privy::Models::GuestAuthenticateRequestBody
 
@@ -719,6 +741,15 @@ module Privy
   KrakenEmbedCustomOrderAction = Privy::Models::KrakenEmbedCustomOrderAction
 
   KrakenEmbedCustomOrderAmount = Privy::Models::KrakenEmbedCustomOrderAmount
+
+  KrakenEmbedCustomOrderCancelledWebhookPayload =
+    Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload
+
+  KrakenEmbedCustomOrderExecutedWebhookPayload =
+    Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload
+
+  KrakenEmbedCustomOrderExecutionFailedWebhookPayload =
+    Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload
 
   KrakenEmbedCustomOrderOccurrence = Privy::Models::KrakenEmbedCustomOrderOccurrence
 
@@ -832,6 +863,10 @@ module Privy
 
   KrakenEmbedUserVerifiedWebhookPayload = Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
 
+  LinkAuthIntentCreated = Privy::Models::LinkAuthIntentCreated
+
+  LinkAuthIntentNoAccount = Privy::Models::LinkAuthIntentNoAccount
+
   LinkedAccount = Privy::Models::LinkedAccount
 
   LinkedAccountAppleInput = Privy::Models::LinkedAccountAppleInput
@@ -940,6 +975,10 @@ module Privy
 
   LinkJwtInput = Privy::Models::LinkJwtInput
 
+  ListStripeConsumerWalletsResponse = Privy::Models::ListStripeConsumerWalletsResponse
+
+  ListStripePaymentTokensResponse = Privy::Models::ListStripePaymentTokensResponse
+
   MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
 
   MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
@@ -1033,6 +1072,8 @@ module Privy
   OAuthVerifyResponseBody = Privy::Models::OAuthVerifyResponseBody
 
   OnrampProvider = Privy::Models::OnrampProvider
+
+  OnrampSessionParams = Privy::Models::OnrampSessionParams
 
   OptionalRefreshTokenInput = Privy::Models::OptionalRefreshTokenInput
 
@@ -1207,6 +1248,8 @@ module Privy
 
   RecoveryType = Privy::Models::RecoveryType
 
+  RefreshStripeQuoteResponse = Privy::Models::RefreshStripeQuoteResponse
+
   RelayerFee = Privy::Models::RelayerFee
 
   ResponsePasskeyInitAuthenticate = Privy::Models::ResponsePasskeyInitAuthenticate
@@ -1219,6 +1262,8 @@ module Privy
 
   RpcIntentResponse = Privy::Models::RpcIntentResponse
 
+  RuleDeleteIntentResponse = Privy::Models::RuleDeleteIntentResponse
+
   RuleIntentCreateRequestDetails = Privy::Models::RuleIntentCreateRequestDetails
 
   RuleIntentDeleteRequestDetails = Privy::Models::RuleIntentDeleteRequestDetails
@@ -1228,6 +1273,8 @@ module Privy
   RuleIntentResponse = Privy::Models::RuleIntentResponse
 
   RuleIntentUpdateRequestDetails = Privy::Models::RuleIntentUpdateRequestDetails
+
+  RuleMutateIntentResponse = Privy::Models::RuleMutateIntentResponse
 
   SeedPhraseExportInput = Privy::Models::SeedPhraseExportInput
 
@@ -1422,6 +1469,26 @@ module Privy
   SparkUserTokenMetadata = Privy::Models::SparkUserTokenMetadata
 
   SparkWalletLeaf = Privy::Models::SparkWalletLeaf
+
+  StripeConsumerWallet = Privy::Models::StripeConsumerWallet
+
+  StripeCryptoCustomerActive = Privy::Models::StripeCryptoCustomerActive
+
+  StripeCryptoCustomerExpired = Privy::Models::StripeCryptoCustomerExpired
+
+  StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
+
+  StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse
+
+  StripeOnrampSessionStatus = Privy::Models::StripeOnrampSessionStatus
+
+  StripePaymentToken = Privy::Models::StripePaymentToken
+
+  StripeQuote = Privy::Models::StripeQuote
+
+  StripeTransactionDetails = Privy::Models::StripeTransactionDetails
+
+  StripeVerification = Privy::Models::StripeVerification
 
   SuccessResponse = Privy::Models::SuccessResponse
 

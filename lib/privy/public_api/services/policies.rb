@@ -72,7 +72,13 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::Policy]
-      def update(policy_id, policy_update_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
+      def update(
+        policy_id,
+        policy_update_params:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
@@ -144,7 +150,13 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::PolicyRuleResponse]
-      def create_rule(policy_id, policy_create_rule_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
+      def create_rule(
+        policy_id,
+        policy_create_rule_params:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :post,
@@ -227,7 +239,13 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::SuccessResponse]
-      def delete_rule(rule_id, policy_id:, authorization_context: nil, request_expiry: nil, request_options: nil)
+      def delete_rule(
+        rule_id,
+        policy_id:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :delete,

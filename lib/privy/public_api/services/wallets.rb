@@ -5,9 +5,13 @@ module Privy
     class Wallets < Privy::Resources::Wallets
       attr_reader :privy_client
 
+      # @return [Privy::Services::Earn]
+      attr_reader :earn
+
       def initialize(client:, privy_client:)
         super(client: client)
         @privy_client = privy_client
+        @earn = Privy::Services::Earn.new(client: client, privy_client: privy_client)
       end
 
       # Create a new wallet on the requested chain and for the requested owner.
@@ -39,6 +43,74 @@ module Privy
         super(combined_params)
       end
 
+      # Import an externally generated wallet by encrypting its entropy with HPKE.
+      #
+      # @param wallet [Hash] Import wallet parameters plus :private_key entropy.
+      # @option wallet [String] :private_key Private key or seed phrase entropy to import.
+      # @option wallet [String, Symbol] :entropy_type "hd" or "private-key".
+      # @option wallet [String, Symbol] :chain_type "ethereum" or "solana".
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::Wallet]
+      def import(
+        wallet:,
+        additional_signers: nil,
+        display_name: nil,
+        external_id: nil,
+        owner: nil,
+        owner_id: nil,
+        policy_ids: nil,
+        request_options: nil
+      )
+        import_wallet = wallet.transform_keys { |key| key.respond_to?(:to_sym) ? key.to_sym : key }
+        private_key = import_wallet.delete(:private_key)
+        raise Privy::Errors::Error, "wallet.private_key is required" if private_key.nil?
+        if import_wallet.key?(:hpke_config)
+          raise Privy::Errors::Error,
+                "wallet.hpke_config is not supported: encryption parameters are fixed by the SDK"
+        end
+
+        private_key_bytes = Privy::WalletEntropy.entropy_to_bytes(
+          entropy: private_key,
+          entropy_type: import_wallet.fetch(:entropy_type),
+          chain_type: import_wallet.fetch(:chain_type)
+        )
+
+        init_response = _init_import(
+          body: import_wallet.merge(encryption_type: "HPKE"),
+          request_options: request_options
+        )
+        unless init_response.encryption_type.to_s == "HPKE"
+          raise Privy::Errors::Error, "Invalid encryption type: #{init_response.encryption_type}"
+        end
+
+        encrypted = Privy::Cryptography::HpkeSender.new.encrypt(
+          Base64.strict_decode64(init_response.encryption_public_key),
+          private_key_bytes
+        )
+
+        submit_params = {
+          wallet: import_wallet.merge(
+            encryption_type: "HPKE",
+            encapsulated_key: Base64.strict_encode64(encrypted.encapsulated_key),
+            ciphertext: Base64.strict_encode64(encrypted.ciphertext)
+          ),
+          request_options: request_options
+        }
+        {
+          additional_signers: additional_signers,
+          display_name: display_name,
+          external_id: external_id,
+          owner: owner,
+          owner_id: owner_id,
+          policy_ids: policy_ids
+        }.each do |key, value|
+          submit_params[key] = value unless value.nil?
+        end
+
+        _submit_import(submit_params)
+      end
+
       # Update a wallet's policies or authorization key configuration.
       #
       # @example Update wallet policies
@@ -60,7 +132,13 @@ module Privy
       # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
       #
       # @return [Privy::Models::Wallet]
-      def update(wallet_id, wallet_update_params:, authorization_context: nil, request_expiry: nil, request_options: nil)
+      def update(
+        wallet_id,
+        wallet_update_params:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
         prepared = Privy::Authorization.prepare_request(
           privy_client,
           method: :patch,
@@ -220,6 +298,80 @@ module Privy
         combined_params = wallet_transfer_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
         _transfer(wallet_id, combined_params)
+      end
+
+      # Export a wallet's private key or seed phrase via HPKE.
+      #
+      # @param wallet_id [String] ID of the wallet to export.
+      # @param export_seed_phrase [Boolean, nil] Whether to export the seed phrase instead of the private key.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the request expires.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Hash] {private_key: String}
+      def export(
+        wallet_id,
+        export_seed_phrase: nil,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
+        recipient = Privy::Cryptography::HpkeRecipient.new
+        export_params = {
+          encryption_type: "HPKE",
+          recipient_public_key: Base64.strict_encode64(recipient.public_key_spki)
+        }
+        export_params[:export_seed_phrase] = export_seed_phrase unless export_seed_phrase.nil?
+
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :post,
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/export"),
+          body: export_params,
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
+        )
+        combined_params = export_params.merge(request_options: request_options)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+
+        response = super(wallet_id, combined_params)
+        unless response.encryption_type.to_s == "HPKE"
+          raise Privy::Errors::Error, "Invalid encryption type: #{response.encryption_type}"
+        end
+
+        private_key = recipient.decrypt(
+          Base64.strict_decode64(response.encapsulated_key),
+          Base64.strict_decode64(response.ciphertext)
+        )
+
+        {private_key: private_key.force_encoding(Encoding::UTF_8)}
+      end
+
+      # Export a wallet's private key via HPKE.
+      #
+      # @return [Hash] {private_key: String}
+      def export_private_key(wallet_id, authorization_context: nil, request_expiry: nil, request_options: nil)
+        export(
+          wallet_id,
+          export_seed_phrase: false,
+          authorization_context: authorization_context,
+          request_expiry: request_expiry,
+          request_options: request_options
+        )
+      end
+
+      # Export a wallet's seed phrase via HPKE.
+      #
+      # @return [Hash] {seed_phrase: String}
+      def export_seed_phrase(wallet_id, authorization_context: nil, request_expiry: nil, request_options: nil)
+        exported = export(
+          wallet_id,
+          export_seed_phrase: true,
+          authorization_context: authorization_context,
+          request_expiry: request_expiry,
+          request_options: request_options
+        )
+        {seed_phrase: exported.fetch(:private_key)}
       end
     end
   end

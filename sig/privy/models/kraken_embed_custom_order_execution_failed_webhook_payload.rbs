@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_execution_failed_webhook_payload =
+      {
+        custom_order_id: String,
+        failed_at: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload::type_,
+        user_id: String
+      }
+
+    class KrakenEmbedCustomOrderExecutionFailedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor custom_order_id: String
+
+      attr_accessor failed_at: String
+
+      attr_accessor reason: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        custom_order_id: String,
+        failed_at: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        custom_order_id: String,
+        failed_at: String,
+        reason: String,
+        type: Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload::type_,
+        user_id: String
+      }
+
+      type type_ = :"kraken_embed.custom_order.execution_failed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KRAKEN_EMBED_CUSTOM_ORDER_EXECUTION_FAILED: :"kraken_embed.custom_order.execution_failed"
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload::type_]
+      end
+    end
+  end
+end

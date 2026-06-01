@@ -71,6 +71,9 @@ module Privy
     sig { returns(Privy::Resources::ClientAuth) }
     attr_reader :client_auth
 
+    sig { returns(Privy::Resources::Onramps) }
+    attr_reader :onramps
+
     sig { returns(Privy::Resources::Funding) }
     attr_reader :funding
 
@@ -82,6 +85,9 @@ module Privy
 
     sig { returns(Privy::Resources::Shared) }
     attr_reader :shared
+
+    sig { returns(Privy::Resources::OAuth) }
+    attr_reader :oauth
 
     sig { returns(Privy::Resources::WalletActions) }
     attr_reader :wallet_actions
