@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type device_authorization_response =
+      {
+        device_code: String,
+        expires_in: Integer,
+        interval: Integer,
+        user_code: String,
+        verification_uri: String,
+        verification_uri_complete: String
+      }
+
+    class DeviceAuthorizationResponse < Privy::Internal::Type::BaseModel
+      attr_accessor device_code: String
+
+      attr_accessor expires_in: Integer
+
+      attr_accessor interval: Integer
+
+      attr_accessor user_code: String
+
+      attr_accessor verification_uri: String
+
+      attr_accessor verification_uri_complete: String
+
+      def initialize: (
+        device_code: String,
+        expires_in: Integer,
+        interval: Integer,
+        user_code: String,
+        verification_uri: String,
+        verification_uri_complete: String
+      ) -> void
+
+      def to_hash: -> {
+        device_code: String,
+        expires_in: Integer,
+        interval: Integer,
+        user_code: String,
+        verification_uri: String,
+        verification_uri_complete: String
+      }
+    end
+  end
+end
