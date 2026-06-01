@@ -259,6 +259,8 @@ module Privy
 
   class DeveloperFee = Privy::Models::DeveloperFee
 
+  class DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
+
   class EarnAsset = Privy::Models::EarnAsset
 
   class EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
