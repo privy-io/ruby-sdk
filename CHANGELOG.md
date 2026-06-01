@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0 (2026-06-01)
+
+Full Changelog: [v0.0.2...v0.1.0](https://github.com/privy-io/ruby-sdk/compare/v0.0.2...v0.1.0)
+
+### Features
+
+* **api:** api update ([c3f99bb](https://github.com/privy-io/ruby-sdk/commit/c3f99bb1fb234e765d8916413ea41291159fbc2d))
+* **api:** api update ([5394738](https://github.com/privy-io/ruby-sdk/commit/539473886ed5be1af9f03caf7e132471563a6596))
+* **api:** api update ([c6f6a31](https://github.com/privy-io/ruby-sdk/commit/c6f6a31171dc2f12fb990fd11084eaff3a658a42))
+* **api:** api update ([124a1eb](https://github.com/privy-io/ruby-sdk/commit/124a1eb8d4b60bbf215ce6d7c44eba7df4066e25))
+* **api:** api update ([54ac7a9](https://github.com/privy-io/ruby-sdk/commit/54ac7a985a01f4205b670f0dc3b627ac6c0cd214))
+* **api:** api update ([47b8c13](https://github.com/privy-io/ruby-sdk/commit/47b8c13516892c9d1138fd7e890c00dbe78b0210))
+* transaction.get ([#55](https://github.com/privy-io/ruby-sdk/issues/55)) ([d0623c4](https://github.com/privy-io/ruby-sdk/commit/d0623c43e75f362e50c545580fba9b4182d9d553))
+* wallet actions earn ([#53](https://github.com/privy-io/ruby-sdk/issues/53)) ([96b1d76](https://github.com/privy-io/ruby-sdk/commit/96b1d76a440936e64d18785033aec72aa3a921e1))
+* wallet export and import ([#50](https://github.com/privy-io/ruby-sdk/issues/50)) ([2f9e563](https://github.com/privy-io/ruby-sdk/commit/2f9e56383d46ab9bfc0baed95036ff5bb1f81c18))
+
+
+### Chores
+
+* formatting ([#54](https://github.com/privy-io/ruby-sdk/issues/54)) ([58658ee](https://github.com/privy-io/ruby-sdk/commit/58658ee0a4a7c5bacf0a3ebef78f22fc8d2171be))
+
 ## 0.0.2 (2026-05-21)
 
 Full Changelog: [v0.0.1...v0.0.2](https://github.com/privy-io/ruby-sdk/compare/v0.0.1...v0.0.2)
