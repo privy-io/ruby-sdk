@@ -2,6 +2,7 @@
 
 module Privy
   module Models
+    # Supported destination stablecoin assets for fiat-to-crypto transfers.
     module BridgeDestinationAsset
       extend Privy::Internal::Type::Enum
 

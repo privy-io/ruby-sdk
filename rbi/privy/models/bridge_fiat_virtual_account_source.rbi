@@ -8,15 +8,20 @@ module Privy
           T.any(Privy::BridgeFiatVirtualAccountSource, Privy::Internal::AnyHash)
         end
 
+      # Supported source fiat currencies for virtual account deposits.
       sig { returns(Privy::BridgeSourceAsset::OrSymbol) }
       attr_accessor :asset
 
+      # The source fiat currency configuration for a virtual account.
       sig do
         params(asset: Privy::BridgeSourceAsset::OrSymbol).returns(
           T.attached_class
         )
       end
-      def self.new(asset:)
+      def self.new(
+        # Supported source fiat currencies for virtual account deposits.
+        asset:
+      )
       end
 
       sig { override.returns({ asset: Privy::BridgeSourceAsset::OrSymbol }) }

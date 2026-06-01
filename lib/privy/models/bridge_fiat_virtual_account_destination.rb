@@ -9,6 +9,7 @@ module Privy
       required :address, String
 
       # @!attribute asset
+      #   Supported destination stablecoin assets for fiat-to-crypto transfers.
       #
       #   @return [Symbol, Privy::Models::BridgeDestinationAsset]
       required :asset, enum: -> { Privy::BridgeDestinationAsset }
@@ -19,8 +20,12 @@ module Privy
       required :chain, String
 
       # @!method initialize(address:, asset:, chain:)
+      #   The destination chain, asset, and address for a virtual account transfer.
+      #
       #   @param address [String]
-      #   @param asset [Symbol, Privy::Models::BridgeDestinationAsset]
+      #
+      #   @param asset [Symbol, Privy::Models::BridgeDestinationAsset] Supported destination stablecoin assets for fiat-to-crypto transfers.
+      #
       #   @param chain [String]
     end
   end

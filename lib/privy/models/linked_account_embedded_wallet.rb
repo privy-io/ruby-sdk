@@ -2,6 +2,7 @@
 
 module Privy
   module Models
+    # A linked embedded wallet account across all supported chain types.
     module LinkedAccountEmbeddedWallet
       extend Privy::Internal::Type::Union
 

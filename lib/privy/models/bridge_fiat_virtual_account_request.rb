@@ -4,6 +4,7 @@ module Privy
   module Models
     class BridgeFiatVirtualAccountRequest < Privy::Internal::Type::BaseModel
       # @!attribute destination
+      #   The destination chain, asset, and address for a virtual account transfer.
       #
       #   @return [Privy::Models::BridgeFiatVirtualAccountDestination]
       required :destination, -> { Privy::BridgeFiatVirtualAccountDestination }
@@ -14,6 +15,7 @@ module Privy
       required :provider, enum: -> { Privy::BridgeFiatVirtualAccountRequest::Provider }
 
       # @!attribute source
+      #   The source fiat currency configuration for a virtual account.
       #
       #   @return [Privy::Models::BridgeFiatVirtualAccountSource]
       required :source, -> { Privy::BridgeFiatVirtualAccountSource }
@@ -21,9 +23,11 @@ module Privy
       # @!method initialize(destination:, provider:, source:)
       #   The request input for creating virtual account.
       #
-      #   @param destination [Privy::Models::BridgeFiatVirtualAccountDestination]
+      #   @param destination [Privy::Models::BridgeFiatVirtualAccountDestination] The destination chain, asset, and address for a virtual account transfer.
+      #
       #   @param provider [Symbol, Privy::Models::BridgeFiatVirtualAccountRequest::Provider]
-      #   @param source [Privy::Models::BridgeFiatVirtualAccountSource]
+      #
+      #   @param source [Privy::Models::BridgeFiatVirtualAccountSource] The source fiat currency configuration for a virtual account.
 
       # @see Privy::Models::BridgeFiatVirtualAccountRequest#provider
       module Provider

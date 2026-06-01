@@ -2,6 +2,7 @@
 
 module Privy
   module Models
+    # @see Privy::Resources::Wallets#create_batch
     class WalletBatchCreateResponse < Privy::Internal::Type::BaseModel
       # @!attribute results
       #   Array of results for each wallet creation request, in the same order as input.

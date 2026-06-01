@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type device_verify_action = :approve | :deny
+
+    module DeviceVerifyAction
+      extend Privy::Internal::Type::Enum
+
+      APPROVE: :approve
+      DENY: :deny
+
+      def self?.values: -> ::Array[Privy::Models::device_verify_action]
+    end
+  end
+end

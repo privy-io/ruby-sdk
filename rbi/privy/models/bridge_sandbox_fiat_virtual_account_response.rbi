@@ -25,6 +25,7 @@ module Privy
       end
       attr_accessor :deposit_instructions
 
+      # The destination chain, asset, and address for a virtual account transfer.
       sig { returns(Privy::BridgeFiatVirtualAccountDestination) }
       attr_reader :destination
 
@@ -65,6 +66,7 @@ module Privy
       def self.new(
         # The deposit instructions for a virtual account.
         deposit_instructions:,
+        # The destination chain, asset, and address for a virtual account transfer.
         destination:,
         provider:,
         status:

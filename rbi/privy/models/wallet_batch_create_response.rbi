@@ -9,16 +9,7 @@ module Privy
         end
 
       # Array of results for each wallet creation request, in the same order as input.
-      sig do
-        returns(
-          T::Array[
-            T.any(
-              Privy::WalletBatchCreateResult::WalletBatchCreateSuccess,
-              Privy::WalletBatchCreateResult::WalletBatchCreateFailure
-            )
-          ]
-        )
-      end
+      sig { returns(T::Array[Privy::WalletBatchCreateResult::Variants]) }
       attr_accessor :results
 
       # Response for a batch wallet creation request.
@@ -41,15 +32,7 @@ module Privy
 
       sig do
         override.returns(
-          {
-            results:
-              T::Array[
-                T.any(
-                  Privy::WalletBatchCreateResult::WalletBatchCreateSuccess,
-                  Privy::WalletBatchCreateResult::WalletBatchCreateFailure
-                )
-              ]
-          }
+          { results: T::Array[Privy::WalletBatchCreateResult::Variants] }
         )
       end
       def to_hash

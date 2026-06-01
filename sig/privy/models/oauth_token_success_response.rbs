@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type oauth_token_success_response =
+      {
+        access_token: String,
+        token_type: Privy::Models::OAuthTokenSuccessResponse::token_type,
+        expires_in: Float,
+        refresh_token: String
+      }
+
+    class OAuthTokenSuccessResponse < Privy::Internal::Type::BaseModel
+      attr_accessor access_token: String
+
+      attr_accessor token_type: Privy::Models::OAuthTokenSuccessResponse::token_type
+
+      attr_reader expires_in: Float?
+
+      def expires_in=: (Float) -> Float
+
+      attr_reader refresh_token: String?
+
+      def refresh_token=: (String) -> String
+
+      def initialize: (
+        access_token: String,
+        token_type: Privy::Models::OAuthTokenSuccessResponse::token_type,
+        ?expires_in: Float,
+        ?refresh_token: String
+      ) -> void
+
+      def to_hash: -> {
+        access_token: String,
+        token_type: Privy::Models::OAuthTokenSuccessResponse::token_type,
+        expires_in: Float,
+        refresh_token: String
+      }
+
+      type token_type = :Bearer
+
+      module TokenType
+        extend Privy::Internal::Type::Enum
+
+        BEARER: :Bearer
+
+        def self?.values: -> ::Array[Privy::Models::OAuthTokenSuccessResponse::token_type]
+      end
+    end
+  end
+end

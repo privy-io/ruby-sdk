@@ -10,6 +10,7 @@ module Privy
       required :deposit_instructions, union: -> { Privy::BridgeFiatVirtualAccountDepositInstructions }
 
       # @!attribute destination
+      #   The destination chain, asset, and address for a virtual account transfer.
       #
       #   @return [Privy::Models::BridgeFiatVirtualAccountDestination]
       required :destination, -> { Privy::BridgeFiatVirtualAccountDestination }
@@ -29,7 +30,7 @@ module Privy
       #
       #   @param deposit_instructions [Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions, Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions, Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions, Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions, Privy::Models::BridgeGbpFiatVirtualAccountDepositInstructions] The deposit instructions for a virtual account.
       #
-      #   @param destination [Privy::Models::BridgeFiatVirtualAccountDestination]
+      #   @param destination [Privy::Models::BridgeFiatVirtualAccountDestination] The destination chain, asset, and address for a virtual account transfer.
       #
       #   @param provider [Symbol, Privy::Models::BridgeFiatVirtualAccountResponse::Provider]
       #
