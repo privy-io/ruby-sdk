@@ -220,6 +220,22 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_create_batch_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.create_batch(wallets: [{chain_type: :ethereum}, {chain_type: :solana}])
+
+    assert_pattern do
+      response => Privy::WalletBatchCreateResponse
+    end
+
+    assert_pattern do
+      response => {
+        results: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletBatchCreateResult])
+      }
+    end
+  end
+
   def test_create_wallets_with_recovery_required_params
     skip("Mock server tests are disabled")
 

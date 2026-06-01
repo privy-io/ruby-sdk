@@ -261,6 +261,12 @@ module Privy
 
   class DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
 
+  module DeviceVerifyAction = Privy::Models::DeviceVerifyAction
+
+  class DeviceVerifyRequestBody = Privy::Models::DeviceVerifyRequestBody
+
+  class DeviceVerifyResponse = Privy::Models::DeviceVerifyResponse
+
   class EarnAsset = Privy::Models::EarnAsset
 
   class EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
@@ -995,7 +1001,21 @@ module Privy
 
   module OAuthProviderID = Privy::Models::OAuthProviderID
 
+  class OAuthTokenAuthorizationCodeRequestBody = Privy::Models::OAuthTokenAuthorizationCodeRequestBody
+
+  class OAuthTokenDeviceCodePendingError = Privy::Models::OAuthTokenDeviceCodePendingError
+
+  class OAuthTokenDeviceCodeRequestBody = Privy::Models::OAuthTokenDeviceCodeRequestBody
+
+  module OAuthTokenGrantType = Privy::Models::OAuthTokenGrantType
+
+  class OAuthTokenRefreshTokenRequestBody = Privy::Models::OAuthTokenRefreshTokenRequestBody
+
+  module OAuthTokenRequestBody = Privy::Models::OAuthTokenRequestBody
+
   class OAuthTokens = Privy::Models::OAuthTokens
+
+  class OAuthTokenSuccessResponse = Privy::Models::OAuthTokenSuccessResponse
 
   class OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
 
@@ -1752,6 +1772,8 @@ module Privy
   class WalletBatchItemInput = Privy::Models::WalletBatchItemInput
 
   module WalletChainType = Privy::Models::WalletChainType
+
+  class WalletCreateBatchParams = Privy::Models::WalletCreateBatchParams
 
   class WalletCreateParams = Privy::Models::WalletCreateParams
 

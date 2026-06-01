@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type oauth_token_request_body =
+      Privy::OAuthTokenAuthorizationCodeRequestBody
+      | Privy::OAuthTokenDeviceCodeRequestBody
+      | Privy::OAuthTokenRefreshTokenRequestBody
+
+    module OAuthTokenRequestBody
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::oauth_token_request_body]
+    end
+  end
+end

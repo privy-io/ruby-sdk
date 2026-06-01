@@ -277,6 +277,22 @@ module Privy
       )
       end
 
+      # Creates multiple wallets in a single request. Each wallet creation is
+      # independent; failures for one wallet do not affect others. Maximum batch size is
+      # 100 wallets.
+      sig do
+        params(
+          wallets: T::Array[Privy::WalletBatchItemInput::OrHash],
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::WalletBatchCreateResponse)
+      end
+      def create_batch(
+        # Array of wallet creation requests. Minimum 1, maximum 100.
+        wallets:,
+        request_options: {}
+      )
+      end
+
       # Create one or more wallets associated with a recovery user, so the user can
       # later regain wallet access via the linked accounts. Deprecated; prefer the
       # standard wallet creation flow combined with a separate recovery setup.

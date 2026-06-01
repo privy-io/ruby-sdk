@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type oauth_token_refresh_token_request_body =
+      {
+        grant_type: Privy::Models::OAuthTokenRefreshTokenRequestBody::grant_type,
+        refresh_token: String
+      }
+
+    class OAuthTokenRefreshTokenRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor grant_type: Privy::Models::OAuthTokenRefreshTokenRequestBody::grant_type
+
+      attr_accessor refresh_token: String
+
+      def initialize: (
+        grant_type: Privy::Models::OAuthTokenRefreshTokenRequestBody::grant_type,
+        refresh_token: String
+      ) -> void
+
+      def to_hash: -> {
+        grant_type: Privy::Models::OAuthTokenRefreshTokenRequestBody::grant_type,
+        refresh_token: String
+      }
+
+      type grant_type = :refresh_token
+
+      module GrantType
+        extend Privy::Internal::Type::Enum
+
+        REFRESH_TOKEN: :refresh_token
+
+        def self?.values: -> ::Array[Privy::Models::OAuthTokenRefreshTokenRequestBody::grant_type]
+      end
+    end
+  end
+end
