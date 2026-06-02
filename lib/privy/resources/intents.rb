@@ -2,6 +2,7 @@
 
 module Privy
   module Resources
+    # Operations related to authorization intents for wallet actions
     class Intents
       # List intents for an app. Returns a paginated list of intents with their current
       # status and details.

@@ -47,6 +47,7 @@ module Privy
     # @return [Privy::Resources::KeyQuorums]
     attr_reader :key_quorums
 
+    # Operations related to authorization intents for wallet actions
     # @return [Privy::Resources::Intents]
     attr_reader :intents
 
