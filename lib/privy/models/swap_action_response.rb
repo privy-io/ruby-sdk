@@ -68,11 +68,37 @@ module Privy
       #   @return [String, nil]
       optional :destination_caip2, String
 
+      # @!attribute estimated_fees
+      #   Estimated fee breakdown from the provider quote.
+      #
+      #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil]
+      optional :estimated_fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
+
+      # @!attribute estimated_gas
+      #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      #   human-readable decimal string, plus the gas token symbol.
+      #
+      #   @return [Privy::Models::Gas, nil]
+      optional :estimated_gas, -> { Privy::Gas }
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
       #   @return [Privy::Models::FailureReason, nil]
       optional :failure_reason, -> { Privy::FailureReason }
+
+      # @!attribute fees
+      #   Actual fees paid for the swap. Populated after on-chain confirmation.
+      #
+      #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil]
+      optional :fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
+
+      # @!attribute gas
+      #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      #   human-readable decimal string, plus the gas token symbol.
+      #
+      #   @return [Privy::Models::Gas, nil]
+      optional :gas, -> { Privy::Gas }
 
       # @!attribute steps
       #   The steps of the wallet action. Only returned if `?include=steps` is provided.
@@ -80,7 +106,10 @@ module Privy
       #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
-      # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_caip2: nil, failure_reason: nil, steps: nil)
+      # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_caip2: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, steps: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::SwapActionResponse} for more details.
+      #
       #   Response for a swap action.
       #
       #   @param id [String] The ID of the wallet action.
@@ -105,7 +134,15 @@ module Privy
       #
       #   @param destination_caip2 [String] Destination chain CAIP-2 identifier. Present for cross-chain swaps.
       #
+      #   @param estimated_fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Estimated fee breakdown from the provider quote.
+      #
+      #   @param estimated_gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
+      #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #
+      #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Actual fees paid for the swap. Populated after on-chain confirmation.
+      #
+      #   @param gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
       #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
 

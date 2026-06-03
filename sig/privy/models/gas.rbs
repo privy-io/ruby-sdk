@@ -1,0 +1,21 @@
+module Privy
+  module Models
+    type gas = { amount: String, base_amount: String, gas_asset: String }
+
+    class Gas < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor base_amount: String
+
+      attr_accessor gas_asset: String
+
+      def initialize: (
+        amount: String,
+        base_amount: String,
+        gas_asset: String
+      ) -> void
+
+      def to_hash: -> { amount: String, base_amount: String, gas_asset: String }
+    end
+  end
+end

@@ -16,7 +16,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :est_output_amount
 
-      # Estimated gas cost in base units of the native token.
+      # Estimated gas cost in base units of the native token. @deprecated For
+      # cross-chain swaps, use estimated_gas instead.
       sig { returns(String) }
       attr_accessor :gas_estimate
 
@@ -43,7 +44,7 @@ module Privy
       sig { params(destination_caip2: String).void }
       attr_writer :destination_caip2
 
-      # Estimated fees in USD.
+      # Estimated fees for the swap. Only present for cross-chain swaps.
       sig { returns(T.nilable(T::Array[Privy::FeeLineItem::Variants])) }
       attr_reader :estimated_fees
 
@@ -60,6 +61,14 @@ module Privy
         ).void
       end
       attr_writer :estimated_fees
+
+      # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      # human-readable decimal string, plus the gas token symbol.
+      sig { returns(T.nilable(Privy::Gas)) }
+      attr_reader :estimated_gas
+
+      sig { params(estimated_gas: Privy::Gas::OrHash).void }
+      attr_writer :estimated_gas
 
       # Quote expiry as Unix timestamp (seconds). Present for cross-chain quotes.
       sig { returns(T.nilable(Float)) }
@@ -87,6 +96,7 @@ module Privy
                 Privy::DeveloperFee::OrHash
               )
             ],
+          estimated_gas: Privy::Gas::OrHash,
           expires_at: Float
         ).returns(T.attached_class)
       end
@@ -95,7 +105,8 @@ module Privy
         caip2:,
         # Estimated amount of output token in base units.
         est_output_amount:,
-        # Estimated gas cost in base units of the native token.
+        # Estimated gas cost in base units of the native token. @deprecated For
+        # cross-chain swaps, use estimated_gas instead.
         gas_estimate:,
         # Amount of input token in base units.
         input_amount:,
@@ -107,8 +118,11 @@ module Privy
         output_token:,
         # Destination chain CAIP-2 identifier for cross-chain swaps.
         destination_caip2: nil,
-        # Estimated fees in USD.
+        # Estimated fees for the swap. Only present for cross-chain swaps.
         estimated_fees: nil,
+        # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+        # human-readable decimal string, plus the gas token symbol.
+        estimated_gas: nil,
         # Quote expiry as Unix timestamp (seconds). Present for cross-chain quotes.
         expires_at: nil
       )
@@ -126,6 +140,7 @@ module Privy
             output_token: String,
             destination_caip2: String,
             estimated_fees: T::Array[Privy::FeeLineItem::Variants],
+            estimated_gas: Privy::Gas,
             expires_at: Float
           }
         )

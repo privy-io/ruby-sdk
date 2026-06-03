@@ -73,6 +73,9 @@ module Privy
     # @return [Privy::Resources::ClientAuth]
     attr_reader :client_auth
 
+    # @return [Privy::Resources::Shared]
+    attr_reader :shared
+
     # @return [Privy::Resources::Onramps]
     attr_reader :onramps
 
@@ -84,9 +87,6 @@ module Privy
 
     # @return [Privy::Resources::CrossApp]
     attr_reader :cross_app
-
-    # @return [Privy::Resources::Shared]
-    attr_reader :shared
 
     # @return [Privy::Resources::OAuth]
     attr_reader :oauth
@@ -197,11 +197,11 @@ module Privy
       @embedded_wallets = Privy::Resources::EmbeddedWallets.new(client: self)
       @analytics = Privy::Resources::Analytics.new(client: self)
       @client_auth = Privy::Resources::ClientAuth.new(client: self)
+      @shared = Privy::Resources::Shared.new(client: self)
       @onramps = Privy::Resources::Onramps.new(client: self)
       @funding = Privy::Resources::Funding.new(client: self)
       @organizations = Privy::Resources::Organizations.new(client: self)
       @cross_app = Privy::Resources::CrossApp.new(client: self)
-      @shared = Privy::Resources::Shared.new(client: self)
       @oauth = Privy::Resources::OAuth.new(client: self)
       @wallet_actions = Privy::Resources::WalletActions.new(client: self)
       @yield_ = Privy::Resources::Yield.new(client: self)

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type onramp_session_fees =
+      { network_fee_monetary: String?, transaction_fee_monetary: String? }
+
+    class OnrampSessionFees < Privy::Internal::Type::BaseModel
+      attr_accessor network_fee_monetary: String?
+
+      attr_accessor transaction_fee_monetary: String?
+
+      def initialize: (
+        network_fee_monetary: String?,
+        transaction_fee_monetary: String?
+      ) -> void
+
+      def to_hash: -> {
+        network_fee_monetary: String?,
+        transaction_fee_monetary: String?
+      }
+    end
+  end
+end

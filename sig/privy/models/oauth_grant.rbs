@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type oauth_grant =
+      {
+        id: String,
+        created_at: Time,
+        grant_type: Privy::Models::OAuthGrant::grant_type,
+        last_used_at: Time
+      }
+
+    class OAuthGrant < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor grant_type: Privy::Models::OAuthGrant::grant_type
+
+      attr_accessor last_used_at: Time
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        grant_type: Privy::Models::OAuthGrant::grant_type,
+        last_used_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        grant_type: Privy::Models::OAuthGrant::grant_type,
+        last_used_at: Time
+      }
+
+      type grant_type = :device_code
+
+      module GrantType
+        extend Privy::Internal::Type::Enum
+
+        DEVICE_CODE: :device_code
+
+        def self?.values: -> ::Array[Privy::Models::OAuthGrant::grant_type]
+      end
+    end
+  end
+end

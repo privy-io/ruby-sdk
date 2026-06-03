@@ -63,6 +63,19 @@ module Privy
       #   @return [String, nil]
       optional :destination_chain, String
 
+      # @!attribute estimated_fees
+      #   Estimated fee breakdown from the provider quote.
+      #
+      #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil]
+      optional :estimated_fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
+
+      # @!attribute estimated_gas
+      #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      #   human-readable decimal string, plus the gas token symbol.
+      #
+      #   @return [Privy::Models::Gas, nil]
+      optional :estimated_gas, -> { Privy::Gas }
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
@@ -70,10 +83,17 @@ module Privy
       optional :failure_reason, -> { Privy::FailureReason }
 
       # @!attribute fees
-      #   Fees paid for the transfer.
+      #   Actual fees paid for the transfer. Populated after on-chain confirmation.
       #
       #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil]
       optional :fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
+
+      # @!attribute gas
+      #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      #   human-readable decimal string, plus the gas token symbol.
+      #
+      #   @return [Privy::Models::Gas, nil]
+      optional :gas, -> { Privy::Gas }
 
       # @!attribute source_amount
       #   Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
@@ -109,7 +129,7 @@ module Privy
       #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
-      # @!method initialize(id:, created_at:, destination_address:, source_chain:, status:, type:, wallet_id:, destination_amount: nil, destination_asset: nil, destination_chain: nil, failure_reason: nil, fees: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
+      # @!method initialize(id:, created_at:, destination_address:, source_chain:, status:, type:, wallet_id:, destination_amount: nil, destination_asset: nil, destination_chain: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferActionResponse} for more details.
       #
@@ -135,9 +155,15 @@ module Privy
       #
       #   @param destination_chain [String] Destination chain for cross-chain transfers. Omitted for same-chain transfers.
       #
+      #   @param estimated_fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Estimated fee breakdown from the provider quote.
+      #
+      #   @param estimated_gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
+      #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
-      #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Fees paid for the transfer.
+      #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Actual fees paid for the transfer. Populated after on-chain confirmation.
+      #
+      #   @param gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
       #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output c
       #

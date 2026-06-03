@@ -53,6 +53,14 @@ module Privy
       sig { params(amount_type: Privy::AmountType::OrSymbol).void }
       attr_writer :amount_type
 
+      # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      # human-readable decimal string, plus the gas token symbol.
+      sig { returns(T.nilable(Privy::Gas)) }
+      attr_reader :estimated_gas
+
+      sig { params(estimated_gas: Privy::Gas::OrHash).void }
+      attr_writer :estimated_gas
+
       # Response containing a quote for a cross-asset or cross-chain (DADC) transfer.
       sig do
         params(
@@ -72,7 +80,8 @@ module Privy
               Privy::NamedTokenTransferSource::OrHash,
               Privy::CustomTokenTransferSource::OrHash
             ),
-          amount_type: Privy::AmountType::OrSymbol
+          amount_type: Privy::AmountType::OrSymbol,
+          estimated_gas: Privy::Gas::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -89,7 +98,10 @@ module Privy
         # (named) or `asset_address` (custom), not both.
         source:,
         # Whether the amount refers to the input token or output token.
-        amount_type: nil
+        amount_type: nil,
+        # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+        # human-readable decimal string, plus the gas token symbol.
+        estimated_gas: nil
       )
       end
 
@@ -108,7 +120,8 @@ module Privy
                 Privy::NamedTokenTransferSource,
                 Privy::CustomTokenTransferSource
               ),
-            amount_type: Privy::AmountType::OrSymbol
+            amount_type: Privy::AmountType::OrSymbol,
+            estimated_gas: Privy::Gas
           }
         )
       end
