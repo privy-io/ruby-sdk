@@ -7,7 +7,8 @@ module Privy
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
-        amount_type: Privy::Models::amount_type
+        amount_type: Privy::Models::amount_type,
+        estimated_gas: Privy::Gas
       }
 
     class TransferQuoteResponse < Privy::Internal::Type::BaseModel
@@ -27,13 +28,18 @@ module Privy
         Privy::Models::amount_type
       ) -> Privy::Models::amount_type
 
+      attr_reader estimated_gas: Privy::Gas?
+
+      def estimated_gas=: (Privy::Gas) -> Privy::Gas
+
       def initialize: (
         destination: Privy::TokenTransferDestination,
         estimated_fees: ::Array[Privy::Models::fee_line_item],
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
-        ?amount_type: Privy::Models::amount_type
+        ?amount_type: Privy::Models::amount_type,
+        ?estimated_gas: Privy::Gas
       ) -> void
 
       def to_hash: -> {
@@ -42,7 +48,8 @@ module Privy
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
-        amount_type: Privy::Models::amount_type
+        amount_type: Privy::Models::amount_type,
+        estimated_gas: Privy::Gas
       }
     end
   end

@@ -13,7 +13,11 @@ module Privy
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
         :destination_caip2 => String,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_gas: Privy::Gas,
         failure_reason: Privy::FailureReason,
+        fees: ::Array[Privy::Models::fee_line_item],
+        gas: Privy::Gas,
         steps: ::Array[Privy::Models::wallet_action_step]
       }
 
@@ -42,9 +46,29 @@ module Privy
 
       def destination_caip2=: (String) -> String
 
+      attr_reader estimated_fees: ::Array[Privy::Models::fee_line_item]?
+
+      def estimated_fees=: (
+        ::Array[Privy::Models::fee_line_item]
+      ) -> ::Array[Privy::Models::fee_line_item]
+
+      attr_reader estimated_gas: Privy::Gas?
+
+      def estimated_gas=: (Privy::Gas) -> Privy::Gas
+
       attr_reader failure_reason: Privy::FailureReason?
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
+
+      attr_reader fees: ::Array[Privy::Models::fee_line_item]?
+
+      def fees=: (
+        ::Array[Privy::Models::fee_line_item]
+      ) -> ::Array[Privy::Models::fee_line_item]
+
+      attr_reader gas: Privy::Gas?
+
+      def gas=: (Privy::Gas) -> Privy::Gas
 
       attr_reader steps: ::Array[Privy::Models::wallet_action_step]?
 
@@ -64,7 +88,11 @@ module Privy
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
         ?destination_caip2: String,
+        ?estimated_fees: ::Array[Privy::Models::fee_line_item],
+        ?estimated_gas: Privy::Gas,
         ?failure_reason: Privy::FailureReason,
+        ?fees: ::Array[Privy::Models::fee_line_item],
+        ?gas: Privy::Gas,
         ?steps: ::Array[Privy::Models::wallet_action_step]
       ) -> void
 
@@ -80,7 +108,11 @@ module Privy
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
         :destination_caip2 => String,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_gas: Privy::Gas,
         failure_reason: Privy::FailureReason,
+        fees: ::Array[Privy::Models::fee_line_item],
+        gas: Privy::Gas,
         steps: ::Array[Privy::Models::wallet_action_step]
       }
 

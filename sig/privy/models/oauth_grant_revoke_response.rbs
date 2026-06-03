@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type oauth_grant_revoke_response =
+      { success: Privy::Models::OAuthGrantRevokeResponse::success }
+
+    class OAuthGrantRevokeResponse < Privy::Internal::Type::BaseModel
+      attr_accessor success: Privy::Models::OAuthGrantRevokeResponse::success
+
+      def initialize: (
+        success: Privy::Models::OAuthGrantRevokeResponse::success
+      ) -> void
+
+      def to_hash: -> {
+        success: Privy::Models::OAuthGrantRevokeResponse::success
+      }
+
+      type success = true
+
+      module Success
+        extend Privy::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Privy::Models::OAuthGrantRevokeResponse::success]
+      end
+    end
+  end
+end

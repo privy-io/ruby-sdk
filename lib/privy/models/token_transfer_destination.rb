@@ -4,7 +4,7 @@ module Privy
   module Models
     class TokenTransferDestination < Privy::Internal::Type::BaseModel
       # @!attribute address
-      #   Recipient address (hex for EVM, base58 for Solana)
+      #   Recipient address (hex for EVM, base58 for Solana, base58check for Tron)
       #
       #   @return [String]
       required :address, String
@@ -30,7 +30,7 @@ module Privy
       #   The destination address for a token transfer. Optionally specify a different
       #   asset or chain for cross-asset or cross-chain transfers.
       #
-      #   @param address [String] Recipient address (hex for EVM, base58 for Solana)
+      #   @param address [String] Recipient address (hex for EVM, base58 for Solana, base58check for Tron)
       #
       #   @param asset [String] The destination asset. Required for cross-asset transfers (e.g., source 'usdt' t
       #

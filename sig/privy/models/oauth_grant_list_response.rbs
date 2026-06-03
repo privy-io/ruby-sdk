@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type oauth_grant_list_response = { data: ::Array[Privy::OAuthGrant] }
+
+    class OAuthGrantListResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::OAuthGrant]
+
+      def initialize: (data: ::Array[Privy::OAuthGrant]) -> void
+
+      def to_hash: -> { data: ::Array[Privy::OAuthGrant] }
+    end
+  end
+end

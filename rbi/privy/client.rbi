@@ -72,6 +72,9 @@ module Privy
     sig { returns(Privy::Resources::ClientAuth) }
     attr_reader :client_auth
 
+    sig { returns(Privy::Resources::Shared) }
+    attr_reader :shared
+
     sig { returns(Privy::Resources::Onramps) }
     attr_reader :onramps
 
@@ -83,9 +86,6 @@ module Privy
 
     sig { returns(Privy::Resources::CrossApp) }
     attr_reader :cross_app
-
-    sig { returns(Privy::Resources::Shared) }
-    attr_reader :shared
 
     sig { returns(Privy::Resources::OAuth) }
     attr_reader :oauth
