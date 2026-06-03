@@ -1,14 +1,12 @@
 module Privy
   module Models
     type analytics_event_input =
-      { event_name: String, client_id: String, payload: ::Hash[Symbol, top] }
+      { event_name: String, client_id: String?, payload: ::Hash[Symbol, top] }
 
     class AnalyticsEventInput < Privy::Internal::Type::BaseModel
       attr_accessor event_name: String
 
-      attr_reader client_id: String?
-
-      def client_id=: (String) -> String
+      attr_accessor client_id: String?
 
       attr_reader payload: ::Hash[Symbol, top]?
 
@@ -16,13 +14,13 @@ module Privy
 
       def initialize: (
         event_name: String,
-        ?client_id: String,
+        ?client_id: String?,
         ?payload: ::Hash[Symbol, top]
       ) -> void
 
       def to_hash: -> {
         event_name: String,
-        client_id: String,
+        client_id: String?,
         payload: ::Hash[Symbol, top]
       }
     end
