@@ -24,7 +24,7 @@ module Privy
         #
         # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
         #
-        # @param slippage_bps [Float] Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
+        # @param slippage_bps [Integer] Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
         #
         # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
         #
@@ -71,7 +71,7 @@ module Privy
         #
         # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
         #
-        # @param slippage_bps [Float] Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If o
+        # @param slippage_bps [Integer] Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If o
         #
         # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
         #

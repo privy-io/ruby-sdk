@@ -238,7 +238,9 @@ module Privy
         amount_type: nil,
         # Body param: Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
-        # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%).
+        # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only
+        # applicable for cross-chain or cross-asset transfers; omit to use the provider
+        # default.
         slippage_bps: nil,
         # Header param: Request authorization signature. If multiple signatures are
         # required, they should be comma separated.

@@ -42,7 +42,8 @@ module Privy
       sig { params(fee_configuration: Privy::FeeConfiguration::OrHash).void }
       attr_writer :fee_configuration
 
-      # Maximum allowed slippage in basis points (1 bps = 0.01%).
+      # Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
+      # cross-chain or cross-asset transfers; omit to use the provider default.
       sig { returns(T.nilable(Integer)) }
       attr_reader :slippage_bps
 
@@ -75,7 +76,8 @@ module Privy
         amount_type: nil,
         # Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
-        # Maximum allowed slippage in basis points (1 bps = 0.01%).
+        # Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
+        # cross-chain or cross-asset transfers; omit to use the provider default.
         slippage_bps: nil
       )
       end

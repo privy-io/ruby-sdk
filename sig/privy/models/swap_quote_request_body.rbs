@@ -7,7 +7,7 @@ module Privy
         source: Privy::SwapSource,
         amount_type: Privy::Models::amount_type,
         fee_configuration: Privy::FeeConfiguration,
-        slippage_bps: Float
+        slippage_bps: Integer
       }
 
     class SwapQuoteRequestBody < Privy::Internal::Type::BaseModel
@@ -29,9 +29,9 @@ module Privy
         Privy::FeeConfiguration
       ) -> Privy::FeeConfiguration
 
-      attr_reader slippage_bps: Float?
+      attr_reader slippage_bps: Integer?
 
-      def slippage_bps=: (Float) -> Float
+      def slippage_bps=: (Integer) -> Integer
 
       def initialize: (
         base_amount: String,
@@ -39,7 +39,7 @@ module Privy
         source: Privy::SwapSource,
         ?amount_type: Privy::Models::amount_type,
         ?fee_configuration: Privy::FeeConfiguration,
-        ?slippage_bps: Float
+        ?slippage_bps: Integer
       ) -> void
 
       def to_hash: -> {
@@ -48,7 +48,7 @@ module Privy
         source: Privy::SwapSource,
         amount_type: Privy::Models::amount_type,
         fee_configuration: Privy::FeeConfiguration,
-        slippage_bps: Float
+        slippage_bps: Integer
       }
     end
   end

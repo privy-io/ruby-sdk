@@ -9,6 +9,7 @@ module Privy
       USDC = :usdc
       USDC_E = :"usdc.e"
       ETH = :eth
+      AVAX = :avax
       POL = :pol
       USDT = :usdt
       EURC = :eurc

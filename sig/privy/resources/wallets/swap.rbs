@@ -9,7 +9,7 @@ module Privy
           source: Privy::SwapSource,
           ?amount_type: Privy::Models::amount_type,
           ?fee_configuration: Privy::FeeConfiguration,
-          ?slippage_bps: Float,
+          ?slippage_bps: Integer,
           ?privy_authorization_signature: String,
           ?privy_idempotency_key: String,
           ?request_options: Privy::request_opts
@@ -22,7 +22,7 @@ module Privy
           source: Privy::SwapSource,
           ?amount_type: Privy::Models::amount_type,
           ?fee_configuration: Privy::FeeConfiguration,
-          ?slippage_bps: Float,
+          ?slippage_bps: Integer,
           ?privy_authorization_signature: String,
           ?request_options: Privy::request_opts
         ) -> Privy::SwapQuoteResponse

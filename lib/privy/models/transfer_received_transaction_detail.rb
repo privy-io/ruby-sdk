@@ -77,6 +77,8 @@ module Privy
 
         variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::ETH }
 
+        variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::AVAX }
+
         variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::POL }
 
         variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::USDT }
@@ -101,6 +103,7 @@ module Privy
         USDC = :usdc
         USDC_E = :"usdc.e"
         ETH = :eth
+        AVAX = :avax
         POL = :pol
         USDT = :usdt
         EURC = :eurc
@@ -116,6 +119,7 @@ module Privy
 
         ETHEREUM = :ethereum
         ARBITRUM = :arbitrum
+        AVALANCHE = :avalanche
         BASE = :base
         TEMPO = :tempo
         LINEA = :linea
@@ -125,6 +129,7 @@ module Privy
         ZKSYNC_ERA = :zksync_era
         SEPOLIA = :sepolia
         ARBITRUM_SEPOLIA = :arbitrum_sepolia
+        AVALANCHE_FUJI = :avalanche_fuji
         BASE_SEPOLIA = :base_sepolia
         LINEA_TESTNET = :linea_testnet
         OPTIMISM_SEPOLIA = :optimism_sepolia
