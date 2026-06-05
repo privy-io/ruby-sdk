@@ -127,6 +127,11 @@ module Privy
           )
         ETH =
           T.let(:eth, Privy::TransferSentTransactionDetail::Asset::TaggedSymbol)
+        AVAX =
+          T.let(
+            :avax,
+            Privy::TransferSentTransactionDetail::Asset::TaggedSymbol
+          )
         POL =
           T.let(:pol, Privy::TransferSentTransactionDetail::Asset::TaggedSymbol)
         USDT =
@@ -165,6 +170,11 @@ module Privy
         ARBITRUM =
           T.let(
             :arbitrum,
+            Privy::TransferSentTransactionDetail::Chain::TaggedSymbol
+          )
+        AVALANCHE =
+          T.let(
+            :avalanche,
             Privy::TransferSentTransactionDetail::Chain::TaggedSymbol
           )
         BASE =
@@ -210,6 +220,11 @@ module Privy
         ARBITRUM_SEPOLIA =
           T.let(
             :arbitrum_sepolia,
+            Privy::TransferSentTransactionDetail::Chain::TaggedSymbol
+          )
+        AVALANCHE_FUJI =
+          T.let(
+            :avalanche_fuji,
             Privy::TransferSentTransactionDetail::Chain::TaggedSymbol
           )
         BASE_SEPOLIA =

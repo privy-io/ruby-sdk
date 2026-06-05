@@ -42,10 +42,10 @@ module Privy
 
       # Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If omitted,
       # auto-slippage is used.
-      sig { returns(T.nilable(Float)) }
+      sig { returns(T.nilable(Integer)) }
       attr_reader :slippage_bps
 
-      sig { params(slippage_bps: Float).void }
+      sig { params(slippage_bps: Integer).void }
       attr_writer :slippage_bps
 
       # Input for requesting a token swap quote.
@@ -56,7 +56,7 @@ module Privy
           source: Privy::SwapSource::OrHash,
           amount_type: Privy::AmountType::OrSymbol,
           fee_configuration: Privy::FeeConfiguration::OrHash,
-          slippage_bps: Float
+          slippage_bps: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -84,7 +84,7 @@ module Privy
             source: Privy::SwapSource,
             amount_type: Privy::AmountType::OrSymbol,
             fee_configuration: Privy::FeeConfiguration,
-            slippage_bps: Float
+            slippage_bps: Integer
           }
         )
       end

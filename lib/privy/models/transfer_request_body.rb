@@ -30,7 +30,8 @@ module Privy
       optional :fee_configuration, -> { Privy::FeeConfiguration }
 
       # @!attribute slippage_bps
-      #   Maximum allowed slippage in basis points (1 bps = 0.01%).
+      #   Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
+      #   cross-chain or cross-asset transfers; omit to use the provider default.
       #
       #   @return [Integer, nil]
       optional :slippage_bps, Integer
@@ -49,7 +50,7 @@ module Privy
       #
       #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
       #
-      #   @param slippage_bps [Integer] Maximum allowed slippage in basis points (1 bps = 0.01%).
+      #   @param slippage_bps [Integer] Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for cr
     end
   end
 end

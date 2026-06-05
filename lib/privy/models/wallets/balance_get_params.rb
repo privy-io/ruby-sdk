@@ -89,6 +89,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::ETH }
 
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::AVAX }
+
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::POL }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::USDT }
@@ -113,6 +115,7 @@ module Privy
           USDC = :usdc
           USDC_E = :"usdc.e"
           ETH = :eth
+          AVAX = :avax
           POL = :pol
           USDT = :usdt
           EURC = :eurc
@@ -134,6 +137,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARBITRUM }
 
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::AVALANCHE }
+
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BASE }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TEMPO }
@@ -151,6 +156,8 @@ module Privy
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SEPOLIA }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARBITRUM_SEPOLIA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::AVALANCHE_FUJI }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BASE_SEPOLIA }
 
@@ -171,6 +178,7 @@ module Privy
 
             ETHEREUM = :ethereum
             ARBITRUM = :arbitrum
+            AVALANCHE = :avalanche
             BASE = :base
             TEMPO = :tempo
             LINEA = :linea
@@ -180,6 +188,7 @@ module Privy
             ZKSYNC_ERA = :zksync_era
             SEPOLIA = :sepolia
             ARBITRUM_SEPOLIA = :arbitrum_sepolia
+            AVALANCHE_FUJI = :avalanche_fuji
             BASE_SEPOLIA = :base_sepolia
             LINEA_TESTNET = :linea_testnet
             OPTIMISM_SEPOLIA = :optimism_sepolia
@@ -207,6 +216,7 @@ module Privy
 
           ETHEREUM = :ethereum
           ARBITRUM = :arbitrum
+          AVALANCHE = :avalanche
           BASE = :base
           TEMPO = :tempo
           LINEA = :linea
@@ -216,6 +226,7 @@ module Privy
           ZKSYNC_ERA = :zksync_era
           SEPOLIA = :sepolia
           ARBITRUM_SEPOLIA = :arbitrum_sepolia
+          AVALANCHE_FUJI = :avalanche_fuji
           BASE_SEPOLIA = :base_sepolia
           LINEA_TESTNET = :linea_testnet
           OPTIMISM_SEPOLIA = :optimism_sepolia

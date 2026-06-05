@@ -262,6 +262,11 @@ module Privy
               :eth,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
+          AVAX =
+            T.let(
+              :avax,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
           POL =
             T.let(
               :pol,
