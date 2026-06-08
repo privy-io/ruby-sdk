@@ -351,6 +351,11 @@ module Privy
 
   EmbeddedWalletRecoveryMethod = Privy::Models::EmbeddedWalletRecoveryMethod
 
+  EncryptedAuthorizationKey = Privy::Models::EncryptedAuthorizationKey
+
+  EncryptedBoundAuthenticateResponse =
+    Privy::Models::EncryptedBoundAuthenticateResponse
+
   Ethereum7702AuthorizationCondition =
     Privy::Models::Ethereum7702AuthorizationCondition
 
@@ -716,6 +721,8 @@ module Privy
   IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
 
   IntentAuthorizeInput = Privy::Models::IntentAuthorizeInput
+
+  IntentBinding = Privy::Models::IntentBinding
 
   IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
 
@@ -1370,6 +1377,8 @@ module Privy
 
   Quantity = Privy::Models::Quantity
 
+  RawBoundAuthenticateResponse = Privy::Models::RawBoundAuthenticateResponse
+
   RawSignBytesEncoding = Privy::Models::RawSignBytesEncoding
 
   RawSignBytesHashFunction = Privy::Models::RawSignBytesHashFunction
@@ -1955,6 +1964,8 @@ module Privy
 
   UserSetCustomMetadataParams = Privy::Models::UserSetCustomMetadataParams
 
+  UserSigningKeyBinding = Privy::Models::UserSigningKeyBinding
+
   UserTransferredAccountWebhookPayload =
     Privy::Models::UserTransferredAccountWebhookPayload
 
@@ -2058,6 +2069,18 @@ module Privy
     Privy::Models::WalletAPIRevokeAuthorizationKeyInput
 
   WalletAsset = Privy::Models::WalletAsset
+
+  WalletAuthenticateBoundEncryptedRequestBody =
+    Privy::Models::WalletAuthenticateBoundEncryptedRequestBody
+
+  WalletAuthenticateBoundRequestBody =
+    Privy::Models::WalletAuthenticateBoundRequestBody
+
+  WalletAuthenticateBoundUnencryptedRequestBody =
+    Privy::Models::WalletAuthenticateBoundUnencryptedRequestBody
+
+  WalletAuthenticateIntentsResponse =
+    Privy::Models::WalletAuthenticateIntentsResponse
 
   WalletAuthenticateRequestBody = Privy::Models::WalletAuthenticateRequestBody
 

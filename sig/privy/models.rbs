@@ -311,6 +311,10 @@ module Privy
 
   module EmbeddedWalletRecoveryMethod = Privy::Models::EmbeddedWalletRecoveryMethod
 
+  class EncryptedAuthorizationKey = Privy::Models::EncryptedAuthorizationKey
+
+  class EncryptedBoundAuthenticateResponse = Privy::Models::EncryptedBoundAuthenticateResponse
+
   class Ethereum7702AuthorizationCondition = Privy::Models::Ethereum7702AuthorizationCondition
 
   class EthereumCalldataCondition = Privy::Models::EthereumCalldataCondition
@@ -626,6 +630,8 @@ module Privy
   class IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
 
   class IntentAuthorizeInput = Privy::Models::IntentAuthorizeInput
+
+  class IntentBinding = Privy::Models::IntentBinding
 
   class IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
 
@@ -1197,6 +1203,8 @@ module Privy
 
   module Quantity = Privy::Models::Quantity
 
+  class RawBoundAuthenticateResponse = Privy::Models::RawBoundAuthenticateResponse
+
   module RawSignBytesEncoding = Privy::Models::RawSignBytesEncoding
 
   module RawSignBytesHashFunction = Privy::Models::RawSignBytesHashFunction
@@ -1705,6 +1713,8 @@ module Privy
 
   class UserSetCustomMetadataParams = Privy::Models::UserSetCustomMetadataParams
 
+  class UserSigningKeyBinding = Privy::Models::UserSigningKeyBinding
+
   class UserTransferredAccountWebhookPayload = Privy::Models::UserTransferredAccountWebhookPayload
 
   class UserUnlinkedAccountWebhookPayload = Privy::Models::UserUnlinkedAccountWebhookPayload
@@ -1778,6 +1788,14 @@ module Privy
   class WalletAPIRevokeAuthorizationKeyInput = Privy::Models::WalletAPIRevokeAuthorizationKeyInput
 
   module WalletAsset = Privy::Models::WalletAsset
+
+  class WalletAuthenticateBoundEncryptedRequestBody = Privy::Models::WalletAuthenticateBoundEncryptedRequestBody
+
+  module WalletAuthenticateBoundRequestBody = Privy::Models::WalletAuthenticateBoundRequestBody
+
+  class WalletAuthenticateBoundUnencryptedRequestBody = Privy::Models::WalletAuthenticateBoundUnencryptedRequestBody
+
+  module WalletAuthenticateIntentsResponse = Privy::Models::WalletAuthenticateIntentsResponse
 
   class WalletAuthenticateRequestBody = Privy::Models::WalletAuthenticateRequestBody
 

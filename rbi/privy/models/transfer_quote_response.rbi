@@ -16,21 +16,11 @@ module Privy
       sig { params(destination: Privy::TokenTransferDestination::OrHash).void }
       attr_writer :destination
 
-      # Estimated fees in USD
-      sig do
-        returns(
-          T::Array[
-            T.any(Privy::RelayerFee, Privy::PrivyFee, Privy::DeveloperFee)
-          ]
-        )
-      end
-      attr_accessor :estimated_fees
-
       # Estimated output amount in decimals
       sig { returns(String) }
       attr_accessor :estimated_output_amount
 
-      # Quote expiry as unix timestamp (seconds)
+      # Quote expiry as Unix timestamp (seconds).
       sig { returns(Float) }
       attr_accessor :expires_at
 
@@ -53,6 +43,32 @@ module Privy
       sig { params(amount_type: Privy::AmountType::OrSymbol).void }
       attr_writer :amount_type
 
+      # Estimated fees in USD for the transfer. Only present for cross-chain transfers.
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              T.any(Privy::RelayerFee, Privy::PrivyFee, Privy::DeveloperFee)
+            ]
+          )
+        )
+      end
+      attr_reader :estimated_fees
+
+      sig do
+        params(
+          estimated_fees:
+            T::Array[
+              T.any(
+                Privy::RelayerFee::OrHash,
+                Privy::PrivyFee::OrHash,
+                Privy::DeveloperFee::OrHash
+              )
+            ]
+        ).void
+      end
+      attr_writer :estimated_fees
+
       # Gas cost for a blockchain action. Includes both raw base-unit amount and a
       # human-readable decimal string, plus the gas token symbol.
       sig { returns(T.nilable(Privy::Gas)) }
@@ -65,14 +81,6 @@ module Privy
       sig do
         params(
           destination: Privy::TokenTransferDestination::OrHash,
-          estimated_fees:
-            T::Array[
-              T.any(
-                Privy::RelayerFee::OrHash,
-                Privy::PrivyFee::OrHash,
-                Privy::DeveloperFee::OrHash
-              )
-            ],
           estimated_output_amount: String,
           expires_at: Float,
           source:
@@ -81,6 +89,14 @@ module Privy
               Privy::CustomTokenTransferSource::OrHash
             ),
           amount_type: Privy::AmountType::OrSymbol,
+          estimated_fees:
+            T::Array[
+              T.any(
+                Privy::RelayerFee::OrHash,
+                Privy::PrivyFee::OrHash,
+                Privy::DeveloperFee::OrHash
+              )
+            ],
           estimated_gas: Privy::Gas::OrHash
         ).returns(T.attached_class)
       end
@@ -88,17 +104,17 @@ module Privy
         # The destination address for a token transfer. Optionally specify a different
         # asset or chain for cross-asset or cross-chain transfers.
         destination:,
-        # Estimated fees in USD
-        estimated_fees:,
         # Estimated output amount in decimals
         estimated_output_amount:,
-        # Quote expiry as unix timestamp (seconds)
+        # Quote expiry as Unix timestamp (seconds).
         expires_at:,
         # The source asset, amount, and chain for a token transfer. Specify either `asset`
         # (named) or `asset_address` (custom), not both.
         source:,
         # Whether the amount refers to the input token or output token.
         amount_type: nil,
+        # Estimated fees in USD for the transfer. Only present for cross-chain transfers.
+        estimated_fees: nil,
         # Gas cost for a blockchain action. Includes both raw base-unit amount and a
         # human-readable decimal string, plus the gas token symbol.
         estimated_gas: nil
@@ -109,10 +125,6 @@ module Privy
         override.returns(
           {
             destination: Privy::TokenTransferDestination,
-            estimated_fees:
-              T::Array[
-                T.any(Privy::RelayerFee, Privy::PrivyFee, Privy::DeveloperFee)
-              ],
             estimated_output_amount: String,
             expires_at: Float,
             source:
@@ -121,6 +133,10 @@ module Privy
                 Privy::CustomTokenTransferSource
               ),
             amount_type: Privy::AmountType::OrSymbol,
+            estimated_fees:
+              T::Array[
+                T.any(Privy::RelayerFee, Privy::PrivyFee, Privy::DeveloperFee)
+              ],
             estimated_gas: Privy::Gas
           }
         )

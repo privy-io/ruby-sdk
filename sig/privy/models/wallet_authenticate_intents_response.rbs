@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type wallet_authenticate_intents_response =
+      Privy::EncryptedBoundAuthenticateResponse
+      | Privy::RawBoundAuthenticateResponse
+
+    module WalletAuthenticateIntentsResponse
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_authenticate_intents_response]
+    end
+  end
+end

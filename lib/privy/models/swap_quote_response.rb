@@ -47,7 +47,8 @@ module Privy
       required :output_token, String
 
       # @!attribute destination_caip2
-      #   Destination chain CAIP-2 identifier for cross-chain swaps.
+      #   Destination chain CAIP-2 identifier for cross-chain swaps. Only present for
+      #   cross-chain swaps.
       #
       #   @return [String, nil]
       optional :destination_caip2, String
@@ -66,7 +67,7 @@ module Privy
       optional :estimated_gas, -> { Privy::Gas }
 
       # @!attribute expires_at
-      #   Quote expiry as Unix timestamp (seconds). Present for cross-chain quotes.
+      #   Quote expiry as Unix timestamp (seconds). Only present for cross-chain quotes.
       #
       #   @return [Float, nil]
       optional :expires_at, Float
@@ -91,13 +92,13 @@ module Privy
       #
       #   @param output_token [String] Token address being bought.
       #
-      #   @param destination_caip2 [String] Destination chain CAIP-2 identifier for cross-chain swaps.
+      #   @param destination_caip2 [String] Destination chain CAIP-2 identifier for cross-chain swaps. Only present for cros
       #
       #   @param estimated_fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Estimated fees for the swap. Only present for cross-chain swaps.
       #
       #   @param estimated_gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
-      #   @param expires_at [Float] Quote expiry as Unix timestamp (seconds). Present for cross-chain quotes.
+      #   @param expires_at [Float] Quote expiry as Unix timestamp (seconds). Only present for cross-chain quotes.
     end
   end
 end
