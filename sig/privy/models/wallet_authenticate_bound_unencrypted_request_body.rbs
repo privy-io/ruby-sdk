@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type wallet_authenticate_bound_unencrypted_request_body =
+      { bindings: ::Array[Privy::UserSigningKeyBinding], user_jwt: String }
+
+    class WalletAuthenticateBoundUnencryptedRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor bindings: ::Array[Privy::UserSigningKeyBinding]
+
+      attr_accessor user_jwt: String
+
+      def initialize: (
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        user_jwt: String
+      ) -> void
+
+      def to_hash: -> {
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        user_jwt: String
+      }
+    end
+  end
+end

@@ -3,18 +3,16 @@ module Privy
     type transfer_quote_response =
       {
         destination: Privy::TokenTransferDestination,
-        estimated_fees: ::Array[Privy::Models::fee_line_item],
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
         amount_type: Privy::Models::amount_type,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
         estimated_gas: Privy::Gas
       }
 
     class TransferQuoteResponse < Privy::Internal::Type::BaseModel
       attr_accessor destination: Privy::TokenTransferDestination
-
-      attr_accessor estimated_fees: ::Array[Privy::Models::fee_line_item]
 
       attr_accessor estimated_output_amount: String
 
@@ -28,27 +26,33 @@ module Privy
         Privy::Models::amount_type
       ) -> Privy::Models::amount_type
 
+      attr_reader estimated_fees: ::Array[Privy::Models::fee_line_item]?
+
+      def estimated_fees=: (
+        ::Array[Privy::Models::fee_line_item]
+      ) -> ::Array[Privy::Models::fee_line_item]
+
       attr_reader estimated_gas: Privy::Gas?
 
       def estimated_gas=: (Privy::Gas) -> Privy::Gas
 
       def initialize: (
         destination: Privy::TokenTransferDestination,
-        estimated_fees: ::Array[Privy::Models::fee_line_item],
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
         ?amount_type: Privy::Models::amount_type,
+        ?estimated_fees: ::Array[Privy::Models::fee_line_item],
         ?estimated_gas: Privy::Gas
       ) -> void
 
       def to_hash: -> {
         destination: Privy::TokenTransferDestination,
-        estimated_fees: ::Array[Privy::Models::fee_line_item],
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
         amount_type: Privy::Models::amount_type,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
         estimated_gas: Privy::Gas
       }
     end

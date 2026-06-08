@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type encrypted_bound_authenticate_response =
+      {
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        encrypted_authorization_key: Privy::EncryptedAuthorizationKey,
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      }
+
+    class EncryptedBoundAuthenticateResponse < Privy::Internal::Type::BaseModel
+      attr_accessor bindings: ::Array[Privy::UserSigningKeyBinding]
+
+      attr_accessor encrypted_authorization_key: Privy::EncryptedAuthorizationKey
+
+      attr_accessor expires_at: Float
+
+      attr_accessor wallets: ::Array[Privy::Wallet]
+
+      def initialize: (
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        encrypted_authorization_key: Privy::EncryptedAuthorizationKey,
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      ) -> void
+
+      def to_hash: -> {
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        encrypted_authorization_key: Privy::EncryptedAuthorizationKey,
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      }
+    end
+  end
+end

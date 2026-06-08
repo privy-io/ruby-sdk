@@ -5,18 +5,18 @@ module Privy
         id: String,
         created_at: Time,
         destination_address: String,
+        destination_amount: String?,
         source_chain: String,
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::TransferActionResponse::type_,
         wallet_id: String,
-        destination_amount: String,
         destination_asset: String,
         destination_chain: String,
-        estimated_fees: ::Array[Privy::Models::fee_line_item],
-        estimated_gas: Privy::Gas,
+        estimated_fees: ::Array[Privy::Models::fee_line_item]?,
+        estimated_gas: Privy::TransferActionResponse::EstimatedGas,
         failure_reason: Privy::FailureReason,
-        fees: ::Array[Privy::Models::fee_line_item],
-        gas: Privy::Gas,
+        fees: ::Array[Privy::Models::fee_line_item]?,
+        gas: Privy::TransferActionResponse::Gas,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -31,6 +31,8 @@ module Privy
 
       attr_accessor destination_address: String
 
+      attr_accessor destination_amount: String?
+
       attr_accessor source_chain: String
 
       attr_accessor status: Privy::Models::wallet_action_status
@@ -38,10 +40,6 @@ module Privy
       attr_accessor type: Privy::Models::TransferActionResponse::type_
 
       attr_accessor wallet_id: String
-
-      attr_reader destination_amount: String?
-
-      def destination_amount=: (String) -> String
 
       attr_reader destination_asset: String?
 
@@ -51,29 +49,25 @@ module Privy
 
       def destination_chain=: (String) -> String
 
-      attr_reader estimated_fees: ::Array[Privy::Models::fee_line_item]?
+      attr_accessor estimated_fees: ::Array[Privy::Models::fee_line_item]?
 
-      def estimated_fees=: (
-        ::Array[Privy::Models::fee_line_item]
-      ) -> ::Array[Privy::Models::fee_line_item]
+      attr_reader estimated_gas: Privy::TransferActionResponse::EstimatedGas?
 
-      attr_reader estimated_gas: Privy::Gas?
-
-      def estimated_gas=: (Privy::Gas) -> Privy::Gas
+      def estimated_gas=: (
+        Privy::TransferActionResponse::EstimatedGas
+      ) -> Privy::TransferActionResponse::EstimatedGas
 
       attr_reader failure_reason: Privy::FailureReason?
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
 
-      attr_reader fees: ::Array[Privy::Models::fee_line_item]?
+      attr_accessor fees: ::Array[Privy::Models::fee_line_item]?
 
-      def fees=: (
-        ::Array[Privy::Models::fee_line_item]
-      ) -> ::Array[Privy::Models::fee_line_item]
+      attr_reader gas: Privy::TransferActionResponse::Gas?
 
-      attr_reader gas: Privy::Gas?
-
-      def gas=: (Privy::Gas) -> Privy::Gas
+      def gas=: (
+        Privy::TransferActionResponse::Gas
+      ) -> Privy::TransferActionResponse::Gas
 
       attr_reader source_amount: String?
 
@@ -101,18 +95,18 @@ module Privy
         id: String,
         created_at: Time,
         destination_address: String,
+        destination_amount: String?,
         source_chain: String,
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::TransferActionResponse::type_,
         wallet_id: String,
-        ?destination_amount: String,
         ?destination_asset: String,
         ?destination_chain: String,
-        ?estimated_fees: ::Array[Privy::Models::fee_line_item],
-        ?estimated_gas: Privy::Gas,
+        ?estimated_fees: ::Array[Privy::Models::fee_line_item]?,
+        ?estimated_gas: Privy::TransferActionResponse::EstimatedGas,
         ?failure_reason: Privy::FailureReason,
-        ?fees: ::Array[Privy::Models::fee_line_item],
-        ?gas: Privy::Gas,
+        ?fees: ::Array[Privy::Models::fee_line_item]?,
+        ?gas: Privy::TransferActionResponse::Gas,
         ?source_amount: String,
         ?source_asset: String,
         ?source_asset_address: String,
@@ -124,18 +118,18 @@ module Privy
         id: String,
         created_at: Time,
         destination_address: String,
+        destination_amount: String?,
         source_chain: String,
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::TransferActionResponse::type_,
         wallet_id: String,
-        destination_amount: String,
         destination_asset: String,
         destination_chain: String,
-        estimated_fees: ::Array[Privy::Models::fee_line_item],
-        estimated_gas: Privy::Gas,
+        estimated_fees: ::Array[Privy::Models::fee_line_item]?,
+        estimated_gas: Privy::TransferActionResponse::EstimatedGas,
         failure_reason: Privy::FailureReason,
-        fees: ::Array[Privy::Models::fee_line_item],
-        gas: Privy::Gas,
+        fees: ::Array[Privy::Models::fee_line_item]?,
+        gas: Privy::TransferActionResponse::Gas,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -151,6 +145,22 @@ module Privy
         TRANSFER: :transfer
 
         def self?.values: -> ::Array[Privy::Models::TransferActionResponse::type_]
+      end
+
+      type estimated_gas = {  }
+
+      class EstimatedGas < Privy::Models::Gas
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+
+      type gas = {  }
+
+      class Gas < Privy::Models::Gas
+        def initialize: -> void
+
+        def to_hash: -> {  }
       end
     end
   end

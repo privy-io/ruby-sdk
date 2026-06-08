@@ -37,7 +37,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :output_token
 
-      # Destination chain CAIP-2 identifier for cross-chain swaps.
+      # Destination chain CAIP-2 identifier for cross-chain swaps. Only present for
+      # cross-chain swaps.
       sig { returns(T.nilable(String)) }
       attr_reader :destination_caip2
 
@@ -70,7 +71,7 @@ module Privy
       sig { params(estimated_gas: Privy::Gas::OrHash).void }
       attr_writer :estimated_gas
 
-      # Quote expiry as Unix timestamp (seconds). Present for cross-chain quotes.
+      # Quote expiry as Unix timestamp (seconds). Only present for cross-chain quotes.
       sig { returns(T.nilable(Float)) }
       attr_reader :expires_at
 
@@ -116,14 +117,15 @@ module Privy
         minimum_output_amount:,
         # Token address being bought.
         output_token:,
-        # Destination chain CAIP-2 identifier for cross-chain swaps.
+        # Destination chain CAIP-2 identifier for cross-chain swaps. Only present for
+        # cross-chain swaps.
         destination_caip2: nil,
         # Estimated fees for the swap. Only present for cross-chain swaps.
         estimated_fees: nil,
         # Gas cost for a blockchain action. Includes both raw base-unit amount and a
         # human-readable decimal string, plus the gas token symbol.
         estimated_gas: nil,
-        # Quote expiry as Unix timestamp (seconds). Present for cross-chain quotes.
+        # Quote expiry as Unix timestamp (seconds). Only present for cross-chain quotes.
         expires_at: nil
       )
       end

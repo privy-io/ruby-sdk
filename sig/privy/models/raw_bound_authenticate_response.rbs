@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type raw_bound_authenticate_response =
+      {
+        authorization_key: String,
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      }
+
+    class RawBoundAuthenticateResponse < Privy::Internal::Type::BaseModel
+      attr_accessor authorization_key: String
+
+      attr_accessor bindings: ::Array[Privy::UserSigningKeyBinding]
+
+      attr_accessor expires_at: Float
+
+      attr_accessor wallets: ::Array[Privy::Wallet]
+
+      def initialize: (
+        authorization_key: String,
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      ) -> void
+
+      def to_hash: -> {
+        authorization_key: String,
+        bindings: ::Array[Privy::UserSigningKeyBinding],
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      }
+    end
+  end
+end
