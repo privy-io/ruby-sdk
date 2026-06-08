@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type wallet_create_batch_params =
+      {  } & Privy::Internal::Type::request_parameters
+
+    class WalletCreateBatchParams < Privy::Models::WalletBatchCreateInput
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Privy::request_opts) -> void
+
+      def to_hash: -> { request_options: Privy::RequestOptions }
+    end
+  end
+end

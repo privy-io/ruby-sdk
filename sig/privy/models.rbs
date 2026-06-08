@@ -97,6 +97,8 @@ module Privy
 
   class BaseIntentResponse = Privy::Models::BaseIntentResponse
 
+  class BitcoinAddress = Privy::Models::BitcoinAddress
+
   class BridgeBrlFiatVirtualAccountDepositInstructions = Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
 
   class BridgeCryptoDepositMetadata = Privy::Models::BridgeCryptoDepositMetadata
@@ -260,6 +262,12 @@ module Privy
   class DeveloperFee = Privy::Models::DeveloperFee
 
   class DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
+
+  module DeviceVerifyAction = Privy::Models::DeviceVerifyAction
+
+  class DeviceVerifyRequestBody = Privy::Models::DeviceVerifyRequestBody
+
+  class DeviceVerifyResponse = Privy::Models::DeviceVerifyResponse
 
   class EarnAsset = Privy::Models::EarnAsset
 
@@ -429,7 +437,11 @@ module Privy
 
   class EthereumYieldWithdrawInput = Privy::Models::EthereumYieldWithdrawInput
 
+  class EvmAddress = Privy::Models::EvmAddress
+
   class EvmCaip2ChainID = Privy::Models::EvmCaip2ChainID
+
+  class EvmChecksumAddress = Privy::Models::EvmChecksumAddress
 
   class EvmTransactionWalletActionStep = Privy::Models::EvmTransactionWalletActionStep
 
@@ -559,6 +571,8 @@ module Privy
 
   class FundsWithdrawnWebhookPayload = Privy::Models::FundsWithdrawnWebhookPayload
 
+  class Gas = Privy::Models::Gas
+
   module GasSpendCurrency = Privy::Models::GasSpendCurrency
 
   class GasSpendRequestBody = Privy::Models::GasSpendRequestBody
@@ -598,6 +612,8 @@ module Privy
   module HpkeEncryption = Privy::Models::HpkeEncryption
 
   class HpkeImportConfig = Privy::Models::HpkeImportConfig
+
+  class HyperliquidTokenAddress = Privy::Models::HyperliquidTokenAddress
 
   module ICloudClientType = Privy::Models::ICloudClientType
 
@@ -981,6 +997,12 @@ module Privy
 
   module OAuthCodeType = Privy::Models::OAuthCodeType
 
+  class OAuthGrant = Privy::Models::OAuthGrant
+
+  class OAuthGrantListResponse = Privy::Models::OAuthGrantListResponse
+
+  class OAuthGrantRevokeResponse = Privy::Models::OAuthGrantRevokeResponse
+
   class OAuthInitICloudRecoveryInput = Privy::Models::OAuthInitICloudRecoveryInput
 
   class OAuthInitRecoveryInput = Privy::Models::OAuthInitRecoveryInput
@@ -995,7 +1017,21 @@ module Privy
 
   module OAuthProviderID = Privy::Models::OAuthProviderID
 
+  class OAuthTokenAuthorizationCodeRequestBody = Privy::Models::OAuthTokenAuthorizationCodeRequestBody
+
+  class OAuthTokenDeviceCodePendingError = Privy::Models::OAuthTokenDeviceCodePendingError
+
+  class OAuthTokenDeviceCodeRequestBody = Privy::Models::OAuthTokenDeviceCodeRequestBody
+
+  module OAuthTokenGrantType = Privy::Models::OAuthTokenGrantType
+
+  class OAuthTokenRefreshTokenRequestBody = Privy::Models::OAuthTokenRefreshTokenRequestBody
+
+  module OAuthTokenRequestBody = Privy::Models::OAuthTokenRequestBody
+
   class OAuthTokens = Privy::Models::OAuthTokens
+
+  class OAuthTokenSuccessResponse = Privy::Models::OAuthTokenSuccessResponse
 
   class OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
 
@@ -1011,7 +1047,11 @@ module Privy
 
   module OnrampProvider = Privy::Models::OnrampProvider
 
+  class OnrampSessionFees = Privy::Models::OnrampSessionFees
+
   class OnrampSessionParams = Privy::Models::OnrampSessionParams
+
+  class OnrampSessionTransactionDetails = Privy::Models::OnrampSessionTransactionDetails
 
   class OptionalRefreshTokenInput = Privy::Models::OptionalRefreshTokenInput
 
@@ -1278,6 +1318,8 @@ module Privy
   module SmartWalletType = Privy::Models::SmartWalletType
 
   class SMSMfaMethod = Privy::Models::SMSMfaMethod
+
+  class SolanaAddress = Privy::Models::SolanaAddress
 
   class SolanaProgramInstructionCondition = Privy::Models::SolanaProgramInstructionCondition
 
@@ -1575,6 +1617,8 @@ module Privy
 
   class TransferTelegramInput = Privy::Models::TransferTelegramInput
 
+  class TronAddress = Privy::Models::TronAddress
+
   class TronCalldataCondition = Privy::Models::TronCalldataCondition
 
   class TronTransactionCondition = Privy::Models::TronTransactionCondition
@@ -1752,6 +1796,8 @@ module Privy
   class WalletBatchItemInput = Privy::Models::WalletBatchItemInput
 
   module WalletChainType = Privy::Models::WalletChainType
+
+  class WalletCreateBatchParams = Privy::Models::WalletCreateBatchParams
 
   class WalletCreateParams = Privy::Models::WalletCreateParams
 

@@ -11,6 +11,7 @@ module Privy
           )
         end
 
+      # The destination chain, asset, and address for a virtual account transfer.
       sig { returns(Privy::BridgeFiatVirtualAccountDestination) }
       attr_reader :destination
 
@@ -26,6 +27,7 @@ module Privy
       end
       attr_accessor :provider
 
+      # The source fiat currency configuration for a virtual account.
       sig { returns(Privy::BridgeFiatVirtualAccountSource) }
       attr_reader :source
 
@@ -40,7 +42,13 @@ module Privy
           source: Privy::BridgeFiatVirtualAccountSource::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(destination:, provider:, source:)
+      def self.new(
+        # The destination chain, asset, and address for a virtual account transfer.
+        destination:,
+        provider:,
+        # The source fiat currency configuration for a virtual account.
+        source:
+      )
       end
 
       sig do

@@ -1,16 +1,42 @@
 module Privy
   module Models
     type create_stripe_onramp_session_response =
-      { id: String, session_id: String }
+      {
+        id: String,
+        session_id: String,
+        transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+      }
 
     class CreateStripeOnrampSessionResponse < Privy::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor session_id: String
 
-      def initialize: (id: String, session_id: String) -> void
+      attr_reader transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails?
 
-      def to_hash: -> { id: String, session_id: String }
+      def transaction_details=: (
+        Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+      ) -> Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+
+      def initialize: (
+        id: String,
+        session_id: String,
+        ?transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        session_id: String,
+        transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+      }
+
+      type transaction_details = {  }
+
+      class TransactionDetails < Privy::Models::OnrampSessionTransactionDetails
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
     end
   end
 end

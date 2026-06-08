@@ -41,7 +41,14 @@ module Privy
       #   @return [Symbol, Privy::Models::AmountType, nil]
       optional :amount_type, enum: -> { Privy::AmountType }
 
-      # @!method initialize(destination:, estimated_fees:, estimated_output_amount:, expires_at:, source:, amount_type: nil)
+      # @!attribute estimated_gas
+      #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      #   human-readable decimal string, plus the gas token symbol.
+      #
+      #   @return [Privy::Models::Gas, nil]
+      optional :estimated_gas, -> { Privy::Gas }
+
+      # @!method initialize(destination:, estimated_fees:, estimated_output_amount:, expires_at:, source:, amount_type: nil, estimated_gas: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferQuoteResponse} for more details.
       #
@@ -58,6 +65,8 @@ module Privy
       #   @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] The source asset, amount, and chain for a token transfer. Specify either `asset`
       #
       #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
+      #
+      #   @param estimated_gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
     end
   end
 end

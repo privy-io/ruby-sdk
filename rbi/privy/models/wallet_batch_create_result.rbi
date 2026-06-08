@@ -29,7 +29,7 @@ module Privy
 
         sig do
           returns(
-            Privy::WalletBatchCreateResult::WalletBatchCreateSuccess::Success::OrBoolean
+            Privy::WalletBatchCreateResult::WalletBatchCreateSuccess::Success::TaggedBoolean
           )
         end
         attr_accessor :success
@@ -64,7 +64,7 @@ module Privy
             {
               index: Float,
               success:
-                Privy::WalletBatchCreateResult::WalletBatchCreateSuccess::Success::OrBoolean,
+                Privy::WalletBatchCreateResult::WalletBatchCreateSuccess::Success::TaggedBoolean,
               wallet: Privy::Wallet
             }
           )
@@ -126,7 +126,7 @@ module Privy
 
         sig do
           returns(
-            Privy::WalletBatchCreateResult::WalletBatchCreateFailure::Success::OrBoolean
+            Privy::WalletBatchCreateResult::WalletBatchCreateFailure::Success::TaggedBoolean
           )
         end
         attr_accessor :success
@@ -160,7 +160,7 @@ module Privy
               error: String,
               index: Float,
               success:
-                Privy::WalletBatchCreateResult::WalletBatchCreateFailure::Success::OrBoolean
+                Privy::WalletBatchCreateResult::WalletBatchCreateFailure::Success::TaggedBoolean
             }
           )
         end

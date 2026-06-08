@@ -113,6 +113,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::ETH }
 
+          variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::AVAX }
+
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::POL }
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::USDT }
@@ -142,6 +144,7 @@ module Privy
           USDC = :usdc
           USDC_E = :"usdc.e"
           ETH = :eth
+          AVAX = :avax
           POL = :pol
           USDT = :usdt
           EURC = :eurc

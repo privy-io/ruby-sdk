@@ -238,7 +238,9 @@ module Privy
         amount_type: nil,
         # Body param: Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
-        # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%).
+        # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only
+        # applicable for cross-chain or cross-asset transfers; omit to use the provider
+        # default.
         slippage_bps: nil,
         # Header param: Request authorization signature. If multiple signatures are
         # required, they should be comma separated.
@@ -273,6 +275,22 @@ module Privy
         recipient_public_key:,
         # The user's JWT, to be used to authenticate the user.
         user_jwt:,
+        request_options: {}
+      )
+      end
+
+      # Creates multiple wallets in a single request. Each wallet creation is
+      # independent; failures for one wallet do not affect others. Maximum batch size is
+      # 100 wallets.
+      sig do
+        params(
+          wallets: T::Array[Privy::WalletBatchItemInput::OrHash],
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::WalletBatchCreateResponse)
+      end
+      def create_batch(
+        # Array of wallet creation requests. Minimum 1, maximum 100.
+        wallets:,
         request_options: {}
       )
       end

@@ -14,12 +14,14 @@ module Privy
       sig { returns(String) }
       attr_accessor :address
 
+      # Supported destination stablecoin assets for fiat-to-crypto transfers.
       sig { returns(Privy::BridgeDestinationAsset::OrSymbol) }
       attr_accessor :asset
 
       sig { returns(String) }
       attr_accessor :chain
 
+      # The destination chain, asset, and address for a virtual account transfer.
       sig do
         params(
           address: String,
@@ -27,7 +29,12 @@ module Privy
           chain: String
         ).returns(T.attached_class)
       end
-      def self.new(address:, asset:, chain:)
+      def self.new(
+        address:,
+        # Supported destination stablecoin assets for fiat-to-crypto transfers.
+        asset:,
+        chain:
+      )
       end
 
       sig do

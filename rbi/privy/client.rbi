@@ -46,6 +46,7 @@ module Privy
     sig { returns(Privy::Resources::KeyQuorums) }
     attr_reader :key_quorums
 
+    # Operations related to authorization intents for wallet actions
     sig { returns(Privy::Resources::Intents) }
     attr_reader :intents
 
@@ -71,6 +72,9 @@ module Privy
     sig { returns(Privy::Resources::ClientAuth) }
     attr_reader :client_auth
 
+    sig { returns(Privy::Resources::Shared) }
+    attr_reader :shared
+
     sig { returns(Privy::Resources::Onramps) }
     attr_reader :onramps
 
@@ -82,9 +86,6 @@ module Privy
 
     sig { returns(Privy::Resources::CrossApp) }
     attr_reader :cross_app
-
-    sig { returns(Privy::Resources::Shared) }
-    attr_reader :shared
 
     sig { returns(Privy::Resources::OAuth) }
     attr_reader :oauth

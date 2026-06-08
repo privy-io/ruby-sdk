@@ -155,6 +155,11 @@ module Privy
                 :eth,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
               )
+            AVAX =
+              T.let(
+                :avax,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
+              )
             POL =
               T.let(
                 :pol,
@@ -204,6 +209,11 @@ module Privy
                 :arbitrum,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
               )
+            AVALANCHE =
+              T.let(
+                :avalanche,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
+              )
             BASE =
               T.let(
                 :base,
@@ -247,6 +257,11 @@ module Privy
             ARBITRUM_SEPOLIA =
               T.let(
                 :arbitrum_sepolia,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
+              )
+            AVALANCHE_FUJI =
+              T.let(
+                :avalanche_fuji,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
               )
             BASE_SEPOLIA =

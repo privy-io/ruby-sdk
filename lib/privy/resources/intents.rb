@@ -2,6 +2,7 @@
 
 module Privy
   module Resources
+    # Operations related to authorization intents for wallet actions
     class Intents
       # List intents for an app. Returns a paginated list of intents with their current
       # status and details.
@@ -186,7 +187,7 @@ module Privy
       #
       # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
       #
-      # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%).
+      # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only appli
       #
       # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
       #

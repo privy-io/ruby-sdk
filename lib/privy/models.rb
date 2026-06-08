@@ -141,6 +141,8 @@ module Privy
 
   BaseIntentResponse = Privy::Models::BaseIntentResponse
 
+  BitcoinAddress = Privy::Models::BitcoinAddress
+
   BridgeBrlFiatVirtualAccountDepositInstructions =
     Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
 
@@ -313,6 +315,12 @@ module Privy
 
   DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
 
+  DeviceVerifyAction = Privy::Models::DeviceVerifyAction
+
+  DeviceVerifyRequestBody = Privy::Models::DeviceVerifyRequestBody
+
+  DeviceVerifyResponse = Privy::Models::DeviceVerifyResponse
+
   EarnAsset = Privy::Models::EarnAsset
 
   EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
@@ -482,7 +490,11 @@ module Privy
 
   EthereumYieldWithdrawInput = Privy::Models::EthereumYieldWithdrawInput
 
+  EvmAddress = Privy::Models::EvmAddress
+
   EvmCaip2ChainID = Privy::Models::EvmCaip2ChainID
+
+  EvmChecksumAddress = Privy::Models::EvmChecksumAddress
 
   EvmTransactionWalletActionStep = Privy::Models::EvmTransactionWalletActionStep
 
@@ -612,6 +624,8 @@ module Privy
 
   FundsWithdrawnWebhookPayload = Privy::Models::FundsWithdrawnWebhookPayload
 
+  Gas = Privy::Models::Gas
+
   GasSpendCurrency = Privy::Models::GasSpendCurrency
 
   GasSpendRequestBody = Privy::Models::GasSpendRequestBody
@@ -651,6 +665,8 @@ module Privy
   HpkeEncryption = Privy::Models::HpkeEncryption
 
   HpkeImportConfig = Privy::Models::HpkeImportConfig
+
+  HyperliquidTokenAddress = Privy::Models::HyperliquidTokenAddress
 
   ICloudClientType = Privy::Models::ICloudClientType
 
@@ -1043,6 +1059,12 @@ module Privy
 
   OAuthCodeType = Privy::Models::OAuthCodeType
 
+  OAuthGrant = Privy::Models::OAuthGrant
+
+  OAuthGrantListResponse = Privy::Models::OAuthGrantListResponse
+
+  OAuthGrantRevokeResponse = Privy::Models::OAuthGrantRevokeResponse
+
   OAuthInitICloudRecoveryInput = Privy::Models::OAuthInitICloudRecoveryInput
 
   OAuthInitRecoveryInput = Privy::Models::OAuthInitRecoveryInput
@@ -1057,7 +1079,21 @@ module Privy
 
   OAuthProviderID = Privy::Models::OAuthProviderID
 
+  OAuthTokenAuthorizationCodeRequestBody = Privy::Models::OAuthTokenAuthorizationCodeRequestBody
+
+  OAuthTokenDeviceCodePendingError = Privy::Models::OAuthTokenDeviceCodePendingError
+
+  OAuthTokenDeviceCodeRequestBody = Privy::Models::OAuthTokenDeviceCodeRequestBody
+
+  OAuthTokenGrantType = Privy::Models::OAuthTokenGrantType
+
+  OAuthTokenRefreshTokenRequestBody = Privy::Models::OAuthTokenRefreshTokenRequestBody
+
+  OAuthTokenRequestBody = Privy::Models::OAuthTokenRequestBody
+
   OAuthTokens = Privy::Models::OAuthTokens
+
+  OAuthTokenSuccessResponse = Privy::Models::OAuthTokenSuccessResponse
 
   OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
 
@@ -1073,7 +1109,11 @@ module Privy
 
   OnrampProvider = Privy::Models::OnrampProvider
 
+  OnrampSessionFees = Privy::Models::OnrampSessionFees
+
   OnrampSessionParams = Privy::Models::OnrampSessionParams
+
+  OnrampSessionTransactionDetails = Privy::Models::OnrampSessionTransactionDetails
 
   OptionalRefreshTokenInput = Privy::Models::OptionalRefreshTokenInput
 
@@ -1341,6 +1381,8 @@ module Privy
   SmartWalletType = Privy::Models::SmartWalletType
 
   SMSMfaMethod = Privy::Models::SMSMfaMethod
+
+  SolanaAddress = Privy::Models::SolanaAddress
 
   SolanaProgramInstructionCondition = Privy::Models::SolanaProgramInstructionCondition
 
@@ -1642,6 +1684,8 @@ module Privy
 
   TransferTelegramInput = Privy::Models::TransferTelegramInput
 
+  TronAddress = Privy::Models::TronAddress
+
   TronCalldataCondition = Privy::Models::TronCalldataCondition
 
   TronTransactionCondition = Privy::Models::TronTransactionCondition
@@ -1833,6 +1877,8 @@ module Privy
   WalletBatchItemInput = Privy::Models::WalletBatchItemInput
 
   WalletChainType = Privy::Models::WalletChainType
+
+  WalletCreateBatchParams = Privy::Models::WalletCreateBatchParams
 
   WalletCreateParams = Privy::Models::WalletCreateParams
 

@@ -14,7 +14,7 @@ module Privy
             source: Privy::SwapSource::OrHash,
             amount_type: Privy::AmountType::OrSymbol,
             fee_configuration: Privy::FeeConfiguration::OrHash,
-            slippage_bps: Float,
+            slippage_bps: Integer,
             privy_authorization_signature: String,
             privy_idempotency_key: String,
             request_options: Privy::RequestOptions::OrHash
@@ -55,7 +55,7 @@ module Privy
             source: Privy::SwapSource::OrHash,
             amount_type: Privy::AmountType::OrSymbol,
             fee_configuration: Privy::FeeConfiguration::OrHash,
-            slippage_bps: Float,
+            slippage_bps: Integer,
             privy_authorization_signature: String,
             request_options: Privy::RequestOptions::OrHash
           ).returns(Privy::SwapQuoteResponse)

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type device_verify_request_body =
+      { action: Privy::Models::device_verify_action, user_code: String }
+
+    class DeviceVerifyRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor action: Privy::Models::device_verify_action
+
+      attr_accessor user_code: String
+
+      def initialize: (
+        action: Privy::Models::device_verify_action,
+        user_code: String
+      ) -> void
+
+      def to_hash: -> {
+        action: Privy::Models::device_verify_action,
+        user_code: String
+      }
+    end
+  end
+end

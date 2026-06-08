@@ -1,0 +1,5 @@
+module Privy
+  module Models
+    class EvmChecksumAddress = String
+  end
+end

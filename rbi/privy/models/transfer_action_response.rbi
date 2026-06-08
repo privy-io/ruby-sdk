@@ -57,6 +57,32 @@ module Privy
       sig { params(destination_chain: String).void }
       attr_writer :destination_chain
 
+      # Estimated fee breakdown from the provider quote.
+      sig { returns(T.nilable(T::Array[Privy::FeeLineItem::Variants])) }
+      attr_reader :estimated_fees
+
+      sig do
+        params(
+          estimated_fees:
+            T::Array[
+              T.any(
+                Privy::RelayerFee::OrHash,
+                Privy::PrivyFee::OrHash,
+                Privy::DeveloperFee::OrHash
+              )
+            ]
+        ).void
+      end
+      attr_writer :estimated_fees
+
+      # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      # human-readable decimal string, plus the gas token symbol.
+      sig { returns(T.nilable(Privy::Gas)) }
+      attr_reader :estimated_gas
+
+      sig { params(estimated_gas: Privy::Gas::OrHash).void }
+      attr_writer :estimated_gas
+
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(T.nilable(Privy::FailureReason)) }
       attr_reader :failure_reason
@@ -64,7 +90,7 @@ module Privy
       sig { params(failure_reason: Privy::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
-      # Fees paid for the transfer.
+      # Actual fees paid for the transfer. Populated after on-chain confirmation.
       sig { returns(T.nilable(T::Array[Privy::FeeLineItem::Variants])) }
       attr_reader :fees
 
@@ -81,6 +107,14 @@ module Privy
         ).void
       end
       attr_writer :fees
+
+      # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+      # human-readable decimal string, plus the gas token symbol.
+      sig { returns(T.nilable(Privy::Gas)) }
+      attr_reader :gas
+
+      sig { params(gas: Privy::Gas::OrHash).void }
+      attr_writer :gas
 
       # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
       # cross-chain transfers until the source amount is determined.
@@ -146,6 +180,15 @@ module Privy
           destination_amount: String,
           destination_asset: String,
           destination_chain: String,
+          estimated_fees:
+            T::Array[
+              T.any(
+                Privy::RelayerFee::OrHash,
+                Privy::PrivyFee::OrHash,
+                Privy::DeveloperFee::OrHash
+              )
+            ],
+          estimated_gas: Privy::Gas::OrHash,
           failure_reason: Privy::FailureReason::OrHash,
           fees:
             T::Array[
@@ -155,6 +198,7 @@ module Privy
                 Privy::DeveloperFee::OrHash
               )
             ],
+          gas: Privy::Gas::OrHash,
           source_amount: String,
           source_asset: String,
           source_asset_address: String,
@@ -191,10 +235,18 @@ module Privy
         destination_asset: nil,
         # Destination chain for cross-chain transfers. Omitted for same-chain transfers.
         destination_chain: nil,
+        # Estimated fee breakdown from the provider quote.
+        estimated_fees: nil,
+        # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+        # human-readable decimal string, plus the gas token symbol.
+        estimated_gas: nil,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason: nil,
-        # Fees paid for the transfer.
+        # Actual fees paid for the transfer. Populated after on-chain confirmation.
         fees: nil,
+        # Gas cost for a blockchain action. Includes both raw base-unit amount and a
+        # human-readable decimal string, plus the gas token symbol.
+        gas: nil,
         # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
         # cross-chain transfers until the source amount is determined.
         source_amount: nil,
@@ -225,8 +277,11 @@ module Privy
             destination_amount: String,
             destination_asset: String,
             destination_chain: String,
+            estimated_fees: T::Array[Privy::FeeLineItem::Variants],
+            estimated_gas: Privy::Gas,
             failure_reason: Privy::FailureReason,
             fees: T::Array[Privy::FeeLineItem::Variants],
+            gas: Privy::Gas,
             source_amount: String,
             source_asset: String,
             source_asset_address: String,

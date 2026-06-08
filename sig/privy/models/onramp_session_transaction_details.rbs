@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type onramp_session_transaction_details =
+      {
+        destination_amount: String?,
+        destination_currency: String?,
+        destination_network: String?,
+        fees: Privy::OnrampSessionTransactionDetails::Fees,
+        source_amount: String?,
+        source_currency: String?
+      }
+
+    class OnrampSessionTransactionDetails < Privy::Internal::Type::BaseModel
+      attr_accessor destination_amount: String?
+
+      attr_accessor destination_currency: String?
+
+      attr_accessor destination_network: String?
+
+      attr_accessor fees: Privy::OnrampSessionTransactionDetails::Fees
+
+      attr_accessor source_amount: String?
+
+      attr_accessor source_currency: String?
+
+      def initialize: (
+        destination_amount: String?,
+        destination_currency: String?,
+        destination_network: String?,
+        fees: Privy::OnrampSessionTransactionDetails::Fees,
+        source_amount: String?,
+        source_currency: String?
+      ) -> void
+
+      def to_hash: -> {
+        destination_amount: String?,
+        destination_currency: String?,
+        destination_network: String?,
+        fees: Privy::OnrampSessionTransactionDetails::Fees,
+        source_amount: String?,
+        source_currency: String?
+      }
+
+      type fees = {  }
+
+      class Fees < Privy::Models::OnrampSessionFees
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
+    end
+  end
+end

@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    type oauth_token_authorization_code_request_body =
+      {
+        code: String,
+        grant_type: Privy::Models::OAuthTokenAuthorizationCodeRequestBody::grant_type,
+        client_id: String,
+        client_secret: String,
+        redirect_uri: String
+      }
+
+    class OAuthTokenAuthorizationCodeRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      attr_accessor grant_type: Privy::Models::OAuthTokenAuthorizationCodeRequestBody::grant_type
+
+      attr_reader client_id: String?
+
+      def client_id=: (String) -> String
+
+      attr_reader client_secret: String?
+
+      def client_secret=: (String) -> String
+
+      attr_reader redirect_uri: String?
+
+      def redirect_uri=: (String) -> String
+
+      def initialize: (
+        code: String,
+        grant_type: Privy::Models::OAuthTokenAuthorizationCodeRequestBody::grant_type,
+        ?client_id: String,
+        ?client_secret: String,
+        ?redirect_uri: String
+      ) -> void
+
+      def to_hash: -> {
+        code: String,
+        grant_type: Privy::Models::OAuthTokenAuthorizationCodeRequestBody::grant_type,
+        client_id: String,
+        client_secret: String,
+        redirect_uri: String
+      }
+
+      type grant_type = :authorization_code
+
+      module GrantType
+        extend Privy::Internal::Type::Enum
+
+        AUTHORIZATION_CODE: :authorization_code
+
+        def self?.values: -> ::Array[Privy::Models::OAuthTokenAuthorizationCodeRequestBody::grant_type]
+      end
+    end
+  end
+end

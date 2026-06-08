@@ -79,6 +79,11 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::Models::wallet_authenticate_with_jwt_response
 
+      def create_batch: (
+        wallets: ::Array[Privy::WalletBatchItemInput],
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletBatchCreateResponse
+
       def create_wallets_with_recovery: (
         primary_signer: Privy::WalletCreateWalletsWithRecoveryParams::PrimarySigner,
         recovery_user: Privy::WalletCreateWalletsWithRecoveryParams::RecoveryUser,

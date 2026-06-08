@@ -12,10 +12,7 @@ module Privy
       attr_accessor :event_name
 
       sig { returns(T.nilable(String)) }
-      attr_reader :client_id
-
-      sig { params(client_id: String).void }
-      attr_writer :client_id
+      attr_accessor :client_id
 
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_reader :payload
@@ -27,7 +24,7 @@ module Privy
       sig do
         params(
           event_name: String,
-          client_id: String,
+          client_id: T.nilable(String),
           payload: T::Hash[Symbol, T.anything]
         ).returns(T.attached_class)
       end
@@ -38,7 +35,7 @@ module Privy
         override.returns(
           {
             event_name: String,
-            client_id: String,
+            client_id: T.nilable(String),
             payload: T::Hash[Symbol, T.anything]
           }
         )

@@ -231,6 +231,8 @@ module Privy
             )
           ETH =
             T.let(:eth, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
+          AVAX =
+            T.let(:avax, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           POL =
             T.let(:pol, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           USDT =
@@ -286,6 +288,11 @@ module Privy
                 :arbitrum,
                 Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
               )
+            AVALANCHE =
+              T.let(
+                :avalanche,
+                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
+              )
             BASE =
               T.let(
                 :base,
@@ -329,6 +336,11 @@ module Privy
             ARBITRUM_SEPOLIA =
               T.let(
                 :arbitrum_sepolia,
+                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
+              )
+            AVALANCHE_FUJI =
+              T.let(
+                :avalanche_fuji,
                 Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
               )
             BASE_SEPOLIA =
@@ -397,6 +409,11 @@ module Privy
               :arbitrum,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
+          AVALANCHE =
+            T.let(
+              :avalanche,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
           BASE =
             T.let(:base, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
           TEMPO =
@@ -431,6 +448,11 @@ module Privy
           ARBITRUM_SEPOLIA =
             T.let(
               :arbitrum_sepolia,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          AVALANCHE_FUJI =
+            T.let(
+              :avalanche_fuji,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
           BASE_SEPOLIA =

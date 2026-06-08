@@ -217,7 +217,7 @@ module Privy
       #
       # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
       #
-      # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%).
+      # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only appli
       #
       # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
       #
@@ -274,6 +274,30 @@ module Privy
           path: "v1/wallets/authenticate",
           body: parsed,
           model: Privy::WalletAuthenticateWithJwtResponse,
+          options: options
+        )
+      end
+
+      # Creates multiple wallets in a single request. Each wallet creation is
+      # independent; failures for one wallet do not affect others. Maximum batch size is
+      # 100 wallets.
+      #
+      # @overload create_batch(wallets:, request_options: {})
+      #
+      # @param wallets [Array<Privy::Models::WalletBatchItemInput>] Array of wallet creation requests. Minimum 1, maximum 100.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::WalletBatchCreateResponse]
+      #
+      # @see Privy::Models::WalletCreateBatchParams
+      def create_batch(params)
+        parsed, options = Privy::WalletCreateBatchParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/wallets/batch",
+          body: parsed,
+          model: Privy::WalletBatchCreateResponse,
           options: options
         )
       end

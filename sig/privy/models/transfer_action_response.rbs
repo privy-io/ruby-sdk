@@ -12,8 +12,11 @@ module Privy
         destination_amount: String,
         destination_asset: String,
         destination_chain: String,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_gas: Privy::Gas,
         failure_reason: Privy::FailureReason,
         fees: ::Array[Privy::Models::fee_line_item],
+        gas: Privy::Gas,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -48,6 +51,16 @@ module Privy
 
       def destination_chain=: (String) -> String
 
+      attr_reader estimated_fees: ::Array[Privy::Models::fee_line_item]?
+
+      def estimated_fees=: (
+        ::Array[Privy::Models::fee_line_item]
+      ) -> ::Array[Privy::Models::fee_line_item]
+
+      attr_reader estimated_gas: Privy::Gas?
+
+      def estimated_gas=: (Privy::Gas) -> Privy::Gas
+
       attr_reader failure_reason: Privy::FailureReason?
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
@@ -57,6 +70,10 @@ module Privy
       def fees=: (
         ::Array[Privy::Models::fee_line_item]
       ) -> ::Array[Privy::Models::fee_line_item]
+
+      attr_reader gas: Privy::Gas?
+
+      def gas=: (Privy::Gas) -> Privy::Gas
 
       attr_reader source_amount: String?
 
@@ -91,8 +108,11 @@ module Privy
         ?destination_amount: String,
         ?destination_asset: String,
         ?destination_chain: String,
+        ?estimated_fees: ::Array[Privy::Models::fee_line_item],
+        ?estimated_gas: Privy::Gas,
         ?failure_reason: Privy::FailureReason,
         ?fees: ::Array[Privy::Models::fee_line_item],
+        ?gas: Privy::Gas,
         ?source_amount: String,
         ?source_asset: String,
         ?source_asset_address: String,
@@ -111,8 +131,11 @@ module Privy
         destination_amount: String,
         destination_asset: String,
         destination_chain: String,
+        estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_gas: Privy::Gas,
         failure_reason: Privy::FailureReason,
         fees: ::Array[Privy::Models::fee_line_item],
+        gas: Privy::Gas,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,

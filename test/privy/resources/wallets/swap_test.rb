@@ -31,7 +31,11 @@ class Privy::Test::Resources::Wallets::SwapTest < Privy::Test::ResourceTest
         type: Privy::SwapActionResponse::Type,
         wallet_id: String,
         destination_caip2: String | nil,
+        estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
+        estimated_gas: Privy::Gas | nil,
         failure_reason: Privy::FailureReason | nil,
+        fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
+        gas: Privy::Gas | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
       }
     end
@@ -63,6 +67,7 @@ class Privy::Test::Resources::Wallets::SwapTest < Privy::Test::ResourceTest
         output_token: String,
         destination_caip2: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
+        estimated_gas: Privy::Gas | nil,
         expires_at: Float | nil
       }
     end

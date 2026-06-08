@@ -37,8 +37,8 @@ module Privy
       #   Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If omitted,
       #   auto-slippage is used.
       #
-      #   @return [Float, nil]
-      optional :slippage_bps, Float
+      #   @return [Integer, nil]
+      optional :slippage_bps, Integer
 
       # @!method initialize(base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
@@ -56,7 +56,7 @@ module Privy
       #
       #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
       #
-      #   @param slippage_bps [Float] Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If omitted, auto
+      #   @param slippage_bps [Integer] Maximum slippage tolerance in basis points (e.g., 50 for 0.5%). If omitted, auto
     end
   end
 end

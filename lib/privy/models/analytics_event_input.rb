@@ -11,7 +11,7 @@ module Privy
       # @!attribute client_id
       #
       #   @return [String, nil]
-      optional :client_id, String
+      optional :client_id, String, nil?: true
 
       # @!attribute payload
       #
@@ -22,7 +22,7 @@ module Privy
       #   The input for capturing an analytics event.
       #
       #   @param event_name [String]
-      #   @param client_id [String]
+      #   @param client_id [String, nil]
       #   @param payload [Hash{Symbol=>Object}]
     end
   end
