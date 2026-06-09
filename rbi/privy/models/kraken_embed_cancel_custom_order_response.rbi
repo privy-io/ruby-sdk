@@ -12,12 +12,12 @@ module Privy
         end
 
       # Result payload for cancel custom order response.
-      sig { returns(Privy::KrakenEmbedCancelCustomOrderResponse::Result) }
+      sig { returns(T.nilable(Privy::KrakenEmbedCancelCustomOrderResult)) }
       attr_reader :result
 
       sig do
         params(
-          result: Privy::KrakenEmbedCancelCustomOrderResponse::Result::OrHash
+          result: T.nilable(Privy::KrakenEmbedCancelCustomOrderResult::OrHash)
         ).void
       end
       attr_writer :result
@@ -37,7 +37,7 @@ module Privy
       # Response body for cancelling a custom order.
       sig do
         params(
-          result: Privy::KrakenEmbedCancelCustomOrderResponse::Result::OrHash,
+          result: T.nilable(Privy::KrakenEmbedCancelCustomOrderResult::OrHash),
           error: T::Array[T.anything],
           errors: T::Array[T.anything]
         ).returns(T.attached_class)
@@ -53,32 +53,13 @@ module Privy
       sig do
         override.returns(
           {
-            result: Privy::KrakenEmbedCancelCustomOrderResponse::Result,
+            result: T.nilable(Privy::KrakenEmbedCancelCustomOrderResult),
             error: T::Array[T.anything],
             errors: T::Array[T.anything]
           }
         )
       end
       def to_hash
-      end
-
-      class Result < Privy::Models::KrakenEmbedCancelCustomOrderResult
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedCancelCustomOrderResponse::Result,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Result payload for cancel custom order response.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

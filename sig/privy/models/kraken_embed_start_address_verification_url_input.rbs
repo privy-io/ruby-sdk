@@ -4,8 +4,8 @@ module Privy
       {
         document_url: String,
         type: Privy::Models::KrakenEmbedStartAddressVerificationURLInput::type_,
-        debug: Privy::KrakenEmbedStartAddressVerificationURLInput::Debug,
-        metadata: Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
+        debug: Privy::KrakenEmbedStartVerificationDebug?,
+        metadata: Privy::KrakenEmbedStartAddressMetadata?
       }
 
     class KrakenEmbedStartAddressVerificationURLInput < Privy::Internal::Type::BaseModel
@@ -13,30 +13,22 @@ module Privy
 
       attr_accessor type: Privy::Models::KrakenEmbedStartAddressVerificationURLInput::type_
 
-      attr_reader debug: Privy::KrakenEmbedStartAddressVerificationURLInput::Debug?
+      attr_accessor debug: Privy::KrakenEmbedStartVerificationDebug?
 
-      def debug=: (
-        Privy::KrakenEmbedStartAddressVerificationURLInput::Debug
-      ) -> Privy::KrakenEmbedStartAddressVerificationURLInput::Debug
-
-      attr_reader metadata: Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata?
-
-      def metadata=: (
-        Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
-      ) -> Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
+      attr_accessor metadata: Privy::KrakenEmbedStartAddressMetadata?
 
       def initialize: (
         document_url: String,
         type: Privy::Models::KrakenEmbedStartAddressVerificationURLInput::type_,
-        ?debug: Privy::KrakenEmbedStartAddressVerificationURLInput::Debug,
-        ?metadata: Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
+        ?debug: Privy::KrakenEmbedStartVerificationDebug?,
+        ?metadata: Privy::KrakenEmbedStartAddressMetadata?
       ) -> void
 
       def to_hash: -> {
         document_url: String,
         type: Privy::Models::KrakenEmbedStartAddressVerificationURLInput::type_,
-        debug: Privy::KrakenEmbedStartAddressVerificationURLInput::Debug,
-        metadata: Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
+        debug: Privy::KrakenEmbedStartVerificationDebug?,
+        metadata: Privy::KrakenEmbedStartAddressMetadata?
       }
 
       type type_ = :proof_of_address
@@ -47,22 +39,6 @@ module Privy
         PROOF_OF_ADDRESS: :proof_of_address
 
         def self?.values: -> ::Array[Privy::Models::KrakenEmbedStartAddressVerificationURLInput::type_]
-      end
-
-      type debug = {  }
-
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
-
-      type metadata = {  }
-
-      class Metadata < Privy::Models::KrakenEmbedStartAddressMetadata
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
     end
   end

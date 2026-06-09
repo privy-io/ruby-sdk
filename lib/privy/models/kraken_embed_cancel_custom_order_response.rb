@@ -6,8 +6,8 @@ module Privy
       # @!attribute result
       #   Result payload for cancel custom order response.
       #
-      #   @return [Privy::Models::KrakenEmbedCancelCustomOrderResponse::Result]
-      required :result, -> { Privy::KrakenEmbedCancelCustomOrderResponse::Result }
+      #   @return [Privy::Models::KrakenEmbedCancelCustomOrderResult, nil]
+      required :result, -> { Privy::KrakenEmbedCancelCustomOrderResult }, nil?: true
 
       # @!attribute error
       #
@@ -22,17 +22,11 @@ module Privy
       # @!method initialize(result:, error: nil, errors: nil)
       #   Response body for cancelling a custom order.
       #
-      #   @param result [Privy::Models::KrakenEmbedCancelCustomOrderResponse::Result] Result payload for cancel custom order response.
+      #   @param result [Privy::Models::KrakenEmbedCancelCustomOrderResult, nil] Result payload for cancel custom order response.
       #
       #   @param error [Array<Object>]
       #
       #   @param errors [Array<Object>]
-
-      # @see Privy::Models::KrakenEmbedCancelCustomOrderResponse#result
-      class Result < Privy::Models::KrakenEmbedCancelCustomOrderResult
-        # @!method initialize
-        #   Result payload for cancel custom order response.
-      end
     end
   end
 end

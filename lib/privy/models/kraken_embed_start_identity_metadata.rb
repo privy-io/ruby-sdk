@@ -22,8 +22,8 @@ module Privy
       #   Identity information hints including full name and date of birth for proof of
       #   identity verification.
       #
-      #   @return [Privy::Models::KrakenEmbedStartIdentityMetadata::Identity, nil]
-      optional :identity, -> { Privy::KrakenEmbedStartIdentityMetadata::Identity }
+      #   @return [Privy::Models::KrakenEmbedStartIdentityInfo, nil]
+      optional :identity, -> { Privy::KrakenEmbedStartIdentityInfo }, nil?: true
 
       # @!attribute issuing_country
       #
@@ -49,7 +49,7 @@ module Privy
       #
       #   @param expiration_date [Date, nil]
       #
-      #   @param identity [Privy::Models::KrakenEmbedStartIdentityMetadata::Identity] Identity information hints including full name and date of birth for proof of id
+      #   @param identity [Privy::Models::KrakenEmbedStartIdentityInfo, nil] Identity information hints including full name and date of birth for proof of id
       #
       #   @param issuing_country [Symbol, Privy::Models::KrakenEmbedStartIdentityMetadata::IssuingCountry, nil]
       #
@@ -67,13 +67,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::KrakenEmbedStartIdentityMetadata#identity
-      class Identity < Privy::Models::KrakenEmbedStartIdentityInfo
-        # @!method initialize
-        #   Identity information hints including full name and date of birth for proof of
-        #   identity verification.
       end
 
       # @see Privy::Models::KrakenEmbedStartIdentityMetadata#issuing_country

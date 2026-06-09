@@ -49,6 +49,13 @@ module Privy
       sig { params(failure_reason: Privy::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
+      # Amount charged in USD for gas sponsorship on this step.
+      sig { returns(T.nilable(String)) }
+      attr_reader :gas_credits_charged_usd
+
+      sig { params(gas_credits_charged_usd: String).void }
+      attr_writer :gas_credits_charged_usd
+
       # A wallet action step consisting of an EVM user operation.
       sig do
         params(
@@ -59,7 +66,8 @@ module Privy
           status: Privy::EvmWalletActionStepStatus::OrSymbol,
           type: Privy::EvmUserOperationWalletActionStep::Type::OrSymbol,
           user_operation_hash: T.nilable(String),
-          failure_reason: Privy::FailureReason::OrHash
+          failure_reason: Privy::FailureReason::OrHash,
+          gas_credits_charged_usd: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -77,7 +85,9 @@ module Privy
         # non-terminal.
         user_operation_hash:,
         # A description of why a wallet action (or a step within a wallet action) failed.
-        failure_reason: nil
+        failure_reason: nil,
+        # Amount charged in USD for gas sponsorship on this step.
+        gas_credits_charged_usd: nil
       )
       end
 
@@ -91,7 +101,8 @@ module Privy
             status: Privy::EvmWalletActionStepStatus::TaggedSymbol,
             type: Privy::EvmUserOperationWalletActionStep::Type::TaggedSymbol,
             user_operation_hash: T.nilable(String),
-            failure_reason: Privy::FailureReason
+            failure_reason: Privy::FailureReason,
+            gas_credits_charged_usd: String
           }
         )
       end

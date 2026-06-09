@@ -28,14 +28,12 @@ module Privy
 
       # Identity information hints including full name and date of birth for proof of
       # identity verification.
-      sig do
-        returns(T.nilable(Privy::KrakenEmbedStartIdentityMetadata::Identity))
-      end
+      sig { returns(T.nilable(Privy::KrakenEmbedStartIdentityInfo)) }
       attr_reader :identity
 
       sig do
         params(
-          identity: Privy::KrakenEmbedStartIdentityMetadata::Identity::OrHash
+          identity: T.nilable(Privy::KrakenEmbedStartIdentityInfo::OrHash)
         ).void
       end
       attr_writer :identity
@@ -67,7 +65,7 @@ module Privy
               Privy::KrakenEmbedStartIdentityMetadata::DocumentType::OrSymbol
             ),
           expiration_date: T.nilable(Date),
-          identity: Privy::KrakenEmbedStartIdentityMetadata::Identity::OrHash,
+          identity: T.nilable(Privy::KrakenEmbedStartIdentityInfo::OrHash),
           issuing_country:
             T.nilable(
               Privy::KrakenEmbedStartIdentityMetadata::IssuingCountry::OrSymbol
@@ -99,7 +97,7 @@ module Privy
                 Privy::KrakenEmbedStartIdentityMetadata::DocumentType::OrSymbol
               ),
             expiration_date: T.nilable(Date),
-            identity: Privy::KrakenEmbedStartIdentityMetadata::Identity,
+            identity: T.nilable(Privy::KrakenEmbedStartIdentityInfo),
             issuing_country:
               T.nilable(
                 Privy::KrakenEmbedStartIdentityMetadata::IssuingCountry::OrSymbol
@@ -157,26 +155,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class Identity < Privy::Models::KrakenEmbedStartIdentityInfo
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartIdentityMetadata::Identity,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Identity information hints including full name and date of birth for proof of
-        # identity verification.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
 

@@ -22,8 +22,8 @@ module Privy
       # @!attribute estimated_pending_amount
       #   An earn amount with native and converted values.
       #
-      #   @return [Privy::Models::KrakenEmbedUpcomingReward::EstimatedPendingAmount]
-      required :estimated_pending_amount, -> { Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount }
+      #   @return [Privy::Models::KrakenEmbedEarnAmount, nil]
+      required :estimated_pending_amount, -> { Privy::KrakenEmbedEarnAmount }, nil?: true
 
       # @!method initialize(accumulated_amount:, asset:, date:, estimated_pending_amount:)
       #   An upcoming earn reward for a specific asset.
@@ -34,13 +34,7 @@ module Privy
       #
       #   @param date [Time]
       #
-      #   @param estimated_pending_amount [Privy::Models::KrakenEmbedUpcomingReward::EstimatedPendingAmount] An earn amount with native and converted values.
-
-      # @see Privy::Models::KrakenEmbedUpcomingReward#estimated_pending_amount
-      class EstimatedPendingAmount < Privy::Models::KrakenEmbedEarnAmount
-        # @!method initialize
-        #   An earn amount with native and converted values.
-      end
+      #   @param estimated_pending_amount [Privy::Models::KrakenEmbedEarnAmount, nil] An earn amount with native and converted values.
     end
   end
 end

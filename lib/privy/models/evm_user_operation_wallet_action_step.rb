@@ -46,7 +46,13 @@ module Privy
       #   @return [Privy::Models::FailureReason, nil]
       optional :failure_reason, -> { Privy::FailureReason }
 
-      # @!method initialize(bundle_transaction_hash:, caip2:, entrypoint_version:, status:, type:, user_operation_hash:, failure_reason: nil)
+      # @!attribute gas_credits_charged_usd
+      #   Amount charged in USD for gas sponsorship on this step.
+      #
+      #   @return [String, nil]
+      optional :gas_credits_charged_usd, String
+
+      # @!method initialize(bundle_transaction_hash:, caip2:, entrypoint_version:, status:, type:, user_operation_hash:, failure_reason: nil, gas_credits_charged_usd: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::EvmUserOperationWalletActionStep} for more details.
       #
@@ -65,6 +71,8 @@ module Privy
       #   @param user_operation_hash [String, nil] The user operation hash for this step. May change while the step status is non-t
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #
+      #   @param gas_credits_charged_usd [String] Amount charged in USD for gas sponsorship on this step.
 
       # The entrypoint version of the user operation.
       #

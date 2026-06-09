@@ -61,14 +61,10 @@ module Privy
 
       # Gas cost for a blockchain action. Includes both raw base-unit amount and a
       # human-readable decimal string, plus the gas token symbol.
-      sig { returns(T.nilable(Privy::SwapActionResponse::EstimatedGas)) }
+      sig { returns(T.nilable(Privy::Gas)) }
       attr_reader :estimated_gas
 
-      sig do
-        params(
-          estimated_gas: Privy::SwapActionResponse::EstimatedGas::OrHash
-        ).void
-      end
+      sig { params(estimated_gas: T.nilable(Privy::Gas::OrHash)).void }
       attr_writer :estimated_gas
 
       # A description of why a wallet action (or a step within a wallet action) failed.
@@ -85,10 +81,10 @@ module Privy
 
       # Gas cost for a blockchain action. Includes both raw base-unit amount and a
       # human-readable decimal string, plus the gas token symbol.
-      sig { returns(T.nilable(Privy::SwapActionResponse::Gas)) }
+      sig { returns(T.nilable(Privy::Gas)) }
       attr_reader :gas
 
-      sig { params(gas: Privy::SwapActionResponse::Gas::OrHash).void }
+      sig { params(gas: T.nilable(Privy::Gas::OrHash)).void }
       attr_writer :gas
 
       # The steps of the wallet action. Only returned if `?include=steps` is provided.
@@ -134,7 +130,7 @@ module Privy
                 )
               ]
             ),
-          estimated_gas: Privy::SwapActionResponse::EstimatedGas::OrHash,
+          estimated_gas: T.nilable(Privy::Gas::OrHash),
           failure_reason: Privy::FailureReason::OrHash,
           fees:
             T.nilable(
@@ -146,7 +142,7 @@ module Privy
                 )
               ]
             ),
-          gas: Privy::SwapActionResponse::Gas::OrHash,
+          gas: T.nilable(Privy::Gas::OrHash),
           steps:
             T::Array[
               T.any(
@@ -214,10 +210,10 @@ module Privy
             wallet_id: String,
             destination_caip2: String,
             estimated_fees: T.nilable(T::Array[Privy::FeeLineItem::Variants]),
-            estimated_gas: Privy::SwapActionResponse::EstimatedGas,
+            estimated_gas: T.nilable(Privy::Gas),
             failure_reason: Privy::FailureReason,
             fees: T.nilable(T::Array[Privy::FeeLineItem::Variants]),
-            gas: Privy::SwapActionResponse::Gas,
+            gas: T.nilable(Privy::Gas),
             steps: T::Array[Privy::WalletActionStep::Variants]
           }
         )
@@ -240,43 +236,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class EstimatedGas < Privy::Models::Gas
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::SwapActionResponse::EstimatedGas,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Gas cost for a blockchain action. Includes both raw base-unit amount and a
-        # human-readable decimal string, plus the gas token symbol.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
-      end
-
-      class Gas < Privy::Models::Gas
-        OrHash =
-          T.type_alias do
-            T.any(Privy::SwapActionResponse::Gas, Privy::Internal::AnyHash)
-          end
-
-        # Gas cost for a blockchain action. Includes both raw base-unit amount and a
-        # human-readable decimal string, plus the gas token symbol.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
     end

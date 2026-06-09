@@ -16,14 +16,14 @@ module Privy
       # @!attribute debug
       #   Debug options for start verification. Only works in non-production environments.
       #
-      #   @return [Privy::Models::KrakenEmbedStartAddressVerificationURLInput::Debug, nil]
-      optional :debug, -> { Privy::KrakenEmbedStartAddressVerificationURLInput::Debug }
+      #   @return [Privy::Models::KrakenEmbedStartVerificationDebug, nil]
+      optional :debug, -> { Privy::KrakenEmbedStartVerificationDebug }, nil?: true
 
       # @!attribute metadata
       #   Optional best-effort metadata hints for proof of address verification.
       #
-      #   @return [Privy::Models::KrakenEmbedStartAddressVerificationURLInput::Metadata, nil]
-      optional :metadata, -> { Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata }
+      #   @return [Privy::Models::KrakenEmbedStartAddressMetadata, nil]
+      optional :metadata, -> { Privy::KrakenEmbedStartAddressMetadata }, nil?: true
 
       # @!method initialize(document_url:, type:, debug: nil, metadata: nil)
       #   Some parameter documentations has been truncated, see
@@ -35,9 +35,9 @@ module Privy
       #
       #   @param type [Symbol, Privy::Models::KrakenEmbedStartAddressVerificationURLInput::Type]
       #
-      #   @param debug [Privy::Models::KrakenEmbedStartAddressVerificationURLInput::Debug] Debug options for start verification. Only works in non-production environments.
+      #   @param debug [Privy::Models::KrakenEmbedStartVerificationDebug, nil] Debug options for start verification. Only works in non-production environments.
       #
-      #   @param metadata [Privy::Models::KrakenEmbedStartAddressVerificationURLInput::Metadata] Optional best-effort metadata hints for proof of address verification.
+      #   @param metadata [Privy::Models::KrakenEmbedStartAddressMetadata, nil] Optional best-effort metadata hints for proof of address verification.
 
       # @see Privy::Models::KrakenEmbedStartAddressVerificationURLInput#type
       module Type
@@ -47,18 +47,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::KrakenEmbedStartAddressVerificationURLInput#debug
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        # @!method initialize
-        #   Debug options for start verification. Only works in non-production environments.
-      end
-
-      # @see Privy::Models::KrakenEmbedStartAddressVerificationURLInput#metadata
-      class Metadata < Privy::Models::KrakenEmbedStartAddressMetadata
-        # @!method initialize
-        #   Optional best-effort metadata hints for proof of address verification.
       end
     end
   end

@@ -8,10 +8,18 @@ module Privy
       #   @return [String, nil]
       optional :email, String
 
-      # @!method initialize(email: nil)
+      # @!attribute environment
+      #   Whether to use the sandbox or production environment for fiat onramp.
+      #
+      #   @return [Symbol, Privy::Models::FiatOnrampEnvironment, nil]
+      optional :environment, enum: -> { Privy::FiatOnrampEnvironment }
+
+      # @!method initialize(email: nil, environment: nil)
       #   Input for creating a Link auth intent to initiate Stripe onramp authentication.
       #
       #   @param email [String]
+      #
+      #   @param environment [Symbol, Privy::Models::FiatOnrampEnvironment] Whether to use the sandbox or production environment for fiat onramp.
     end
   end
 end

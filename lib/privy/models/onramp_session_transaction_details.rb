@@ -21,20 +21,20 @@ module Privy
       # @!attribute fees
       #   Fee breakdown for a Stripe onramp transaction.
       #
-      #   @return [Privy::Models::OnrampSessionTransactionDetails::Fees]
-      required :fees, -> { Privy::OnrampSessionTransactionDetails::Fees }
-
-      # @!attribute source_amount
-      #
-      #   @return [String, nil]
-      required :source_amount, String, nil?: true
+      #   @return [Privy::Models::OnrampSessionFees, nil]
+      required :fees, -> { Privy::OnrampSessionFees }, nil?: true
 
       # @!attribute source_currency
       #
       #   @return [String, nil]
       required :source_currency, String, nil?: true
 
-      # @!method initialize(destination_amount:, destination_currency:, destination_network:, fees:, source_amount:, source_currency:)
+      # @!attribute source_total_amount
+      #
+      #   @return [String, nil]
+      required :source_total_amount, String, nil?: true
+
+      # @!method initialize(destination_amount:, destination_currency:, destination_network:, fees:, source_currency:, source_total_amount:)
       #   Transaction details returned from a Stripe onramp session.
       #
       #   @param destination_amount [String, nil]
@@ -43,17 +43,11 @@ module Privy
       #
       #   @param destination_network [String, nil]
       #
-      #   @param fees [Privy::Models::OnrampSessionTransactionDetails::Fees] Fee breakdown for a Stripe onramp transaction.
-      #
-      #   @param source_amount [String, nil]
+      #   @param fees [Privy::Models::OnrampSessionFees, nil] Fee breakdown for a Stripe onramp transaction.
       #
       #   @param source_currency [String, nil]
-
-      # @see Privy::Models::OnrampSessionTransactionDetails#fees
-      class Fees < Privy::Models::OnrampSessionFees
-        # @!method initialize
-        #   Fee breakdown for a Stripe onramp transaction.
-      end
+      #
+      #   @param source_total_amount [String, nil]
     end
   end
 end

@@ -6,8 +6,8 @@ module Privy
       # @!attribute result
       #   Result payload for earn summary response.
       #
-      #   @return [Privy::Models::KrakenEmbedGetEarnSummaryKrakenResponse::Result]
-      required :result, -> { Privy::KrakenEmbedGetEarnSummaryKrakenResponse::Result }
+      #   @return [Privy::Models::KrakenEmbedGetEarnSummaryResult, nil]
+      required :result, -> { Privy::KrakenEmbedGetEarnSummaryResult }, nil?: true
 
       # @!attribute error
       #
@@ -22,17 +22,11 @@ module Privy
       # @!method initialize(result:, error: nil, errors: nil)
       #   Kraken API response envelope for earn summary.
       #
-      #   @param result [Privy::Models::KrakenEmbedGetEarnSummaryKrakenResponse::Result] Result payload for earn summary response.
+      #   @param result [Privy::Models::KrakenEmbedGetEarnSummaryResult, nil] Result payload for earn summary response.
       #
       #   @param error [Array<Object>]
       #
       #   @param errors [Array<Object>]
-
-      # @see Privy::Models::KrakenEmbedGetEarnSummaryKrakenResponse#result
-      class Result < Privy::Models::KrakenEmbedGetEarnSummaryResult
-        # @!method initialize
-        #   Result payload for earn summary response.
-      end
     end
   end
 end

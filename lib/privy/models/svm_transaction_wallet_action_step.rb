@@ -32,7 +32,13 @@ module Privy
       #   @return [Privy::Models::FailureReason, nil]
       optional :failure_reason, -> { Privy::FailureReason }
 
-      # @!method initialize(caip2:, status:, transaction_signature:, type:, failure_reason: nil)
+      # @!attribute gas_credits_charged_usd
+      #   Amount charged in USD for gas sponsorship on this step.
+      #
+      #   @return [String, nil]
+      optional :gas_credits_charged_usd, String
+
+      # @!method initialize(caip2:, status:, transaction_signature:, type:, failure_reason: nil, gas_credits_charged_usd: nil)
       #   A wallet action step consisting of an SVM (Solana) transaction.
       #
       #   @param caip2 [String] CAIP-2 chain identifier for the Solana network.
@@ -44,6 +50,8 @@ module Privy
       #   @param type [Symbol, Privy::Models::SvmTransactionWalletActionStep::Type]
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #
+      #   @param gas_credits_charged_usd [String] Amount charged in USD for gas sponsorship on this step.
 
       # @see Privy::Models::SvmTransactionWalletActionStep#type
       module Type

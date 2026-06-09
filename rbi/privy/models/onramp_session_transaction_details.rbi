@@ -21,19 +21,17 @@ module Privy
       attr_accessor :destination_network
 
       # Fee breakdown for a Stripe onramp transaction.
-      sig { returns(Privy::OnrampSessionTransactionDetails::Fees) }
+      sig { returns(T.nilable(Privy::OnrampSessionFees)) }
       attr_reader :fees
 
-      sig do
-        params(fees: Privy::OnrampSessionTransactionDetails::Fees::OrHash).void
-      end
+      sig { params(fees: T.nilable(Privy::OnrampSessionFees::OrHash)).void }
       attr_writer :fees
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :source_amount
+      attr_accessor :source_currency
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :source_currency
+      attr_accessor :source_total_amount
 
       # Transaction details returned from a Stripe onramp session.
       sig do
@@ -41,9 +39,9 @@ module Privy
           destination_amount: T.nilable(String),
           destination_currency: T.nilable(String),
           destination_network: T.nilable(String),
-          fees: Privy::OnrampSessionTransactionDetails::Fees::OrHash,
-          source_amount: T.nilable(String),
-          source_currency: T.nilable(String)
+          fees: T.nilable(Privy::OnrampSessionFees::OrHash),
+          source_currency: T.nilable(String),
+          source_total_amount: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -52,8 +50,8 @@ module Privy
         destination_network:,
         # Fee breakdown for a Stripe onramp transaction.
         fees:,
-        source_amount:,
-        source_currency:
+        source_currency:,
+        source_total_amount:
       )
       end
 
@@ -63,32 +61,13 @@ module Privy
             destination_amount: T.nilable(String),
             destination_currency: T.nilable(String),
             destination_network: T.nilable(String),
-            fees: Privy::OnrampSessionTransactionDetails::Fees,
-            source_amount: T.nilable(String),
-            source_currency: T.nilable(String)
+            fees: T.nilable(Privy::OnrampSessionFees),
+            source_currency: T.nilable(String),
+            source_total_amount: T.nilable(String)
           }
         )
       end
       def to_hash
-      end
-
-      class Fees < Privy::Models::OnrampSessionFees
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::OnrampSessionTransactionDetails::Fees,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Fee breakdown for a Stripe onramp transaction.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

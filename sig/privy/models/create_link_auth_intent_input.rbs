@@ -1,15 +1,28 @@
 module Privy
   module Models
-    type create_link_auth_intent_input = { email: String }
+    type create_link_auth_intent_input =
+      { email: String, environment: Privy::Models::fiat_onramp_environment }
 
     class CreateLinkAuthIntentInput < Privy::Internal::Type::BaseModel
       attr_reader email: String?
 
       def email=: (String) -> String
 
-      def initialize: (?email: String) -> void
+      attr_reader environment: Privy::Models::fiat_onramp_environment?
 
-      def to_hash: -> { email: String }
+      def environment=: (
+        Privy::Models::fiat_onramp_environment
+      ) -> Privy::Models::fiat_onramp_environment
+
+      def initialize: (
+        ?email: String,
+        ?environment: Privy::Models::fiat_onramp_environment
+      ) -> void
+
+      def to_hash: -> {
+        email: String,
+        environment: Privy::Models::fiat_onramp_environment
+      }
     end
   end
 end

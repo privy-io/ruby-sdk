@@ -37,7 +37,7 @@ module Privy
       # Executed action details for a custom order occurrence.
       sig do
         returns(
-          T.nilable(Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction)
+          T.nilable(Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction)
         )
       end
       attr_reader :executed_action
@@ -45,7 +45,9 @@ module Privy
       sig do
         params(
           executed_action:
-            Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction::OrHash
+            T.nilable(
+              Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction::OrHash
+            )
         ).void
       end
       attr_writer :executed_action
@@ -71,7 +73,9 @@ module Privy
           trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger::OrHash,
           updated_at: Time,
           executed_action:
-            Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction::OrHash,
+            T.nilable(
+              Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction::OrHash
+            ),
           failure_reason: String,
           skip_reason: String
         ).returns(T.attached_class)
@@ -99,7 +103,7 @@ module Privy
             trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
             updated_at: Time,
             executed_action:
-              Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+              T.nilable(Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction),
             failure_reason: String,
             skip_reason: String
           }
@@ -141,25 +145,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class ExecutedAction < Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Executed action details for a custom order occurrence.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
     end

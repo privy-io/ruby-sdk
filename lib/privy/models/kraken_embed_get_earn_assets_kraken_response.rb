@@ -6,8 +6,8 @@ module Privy
       # @!attribute result
       #   Result payload for earn assets response.
       #
-      #   @return [Privy::Models::KrakenEmbedGetEarnAssetsKrakenResponse::Result]
-      required :result, -> { Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result }
+      #   @return [Privy::Models::KrakenEmbedGetEarnAssetsResult, nil]
+      required :result, -> { Privy::KrakenEmbedGetEarnAssetsResult }, nil?: true
 
       # @!attribute error
       #
@@ -22,17 +22,11 @@ module Privy
       # @!method initialize(result:, error: nil, errors: nil)
       #   Kraken API response envelope for earn assets.
       #
-      #   @param result [Privy::Models::KrakenEmbedGetEarnAssetsKrakenResponse::Result] Result payload for earn assets response.
+      #   @param result [Privy::Models::KrakenEmbedGetEarnAssetsResult, nil] Result payload for earn assets response.
       #
       #   @param error [Array<Object>]
       #
       #   @param errors [Array<Object>]
-
-      # @see Privy::Models::KrakenEmbedGetEarnAssetsKrakenResponse#result
-      class Result < Privy::Models::KrakenEmbedGetEarnAssetsResult
-        # @!method initialize
-        #   Result payload for earn assets response.
-      end
     end
   end
 end

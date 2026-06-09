@@ -14,10 +14,10 @@ module Privy
         wallet_id: String,
         :destination_caip2 => String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
-        estimated_gas: Privy::SwapActionResponse::EstimatedGas,
+        estimated_gas: Privy::Gas?,
         failure_reason: Privy::FailureReason,
         fees: ::Array[Privy::Models::fee_line_item]?,
-        gas: Privy::SwapActionResponse::Gas,
+        gas: Privy::Gas?,
         steps: ::Array[Privy::Models::wallet_action_step]
       }
 
@@ -48,11 +48,7 @@ module Privy
 
       attr_accessor estimated_fees: ::Array[Privy::Models::fee_line_item]?
 
-      attr_reader estimated_gas: Privy::SwapActionResponse::EstimatedGas?
-
-      def estimated_gas=: (
-        Privy::SwapActionResponse::EstimatedGas
-      ) -> Privy::SwapActionResponse::EstimatedGas
+      attr_accessor estimated_gas: Privy::Gas?
 
       attr_reader failure_reason: Privy::FailureReason?
 
@@ -60,11 +56,7 @@ module Privy
 
       attr_accessor fees: ::Array[Privy::Models::fee_line_item]?
 
-      attr_reader gas: Privy::SwapActionResponse::Gas?
-
-      def gas=: (
-        Privy::SwapActionResponse::Gas
-      ) -> Privy::SwapActionResponse::Gas
+      attr_accessor gas: Privy::Gas?
 
       attr_reader steps: ::Array[Privy::Models::wallet_action_step]?
 
@@ -85,10 +77,10 @@ module Privy
         wallet_id: String,
         ?destination_caip2: String,
         ?estimated_fees: ::Array[Privy::Models::fee_line_item]?,
-        ?estimated_gas: Privy::SwapActionResponse::EstimatedGas,
+        ?estimated_gas: Privy::Gas?,
         ?failure_reason: Privy::FailureReason,
         ?fees: ::Array[Privy::Models::fee_line_item]?,
-        ?gas: Privy::SwapActionResponse::Gas,
+        ?gas: Privy::Gas?,
         ?steps: ::Array[Privy::Models::wallet_action_step]
       ) -> void
 
@@ -105,10 +97,10 @@ module Privy
         wallet_id: String,
         :destination_caip2 => String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
-        estimated_gas: Privy::SwapActionResponse::EstimatedGas,
+        estimated_gas: Privy::Gas?,
         failure_reason: Privy::FailureReason,
         fees: ::Array[Privy::Models::fee_line_item]?,
-        gas: Privy::SwapActionResponse::Gas,
+        gas: Privy::Gas?,
         steps: ::Array[Privy::Models::wallet_action_step]
       }
 
@@ -120,22 +112,6 @@ module Privy
         SWAP: :swap
 
         def self?.values: -> ::Array[Privy::Models::SwapActionResponse::type_]
-      end
-
-      type estimated_gas = {  }
-
-      class EstimatedGas < Privy::Models::Gas
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
-
-      type gas = {  }
-
-      class Gas < Privy::Models::Gas
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
     end
   end

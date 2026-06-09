@@ -8,7 +8,8 @@ module Privy
         status: Privy::Models::evm_wallet_action_step_status,
         type: Privy::Models::EvmUserOperationWalletActionStep::type_,
         user_operation_hash: String?,
-        failure_reason: Privy::FailureReason
+        failure_reason: Privy::FailureReason,
+        gas_credits_charged_usd: String
       }
 
     class EvmUserOperationWalletActionStep < Privy::Internal::Type::BaseModel
@@ -28,6 +29,10 @@ module Privy
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
 
+      attr_reader gas_credits_charged_usd: String?
+
+      def gas_credits_charged_usd=: (String) -> String
+
       def initialize: (
         bundle_transaction_hash: String?,
         caip2: String,
@@ -35,7 +40,8 @@ module Privy
         status: Privy::Models::evm_wallet_action_step_status,
         type: Privy::Models::EvmUserOperationWalletActionStep::type_,
         user_operation_hash: String?,
-        ?failure_reason: Privy::FailureReason
+        ?failure_reason: Privy::FailureReason,
+        ?gas_credits_charged_usd: String
       ) -> void
 
       def to_hash: -> {
@@ -45,7 +51,8 @@ module Privy
         status: Privy::Models::evm_wallet_action_step_status,
         type: Privy::Models::EvmUserOperationWalletActionStep::type_,
         user_operation_hash: String?,
-        failure_reason: Privy::FailureReason
+        failure_reason: Privy::FailureReason,
+        gas_credits_charged_usd: String
       }
 
       type entrypoint_version = :"0.6" | :"0.7" | :"0.8" | :"0.9"

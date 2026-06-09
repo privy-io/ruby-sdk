@@ -16,8 +16,8 @@ module Privy
       # @!attribute transaction_details
       #   Transaction details returned from a Stripe onramp session.
       #
-      #   @return [Privy::Models::CreateStripeOnrampSessionResponse::TransactionDetails, nil]
-      optional :transaction_details, -> { Privy::CreateStripeOnrampSessionResponse::TransactionDetails }
+      #   @return [Privy::Models::OnrampSessionTransactionDetails, nil]
+      optional :transaction_details, -> { Privy::OnrampSessionTransactionDetails }, nil?: true
 
       # @!method initialize(id:, session_id:, transaction_details: nil)
       #   The created onramp session.
@@ -26,13 +26,7 @@ module Privy
       #
       #   @param session_id [String]
       #
-      #   @param transaction_details [Privy::Models::CreateStripeOnrampSessionResponse::TransactionDetails] Transaction details returned from a Stripe onramp session.
-
-      # @see Privy::Models::CreateStripeOnrampSessionResponse#transaction_details
-      class TransactionDetails < Privy::Models::OnrampSessionTransactionDetails
-        # @!method initialize
-        #   Transaction details returned from a Stripe onramp session.
-      end
+      #   @param transaction_details [Privy::Models::OnrampSessionTransactionDetails, nil] Transaction details returned from a Stripe onramp session.
     end
   end
 end

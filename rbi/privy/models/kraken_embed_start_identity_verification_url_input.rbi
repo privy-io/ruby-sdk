@@ -25,35 +25,23 @@ module Privy
       attr_accessor :back_url
 
       # Debug options for start verification. Only works in non-production environments.
-      sig do
-        returns(
-          T.nilable(Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug)
-        )
-      end
+      sig { returns(T.nilable(Privy::KrakenEmbedStartVerificationDebug)) }
       attr_reader :debug
 
       sig do
         params(
-          debug:
-            Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug::OrHash
+          debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug::OrHash)
         ).void
       end
       attr_writer :debug
 
       # Optional best-effort metadata hints for proof of identity verification.
-      sig do
-        returns(
-          T.nilable(
-            Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
-          )
-        )
-      end
+      sig { returns(T.nilable(Privy::KrakenEmbedStartIdentityMetadata)) }
       attr_reader :metadata
 
       sig do
         params(
-          metadata:
-            Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata::OrHash
+          metadata: T.nilable(Privy::KrakenEmbedStartIdentityMetadata::OrHash)
         ).void
       end
       attr_writer :metadata
@@ -65,10 +53,8 @@ module Privy
           type:
             Privy::KrakenEmbedStartIdentityVerificationURLInput::Type::OrSymbol,
           back_url: T.nilable(String),
-          debug:
-            Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug::OrHash,
-          metadata:
-            Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata::OrHash
+          debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug::OrHash),
+          metadata: T.nilable(Privy::KrakenEmbedStartIdentityMetadata::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -89,9 +75,8 @@ module Privy
             type:
               Privy::KrakenEmbedStartIdentityVerificationURLInput::Type::OrSymbol,
             back_url: T.nilable(String),
-            debug: Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug,
-            metadata:
-              Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata
+            debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug),
+            metadata: T.nilable(Privy::KrakenEmbedStartIdentityMetadata)
           }
         )
       end
@@ -124,44 +109,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Debug options for start verification. Only works in non-production environments.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
-      end
-
-      class Metadata < Privy::Models::KrakenEmbedStartIdentityMetadata
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Optional best-effort metadata hints for proof of identity verification.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
     end
