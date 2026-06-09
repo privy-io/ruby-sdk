@@ -22,35 +22,23 @@ module Privy
       attr_accessor :type
 
       # Debug options for start verification. Only works in non-production environments.
-      sig do
-        returns(
-          T.nilable(Privy::KrakenEmbedStartAddressVerificationURLInput::Debug)
-        )
-      end
+      sig { returns(T.nilable(Privy::KrakenEmbedStartVerificationDebug)) }
       attr_reader :debug
 
       sig do
         params(
-          debug:
-            Privy::KrakenEmbedStartAddressVerificationURLInput::Debug::OrHash
+          debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug::OrHash)
         ).void
       end
       attr_writer :debug
 
       # Optional best-effort metadata hints for proof of address verification.
-      sig do
-        returns(
-          T.nilable(
-            Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
-          )
-        )
-      end
+      sig { returns(T.nilable(Privy::KrakenEmbedStartAddressMetadata)) }
       attr_reader :metadata
 
       sig do
         params(
-          metadata:
-            Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata::OrHash
+          metadata: T.nilable(Privy::KrakenEmbedStartAddressMetadata::OrHash)
         ).void
       end
       attr_writer :metadata
@@ -61,10 +49,8 @@ module Privy
           document_url: String,
           type:
             Privy::KrakenEmbedStartAddressVerificationURLInput::Type::OrSymbol,
-          debug:
-            Privy::KrakenEmbedStartAddressVerificationURLInput::Debug::OrHash,
-          metadata:
-            Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata::OrHash
+          debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug::OrHash),
+          metadata: T.nilable(Privy::KrakenEmbedStartAddressMetadata::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -83,9 +69,8 @@ module Privy
             document_url: String,
             type:
               Privy::KrakenEmbedStartAddressVerificationURLInput::Type::OrSymbol,
-            debug: Privy::KrakenEmbedStartAddressVerificationURLInput::Debug,
-            metadata:
-              Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata
+            debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug),
+            metadata: T.nilable(Privy::KrakenEmbedStartAddressMetadata)
           }
         )
       end
@@ -118,44 +103,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartAddressVerificationURLInput::Debug,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Debug options for start verification. Only works in non-production environments.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
-      end
-
-      class Metadata < Privy::Models::KrakenEmbedStartAddressMetadata
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartAddressVerificationURLInput::Metadata,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Optional best-effort metadata hints for proof of address verification.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
     end

@@ -7,7 +7,7 @@ module Privy
         status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status,
         trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
         updated_at: Time,
-        executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+        executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?,
         failure_reason: String,
         skip_reason: String
       }
@@ -23,11 +23,7 @@ module Privy
 
       attr_accessor updated_at: Time
 
-      attr_reader executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction?
-
-      def executed_action=: (
-        Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction
-      ) -> Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction
+      attr_accessor executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?
 
       attr_reader failure_reason: String?
 
@@ -43,7 +39,7 @@ module Privy
         status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status,
         trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
         updated_at: Time,
-        ?executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+        ?executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?,
         ?failure_reason: String,
         ?skip_reason: String
       ) -> void
@@ -54,7 +50,7 @@ module Privy
         status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status,
         trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
         updated_at: Time,
-        executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+        executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?,
         failure_reason: String,
         skip_reason: String
       }
@@ -69,14 +65,6 @@ module Privy
         SKIPPED: :skipped
 
         def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderOccurrence::status]
-      end
-
-      type executed_action = {  }
-
-      class ExecutedAction < Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
     end
   end

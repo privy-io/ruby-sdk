@@ -6,7 +6,7 @@ module Privy
         left_url: String,
         right_url: String,
         type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_,
-        debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+        debug: Privy::KrakenEmbedStartVerificationDebug?
       }
 
     class KrakenEmbedStartLivenessVerificationURLInput < Privy::Internal::Type::BaseModel
@@ -18,18 +18,14 @@ module Privy
 
       attr_accessor type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_
 
-      attr_reader debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug?
-
-      def debug=: (
-        Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
-      ) -> Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+      attr_accessor debug: Privy::KrakenEmbedStartVerificationDebug?
 
       def initialize: (
         center_url: String,
         left_url: String,
         right_url: String,
         type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_,
-        ?debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+        ?debug: Privy::KrakenEmbedStartVerificationDebug?
       ) -> void
 
       def to_hash: -> {
@@ -37,7 +33,7 @@ module Privy
         left_url: String,
         right_url: String,
         type: Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_,
-        debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+        debug: Privy::KrakenEmbedStartVerificationDebug?
       }
 
       type type_ = :proof_of_liveness
@@ -48,14 +44,6 @@ module Privy
         PROOF_OF_LIVENESS: :proof_of_liveness
 
         def self?.values: -> ::Array[Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::type_]
-      end
-
-      type debug = {  }
-
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
     end
   end

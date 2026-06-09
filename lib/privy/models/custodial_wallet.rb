@@ -26,6 +26,7 @@ module Privy
       required :custody, -> { Privy::WalletCustodian }
 
       # @!attribute owner_id
+      #   A unique identifier for a key quorum.
       #
       #   @return [String, nil]
       required :owner_id, String, nil?: true
@@ -52,7 +53,7 @@ module Privy
       #
       #   @param custody [Privy::Models::WalletCustodian] Information about the custodian managing this wallet.
       #
-      #   @param owner_id [String, nil]
+      #   @param owner_id [String, nil] A unique identifier for a key quorum.
       #
       #   @param additional_signers [Array<Privy::Models::WalletAdditionalSignerItem>] Additional signers for the wallet.
       #

@@ -6,33 +6,21 @@ module Privy
       # @!attribute apr_estimate
       #   Low and high estimate of the yield of an earn asset.
       #
-      #   @return [Privy::Models::KrakenEmbedEarnAsset::AprEstimate]
-      required :apr_estimate, -> { Privy::KrakenEmbedEarnAsset::AprEstimate }
+      #   @return [Privy::Models::KrakenEmbedEarnAprEstimate, nil]
+      required :apr_estimate, -> { Privy::KrakenEmbedEarnAprEstimate }, nil?: true
 
       # @!attribute user_allocation
       #   User allocation for an earn asset.
       #
-      #   @return [Privy::Models::KrakenEmbedEarnAsset::UserAllocation, nil]
-      optional :user_allocation, -> { Privy::KrakenEmbedEarnAsset::UserAllocation }
+      #   @return [Privy::Models::KrakenEmbedEarnUserAllocation, nil]
+      optional :user_allocation, -> { Privy::KrakenEmbedEarnUserAllocation }, nil?: true
 
       # @!method initialize(apr_estimate:, user_allocation: nil)
       #   A single asset that can yield rewards.
       #
-      #   @param apr_estimate [Privy::Models::KrakenEmbedEarnAsset::AprEstimate] Low and high estimate of the yield of an earn asset.
+      #   @param apr_estimate [Privy::Models::KrakenEmbedEarnAprEstimate, nil] Low and high estimate of the yield of an earn asset.
       #
-      #   @param user_allocation [Privy::Models::KrakenEmbedEarnAsset::UserAllocation] User allocation for an earn asset.
-
-      # @see Privy::Models::KrakenEmbedEarnAsset#apr_estimate
-      class AprEstimate < Privy::Models::KrakenEmbedEarnAprEstimate
-        # @!method initialize
-        #   Low and high estimate of the yield of an earn asset.
-      end
-
-      # @see Privy::Models::KrakenEmbedEarnAsset#user_allocation
-      class UserAllocation < Privy::Models::KrakenEmbedEarnUserAllocation
-        # @!method initialize
-        #   User allocation for an earn asset.
-      end
+      #   @param user_allocation [Privy::Models::KrakenEmbedEarnUserAllocation, nil] User allocation for an earn asset.
     end
   end
 end

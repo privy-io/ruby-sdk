@@ -6,7 +6,8 @@ module Privy
         status: Privy::Models::svm_wallet_action_step_status,
         transaction_signature: String?,
         type: Privy::Models::SvmTransactionWalletActionStep::type_,
-        failure_reason: Privy::FailureReason
+        failure_reason: Privy::FailureReason,
+        gas_credits_charged_usd: String
       }
 
     class SvmTransactionWalletActionStep < Privy::Internal::Type::BaseModel
@@ -22,12 +23,17 @@ module Privy
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
 
+      attr_reader gas_credits_charged_usd: String?
+
+      def gas_credits_charged_usd=: (String) -> String
+
       def initialize: (
         caip2: String,
         status: Privy::Models::svm_wallet_action_step_status,
         transaction_signature: String?,
         type: Privy::Models::SvmTransactionWalletActionStep::type_,
-        ?failure_reason: Privy::FailureReason
+        ?failure_reason: Privy::FailureReason,
+        ?gas_credits_charged_usd: String
       ) -> void
 
       def to_hash: -> {
@@ -35,7 +41,8 @@ module Privy
         status: Privy::Models::svm_wallet_action_step_status,
         transaction_signature: String?,
         type: Privy::Models::SvmTransactionWalletActionStep::type_,
-        failure_reason: Privy::FailureReason
+        failure_reason: Privy::FailureReason,
+        gas_credits_charged_usd: String
       }
 
       type type_ = :svm_transaction

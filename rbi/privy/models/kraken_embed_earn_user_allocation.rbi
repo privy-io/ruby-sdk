@@ -9,25 +9,23 @@ module Privy
         end
 
       # An earn amount with native and converted values.
-      sig { returns(Privy::KrakenEmbedEarnUserAllocation::TotalAllocated) }
+      sig { returns(T.nilable(Privy::KrakenEmbedEarnAmount)) }
       attr_reader :total_allocated
 
       sig do
         params(
-          total_allocated:
-            Privy::KrakenEmbedEarnUserAllocation::TotalAllocated::OrHash
+          total_allocated: T.nilable(Privy::KrakenEmbedEarnAmount::OrHash)
         ).void
       end
       attr_writer :total_allocated
 
       # An earn amount with native and converted values.
-      sig { returns(Privy::KrakenEmbedEarnUserAllocation::TotalRewarded) }
+      sig { returns(T.nilable(Privy::KrakenEmbedEarnAmount)) }
       attr_reader :total_rewarded
 
       sig do
         params(
-          total_rewarded:
-            Privy::KrakenEmbedEarnUserAllocation::TotalRewarded::OrHash
+          total_rewarded: T.nilable(Privy::KrakenEmbedEarnAmount::OrHash)
         ).void
       end
       attr_writer :total_rewarded
@@ -38,10 +36,8 @@ module Privy
       # User allocation for an earn asset.
       sig do
         params(
-          total_allocated:
-            Privy::KrakenEmbedEarnUserAllocation::TotalAllocated::OrHash,
-          total_rewarded:
-            Privy::KrakenEmbedEarnUserAllocation::TotalRewarded::OrHash,
+          total_allocated: T.nilable(Privy::KrakenEmbedEarnAmount::OrHash),
+          total_rewarded: T.nilable(Privy::KrakenEmbedEarnAmount::OrHash),
           upcoming_reward_date: T.nilable(Time)
         ).returns(T.attached_class)
       end
@@ -57,52 +53,13 @@ module Privy
       sig do
         override.returns(
           {
-            total_allocated:
-              Privy::KrakenEmbedEarnUserAllocation::TotalAllocated,
-            total_rewarded: Privy::KrakenEmbedEarnUserAllocation::TotalRewarded,
+            total_allocated: T.nilable(Privy::KrakenEmbedEarnAmount),
+            total_rewarded: T.nilable(Privy::KrakenEmbedEarnAmount),
             upcoming_reward_date: T.nilable(Time)
           }
         )
       end
       def to_hash
-      end
-
-      class TotalAllocated < Privy::Models::KrakenEmbedEarnAmount
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedEarnUserAllocation::TotalAllocated,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # An earn amount with native and converted values.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
-      end
-
-      class TotalRewarded < Privy::Models::KrakenEmbedEarnAmount
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedEarnUserAllocation::TotalRewarded,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # An earn amount with native and converted values.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

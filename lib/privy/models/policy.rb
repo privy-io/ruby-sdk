@@ -30,7 +30,7 @@ module Privy
       required :name, String
 
       # @!attribute owner_id
-      #   The key quorum ID of the owner of the policy.
+      #   A unique identifier for a key quorum.
       #
       #   @return [String, nil]
       required :owner_id, String, nil?: true
@@ -60,7 +60,7 @@ module Privy
       #
       #   @param name [String] Name to assign to policy.
       #
-      #   @param owner_id [String, nil] The key quorum ID of the owner of the policy.
+      #   @param owner_id [String, nil] A unique identifier for a key quorum.
       #
       #   @param rules [Array<Privy::Models::PolicyRuleResponse>]
       #

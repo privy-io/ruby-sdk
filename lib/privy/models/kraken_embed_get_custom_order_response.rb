@@ -6,8 +6,8 @@ module Privy
       # @!attribute result
       #   Result payload for get custom order response.
       #
-      #   @return [Privy::Models::KrakenEmbedGetCustomOrderResponse::Result]
-      required :result, -> { Privy::KrakenEmbedGetCustomOrderResponse::Result }
+      #   @return [Privy::Models::KrakenEmbedGetCustomOrderResult, nil]
+      required :result, -> { Privy::KrakenEmbedGetCustomOrderResult }, nil?: true
 
       # @!attribute error
       #
@@ -22,17 +22,11 @@ module Privy
       # @!method initialize(result:, error: nil, errors: nil)
       #   Response body for getting a single custom order.
       #
-      #   @param result [Privy::Models::KrakenEmbedGetCustomOrderResponse::Result] Result payload for get custom order response.
+      #   @param result [Privy::Models::KrakenEmbedGetCustomOrderResult, nil] Result payload for get custom order response.
       #
       #   @param error [Array<Object>]
       #
       #   @param errors [Array<Object>]
-
-      # @see Privy::Models::KrakenEmbedGetCustomOrderResponse#result
-      class Result < Privy::Models::KrakenEmbedGetCustomOrderResult
-        # @!method initialize
-        #   Result payload for get custom order response.
-      end
     end
   end
 end

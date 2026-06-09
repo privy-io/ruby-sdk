@@ -13,10 +13,10 @@ module Privy
         destination_asset: String,
         destination_chain: String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
-        estimated_gas: Privy::TransferActionResponse::EstimatedGas,
+        estimated_gas: Privy::Gas?,
         failure_reason: Privy::FailureReason,
         fees: ::Array[Privy::Models::fee_line_item]?,
-        gas: Privy::TransferActionResponse::Gas,
+        gas: Privy::Gas?,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -51,11 +51,7 @@ module Privy
 
       attr_accessor estimated_fees: ::Array[Privy::Models::fee_line_item]?
 
-      attr_reader estimated_gas: Privy::TransferActionResponse::EstimatedGas?
-
-      def estimated_gas=: (
-        Privy::TransferActionResponse::EstimatedGas
-      ) -> Privy::TransferActionResponse::EstimatedGas
+      attr_accessor estimated_gas: Privy::Gas?
 
       attr_reader failure_reason: Privy::FailureReason?
 
@@ -63,11 +59,7 @@ module Privy
 
       attr_accessor fees: ::Array[Privy::Models::fee_line_item]?
 
-      attr_reader gas: Privy::TransferActionResponse::Gas?
-
-      def gas=: (
-        Privy::TransferActionResponse::Gas
-      ) -> Privy::TransferActionResponse::Gas
+      attr_accessor gas: Privy::Gas?
 
       attr_reader source_amount: String?
 
@@ -103,10 +95,10 @@ module Privy
         ?destination_asset: String,
         ?destination_chain: String,
         ?estimated_fees: ::Array[Privy::Models::fee_line_item]?,
-        ?estimated_gas: Privy::TransferActionResponse::EstimatedGas,
+        ?estimated_gas: Privy::Gas?,
         ?failure_reason: Privy::FailureReason,
         ?fees: ::Array[Privy::Models::fee_line_item]?,
-        ?gas: Privy::TransferActionResponse::Gas,
+        ?gas: Privy::Gas?,
         ?source_amount: String,
         ?source_asset: String,
         ?source_asset_address: String,
@@ -126,10 +118,10 @@ module Privy
         destination_asset: String,
         destination_chain: String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
-        estimated_gas: Privy::TransferActionResponse::EstimatedGas,
+        estimated_gas: Privy::Gas?,
         failure_reason: Privy::FailureReason,
         fees: ::Array[Privy::Models::fee_line_item]?,
-        gas: Privy::TransferActionResponse::Gas,
+        gas: Privy::Gas?,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -145,22 +137,6 @@ module Privy
         TRANSFER: :transfer
 
         def self?.values: -> ::Array[Privy::Models::TransferActionResponse::type_]
-      end
-
-      type estimated_gas = {  }
-
-      class EstimatedGas < Privy::Models::Gas
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
-
-      type gas = {  }
-
-      class Gas < Privy::Models::Gas
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
     end
   end

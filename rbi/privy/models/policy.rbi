@@ -22,7 +22,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :name
 
-      # The key quorum ID of the owner of the policy.
+      # A unique identifier for a key quorum.
       sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
@@ -55,7 +55,7 @@ module Privy
         created_at:,
         # Name to assign to policy.
         name:,
-        # The key quorum ID of the owner of the policy.
+        # A unique identifier for a key quorum.
         owner_id:,
         rules:,
         # Version of the policy. Currently, 1.0 is the only version.

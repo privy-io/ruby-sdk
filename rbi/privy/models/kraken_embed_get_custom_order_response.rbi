@@ -12,12 +12,12 @@ module Privy
         end
 
       # Result payload for get custom order response.
-      sig { returns(Privy::KrakenEmbedGetCustomOrderResponse::Result) }
+      sig { returns(T.nilable(Privy::KrakenEmbedGetCustomOrderResult)) }
       attr_reader :result
 
       sig do
         params(
-          result: Privy::KrakenEmbedGetCustomOrderResponse::Result::OrHash
+          result: T.nilable(Privy::KrakenEmbedGetCustomOrderResult::OrHash)
         ).void
       end
       attr_writer :result
@@ -37,7 +37,7 @@ module Privy
       # Response body for getting a single custom order.
       sig do
         params(
-          result: Privy::KrakenEmbedGetCustomOrderResponse::Result::OrHash,
+          result: T.nilable(Privy::KrakenEmbedGetCustomOrderResult::OrHash),
           error: T::Array[T.anything],
           errors: T::Array[T.anything]
         ).returns(T.attached_class)
@@ -53,32 +53,13 @@ module Privy
       sig do
         override.returns(
           {
-            result: Privy::KrakenEmbedGetCustomOrderResponse::Result,
+            result: T.nilable(Privy::KrakenEmbedGetCustomOrderResult),
             error: T::Array[T.anything],
             errors: T::Array[T.anything]
           }
         )
       end
       def to_hash
-      end
-
-      class Result < Privy::Models::KrakenEmbedGetCustomOrderResult
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedGetCustomOrderResponse::Result,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Result payload for get custom order response.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

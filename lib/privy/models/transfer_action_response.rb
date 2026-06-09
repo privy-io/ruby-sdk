@@ -75,8 +75,8 @@ module Privy
       #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
       #   human-readable decimal string, plus the gas token symbol.
       #
-      #   @return [Privy::Models::TransferActionResponse::EstimatedGas, nil]
-      optional :estimated_gas, -> { Privy::TransferActionResponse::EstimatedGas }
+      #   @return [Privy::Models::Gas, nil]
+      optional :estimated_gas, -> { Privy::Gas }, nil?: true
 
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
@@ -95,8 +95,8 @@ module Privy
       #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
       #   human-readable decimal string, plus the gas token symbol.
       #
-      #   @return [Privy::Models::TransferActionResponse::Gas, nil]
-      optional :gas, -> { Privy::TransferActionResponse::Gas }
+      #   @return [Privy::Models::Gas, nil]
+      optional :gas, -> { Privy::Gas }, nil?: true
 
       # @!attribute source_amount
       #   Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
@@ -160,13 +160,13 @@ module Privy
       #
       #   @param estimated_fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil] Estimated fee breakdown from the provider quote. Only present for cross-chain or
       #
-      #   @param estimated_gas [Privy::Models::TransferActionResponse::EstimatedGas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
+      #   @param estimated_gas [Privy::Models::Gas, nil] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
       #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil] Actual fees paid for the transfer. Populated after on-chain confirmation. Only p
       #
-      #   @param gas [Privy::Models::TransferActionResponse::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
+      #   @param gas [Privy::Models::Gas, nil] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
       #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output c
       #
@@ -186,20 +186,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::TransferActionResponse#estimated_gas
-      class EstimatedGas < Privy::Models::Gas
-        # @!method initialize
-        #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
-        #   human-readable decimal string, plus the gas token symbol.
-      end
-
-      # @see Privy::Models::TransferActionResponse#gas
-      class Gas < Privy::Models::Gas
-        # @!method initialize
-        #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
-        #   human-readable decimal string, plus the gas token symbol.
       end
     end
   end

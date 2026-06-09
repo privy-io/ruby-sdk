@@ -2,13 +2,13 @@ module Privy
   module Models
     type kraken_embed_get_earn_assets_kraken_response =
       {
-        result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result,
+        result: Privy::KrakenEmbedGetEarnAssetsResult?,
         error: ::Array[top],
         errors: ::Array[top]
       }
 
     class KrakenEmbedGetEarnAssetsKrakenResponse < Privy::Internal::Type::BaseModel
-      attr_accessor result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result
+      attr_accessor result: Privy::KrakenEmbedGetEarnAssetsResult?
 
       attr_reader error: ::Array[top]?
 
@@ -19,24 +19,16 @@ module Privy
       def errors=: (::Array[top]) -> ::Array[top]
 
       def initialize: (
-        result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result,
+        result: Privy::KrakenEmbedGetEarnAssetsResult?,
         ?error: ::Array[top],
         ?errors: ::Array[top]
       ) -> void
 
       def to_hash: -> {
-        result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result,
+        result: Privy::KrakenEmbedGetEarnAssetsResult?,
         error: ::Array[top],
         errors: ::Array[top]
       }
-
-      type result = {  }
-
-      class Result < Privy::Models::KrakenEmbedGetEarnAssetsResult
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
     end
   end
 end

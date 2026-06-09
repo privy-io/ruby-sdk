@@ -4,7 +4,7 @@ module Privy
       {
         id: String,
         session_id: String,
-        transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+        transaction_details: Privy::OnrampSessionTransactionDetails?
       }
 
     class CreateStripeOnrampSessionResponse < Privy::Internal::Type::BaseModel
@@ -12,31 +12,19 @@ module Privy
 
       attr_accessor session_id: String
 
-      attr_reader transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails?
-
-      def transaction_details=: (
-        Privy::CreateStripeOnrampSessionResponse::TransactionDetails
-      ) -> Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+      attr_accessor transaction_details: Privy::OnrampSessionTransactionDetails?
 
       def initialize: (
         id: String,
         session_id: String,
-        ?transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+        ?transaction_details: Privy::OnrampSessionTransactionDetails?
       ) -> void
 
       def to_hash: -> {
         id: String,
         session_id: String,
-        transaction_details: Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+        transaction_details: Privy::OnrampSessionTransactionDetails?
       }
-
-      type transaction_details = {  }
-
-      class TransactionDetails < Privy::Models::OnrampSessionTransactionDetails
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
     end
   end
 end

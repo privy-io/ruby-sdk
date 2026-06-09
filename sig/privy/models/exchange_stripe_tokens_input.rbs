@@ -1,19 +1,34 @@
 module Privy
   module Models
     type exchange_stripe_tokens_input =
-      { auth_intent_id: String, crypto_customer_id: String }
+      {
+        auth_intent_id: String,
+        crypto_customer_id: String,
+        environment: Privy::Models::fiat_onramp_environment
+      }
 
     class ExchangeStripeTokensInput < Privy::Internal::Type::BaseModel
       attr_accessor auth_intent_id: String
 
       attr_accessor crypto_customer_id: String
 
+      attr_reader environment: Privy::Models::fiat_onramp_environment?
+
+      def environment=: (
+        Privy::Models::fiat_onramp_environment
+      ) -> Privy::Models::fiat_onramp_environment
+
       def initialize: (
         auth_intent_id: String,
-        crypto_customer_id: String
+        crypto_customer_id: String,
+        ?environment: Privy::Models::fiat_onramp_environment
       ) -> void
 
-      def to_hash: -> { auth_intent_id: String, crypto_customer_id: String }
+      def to_hash: -> {
+        auth_intent_id: String,
+        crypto_customer_id: String,
+        environment: Privy::Models::fiat_onramp_environment
+      }
     end
   end
 end

@@ -32,8 +32,8 @@ module Privy
       # @!attribute executed_action
       #   Executed action details for a custom order occurrence.
       #
-      #   @return [Privy::Models::KrakenEmbedCustomOrderOccurrence::ExecutedAction, nil]
-      optional :executed_action, -> { Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction }
+      #   @return [Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction, nil]
+      optional :executed_action, -> { Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction }, nil?: true
 
       # @!attribute failure_reason
       #
@@ -58,7 +58,7 @@ module Privy
       #
       #   @param updated_at [Time]
       #
-      #   @param executed_action [Privy::Models::KrakenEmbedCustomOrderOccurrence::ExecutedAction] Executed action details for a custom order occurrence.
+      #   @param executed_action [Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction, nil] Executed action details for a custom order occurrence.
       #
       #   @param failure_reason [String]
       #
@@ -74,12 +74,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::KrakenEmbedCustomOrderOccurrence#executed_action
-      class ExecutedAction < Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
-        # @!method initialize
-        #   Executed action details for a custom order occurrence.
       end
     end
   end

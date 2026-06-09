@@ -6,8 +6,8 @@ module Privy
       # @!attribute result
       #   Result payload for custom order history response.
       #
-      #   @return [Privy::Models::KrakenEmbedGetCustomOrderHistoryResponse::Result]
-      required :result, -> { Privy::KrakenEmbedGetCustomOrderHistoryResponse::Result }
+      #   @return [Privy::Models::KrakenEmbedGetCustomOrderHistoryResult, nil]
+      required :result, -> { Privy::KrakenEmbedGetCustomOrderHistoryResult }, nil?: true
 
       # @!attribute error
       #
@@ -22,17 +22,11 @@ module Privy
       # @!method initialize(result:, error: nil, errors: nil)
       #   Response body for getting custom order execution history.
       #
-      #   @param result [Privy::Models::KrakenEmbedGetCustomOrderHistoryResponse::Result] Result payload for custom order history response.
+      #   @param result [Privy::Models::KrakenEmbedGetCustomOrderHistoryResult, nil] Result payload for custom order history response.
       #
       #   @param error [Array<Object>]
       #
       #   @param errors [Array<Object>]
-
-      # @see Privy::Models::KrakenEmbedGetCustomOrderHistoryResponse#result
-      class Result < Privy::Models::KrakenEmbedGetCustomOrderHistoryResult
-        # @!method initialize
-        #   Result payload for custom order history response.
-      end
     end
   end
 end

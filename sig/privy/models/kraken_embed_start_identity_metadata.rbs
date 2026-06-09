@@ -5,7 +5,7 @@ module Privy
         document_number: String?,
         document_type: Privy::Models::KrakenEmbedStartIdentityMetadata::document_type?,
         expiration_date: Date?,
-        identity: Privy::KrakenEmbedStartIdentityMetadata::Identity,
+        identity: Privy::KrakenEmbedStartIdentityInfo?,
         issuing_country: Privy::Models::KrakenEmbedStartIdentityMetadata::issuing_country?,
         nationality: Privy::Models::KrakenEmbedStartIdentityMetadata::nationality?
       }
@@ -17,11 +17,7 @@ module Privy
 
       attr_accessor expiration_date: Date?
 
-      attr_reader identity: Privy::KrakenEmbedStartIdentityMetadata::Identity?
-
-      def identity=: (
-        Privy::KrakenEmbedStartIdentityMetadata::Identity
-      ) -> Privy::KrakenEmbedStartIdentityMetadata::Identity
+      attr_accessor identity: Privy::KrakenEmbedStartIdentityInfo?
 
       attr_accessor issuing_country: Privy::Models::KrakenEmbedStartIdentityMetadata::issuing_country?
 
@@ -31,7 +27,7 @@ module Privy
         ?document_number: String?,
         ?document_type: Privy::Models::KrakenEmbedStartIdentityMetadata::document_type?,
         ?expiration_date: Date?,
-        ?identity: Privy::KrakenEmbedStartIdentityMetadata::Identity,
+        ?identity: Privy::KrakenEmbedStartIdentityInfo?,
         ?issuing_country: Privy::Models::KrakenEmbedStartIdentityMetadata::issuing_country?,
         ?nationality: Privy::Models::KrakenEmbedStartIdentityMetadata::nationality?
       ) -> void
@@ -40,7 +36,7 @@ module Privy
         document_number: String?,
         document_type: Privy::Models::KrakenEmbedStartIdentityMetadata::document_type?,
         expiration_date: Date?,
-        identity: Privy::KrakenEmbedStartIdentityMetadata::Identity,
+        identity: Privy::KrakenEmbedStartIdentityInfo?,
         issuing_country: Privy::Models::KrakenEmbedStartIdentityMetadata::issuing_country?,
         nationality: Privy::Models::KrakenEmbedStartIdentityMetadata::nationality?
       }
@@ -62,14 +58,6 @@ module Privy
         SPECIAL_PERMANENT_RESIDENCE_CARD: :special_permanent_residence_card
 
         def self?.values: -> ::Array[Privy::Models::KrakenEmbedStartIdentityMetadata::document_type]
-      end
-
-      type identity = {  }
-
-      class Identity < Privy::Models::KrakenEmbedStartIdentityInfo
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
 
       type issuing_country =

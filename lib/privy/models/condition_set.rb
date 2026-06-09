@@ -25,8 +25,8 @@ module Privy
       # @!attribute owner_id
       #   A unique identifier for a key quorum.
       #
-      #   @return [String]
-      required :owner_id, String
+      #   @return [String, nil]
+      required :owner_id, String, nil?: true
 
       # @!method initialize(id:, created_at:, name:, owner_id:)
       #   Some parameter documentations has been truncated, see
@@ -40,7 +40,7 @@ module Privy
       #
       #   @param name [String] Name of the condition set.
       #
-      #   @param owner_id [String] A unique identifier for a key quorum.
+      #   @param owner_id [String, nil] A unique identifier for a key quorum.
     end
   end
 end

@@ -2,13 +2,13 @@ module Privy
   module Models
     type kraken_embed_create_custom_order_response =
       {
-        result: Privy::KrakenEmbedCreateCustomOrderResponse::Result,
+        result: Privy::KrakenEmbedCreateCustomOrderResult?,
         error: ::Array[top],
         errors: ::Array[top]
       }
 
     class KrakenEmbedCreateCustomOrderResponse < Privy::Internal::Type::BaseModel
-      attr_accessor result: Privy::KrakenEmbedCreateCustomOrderResponse::Result
+      attr_accessor result: Privy::KrakenEmbedCreateCustomOrderResult?
 
       attr_reader error: ::Array[top]?
 
@@ -19,24 +19,16 @@ module Privy
       def errors=: (::Array[top]) -> ::Array[top]
 
       def initialize: (
-        result: Privy::KrakenEmbedCreateCustomOrderResponse::Result,
+        result: Privy::KrakenEmbedCreateCustomOrderResult?,
         ?error: ::Array[top],
         ?errors: ::Array[top]
       ) -> void
 
       def to_hash: -> {
-        result: Privy::KrakenEmbedCreateCustomOrderResponse::Result,
+        result: Privy::KrakenEmbedCreateCustomOrderResult?,
         error: ::Array[top],
         errors: ::Array[top]
       }
-
-      type result = {  }
-
-      class Result < Privy::Models::KrakenEmbedCreateCustomOrderResult
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
     end
   end
 end
