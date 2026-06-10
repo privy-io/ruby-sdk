@@ -57,6 +57,10 @@ module Privy
 
   class AnalyticsEventInput = Privy::Models::AnalyticsEventInput
 
+  class AppAllowlistConfig = Privy::Models::AppAllowlistConfig
+
+  class AppCustomOAuthProvider = Privy::Models::AppCustomOAuthProvider
+
   class AppGetGasSpendParams = Privy::Models::AppGetGasSpendParams
 
   class AppGetParams = Privy::Models::AppGetParams
@@ -81,6 +85,8 @@ module Privy
 
   class AuthenticateSiwsInput = Privy::Models::AuthenticateSiwsInput
 
+  class AuthorizationKey = Privy::Models::AuthorizationKey
+
   class AuthorizationKeyDashboardResponse = Privy::Models::AuthorizationKeyDashboardResponse
 
   class AuthorizationKeyResponse = Privy::Models::AuthorizationKeyResponse
@@ -98,6 +104,8 @@ module Privy
   class BaseIntentResponse = Privy::Models::BaseIntentResponse
 
   class BitcoinAddress = Privy::Models::BitcoinAddress
+
+  class BlockInfo = Privy::Models::BlockInfo
 
   class BridgeBrlFiatVirtualAccountDepositInstructions = Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
 
@@ -1053,8 +1061,6 @@ module Privy
 
   module OnrampProvider = Privy::Models::OnrampProvider
 
-  class OnrampSessionFees = Privy::Models::OnrampSessionFees
-
   class OnrampSessionParams = Privy::Models::OnrampSessionParams
 
   class OnrampSessionTransactionDetails = Privy::Models::OnrampSessionTransactionDetails
@@ -1267,6 +1273,10 @@ module Privy
 
   class SeedPhraseExportWebhookPayload = Privy::Models::SeedPhraseExportWebhookPayload
 
+  class SignatureOptions = Privy::Models::SignatureOptions
+
+  module SignatureType = Privy::Models::SignatureType
+
   module SigningAlgorithm = Privy::Models::SigningAlgorithm
 
   class SiweAddressInput = Privy::Models::SiweAddressInput
@@ -1461,13 +1471,13 @@ module Privy
 
   class StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
 
+  class StripeKYCTier = Privy::Models::StripeKYCTier
+
   class StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse
 
   module StripeOnrampSessionStatus = Privy::Models::StripeOnrampSessionStatus
 
   class StripePaymentToken = Privy::Models::StripePaymentToken
-
-  class StripeQuote = Privy::Models::StripeQuote
 
   class StripeTransactionDetails = Privy::Models::StripeTransactionDetails
 
@@ -1633,6 +1643,8 @@ module Privy
 
   TypedDataDomainInputParams: Privy::Internal::Type::Converter
 
+  class TypedDataInput = Privy::Models::TypedDataInput
+
   class TypedDataTypeFieldInput = Privy::Models::TypedDataTypeFieldInput
 
   TypedDataTypesInputParams: Privy::Internal::Type::Converter
@@ -1726,6 +1738,8 @@ module Privy
   class UserWalletCreatedWebhookPayload = Privy::Models::UserWalletCreatedWebhookPayload
 
   class UserWithIdentityToken = Privy::Models::UserWithIdentityToken
+
+  class VaultAsset = Privy::Models::VaultAsset
 
   class Wallet = Privy::Models::Wallet
 

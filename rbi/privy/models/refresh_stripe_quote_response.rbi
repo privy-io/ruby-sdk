@@ -8,24 +8,45 @@ module Privy
           T.any(Privy::RefreshStripeQuoteResponse, Privy::Internal::AnyHash)
         end
 
-      # A refreshed quote.
-      sig { returns(Privy::StripeQuote) }
-      attr_reader :quote
+      sig { returns(T.nilable(String)) }
+      attr_accessor :destination_amount
 
-      sig { params(quote: Privy::StripeQuote::OrHash).void }
-      attr_writer :quote
+      sig { returns(T.nilable(String)) }
+      attr_accessor :fee
 
-      # Refreshed quote with new expiry.
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :quote_expiration
+
+      sig { returns(T.nilable(String)) }
+      attr_accessor :source_total_amount
+
+      # Refreshed quote with amounts, fee, and expiry.
       sig do
-        params(quote: Privy::StripeQuote::OrHash).returns(T.attached_class)
+        params(
+          destination_amount: T.nilable(String),
+          fee: T.nilable(String),
+          quote_expiration: T.nilable(Float),
+          source_total_amount: T.nilable(String)
+        ).returns(T.attached_class)
       end
       def self.new(
-        # A refreshed quote.
-        quote:
+        destination_amount:,
+        fee:,
+        quote_expiration:,
+        source_total_amount:
       )
       end
 
-      sig { override.returns({ quote: Privy::StripeQuote }) }
+      sig do
+        override.returns(
+          {
+            destination_amount: T.nilable(String),
+            fee: T.nilable(String),
+            quote_expiration: T.nilable(Float),
+            source_total_amount: T.nilable(String)
+          }
+        )
+      end
       def to_hash
       end
     end

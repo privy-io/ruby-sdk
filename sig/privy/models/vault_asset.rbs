@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type vault_asset = { address: String, symbol: String }
+
+    class VaultAsset < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor symbol: String
+
+      def initialize: (address: String, symbol: String) -> void
+
+      def to_hash: -> { address: String, symbol: String }
+    end
+  end
+end

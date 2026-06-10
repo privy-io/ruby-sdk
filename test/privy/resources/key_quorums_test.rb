@@ -15,7 +15,7 @@ class Privy::Test::Resources::KeyQuorumsTest < Privy::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
-        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::KeyQuorum::AuthorizationKey]),
+        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::AuthorizationKey]),
         authorization_threshold: Float | nil,
         display_name: String | nil,
         user_ids: ^(Privy::Internal::Type::ArrayOf[String]) | nil,
@@ -36,7 +36,7 @@ class Privy::Test::Resources::KeyQuorumsTest < Privy::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
-        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::KeyQuorum::AuthorizationKey]),
+        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::AuthorizationKey]),
         authorization_threshold: Float | nil,
         display_name: String | nil,
         user_ids: ^(Privy::Internal::Type::ArrayOf[String]) | nil,
@@ -73,7 +73,7 @@ class Privy::Test::Resources::KeyQuorumsTest < Privy::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
-        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::KeyQuorum::AuthorizationKey]),
+        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::AuthorizationKey]),
         authorization_threshold: Float | nil,
         display_name: String | nil,
         user_ids: ^(Privy::Internal::Type::ArrayOf[String]) | nil,

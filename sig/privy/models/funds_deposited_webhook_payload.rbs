@@ -4,7 +4,7 @@ module Privy
       {
         amount: String,
         asset: Privy::Models::wallet_funds_asset,
-        block: Privy::FundsDepositedWebhookPayload::Block,
+        block: Privy::BlockInfo,
         :caip2 => String,
         idempotency_key: String,
         recipient: String,
@@ -21,7 +21,7 @@ module Privy
 
       attr_accessor asset: Privy::Models::wallet_funds_asset
 
-      attr_accessor block: Privy::FundsDepositedWebhookPayload::Block
+      attr_accessor block: Privy::BlockInfo
 
       attr_accessor caip2: String
 
@@ -50,7 +50,7 @@ module Privy
       def initialize: (
         amount: String,
         asset: Privy::Models::wallet_funds_asset,
-        block: Privy::FundsDepositedWebhookPayload::Block,
+        block: Privy::BlockInfo,
         caip2: String,
         idempotency_key: String,
         recipient: String,
@@ -65,7 +65,7 @@ module Privy
       def to_hash: -> {
         amount: String,
         asset: Privy::Models::wallet_funds_asset,
-        block: Privy::FundsDepositedWebhookPayload::Block,
+        block: Privy::BlockInfo,
         :caip2 => String,
         idempotency_key: String,
         recipient: String,
@@ -76,18 +76,6 @@ module Privy
         bridge_metadata: Privy::Models::bridge_metadata,
         transaction_fee: String
       }
-
-      type block = { number: Float, timestamp: Float }
-
-      class Block < Privy::Internal::Type::BaseModel
-        attr_accessor number: Float
-
-        attr_accessor timestamp: Float
-
-        def initialize: (number: Float, timestamp: Float) -> void
-
-        def to_hash: -> { number: Float, timestamp: Float }
-      end
 
       type type_ = :"wallet.funds_deposited"
 

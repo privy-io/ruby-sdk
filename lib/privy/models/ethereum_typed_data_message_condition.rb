@@ -20,9 +20,11 @@ module Privy
       required :operator, enum: -> { Privy::ConditionOperator }
 
       # @!attribute typed_data
+      #   The typed data structure containing EIP-712 types and the primary type for typed
+      #   data message policy conditions.
       #
-      #   @return [Privy::Models::EthereumTypedDataMessageCondition::TypedData]
-      required :typed_data, -> { Privy::EthereumTypedDataMessageCondition::TypedData }
+      #   @return [Privy::Models::TypedDataInput]
+      required :typed_data, -> { Privy::TypedDataInput }
 
       # @!attribute value
       #   Value to compare against in a policy condition. Can be a single string or an
@@ -44,7 +46,7 @@ module Privy
       #
       #   @param operator [Symbol, Privy::Models::ConditionOperator] Operator to use for policy conditions.
       #
-      #   @param typed_data [Privy::Models::EthereumTypedDataMessageCondition::TypedData]
+      #   @param typed_data [Privy::Models::TypedDataInput] The typed data structure containing EIP-712 types and the primary type for typed
       #
       #   @param value [String, Array<String>] Value to compare against in a policy condition. Can be a single string or an arr
 
@@ -56,26 +58,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::EthereumTypedDataMessageCondition#typed_data
-      class TypedData < Privy::Internal::Type::BaseModel
-        # @!attribute primary_type
-        #
-        #   @return [String]
-        required :primary_type, String
-
-        # @!attribute types
-        #   The type definitions for EIP-712 typed data signing.
-        #
-        #   @return [Hash{Symbol=>Array<Privy::Models::TypedDataTypeFieldInput>}]
-        required :types,
-                 -> { Privy::Internal::Type::HashOf[Privy::Internal::Type::ArrayOf[Privy::TypedDataTypeFieldInput]] }
-
-        # @!method initialize(primary_type:, types:)
-        #   @param primary_type [String]
-        #
-        #   @param types [Hash{Symbol=>Array<Privy::Models::TypedDataTypeFieldInput>}] The type definitions for EIP-712 typed data signing.
       end
     end
   end

@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type app_allowlist_config =
+      {
+        cta_link: String?,
+        cta_text: String?,
+        error_detail: String?,
+        error_title: String?
+      }
+
+    class AppAllowlistConfig < Privy::Internal::Type::BaseModel
+      attr_accessor cta_link: String?
+
+      attr_accessor cta_text: String?
+
+      attr_accessor error_detail: String?
+
+      attr_accessor error_title: String?
+
+      def initialize: (
+        cta_link: String?,
+        cta_text: String?,
+        error_detail: String?,
+        error_title: String?
+      ) -> void
+
+      def to_hash: -> {
+        cta_link: String?,
+        cta_text: String?,
+        error_detail: String?,
+        error_title: String?
+      }
+    end
+  end
+end

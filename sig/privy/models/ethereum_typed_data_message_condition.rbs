@@ -5,7 +5,7 @@ module Privy
         field: String,
         field_source: Privy::Models::EthereumTypedDataMessageCondition::field_source,
         operator: Privy::Models::condition_operator,
-        typed_data: Privy::EthereumTypedDataMessageCondition::TypedData,
+        typed_data: Privy::TypedDataInput,
         value: Privy::Models::condition_value
       }
 
@@ -16,7 +16,7 @@ module Privy
 
       attr_accessor operator: Privy::Models::condition_operator
 
-      attr_accessor typed_data: Privy::EthereumTypedDataMessageCondition::TypedData
+      attr_accessor typed_data: Privy::TypedDataInput
 
       attr_accessor value: Privy::Models::condition_value
 
@@ -24,7 +24,7 @@ module Privy
         field: String,
         field_source: Privy::Models::EthereumTypedDataMessageCondition::field_source,
         operator: Privy::Models::condition_operator,
-        typed_data: Privy::EthereumTypedDataMessageCondition::TypedData,
+        typed_data: Privy::TypedDataInput,
         value: Privy::Models::condition_value
       ) -> void
 
@@ -32,7 +32,7 @@ module Privy
         field: String,
         field_source: Privy::Models::EthereumTypedDataMessageCondition::field_source,
         operator: Privy::Models::condition_operator,
-        typed_data: Privy::EthereumTypedDataMessageCondition::TypedData,
+        typed_data: Privy::TypedDataInput,
         value: Privy::Models::condition_value
       }
 
@@ -44,28 +44,6 @@ module Privy
         ETHEREUM_TYPED_DATA_MESSAGE: :ethereum_typed_data_message
 
         def self?.values: -> ::Array[Privy::Models::EthereumTypedDataMessageCondition::field_source]
-      end
-
-      type typed_data =
-        {
-          primary_type: String,
-          types: Privy::Models::typed_data_types_input_params
-        }
-
-      class TypedData < Privy::Internal::Type::BaseModel
-        attr_accessor primary_type: String
-
-        attr_accessor types: Privy::Models::typed_data_types_input_params
-
-        def initialize: (
-          primary_type: String,
-          types: Privy::Models::typed_data_types_input_params
-        ) -> void
-
-        def to_hash: -> {
-          primary_type: String,
-          types: Privy::Models::typed_data_types_input_params
-        }
       end
     end
   end

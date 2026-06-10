@@ -4,9 +4,10 @@ module Privy
   module Models
     class EthereumYieldPositionResponse < Privy::Internal::Type::BaseModel
       # @!attribute asset
+      #   The underlying token of a vault position.
       #
-      #   @return [Privy::Models::EthereumYieldPositionResponse::Asset]
-      required :asset, -> { Privy::EthereumYieldPositionResponse::Asset }
+      #   @return [Privy::Models::VaultAsset]
+      required :asset, -> { Privy::VaultAsset }
 
       # @!attribute assets_in_vault
       #   Current asset value in the vault (realtime from ERC4626), in smallest unit.
@@ -35,7 +36,7 @@ module Privy
       # @!method initialize(asset:, assets_in_vault:, shares_in_vault:, total_deposited:, total_withdrawn:)
       #   A user's position in a yield vault.
       #
-      #   @param asset [Privy::Models::EthereumYieldPositionResponse::Asset]
+      #   @param asset [Privy::Models::VaultAsset] The underlying token of a vault position.
       #
       #   @param assets_in_vault [String] Current asset value in the vault (realtime from ERC4626), in smallest unit.
       #
@@ -44,26 +45,6 @@ module Privy
       #   @param total_deposited [String] Total amount deposited into the vault, in smallest unit.
       #
       #   @param total_withdrawn [String] Total amount withdrawn from the vault, in smallest unit.
-
-      # @see Privy::Models::EthereumYieldPositionResponse#asset
-      class Asset < Privy::Internal::Type::BaseModel
-        # @!attribute address
-        #   Token contract address.
-        #
-        #   @return [String]
-        required :address, String
-
-        # @!attribute symbol
-        #   Token symbol (e.g., "USDC").
-        #
-        #   @return [String]
-        required :symbol, String
-
-        # @!method initialize(address:, symbol:)
-        #   @param address [String] Token contract address.
-        #
-        #   @param symbol [String] Token symbol (e.g., "USDC").
-      end
     end
   end
 end

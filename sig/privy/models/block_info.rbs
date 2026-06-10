@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type block_info = { number: Float, timestamp: Float }
+
+    class BlockInfo < Privy::Internal::Type::BaseModel
+      attr_accessor number: Float
+
+      attr_accessor timestamp: Float
+
+      def initialize: (number: Float, timestamp: Float) -> void
+
+      def to_hash: -> { number: Float, timestamp: Float }
+    end
+  end
+end

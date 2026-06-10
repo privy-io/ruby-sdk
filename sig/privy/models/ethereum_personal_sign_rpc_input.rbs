@@ -5,7 +5,9 @@ module Privy
         method_: Privy::Models::EthereumPersonalSignRpcInput::method_,
         params: Privy::EthereumPersonalSignRpcInputParams,
         address: String,
+        :caip2 => String,
         chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type,
+        signature_options: Privy::SignatureOptions,
         wallet_id: String
       }
 
@@ -18,11 +20,21 @@ module Privy
 
       def address=: (String) -> String
 
+      attr_reader caip2: String?
+
+      def caip2=: (String) -> String
+
       attr_reader chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type?
 
       def chain_type=: (
         Privy::Models::EthereumPersonalSignRpcInput::chain_type
       ) -> Privy::Models::EthereumPersonalSignRpcInput::chain_type
+
+      attr_reader signature_options: Privy::SignatureOptions?
+
+      def signature_options=: (
+        Privy::SignatureOptions
+      ) -> Privy::SignatureOptions
 
       attr_reader wallet_id: String?
 
@@ -32,7 +44,9 @@ module Privy
         method_: Privy::Models::EthereumPersonalSignRpcInput::method_,
         params: Privy::EthereumPersonalSignRpcInputParams,
         ?address: String,
+        ?caip2: String,
         ?chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type,
+        ?signature_options: Privy::SignatureOptions,
         ?wallet_id: String
       ) -> void
 
@@ -40,7 +54,9 @@ module Privy
         method_: Privy::Models::EthereumPersonalSignRpcInput::method_,
         params: Privy::EthereumPersonalSignRpcInputParams,
         address: String,
+        :caip2 => String,
         chain_type: Privy::Models::EthereumPersonalSignRpcInput::chain_type,
+        signature_options: Privy::SignatureOptions,
         wallet_id: String
       }
 

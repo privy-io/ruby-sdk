@@ -20,12 +20,8 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :destination_network
 
-      # Fee breakdown for a Stripe onramp transaction.
-      sig { returns(T.nilable(Privy::OnrampSessionFees)) }
-      attr_reader :fees
-
-      sig { params(fees: T.nilable(Privy::OnrampSessionFees::OrHash)).void }
-      attr_writer :fees
+      sig { returns(T.nilable(String)) }
+      attr_accessor :fee
 
       sig { returns(T.nilable(String)) }
       attr_accessor :source_currency
@@ -33,25 +29,29 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :source_total_amount
 
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :quote_expiration
+
       # Transaction details returned from a Stripe onramp session.
       sig do
         params(
           destination_amount: T.nilable(String),
           destination_currency: T.nilable(String),
           destination_network: T.nilable(String),
-          fees: T.nilable(Privy::OnrampSessionFees::OrHash),
+          fee: T.nilable(String),
           source_currency: T.nilable(String),
-          source_total_amount: T.nilable(String)
+          source_total_amount: T.nilable(String),
+          quote_expiration: T.nilable(Float)
         ).returns(T.attached_class)
       end
       def self.new(
         destination_amount:,
         destination_currency:,
         destination_network:,
-        # Fee breakdown for a Stripe onramp transaction.
-        fees:,
+        fee:,
         source_currency:,
-        source_total_amount:
+        source_total_amount:,
+        quote_expiration: nil
       )
       end
 
@@ -61,9 +61,10 @@ module Privy
             destination_amount: T.nilable(String),
             destination_currency: T.nilable(String),
             destination_network: T.nilable(String),
-            fees: T.nilable(Privy::OnrampSessionFees),
+            fee: T.nilable(String),
             source_currency: T.nilable(String),
-            source_total_amount: T.nilable(String)
+            source_total_amount: T.nilable(String),
+            quote_expiration: T.nilable(Float)
           }
         )
       end

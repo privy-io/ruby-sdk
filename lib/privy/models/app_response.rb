@@ -30,9 +30,10 @@ module Privy
       required :allowed_native_app_url_schemes, Privy::Internal::Type::ArrayOf[String]
 
       # @!attribute allowlist_config
+      #   Configuration for the allowlist error page shown to users not on the allowlist.
       #
-      #   @return [Privy::Models::AppResponse::AllowlistConfig]
-      required :allowlist_config, -> { Privy::AppResponse::AllowlistConfig }
+      #   @return [Privy::Models::AppAllowlistConfig]
+      required :allowlist_config, -> { Privy::AppAllowlistConfig }
 
       # @!attribute allowlist_enabled
       #
@@ -61,9 +62,8 @@ module Privy
 
       # @!attribute custom_oauth_providers
       #
-      #   @return [Array<Privy::Models::AppResponse::CustomOAuthProvider>]
-      required :custom_oauth_providers,
-               -> { Privy::Internal::Type::ArrayOf[Privy::AppResponse::CustomOAuthProvider] }
+      #   @return [Array<Privy::Models::AppCustomOAuthProvider>]
+      required :custom_oauth_providers, -> { Privy::Internal::Type::ArrayOf[Privy::AppCustomOAuthProvider] }
 
       # @!attribute data_classification
       #   Indicates that this response contains only publicly accessible data, not a
@@ -317,7 +317,7 @@ module Privy
       #
       #   @param allowed_native_app_url_schemes [Array<String>]
       #
-      #   @param allowlist_config [Privy::Models::AppResponse::AllowlistConfig]
+      #   @param allowlist_config [Privy::Models::AppAllowlistConfig] Configuration for the allowlist error page shown to users not on the allowlist.
       #
       #   @param allowlist_enabled [Boolean]
       #
@@ -329,7 +329,7 @@ module Privy
       #
       #   @param custom_jwt_auth [Boolean]
       #
-      #   @param custom_oauth_providers [Array<Privy::Models::AppResponse::CustomOAuthProvider>]
+      #   @param custom_oauth_providers [Array<Privy::Models::AppCustomOAuthProvider>]
       #
       #   @param data_classification [Symbol, Privy::Models::AppResponse::DataClassification] Indicates that this response contains only publicly accessible data, not a privi
       #
@@ -422,71 +422,6 @@ module Privy
       #   @param funding_config [Privy::Models::FundingConfigResponseSchema] Configuration for funding and on-ramp options.
       #
       #   @param telegram_auth_config [Privy::Models::TelegramAuthConfigSchema] Configuration for Telegram authentication.
-
-      # @see Privy::Models::AppResponse#allowlist_config
-      class AllowlistConfig < Privy::Internal::Type::BaseModel
-        # @!attribute cta_link
-        #
-        #   @return [String, nil]
-        required :cta_link, String, nil?: true
-
-        # @!attribute cta_text
-        #
-        #   @return [String, nil]
-        required :cta_text, String, nil?: true
-
-        # @!attribute error_detail
-        #
-        #   @return [String, nil]
-        required :error_detail, String, nil?: true
-
-        # @!attribute error_title
-        #
-        #   @return [String, nil]
-        required :error_title, String, nil?: true
-
-        # @!method initialize(cta_link:, cta_text:, error_detail:, error_title:)
-        #   @param cta_link [String, nil]
-        #   @param cta_text [String, nil]
-        #   @param error_detail [String, nil]
-        #   @param error_title [String, nil]
-      end
-
-      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
-        # @!attribute enabled
-        #
-        #   @return [Boolean]
-        required :enabled, Privy::Internal::Type::Boolean
-
-        # @!attribute provider
-        #   The ID of a custom OAuth provider, set up for this app. Must start with
-        #   "custom:".
-        #
-        #   @return [String]
-        required :provider, String
-
-        # @!attribute provider_display_name
-        #
-        #   @return [String]
-        required :provider_display_name, String
-
-        # @!attribute provider_icon_url
-        #
-        #   @return [String]
-        required :provider_icon_url, String
-
-        # @!method initialize(enabled:, provider:, provider_display_name:, provider_icon_url:)
-        #   Some parameter documentations has been truncated, see
-        #   {Privy::Models::AppResponse::CustomOAuthProvider} for more details.
-        #
-        #   @param enabled [Boolean]
-        #
-        #   @param provider [String] The ID of a custom OAuth provider, set up for this app. Must start with "custom:
-        #
-        #   @param provider_display_name [String]
-        #
-        #   @param provider_icon_url [String]
-      end
 
       # Indicates that this response contains only publicly accessible data, not a
       # privileged resource

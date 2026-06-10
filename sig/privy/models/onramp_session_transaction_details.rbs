@@ -5,9 +5,10 @@ module Privy
         destination_amount: String?,
         destination_currency: String?,
         destination_network: String?,
-        fees: Privy::OnrampSessionFees?,
+        fee: String?,
         source_currency: String?,
-        source_total_amount: String?
+        source_total_amount: String?,
+        quote_expiration: Float?
       }
 
     class OnrampSessionTransactionDetails < Privy::Internal::Type::BaseModel
@@ -17,28 +18,32 @@ module Privy
 
       attr_accessor destination_network: String?
 
-      attr_accessor fees: Privy::OnrampSessionFees?
+      attr_accessor fee: String?
 
       attr_accessor source_currency: String?
 
       attr_accessor source_total_amount: String?
 
+      attr_accessor quote_expiration: Float?
+
       def initialize: (
         destination_amount: String?,
         destination_currency: String?,
         destination_network: String?,
-        fees: Privy::OnrampSessionFees?,
+        fee: String?,
         source_currency: String?,
-        source_total_amount: String?
+        source_total_amount: String?,
+        ?quote_expiration: Float?
       ) -> void
 
       def to_hash: -> {
         destination_amount: String?,
         destination_currency: String?,
         destination_network: String?,
-        fees: Privy::OnrampSessionFees?,
+        fee: String?,
         source_currency: String?,
-        source_total_amount: String?
+        source_total_amount: String?,
+        quote_expiration: Float?
       }
     end
   end

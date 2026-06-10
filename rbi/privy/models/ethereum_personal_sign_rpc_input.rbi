@@ -26,6 +26,13 @@ module Privy
       sig { params(address: String).void }
       attr_writer :address
 
+      # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      sig { returns(T.nilable(String)) }
+      attr_reader :caip2
+
+      sig { params(caip2: String).void }
+      attr_writer :caip2
+
       sig do
         returns(
           T.nilable(Privy::EthereumPersonalSignRpcInput::ChainType::OrSymbol)
@@ -40,6 +47,14 @@ module Privy
       end
       attr_writer :chain_type
 
+      # Options controlling signature production for personal_sign and
+      # eth_signTypedData_v4.
+      sig { returns(T.nilable(Privy::SignatureOptions)) }
+      attr_reader :signature_options
+
+      sig { params(signature_options: Privy::SignatureOptions::OrHash).void }
+      attr_writer :signature_options
+
       sig { returns(T.nilable(String)) }
       attr_reader :wallet_id
 
@@ -52,7 +67,9 @@ module Privy
           method_: Privy::EthereumPersonalSignRpcInput::Method::OrSymbol,
           params: Privy::EthereumPersonalSignRpcInputParams::OrHash,
           address: String,
+          caip2: String,
           chain_type: Privy::EthereumPersonalSignRpcInput::ChainType::OrSymbol,
+          signature_options: Privy::SignatureOptions::OrHash,
           wallet_id: String
         ).returns(T.attached_class)
       end
@@ -61,7 +78,12 @@ module Privy
         # Parameters for the EVM `personal_sign` RPC.
         params:,
         address: nil,
+        # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+        caip2: nil,
         chain_type: nil,
+        # Options controlling signature production for personal_sign and
+        # eth_signTypedData_v4.
+        signature_options: nil,
         wallet_id: nil
       )
       end
@@ -72,8 +94,10 @@ module Privy
             method_: Privy::EthereumPersonalSignRpcInput::Method::OrSymbol,
             params: Privy::EthereumPersonalSignRpcInputParams,
             address: String,
+            caip2: String,
             chain_type:
               Privy::EthereumPersonalSignRpcInput::ChainType::OrSymbol,
+            signature_options: Privy::SignatureOptions,
             wallet_id: String
           }
         )
