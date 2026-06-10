@@ -3,7 +3,7 @@ module Privy
     type key_quorum =
       {
         id: String,
-        authorization_keys: ::Array[Privy::KeyQuorum::AuthorizationKey],
+        authorization_keys: ::Array[Privy::AuthorizationKey],
         authorization_threshold: Float?,
         display_name: String?,
         user_ids: ::Array[String]?,
@@ -13,7 +13,7 @@ module Privy
     class KeyQuorum < Privy::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor authorization_keys: ::Array[Privy::KeyQuorum::AuthorizationKey]
+      attr_accessor authorization_keys: ::Array[Privy::AuthorizationKey]
 
       attr_accessor authorization_threshold: Float?
 
@@ -27,7 +27,7 @@ module Privy
 
       def initialize: (
         id: String,
-        authorization_keys: ::Array[Privy::KeyQuorum::AuthorizationKey],
+        authorization_keys: ::Array[Privy::AuthorizationKey],
         authorization_threshold: Float?,
         display_name: String?,
         user_ids: ::Array[String]?,
@@ -36,24 +36,12 @@ module Privy
 
       def to_hash: -> {
         id: String,
-        authorization_keys: ::Array[Privy::KeyQuorum::AuthorizationKey],
+        authorization_keys: ::Array[Privy::AuthorizationKey],
         authorization_threshold: Float?,
         display_name: String?,
         user_ids: ::Array[String]?,
         key_quorum_ids: ::Array[String]
       }
-
-      type authorization_key = { display_name: String?, public_key: String }
-
-      class AuthorizationKey < Privy::Internal::Type::BaseModel
-        attr_accessor display_name: String?
-
-        attr_accessor public_key: String
-
-        def initialize: (display_name: String?, public_key: String) -> void
-
-        def to_hash: -> { display_name: String?, public_key: String }
-      end
     end
   end
 end

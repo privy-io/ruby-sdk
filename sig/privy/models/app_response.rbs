@@ -7,13 +7,13 @@ module Privy
         allowed_domains: ::Array[String],
         allowed_native_app_ids: ::Array[String],
         allowed_native_app_url_schemes: ::Array[String],
-        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_config: Privy::AppAllowlistConfig,
         allowlist_enabled: bool,
         apple_oauth: bool,
         captcha_enabled: bool,
         custom_api_url: String?,
         custom_jwt_auth: bool,
-        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider],
         data_classification: Privy::Models::AppResponse::data_classification,
         disable_plus_emails: bool,
         discord_oauth: bool,
@@ -73,7 +73,7 @@ module Privy
 
       attr_accessor allowed_native_app_url_schemes: ::Array[String]
 
-      attr_accessor allowlist_config: Privy::AppResponse::AllowlistConfig
+      attr_accessor allowlist_config: Privy::AppAllowlistConfig
 
       attr_accessor allowlist_enabled: bool
 
@@ -85,7 +85,7 @@ module Privy
 
       attr_accessor custom_jwt_auth: bool
 
-      attr_accessor custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider]
+      attr_accessor custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider]
 
       attr_accessor data_classification: Privy::Models::AppResponse::data_classification
 
@@ -195,13 +195,13 @@ module Privy
         allowed_domains: ::Array[String],
         allowed_native_app_ids: ::Array[String],
         allowed_native_app_url_schemes: ::Array[String],
-        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_config: Privy::AppAllowlistConfig,
         allowlist_enabled: bool,
         apple_oauth: bool,
         captcha_enabled: bool,
         custom_api_url: String?,
         custom_jwt_auth: bool,
-        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider],
         data_classification: Privy::Models::AppResponse::data_classification,
         disable_plus_emails: bool,
         discord_oauth: bool,
@@ -256,13 +256,13 @@ module Privy
         allowed_domains: ::Array[String],
         allowed_native_app_ids: ::Array[String],
         allowed_native_app_url_schemes: ::Array[String],
-        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_config: Privy::AppAllowlistConfig,
         allowlist_enabled: bool,
         apple_oauth: bool,
         captcha_enabled: bool,
         custom_api_url: String?,
         custom_jwt_auth: bool,
-        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider],
         data_classification: Privy::Models::AppResponse::data_classification,
         disable_plus_emails: bool,
         discord_oauth: bool,
@@ -310,70 +310,6 @@ module Privy
         funding_config: Privy::FundingConfigResponseSchema,
         telegram_auth_config: Privy::TelegramAuthConfigSchema
       }
-
-      type allowlist_config =
-        {
-          cta_link: String?,
-          cta_text: String?,
-          error_detail: String?,
-          error_title: String?
-        }
-
-      class AllowlistConfig < Privy::Internal::Type::BaseModel
-        attr_accessor cta_link: String?
-
-        attr_accessor cta_text: String?
-
-        attr_accessor error_detail: String?
-
-        attr_accessor error_title: String?
-
-        def initialize: (
-          cta_link: String?,
-          cta_text: String?,
-          error_detail: String?,
-          error_title: String?
-        ) -> void
-
-        def to_hash: -> {
-          cta_link: String?,
-          cta_text: String?,
-          error_detail: String?,
-          error_title: String?
-        }
-      end
-
-      type custom_oauth_provider =
-        {
-          enabled: bool,
-          provider: String,
-          provider_display_name: String,
-          provider_icon_url: String
-        }
-
-      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
-        attr_accessor enabled: bool
-
-        attr_accessor provider: String
-
-        attr_accessor provider_display_name: String
-
-        attr_accessor provider_icon_url: String
-
-        def initialize: (
-          enabled: bool,
-          provider: String,
-          provider_display_name: String,
-          provider_icon_url: String
-        ) -> void
-
-        def to_hash: -> {
-          enabled: bool,
-          provider: String,
-          provider_display_name: String,
-          provider_icon_url: String
-        }
-      end
 
       type data_classification = :public
 

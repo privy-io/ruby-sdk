@@ -21,14 +21,11 @@ module Privy
       sig { returns(T::Array[String]) }
       attr_accessor :allowed_native_app_url_schemes
 
-      sig { returns(Privy::AppResponse::AllowlistConfig) }
+      # Configuration for the allowlist error page shown to users not on the allowlist.
+      sig { returns(Privy::AppAllowlistConfig) }
       attr_reader :allowlist_config
 
-      sig do
-        params(
-          allowlist_config: Privy::AppResponse::AllowlistConfig::OrHash
-        ).void
-      end
+      sig { params(allowlist_config: Privy::AppAllowlistConfig::OrHash).void }
       attr_writer :allowlist_config
 
       sig { returns(T::Boolean) }
@@ -46,7 +43,7 @@ module Privy
       sig { returns(T::Boolean) }
       attr_accessor :custom_jwt_auth
 
-      sig { returns(T::Array[Privy::AppResponse::CustomOAuthProvider]) }
+      sig { returns(T::Array[Privy::AppCustomOAuthProvider]) }
       attr_accessor :custom_oauth_providers
 
       # Indicates that this response contains only publicly accessible data, not a
@@ -227,14 +224,14 @@ module Privy
           allowed_domains: T::Array[String],
           allowed_native_app_ids: T::Array[String],
           allowed_native_app_url_schemes: T::Array[String],
-          allowlist_config: Privy::AppResponse::AllowlistConfig::OrHash,
+          allowlist_config: Privy::AppAllowlistConfig::OrHash,
           allowlist_enabled: T::Boolean,
           apple_oauth: T::Boolean,
           captcha_enabled: T::Boolean,
           custom_api_url: T.nilable(String),
           custom_jwt_auth: T::Boolean,
           custom_oauth_providers:
-            T::Array[Privy::AppResponse::CustomOAuthProvider::OrHash],
+            T::Array[Privy::AppCustomOAuthProvider::OrHash],
           data_classification: Privy::AppResponse::DataClassification::OrSymbol,
           disable_plus_emails: T::Boolean,
           discord_oauth: T::Boolean,
@@ -294,6 +291,7 @@ module Privy
         allowed_domains:,
         allowed_native_app_ids:,
         allowed_native_app_url_schemes:,
+        # Configuration for the allowlist error page shown to users not on the allowlist.
         allowlist_config:,
         allowlist_enabled:,
         apple_oauth:,
@@ -364,14 +362,13 @@ module Privy
             allowed_domains: T::Array[String],
             allowed_native_app_ids: T::Array[String],
             allowed_native_app_url_schemes: T::Array[String],
-            allowlist_config: Privy::AppResponse::AllowlistConfig,
+            allowlist_config: Privy::AppAllowlistConfig,
             allowlist_enabled: T::Boolean,
             apple_oauth: T::Boolean,
             captcha_enabled: T::Boolean,
             custom_api_url: T.nilable(String),
             custom_jwt_auth: T::Boolean,
-            custom_oauth_providers:
-              T::Array[Privy::AppResponse::CustomOAuthProvider],
+            custom_oauth_providers: T::Array[Privy::AppCustomOAuthProvider],
             data_classification:
               Privy::AppResponse::DataClassification::TaggedSymbol,
             disable_plus_emails: T::Boolean,
@@ -426,104 +423,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class AllowlistConfig < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Privy::AppResponse::AllowlistConfig, Privy::Internal::AnyHash)
-          end
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :cta_link
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :cta_text
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :error_detail
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :error_title
-
-        sig do
-          params(
-            cta_link: T.nilable(String),
-            cta_text: T.nilable(String),
-            error_detail: T.nilable(String),
-            error_title: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(cta_link:, cta_text:, error_detail:, error_title:)
-        end
-
-        sig do
-          override.returns(
-            {
-              cta_link: T.nilable(String),
-              cta_text: T.nilable(String),
-              error_detail: T.nilable(String),
-              error_title: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::AppResponse::CustomOAuthProvider,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T::Boolean) }
-        attr_accessor :enabled
-
-        # The ID of a custom OAuth provider, set up for this app. Must start with
-        # "custom:".
-        sig { returns(String) }
-        attr_accessor :provider
-
-        sig { returns(String) }
-        attr_accessor :provider_display_name
-
-        sig { returns(String) }
-        attr_accessor :provider_icon_url
-
-        sig do
-          params(
-            enabled: T::Boolean,
-            provider: String,
-            provider_display_name: String,
-            provider_icon_url: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          enabled:,
-          # The ID of a custom OAuth provider, set up for this app. Must start with
-          # "custom:".
-          provider:,
-          provider_display_name:,
-          provider_icon_url:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              enabled: T::Boolean,
-              provider: String,
-              provider_display_name: String,
-              provider_icon_url: String
-            }
-          )
-        end
-        def to_hash
-        end
       end
 
       # Indicates that this response contains only publicly accessible data, not a

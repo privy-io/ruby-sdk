@@ -9,7 +9,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
-      sig { returns(T::Array[Privy::KeyQuorum::AuthorizationKey]) }
+      sig { returns(T::Array[Privy::AuthorizationKey]) }
       attr_accessor :authorization_keys
 
       sig { returns(T.nilable(Float)) }
@@ -32,8 +32,7 @@ module Privy
       sig do
         params(
           id: String,
-          authorization_keys:
-            T::Array[Privy::KeyQuorum::AuthorizationKey::OrHash],
+          authorization_keys: T::Array[Privy::AuthorizationKey::OrHash],
           authorization_threshold: T.nilable(Float),
           display_name: T.nilable(String),
           user_ids: T.nilable(T::Array[String]),
@@ -55,7 +54,7 @@ module Privy
         override.returns(
           {
             id: String,
-            authorization_keys: T::Array[Privy::KeyQuorum::AuthorizationKey],
+            authorization_keys: T::Array[Privy::AuthorizationKey],
             authorization_threshold: T.nilable(Float),
             display_name: T.nilable(String),
             user_ids: T.nilable(T::Array[String]),
@@ -64,35 +63,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class AuthorizationKey < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Privy::KeyQuorum::AuthorizationKey, Privy::Internal::AnyHash)
-          end
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :display_name
-
-        sig { returns(String) }
-        attr_accessor :public_key
-
-        sig do
-          params(display_name: T.nilable(String), public_key: String).returns(
-            T.attached_class
-          )
-        end
-        def self.new(display_name:, public_key:)
-        end
-
-        sig do
-          override.returns(
-            { display_name: T.nilable(String), public_key: String }
-          )
-        end
-        def to_hash
-        end
       end
     end
   end

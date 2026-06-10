@@ -18,11 +18,10 @@ module Privy
       #   @return [String, nil]
       required :destination_network, String, nil?: true
 
-      # @!attribute fees
-      #   Fee breakdown for a Stripe onramp transaction.
+      # @!attribute fee
       #
-      #   @return [Privy::Models::OnrampSessionFees, nil]
-      required :fees, -> { Privy::OnrampSessionFees }, nil?: true
+      #   @return [String, nil]
+      required :fee, String, nil?: true
 
       # @!attribute source_currency
       #
@@ -34,20 +33,21 @@ module Privy
       #   @return [String, nil]
       required :source_total_amount, String, nil?: true
 
-      # @!method initialize(destination_amount:, destination_currency:, destination_network:, fees:, source_currency:, source_total_amount:)
+      # @!attribute quote_expiration
+      #
+      #   @return [Float, nil]
+      optional :quote_expiration, Float, nil?: true
+
+      # @!method initialize(destination_amount:, destination_currency:, destination_network:, fee:, source_currency:, source_total_amount:, quote_expiration: nil)
       #   Transaction details returned from a Stripe onramp session.
       #
       #   @param destination_amount [String, nil]
-      #
       #   @param destination_currency [String, nil]
-      #
       #   @param destination_network [String, nil]
-      #
-      #   @param fees [Privy::Models::OnrampSessionFees, nil] Fee breakdown for a Stripe onramp transaction.
-      #
+      #   @param fee [String, nil]
       #   @param source_currency [String, nil]
-      #
       #   @param source_total_amount [String, nil]
+      #   @param quote_expiration [Float, nil]
     end
   end
 end

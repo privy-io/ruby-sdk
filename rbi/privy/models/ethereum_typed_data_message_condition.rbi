@@ -23,15 +23,12 @@ module Privy
       sig { returns(Privy::ConditionOperator::OrSymbol) }
       attr_accessor :operator
 
-      sig { returns(Privy::EthereumTypedDataMessageCondition::TypedData) }
+      # The typed data structure containing EIP-712 types and the primary type for typed
+      # data message policy conditions.
+      sig { returns(Privy::TypedDataInput) }
       attr_reader :typed_data
 
-      sig do
-        params(
-          typed_data:
-            Privy::EthereumTypedDataMessageCondition::TypedData::OrHash
-        ).void
-      end
+      sig { params(typed_data: Privy::TypedDataInput::OrHash).void }
       attr_writer :typed_data
 
       # Value to compare against in a policy condition. Can be a single string or an
@@ -47,8 +44,7 @@ module Privy
           field_source:
             Privy::EthereumTypedDataMessageCondition::FieldSource::OrSymbol,
           operator: Privy::ConditionOperator::OrSymbol,
-          typed_data:
-            Privy::EthereumTypedDataMessageCondition::TypedData::OrHash,
+          typed_data: Privy::TypedDataInput::OrHash,
           value: Privy::ConditionValue::Variants
         ).returns(T.attached_class)
       end
@@ -57,6 +53,8 @@ module Privy
         field_source:,
         # Operator to use for policy conditions.
         operator:,
+        # The typed data structure containing EIP-712 types and the primary type for typed
+        # data message policy conditions.
         typed_data:,
         # Value to compare against in a policy condition. Can be a single string or an
         # array of strings.
@@ -71,7 +69,7 @@ module Privy
             field_source:
               Privy::EthereumTypedDataMessageCondition::FieldSource::OrSymbol,
             operator: Privy::ConditionOperator::OrSymbol,
-            typed_data: Privy::EthereumTypedDataMessageCondition::TypedData,
+            typed_data: Privy::TypedDataInput,
             value: Privy::ConditionValue::Variants
           }
         )
@@ -102,50 +100,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class TypedData < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::EthereumTypedDataMessageCondition::TypedData,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :primary_type
-
-        # The type definitions for EIP-712 typed data signing.
-        sig do
-          returns(T::Hash[Symbol, T::Array[Privy::TypedDataTypeFieldInput]])
-        end
-        attr_accessor :types
-
-        sig do
-          params(
-            primary_type: String,
-            types:
-              T::Hash[Symbol, T::Array[Privy::TypedDataTypeFieldInput::OrHash]]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          primary_type:,
-          # The type definitions for EIP-712 typed data signing.
-          types:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              primary_type: String,
-              types: T::Hash[Symbol, T::Array[Privy::TypedDataTypeFieldInput]]
-            }
-          )
-        end
-        def to_hash
         end
       end
     end

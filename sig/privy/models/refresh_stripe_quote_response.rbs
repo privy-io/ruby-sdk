@@ -1,13 +1,35 @@
 module Privy
   module Models
-    type refresh_stripe_quote_response = { quote: Privy::StripeQuote }
+    type refresh_stripe_quote_response =
+      {
+        destination_amount: String?,
+        fee: String?,
+        quote_expiration: Float?,
+        source_total_amount: String?
+      }
 
     class RefreshStripeQuoteResponse < Privy::Internal::Type::BaseModel
-      attr_accessor quote: Privy::StripeQuote
+      attr_accessor destination_amount: String?
 
-      def initialize: (quote: Privy::StripeQuote) -> void
+      attr_accessor fee: String?
 
-      def to_hash: -> { quote: Privy::StripeQuote }
+      attr_accessor quote_expiration: Float?
+
+      attr_accessor source_total_amount: String?
+
+      def initialize: (
+        destination_amount: String?,
+        fee: String?,
+        quote_expiration: Float?,
+        source_total_amount: String?
+      ) -> void
+
+      def to_hash: -> {
+        destination_amount: String?,
+        fee: String?,
+        quote_expiration: Float?,
+        source_total_amount: String?
+      }
     end
   end
 end

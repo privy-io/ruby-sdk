@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type app_custom_oauth_provider =
+      {
+        enabled: bool,
+        provider: String,
+        provider_display_name: String,
+        provider_icon_url: String
+      }
+
+    class AppCustomOAuthProvider < Privy::Internal::Type::BaseModel
+      attr_accessor enabled: bool
+
+      attr_accessor provider: String
+
+      attr_accessor provider_display_name: String
+
+      attr_accessor provider_icon_url: String
+
+      def initialize: (
+        enabled: bool,
+        provider: String,
+        provider_display_name: String,
+        provider_icon_url: String
+      ) -> void
+
+      def to_hash: -> {
+        enabled: bool,
+        provider: String,
+        provider_display_name: String,
+        provider_icon_url: String
+      }
+    end
+  end
+end

@@ -24,7 +24,7 @@ module Privy
       #     puts(params)
       #   in {method_: :eth_sendTransaction, caip2: caip2, params: params, address: address}
       #     puts(caip2)
-      #   in {method_: :personal_sign, params: params, address: address, chain_type: chain_type}
+      #   in {method_: :personal_sign, params: params, address: address, caip2: caip2}
       #     puts(address)
       #   else
       #     puts(ethereum_rpc_input)

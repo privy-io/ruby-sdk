@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type signature_type = :ecdsa | :erc1271
+
+    module SignatureType
+      extend Privy::Internal::Type::Enum
+
+      ECDSA: :ecdsa
+      ERC1271: :erc1271
+
+      def self?.values: -> ::Array[Privy::Models::signature_type]
+    end
+  end
+end
