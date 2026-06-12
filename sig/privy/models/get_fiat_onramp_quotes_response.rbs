@@ -2,11 +2,17 @@ module Privy
   module Models
     type get_fiat_onramp_quotes_response =
       {
+        destination_currency_icon_url: String?,
+        destination_network_icon_url: String?,
         quotes: ::Array[Privy::FiatOnrampQuote],
         provider_errors: ::Array[Privy::FiatOnrampProviderError]
       }
 
     class GetFiatOnrampQuotesResponse < Privy::Internal::Type::BaseModel
+      attr_accessor destination_currency_icon_url: String?
+
+      attr_accessor destination_network_icon_url: String?
+
       attr_accessor quotes: ::Array[Privy::FiatOnrampQuote]
 
       attr_reader provider_errors: ::Array[Privy::FiatOnrampProviderError]?
@@ -16,11 +22,15 @@ module Privy
       ) -> ::Array[Privy::FiatOnrampProviderError]
 
       def initialize: (
+        destination_currency_icon_url: String?,
+        destination_network_icon_url: String?,
         quotes: ::Array[Privy::FiatOnrampQuote],
         ?provider_errors: ::Array[Privy::FiatOnrampProviderError]
       ) -> void
 
       def to_hash: -> {
+        destination_currency_icon_url: String?,
+        destination_network_icon_url: String?,
         quotes: ::Array[Privy::FiatOnrampQuote],
         provider_errors: ::Array[Privy::FiatOnrampProviderError]
       }

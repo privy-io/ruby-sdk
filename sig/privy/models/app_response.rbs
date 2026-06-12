@@ -21,6 +21,7 @@ module Privy
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
         enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
         enforce_wallet_uis: bool,
+        external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
         farcaster_link_wallets_enabled: bool,
         fiat_on_ramp_enabled: bool,
@@ -101,6 +102,8 @@ module Privy
       attr_accessor enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?
 
       attr_accessor enforce_wallet_uis: bool
+
+      attr_accessor external_wallets_for_signup_enabled: bool
 
       attr_accessor farcaster_auth: bool
 
@@ -212,6 +215,7 @@ module Privy
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
         enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
         enforce_wallet_uis: bool,
+        external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
         farcaster_link_wallets_enabled: bool,
         fiat_on_ramp_enabled: bool,
@@ -274,6 +278,7 @@ module Privy
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
         enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
         enforce_wallet_uis: bool,
+        external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
         farcaster_link_wallets_enabled: bool,
         fiat_on_ramp_enabled: bool,

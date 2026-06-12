@@ -31,6 +31,7 @@ module Privy
             Privy::UserUpdatedAccountWebhookPayload,
             Privy::UserWalletCreatedWebhookPayload,
             Privy::UserOperationCompletedWebhookPayload,
+            Privy::WalletArchivedWebhookPayload,
             Privy::FundsDepositedWebhookPayload,
             Privy::FundsWithdrawnWebhookPayload,
             Privy::PrivateKeyExportWebhookPayload,

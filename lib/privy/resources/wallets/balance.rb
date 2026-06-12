@@ -10,7 +10,7 @@ module Privy
         #
         # Get the balance of a wallet by wallet ID.
         #
-        # @overload get(wallet_id, token: nil, asset: nil, chain: nil, include_currency: nil, request_options: {})
+        # @overload get(wallet_id, token: nil, asset: nil, chain: nil, include_archived: nil, include_currency: nil, request_options: {})
         #
         # @param wallet_id [String] ID of the wallet.
         #
@@ -19,6 +19,8 @@ module Privy
         # @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
         # @param chain [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        #
+        # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
         # @param include_currency [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency] If set, balances are converted to the specified fiat currency. Not supported whe
         #

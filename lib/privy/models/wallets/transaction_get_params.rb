@@ -38,6 +38,12 @@ module Privy
         #   @return [String, nil]
         optional :cursor, String
 
+        # @!attribute include_archived
+        #   Include archived wallets in lookup. Defaults to false.
+        #
+        #   @return [Boolean, nil]
+        optional :include_archived, Privy::Internal::Type::Boolean
+
         # @!attribute limit
         #
         #   @return [Float, nil]
@@ -48,7 +54,7 @@ module Privy
         #   @return [String, nil]
         optional :tx_hash, String
 
-        # @!method initialize(wallet_id:, chain:, token: nil, asset: nil, cursor: nil, limit: nil, tx_hash: nil, request_options: {})
+        # @!method initialize(wallet_id:, chain:, token: nil, asset: nil, cursor: nil, include_archived: nil, limit: nil, tx_hash: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::TransactionGetParams} for more details.
         #
@@ -61,6 +67,8 @@ module Privy
         #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::TransactionGetParams::Asset] Exactly one of `asset` or `token` is required. Cannot be used together with `tok
         #
         #   @param cursor [String]
+        #
+        #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
         #   @param limit [Float, nil]
         #

@@ -12,15 +12,32 @@ module Privy
       sig { returns(String) }
       attr_accessor :address
 
+      # Include archived wallets in lookup. Defaults to false (archived wallets return
+      # 404).
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_archived
+
+      sig { params(include_archived: T::Boolean).void }
+      attr_writer :include_archived
+
       # Request body for looking up a wallet by its blockchain address.
-      sig { params(address: String).returns(T.attached_class) }
+      sig do
+        params(address: String, include_archived: T::Boolean).returns(
+          T.attached_class
+        )
+      end
       def self.new(
         # A blockchain wallet address (Ethereum or Solana).
-        address:
+        address:,
+        # Include archived wallets in lookup. Defaults to false (archived wallets return
+        # 404).
+        include_archived: nil
       )
       end
 
-      sig { override.returns({ address: String }) }
+      sig do
+        override.returns({ address: String, include_archived: T::Boolean })
+      end
       def to_hash
       end
     end

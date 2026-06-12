@@ -37,6 +37,12 @@ module Privy
         #   @return [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain, nil]
         optional :chain, union: -> { Privy::Wallets::BalanceGetParams::Chain }
 
+        # @!attribute include_archived
+        #   Include archived wallets in lookup. Defaults to false.
+        #
+        #   @return [Boolean, nil]
+        optional :include_archived, Privy::Internal::Type::Boolean
+
         # @!attribute include_currency
         #   If set, balances are converted to the specified fiat currency. Not supported
         #   when `token` is provided.
@@ -44,7 +50,7 @@ module Privy
         #   @return [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency, nil]
         optional :include_currency, enum: -> { Privy::Wallets::BalanceGetParams::IncludeCurrency }
 
-        # @!method initialize(wallet_id:, token: nil, asset: nil, chain: nil, include_currency: nil, request_options: {})
+        # @!method initialize(wallet_id:, token: nil, asset: nil, chain: nil, include_archived: nil, include_currency: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::BalanceGetParams} for more details.
         #
@@ -55,6 +61,8 @@ module Privy
         #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
         #   @param chain [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        #
+        #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
         #   @param include_currency [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency] If set, balances are converted to the specified fiat currency. Not supported whe
         #

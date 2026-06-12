@@ -1,13 +1,18 @@
 module Privy
   module Models
-    type ethereum_yield_positions_input = { vault_id: String }
+    type ethereum_yield_positions_input =
+      { vault_id: String, include_archived: bool }
 
     class EthereumYieldPositionsInput < Privy::Internal::Type::BaseModel
       attr_accessor vault_id: String
 
-      def initialize: (vault_id: String) -> void
+      attr_reader include_archived: bool?
 
-      def to_hash: -> { vault_id: String }
+      def include_archived=: (bool) -> bool
+
+      def initialize: (vault_id: String, ?include_archived: bool) -> void
+
+      def to_hash: -> { vault_id: String, include_archived: bool }
     end
   end
 end

@@ -14,9 +14,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :ref_id
 
-      sig do
-        returns(Privy::KrakenEmbedPortfolioTransactionRefID::Type::OrSymbol)
-      end
+      # The type of reference ID used to filter portfolio transactions by quote or
+      # failed quote references.
+      sig { returns(Privy::KrakenEmbedPortfolioTransactionRefIDType::OrSymbol) }
       attr_accessor :type
 
       # A reference ID filter for portfolio transaction queries, identifying a
@@ -24,52 +24,26 @@ module Privy
       sig do
         params(
           ref_id: String,
-          type: Privy::KrakenEmbedPortfolioTransactionRefID::Type::OrSymbol
+          type: Privy::KrakenEmbedPortfolioTransactionRefIDType::OrSymbol
         ).returns(T.attached_class)
       end
-      def self.new(ref_id:, type:)
+      def self.new(
+        ref_id:,
+        # The type of reference ID used to filter portfolio transactions by quote or
+        # failed quote references.
+        type:
+      )
       end
 
       sig do
         override.returns(
           {
             ref_id: String,
-            type: Privy::KrakenEmbedPortfolioTransactionRefID::Type::OrSymbol
+            type: Privy::KrakenEmbedPortfolioTransactionRefIDType::OrSymbol
           }
         )
       end
       def to_hash
-      end
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::KrakenEmbedPortfolioTransactionRefID::Type)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SIMPLE_ORDER_QUOTE =
-          T.let(
-            :simple_order_quote,
-            Privy::KrakenEmbedPortfolioTransactionRefID::Type::TaggedSymbol
-          )
-        SIMPLE_ORDER_QUOTE_FAILED =
-          T.let(
-            :simple_order_quote_failed,
-            Privy::KrakenEmbedPortfolioTransactionRefID::Type::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedPortfolioTransactionRefID::Type::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

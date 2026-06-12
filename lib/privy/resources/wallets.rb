@@ -113,7 +113,7 @@ module Privy
       #
       # Get all wallets in your app.
       #
-      # @overload list(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, limit: nil, user_id: nil, request_options: {})
+      # @overload list(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
       #
       # @param authorization_key [String] Filter wallets by authorization public key. Returns wallets owned by key quorums
       #
@@ -122,6 +122,8 @@ module Privy
       # @param cursor [String]
       #
       # @param external_id [String] Filter wallets by external ID.
+      #
+      # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
       #
       # @param limit [Float, nil]
       #
@@ -252,6 +254,28 @@ module Privy
         )
       end
 
+      # Archives a wallet, preventing it from being used in any write or signing
+      # operations. Archived wallets are hidden from list endpoints by default. Returns
+      # 404 if the wallet does not exist or is already archived.
+      #
+      # @overload archive(wallet_id, request_options: {})
+      #
+      # @param wallet_id [String] ID of the wallet.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::Wallet]
+      #
+      # @see Privy::Models::WalletArchiveParams
+      def archive(wallet_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["v1/wallets/%1$s/archive", wallet_id],
+          model: Privy::Wallet,
+          options: params[:request_options]
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Privy::Models::WalletAuthenticateWithJwtParams} for more details.
       #
@@ -376,9 +400,11 @@ module Privy
 
       # Get a wallet by wallet ID.
       #
-      # @overload get(wallet_id, request_options: {})
+      # @overload get(wallet_id, include_archived: nil, request_options: {})
       #
       # @param wallet_id [String] ID of the wallet.
+      #
+      # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -386,19 +412,27 @@ module Privy
       #
       # @see Privy::Models::WalletGetParams
       def get(wallet_id, params = {})
+        parsed, options = Privy::WalletGetParams.dump_request(params)
+        query = Privy::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["v1/wallets/%1$s", wallet_id],
+          query: query,
           model: Privy::Wallet,
-          options: params[:request_options]
+          options: options
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::WalletGetWalletByAddressParams} for more details.
+      #
       # Look up a wallet by its blockchain address. Returns the wallet object if found.
       #
-      # @overload get_wallet_by_address(address:, request_options: {})
+      # @overload get_wallet_by_address(address:, include_archived: nil, request_options: {})
       #
       # @param address [String] A blockchain wallet address (Ethereum or Solana).
+      #
+      # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false (archived wallets return 4
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #

@@ -23,6 +23,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -52,6 +53,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -88,6 +90,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -152,6 +155,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -197,6 +201,36 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         source_asset_address: String | nil,
         source_asset_decimals: Integer | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+      }
+    end
+  end
+
+  def test_archive
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.archive("wallet_id")
+
+    assert_pattern do
+      response => Privy::Wallet
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_signers: ^(Privy::Internal::Type::ArrayOf[Privy::WalletAdditionalSignerItem]),
+        address: String,
+        chain_type: Privy::WalletChainType,
+        created_at: Float,
+        exported_at: Float | nil,
+        imported_at: Float | nil,
+        owner_id: String | nil,
+        policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
+        authorization_threshold: Float | nil,
+        custody: Privy::WalletCustodian | nil,
+        display_name: String | nil,
+        external_id: String | nil,
+        public_key: String | nil
       }
     end
   end
@@ -304,6 +338,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -334,6 +369,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,

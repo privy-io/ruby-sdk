@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type kraken_embed_portfolio_transaction_ref_id_type =
+      :simple_order_quote | :simple_order_quote_failed
+
+    module KrakenEmbedPortfolioTransactionRefIDType
+      extend Privy::Internal::Type::Enum
+
+      SIMPLE_ORDER_QUOTE: :simple_order_quote
+      SIMPLE_ORDER_QUOTE_FAILED: :simple_order_quote_failed
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_portfolio_transaction_ref_id_type]
+    end
+  end
+end

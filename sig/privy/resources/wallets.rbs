@@ -40,6 +40,7 @@ module Privy
         ?chain_type: Privy::Models::wallet_chain_type,
         ?cursor: String,
         ?external_id: String,
+        ?include_archived: bool,
         ?limit: Float?,
         ?user_id: String,
         ?request_options: Privy::request_opts
@@ -74,6 +75,11 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::TransferActionResponse
 
+      def archive: (
+        String wallet_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
+
       def authenticate_with_jwt: (
         encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
         recipient_public_key: String,
@@ -105,11 +111,13 @@ module Privy
 
       def get: (
         String wallet_id,
+        ?include_archived: bool,
         ?request_options: Privy::request_opts
       ) -> Privy::Wallet
 
       def get_wallet_by_address: (
         address: String,
+        ?include_archived: bool,
         ?request_options: Privy::request_opts
       ) -> Privy::Wallet
 

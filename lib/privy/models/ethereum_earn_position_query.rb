@@ -9,10 +9,18 @@ module Privy
       #   @return [String]
       required :vault_id, String
 
-      # @!method initialize(vault_id:)
+      # @!attribute include_archived
+      #   Include archived wallets in lookup. Defaults to false.
+      #
+      #   @return [Boolean, nil]
+      optional :include_archived, Privy::Internal::Type::Boolean
+
+      # @!method initialize(vault_id:, include_archived: nil)
       #   Query parameters for fetching an earn vault position.
       #
       #   @param vault_id [String] The vault ID to get position for.
+      #
+      #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
     end
   end
 end
