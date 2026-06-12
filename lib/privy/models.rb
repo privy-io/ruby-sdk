@@ -46,6 +46,8 @@ module Privy
 
   AbiSchemaItem = Privy::Models::AbiSchemaItem
 
+  AccessListEntry = Privy::Models::AccessListEntry
+
   AccountBalanceParams = Privy::Models::AccountBalanceParams
 
   AccountBalanceResponse = Privy::Models::AccountBalanceResponse
@@ -306,6 +308,10 @@ module Privy
 
   CustodialWalletProvider = Privy::Models::CustodialWalletProvider
 
+  CustodianTransactionWalletActionStep = Privy::Models::CustodianTransactionWalletActionStep
+
+  CustodianTransactionWalletActionStepStatus = Privy::Models::CustodianTransactionWalletActionStepStatus
+
   CustomJwtAuthenticateRequestBody = Privy::Models::CustomJwtAuthenticateRequestBody
 
   CustomJwtLinkRequestBody = Privy::Models::CustomJwtLinkRequestBody
@@ -374,6 +380,8 @@ module Privy
   EncryptedAuthorizationKey = Privy::Models::EncryptedAuthorizationKey
 
   EncryptedBoundAuthenticateResponse = Privy::Models::EncryptedBoundAuthenticateResponse
+
+  EncryptedWalletAuthenticateResponse = Privy::Models::EncryptedWalletAuthenticateResponse
 
   Ethereum7702AuthorizationCondition = Privy::Models::Ethereum7702AuthorizationCondition
 
@@ -684,9 +692,15 @@ module Privy
 
   IntentAuthorization = Privy::Models::IntentAuthorization
 
+  IntentAuthorizationKeyMember = Privy::Models::IntentAuthorizationKeyMember
+
+  IntentAuthorizationKeyQuorum = Privy::Models::IntentAuthorizationKeyQuorum
+
   IntentAuthorizationKeyQuorumMember = Privy::Models::IntentAuthorizationKeyQuorumMember
 
   IntentAuthorizationMember = Privy::Models::IntentAuthorizationMember
+
+  IntentAuthorizationUserMember = Privy::Models::IntentAuthorizationUserMember
 
   IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
 
@@ -802,6 +816,8 @@ module Privy
 
   KrakenEmbedEarnUserAllocation = Privy::Models::KrakenEmbedEarnUserAllocation
 
+  KrakenEmbedFullName = Privy::Models::KrakenEmbedFullName
+
   KrakenEmbedGetAssetListQueryParamsSchema = Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
 
   KrakenEmbedGetCustomOrderHistoryQueryParams = Privy::Models::KrakenEmbedGetCustomOrderHistoryQueryParams
@@ -839,6 +855,8 @@ module Privy
 
   KrakenEmbedGetPortfolioSummaryResponse = Privy::Models::KrakenEmbedGetPortfolioSummaryResponse
 
+  KrakenEmbedGetPortfolioSummaryResult = Privy::Models::KrakenEmbedGetPortfolioSummaryResult
+
   KrakenEmbedGetPortfolioTransactionsQueryParamsSchema =
     Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema
 
@@ -850,12 +868,18 @@ module Privy
 
   KrakenEmbedListCustomOrdersResult = Privy::Models::KrakenEmbedListCustomOrdersResult
 
+  KrakenEmbedPortfolioSummaryPayload = Privy::Models::KrakenEmbedPortfolioSummaryPayload
+
+  KrakenEmbedPortfolioTransactionRefID = Privy::Models::KrakenEmbedPortfolioTransactionRefID
+
   KrakenEmbedQuoteCancelledWebhookPayload = Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload
 
   KrakenEmbedQuoteExecutedWebhookPayload = Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload
 
   KrakenEmbedQuoteExecutionFailedWebhookPayload =
     Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload
+
+  KrakenEmbedResidence = Privy::Models::KrakenEmbedResidence
 
   KrakenEmbedStartAddressMetadata = Privy::Models::KrakenEmbedStartAddressMetadata
 
@@ -1008,6 +1032,10 @@ module Privy
   ListStripeConsumerWalletsResponse = Privy::Models::ListStripeConsumerWalletsResponse
 
   ListStripePaymentTokensResponse = Privy::Models::ListStripePaymentTokensResponse
+
+  ListWalletActionsQuery = Privy::Models::ListWalletActionsQuery
+
+  ListWalletActionsResponse = Privy::Models::ListWalletActionsResponse
 
   MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
 
@@ -1290,6 +1318,8 @@ module Privy
 
   RawSignResponseData = Privy::Models::RawSignResponseData
 
+  RawWalletAuthenticateResponse = Privy::Models::RawWalletAuthenticateResponse
+
   RecipientPublicKey = Privy::Models::RecipientPublicKey
 
   RecoveryConfigurationICloudInput = Privy::Models::RecoveryConfigurationICloudInput
@@ -1312,6 +1342,8 @@ module Privy
 
   ResponsePasskeyInitRegister = Privy::Models::ResponsePasskeyInitRegister
 
+  RollingAggregationWindow = Privy::Models::RollingAggregationWindow
+
   RpcIntentRequestDetails = Privy::Models::RpcIntentRequestDetails
 
   RpcIntentResponse = Privy::Models::RpcIntentResponse
@@ -1319,6 +1351,8 @@ module Privy
   RuleDeleteIntentResponse = Privy::Models::RuleDeleteIntentResponse
 
   RuleIntentCreateRequestDetails = Privy::Models::RuleIntentCreateRequestDetails
+
+  RuleIntentDeleteRequestBody = Privy::Models::RuleIntentDeleteRequestBody
 
   RuleIntentDeleteRequestDetails = Privy::Models::RuleIntentDeleteRequestDetails
 
@@ -1790,6 +1824,8 @@ module Privy
 
   UserPregenerateWalletsParams = Privy::Models::UserPregenerateWalletsParams
 
+  UserReference = Privy::Models::UserReference
+
   UserSearchParams = Privy::Models::UserSearchParams
 
   UserSetCustomMetadataParams = Privy::Models::UserSetCustomMetadataParams
@@ -1846,6 +1882,8 @@ module Privy
 
   WalletActionEarnWithdrawSucceededWebhookPayload =
     Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload
+
+  WalletActionInclude = Privy::Models::WalletActionInclude
 
   WalletActionResponse = Privy::Models::WalletActionResponse
 
@@ -1996,6 +2034,8 @@ module Privy
   YieldAuthorizationHeaders = Privy::Models::YieldAuthorizationHeaders
 
   YieldClaimConfirmedWebhookPayload = Privy::Models::YieldClaimConfirmedWebhookPayload
+
+  YieldClaimReward = Privy::Models::YieldClaimReward
 
   YieldDepositConfirmedWebhookPayload = Privy::Models::YieldDepositConfirmedWebhookPayload
 

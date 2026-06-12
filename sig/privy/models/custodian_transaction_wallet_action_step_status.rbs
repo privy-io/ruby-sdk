@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type custodian_transaction_wallet_action_step_status =
+      :preparing
+      | :queued
+      | :custodian_reviewing
+      | :pending
+      | :confirmed
+      | :rejected
+      | :failed
+
+    module CustodianTransactionWalletActionStepStatus
+      extend Privy::Internal::Type::Enum
+
+      PREPARING: :preparing
+      QUEUED: :queued
+      CUSTODIAN_REVIEWING: :custodian_reviewing
+      PENDING: :pending
+      CONFIRMED: :confirmed
+      REJECTED: :rejected
+      FAILED: :failed
+
+      def self?.values: -> ::Array[Privy::Models::custodian_transaction_wallet_action_step_status]
+    end
+  end
+end

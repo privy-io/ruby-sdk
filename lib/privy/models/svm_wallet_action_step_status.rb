@@ -10,7 +10,6 @@ module Privy
       QUEUED = :queued
       PENDING = :pending
       CONFIRMED = :confirmed
-      FINALIZED = :finalized
       REJECTED = :rejected
       REVERTED = :reverted
       FAILED = :failed

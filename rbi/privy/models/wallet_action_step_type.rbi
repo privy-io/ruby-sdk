@@ -17,6 +17,8 @@ module Privy
         T.let(:svm_transaction, Privy::WalletActionStepType::TaggedSymbol)
       EXTERNAL_TRANSACTION =
         T.let(:external_transaction, Privy::WalletActionStepType::TaggedSymbol)
+      CUSTODIAN_TRANSACTION =
+        T.let(:custodian_transaction, Privy::WalletActionStepType::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Privy::WalletActionStepType::TaggedSymbol])

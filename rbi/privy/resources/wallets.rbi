@@ -3,6 +3,10 @@
 module Privy
   module Resources
     class Wallets
+      # Operations related to wallet actions
+      sig { returns(Privy::Resources::Wallets::Actions) }
+      attr_reader :actions
+
       sig { returns(Privy::Resources::Wallets::Earn) }
       attr_reader :earn
 

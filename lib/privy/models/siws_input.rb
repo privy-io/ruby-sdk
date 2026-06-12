@@ -43,6 +43,7 @@ module Privy
 
         TRANSACTION = :transaction
         PLAIN = :plain
+        OFFCHAIN_MESSAGE = :"offchain-message"
 
         # @!method self.values
         #   @return [Array<Symbol>]

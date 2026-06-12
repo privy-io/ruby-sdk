@@ -438,10 +438,10 @@ module Privy
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `additional_signer_item_input` is a `Privy::AdditionalSignerItemInput`
-        #   additional_signer_item_input => {
-        #     signer_id: signer_id,
-        #     override_policy_ids: override_policy_ids
+        #   # `access_list_entry` is a `Privy::AccessListEntry`
+        #   access_list_entry => {
+        #     address: address,
+        #     storage_keys: storage_keys
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

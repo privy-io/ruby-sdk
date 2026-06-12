@@ -8,14 +8,19 @@ module Privy
           T.any(Privy::EncryptedAuthorizationKey, Privy::Internal::AnyHash)
         end
 
+      # The encrypted authorization key corresponding to the user's current
+      # authentication session.
       sig { returns(String) }
       attr_accessor :ciphertext
 
+      # Base64-encoded ephemeral public key used in the HPKE encryption process.
+      # Required for decryption.
       sig { returns(String) }
       attr_accessor :encapsulated_key
 
+      # The encryption type used. Currently only supports HPKE.
       sig do
-        returns(Privy::EncryptedAuthorizationKey::EncryptionType::OrSymbol)
+        returns(Privy::EncryptedAuthorizationKey::EncryptionType::TaggedSymbol)
       end
       attr_accessor :encryption_type
 
@@ -28,7 +33,16 @@ module Privy
             Privy::EncryptedAuthorizationKey::EncryptionType::OrSymbol
         ).returns(T.attached_class)
       end
-      def self.new(ciphertext:, encapsulated_key:, encryption_type:)
+      def self.new(
+        # The encrypted authorization key corresponding to the user's current
+        # authentication session.
+        ciphertext:,
+        # Base64-encoded ephemeral public key used in the HPKE encryption process.
+        # Required for decryption.
+        encapsulated_key:,
+        # The encryption type used. Currently only supports HPKE.
+        encryption_type:
+      )
       end
 
       sig do
@@ -37,13 +51,14 @@ module Privy
             ciphertext: String,
             encapsulated_key: String,
             encryption_type:
-              Privy::EncryptedAuthorizationKey::EncryptionType::OrSymbol
+              Privy::EncryptedAuthorizationKey::EncryptionType::TaggedSymbol
           }
         )
       end
       def to_hash
       end
 
+      # The encryption type used. Currently only supports HPKE.
       module EncryptionType
         extend Privy::Internal::Type::Enum
 

@@ -67,6 +67,11 @@ module Privy
         TRANSACTION =
           T.let(:transaction, Privy::SiwsInput::MessageType::TaggedSymbol)
         PLAIN = T.let(:plain, Privy::SiwsInput::MessageType::TaggedSymbol)
+        OFFCHAIN_MESSAGE =
+          T.let(
+            :"offchain-message",
+            Privy::SiwsInput::MessageType::TaggedSymbol
+          )
 
         sig do
           override.returns(

@@ -6,7 +6,7 @@ module Privy
       # @!attribute members
       #   Members in this authorization quorum
       #
-      #   @return [Array<Privy::Models::IntentAuthorizationMember::UserMember, Privy::Models::IntentAuthorizationMember::KeyMember, Privy::Models::IntentAuthorizationMember::KeyQuorumMember>]
+      #   @return [Array<Privy::Models::IntentAuthorizationUserMember, Privy::Models::IntentAuthorizationKeyMember, Privy::Models::IntentAuthorizationKeyQuorum>]
       required :members, -> { Privy::Internal::Type::ArrayOf[union: Privy::IntentAuthorizationMember] }
 
       # @!attribute threshold
@@ -24,7 +24,7 @@ module Privy
       # @!method initialize(members:, threshold:, display_name: nil)
       #   Authorization quorum for an intent
       #
-      #   @param members [Array<Privy::Models::IntentAuthorizationMember::UserMember, Privy::Models::IntentAuthorizationMember::KeyMember, Privy::Models::IntentAuthorizationMember::KeyQuorumMember>] Members in this authorization quorum
+      #   @param members [Array<Privy::Models::IntentAuthorizationUserMember, Privy::Models::IntentAuthorizationKeyMember, Privy::Models::IntentAuthorizationKeyQuorum>] Members in this authorization quorum
       #
       #   @param threshold [Float] Number of signatures required to satisfy this quorum
       #

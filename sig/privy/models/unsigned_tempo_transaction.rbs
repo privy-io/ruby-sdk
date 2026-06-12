@@ -5,7 +5,7 @@ module Privy
         calls: ::Array[Privy::TempoCall],
         type: Privy::Models::UnsignedTempoTransaction::type_,
         aa_authorization_list: ::Array[Privy::TempoAaAuthorization],
-        access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList],
+        access_list: ::Array[Privy::AccessListEntry],
         chain_id: Privy::Models::quantity,
         fee_payer_signature: Privy::TempoFeePayerSignature,
         fee_token: String,
@@ -30,11 +30,11 @@ module Privy
         ::Array[Privy::TempoAaAuthorization]
       ) -> ::Array[Privy::TempoAaAuthorization]
 
-      attr_reader access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList]?
+      attr_reader access_list: ::Array[Privy::AccessListEntry]?
 
       def access_list=: (
-        ::Array[Privy::UnsignedTempoTransaction::AccessList]
-      ) -> ::Array[Privy::UnsignedTempoTransaction::AccessList]
+        ::Array[Privy::AccessListEntry]
+      ) -> ::Array[Privy::AccessListEntry]
 
       attr_reader chain_id: Privy::Models::quantity?
 
@@ -88,7 +88,7 @@ module Privy
         calls: ::Array[Privy::TempoCall],
         type: Privy::Models::UnsignedTempoTransaction::type_,
         ?aa_authorization_list: ::Array[Privy::TempoAaAuthorization],
-        ?access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList],
+        ?access_list: ::Array[Privy::AccessListEntry],
         ?chain_id: Privy::Models::quantity,
         ?fee_payer_signature: Privy::TempoFeePayerSignature,
         ?fee_token: String,
@@ -106,7 +106,7 @@ module Privy
         calls: ::Array[Privy::TempoCall],
         type: Privy::Models::UnsignedTempoTransaction::type_,
         aa_authorization_list: ::Array[Privy::TempoAaAuthorization],
-        access_list: ::Array[Privy::UnsignedTempoTransaction::AccessList],
+        access_list: ::Array[Privy::AccessListEntry],
         chain_id: Privy::Models::quantity,
         fee_payer_signature: Privy::TempoFeePayerSignature,
         fee_token: String,
@@ -128,18 +128,6 @@ module Privy
         TYPE_118: 118
 
         def self?.values: -> ::Array[Privy::Models::UnsignedTempoTransaction::type_]
-      end
-
-      type access_list = { address: String, storage_keys: ::Array[String] }
-
-      class AccessList < Privy::Internal::Type::BaseModel
-        attr_accessor address: String
-
-        attr_accessor storage_keys: ::Array[String]
-
-        def initialize: (address: String, storage_keys: ::Array[String]) -> void
-
-        def to_hash: -> { address: String, storage_keys: ::Array[String] }
       end
     end
   end

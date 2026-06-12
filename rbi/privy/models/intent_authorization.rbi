@@ -29,9 +29,9 @@ module Privy
           members:
             T::Array[
               T.any(
-                Privy::IntentAuthorizationMember::UserMember::OrHash,
-                Privy::IntentAuthorizationMember::KeyMember::OrHash,
-                Privy::IntentAuthorizationMember::KeyQuorumMember::OrHash
+                Privy::IntentAuthorizationUserMember::OrHash,
+                Privy::IntentAuthorizationKeyMember::OrHash,
+                Privy::IntentAuthorizationKeyQuorum::OrHash
               )
             ],
           threshold: Float,

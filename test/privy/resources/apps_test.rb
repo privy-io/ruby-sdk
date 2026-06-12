@@ -46,6 +46,7 @@ class Privy::Test::Resources::AppsTest < Privy::Test::ResourceTest
         linkedin_oauth: Privy::Internal::Type::Boolean,
         logo_url: String | nil,
         max_linked_wallets_per_user: Float | nil,
+        merge_accounts_by_email: Privy::Internal::Type::Boolean,
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[enum: Privy::AppResponse::MfaMethod]),
         name: String,
         passkey_auth: Privy::Internal::Type::Boolean,

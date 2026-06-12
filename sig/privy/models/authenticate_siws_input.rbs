@@ -49,13 +49,14 @@ module Privy
         wallet_client_type: String?
       }
 
-      type message_type = :transaction | :plain
+      type message_type = :transaction | :plain | :"offchain-message"
 
       module MessageType
         extend Privy::Internal::Type::Enum
 
         TRANSACTION: :transaction
         PLAIN: :plain
+        OFFCHAIN_MESSAGE: :"offchain-message"
 
         def self?.values: -> ::Array[Privy::Models::AuthenticateSiwsInput::message_type]
       end

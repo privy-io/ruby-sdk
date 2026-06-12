@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type intent_authorization_key_quorum =
+      {
+        key_quorum_id: String,
+        members: ::Array[Privy::Models::intent_authorization_key_quorum_member],
+        threshold: Float,
+        threshold_met: bool,
+        type: Privy::Models::IntentAuthorizationKeyQuorum::type_,
+        display_name: String
+      }
+
+    class IntentAuthorizationKeyQuorum < Privy::Internal::Type::BaseModel
+      attr_accessor key_quorum_id: String
+
+      attr_accessor members: ::Array[Privy::Models::intent_authorization_key_quorum_member]
+
+      attr_accessor threshold: Float
+
+      attr_accessor threshold_met: bool
+
+      attr_accessor type: Privy::Models::IntentAuthorizationKeyQuorum::type_
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      def initialize: (
+        key_quorum_id: String,
+        members: ::Array[Privy::Models::intent_authorization_key_quorum_member],
+        threshold: Float,
+        threshold_met: bool,
+        type: Privy::Models::IntentAuthorizationKeyQuorum::type_,
+        ?display_name: String
+      ) -> void
+
+      def to_hash: -> {
+        key_quorum_id: String,
+        members: ::Array[Privy::Models::intent_authorization_key_quorum_member],
+        threshold: Float,
+        threshold_met: bool,
+        type: Privy::Models::IntentAuthorizationKeyQuorum::type_,
+        display_name: String
+      }
+
+      type type_ = :key_quorum
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        KEY_QUORUM: :key_quorum
+
+        def self?.values: -> ::Array[Privy::Models::IntentAuthorizationKeyQuorum::type_]
+      end
+    end
+  end
+end

@@ -49,21 +49,14 @@ module Privy
 
       sig do
         returns(
-          T.nilable(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID
-            ]
-          )
+          T.nilable(T::Array[Privy::KrakenEmbedPortfolioTransactionRefID])
         )
       end
       attr_reader :ref_ids
 
       sig do
         params(
-          ref_ids:
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::OrHash
-            ]
+          ref_ids: T::Array[Privy::KrakenEmbedPortfolioTransactionRefID::OrHash]
         ).void
       end
       attr_writer :ref_ids
@@ -143,9 +136,7 @@ module Privy
           page_size: Integer,
           quote: String,
           ref_ids:
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::OrHash
-            ],
+            T::Array[Privy::KrakenEmbedPortfolioTransactionRefID::OrHash],
           sorting:
             Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::OrSymbol,
           statuses:
@@ -183,10 +174,7 @@ module Privy
             ids: T::Array[String],
             page_size: Integer,
             quote: String,
-            ref_ids:
-              T::Array[
-                Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID
-              ],
+            ref_ids: T::Array[Privy::KrakenEmbedPortfolioTransactionRefID],
             sorting:
               Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::OrSymbol,
             statuses:
@@ -202,82 +190,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class RefID < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :ref_id
-
-        sig do
-          returns(
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type::OrSymbol
-          )
-        end
-        attr_accessor :type
-
-        sig do
-          params(
-            ref_id: String,
-            type:
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type::OrSymbol
-          ).returns(T.attached_class)
-        end
-        def self.new(ref_id:, type:)
-        end
-
-        sig do
-          override.returns(
-            {
-              ref_id: String,
-              type:
-                Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type::OrSymbol
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module Type
-          extend Privy::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          SIMPLE_ORDER_QUOTE =
-            T.let(
-              :simple_order_quote,
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type::TaggedSymbol
-            )
-          SIMPLE_ORDER_QUOTE_FAILED =
-            T.let(
-              :simple_order_quote_failed,
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
       end
 
       module Sorting

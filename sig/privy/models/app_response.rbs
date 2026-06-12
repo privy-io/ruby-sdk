@@ -34,6 +34,7 @@ module Privy
         linkedin_oauth: bool,
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
+        merge_accounts_by_email: bool,
         mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
         name: String,
         passkey_auth: bool,
@@ -126,6 +127,8 @@ module Privy
       attr_accessor logo_url: String?
 
       attr_accessor max_linked_wallets_per_user: Float?
+
+      attr_accessor merge_accounts_by_email: bool
 
       attr_accessor mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method]
 
@@ -222,6 +225,7 @@ module Privy
         linkedin_oauth: bool,
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
+        merge_accounts_by_email: bool,
         mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
         name: String,
         passkey_auth: bool,
@@ -283,6 +287,7 @@ module Privy
         linkedin_oauth: bool,
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
+        merge_accounts_by_email: bool,
         mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
         name: String,
         passkey_auth: bool,

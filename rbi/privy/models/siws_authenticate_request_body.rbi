@@ -100,6 +100,11 @@ module Privy
             :plain,
             Privy::SiwsAuthenticateRequestBody::MessageType::TaggedSymbol
           )
+        OFFCHAIN_MESSAGE =
+          T.let(
+            :"offchain-message",
+            Privy::SiwsAuthenticateRequestBody::MessageType::TaggedSymbol
+          )
 
         sig do
           override.returns(

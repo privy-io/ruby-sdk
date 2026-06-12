@@ -31,6 +31,14 @@ module Privy
       sig { params(failure_reason: Privy::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
+      # Whether this step has reached on-chain finality. Absent until finality is
+      # confirmed.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :finalized
+
+      sig { params(finalized: T::Boolean).void }
+      attr_writer :finalized
+
       # A wallet action step consisting of an EVM transaction.
       sig do
         params(
@@ -38,7 +46,8 @@ module Privy
           status: Privy::EvmWalletActionStepStatus::OrSymbol,
           transaction_hash: T.nilable(String),
           type: Privy::EvmTransactionWalletActionStep::Type::OrSymbol,
-          failure_reason: Privy::FailureReason::OrHash
+          failure_reason: Privy::FailureReason::OrHash,
+          finalized: T::Boolean
         ).returns(T.attached_class)
       end
       def self.new(
@@ -51,7 +60,10 @@ module Privy
         transaction_hash:,
         type:,
         # A description of why a wallet action (or a step within a wallet action) failed.
-        failure_reason: nil
+        failure_reason: nil,
+        # Whether this step has reached on-chain finality. Absent until finality is
+        # confirmed.
+        finalized: nil
       )
       end
 
@@ -62,7 +74,8 @@ module Privy
             status: Privy::EvmWalletActionStepStatus::TaggedSymbol,
             transaction_hash: T.nilable(String),
             type: Privy::EvmTransactionWalletActionStep::Type::TaggedSymbol,
-            failure_reason: Privy::FailureReason
+            failure_reason: Privy::FailureReason,
+            finalized: T::Boolean
           }
         )
       end

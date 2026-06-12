@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type kraken_embed_portfolio_summary_payload =
+      {
+        available_balance: String,
+        currency: String,
+        open_orders: String,
+        portfolio_value: String,
+        timestamp: Time,
+        withheld_value: String,
+        cost_basis: String?,
+        current_day_pnl: Privy::KrakenEmbedCurrentDayPnl?,
+        lots_upnl: String?
+      }
+
+    class KrakenEmbedPortfolioSummaryPayload < Privy::Internal::Type::BaseModel
+      attr_accessor available_balance: String
+
+      attr_accessor currency: String
+
+      attr_accessor open_orders: String
+
+      attr_accessor portfolio_value: String
+
+      attr_accessor timestamp: Time
+
+      attr_accessor withheld_value: String
+
+      attr_accessor cost_basis: String?
+
+      attr_accessor current_day_pnl: Privy::KrakenEmbedCurrentDayPnl?
+
+      attr_accessor lots_upnl: String?
+
+      def initialize: (
+        available_balance: String,
+        currency: String,
+        open_orders: String,
+        portfolio_value: String,
+        timestamp: Time,
+        withheld_value: String,
+        ?cost_basis: String?,
+        ?current_day_pnl: Privy::KrakenEmbedCurrentDayPnl?,
+        ?lots_upnl: String?
+      ) -> void
+
+      def to_hash: -> {
+        available_balance: String,
+        currency: String,
+        open_orders: String,
+        portfolio_value: String,
+        timestamp: Time,
+        withheld_value: String,
+        cost_basis: String?,
+        current_day_pnl: Privy::KrakenEmbedCurrentDayPnl?,
+        lots_upnl: String?
+      }
+    end
+  end
+end

@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type list_wallet_actions_query = { cursor: String, limit: Float? }
+
+    class ListWalletActionsQuery < Privy::Internal::Type::BaseModel
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_accessor limit: Float?
+
+      def initialize: (?cursor: String, ?limit: Float?) -> void
+
+      def to_hash: -> { cursor: String, limit: Float? }
+    end
+  end
+end

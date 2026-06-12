@@ -120,6 +120,9 @@ module Privy
       sig { returns(T.nilable(Float)) }
       attr_accessor :max_linked_wallets_per_user
 
+      sig { returns(T::Boolean) }
+      attr_accessor :merge_accounts_by_email
+
       sig { returns(T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol]) }
       attr_accessor :mfa_methods
 
@@ -253,6 +256,7 @@ module Privy
           linkedin_oauth: T::Boolean,
           logo_url: T.nilable(String),
           max_linked_wallets_per_user: T.nilable(Float),
+          merge_accounts_by_email: T::Boolean,
           mfa_methods: T::Array[Privy::AppResponse::MfaMethod::OrSymbol],
           name: String,
           passkey_auth: T::Boolean,
@@ -322,6 +326,7 @@ module Privy
         linkedin_oauth:,
         logo_url:,
         max_linked_wallets_per_user:,
+        merge_accounts_by_email:,
         mfa_methods:,
         name:,
         passkey_auth:,
@@ -393,6 +398,7 @@ module Privy
             linkedin_oauth: T::Boolean,
             logo_url: T.nilable(String),
             max_linked_wallets_per_user: T.nilable(Float),
+            merge_accounts_by_email: T::Boolean,
             mfa_methods: T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol],
             name: String,
             passkey_auth: T::Boolean,

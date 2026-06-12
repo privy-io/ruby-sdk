@@ -41,7 +41,7 @@ module Privy
       required :owner_id, String, nil?: true
 
       # @!attribute window
-      #   The time window configuration for an aggregation.
+      #   A rolling time window defined by a duration in seconds.
       #
       #   @return [Privy::Models::AggregationWindow]
       required :window, -> { Privy::AggregationWindow }
@@ -76,7 +76,7 @@ module Privy
       #
       #   @param owner_id [String, nil] The key quorum ID of the owner of the aggregation.
       #
-      #   @param window [Privy::Models::AggregationWindow] The time window configuration for an aggregation.
+      #   @param window [Privy::Models::AggregationWindow] A rolling time window defined by a duration in seconds.
       #
       #   @param conditions [Array<Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition>] Optional conditions to filter events before aggregation.
       #
