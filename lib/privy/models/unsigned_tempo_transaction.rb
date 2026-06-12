@@ -20,8 +20,8 @@ module Privy
 
       # @!attribute access_list
       #
-      #   @return [Array<Privy::Models::UnsignedTempoTransaction::AccessList>, nil]
-      optional :access_list, -> { Privy::Internal::Type::ArrayOf[Privy::UnsignedTempoTransaction::AccessList] }
+      #   @return [Array<Privy::Models::AccessListEntry>, nil]
+      optional :access_list, -> { Privy::Internal::Type::ArrayOf[Privy::AccessListEntry] }
 
       # @!attribute chain_id
       #   A quantity value that can be either a hex string starting with '0x' or a
@@ -107,7 +107,7 @@ module Privy
       #
       #   @param aa_authorization_list [Array<Privy::Models::TempoAaAuthorization>]
       #
-      #   @param access_list [Array<Privy::Models::UnsignedTempoTransaction::AccessList>]
+      #   @param access_list [Array<Privy::Models::AccessListEntry>]
       #
       #   @param chain_id [String, Integer] A quantity value that can be either a hex string starting with '0x' or a non-neg
       #
@@ -139,22 +139,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Float>]
-      end
-
-      class AccessList < Privy::Internal::Type::BaseModel
-        # @!attribute address
-        #
-        #   @return [String]
-        required :address, String
-
-        # @!attribute storage_keys
-        #
-        #   @return [Array<String>]
-        required :storage_keys, Privy::Internal::Type::ArrayOf[String]
-
-        # @!method initialize(address:, storage_keys:)
-        #   @param address [String]
-        #   @param storage_keys [Array<String>]
       end
     end
   end

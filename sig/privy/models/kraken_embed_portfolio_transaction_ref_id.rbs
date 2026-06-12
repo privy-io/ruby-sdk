@@ -1,0 +1,36 @@
+module Privy
+  module Models
+    type kraken_embed_portfolio_transaction_ref_id =
+      {
+        ref_id: String,
+        type: Privy::Models::KrakenEmbedPortfolioTransactionRefID::type_
+      }
+
+    class KrakenEmbedPortfolioTransactionRefID < Privy::Internal::Type::BaseModel
+      attr_accessor ref_id: String
+
+      attr_accessor type: Privy::Models::KrakenEmbedPortfolioTransactionRefID::type_
+
+      def initialize: (
+        ref_id: String,
+        type: Privy::Models::KrakenEmbedPortfolioTransactionRefID::type_
+      ) -> void
+
+      def to_hash: -> {
+        ref_id: String,
+        type: Privy::Models::KrakenEmbedPortfolioTransactionRefID::type_
+      }
+
+      type type_ = :simple_order_quote | :simple_order_quote_failed
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SIMPLE_ORDER_QUOTE: :simple_order_quote
+        SIMPLE_ORDER_QUOTE_FAILED: :simple_order_quote_failed
+
+        def self?.values: -> ::Array[Privy::Models::KrakenEmbedPortfolioTransactionRefID::type_]
+      end
+    end
+  end
+end

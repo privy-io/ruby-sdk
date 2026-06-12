@@ -33,7 +33,14 @@ module Privy
       #   @return [Privy::Models::FailureReason, nil]
       optional :failure_reason, -> { Privy::FailureReason }
 
-      # @!method initialize(caip2:, status:, transaction_hash:, type:, failure_reason: nil)
+      # @!attribute finalized
+      #   Whether this step has reached on-chain finality. Absent until finality is
+      #   confirmed.
+      #
+      #   @return [Boolean, nil]
+      optional :finalized, Privy::Internal::Type::Boolean
+
+      # @!method initialize(caip2:, status:, transaction_hash:, type:, failure_reason: nil, finalized: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::EvmTransactionWalletActionStep} for more details.
       #
@@ -48,6 +55,8 @@ module Privy
       #   @param type [Symbol, Privy::Models::EvmTransactionWalletActionStep::Type]
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #
+      #   @param finalized [Boolean] Whether this step has reached on-chain finality. Absent until finality is confir
 
       # @see Privy::Models::EvmTransactionWalletActionStep#type
       module Type

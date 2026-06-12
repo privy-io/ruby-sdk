@@ -15,7 +15,7 @@ module Privy
       required :type, enum: -> { Privy::AggregationWindow::Type }
 
       # @!method initialize(seconds:, type:)
-      #   The time window configuration for an aggregation.
+      #   A rolling time window defined by a duration in seconds.
       #
       #   @param seconds [Integer] Duration of the rolling window in seconds (1-72 hours).
       #

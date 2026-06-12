@@ -5,6 +5,8 @@ module Privy
 
   class AbiSchemaItem = Privy::Models::AbiSchemaItem
 
+  class AccessListEntry = Privy::Models::AccessListEntry
+
   class AccountBalanceParams = Privy::Models::AccountBalanceParams
 
   class AccountBalanceResponse = Privy::Models::AccountBalanceResponse
@@ -255,6 +257,10 @@ module Privy
 
   module CustodialWalletProvider = Privy::Models::CustodialWalletProvider
 
+  class CustodianTransactionWalletActionStep = Privy::Models::CustodianTransactionWalletActionStep
+
+  module CustodianTransactionWalletActionStepStatus = Privy::Models::CustodianTransactionWalletActionStepStatus
+
   type custom_metadata_item = Privy::Models::custom_metadata_item
 
   class CustomJwtAuthenticateRequestBody = Privy::Models::CustomJwtAuthenticateRequestBody
@@ -322,6 +328,8 @@ module Privy
   class EncryptedAuthorizationKey = Privy::Models::EncryptedAuthorizationKey
 
   class EncryptedBoundAuthenticateResponse = Privy::Models::EncryptedBoundAuthenticateResponse
+
+  class EncryptedWalletAuthenticateResponse = Privy::Models::EncryptedWalletAuthenticateResponse
 
   class Ethereum7702AuthorizationCondition = Privy::Models::Ethereum7702AuthorizationCondition
 
@@ -631,9 +639,15 @@ module Privy
 
   class IntentAuthorization = Privy::Models::IntentAuthorization
 
+  class IntentAuthorizationKeyMember = Privy::Models::IntentAuthorizationKeyMember
+
+  class IntentAuthorizationKeyQuorum = Privy::Models::IntentAuthorizationKeyQuorum
+
   module IntentAuthorizationKeyQuorumMember = Privy::Models::IntentAuthorizationKeyQuorumMember
 
   module IntentAuthorizationMember = Privy::Models::IntentAuthorizationMember
+
+  class IntentAuthorizationUserMember = Privy::Models::IntentAuthorizationUserMember
 
   class IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
 
@@ -745,6 +759,8 @@ module Privy
 
   class KrakenEmbedEarnUserAllocation = Privy::Models::KrakenEmbedEarnUserAllocation
 
+  class KrakenEmbedFullName = Privy::Models::KrakenEmbedFullName
+
   class KrakenEmbedGetAssetListQueryParamsSchema = Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
 
   class KrakenEmbedGetCustomOrderHistoryQueryParams = Privy::Models::KrakenEmbedGetCustomOrderHistoryQueryParams
@@ -781,6 +797,8 @@ module Privy
 
   class KrakenEmbedGetPortfolioSummaryResponse = Privy::Models::KrakenEmbedGetPortfolioSummaryResponse
 
+  class KrakenEmbedGetPortfolioSummaryResult = Privy::Models::KrakenEmbedGetPortfolioSummaryResult
+
   class KrakenEmbedGetPortfolioTransactionsQueryParamsSchema = Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema
 
   class KrakenEmbedGetQuoteQueryParams = Privy::Models::KrakenEmbedGetQuoteQueryParams
@@ -791,11 +809,17 @@ module Privy
 
   class KrakenEmbedListCustomOrdersResult = Privy::Models::KrakenEmbedListCustomOrdersResult
 
+  class KrakenEmbedPortfolioSummaryPayload = Privy::Models::KrakenEmbedPortfolioSummaryPayload
+
+  class KrakenEmbedPortfolioTransactionRefID = Privy::Models::KrakenEmbedPortfolioTransactionRefID
+
   class KrakenEmbedQuoteCancelledWebhookPayload = Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload
 
   class KrakenEmbedQuoteExecutedWebhookPayload = Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload
 
   class KrakenEmbedQuoteExecutionFailedWebhookPayload = Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload
+
+  class KrakenEmbedResidence = Privy::Models::KrakenEmbedResidence
 
   class KrakenEmbedStartAddressMetadata = Privy::Models::KrakenEmbedStartAddressMetadata
 
@@ -946,6 +970,10 @@ module Privy
   class ListStripeConsumerWalletsResponse = Privy::Models::ListStripeConsumerWalletsResponse
 
   class ListStripePaymentTokensResponse = Privy::Models::ListStripePaymentTokensResponse
+
+  class ListWalletActionsQuery = Privy::Models::ListWalletActionsQuery
+
+  class ListWalletActionsResponse = Privy::Models::ListWalletActionsResponse
 
   class MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
 
@@ -1227,6 +1255,8 @@ module Privy
 
   class RawSignResponseData = Privy::Models::RawSignResponseData
 
+  class RawWalletAuthenticateResponse = Privy::Models::RawWalletAuthenticateResponse
+
   class RecipientPublicKey = Privy::Models::RecipientPublicKey
 
   class RecoveryConfigurationICloudInput = Privy::Models::RecoveryConfigurationICloudInput
@@ -1249,6 +1279,8 @@ module Privy
 
   class ResponsePasskeyInitRegister = Privy::Models::ResponsePasskeyInitRegister
 
+  class RollingAggregationWindow = Privy::Models::RollingAggregationWindow
+
   class RpcIntentRequestDetails = Privy::Models::RpcIntentRequestDetails
 
   class RpcIntentResponse = Privy::Models::RpcIntentResponse
@@ -1256,6 +1288,8 @@ module Privy
   class RuleDeleteIntentResponse = Privy::Models::RuleDeleteIntentResponse
 
   class RuleIntentCreateRequestDetails = Privy::Models::RuleIntentCreateRequestDetails
+
+  class RuleIntentDeleteRequestBody = Privy::Models::RuleIntentDeleteRequestBody
 
   class RuleIntentDeleteRequestDetails = Privy::Models::RuleIntentDeleteRequestDetails
 
@@ -1721,6 +1755,8 @@ module Privy
 
   class UserPregenerateWalletsParams = Privy::Models::UserPregenerateWalletsParams
 
+  class UserReference = Privy::Models::UserReference
+
   class UserSearchParams = Privy::Models::UserSearchParams
 
   class UserSetCustomMetadataParams = Privy::Models::UserSetCustomMetadataParams
@@ -1766,6 +1802,8 @@ module Privy
   class WalletActionEarnWithdrawRejectedWebhookPayload = Privy::Models::WalletActionEarnWithdrawRejectedWebhookPayload
 
   class WalletActionEarnWithdrawSucceededWebhookPayload = Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload
+
+  module WalletActionInclude = Privy::Models::WalletActionInclude
 
   module WalletActionResponse = Privy::Models::WalletActionResponse
 
@@ -1914,6 +1952,8 @@ module Privy
   class YieldAuthorizationHeaders = Privy::Models::YieldAuthorizationHeaders
 
   class YieldClaimConfirmedWebhookPayload = Privy::Models::YieldClaimConfirmedWebhookPayload
+
+  class YieldClaimReward = Privy::Models::YieldClaimReward
 
   class YieldDepositConfirmedWebhookPayload = Privy::Models::YieldDepositConfirmedWebhookPayload
 

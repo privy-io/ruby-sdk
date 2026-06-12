@@ -3,6 +3,10 @@
 module Privy
   module Resources
     class Wallets
+      # Operations related to wallet actions
+      # @return [Privy::Resources::Wallets::Actions]
+      attr_reader :actions
+
       # @return [Privy::Resources::Wallets::Earn]
       attr_reader :earn
 
@@ -264,7 +268,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption, Privy::Models::WalletAuthenticateWithJwtResponse::WithoutEncryption]
+      # @return [Privy::Models::EncryptedWalletAuthenticateResponse, Privy::Models::RawWalletAuthenticateResponse]
       #
       # @see Privy::Models::WalletAuthenticateWithJwtParams
       def authenticate_with_jwt(params)
@@ -495,6 +499,7 @@ module Privy
       # @param client [Privy::Client]
       def initialize(client:)
         @client = client
+        @actions = Privy::Resources::Wallets::Actions.new(client: client)
         @earn = Privy::Resources::Wallets::Earn.new(client: client)
         @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
         @balance = Privy::Resources::Wallets::Balance.new(client: client)

@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type raw_wallet_authenticate_response =
+      {
+        authorization_key: String,
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      }
+
+    class RawWalletAuthenticateResponse < Privy::Internal::Type::BaseModel
+      attr_accessor authorization_key: String
+
+      attr_accessor expires_at: Float
+
+      attr_accessor wallets: ::Array[Privy::Wallet]
+
+      def initialize: (
+        authorization_key: String,
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      ) -> void
+
+      def to_hash: -> {
+        authorization_key: String,
+        expires_at: Float,
+        wallets: ::Array[Privy::Wallet]
+      }
+    end
+  end
+end

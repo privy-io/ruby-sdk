@@ -16,8 +16,6 @@ module Privy
       PENDING = T.let(:pending, Privy::SvmWalletActionStepStatus::TaggedSymbol)
       CONFIRMED =
         T.let(:confirmed, Privy::SvmWalletActionStepStatus::TaggedSymbol)
-      FINALIZED =
-        T.let(:finalized, Privy::SvmWalletActionStepStatus::TaggedSymbol)
       REJECTED =
         T.let(:rejected, Privy::SvmWalletActionStepStatus::TaggedSymbol)
       REVERTED =

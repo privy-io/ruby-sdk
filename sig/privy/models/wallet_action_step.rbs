@@ -5,6 +5,7 @@ module Privy
       | Privy::EvmUserOperationWalletActionStep
       | Privy::SvmTransactionWalletActionStep
       | Privy::ExternalTransactionWalletActionStep
+      | Privy::CustodianTransactionWalletActionStep
 
     module WalletActionStep
       extend Privy::Internal::Type::Union

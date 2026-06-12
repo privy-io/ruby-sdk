@@ -16,12 +16,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :url
 
-      sig { returns(T.nilable(Privy::RuleIntentDeleteRequestDetails::Body)) }
+      # Empty request body for a rule delete intent.
+      sig { returns(T.nilable(Privy::RuleIntentDeleteRequestBody)) }
       attr_reader :body
 
-      sig do
-        params(body: Privy::RuleIntentDeleteRequestDetails::Body::OrHash).void
-      end
+      sig { params(body: Privy::RuleIntentDeleteRequestBody::OrHash).void }
       attr_writer :body
 
       # Request details for deleting a rule via intent.
@@ -29,10 +28,15 @@ module Privy
         params(
           method_: Privy::RuleIntentDeleteRequestDetails::Method::OrSymbol,
           url: String,
-          body: Privy::RuleIntentDeleteRequestDetails::Body::OrHash
+          body: Privy::RuleIntentDeleteRequestBody::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(method_:, url:, body: nil)
+      def self.new(
+        method_:,
+        url:,
+        # Empty request body for a rule delete intent.
+        body: nil
+      )
       end
 
       sig do
@@ -41,7 +45,7 @@ module Privy
             method_:
               Privy::RuleIntentDeleteRequestDetails::Method::TaggedSymbol,
             url: String,
-            body: Privy::RuleIntentDeleteRequestDetails::Body
+            body: Privy::RuleIntentDeleteRequestBody
           }
         )
       end
@@ -71,24 +75,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class Body < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::RuleIntentDeleteRequestDetails::Body,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
     end

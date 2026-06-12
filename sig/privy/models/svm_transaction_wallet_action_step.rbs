@@ -7,6 +7,7 @@ module Privy
         transaction_signature: String?,
         type: Privy::Models::SvmTransactionWalletActionStep::type_,
         failure_reason: Privy::FailureReason,
+        finalized: bool,
         gas_credits_charged_usd: String
       }
 
@@ -23,6 +24,10 @@ module Privy
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
 
+      attr_reader finalized: bool?
+
+      def finalized=: (bool) -> bool
+
       attr_reader gas_credits_charged_usd: String?
 
       def gas_credits_charged_usd=: (String) -> String
@@ -33,6 +38,7 @@ module Privy
         transaction_signature: String?,
         type: Privy::Models::SvmTransactionWalletActionStep::type_,
         ?failure_reason: Privy::FailureReason,
+        ?finalized: bool,
         ?gas_credits_charged_usd: String
       ) -> void
 
@@ -42,6 +48,7 @@ module Privy
         transaction_signature: String?,
         type: Privy::Models::SvmTransactionWalletActionStep::type_,
         failure_reason: Privy::FailureReason,
+        finalized: bool,
         gas_credits_charged_usd: String
       }
 

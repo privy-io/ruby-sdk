@@ -35,9 +35,8 @@ module Privy
 
       # @!attribute ref_ids
       #
-      #   @return [Array<Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID>, nil]
-      optional :ref_ids,
-               -> { Privy::Internal::Type::ArrayOf[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID] }
+      #   @return [Array<Privy::Models::KrakenEmbedPortfolioTransactionRefID>, nil]
+      optional :ref_ids, -> { Privy::Internal::Type::ArrayOf[Privy::KrakenEmbedPortfolioTransactionRefID] }
 
       # @!attribute sorting
       #
@@ -70,38 +69,11 @@ module Privy
       #   @param ids [Array<String>]
       #   @param page_size [Integer]
       #   @param quote [String]
-      #   @param ref_ids [Array<Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID>]
+      #   @param ref_ids [Array<Privy::Models::KrakenEmbedPortfolioTransactionRefID>]
       #   @param sorting [Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting]
       #   @param statuses [Array<Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status>]
       #   @param types [Array<Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type>]
       #   @param until_time [Time]
-
-      class RefID < Privy::Internal::Type::BaseModel
-        # @!attribute ref_id
-        #
-        #   @return [String]
-        required :ref_id, String
-
-        # @!attribute type
-        #
-        #   @return [Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type]
-        required :type, enum: -> { Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type }
-
-        # @!method initialize(ref_id:, type:)
-        #   @param ref_id [String]
-        #   @param type [Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::Type]
-
-        # @see Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID#type
-        module Type
-          extend Privy::Internal::Type::Enum
-
-          SIMPLE_ORDER_QUOTE = :simple_order_quote
-          SIMPLE_ORDER_QUOTE_FAILED = :simple_order_quote_failed
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
 
       # @see Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema#sorting
       module Sorting

@@ -6,7 +6,8 @@ module Privy
         status: Privy::Models::evm_wallet_action_step_status,
         transaction_hash: String?,
         type: Privy::Models::EvmTransactionWalletActionStep::type_,
-        failure_reason: Privy::FailureReason
+        failure_reason: Privy::FailureReason,
+        finalized: bool
       }
 
     class EvmTransactionWalletActionStep < Privy::Internal::Type::BaseModel
@@ -22,12 +23,17 @@ module Privy
 
       def failure_reason=: (Privy::FailureReason) -> Privy::FailureReason
 
+      attr_reader finalized: bool?
+
+      def finalized=: (bool) -> bool
+
       def initialize: (
         caip2: String,
         status: Privy::Models::evm_wallet_action_step_status,
         transaction_hash: String?,
         type: Privy::Models::EvmTransactionWalletActionStep::type_,
-        ?failure_reason: Privy::FailureReason
+        ?failure_reason: Privy::FailureReason,
+        ?finalized: bool
       ) -> void
 
       def to_hash: -> {
@@ -35,7 +41,8 @@ module Privy
         status: Privy::Models::evm_wallet_action_step_status,
         transaction_hash: String?,
         type: Privy::Models::EvmTransactionWalletActionStep::type_,
-        failure_reason: Privy::FailureReason
+        failure_reason: Privy::FailureReason,
+        finalized: bool
       }
 
       type type_ = :evm_transaction

@@ -24,7 +24,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :name
 
-      # The time window configuration for an aggregation.
+      # A rolling time window defined by a duration in seconds.
       sig { returns(Privy::AggregationWindow) }
       attr_reader :window
 
@@ -155,7 +155,7 @@ module Privy
         metric:,
         # The name of the aggregation.
         name:,
-        # The time window configuration for an aggregation.
+        # A rolling time window defined by a duration in seconds.
         window:,
         # Optional conditions to filter events before aggregation.
         conditions: nil,

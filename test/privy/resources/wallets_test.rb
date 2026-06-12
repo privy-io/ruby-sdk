@@ -217,8 +217,8 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
 
     assert_pattern do
       case response
-      in Privy::WalletAuthenticateWithJwtResponse::WithEncryption
-      in Privy::WalletAuthenticateWithJwtResponse::WithoutEncryption
+      in Privy::EncryptedWalletAuthenticateResponse
+      in Privy::RawWalletAuthenticateResponse
       end
     end
   end

@@ -16,6 +16,12 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :destination_currency_code
 
+      sig { returns(T.nilable(String)) }
+      attr_reader :payment_method_category
+
+      sig { params(payment_method_category: String).void }
+      attr_writer :payment_method_category
+
       sig { returns(T.nilable(Float)) }
       attr_accessor :source_amount
 
@@ -31,6 +37,7 @@ module Privy
           payment_method: String,
           provider: Privy::FiatOnrampProvider::OrSymbol,
           destination_currency_code: T.nilable(String),
+          payment_method_category: String,
           source_amount: T.nilable(Float),
           source_currency_code: T.nilable(String),
           sub_provider: T.nilable(String)
@@ -41,6 +48,7 @@ module Privy
         # The fiat onramp provider to use.
         provider:,
         destination_currency_code: nil,
+        payment_method_category: nil,
         source_amount: nil,
         source_currency_code: nil,
         sub_provider: nil
@@ -53,6 +61,7 @@ module Privy
             payment_method: String,
             provider: Privy::FiatOnrampProvider::OrSymbol,
             destination_currency_code: T.nilable(String),
+            payment_method_category: String,
             source_amount: T.nilable(Float),
             source_currency_code: T.nilable(String),
             sub_provider: T.nilable(String)

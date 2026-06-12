@@ -14,16 +14,19 @@ module Privy
       required :url, String
 
       # @!attribute body
+      #   Empty request body for a rule delete intent.
       #
-      #   @return [Privy::Models::RuleIntentDeleteRequestDetails::Body, nil]
-      optional :body, -> { Privy::RuleIntentDeleteRequestDetails::Body }
+      #   @return [Privy::Models::RuleIntentDeleteRequestBody, nil]
+      optional :body, -> { Privy::RuleIntentDeleteRequestBody }
 
       # @!method initialize(method_:, url:, body: nil)
       #   Request details for deleting a rule via intent.
       #
       #   @param method_ [Symbol, Privy::Models::RuleIntentDeleteRequestDetails::Method]
+      #
       #   @param url [String]
-      #   @param body [Privy::Models::RuleIntentDeleteRequestDetails::Body]
+      #
+      #   @param body [Privy::Models::RuleIntentDeleteRequestBody] Empty request body for a rule delete intent.
 
       # @see Privy::Models::RuleIntentDeleteRequestDetails#method_
       module Method
@@ -33,11 +36,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::RuleIntentDeleteRequestDetails#body
-      class Body < Privy::Internal::Type::BaseModel
-        # @!method initialize
       end
     end
   end

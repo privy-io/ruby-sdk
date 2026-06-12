@@ -20,8 +20,11 @@ module Privy
       # A wallet action step representing a cross-chain/cross-asset fill by an external provider.
       variant :external_transaction, -> { Privy::ExternalTransactionWalletActionStep }
 
+      # A wallet action step representing a transaction executed by a custodian (e.g. Bridge).
+      variant :custodian_transaction, -> { Privy::CustodianTransactionWalletActionStep }
+
       # @!method self.variants
-      #   @return [Array(Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep)]
+      #   @return [Array(Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep)]
     end
   end
 end

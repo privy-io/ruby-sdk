@@ -105,7 +105,7 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action. Only returned if `?include=steps` is provided.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>, nil]
+      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
       # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_caip2: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, steps: nil)
@@ -146,7 +146,7 @@ module Privy
       #
       #   @param gas [Privy::Models::Gas, nil] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
+      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
 
       # @see Privy::Models::SwapActionResponse#type
       module Type

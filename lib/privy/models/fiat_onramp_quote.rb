@@ -19,6 +19,11 @@ module Privy
       #   @return [String, nil]
       optional :destination_currency_code, String, nil?: true
 
+      # @!attribute payment_method_category
+      #
+      #   @return [String, nil]
+      optional :payment_method_category, String
+
       # @!attribute source_amount
       #
       #   @return [Float, nil]
@@ -34,7 +39,7 @@ module Privy
       #   @return [String, nil]
       optional :sub_provider, String, nil?: true
 
-      # @!method initialize(payment_method:, provider:, destination_currency_code: nil, source_amount: nil, source_currency_code: nil, sub_provider: nil)
+      # @!method initialize(payment_method:, provider:, destination_currency_code: nil, payment_method_category: nil, source_amount: nil, source_currency_code: nil, sub_provider: nil)
       #   A single fiat onramp quote from a provider.
       #
       #   @param payment_method [String]
@@ -42,6 +47,8 @@ module Privy
       #   @param provider [Symbol, Privy::Models::FiatOnrampProvider] The fiat onramp provider to use.
       #
       #   @param destination_currency_code [String, nil]
+      #
+      #   @param payment_method_category [String]
       #
       #   @param source_amount [Float, nil]
       #

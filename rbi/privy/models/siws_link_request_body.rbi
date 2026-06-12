@@ -81,6 +81,11 @@ module Privy
           )
         PLAIN =
           T.let(:plain, Privy::SiwsLinkRequestBody::MessageType::TaggedSymbol)
+        OFFCHAIN_MESSAGE =
+          T.let(
+            :"offchain-message",
+            Privy::SiwsLinkRequestBody::MessageType::TaggedSymbol
+          )
 
         sig do
           override.returns(

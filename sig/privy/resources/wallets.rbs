@@ -1,6 +1,8 @@
 module Privy
   module Resources
     class Wallets
+      attr_reader actions: Privy::Resources::Wallets::Actions
+
       attr_reader earn: Privy::Resources::Wallets::Earn
 
       attr_reader transactions: Privy::Resources::Wallets::Transactions

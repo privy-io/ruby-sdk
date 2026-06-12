@@ -10,6 +10,7 @@ module Privy
       EVM_USER_OPERATION = :evm_user_operation
       SVM_TRANSACTION = :svm_transaction
       EXTERNAL_TRANSACTION = :external_transaction
+      CUSTODIAN_TRANSACTION = :custodian_transaction
 
       # @!method self.values
       #   @return [Array<Symbol>]

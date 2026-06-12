@@ -14,9 +14,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
-      sig do
-        returns(T::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward])
-      end
+      sig { returns(T::Array[Privy::YieldClaimReward]) }
       attr_accessor :rewards
 
       sig { returns(String) }
@@ -35,8 +33,7 @@ module Privy
       sig do
         params(
           caip2: String,
-          rewards:
-            T::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward::OrHash],
+          rewards: T::Array[Privy::YieldClaimReward::OrHash],
           transaction_id: String,
           type: Privy::YieldClaimConfirmedWebhookPayload::Type::OrSymbol,
           wallet_id: String
@@ -56,7 +53,7 @@ module Privy
         override.returns(
           {
             caip2: String,
-            rewards: T::Array[Privy::YieldClaimConfirmedWebhookPayload::Reward],
+            rewards: T::Array[Privy::YieldClaimReward],
             transaction_id: String,
             type: Privy::YieldClaimConfirmedWebhookPayload::Type::TaggedSymbol,
             wallet_id: String
@@ -64,43 +61,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class Reward < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::YieldClaimConfirmedWebhookPayload::Reward,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :amount
-
-        sig { returns(String) }
-        attr_accessor :token_address
-
-        sig { returns(String) }
-        attr_accessor :token_symbol
-
-        sig do
-          params(
-            amount: String,
-            token_address: String,
-            token_symbol: String
-          ).returns(T.attached_class)
-        end
-        def self.new(amount:, token_address:, token_symbol:)
-        end
-
-        sig do
-          override.returns(
-            { amount: String, token_address: String, token_symbol: String }
-          )
-        end
-        def to_hash
-        end
       end
 
       # The type of webhook event.

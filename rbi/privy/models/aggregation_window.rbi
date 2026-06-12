@@ -15,7 +15,7 @@ module Privy
       sig { returns(Privy::AggregationWindow::Type::OrSymbol) }
       attr_accessor :type
 
-      # The time window configuration for an aggregation.
+      # A rolling time window defined by a duration in seconds.
       sig do
         params(
           seconds: Integer,

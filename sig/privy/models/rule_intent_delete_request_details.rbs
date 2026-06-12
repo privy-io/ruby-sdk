@@ -4,7 +4,7 @@ module Privy
       {
         method_: Privy::Models::RuleIntentDeleteRequestDetails::method_,
         url: String,
-        body: Privy::RuleIntentDeleteRequestDetails::Body
+        body: Privy::RuleIntentDeleteRequestBody
       }
 
     class RuleIntentDeleteRequestDetails < Privy::Internal::Type::BaseModel
@@ -12,22 +12,22 @@ module Privy
 
       attr_accessor url: String
 
-      attr_reader body: Privy::RuleIntentDeleteRequestDetails::Body?
+      attr_reader body: Privy::RuleIntentDeleteRequestBody?
 
       def body=: (
-        Privy::RuleIntentDeleteRequestDetails::Body
-      ) -> Privy::RuleIntentDeleteRequestDetails::Body
+        Privy::RuleIntentDeleteRequestBody
+      ) -> Privy::RuleIntentDeleteRequestBody
 
       def initialize: (
         method_: Privy::Models::RuleIntentDeleteRequestDetails::method_,
         url: String,
-        ?body: Privy::RuleIntentDeleteRequestDetails::Body
+        ?body: Privy::RuleIntentDeleteRequestBody
       ) -> void
 
       def to_hash: -> {
         method_: Privy::Models::RuleIntentDeleteRequestDetails::method_,
         url: String,
-        body: Privy::RuleIntentDeleteRequestDetails::Body
+        body: Privy::RuleIntentDeleteRequestBody
       }
 
       type method_ = :DELETE
@@ -38,14 +38,6 @@ module Privy
         DELETE: :DELETE
 
         def self?.values: -> ::Array[Privy::Models::RuleIntentDeleteRequestDetails::method_]
-      end
-
-      type body = {  }
-
-      class Body < Privy::Internal::Type::BaseModel
-        def initialize: -> void
-
-        def to_hash: -> {  }
       end
     end
   end

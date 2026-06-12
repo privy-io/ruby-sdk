@@ -4,7 +4,7 @@ module Privy
       {
         account: Privy::Models::linked_account,
         deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user,
-        from_user: Privy::UserTransferredAccountWebhookPayload::FromUser,
+        from_user: Privy::UserReference,
         to_user: Privy::User,
         type: Privy::Models::UserTransferredAccountWebhookPayload::type_
       }
@@ -14,7 +14,7 @@ module Privy
 
       attr_accessor deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user
 
-      attr_accessor from_user: Privy::UserTransferredAccountWebhookPayload::FromUser
+      attr_accessor from_user: Privy::UserReference
 
       attr_accessor to_user: Privy::User
 
@@ -23,7 +23,7 @@ module Privy
       def initialize: (
         account: Privy::Models::linked_account,
         deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user,
-        from_user: Privy::UserTransferredAccountWebhookPayload::FromUser,
+        from_user: Privy::UserReference,
         to_user: Privy::User,
         type: Privy::Models::UserTransferredAccountWebhookPayload::type_
       ) -> void
@@ -31,7 +31,7 @@ module Privy
       def to_hash: -> {
         account: Privy::Models::linked_account,
         deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user,
-        from_user: Privy::UserTransferredAccountWebhookPayload::FromUser,
+        from_user: Privy::UserReference,
         to_user: Privy::User,
         type: Privy::Models::UserTransferredAccountWebhookPayload::type_
       }
@@ -44,16 +44,6 @@ module Privy
         TRUE: true
 
         def self?.values: -> ::Array[Privy::Models::UserTransferredAccountWebhookPayload::deleted_user]
-      end
-
-      type from_user = { id: String }
-
-      class FromUser < Privy::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        def initialize: (id: String) -> void
-
-        def to_hash: -> { id: String }
       end
 
       type type_ = :"user.transferred_account"
