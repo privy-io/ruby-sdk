@@ -32,6 +32,12 @@ module Privy
       #   @return [String, nil]
       optional :external_id, String
 
+      # @!attribute include_archived
+      #   Include archived wallets in lookup. Defaults to false.
+      #
+      #   @return [Boolean, nil]
+      optional :include_archived, Privy::Internal::Type::Boolean
+
       # @!attribute limit
       #
       #   @return [Float, nil]
@@ -43,7 +49,7 @@ module Privy
       #   @return [String, nil]
       optional :user_id, String
 
-      # @!method initialize(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, limit: nil, user_id: nil, request_options: {})
+      # @!method initialize(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletListParams} for more details.
       #
@@ -54,6 +60,8 @@ module Privy
       #   @param cursor [String]
       #
       #   @param external_id [String] Filter wallets by external ID.
+      #
+      #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
       #
       #   @param limit [Float, nil]
       #

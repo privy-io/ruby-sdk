@@ -40,6 +40,13 @@ module Privy
       sig { params(external_id: String).void }
       attr_writer :external_id
 
+      # Include archived wallets in lookup. Defaults to false.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_archived
+
+      sig { params(include_archived: T::Boolean).void }
+      attr_writer :include_archived
+
       sig { returns(T.nilable(Float)) }
       attr_accessor :limit
 
@@ -56,6 +63,7 @@ module Privy
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
           external_id: String,
+          include_archived: T::Boolean,
           limit: T.nilable(Float),
           user_id: String,
           request_options: Privy::RequestOptions::OrHash
@@ -71,6 +79,8 @@ module Privy
         cursor: nil,
         # Filter wallets by external ID.
         external_id: nil,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         limit: nil,
         # Filter wallets by user ID. Cannot be used together with authorization_key.
         user_id: nil,
@@ -85,6 +95,7 @@ module Privy
             chain_type: Privy::WalletChainType::OrSymbol,
             cursor: String,
             external_id: String,
+            include_archived: T::Boolean,
             limit: T.nilable(Float),
             user_id: String,
             request_options: Privy::RequestOptions

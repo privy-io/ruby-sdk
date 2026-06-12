@@ -11,6 +11,7 @@ module Privy
         imported_at: Float?,
         owner_id: String?,
         policy_ids: ::Array[String],
+        archived_at: Float?,
         authorization_threshold: Float,
         custody: Privy::WalletCustodian,
         display_name: String,
@@ -36,6 +37,8 @@ module Privy
       attr_accessor owner_id: String?
 
       attr_accessor policy_ids: ::Array[String]
+
+      attr_accessor archived_at: Float?
 
       attr_reader authorization_threshold: Float?
 
@@ -67,6 +70,7 @@ module Privy
         imported_at: Float?,
         owner_id: String?,
         policy_ids: ::Array[String],
+        ?archived_at: Float?,
         ?authorization_threshold: Float,
         ?custody: Privy::WalletCustodian,
         ?display_name: String,
@@ -84,6 +88,7 @@ module Privy
         imported_at: Float?,
         owner_id: String?,
         policy_ids: ::Array[String],
+        archived_at: Float?,
         authorization_threshold: Float,
         custody: Privy::WalletCustodian,
         display_name: String,

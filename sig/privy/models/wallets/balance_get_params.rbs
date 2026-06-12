@@ -7,6 +7,7 @@ module Privy
           token: Privy::Models::Wallets::BalanceGetParams::token,
           asset: Privy::Models::Wallets::BalanceGetParams::asset,
           chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          include_archived: bool,
           include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency
         }
         & Privy::Internal::Type::request_parameters
@@ -35,6 +36,10 @@ module Privy
           Privy::Models::Wallets::BalanceGetParams::chain
         ) -> Privy::Models::Wallets::BalanceGetParams::chain
 
+        attr_reader include_archived: bool?
+
+        def include_archived=: (bool) -> bool
+
         attr_reader include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency?
 
         def include_currency=: (
@@ -46,6 +51,7 @@ module Privy
           ?token: Privy::Models::Wallets::BalanceGetParams::token,
           ?asset: Privy::Models::Wallets::BalanceGetParams::asset,
           ?chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          ?include_archived: bool,
           ?include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency,
           ?request_options: Privy::request_opts
         ) -> void
@@ -55,6 +61,7 @@ module Privy
           token: Privy::Models::Wallets::BalanceGetParams::token,
           asset: Privy::Models::Wallets::BalanceGetParams::asset,
           chain: Privy::Models::Wallets::BalanceGetParams::chain,
+          include_archived: bool,
           include_currency: Privy::Models::Wallets::BalanceGetParams::include_currency,
           request_options: Privy::RequestOptions
         }

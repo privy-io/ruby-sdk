@@ -69,6 +69,13 @@ module Privy
         sig { params(cursor: String).void }
         attr_writer :cursor
 
+        # Include archived wallets in lookup. Defaults to false.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_archived
+
+        sig { params(include_archived: T::Boolean).void }
+        attr_writer :include_archived
+
         sig { returns(T.nilable(Float)) }
         attr_accessor :limit
 
@@ -89,6 +96,7 @@ module Privy
                 T::Array[Privy::WalletAsset::OrSymbol]
               ),
             cursor: String,
+            include_archived: T::Boolean,
             limit: T.nilable(Float),
             tx_hash: String,
             request_options: Privy::RequestOptions::OrHash
@@ -105,6 +113,8 @@ module Privy
           # `token`.
           asset: nil,
           cursor: nil,
+          # Include archived wallets in lookup. Defaults to false.
+          include_archived: nil,
           limit: nil,
           tx_hash: nil,
           request_options: {}
@@ -123,6 +133,7 @@ module Privy
                   T::Array[Privy::WalletAsset::OrSymbol]
                 ),
               cursor: String,
+              include_archived: T::Boolean,
               limit: T.nilable(Float),
               tx_hash: String,
               request_options: Privy::RequestOptions

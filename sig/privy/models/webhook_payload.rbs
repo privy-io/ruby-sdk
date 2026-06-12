@@ -21,6 +21,7 @@ module Privy
       | Privy::SeedPhraseExportWebhookPayload
       | Privy::WalletRecoverySetupWebhookPayload
       | Privy::WalletRecoveredWebhookPayload
+      | Privy::WalletArchivedWebhookPayload
       | Privy::MfaEnabledWebhookPayload
       | Privy::MfaDisabledWebhookPayload
       | Privy::YieldDepositConfirmedWebhookPayload

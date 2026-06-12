@@ -8,6 +8,7 @@ module Privy
           ?token: Privy::Models::Wallets::TransactionGetParams::token,
           ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
           ?cursor: String,
+          ?include_archived: bool,
           ?limit: Float?,
           ?tx_hash: String,
           ?request_options: Privy::request_opts

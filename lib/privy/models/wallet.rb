@@ -61,6 +61,13 @@ module Privy
       #   @return [Array<String>]
       required :policy_ids, Privy::Internal::Type::ArrayOf[String]
 
+      # @!attribute archived_at
+      #   Unix timestamp of when the wallet was archived in milliseconds, or null if the
+      #   wallet is active.
+      #
+      #   @return [Float, nil]
+      optional :archived_at, Float, nil?: true
+
       # @!attribute authorization_threshold
       #   The number of keys that must sign for an action to be valid.
       #
@@ -93,7 +100,7 @@ module Privy
       #   @return [String, nil]
       optional :public_key, String
 
-      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, authorization_threshold: nil, custody: nil, display_name: nil, external_id: nil, public_key: nil)
+      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, custody: nil, display_name: nil, external_id: nil, public_key: nil)
       #   Some parameter documentations has been truncated, see {Privy::Models::Wallet}
       #   for more details.
       #
@@ -116,6 +123,8 @@ module Privy
       #   @param owner_id [String, nil] The key quorum ID of the owner of the wallet.
       #
       #   @param policy_ids [Array<String>] List of policy IDs for policies that are enforced on the wallet.
+      #
+      #   @param archived_at [Float, nil] Unix timestamp of when the wallet was archived in milliseconds, or null if the w
       #
       #   @param authorization_threshold [Float] The number of keys that must sign for an action to be valid.
       #

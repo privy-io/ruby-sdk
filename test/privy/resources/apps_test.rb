@@ -33,6 +33,7 @@ class Privy::Test::Resources::AppsTest < Privy::Test::ResourceTest
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
         enabled_captcha_provider: Privy::AppResponse::EnabledCaptchaProvider | nil,
         enforce_wallet_uis: Privy::Internal::Type::Boolean,
+        external_wallets_for_signup_enabled: Privy::Internal::Type::Boolean,
         farcaster_auth: Privy::Internal::Type::Boolean,
         farcaster_link_wallets_enabled: Privy::Internal::Type::Boolean,
         fiat_on_ramp_enabled: Privy::Internal::Type::Boolean,

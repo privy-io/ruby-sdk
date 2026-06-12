@@ -123,6 +123,7 @@ module Privy
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
           external_id: String,
+          include_archived: T::Boolean,
           limit: T.nilable(Float),
           user_id: String,
           request_options: Privy::RequestOptions::OrHash
@@ -138,6 +139,8 @@ module Privy
         cursor: nil,
         # Filter wallets by external ID.
         external_id: nil,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         limit: nil,
         # Filter wallets by user ID. Cannot be used together with authorization_key.
         user_id: nil,
@@ -259,6 +262,22 @@ module Privy
       )
       end
 
+      # Archives a wallet, preventing it from being used in any write or signing
+      # operations. Archived wallets are hidden from list endpoints by default. Returns
+      # 404 if the wallet does not exist or is already archived.
+      sig do
+        params(
+          wallet_id: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::Wallet)
+      end
+      def archive(
+        # ID of the wallet.
+        wallet_id,
+        request_options: {}
+      )
+      end
+
       # Exchange a user JWT for a session key authorized to act on the user's wallets.
       # Returns the encrypted authorization key and the list of wallets it can access.
       sig do
@@ -360,12 +379,15 @@ module Privy
       sig do
         params(
           wallet_id: String,
+          include_archived: T::Boolean,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Wallet)
       end
       def get(
         # ID of the wallet.
         wallet_id,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         request_options: {}
       )
       end
@@ -374,12 +396,16 @@ module Privy
       sig do
         params(
           address: String,
+          include_archived: T::Boolean,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Wallet)
       end
       def get_wallet_by_address(
         # A blockchain wallet address (Ethereum or Solana).
         address:,
+        # Include archived wallets in lookup. Defaults to false (archived wallets return
+        # 404).
+        include_archived: nil,
         request_options: {}
       )
       end

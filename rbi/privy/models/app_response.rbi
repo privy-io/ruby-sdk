@@ -82,6 +82,9 @@ module Privy
       attr_accessor :enforce_wallet_uis
 
       sig { returns(T::Boolean) }
+      attr_accessor :external_wallets_for_signup_enabled
+
+      sig { returns(T::Boolean) }
       attr_accessor :farcaster_auth
 
       sig { returns(T::Boolean) }
@@ -243,6 +246,7 @@ module Privy
           enabled_captcha_provider:
             T.nilable(Privy::AppResponse::EnabledCaptchaProvider::OrSymbol),
           enforce_wallet_uis: T::Boolean,
+          external_wallets_for_signup_enabled: T::Boolean,
           farcaster_auth: T::Boolean,
           farcaster_link_wallets_enabled: T::Boolean,
           fiat_on_ramp_enabled: T::Boolean,
@@ -313,6 +317,7 @@ module Privy
         embedded_wallet_config:,
         enabled_captcha_provider:,
         enforce_wallet_uis:,
+        external_wallets_for_signup_enabled:,
         farcaster_auth:,
         farcaster_link_wallets_enabled:,
         fiat_on_ramp_enabled:,
@@ -385,6 +390,7 @@ module Privy
                 Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
               ),
             enforce_wallet_uis: T::Boolean,
+            external_wallets_for_signup_enabled: T::Boolean,
             farcaster_auth: T::Boolean,
             farcaster_link_wallets_enabled: T::Boolean,
             fiat_on_ramp_enabled: T::Boolean,

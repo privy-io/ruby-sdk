@@ -12,15 +12,30 @@ module Privy
       sig { returns(String) }
       attr_accessor :vault_id
 
+      # Include archived wallets in lookup. Defaults to false.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_archived
+
+      sig { params(include_archived: T::Boolean).void }
+      attr_writer :include_archived
+
       # Input for fetching yield positions.
-      sig { params(vault_id: String).returns(T.attached_class) }
+      sig do
+        params(vault_id: String, include_archived: T::Boolean).returns(
+          T.attached_class
+        )
+      end
       def self.new(
         # The vault ID to get position for.
-        vault_id:
+        vault_id:,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil
       )
       end
 
-      sig { override.returns({ vault_id: String }) }
+      sig do
+        override.returns({ vault_id: String, include_archived: T::Boolean })
+      end
       def to_hash
       end
     end

@@ -6,6 +6,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         cursor: String,
         external_id: String,
+        include_archived: bool,
         limit: Float?,
         user_id: String
       }
@@ -33,6 +34,10 @@ module Privy
 
       def external_id=: (String) -> String
 
+      attr_reader include_archived: bool?
+
+      def include_archived=: (bool) -> bool
+
       attr_accessor limit: Float?
 
       attr_reader user_id: String?
@@ -44,6 +49,7 @@ module Privy
         ?chain_type: Privy::Models::wallet_chain_type,
         ?cursor: String,
         ?external_id: String,
+        ?include_archived: bool,
         ?limit: Float?,
         ?user_id: String,
         ?request_options: Privy::request_opts
@@ -54,6 +60,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         cursor: String,
         external_id: String,
+        include_archived: bool,
         limit: Float?,
         user_id: String,
         request_options: Privy::RequestOptions

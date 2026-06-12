@@ -945,6 +945,9 @@ module Privy
   KrakenEmbedPortfolioTransactionRefID =
     Privy::Models::KrakenEmbedPortfolioTransactionRefID
 
+  KrakenEmbedPortfolioTransactionRefIDType =
+    Privy::Models::KrakenEmbedPortfolioTransactionRefIDType
+
   KrakenEmbedQuoteCancelledWebhookPayload =
     Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload
 
@@ -2125,6 +2128,10 @@ module Privy
 
   WalletAPIRevokeAuthorizationKeyInput =
     Privy::Models::WalletAPIRevokeAuthorizationKeyInput
+
+  WalletArchivedWebhookPayload = Privy::Models::WalletArchivedWebhookPayload
+
+  WalletArchiveParams = Privy::Models::WalletArchiveParams
 
   WalletAsset = Privy::Models::WalletAsset
 

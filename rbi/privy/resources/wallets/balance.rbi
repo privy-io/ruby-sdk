@@ -22,6 +22,7 @@ module Privy
                   Privy::Wallets::BalanceGetParams::Chain::UnionMember1::OrSymbol
                 ]
               ),
+            include_archived: T::Boolean,
             include_currency:
               Privy::Wallets::BalanceGetParams::IncludeCurrency::OrSymbol,
             request_options: Privy::RequestOptions::OrHash
@@ -41,6 +42,8 @@ module Privy
           # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
           # `asset`. Cannot be used with `token`.
           chain: nil,
+          # Include archived wallets in lookup. Defaults to false.
+          include_archived: nil,
           # If set, balances are converted to the specified fiat currency. Not supported
           # when `token` is provided.
           include_currency: nil,
