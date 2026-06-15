@@ -1,0 +1,54 @@
+module Privy
+  module Models
+    type tron_trigger_smart_contract =
+      {
+        contract_address: String,
+        owner_address: String,
+        type: Privy::Models::TronTriggerSmartContract::type_,
+        call_token_value: Integer,
+        token_id: Integer
+      }
+
+    class TronTriggerSmartContract < Privy::Internal::Type::BaseModel
+      attr_accessor contract_address: String
+
+      attr_accessor owner_address: String
+
+      attr_accessor type: Privy::Models::TronTriggerSmartContract::type_
+
+      attr_reader call_token_value: Integer?
+
+      def call_token_value=: (Integer) -> Integer
+
+      attr_reader token_id: Integer?
+
+      def token_id=: (Integer) -> Integer
+
+      def initialize: (
+        contract_address: String,
+        owner_address: String,
+        type: Privy::Models::TronTriggerSmartContract::type_,
+        ?call_token_value: Integer,
+        ?token_id: Integer
+      ) -> void
+
+      def to_hash: -> {
+        contract_address: String,
+        owner_address: String,
+        type: Privy::Models::TronTriggerSmartContract::type_,
+        call_token_value: Integer,
+        token_id: Integer
+      }
+
+      type type_ = :TriggerSmartContract
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TRIGGER_SMART_CONTRACT: :TriggerSmartContract
+
+        def self?.values: -> ::Array[Privy::Models::TronTriggerSmartContract::type_]
+      end
+    end
+  end
+end

@@ -17,6 +17,9 @@ module Privy
       IN = T.let(:in, Privy::ConditionOperator::TaggedSymbol)
       IN_CONDITION_SET =
         T.let(:in_condition_set, Privy::ConditionOperator::TaggedSymbol)
+      CONTAINS = T.let(:contains, Privy::ConditionOperator::TaggedSymbol)
+      STARTS_WITH = T.let(:starts_with, Privy::ConditionOperator::TaggedSymbol)
+      ENDS_WITH = T.let(:ends_with, Privy::ConditionOperator::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::ConditionOperator::TaggedSymbol]) }
       def self.values

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type tron_send_transaction_rpc_input_params =
+      { raw_data: Privy::TronRawDataForSend }
+
+    class TronSendTransactionRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor raw_data: Privy::TronRawDataForSend
+
+      def initialize: (raw_data: Privy::TronRawDataForSend) -> void
+
+      def to_hash: -> { raw_data: Privy::TronRawDataForSend }
+    end
+  end
+end

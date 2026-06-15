@@ -13,6 +13,9 @@ module Privy
       LTE = :lte
       IN = :in
       IN_CONDITION_SET = :in_condition_set
+      CONTAINS = :contains
+      STARTS_WITH = :starts_with
+      ENDS_WITH = :ends_with
 
       # @!method self.values
       #   @return [Array<Symbol>]

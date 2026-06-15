@@ -1,0 +1,12 @@
+module Privy
+  module Models
+    type tron_rpc_input =
+      Privy::TronSignTransactionRpcInput | Privy::TronSendTransactionRpcInput
+
+    module TronRpcInput
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::tron_rpc_input]
+    end
+  end
+end

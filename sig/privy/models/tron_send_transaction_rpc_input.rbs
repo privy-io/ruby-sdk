@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type tron_send_transaction_rpc_input =
+      {
+        method_: Privy::Models::TronSendTransactionRpcInput::method_,
+        params: Privy::TronSendTransactionRpcInputParams,
+        :caip2 => String
+      }
+
+    class TronSendTransactionRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::TronSendTransactionRpcInput::method_
+
+      attr_accessor params: Privy::TronSendTransactionRpcInputParams
+
+      attr_reader caip2: String?
+
+      def caip2=: (String) -> String
+
+      def initialize: (
+        method_: Privy::Models::TronSendTransactionRpcInput::method_,
+        params: Privy::TronSendTransactionRpcInputParams,
+        ?caip2: String
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::TronSendTransactionRpcInput::method_,
+        params: Privy::TronSendTransactionRpcInputParams,
+        :caip2 => String
+      }
+
+      type method_ = :tron_sendTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRON_SEND_TRANSACTION: :tron_sendTransaction
+
+        def self?.values: -> ::Array[Privy::Models::TronSendTransactionRpcInput::method_]
+      end
+    end
+  end
+end

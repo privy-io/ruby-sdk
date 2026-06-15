@@ -136,7 +136,8 @@ module Privy
                 Privy::SuiTransactionCommandCondition,
                 Privy::SuiTransferObjectsCommandCondition,
                 Privy::ActionRequestBodyCondition,
-                Privy::AggregationCondition
+                Privy::AggregationCondition,
+                Privy::MessageSigningCondition
               )
             ]
           )
@@ -177,7 +178,8 @@ module Privy
                   Privy::SuiTransactionCommandCondition::OrHash,
                   Privy::SuiTransferObjectsCommandCondition::OrHash,
                   Privy::ActionRequestBodyCondition::OrHash,
-                  Privy::AggregationCondition::OrHash
+                  Privy::AggregationCondition::OrHash,
+                  Privy::MessageSigningCondition::OrHash
                 )
               ],
             method_: Privy::PolicyMethod::OrSymbol,
@@ -218,7 +220,8 @@ module Privy
                     Privy::SuiTransactionCommandCondition,
                     Privy::SuiTransferObjectsCommandCondition,
                     Privy::ActionRequestBodyCondition,
-                    Privy::AggregationCondition
+                    Privy::AggregationCondition,
+                    Privy::MessageSigningCondition
                   )
                 ],
               method_: Privy::PolicyMethod::OrSymbol,
