@@ -977,6 +977,10 @@ module Privy
 
   class ListWalletActionsResponse = Privy::Models::ListWalletActionsResponse
 
+  class MessageSigningCondition = Privy::Models::MessageSigningCondition
+
+  module MessageSigningField = Privy::Models::MessageSigningField
+
   class MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
 
   class MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
@@ -1675,7 +1679,39 @@ module Privy
 
   class TronCalldataCondition = Privy::Models::TronCalldataCondition
 
+  module TronContract = Privy::Models::TronContract
+
+  class TronHexAddress = Privy::Models::TronHexAddress
+
+  class TronRawDataForSend = Privy::Models::TronRawDataForSend
+
+  class TronRawDataForSign = Privy::Models::TronRawDataForSign
+
+  module TronRpcInput = Privy::Models::TronRpcInput
+
+  module TronRpcResponse = Privy::Models::TronRpcResponse
+
+  class TronSendTransactionRpcInput = Privy::Models::TronSendTransactionRpcInput
+
+  class TronSendTransactionRpcInputParams = Privy::Models::TronSendTransactionRpcInputParams
+
+  class TronSendTransactionRpcResponse = Privy::Models::TronSendTransactionRpcResponse
+
+  class TronSendTransactionRpcResponseData = Privy::Models::TronSendTransactionRpcResponseData
+
+  class TronSignTransactionRpcInput = Privy::Models::TronSignTransactionRpcInput
+
+  class TronSignTransactionRpcInputParams = Privy::Models::TronSignTransactionRpcInputParams
+
+  class TronSignTransactionRpcResponse = Privy::Models::TronSignTransactionRpcResponse
+
+  class TronSignTransactionRpcResponseData = Privy::Models::TronSignTransactionRpcResponseData
+
   class TronTransactionCondition = Privy::Models::TronTransactionCondition
+
+  class TronTransferContract = Privy::Models::TronTransferContract
+
+  class TronTriggerSmartContract = Privy::Models::TronTriggerSmartContract
 
   TypedDataDomainInputParams: Privy::Internal::Type::Converter
 

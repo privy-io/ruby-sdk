@@ -61,7 +61,8 @@ module Privy
                 Privy::SuiTransactionCommandCondition::OrHash,
                 Privy::SuiTransferObjectsCommandCondition::OrHash,
                 Privy::ActionRequestBodyCondition::OrHash,
-                Privy::AggregationCondition::OrHash
+                Privy::AggregationCondition::OrHash,
+                Privy::MessageSigningCondition::OrHash
               )
             ],
           method_: Privy::PolicyMethod::OrSymbol,
@@ -152,6 +153,8 @@ module Privy
               Privy::SparkCreateLightningInvoiceRpcInput::OrHash,
               Privy::SparkPayLightningInvoiceRpcInput::OrHash,
               Privy::SparkSignMessageWithIdentityKeyRpcInput::OrHash,
+              Privy::TronSignTransactionRpcInput::OrHash,
+              Privy::TronSendTransactionRpcInput::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),
@@ -315,7 +318,8 @@ module Privy
                 Privy::SuiTransactionCommandCondition::OrHash,
                 Privy::SuiTransferObjectsCommandCondition::OrHash,
                 Privy::ActionRequestBodyCondition::OrHash,
-                Privy::AggregationCondition::OrHash
+                Privy::AggregationCondition::OrHash,
+                Privy::MessageSigningCondition::OrHash
               )
             ],
           method_: Privy::PolicyMethod::OrSymbol,

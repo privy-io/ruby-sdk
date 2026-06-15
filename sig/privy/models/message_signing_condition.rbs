@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type message_signing_condition =
+      {
+        field: Privy::Models::message_signing_field,
+        field_source: Privy::Models::MessageSigningCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class MessageSigningCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: Privy::Models::message_signing_field
+
+      attr_accessor field_source: Privy::Models::MessageSigningCondition::field_source
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: Privy::Models::message_signing_field,
+        field_source: Privy::Models::MessageSigningCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: Privy::Models::message_signing_field,
+        field_source: Privy::Models::MessageSigningCondition::field_source,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field_source = :message
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        MESSAGE: :message
+
+        def self?.values: -> ::Array[Privy::Models::MessageSigningCondition::field_source]
+      end
+    end
+  end
+end

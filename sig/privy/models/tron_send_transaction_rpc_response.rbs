@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type tron_send_transaction_rpc_response =
+      {
+        data: Privy::TronSendTransactionRpcResponseData,
+        method_: Privy::Models::TronSendTransactionRpcResponse::method_
+      }
+
+    class TronSendTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::TronSendTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::TronSendTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::TronSendTransactionRpcResponseData,
+        method_: Privy::Models::TronSendTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::TronSendTransactionRpcResponseData,
+        method_: Privy::Models::TronSendTransactionRpcResponse::method_
+      }
+
+      type method_ = :tron_sendTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRON_SEND_TRANSACTION: :tron_sendTransaction
+
+        def self?.values: -> ::Array[Privy::Models::TronSendTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

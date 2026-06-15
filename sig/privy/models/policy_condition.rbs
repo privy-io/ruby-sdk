@@ -17,6 +17,7 @@ module Privy
       | Privy::SuiTransferObjectsCommandCondition
       | Privy::ActionRequestBodyCondition
       | Privy::AggregationCondition
+      | Privy::MessageSigningCondition
 
     module PolicyCondition
       extend Privy::Internal::Type::Union

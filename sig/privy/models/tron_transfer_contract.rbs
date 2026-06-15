@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type tron_transfer_contract =
+      {
+        amount: Integer,
+        owner_address: String,
+        to_address: String,
+        type: Privy::Models::TronTransferContract::type_
+      }
+
+    class TronTransferContract < Privy::Internal::Type::BaseModel
+      attr_accessor amount: Integer
+
+      attr_accessor owner_address: String
+
+      attr_accessor to_address: String
+
+      attr_accessor type: Privy::Models::TronTransferContract::type_
+
+      def initialize: (
+        amount: Integer,
+        owner_address: String,
+        to_address: String,
+        type: Privy::Models::TronTransferContract::type_
+      ) -> void
+
+      def to_hash: -> {
+        amount: Integer,
+        owner_address: String,
+        to_address: String,
+        type: Privy::Models::TronTransferContract::type_
+      }
+
+      type type_ = :TransferContract
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TRANSFER_CONTRACT: :TransferContract
+
+        def self?.values: -> ::Array[Privy::Models::TronTransferContract::type_]
+      end
+    end
+  end
+end

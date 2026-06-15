@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type tron_sign_transaction_rpc_response =
+      {
+        data: Privy::TronSignTransactionRpcResponseData,
+        method_: Privy::Models::TronSignTransactionRpcResponse::method_
+      }
+
+    class TronSignTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::TronSignTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::TronSignTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::TronSignTransactionRpcResponseData,
+        method_: Privy::Models::TronSignTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::TronSignTransactionRpcResponseData,
+        method_: Privy::Models::TronSignTransactionRpcResponse::method_
+      }
+
+      type method_ = :tron_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        TRON_SIGN_TRANSACTION: :tron_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::TronSignTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

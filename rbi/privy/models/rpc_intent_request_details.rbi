@@ -32,6 +32,8 @@ module Privy
             Privy::SparkCreateLightningInvoiceRpcInput,
             Privy::SparkPayLightningInvoiceRpcInput,
             Privy::SparkSignMessageWithIdentityKeyRpcInput,
+            Privy::TronSignTransactionRpcInput,
+            Privy::TronSendTransactionRpcInput,
             Privy::ExportPrivateKeyRpcInput,
             Privy::ExportSeedPhraseRpcInput
           )
@@ -70,6 +72,8 @@ module Privy
               Privy::SparkCreateLightningInvoiceRpcInput::OrHash,
               Privy::SparkPayLightningInvoiceRpcInput::OrHash,
               Privy::SparkSignMessageWithIdentityKeyRpcInput::OrHash,
+              Privy::TronSignTransactionRpcInput::OrHash,
+              Privy::TronSendTransactionRpcInput::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),
@@ -110,6 +114,8 @@ module Privy
                 Privy::SparkCreateLightningInvoiceRpcInput,
                 Privy::SparkPayLightningInvoiceRpcInput,
                 Privy::SparkSignMessageWithIdentityKeyRpcInput,
+                Privy::TronSignTransactionRpcInput,
+                Privy::TronSendTransactionRpcInput,
                 Privy::ExportPrivateKeyRpcInput,
                 Privy::ExportSeedPhraseRpcInput
               ),
