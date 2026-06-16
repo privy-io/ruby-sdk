@@ -1,6 +1,7 @@
 module Privy
   module Models
-    type list_wallet_actions_query = { cursor: String, limit: Float? }
+    type list_wallet_actions_query =
+      { cursor: String, limit: Float?, type: Privy::Models::wallet_action_type }
 
     class ListWalletActionsQuery < Privy::Internal::Type::BaseModel
       attr_reader cursor: String?
@@ -9,9 +10,23 @@ module Privy
 
       attr_accessor limit: Float?
 
-      def initialize: (?cursor: String, ?limit: Float?) -> void
+      attr_reader type: Privy::Models::wallet_action_type?
 
-      def to_hash: -> { cursor: String, limit: Float? }
+      def type=: (
+        Privy::Models::wallet_action_type
+      ) -> Privy::Models::wallet_action_type
+
+      def initialize: (
+        ?cursor: String,
+        ?limit: Float?,
+        ?type: Privy::Models::wallet_action_type
+      ) -> void
+
+      def to_hash: -> {
+        cursor: String,
+        limit: Float?,
+        type: Privy::Models::wallet_action_type
+      }
     end
   end
 end

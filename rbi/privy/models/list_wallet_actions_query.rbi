@@ -17,16 +17,38 @@ module Privy
       sig { returns(T.nilable(Float)) }
       attr_accessor :limit
 
+      # Type of wallet action
+      sig { returns(T.nilable(Privy::WalletActionType::OrSymbol)) }
+      attr_reader :type
+
+      sig { params(type: Privy::WalletActionType::OrSymbol).void }
+      attr_writer :type
+
       # Query parameters for listing wallet actions.
       sig do
-        params(cursor: String, limit: T.nilable(Float)).returns(
-          T.attached_class
-        )
+        params(
+          cursor: String,
+          limit: T.nilable(Float),
+          type: Privy::WalletActionType::OrSymbol
+        ).returns(T.attached_class)
       end
-      def self.new(cursor: nil, limit: nil)
+      def self.new(
+        cursor: nil,
+        limit: nil,
+        # Type of wallet action
+        type: nil
+      )
       end
 
-      sig { override.returns({ cursor: String, limit: T.nilable(Float) }) }
+      sig do
+        override.returns(
+          {
+            cursor: String,
+            limit: T.nilable(Float),
+            type: Privy::WalletActionType::OrSymbol
+          }
+        )
+      end
       def to_hash
       end
     end
