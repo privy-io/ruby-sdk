@@ -9,11 +9,23 @@ module Privy
       #   @return [Symbol, Privy::Models::WalletActionType]
       required :action_type, enum: -> { Privy::WalletActionType }
 
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute destination_address
       #   Recipient address.
       #
       #   @return [String]
       required :destination_address, String
+
+      # @!attribute failed_at
+      #   ISO 8601 timestamp of when the wallet action failed.
+      #
+      #   @return [String]
+      required :failed_at, String
 
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
@@ -81,12 +93,12 @@ module Privy
 
       # @!attribute source_asset_decimals
       #   Number of decimals for the transferred token. Present when the transfer was
-      #   initiated with `asset_address` and the decimals were resolved on-chain.
+      #   initiated with `asset_address` and the decimals were resolved onchain.
       #
       #   @return [Integer, nil]
       optional :source_asset_decimals, Integer
 
-      # @!method initialize(action_type:, destination_address:, failure_reason:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
+      # @!method initialize(action_type:, created_at:, destination_address:, failed_at:, failure_reason:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionTransferFailedWebhookPayload} for more details.
       #
@@ -94,7 +106,11 @@ module Privy
       #
       #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
       #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
       #   @param destination_address [String] Recipient address.
+      #
+      #   @param failed_at [String] ISO 8601 timestamp of when the wallet action failed.
       #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #

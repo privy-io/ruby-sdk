@@ -23,6 +23,14 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
+      # ISO 8601 timestamp of when the wallet action failed.
+      sig { returns(String) }
+      attr_accessor :failed_at
+
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(Privy::FailureReason) }
       attr_reader :failure_reason
@@ -101,6 +109,8 @@ module Privy
           action_type: Privy::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
+          created_at: String,
+          failed_at: String,
           failure_reason: Privy::FailureReason::OrHash,
           raw_amount: String,
           status:
@@ -133,6 +143,10 @@ module Privy
         asset_address:,
         # CAIP-2 chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
+        # ISO 8601 timestamp of when the wallet action failed.
+        failed_at:,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason:,
         # Base-unit amount of asset deposited (e.g. "1500000").
@@ -170,6 +184,8 @@ module Privy
             action_type: Privy::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
+            created_at: String,
+            failed_at: String,
             failure_reason: Privy::FailureReason,
             raw_amount: String,
             status:

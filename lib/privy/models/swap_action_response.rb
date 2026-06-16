@@ -62,6 +62,14 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
+      # @!attribute destination_address
+      #   Recipient address on the destination chain. Present for cross-chain swaps. May
+      #   differ from the source wallet address when swapping between chain types (e.g.
+      #   EVM to Solana).
+      #
+      #   @return [String, nil]
+      optional :destination_address, String
+
       # @!attribute destination_caip2
       #   Destination chain CAIP-2 identifier. Present for cross-chain swaps.
       #
@@ -108,7 +116,7 @@ module Privy
       #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
-      # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_caip2: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, steps: nil)
+      # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_address: nil, destination_caip2: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, steps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::SwapActionResponse} for more details.
       #
@@ -133,6 +141,8 @@ module Privy
       #   @param type [Symbol, Privy::Models::SwapActionResponse::Type]
       #
       #   @param wallet_id [String] The ID of the wallet involved in the action.
+      #
+      #   @param destination_address [String] Recipient address on the destination chain. Present for cross-chain swaps. May d
       #
       #   @param destination_caip2 [String] Destination chain CAIP-2 identifier. Present for cross-chain swaps.
       #

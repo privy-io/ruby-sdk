@@ -21,6 +21,18 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute completed_at
+      #   ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @return [String]
+      required :completed_at, String
+
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute raw_amount
       #   Base-unit amount of asset deposited (e.g. "1500000").
       #
@@ -96,7 +108,7 @@ module Privy
       #   @return [Integer, nil]
       optional :decimals, Integer
 
-      # @!method initialize(action_type:, asset_address:, caip2:, raw_amount:, share_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
+      # @!method initialize(action_type:, asset_address:, caip2:, completed_at:, created_at:, raw_amount:, share_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnDepositSucceededWebhookPayload} for more
       #   details.
@@ -108,6 +120,10 @@ module Privy
       #   @param asset_address [String] Underlying asset token address.
       #
       #   @param caip2 [String] CAIP-2 chain identifier.
+      #
+      #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param raw_amount [String] Base-unit amount of asset deposited (e.g. "1500000").
       #

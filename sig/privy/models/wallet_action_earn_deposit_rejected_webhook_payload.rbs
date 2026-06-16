@@ -5,8 +5,10 @@ module Privy
         action_type: Privy::Models::wallet_action_type,
         asset_address: String,
         :caip2 => String,
+        created_at: String,
         failure_reason: Privy::FailureReason,
         raw_amount: String,
+        rejected_at: String,
         status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status,
         steps: ::Array[Privy::Models::wallet_action_step],
         type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_,
@@ -26,9 +28,13 @@ module Privy
 
       attr_accessor caip2: String
 
+      attr_accessor created_at: String
+
       attr_accessor failure_reason: Privy::FailureReason
 
       attr_accessor raw_amount: String
+
+      attr_accessor rejected_at: String
 
       attr_accessor status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status
 
@@ -60,8 +66,10 @@ module Privy
         action_type: Privy::Models::wallet_action_type,
         asset_address: String,
         caip2: String,
+        created_at: String,
         failure_reason: Privy::FailureReason,
         raw_amount: String,
+        rejected_at: String,
         status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status,
         steps: ::Array[Privy::Models::wallet_action_step],
         type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_,
@@ -78,8 +86,10 @@ module Privy
         action_type: Privy::Models::wallet_action_type,
         asset_address: String,
         :caip2 => String,
+        created_at: String,
         failure_reason: Privy::FailureReason,
         raw_amount: String,
+        rejected_at: String,
         status: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::status,
         steps: ::Array[Privy::Models::wallet_action_step],
         type: Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::type_,

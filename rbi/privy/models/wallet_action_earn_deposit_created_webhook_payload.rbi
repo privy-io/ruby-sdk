@@ -23,6 +23,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # Base-unit amount of asset deposited (e.g. "1500000").
       sig { returns(String) }
       attr_accessor :raw_amount
@@ -89,6 +93,7 @@ module Privy
           action_type: Privy::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
+          created_at: String,
           raw_amount: String,
           status:
             Privy::WalletActionEarnDepositCreatedWebhookPayload::Status::OrSymbol,
@@ -110,6 +115,8 @@ module Privy
         asset_address:,
         # CAIP-2 chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Base-unit amount of asset deposited (e.g. "1500000").
         raw_amount:,
         # The status of the wallet action.
@@ -142,6 +149,7 @@ module Privy
             action_type: Privy::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
+            created_at: String,
             raw_amount: String,
             status:
               Privy::WalletActionEarnDepositCreatedWebhookPayload::Status::TaggedSymbol,

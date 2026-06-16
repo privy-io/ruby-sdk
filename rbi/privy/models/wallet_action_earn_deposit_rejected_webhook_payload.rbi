@@ -23,6 +23,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(Privy::FailureReason) }
       attr_reader :failure_reason
@@ -33,6 +37,10 @@ module Privy
       # Base-unit amount of asset deposited (e.g. "1500000").
       sig { returns(String) }
       attr_accessor :raw_amount
+
+      # ISO 8601 timestamp of when the wallet action was rejected.
+      sig { returns(String) }
+      attr_accessor :rejected_at
 
       # The status of the wallet action.
       sig do
@@ -100,8 +108,10 @@ module Privy
           action_type: Privy::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
+          created_at: String,
           failure_reason: Privy::FailureReason::OrHash,
           raw_amount: String,
+          rejected_at: String,
           status:
             Privy::WalletActionEarnDepositRejectedWebhookPayload::Status::OrSymbol,
           steps:
@@ -132,10 +142,14 @@ module Privy
         asset_address:,
         # CAIP-2 chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason:,
         # Base-unit amount of asset deposited (e.g. "1500000").
         raw_amount:,
+        # ISO 8601 timestamp of when the wallet action was rejected.
+        rejected_at:,
         # The status of the wallet action.
         status:,
         # The steps of the wallet action at the time of rejection.
@@ -168,8 +182,10 @@ module Privy
             action_type: Privy::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
+            created_at: String,
             failure_reason: Privy::FailureReason,
             raw_amount: String,
+            rejected_at: String,
             status:
               Privy::WalletActionEarnDepositRejectedWebhookPayload::Status::TaggedSymbol,
             steps: T::Array[Privy::WalletActionStep::Variants],

@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type advanced_swap_platform_fee =
+      { token: String, amount: String, bps: Integer }
+
+    class AdvancedSwapPlatformFee < Privy::Internal::Type::BaseModel
+      attr_accessor token: String
+
+      attr_accessor amount: String
+
+      attr_accessor bps: Integer
+
+      def initialize: (token: String, amount: String, bps: Integer) -> void
+
+      def to_hash: -> { token: String, amount: String, bps: Integer }
+    end
+  end
+end

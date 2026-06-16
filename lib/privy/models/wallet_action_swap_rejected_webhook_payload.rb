@@ -15,6 +15,12 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
@@ -22,7 +28,7 @@ module Privy
       required :failure_reason, -> { Privy::FailureReason }
 
       # @!attribute input_amount
-      #   Amount of input token in base units. Populated after on-chain confirmation.
+      #   Amount of input token in base units. Populated after onchain confirmation.
       #
       #   @return [String, nil]
       required :input_amount, String, nil?: true
@@ -38,6 +44,12 @@ module Privy
       #
       #   @return [String]
       required :output_token, String
+
+      # @!attribute rejected_at
+      #   ISO 8601 timestamp of when the wallet action was rejected.
+      #
+      #   @return [String]
+      required :rejected_at, String
 
       # @!attribute status
       #   The status of the wallet action.
@@ -69,20 +81,24 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_type:, caip2:, failure_reason:, input_amount:, input_token:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:)
+      # @!method initialize(action_type:, caip2:, created_at:, failure_reason:, input_amount:, input_token:, output_token:, rejected_at:, status:, steps:, type:, wallet_action_id:, wallet_id:)
       #   Payload for the wallet_action.swap.rejected webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
       #
       #   @param caip2 [String] Chain identifier.
       #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
-      #   @param input_amount [String, nil] Amount of input token in base units. Populated after on-chain confirmation.
+      #   @param input_amount [String, nil] Amount of input token in base units. Populated after onchain confirmation.
       #
       #   @param input_token [String] Token address being sold.
       #
       #   @param output_token [String] Token address being bought.
+      #
+      #   @param rejected_at [String] ISO 8601 timestamp of when the wallet action was rejected.
       #
       #   @param status [Symbol, Privy::Models::WalletActionSwapRejectedWebhookPayload::Status] The status of the wallet action.
       #

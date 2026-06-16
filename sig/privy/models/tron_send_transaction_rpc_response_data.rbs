@@ -1,16 +1,26 @@
 module Privy
   module Models
     type tron_send_transaction_rpc_response_data =
-      { :caip2 => String, transaction_id: String }
+      { :caip2 => String, hash_: String, transaction_id: String }
 
     class TronSendTransactionRpcResponseData < Privy::Internal::Type::BaseModel
       attr_accessor caip2: String
 
+      attr_accessor hash_: String
+
       attr_accessor transaction_id: String
 
-      def initialize: (caip2: String, transaction_id: String) -> void
+      def initialize: (
+        caip2: String,
+        hash_: String,
+        transaction_id: String
+      ) -> void
 
-      def to_hash: -> { :caip2 => String, transaction_id: String }
+      def to_hash: -> {
+        :caip2 => String,
+        hash_: String,
+        transaction_id: String
+      }
     end
   end
 end

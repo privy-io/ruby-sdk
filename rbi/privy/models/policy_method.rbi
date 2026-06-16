@@ -26,6 +26,7 @@ module Privy
         T.let(:signTransaction, Privy::PolicyMethod::TaggedSymbol)
       SIGN_AND_SEND_TRANSACTION =
         T.let(:signAndSendTransaction, Privy::PolicyMethod::TaggedSymbol)
+      SIGN_MESSAGE = T.let(:signMessage, Privy::PolicyMethod::TaggedSymbol)
       EXPORT_PRIVATE_KEY =
         T.let(:exportPrivateKey, Privy::PolicyMethod::TaggedSymbol)
       EXPORT_SEED_PHRASE =

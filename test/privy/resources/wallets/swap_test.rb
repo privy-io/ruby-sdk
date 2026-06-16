@@ -30,6 +30,7 @@ class Privy::Test::Resources::Wallets::SwapTest < Privy::Test::ResourceTest
         status: Privy::WalletActionStatus,
         type: Privy::SwapActionResponse::Type,
         wallet_id: String,
+        destination_address: String | nil,
         destination_caip2: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         estimated_gas: Privy::Gas | nil,

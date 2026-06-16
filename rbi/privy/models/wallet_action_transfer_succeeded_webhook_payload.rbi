@@ -15,6 +15,14 @@ module Privy
       sig { returns(Privy::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
+      # ISO 8601 timestamp of when the wallet action completed successfully.
+      sig { returns(String) }
+      attr_accessor :completed_at
+
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # Recipient address.
       sig { returns(String) }
       attr_accessor :destination_address
@@ -76,7 +84,7 @@ module Privy
       attr_writer :source_asset_address
 
       # Number of decimals for the transferred token. Present when the transfer was
-      # initiated with `asset_address` and the decimals were resolved on-chain.
+      # initiated with `asset_address` and the decimals were resolved onchain.
       sig { returns(T.nilable(Integer)) }
       attr_reader :source_asset_decimals
 
@@ -87,6 +95,8 @@ module Privy
       sig do
         params(
           action_type: Privy::WalletActionType::OrSymbol,
+          completed_at: String,
+          created_at: String,
           destination_address: String,
           source_chain: String,
           status:
@@ -114,6 +124,10 @@ module Privy
       def self.new(
         # Type of wallet action
         action_type:,
+        # ISO 8601 timestamp of when the wallet action completed successfully.
+        completed_at:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Recipient address.
         destination_address:,
         # Chain name (e.g. "base", "ethereum").
@@ -138,7 +152,7 @@ module Privy
         # was initiated with `asset_address`.
         source_asset_address: nil,
         # Number of decimals for the transferred token. Present when the transfer was
-        # initiated with `asset_address` and the decimals were resolved on-chain.
+        # initiated with `asset_address` and the decimals were resolved onchain.
         source_asset_decimals: nil
       )
       end
@@ -147,6 +161,8 @@ module Privy
         override.returns(
           {
             action_type: Privy::WalletActionType::TaggedSymbol,
+            completed_at: String,
+            created_at: String,
             destination_address: String,
             source_chain: String,
             status:

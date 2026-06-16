@@ -15,8 +15,14 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute input_amount
-      #   Amount of input token in base units. Populated after on-chain confirmation.
+      #   Amount of input token in base units. Populated after onchain confirmation.
       #
       #   @return [String, nil]
       required :input_amount, String, nil?: true
@@ -57,14 +63,16 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_type:, caip2:, input_amount:, input_token:, output_token:, status:, type:, wallet_action_id:, wallet_id:)
+      # @!method initialize(action_type:, caip2:, created_at:, input_amount:, input_token:, output_token:, status:, type:, wallet_action_id:, wallet_id:)
       #   Payload for the wallet_action.swap.created webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
       #
       #   @param caip2 [String] Chain identifier.
       #
-      #   @param input_amount [String, nil] Amount of input token in base units. Populated after on-chain confirmation.
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @param input_amount [String, nil] Amount of input token in base units. Populated after onchain confirmation.
       #
       #   @param input_token [String] Token address being sold.
       #

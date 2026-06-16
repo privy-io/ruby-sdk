@@ -4,6 +4,8 @@ module Privy
       {
         action_type: Privy::Models::wallet_action_type,
         :caip2 => String,
+        completed_at: String,
+        created_at: String,
         input_amount: String?,
         input_token: String,
         output_amount: String?,
@@ -19,6 +21,10 @@ module Privy
       attr_accessor action_type: Privy::Models::wallet_action_type
 
       attr_accessor caip2: String
+
+      attr_accessor completed_at: String
+
+      attr_accessor created_at: String
 
       attr_accessor input_amount: String?
 
@@ -41,6 +47,8 @@ module Privy
       def initialize: (
         action_type: Privy::Models::wallet_action_type,
         caip2: String,
+        completed_at: String,
+        created_at: String,
         input_amount: String?,
         input_token: String,
         output_amount: String?,
@@ -55,6 +63,8 @@ module Privy
       def to_hash: -> {
         action_type: Privy::Models::wallet_action_type,
         :caip2 => String,
+        completed_at: String,
+        created_at: String,
         input_amount: String?,
         input_token: String,
         output_amount: String?,

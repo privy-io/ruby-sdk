@@ -19,6 +19,14 @@ module Privy
       sig { returns(String) }
       attr_accessor :chain
 
+      # ISO 8601 timestamp of when the wallet action completed successfully.
+      sig { returns(String) }
+      attr_accessor :completed_at
+
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       sig { returns(T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry])) }
       attr_accessor :rewards
@@ -56,6 +64,8 @@ module Privy
         params(
           action_type: Privy::WalletActionType::OrSymbol,
           chain: String,
+          completed_at: String,
+          created_at: String,
           rewards:
             T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry::OrHash]),
           status:
@@ -81,6 +91,10 @@ module Privy
         action_type:,
         # EVM chain name (e.g. "base", "ethereum").
         chain:,
+        # ISO 8601 timestamp of when the wallet action completed successfully.
+        completed_at:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Claimed reward tokens. Populated after the preparation step fetches from Merkl.
         rewards:,
         # The status of the wallet action.
@@ -101,6 +115,8 @@ module Privy
           {
             action_type: Privy::WalletActionType::TaggedSymbol,
             chain: String,
+            completed_at: String,
+            created_at: String,
             rewards: T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry]),
             status:
               Privy::WalletActionEarnIncentiveClaimSucceededWebhookPayload::Status::TaggedSymbol,

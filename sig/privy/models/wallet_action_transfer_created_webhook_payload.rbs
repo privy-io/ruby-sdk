@@ -3,6 +3,7 @@ module Privy
     type wallet_action_transfer_created_webhook_payload =
       {
         action_type: Privy::Models::wallet_action_type,
+        created_at: String,
         destination_address: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status,
@@ -17,6 +18,8 @@ module Privy
 
     class WalletActionTransferCreatedWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor action_type: Privy::Models::wallet_action_type
+
+      attr_accessor created_at: String
 
       attr_accessor destination_address: String
 
@@ -48,6 +51,7 @@ module Privy
 
       def initialize: (
         action_type: Privy::Models::wallet_action_type,
+        created_at: String,
         destination_address: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status,
@@ -62,6 +66,7 @@ module Privy
 
       def to_hash: -> {
         action_type: Privy::Models::wallet_action_type,
+        created_at: String,
         destination_address: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferCreatedWebhookPayload::status,

@@ -15,6 +15,18 @@ module Privy
       #   @return [String]
       required :chain, String
 
+      # @!attribute completed_at
+      #   ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @return [String]
+      required :completed_at, String
+
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute rewards
       #   Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #
@@ -55,12 +67,16 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_type:, chain:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:)
+      # @!method initialize(action_type:, chain:, completed_at:, created_at:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:)
       #   Payload for the wallet_action.earn_incentive_claim.succeeded webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
       #
       #   @param chain [String] EVM chain name (e.g. "base", "ethereum").
+      #
+      #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param rewards [Array<Privy::Models::EarnIncetiveClaimRewardEntry>, nil] Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #

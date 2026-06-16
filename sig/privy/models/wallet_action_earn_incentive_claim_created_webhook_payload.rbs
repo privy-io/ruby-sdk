@@ -4,6 +4,7 @@ module Privy
       {
         action_type: Privy::Models::wallet_action_type,
         chain: String,
+        created_at: String,
         rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
@@ -15,6 +16,8 @@ module Privy
       attr_accessor action_type: Privy::Models::wallet_action_type
 
       attr_accessor chain: String
+
+      attr_accessor created_at: String
 
       attr_accessor rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?
 
@@ -29,6 +32,7 @@ module Privy
       def initialize: (
         action_type: Privy::Models::wallet_action_type,
         chain: String,
+        created_at: String,
         rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
@@ -39,6 +43,7 @@ module Privy
       def to_hash: -> {
         action_type: Privy::Models::wallet_action_type,
         chain: String,
+        created_at: String,
         rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,

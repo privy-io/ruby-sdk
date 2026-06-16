@@ -12,6 +12,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
+        destination_address: String,
         :destination_caip2 => String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
         estimated_gas: Privy::Gas?,
@@ -41,6 +42,10 @@ module Privy
       attr_accessor type: Privy::Models::SwapActionResponse::type_
 
       attr_accessor wallet_id: String
+
+      attr_reader destination_address: String?
+
+      def destination_address=: (String) -> String
 
       attr_reader destination_caip2: String?
 
@@ -75,6 +80,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
+        ?destination_address: String,
         ?destination_caip2: String,
         ?estimated_fees: ::Array[Privy::Models::fee_line_item]?,
         ?estimated_gas: Privy::Gas?,
@@ -95,6 +101,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::SwapActionResponse::type_,
         wallet_id: String,
+        destination_address: String,
         :destination_caip2 => String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
         estimated_gas: Privy::Gas?,

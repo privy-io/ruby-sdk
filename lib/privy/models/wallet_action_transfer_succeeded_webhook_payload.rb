@@ -9,6 +9,18 @@ module Privy
       #   @return [Symbol, Privy::Models::WalletActionType]
       required :action_type, enum: -> { Privy::WalletActionType }
 
+      # @!attribute completed_at
+      #   ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @return [String]
+      required :completed_at, String
+
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute destination_address
       #   Recipient address.
       #
@@ -74,18 +86,22 @@ module Privy
 
       # @!attribute source_asset_decimals
       #   Number of decimals for the transferred token. Present when the transfer was
-      #   initiated with `asset_address` and the decimals were resolved on-chain.
+      #   initiated with `asset_address` and the decimals were resolved onchain.
       #
       #   @return [Integer, nil]
       optional :source_asset_decimals, Integer
 
-      # @!method initialize(action_type:, destination_address:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
+      # @!method initialize(action_type:, completed_at:, created_at:, destination_address:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionTransferSucceededWebhookPayload} for more details.
       #
       #   Payload for the wallet_action.transfer.succeeded webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #
+      #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param destination_address [String] Recipient address.
       #

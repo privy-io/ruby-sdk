@@ -19,6 +19,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(Privy::FailureReason) }
       attr_reader :failure_reason
@@ -26,7 +30,7 @@ module Privy
       sig { params(failure_reason: Privy::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
-      # Amount of input token in base units. Populated after on-chain confirmation.
+      # Amount of input token in base units. Populated after onchain confirmation.
       sig { returns(T.nilable(String)) }
       attr_accessor :input_amount
 
@@ -37,6 +41,10 @@ module Privy
       # Token address being bought.
       sig { returns(String) }
       attr_accessor :output_token
+
+      # ISO 8601 timestamp of when the wallet action was rejected.
+      sig { returns(String) }
+      attr_accessor :rejected_at
 
       # The status of the wallet action.
       sig do
@@ -71,10 +79,12 @@ module Privy
         params(
           action_type: Privy::WalletActionType::OrSymbol,
           caip2: String,
+          created_at: String,
           failure_reason: Privy::FailureReason::OrHash,
           input_amount: T.nilable(String),
           input_token: String,
           output_token: String,
+          rejected_at: String,
           status:
             Privy::WalletActionSwapRejectedWebhookPayload::Status::OrSymbol,
           steps:
@@ -97,14 +107,18 @@ module Privy
         action_type:,
         # Chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason:,
-        # Amount of input token in base units. Populated after on-chain confirmation.
+        # Amount of input token in base units. Populated after onchain confirmation.
         input_amount:,
         # Token address being sold.
         input_token:,
         # Token address being bought.
         output_token:,
+        # ISO 8601 timestamp of when the wallet action was rejected.
+        rejected_at:,
         # The status of the wallet action.
         status:,
         # The steps of the wallet action at the time of rejection.
@@ -123,10 +137,12 @@ module Privy
           {
             action_type: Privy::WalletActionType::TaggedSymbol,
             caip2: String,
+            created_at: String,
             failure_reason: Privy::FailureReason,
             input_amount: T.nilable(String),
             input_token: String,
             output_token: String,
+            rejected_at: String,
             status:
               Privy::WalletActionSwapRejectedWebhookPayload::Status::TaggedSymbol,
             steps: T::Array[Privy::WalletActionStep::Variants],

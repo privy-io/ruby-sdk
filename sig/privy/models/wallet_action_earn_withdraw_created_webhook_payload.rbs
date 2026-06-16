@@ -5,6 +5,7 @@ module Privy
         action_type: Privy::Models::wallet_action_type,
         asset_address: String,
         :caip2 => String,
+        created_at: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload::type_,
@@ -23,6 +24,8 @@ module Privy
       attr_accessor asset_address: String
 
       attr_accessor caip2: String
+
+      attr_accessor created_at: String
 
       attr_accessor raw_amount: String
 
@@ -54,6 +57,7 @@ module Privy
         action_type: Privy::Models::wallet_action_type,
         asset_address: String,
         caip2: String,
+        created_at: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload::type_,
@@ -70,6 +74,7 @@ module Privy
         action_type: Privy::Models::wallet_action_type,
         asset_address: String,
         :caip2 => String,
+        created_at: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload::type_,
