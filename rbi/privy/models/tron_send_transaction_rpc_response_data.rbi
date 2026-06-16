@@ -16,20 +16,30 @@ module Privy
       attr_accessor :caip2
 
       sig { returns(String) }
+      attr_accessor :hash_
+
+      sig { returns(String) }
       attr_accessor :transaction_id
 
       # Data returned by the Tron `tron_sendTransaction` RPC.
       sig do
-        params(caip2: String, transaction_id: String).returns(T.attached_class)
+        params(caip2: String, hash_: String, transaction_id: String).returns(
+          T.attached_class
+        )
       end
       def self.new(
         # A valid CAIP-2 chain ID (e.g. 'eip155:1').
         caip2:,
+        hash_:,
         transaction_id:
       )
       end
 
-      sig { override.returns({ caip2: String, transaction_id: String }) }
+      sig do
+        override.returns(
+          { caip2: String, hash_: String, transaction_id: String }
+        )
+      end
       def to_hash
       end
     end

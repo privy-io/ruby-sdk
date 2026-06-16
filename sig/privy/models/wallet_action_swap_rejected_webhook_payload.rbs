@@ -4,10 +4,12 @@ module Privy
       {
         action_type: Privy::Models::wallet_action_type,
         :caip2 => String,
+        created_at: String,
         failure_reason: Privy::FailureReason,
         input_amount: String?,
         input_token: String,
         output_token: String,
+        rejected_at: String,
         status: Privy::Models::WalletActionSwapRejectedWebhookPayload::status,
         steps: ::Array[Privy::Models::wallet_action_step],
         type: Privy::Models::WalletActionSwapRejectedWebhookPayload::type_,
@@ -20,6 +22,8 @@ module Privy
 
       attr_accessor caip2: String
 
+      attr_accessor created_at: String
+
       attr_accessor failure_reason: Privy::FailureReason
 
       attr_accessor input_amount: String?
@@ -27,6 +31,8 @@ module Privy
       attr_accessor input_token: String
 
       attr_accessor output_token: String
+
+      attr_accessor rejected_at: String
 
       attr_accessor status: Privy::Models::WalletActionSwapRejectedWebhookPayload::status
 
@@ -41,10 +47,12 @@ module Privy
       def initialize: (
         action_type: Privy::Models::wallet_action_type,
         caip2: String,
+        created_at: String,
         failure_reason: Privy::FailureReason,
         input_amount: String?,
         input_token: String,
         output_token: String,
+        rejected_at: String,
         status: Privy::Models::WalletActionSwapRejectedWebhookPayload::status,
         steps: ::Array[Privy::Models::wallet_action_step],
         type: Privy::Models::WalletActionSwapRejectedWebhookPayload::type_,
@@ -55,10 +63,12 @@ module Privy
       def to_hash: -> {
         action_type: Privy::Models::wallet_action_type,
         :caip2 => String,
+        created_at: String,
         failure_reason: Privy::FailureReason,
         input_amount: String?,
         input_token: String,
         output_token: String,
+        rejected_at: String,
         status: Privy::Models::WalletActionSwapRejectedWebhookPayload::status,
         steps: ::Array[Privy::Models::wallet_action_step],
         type: Privy::Models::WalletActionSwapRejectedWebhookPayload::type_,

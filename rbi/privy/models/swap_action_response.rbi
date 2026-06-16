@@ -47,6 +47,15 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # Recipient address on the destination chain. Present for cross-chain swaps. May
+      # differ from the source wallet address when swapping between chain types (e.g.
+      # EVM to Solana).
+      sig { returns(T.nilable(String)) }
+      attr_reader :destination_address
+
+      sig { params(destination_address: String).void }
+      attr_writer :destination_address
+
       # Destination chain CAIP-2 identifier. Present for cross-chain swaps.
       sig { returns(T.nilable(String)) }
       attr_reader :destination_caip2
@@ -120,6 +129,7 @@ module Privy
           status: Privy::WalletActionStatus::OrSymbol,
           type: Privy::SwapActionResponse::Type::OrSymbol,
           wallet_id: String,
+          destination_address: String,
           destination_caip2: String,
           estimated_fees:
             T.nilable(
@@ -176,6 +186,10 @@ module Privy
         type:,
         # The ID of the wallet involved in the action.
         wallet_id:,
+        # Recipient address on the destination chain. Present for cross-chain swaps. May
+        # differ from the source wallet address when swapping between chain types (e.g.
+        # EVM to Solana).
+        destination_address: nil,
         # Destination chain CAIP-2 identifier. Present for cross-chain swaps.
         destination_caip2: nil,
         # Estimated fee breakdown from the provider quote. Only present for cross-chain
@@ -210,6 +224,7 @@ module Privy
             status: Privy::WalletActionStatus::TaggedSymbol,
             type: Privy::SwapActionResponse::Type::TaggedSymbol,
             wallet_id: String,
+            destination_address: String,
             destination_caip2: String,
             estimated_fees: T.nilable(T::Array[Privy::FeeLineItem::Variants]),
             estimated_gas: T.nilable(Privy::Gas),

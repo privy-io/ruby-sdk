@@ -1,0 +1,77 @@
+module Privy
+  module Models
+    type advanced_swap_request_body =
+      {
+        amount: String,
+        input_token: String,
+        output_token: String,
+        :caip2 => String,
+        dry_run: bool,
+        fee_recipient: String,
+        platform_fee_bps: Integer,
+        slippage_bps: Privy::Models::AdvancedSwapRequestBody::slippage_bps
+      }
+
+    class AdvancedSwapRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor input_token: String
+
+      attr_accessor output_token: String
+
+      attr_reader caip2: String?
+
+      def caip2=: (String) -> String
+
+      attr_reader dry_run: bool?
+
+      def dry_run=: (bool) -> bool
+
+      attr_reader fee_recipient: String?
+
+      def fee_recipient=: (String) -> String
+
+      attr_reader platform_fee_bps: Integer?
+
+      def platform_fee_bps=: (Integer) -> Integer
+
+      attr_reader slippage_bps: Privy::Models::AdvancedSwapRequestBody::slippage_bps?
+
+      def slippage_bps=: (
+        Privy::Models::AdvancedSwapRequestBody::slippage_bps
+      ) -> Privy::Models::AdvancedSwapRequestBody::slippage_bps
+
+      def initialize: (
+        amount: String,
+        input_token: String,
+        output_token: String,
+        ?caip2: String,
+        ?dry_run: bool,
+        ?fee_recipient: String,
+        ?platform_fee_bps: Integer,
+        ?slippage_bps: Privy::Models::AdvancedSwapRequestBody::slippage_bps
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        input_token: String,
+        output_token: String,
+        :caip2 => String,
+        dry_run: bool,
+        fee_recipient: String,
+        platform_fee_bps: Integer,
+        slippage_bps: Privy::Models::AdvancedSwapRequestBody::slippage_bps
+      }
+
+      type slippage_bps = Integer | :auto
+
+      module SlippageBps
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::AdvancedSwapRequestBody::slippage_bps]
+
+        AUTO: :auto
+      end
+    end
+  end
+end

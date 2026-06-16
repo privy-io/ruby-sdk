@@ -21,6 +21,12 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
@@ -32,6 +38,12 @@ module Privy
       #
       #   @return [String]
       required :raw_amount, String
+
+      # @!attribute rejected_at
+      #   ISO 8601 timestamp of when the wallet action was rejected.
+      #
+      #   @return [String]
+      required :rejected_at, String
 
       # @!attribute status
       #   The status of the wallet action.
@@ -96,7 +108,7 @@ module Privy
       #   @return [Integer, nil]
       optional :decimals, Integer
 
-      # @!method initialize(action_type:, asset_address:, caip2:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
+      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, failure_reason:, raw_amount:, rejected_at:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnDepositRejectedWebhookPayload} for more details.
       #
@@ -108,9 +120,13 @@ module Privy
       #
       #   @param caip2 [String] CAIP-2 chain identifier.
       #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
       #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
       #   @param raw_amount [String] Base-unit amount of asset deposited (e.g. "1500000").
+      #
+      #   @param rejected_at [String] ISO 8601 timestamp of when the wallet action was rejected.
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::Status] The status of the wallet action.
       #

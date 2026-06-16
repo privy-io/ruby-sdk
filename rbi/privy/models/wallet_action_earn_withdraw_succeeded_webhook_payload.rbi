@@ -23,6 +23,14 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # ISO 8601 timestamp of when the wallet action completed successfully.
+      sig { returns(String) }
+      attr_accessor :completed_at
+
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # Base-unit amount of asset withdrawn (e.g. "1500000").
       sig { returns(String) }
       attr_accessor :raw_amount
@@ -97,6 +105,8 @@ module Privy
           action_type: Privy::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
+          completed_at: String,
+          created_at: String,
           raw_amount: String,
           share_amount: String,
           status:
@@ -129,6 +139,10 @@ module Privy
         asset_address:,
         # CAIP-2 chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action completed successfully.
+        completed_at:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Base-unit amount of asset withdrawn (e.g. "1500000").
         raw_amount:,
         # Vault shares burned in base units.
@@ -165,6 +179,8 @@ module Privy
             action_type: Privy::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
+            completed_at: String,
+            created_at: String,
             raw_amount: String,
             share_amount: String,
             status:

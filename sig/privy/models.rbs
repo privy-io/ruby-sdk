@@ -35,6 +35,12 @@ module Privy
 
   class Address = Privy::Models::Address
 
+  class AdvancedSwapPlatformFee = Privy::Models::AdvancedSwapPlatformFee
+
+  class AdvancedSwapRequestBody = Privy::Models::AdvancedSwapRequestBody
+
+  class AdvancedSwapResponse = Privy::Models::AdvancedSwapResponse
+
   class Aggregation = Privy::Models::Aggregation
 
   class AggregationCondition = Privy::Models::AggregationCondition

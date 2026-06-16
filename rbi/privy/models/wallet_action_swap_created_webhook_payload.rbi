@@ -19,7 +19,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
-      # Amount of input token in base units. Populated after on-chain confirmation.
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
+      # Amount of input token in base units. Populated after onchain confirmation.
       sig { returns(T.nilable(String)) }
       attr_accessor :input_amount
 
@@ -60,6 +64,7 @@ module Privy
         params(
           action_type: Privy::WalletActionType::OrSymbol,
           caip2: String,
+          created_at: String,
           input_amount: T.nilable(String),
           input_token: String,
           output_token: String,
@@ -75,7 +80,9 @@ module Privy
         action_type:,
         # Chain identifier.
         caip2:,
-        # Amount of input token in base units. Populated after on-chain confirmation.
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
+        # Amount of input token in base units. Populated after onchain confirmation.
         input_amount:,
         # Token address being sold.
         input_token:,
@@ -97,6 +104,7 @@ module Privy
           {
             action_type: Privy::WalletActionType::TaggedSymbol,
             caip2: String,
+            created_at: String,
             input_amount: T.nilable(String),
             input_token: String,
             output_token: String,
