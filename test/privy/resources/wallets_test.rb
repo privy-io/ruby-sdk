@@ -189,6 +189,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         status: Privy::WalletActionStatus,
         type: Privy::TransferActionResponse::Type,
         wallet_id: String,
+        amount_type: Privy::AmountType | nil,
         destination_asset: String | nil,
         destination_chain: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,

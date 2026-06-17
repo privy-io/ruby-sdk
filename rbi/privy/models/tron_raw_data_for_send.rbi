@@ -17,12 +17,6 @@ module Privy
       end
       attr_accessor :contract
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :call_value
-
-      sig { params(call_value: Integer).void }
-      attr_writer :call_value
-
       sig { returns(T.nilable(String)) }
       attr_reader :data
 
@@ -70,7 +64,6 @@ module Privy
                 Privy::TronTriggerSmartContract::OrHash
               )
             ],
-          call_value: Integer,
           data: String,
           expiration: Integer,
           fee_limit: Integer,
@@ -81,7 +74,6 @@ module Privy
       end
       def self.new(
         contract:,
-        call_value: nil,
         data: nil,
         expiration: nil,
         fee_limit: nil,
@@ -101,7 +93,6 @@ module Privy
                   Privy::TronTriggerSmartContract
                 )
               ],
-            call_value: Integer,
             data: String,
             expiration: Integer,
             fee_limit: Integer,

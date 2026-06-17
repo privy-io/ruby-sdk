@@ -3,7 +3,6 @@ module Privy
     type tron_raw_data_for_send =
       {
         contract: ::Array[Privy::Models::tron_contract],
-        call_value: Integer,
         data: String,
         expiration: Integer,
         fee_limit: Integer,
@@ -14,10 +13,6 @@ module Privy
 
     class TronRawDataForSend < Privy::Internal::Type::BaseModel
       attr_accessor contract: ::Array[Privy::Models::tron_contract]
-
-      attr_reader call_value: Integer?
-
-      def call_value=: (Integer) -> Integer
 
       attr_reader data: String?
 
@@ -45,7 +40,6 @@ module Privy
 
       def initialize: (
         contract: ::Array[Privy::Models::tron_contract],
-        ?call_value: Integer,
         ?data: String,
         ?expiration: Integer,
         ?fee_limit: Integer,
@@ -56,7 +50,6 @@ module Privy
 
       def to_hash: -> {
         contract: ::Array[Privy::Models::tron_contract],
-        call_value: Integer,
         data: String,
         expiration: Integer,
         fee_limit: Integer,

@@ -211,13 +211,15 @@ module Privy
       #
       # Transfer tokens from a wallet to a destination address.
       #
-      # @overload _transfer(wallet_id, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+      # @overload _transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
       # @param destination [Privy::Models::TokenTransferDestination] Body param: The destination address for a token transfer. Optionally specify a d
       #
       # @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] Body param: The source asset, amount, and chain for a token transfer. Specify ei
+      #
+      # @param amount [String] Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
       #
       # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
       #

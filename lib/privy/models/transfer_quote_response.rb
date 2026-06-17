@@ -10,8 +10,23 @@ module Privy
       #   @return [Privy::Models::TokenTransferDestination]
       required :destination, -> { Privy::TokenTransferDestination }
 
+      # @!attribute estimated_fees
+      #   Estimated fees in USD for the transfer. Only present for cross-chain transfers.
+      #
+      #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>]
+      required :estimated_fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
+
+      # @!attribute estimated_input_amount
+      #   Estimated input amount in decimals. For exact_input, this equals source.amount.
+      #   For exact_output, this is the estimated amount the sender needs to provide.
+      #
+      #   @return [String]
+      required :estimated_input_amount, String
+
       # @!attribute estimated_output_amount
-      #   Estimated output amount in decimals
+      #   Estimated output amount in decimals. For exact_input, this is an estimate
+      #   subject to slippage. For exact_output, this is the guaranteed exact amount to be
+      #   received.
       #
       #   @return [String]
       required :estimated_output_amount, String
@@ -35,12 +50,6 @@ module Privy
       #   @return [Symbol, Privy::Models::AmountType, nil]
       optional :amount_type, enum: -> { Privy::AmountType }
 
-      # @!attribute estimated_fees
-      #   Estimated fees in USD for the transfer. Only present for cross-chain transfers.
-      #
-      #   @return [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil]
-      optional :estimated_fees, -> { Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem] }
-
       # @!attribute estimated_gas
       #   Gas cost for a blockchain action. Includes both raw base-unit amount and a
       #   human-readable decimal string, plus the gas token symbol.
@@ -48,7 +57,7 @@ module Privy
       #   @return [Privy::Models::Gas, nil]
       optional :estimated_gas, -> { Privy::Gas }
 
-      # @!method initialize(destination:, estimated_output_amount:, expires_at:, source:, amount_type: nil, estimated_fees: nil, estimated_gas: nil)
+      # @!method initialize(destination:, estimated_fees:, estimated_input_amount:, estimated_output_amount:, expires_at:, source:, amount_type: nil, estimated_gas: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferQuoteResponse} for more details.
       #
@@ -56,15 +65,17 @@ module Privy
       #
       #   @param destination [Privy::Models::TokenTransferDestination] The destination address for a token transfer. Optionally specify a different ass
       #
-      #   @param estimated_output_amount [String] Estimated output amount in decimals
+      #   @param estimated_fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Estimated fees in USD for the transfer. Only present for cross-chain transfers.
+      #
+      #   @param estimated_input_amount [String] Estimated input amount in decimals. For exact_input, this equals source.amount.
+      #
+      #   @param estimated_output_amount [String] Estimated output amount in decimals. For exact_input, this is an estimate subjec
       #
       #   @param expires_at [Float] Quote expiry as Unix timestamp (seconds).
       #
       #   @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] The source asset, amount, and chain for a token transfer. Specify either `asset`
       #
       #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
-      #
-      #   @param estimated_fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>] Estimated fees in USD for the transfer. Only present for cross-chain transfers.
       #
       #   @param estimated_gas [Privy::Models::Gas] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
     end

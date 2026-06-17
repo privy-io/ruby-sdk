@@ -28,6 +28,18 @@ module Privy
       attr_writer :call_token_value
 
       sig { returns(T.nilable(Integer)) }
+      attr_reader :call_value
+
+      sig { params(call_value: Integer).void }
+      attr_writer :call_value
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :data
+
+      sig { params(data: String).void }
+      attr_writer :data
+
+      sig { returns(T.nilable(Integer)) }
       attr_reader :token_id
 
       sig { params(token_id: Integer).void }
@@ -40,6 +52,8 @@ module Privy
           owner_address: String,
           type: Privy::TronTriggerSmartContract::Type::OrSymbol,
           call_token_value: Integer,
+          call_value: Integer,
+          data: String,
           token_id: Integer
         ).returns(T.attached_class)
       end
@@ -52,6 +66,8 @@ module Privy
         owner_address:,
         type:,
         call_token_value: nil,
+        call_value: nil,
+        data: nil,
         token_id: nil
       )
       end
@@ -63,6 +79,8 @@ module Privy
             owner_address: String,
             type: Privy::TronTriggerSmartContract::Type::OrSymbol,
             call_token_value: Integer,
+            call_value: Integer,
+            data: String,
             token_id: Integer
           }
         )

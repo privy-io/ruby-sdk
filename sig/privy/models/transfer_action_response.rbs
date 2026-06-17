@@ -10,6 +10,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::TransferActionResponse::type_,
         wallet_id: String,
+        amount_type: Privy::Models::amount_type,
         destination_asset: String,
         destination_chain: String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,
@@ -40,6 +41,12 @@ module Privy
       attr_accessor type: Privy::Models::TransferActionResponse::type_
 
       attr_accessor wallet_id: String
+
+      attr_reader amount_type: Privy::Models::amount_type?
+
+      def amount_type=: (
+        Privy::Models::amount_type
+      ) -> Privy::Models::amount_type
 
       attr_reader destination_asset: String?
 
@@ -92,6 +99,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::TransferActionResponse::type_,
         wallet_id: String,
+        ?amount_type: Privy::Models::amount_type,
         ?destination_asset: String,
         ?destination_chain: String,
         ?estimated_fees: ::Array[Privy::Models::fee_line_item]?,
@@ -115,6 +123,7 @@ module Privy
         status: Privy::Models::wallet_action_status,
         type: Privy::Models::TransferActionResponse::type_,
         wallet_id: String,
+        amount_type: Privy::Models::amount_type,
         destination_asset: String,
         destination_chain: String,
         estimated_fees: ::Array[Privy::Models::fee_line_item]?,

@@ -22,9 +22,9 @@ module Privy
       required :destination_address, String
 
       # @!attribute destination_amount
-      #   Amount received on the destination chain. Set at creation for same-chain
-      #   transfers. Null until fill confirmation for cross-chain or cross-asset
-      #   transfers.
+      #   Amount received on the destination chain. For exact_output cross-chain
+      #   transfers, set at creation (the guaranteed exact amount). For exact_input
+      #   cross-chain transfers, null until fill confirmation.
       #
       #   @return [String, nil]
       required :destination_amount, String, nil?: true
@@ -51,6 +51,12 @@ module Privy
       #
       #   @return [String]
       required :wallet_id, String
+
+      # @!attribute amount_type
+      #   Whether the amount refers to the input token or output token.
+      #
+      #   @return [Symbol, Privy::Models::AmountType, nil]
+      optional :amount_type, enum: -> { Privy::AmountType }
 
       # @!attribute destination_asset
       #   Destination asset for cross-asset transfers. Omitted for same-asset transfers.
@@ -99,8 +105,8 @@ module Privy
       optional :gas, -> { Privy::Gas }, nil?: true
 
       # @!attribute source_amount
-      #   Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
-      #   cross-chain transfers until the source amount is determined.
+      #   Decimal amount sent on the source chain (e.g. "1.5"). For exact_output
+      #   cross-chain transfers, null until fill confirmation.
       #
       #   @return [String, nil]
       optional :source_amount, String
@@ -132,7 +138,7 @@ module Privy
       #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
-      # @!method initialize(id:, created_at:, destination_address:, destination_amount:, source_chain:, status:, type:, wallet_id:, destination_asset: nil, destination_chain: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
+      # @!method initialize(id:, created_at:, destination_address:, destination_amount:, source_chain:, status:, type:, wallet_id:, amount_type: nil, destination_asset: nil, destination_chain: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferActionResponse} for more details.
       #
@@ -144,7 +150,7 @@ module Privy
       #
       #   @param destination_address [String] Recipient address.
       #
-      #   @param destination_amount [String, nil] Amount received on the destination chain. Set at creation for same-chain transfe
+      #   @param destination_amount [String, nil] Amount received on the destination chain. For exact_output cross-chain transfers
       #
       #   @param source_chain [String] Chain name (e.g. "base", "ethereum").
       #
@@ -153,6 +159,8 @@ module Privy
       #   @param type [Symbol, Privy::Models::TransferActionResponse::Type]
       #
       #   @param wallet_id [String] The ID of the wallet involved in the action.
+      #
+      #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
       #
       #   @param destination_asset [String] Destination asset for cross-asset transfers. Omitted for same-asset transfers.
       #
@@ -168,7 +176,7 @@ module Privy
       #
       #   @param gas [Privy::Models::Gas, nil] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
       #
-      #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output c
+      #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). For exact_output cross-cha
       #
       #   @param source_asset [String] Asset identifier (e.g. "usdc", "eth"). Present when the transfer was initiated w
       #

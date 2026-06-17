@@ -8,11 +8,6 @@ module Privy
       #   @return [Array<Privy::Models::TronTransferContract, Privy::Models::TronTriggerSmartContract>]
       required :contract, -> { Privy::Internal::Type::ArrayOf[union: Privy::TronContract] }
 
-      # @!attribute call_value
-      #
-      #   @return [Integer, nil]
-      optional :call_value, Integer
-
       # @!attribute data
       #
       #   @return [String, nil]
@@ -43,12 +38,11 @@ module Privy
       #   @return [Integer, nil]
       optional :timestamp, Integer
 
-      # @!method initialize(contract:, call_value: nil, data: nil, expiration: nil, fee_limit: nil, ref_block_bytes: nil, ref_block_hash: nil, timestamp: nil)
+      # @!method initialize(contract:, data: nil, expiration: nil, fee_limit: nil, ref_block_bytes: nil, ref_block_hash: nil, timestamp: nil)
       #   Tron raw_data for tron_sendTransaction. Block reference fields are optional;
       #   Privy fetches fresh values if omitted.
       #
       #   @param contract [Array<Privy::Models::TronTransferContract, Privy::Models::TronTriggerSmartContract>]
-      #   @param call_value [Integer]
       #   @param data [String]
       #   @param expiration [Integer]
       #   @param fee_limit [Integer]

@@ -23,11 +23,6 @@ module Privy
       #   @return [String]
       required :ref_block_hash, String
 
-      # @!attribute call_value
-      #
-      #   @return [Integer, nil]
-      optional :call_value, Integer
-
       # @!attribute data
       #
       #   @return [String, nil]
@@ -43,7 +38,7 @@ module Privy
       #   @return [Integer, nil]
       optional :timestamp, Integer
 
-      # @!method initialize(contract:, expiration:, ref_block_bytes:, ref_block_hash:, call_value: nil, data: nil, fee_limit: nil, timestamp: nil)
+      # @!method initialize(contract:, expiration:, ref_block_bytes:, ref_block_hash:, data: nil, fee_limit: nil, timestamp: nil)
       #   Tron raw_data for tron_signTransaction. Block reference fields are required;
       #   caller is responsible for fetching them.
       #
@@ -51,7 +46,6 @@ module Privy
       #   @param expiration [Integer]
       #   @param ref_block_bytes [String]
       #   @param ref_block_hash [String]
-      #   @param call_value [Integer]
       #   @param data [String]
       #   @param fee_limit [Integer]
       #   @param timestamp [Integer]
