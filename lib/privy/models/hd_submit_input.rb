@@ -10,8 +10,8 @@ module Privy
       required :address, String
 
       # @!attribute chain_type
-      #   The chain type of the wallet to import. Currently supports `ethereum` and
-      #   `solana`.
+      #   The chain type of the wallet to import. Supports `ethereum`, `solana`,
+      #   `stellar`, `tron`, `sui`, and `aptos`.
       #
       #   @return [Symbol, Privy::Models::WalletImportSupportedChains]
       required :chain_type, enum: -> { Privy::WalletImportSupportedChains }
@@ -63,7 +63,7 @@ module Privy
       #
       #   @param address [String] The address of the wallet to import.
       #
-      #   @param chain_type [Symbol, Privy::Models::WalletImportSupportedChains] The chain type of the wallet to import. Currently supports `ethereum` and `solan
+      #   @param chain_type [Symbol, Privy::Models::WalletImportSupportedChains] The chain type of the wallet to import. Supports `ethereum`, `solana`, `stellar`
       #
       #   @param ciphertext [String] The encrypted entropy of the wallet to import.
       #
