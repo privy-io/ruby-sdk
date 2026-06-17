@@ -21,6 +21,15 @@ module Privy
       sig { returns(Privy::TokenTransferSource::Variants) }
       attr_accessor :source
 
+      # Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5
+      # USDC). For exact_input, the amount to send. For exact_output, the exact amount
+      # to receive. Takes precedence over source.amount when both are provided.
+      sig { returns(T.nilable(String)) }
+      attr_reader :amount
+
+      sig { params(amount: String).void }
+      attr_writer :amount
+
       # Whether the amount refers to the input token or output token.
       sig { returns(T.nilable(Privy::AmountType::TaggedSymbol)) }
       attr_reader :amount_type
@@ -52,6 +61,7 @@ module Privy
               Privy::NamedTokenTransferSource::OrHash,
               Privy::CustomTokenTransferSource::OrHash
             ),
+          amount: String,
           amount_type: Privy::AmountType::OrSymbol,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           slippage_bps: Integer
@@ -64,6 +74,10 @@ module Privy
         # The source asset, amount, and chain for a token transfer. Specify either `asset`
         # (named) or `asset_address` (custom), not both.
         source:,
+        # Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5
+        # USDC). For exact_input, the amount to send. For exact_output, the exact amount
+        # to receive. Takes precedence over source.amount when both are provided.
+        amount: nil,
         # Whether the amount refers to the input token or output token.
         amount_type: nil,
         # Total fees assessed on a transfer, in BPS
@@ -79,6 +93,7 @@ module Privy
           {
             destination: Privy::TokenTransferDestination,
             source: Privy::TokenTransferSource::Variants,
+            amount: String,
             amount_type: Privy::AmountType::TaggedSymbol,
             fee_configuration: Privy::FeeConfiguration,
             slippage_bps: Integer

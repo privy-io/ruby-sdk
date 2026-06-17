@@ -26,12 +26,6 @@ module Privy
       sig { returns(String) }
       attr_accessor :ref_block_hash
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :call_value
-
-      sig { params(call_value: Integer).void }
-      attr_writer :call_value
-
       sig { returns(T.nilable(String)) }
       attr_reader :data
 
@@ -64,7 +58,6 @@ module Privy
           expiration: Integer,
           ref_block_bytes: String,
           ref_block_hash: String,
-          call_value: Integer,
           data: String,
           fee_limit: Integer,
           timestamp: Integer
@@ -75,7 +68,6 @@ module Privy
         expiration:,
         ref_block_bytes:,
         ref_block_hash:,
-        call_value: nil,
         data: nil,
         fee_limit: nil,
         timestamp: nil
@@ -95,7 +87,6 @@ module Privy
             expiration: Integer,
             ref_block_bytes: String,
             ref_block_hash: String,
-            call_value: Integer,
             data: String,
             fee_limit: Integer,
             timestamp: Integer

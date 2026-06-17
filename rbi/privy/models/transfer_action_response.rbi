@@ -20,9 +20,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :destination_address
 
-      # Amount received on the destination chain. Set at creation for same-chain
-      # transfers. Null until fill confirmation for cross-chain or cross-asset
-      # transfers.
+      # Amount received on the destination chain. For exact_output cross-chain
+      # transfers, set at creation (the guaranteed exact amount). For exact_input
+      # cross-chain transfers, null until fill confirmation.
       sig { returns(T.nilable(String)) }
       attr_accessor :destination_amount
 
@@ -40,6 +40,13 @@ module Privy
       # The ID of the wallet involved in the action.
       sig { returns(String) }
       attr_accessor :wallet_id
+
+      # Whether the amount refers to the input token or output token.
+      sig { returns(T.nilable(Privy::AmountType::TaggedSymbol)) }
+      attr_reader :amount_type
+
+      sig { params(amount_type: Privy::AmountType::OrSymbol).void }
+      attr_writer :amount_type
 
       # Destination asset for cross-asset transfers. Omitted for same-asset transfers.
       sig { returns(T.nilable(String)) }
@@ -88,8 +95,8 @@ module Privy
       sig { params(gas: T.nilable(Privy::Gas::OrHash)).void }
       attr_writer :gas
 
-      # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
-      # cross-chain transfers until the source amount is determined.
+      # Decimal amount sent on the source chain (e.g. "1.5"). For exact_output
+      # cross-chain transfers, null until fill confirmation.
       sig { returns(T.nilable(String)) }
       attr_reader :source_amount
 
@@ -151,6 +158,7 @@ module Privy
           status: Privy::WalletActionStatus::OrSymbol,
           type: Privy::TransferActionResponse::Type::OrSymbol,
           wallet_id: String,
+          amount_type: Privy::AmountType::OrSymbol,
           destination_asset: String,
           destination_chain: String,
           estimated_fees:
@@ -199,9 +207,9 @@ module Privy
         created_at:,
         # Recipient address.
         destination_address:,
-        # Amount received on the destination chain. Set at creation for same-chain
-        # transfers. Null until fill confirmation for cross-chain or cross-asset
-        # transfers.
+        # Amount received on the destination chain. For exact_output cross-chain
+        # transfers, set at creation (the guaranteed exact amount). For exact_input
+        # cross-chain transfers, null until fill confirmation.
         destination_amount:,
         # Chain name (e.g. "base", "ethereum").
         source_chain:,
@@ -210,6 +218,8 @@ module Privy
         type:,
         # The ID of the wallet involved in the action.
         wallet_id:,
+        # Whether the amount refers to the input token or output token.
+        amount_type: nil,
         # Destination asset for cross-asset transfers. Omitted for same-asset transfers.
         destination_asset: nil,
         # Destination chain for cross-chain transfers. Omitted for same-chain transfers.
@@ -228,8 +238,8 @@ module Privy
         # Gas cost for a blockchain action. Includes both raw base-unit amount and a
         # human-readable decimal string, plus the gas token symbol.
         gas: nil,
-        # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
-        # cross-chain transfers until the source amount is determined.
+        # Decimal amount sent on the source chain (e.g. "1.5"). For exact_output
+        # cross-chain transfers, null until fill confirmation.
         source_amount: nil,
         # Asset identifier (e.g. "usdc", "eth"). Present when the transfer was initiated
         # with a named asset; omitted for custom-token transfers.
@@ -256,6 +266,7 @@ module Privy
             status: Privy::WalletActionStatus::TaggedSymbol,
             type: Privy::TransferActionResponse::Type::TaggedSymbol,
             wallet_id: String,
+            amount_type: Privy::AmountType::TaggedSymbol,
             destination_asset: String,
             destination_chain: String,
             estimated_fees: T.nilable(T::Array[Privy::FeeLineItem::Variants]),

@@ -6,7 +6,6 @@ module Privy
         expiration: Integer,
         ref_block_bytes: String,
         ref_block_hash: String,
-        call_value: Integer,
         data: String,
         fee_limit: Integer,
         timestamp: Integer
@@ -20,10 +19,6 @@ module Privy
       attr_accessor ref_block_bytes: String
 
       attr_accessor ref_block_hash: String
-
-      attr_reader call_value: Integer?
-
-      def call_value=: (Integer) -> Integer
 
       attr_reader data: String?
 
@@ -42,7 +37,6 @@ module Privy
         expiration: Integer,
         ref_block_bytes: String,
         ref_block_hash: String,
-        ?call_value: Integer,
         ?data: String,
         ?fee_limit: Integer,
         ?timestamp: Integer
@@ -53,7 +47,6 @@ module Privy
         expiration: Integer,
         ref_block_bytes: String,
         ref_block_hash: String,
-        call_value: Integer,
         data: String,
         fee_limit: Integer,
         timestamp: Integer

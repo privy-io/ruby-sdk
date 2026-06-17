@@ -17,6 +17,14 @@ module Privy
       #   @return [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource]
       required :source, union: -> { Privy::TokenTransferSource }
 
+      # @!attribute amount
+      #   Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5
+      #   USDC). For exact_input, the amount to send. For exact_output, the exact amount
+      #   to receive. Takes precedence over source.amount when both are provided.
+      #
+      #   @return [String, nil]
+      optional :amount, String
+
       # @!attribute amount_type
       #   Whether the amount refers to the input token or output token.
       #
@@ -36,7 +44,7 @@ module Privy
       #   @return [Integer, nil]
       optional :slippage_bps, Integer
 
-      # @!method initialize(destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil)
+      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferRequestBody} for more details.
       #
@@ -45,6 +53,8 @@ module Privy
       #   @param destination [Privy::Models::TokenTransferDestination] The destination address for a token transfer. Optionally specify a different ass
       #
       #   @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] The source asset, amount, and chain for a token transfer. Specify either `asset`
+      #
+      #   @param amount [String] Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5 USDC
       #
       #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
       #

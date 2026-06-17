@@ -27,8 +27,8 @@ module Privy
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::ConditionSetRequestBody} for more details.
       #
-      #   Request body for creating a condition set. Exactly one of `owner` or `owner_id`
-      #   is required.
+      #   Request body for creating a condition set. Optionally provide `owner` or
+      #   `owner_id` (but not both) to specify ownership.
       #
       #   @param name [String] Name to assign to condition set.
       #

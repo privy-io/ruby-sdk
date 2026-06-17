@@ -53,6 +53,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         source_chain: String,
         status: Privy::WalletActionStatus,
         wallet_id: String,
+        amount_type: Privy::AmountType | nil,
         destination_asset: String | nil,
         destination_chain: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,

@@ -27,12 +27,22 @@ module Privy
       #   @return [Integer, nil]
       optional :call_token_value, Integer
 
+      # @!attribute call_value
+      #
+      #   @return [Integer, nil]
+      optional :call_value, Integer
+
+      # @!attribute data
+      #
+      #   @return [String, nil]
+      optional :data, String
+
       # @!attribute token_id
       #
       #   @return [Integer, nil]
       optional :token_id, Integer
 
-      # @!method initialize(contract_address:, owner_address:, type:, call_token_value: nil, token_id: nil)
+      # @!method initialize(contract_address:, owner_address:, type:, call_token_value: nil, call_value: nil, data: nil, token_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TronTriggerSmartContract} for more details.
       #
@@ -45,6 +55,10 @@ module Privy
       #   @param type [Symbol, Privy::Models::TronTriggerSmartContract::Type]
       #
       #   @param call_token_value [Integer]
+      #
+      #   @param call_value [Integer]
+      #
+      #   @param data [String]
       #
       #   @param token_id [Integer]
 

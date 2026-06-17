@@ -6,6 +6,8 @@ module Privy
         owner_address: String,
         type: Privy::Models::TronTriggerSmartContract::type_,
         call_token_value: Integer,
+        call_value: Integer,
+        data: String,
         token_id: Integer
       }
 
@@ -20,6 +22,14 @@ module Privy
 
       def call_token_value=: (Integer) -> Integer
 
+      attr_reader call_value: Integer?
+
+      def call_value=: (Integer) -> Integer
+
+      attr_reader data: String?
+
+      def data=: (String) -> String
+
       attr_reader token_id: Integer?
 
       def token_id=: (Integer) -> Integer
@@ -29,6 +39,8 @@ module Privy
         owner_address: String,
         type: Privy::Models::TronTriggerSmartContract::type_,
         ?call_token_value: Integer,
+        ?call_value: Integer,
+        ?data: String,
         ?token_id: Integer
       ) -> void
 
@@ -37,6 +49,8 @@ module Privy
         owner_address: String,
         type: Privy::Models::TronTriggerSmartContract::type_,
         call_token_value: Integer,
+        call_value: Integer,
+        data: String,
         token_id: Integer
       }
 

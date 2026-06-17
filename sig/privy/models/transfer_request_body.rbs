@@ -4,6 +4,7 @@ module Privy
       {
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
+        amount: String,
         amount_type: Privy::Models::amount_type,
         fee_configuration: Privy::FeeConfiguration,
         slippage_bps: Integer
@@ -13,6 +14,10 @@ module Privy
       attr_accessor destination: Privy::TokenTransferDestination
 
       attr_accessor source: Privy::Models::token_transfer_source
+
+      attr_reader amount: String?
+
+      def amount=: (String) -> String
 
       attr_reader amount_type: Privy::Models::amount_type?
 
@@ -33,6 +38,7 @@ module Privy
       def initialize: (
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
+        ?amount: String,
         ?amount_type: Privy::Models::amount_type,
         ?fee_configuration: Privy::FeeConfiguration,
         ?slippage_bps: Integer
@@ -41,6 +47,7 @@ module Privy
       def to_hash: -> {
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
+        amount: String,
         amount_type: Privy::Models::amount_type,
         fee_configuration: Privy::FeeConfiguration,
         slippage_bps: Integer
