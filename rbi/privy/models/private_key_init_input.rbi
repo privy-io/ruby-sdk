@@ -12,8 +12,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :address
 
-      # The chain type of the wallet to import. Currently supports `ethereum` and
-      # `solana`.
+      # The chain type of the wallet to import. Supports `ethereum`, `solana`,
+      # `stellar`, `tron`, `sui`, and `aptos`.
       sig { returns(Privy::WalletImportSupportedChains::OrSymbol) }
       attr_accessor :chain_type
 
@@ -36,8 +36,8 @@ module Privy
       def self.new(
         # The address of the wallet to import.
         address:,
-        # The chain type of the wallet to import. Currently supports `ethereum` and
-        # `solana`.
+        # The chain type of the wallet to import. Supports `ethereum`, `solana`,
+        # `stellar`, `tron`, `sui`, and `aptos`.
         chain_type:,
         # The encryption type of the wallet to import. Currently only supports `HPKE`.
         encryption_type:,
