@@ -2,6 +2,6 @@
 
 module Privy
   module Models
-    CryptoCurrencyCode = String
+    TokenIdentifier = String
   end
 end

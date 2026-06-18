@@ -11,7 +11,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :crypto_customer_id
 
-      # Cryptocurrency symbol. Uppercase alphanumeric, 2-10 characters.
+      # Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
+      # case, 16-byte Hyperliquid token IDs normalize to lowercase, and all other
+      # identifiers pass through unchanged.
       sig { returns(String) }
       attr_accessor :destination_currency
 
@@ -45,7 +47,9 @@ module Privy
       end
       def self.new(
         crypto_customer_id:,
-        # Cryptocurrency symbol. Uppercase alphanumeric, 2-10 characters.
+        # Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
+        # case, 16-byte Hyperliquid token IDs normalize to lowercase, and all other
+        # identifiers pass through unchanged.
         destination_currency:,
         destination_network:,
         payment_token:,
