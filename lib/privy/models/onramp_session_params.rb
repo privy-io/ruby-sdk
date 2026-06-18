@@ -9,7 +9,9 @@ module Privy
       required :crypto_customer_id, String
 
       # @!attribute destination_currency
-      #   Cryptocurrency symbol. Uppercase alphanumeric, 2-10 characters.
+      #   Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
+      #   case, 16-byte Hyperliquid token IDs normalize to lowercase, and all other
+      #   identifiers pass through unchanged.
       #
       #   @return [String]
       required :destination_currency, String
@@ -41,11 +43,14 @@ module Privy
       required :wallet_address, String
 
       # @!method initialize(crypto_customer_id:, destination_currency:, destination_network:, payment_token:, source_amount:, source_currency:, wallet_address:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::OnrampSessionParams} for more details.
+      #
       #   Parameters for creating a Stripe onramp session.
       #
       #   @param crypto_customer_id [String]
       #
-      #   @param destination_currency [String] Cryptocurrency symbol. Uppercase alphanumeric, 2-10 characters.
+      #   @param destination_currency [String] Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
       #
       #   @param destination_network [String]
       #

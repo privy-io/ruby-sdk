@@ -294,8 +294,6 @@ module Privy
 
   CrossAppSmartWallet = Privy::Models::CrossAppSmartWallet
 
-  CryptoCurrencyCode = Privy::Models::CryptoCurrencyCode
-
   Currency = Privy::Models::Currency
 
   CurrencyAmount = Privy::Models::CurrencyAmount
@@ -1657,6 +1655,8 @@ module Privy
   TestAccount = Privy::Models::TestAccount
 
   TestAccountsResponse = Privy::Models::TestAccountsResponse
+
+  TokenIdentifier = Privy::Models::TokenIdentifier
 
   TokenOutput = Privy::Models::TokenOutput
 

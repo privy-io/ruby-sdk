@@ -11,7 +11,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :address
 
-      # Cryptocurrency symbol. Uppercase alphanumeric, 2-10 characters.
+      # Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
+      # case, 16-byte Hyperliquid token IDs normalize to lowercase, and all other
+      # identifiers pass through unchanged.
       sig { returns(String) }
       attr_accessor :asset
 
@@ -28,7 +30,9 @@ module Privy
       end
       def self.new(
         address:,
-        # Cryptocurrency symbol. Uppercase alphanumeric, 2-10 characters.
+        # Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
+        # case, 16-byte Hyperliquid token IDs normalize to lowercase, and all other
+        # identifiers pass through unchanged.
         asset:,
         # A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:1" for
         # Ethereum mainnet, "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
