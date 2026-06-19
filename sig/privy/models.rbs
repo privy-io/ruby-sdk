@@ -1973,6 +1973,8 @@ module Privy
 
   class WalletRecoverySetupWebhookPayload = Privy::Models::WalletRecoverySetupWebhookPayload
 
+  class WalletRestoredWebhookPayload = Privy::Models::WalletRestoredWebhookPayload
+
   class WalletRevokeResponse = Privy::Models::WalletRevokeResponse
 
   class WalletRpcParams = Privy::Models::WalletRpcParams

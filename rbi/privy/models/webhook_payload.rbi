@@ -30,6 +30,7 @@ module Privy
             Privy::WalletRecoverySetupWebhookPayload,
             Privy::WalletRecoveredWebhookPayload,
             Privy::WalletArchivedWebhookPayload,
+            Privy::WalletRestoredWebhookPayload,
             Privy::MfaEnabledWebhookPayload,
             Privy::MfaDisabledWebhookPayload,
             Privy::YieldDepositConfirmedWebhookPayload,
