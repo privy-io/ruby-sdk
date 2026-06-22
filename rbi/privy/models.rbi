@@ -1739,6 +1739,8 @@ module Privy
 
   StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
 
+  StripeKYCRegion = Privy::Models::StripeKYCRegion
+
   StripeKYCTier = Privy::Models::StripeKYCTier
 
   StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse

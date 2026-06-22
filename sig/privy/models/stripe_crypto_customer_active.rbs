@@ -3,6 +3,7 @@ module Privy
     type stripe_crypto_customer_active =
       {
         crypto_customer_id: String,
+        kyc_region: Privy::Models::stripe_kyc_region?,
         kyc_tiers: ::Array[Privy::StripeKYCTier],
         provided_fields: ::Array[String],
         status: Privy::Models::StripeCryptoCustomerActive::status,
@@ -11,6 +12,8 @@ module Privy
 
     class StripeCryptoCustomerActive < Privy::Internal::Type::BaseModel
       attr_accessor crypto_customer_id: String
+
+      attr_accessor kyc_region: Privy::Models::stripe_kyc_region?
 
       attr_accessor kyc_tiers: ::Array[Privy::StripeKYCTier]
 
@@ -22,6 +25,7 @@ module Privy
 
       def initialize: (
         crypto_customer_id: String,
+        kyc_region: Privy::Models::stripe_kyc_region?,
         kyc_tiers: ::Array[Privy::StripeKYCTier],
         provided_fields: ::Array[String],
         status: Privy::Models::StripeCryptoCustomerActive::status,
@@ -30,6 +34,7 @@ module Privy
 
       def to_hash: -> {
         crypto_customer_id: String,
+        kyc_region: Privy::Models::stripe_kyc_region?,
         kyc_tiers: ::Array[Privy::StripeKYCTier],
         provided_fields: ::Array[String],
         status: Privy::Models::StripeCryptoCustomerActive::status,

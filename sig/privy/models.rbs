@@ -1515,6 +1515,8 @@ module Privy
 
   class StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
 
+  module StripeKYCRegion = Privy::Models::StripeKYCRegion
+
   class StripeKYCTier = Privy::Models::StripeKYCTier
 
   class StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse

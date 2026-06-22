@@ -1,15 +1,32 @@
 module Privy
   module Models
-    type stripe_kyc_tier = { tier: String, verification_status: String }
+    type stripe_kyc_tier =
+      {
+        tier: String,
+        verification_status: String,
+        verification_errors: ::Array[String]
+      }
 
     class StripeKYCTier < Privy::Internal::Type::BaseModel
       attr_accessor tier: String
 
       attr_accessor verification_status: String
 
-      def initialize: (tier: String, verification_status: String) -> void
+      attr_reader verification_errors: ::Array[String]?
 
-      def to_hash: -> { tier: String, verification_status: String }
+      def verification_errors=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        tier: String,
+        verification_status: String,
+        ?verification_errors: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        tier: String,
+        verification_status: String,
+        verification_errors: ::Array[String]
+      }
     end
   end
 end
