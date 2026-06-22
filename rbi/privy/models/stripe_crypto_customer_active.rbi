@@ -11,6 +11,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :crypto_customer_id
 
+      # Region derived from a Stripe user's country of residence.
+      sig { returns(T.nilable(Privy::StripeKYCRegion::OrSymbol)) }
+      attr_accessor :kyc_region
+
       sig { returns(T::Array[Privy::StripeKYCTier]) }
       attr_accessor :kyc_tiers
 
@@ -27,6 +31,7 @@ module Privy
       sig do
         params(
           crypto_customer_id: String,
+          kyc_region: T.nilable(Privy::StripeKYCRegion::OrSymbol),
           kyc_tiers: T::Array[Privy::StripeKYCTier::OrHash],
           provided_fields: T::Array[String],
           status: Privy::StripeCryptoCustomerActive::Status::OrSymbol,
@@ -35,6 +40,8 @@ module Privy
       end
       def self.new(
         crypto_customer_id:,
+        # Region derived from a Stripe user's country of residence.
+        kyc_region:,
         kyc_tiers:,
         provided_fields:,
         status:,
@@ -46,6 +53,7 @@ module Privy
         override.returns(
           {
             crypto_customer_id: String,
+            kyc_region: T.nilable(Privy::StripeKYCRegion::OrSymbol),
             kyc_tiers: T::Array[Privy::StripeKYCTier],
             provided_fields: T::Array[String],
             status: Privy::StripeCryptoCustomerActive::Status::OrSymbol,
