@@ -15,6 +15,8 @@ module Privy
         T.let(:evm_user_operation, Privy::WalletActionStepType::TaggedSymbol)
       SVM_TRANSACTION =
         T.let(:svm_transaction, Privy::WalletActionStepType::TaggedSymbol)
+      TVM_TRANSACTION =
+        T.let(:tvm_transaction, Privy::WalletActionStepType::TaggedSymbol)
       EXTERNAL_TRANSACTION =
         T.let(:external_transaction, Privy::WalletActionStepType::TaggedSymbol)
       CUSTODIAN_TRANSACTION =

@@ -171,6 +171,10 @@ module Privy
 
   class Caip2ChainID = Privy::Models::Caip2ChainID
 
+  module CaptchaProvider = Privy::Models::CaptchaProvider
+
+  module ChainTestnetMode = Privy::Models::ChainTestnetMode
+
   module CoinbaseBlockchain = Privy::Models::CoinbaseBlockchain
 
   module CoinbaseEthereumAsset = Privy::Models::CoinbaseEthereumAsset
@@ -989,6 +993,8 @@ module Privy
 
   class MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
 
+  module MfaMethod = Privy::Models::MfaMethod
+
   class MfaPasskeyEnrollmentRequestBody = Privy::Models::MfaPasskeyEnrollmentRequestBody
 
   class MfaPasskeyInitRequestBody = Privy::Models::MfaPasskeyInitRequestBody
@@ -1357,6 +1363,8 @@ module Privy
 
   class SiwsLinkRequestBody = Privy::Models::SiwsLinkRequestBody
 
+  module SiwsMessageType = Privy::Models::SiwsMessageType
+
   class SiwsNonce = Privy::Models::SiwsNonce
 
   class SiwsUnlinkRequestBody = Privy::Models::SiwsUnlinkRequestBody
@@ -1559,6 +1567,8 @@ module Privy
 
   class SwapSource = Privy::Models::SwapSource
 
+  module SwapSubmissionStatus = Privy::Models::SwapSubmissionStatus
+
   class SystemCondition = Privy::Models::SystemCondition
 
   class TelegramAuthConfigSchema = Privy::Models::TelegramAuthConfigSchema
@@ -1720,6 +1730,10 @@ module Privy
   class TronTransferContract = Privy::Models::TronTransferContract
 
   class TronTriggerSmartContract = Privy::Models::TronTriggerSmartContract
+
+  class TvmTransactionWalletActionStep = Privy::Models::TvmTransactionWalletActionStep
+
+  module TvmWalletActionStepStatus = Privy::Models::TvmWalletActionStepStatus
 
   TypedDataDomainInputParams: Privy::Internal::Type::Converter
 

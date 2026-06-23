@@ -4,10 +4,10 @@ module Privy
   module Models
     class MfaEnabledWebhookPayload < Privy::Internal::Type::BaseModel
       # @!attribute method_
-      #   The MFA method that was enabled.
+      #   A multi-factor authentication method supported by the app.
       #
-      #   @return [Symbol, Privy::Models::MfaEnabledWebhookPayload::Method]
-      required :method_, enum: -> { Privy::MfaEnabledWebhookPayload::Method }, api_name: :method
+      #   @return [Symbol, Privy::Models::MfaMethod]
+      required :method_, enum: -> { Privy::MfaMethod }, api_name: :method
 
       # @!attribute type
       #   The type of webhook event.
@@ -24,25 +24,11 @@ module Privy
       # @!method initialize(method_:, type:, user_id:)
       #   Payload for the mfa.enabled webhook event.
       #
-      #   @param method_ [Symbol, Privy::Models::MfaEnabledWebhookPayload::Method] The MFA method that was enabled.
+      #   @param method_ [Symbol, Privy::Models::MfaMethod] A multi-factor authentication method supported by the app.
       #
       #   @param type [Symbol, Privy::Models::MfaEnabledWebhookPayload::Type] The type of webhook event.
       #
       #   @param user_id [String] The ID of the user who enabled MFA.
-
-      # The MFA method that was enabled.
-      #
-      # @see Privy::Models::MfaEnabledWebhookPayload#method_
-      module Method
-        extend Privy::Internal::Type::Enum
-
-        SMS = :sms
-        TOTP = :totp
-        PASSKEY = :passkey
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # The type of webhook event.
       #

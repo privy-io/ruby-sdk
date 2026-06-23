@@ -57,8 +57,8 @@ module Privy
       #   "accepted" if the network has acknowledged the transaction, "rejected" if the
       #   network refused it, "skipped" if dry_run was set. Not an onchain confirmation.
       #
-      #   @return [Symbol, Privy::Models::AdvancedSwapResponse::SubmissionStatus]
-      required :submission_status, enum: -> { Privy::AdvancedSwapResponse::SubmissionStatus }
+      #   @return [Symbol, Privy::Models::SwapSubmissionStatus]
+      required :submission_status, enum: -> { Privy::SwapSubmissionStatus }
 
       # @!attribute transaction_hash
       #   Solana transaction signature (base58).
@@ -94,26 +94,11 @@ module Privy
       #
       #   @param slippage_bps [Integer] Slippage applied in basis points. Reflects the resolved value if "auto" was requ
       #
-      #   @param submission_status [Symbol, Privy::Models::AdvancedSwapResponse::SubmissionStatus] "accepted" if the network has acknowledged the transaction, "rejected" if the ne
+      #   @param submission_status [Symbol, Privy::Models::SwapSubmissionStatus] "accepted" if the network has acknowledged the transaction, "rejected" if the ne
       #
       #   @param transaction_hash [String] Solana transaction signature (base58).
       #
       #   @param platform_fee [Privy::Models::AdvancedSwapPlatformFee] Platform fee collected on a swap.
-
-      # "accepted" if the network has acknowledged the transaction, "rejected" if the
-      # network refused it, "skipped" if dry_run was set. Not an onchain confirmation.
-      #
-      # @see Privy::Models::AdvancedSwapResponse#submission_status
-      module SubmissionStatus
-        extend Privy::Internal::Type::Enum
-
-        ACCEPTED = :accepted
-        REJECTED = :rejected
-        SKIPPED = :skipped
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

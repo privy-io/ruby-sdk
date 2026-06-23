@@ -19,7 +19,7 @@ module Privy
       EXPORT_PRIVATE_KEY = :exportPrivateKey
       EXPORT_SEED_PHRASE = :exportSeedPhrase
       SIGN_TRANSACTION_BYTES = :signTransactionBytes
-      RAW_SIGN = :raw_sign
+      SIGN_RAW_MESSAGE_BYTES = :signRawMessageBytes
       EARN_DEPOSIT = :earn_deposit
       EARN_WITHDRAW = :earn_withdraw
       TRANSFER = :transfer

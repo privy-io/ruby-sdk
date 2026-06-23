@@ -117,6 +117,7 @@ module Privy
                 Privy::EvmTransactionWalletActionStep::OrHash,
                 Privy::EvmUserOperationWalletActionStep::OrHash,
                 Privy::SvmTransactionWalletActionStep::OrHash,
+                Privy::TvmTransactionWalletActionStep::OrHash,
                 Privy::ExternalTransactionWalletActionStep::OrHash,
                 Privy::CustodianTransactionWalletActionStep::OrHash
               )

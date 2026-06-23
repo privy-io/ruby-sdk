@@ -196,6 +196,10 @@ module Privy
 
   Caip2ChainID = Privy::Models::Caip2ChainID
 
+  CaptchaProvider = Privy::Models::CaptchaProvider
+
+  ChainTestnetMode = Privy::Models::ChainTestnetMode
+
   CoinbaseBlockchain = Privy::Models::CoinbaseBlockchain
 
   CoinbaseEthereumAsset = Privy::Models::CoinbaseEthereumAsset
@@ -1148,6 +1152,8 @@ module Privy
 
   MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
 
+  MfaMethod = Privy::Models::MfaMethod
+
   MfaPasskeyEnrollmentRequestBody =
     Privy::Models::MfaPasskeyEnrollmentRequestBody
 
@@ -1541,6 +1547,8 @@ module Privy
 
   SiwsLinkRequestBody = Privy::Models::SiwsLinkRequestBody
 
+  SiwsMessageType = Privy::Models::SiwsMessageType
+
   SiwsNonce = Privy::Models::SiwsNonce
 
   SiwsUnlinkRequestBody = Privy::Models::SiwsUnlinkRequestBody
@@ -1784,6 +1792,8 @@ module Privy
 
   SwapSource = Privy::Models::SwapSource
 
+  SwapSubmissionStatus = Privy::Models::SwapSubmissionStatus
+
   SystemCondition = Privy::Models::SystemCondition
 
   TelegramAuthConfigSchema = Privy::Models::TelegramAuthConfigSchema
@@ -1965,6 +1975,10 @@ module Privy
   TronTransferContract = Privy::Models::TronTransferContract
 
   TronTriggerSmartContract = Privy::Models::TronTriggerSmartContract
+
+  TvmTransactionWalletActionStep = Privy::Models::TvmTransactionWalletActionStep
+
+  TvmWalletActionStepStatus = Privy::Models::TvmWalletActionStepStatus
 
   TypedDataDomainInputParams =
     T.let(

@@ -94,9 +94,10 @@ module Privy
       required :embedded_wallet_config, -> { Privy::EmbeddedWalletConfigSchema }
 
       # @!attribute enabled_captcha_provider
+      #   The captcha provider enabled for an app.
       #
-      #   @return [Symbol, Privy::Models::AppResponse::EnabledCaptchaProvider, nil]
-      required :enabled_captcha_provider, enum: -> { Privy::AppResponse::EnabledCaptchaProvider }, nil?: true
+      #   @return [Symbol, Privy::Models::CaptchaProvider, nil]
+      required :enabled_captcha_provider, enum: -> { Privy::CaptchaProvider }, nil?: true
 
       # @!attribute enforce_wallet_uis
       #
@@ -180,8 +181,8 @@ module Privy
 
       # @!attribute mfa_methods
       #
-      #   @return [Array<Symbol, Privy::Models::AppResponse::MfaMethod>]
-      required :mfa_methods, -> { Privy::Internal::Type::ArrayOf[enum: Privy::AppResponse::MfaMethod] }
+      #   @return [Array<Symbol, Privy::Models::MfaMethod>]
+      required :mfa_methods, -> { Privy::Internal::Type::ArrayOf[enum: Privy::MfaMethod] }
 
       # @!attribute name
       #
@@ -351,7 +352,7 @@ module Privy
       #
       #   @param embedded_wallet_config [Privy::Models::EmbeddedWalletConfigSchema] Configuration for embedded wallets including the mode.
       #
-      #   @param enabled_captcha_provider [Symbol, Privy::Models::AppResponse::EnabledCaptchaProvider, nil]
+      #   @param enabled_captcha_provider [Symbol, Privy::Models::CaptchaProvider, nil] The captcha provider enabled for an app.
       #
       #   @param enforce_wallet_uis [Boolean]
       #
@@ -385,7 +386,7 @@ module Privy
       #
       #   @param merge_accounts_by_email [Boolean]
       #
-      #   @param mfa_methods [Array<Symbol, Privy::Models::AppResponse::MfaMethod>]
+      #   @param mfa_methods [Array<Symbol, Privy::Models::MfaMethod>]
       #
       #   @param name [String]
       #
@@ -445,28 +446,6 @@ module Privy
         extend Privy::Internal::Type::Enum
 
         PUBLIC = :public
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::AppResponse#enabled_captcha_provider
-      module EnabledCaptchaProvider
-        extend Privy::Internal::Type::Enum
-
-        TURNSTILE = :turnstile
-        HCAPTCHA = :hcaptcha
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      module MfaMethod
-        extend Privy::Internal::Type::Enum
-
-        SMS = :sms
-        TOTP = :totp
-        PASSKEY = :passkey
 
         # @!method self.values
         #   @return [Array<Symbol>]

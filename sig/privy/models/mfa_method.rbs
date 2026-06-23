@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type mfa_method = :sms | :totp | :passkey
+
+    module MfaMethod
+      extend Privy::Internal::Type::Enum
+
+      SMS: :sms
+      TOTP: :totp
+      PASSKEY: :passkey
+
+      def self?.values: -> ::Array[Privy::Models::mfa_method]
+    end
+  end
+end
