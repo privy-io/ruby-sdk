@@ -11,6 +11,9 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :destination_currency_icon_url
 
+      sig { returns(String) }
+      attr_accessor :destination_currency_symbol
+
       sig { returns(T.nilable(String)) }
       attr_accessor :destination_network_icon_url
 
@@ -31,6 +34,7 @@ module Privy
       sig do
         params(
           destination_currency_icon_url: T.nilable(String),
+          destination_currency_symbol: String,
           destination_network_icon_url: T.nilable(String),
           quotes: T::Array[Privy::FiatOnrampQuote::OrHash],
           provider_errors: T::Array[Privy::FiatOnrampProviderError::OrHash]
@@ -38,6 +42,7 @@ module Privy
       end
       def self.new(
         destination_currency_icon_url:,
+        destination_currency_symbol:,
         destination_network_icon_url:,
         quotes:,
         provider_errors: nil
@@ -48,6 +53,7 @@ module Privy
         override.returns(
           {
             destination_currency_icon_url: T.nilable(String),
+            destination_currency_symbol: String,
             destination_network_icon_url: T.nilable(String),
             quotes: T::Array[Privy::FiatOnrampQuote],
             provider_errors: T::Array[Privy::FiatOnrampProviderError]

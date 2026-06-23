@@ -8,6 +8,11 @@ module Privy
       #   @return [String, nil]
       required :destination_currency_icon_url, String, nil?: true
 
+      # @!attribute destination_currency_symbol
+      #
+      #   @return [String]
+      required :destination_currency_symbol, String
+
       # @!attribute destination_network_icon_url
       #
       #   @return [String, nil]
@@ -23,10 +28,11 @@ module Privy
       #   @return [Array<Privy::Models::FiatOnrampProviderError>, nil]
       optional :provider_errors, -> { Privy::Internal::Type::ArrayOf[Privy::FiatOnrampProviderError] }
 
-      # @!method initialize(destination_currency_icon_url:, destination_network_icon_url:, quotes:, provider_errors: nil)
+      # @!method initialize(destination_currency_icon_url:, destination_currency_symbol:, destination_network_icon_url:, quotes:, provider_errors: nil)
       #   The response containing fiat onramp quotes.
       #
       #   @param destination_currency_icon_url [String, nil]
+      #   @param destination_currency_symbol [String]
       #   @param destination_network_icon_url [String, nil]
       #   @param quotes [Array<Privy::Models::FiatOnrampQuote>]
       #   @param provider_errors [Array<Privy::Models::FiatOnrampProviderError>]
