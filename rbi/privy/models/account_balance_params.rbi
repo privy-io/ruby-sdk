@@ -9,23 +9,17 @@ module Privy
         end
 
       # When set to true, returns balances from testnet chains instead of mainnets.
-      sig do
-        returns(T.nilable(Privy::AccountBalanceParams::TestnetMode::OrSymbol))
-      end
+      sig { returns(T.nilable(Privy::ChainTestnetMode::OrSymbol)) }
       attr_reader :testnet_mode
 
-      sig do
-        params(
-          testnet_mode: Privy::AccountBalanceParams::TestnetMode::OrSymbol
-        ).void
-      end
+      sig { params(testnet_mode: Privy::ChainTestnetMode::OrSymbol).void }
       attr_writer :testnet_mode
 
       # Query parameters for the account balance endpoint.
       sig do
-        params(
-          testnet_mode: Privy::AccountBalanceParams::TestnetMode::OrSymbol
-        ).returns(T.attached_class)
+        params(testnet_mode: Privy::ChainTestnetMode::OrSymbol).returns(
+          T.attached_class
+        )
       end
       def self.new(
         # When set to true, returns balances from testnet chains instead of mainnets.
@@ -34,35 +28,9 @@ module Privy
       end
 
       sig do
-        override.returns(
-          { testnet_mode: Privy::AccountBalanceParams::TestnetMode::OrSymbol }
-        )
+        override.returns({ testnet_mode: Privy::ChainTestnetMode::OrSymbol })
       end
       def to_hash
-      end
-
-      # When set to true, returns balances from testnet chains instead of mainnets.
-      module TestnetMode
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::AccountBalanceParams::TestnetMode)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TRUE =
-          T.let(:true, Privy::AccountBalanceParams::TestnetMode::TaggedSymbol)
-        FALSE =
-          T.let(:false, Privy::AccountBalanceParams::TestnetMode::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Privy::AccountBalanceParams::TestnetMode::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

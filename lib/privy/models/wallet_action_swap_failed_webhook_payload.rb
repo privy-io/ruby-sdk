@@ -61,7 +61,7 @@ module Privy
       #   The steps of the wallet action. Completed steps will have transaction hashes;
       #   the failing step will have a failure_reason.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>]
+      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>]
       required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
       # @!attribute type
@@ -106,7 +106,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionSwapFailedWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action. Completed steps will have transaction hashes; th
+      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action. Completed steps will have transaction hashes; th
       #
       #   @param type [Symbol, Privy::Models::WalletActionSwapFailedWebhookPayload::Type] The type of webhook event.
       #

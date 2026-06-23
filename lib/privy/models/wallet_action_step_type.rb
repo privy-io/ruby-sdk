@@ -9,6 +9,7 @@ module Privy
       EVM_TRANSACTION = :evm_transaction
       EVM_USER_OPERATION = :evm_user_operation
       SVM_TRANSACTION = :svm_transaction
+      TVM_TRANSACTION = :tvm_transaction
       EXTERNAL_TRANSACTION = :external_transaction
       CUSTODIAN_TRANSACTION = :custodian_transaction
 

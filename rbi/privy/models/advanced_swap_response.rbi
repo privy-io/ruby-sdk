@@ -44,7 +44,7 @@ module Privy
 
       # "accepted" if the network has acknowledged the transaction, "rejected" if the
       # network refused it, "skipped" if dry_run was set. Not an onchain confirmation.
-      sig { returns(Privy::AdvancedSwapResponse::SubmissionStatus::OrSymbol) }
+      sig { returns(Privy::SwapSubmissionStatus::OrSymbol) }
       attr_accessor :submission_status
 
       # Solana transaction signature (base58).
@@ -69,8 +69,7 @@ module Privy
           provider: String,
           signed_transaction: String,
           slippage_bps: Integer,
-          submission_status:
-            Privy::AdvancedSwapResponse::SubmissionStatus::OrSymbol,
+          submission_status: Privy::SwapSubmissionStatus::OrSymbol,
           transaction_hash: String,
           platform_fee: Privy::AdvancedSwapPlatformFee::OrHash
         ).returns(T.attached_class)
@@ -115,52 +114,13 @@ module Privy
             provider: String,
             signed_transaction: String,
             slippage_bps: Integer,
-            submission_status:
-              Privy::AdvancedSwapResponse::SubmissionStatus::OrSymbol,
+            submission_status: Privy::SwapSubmissionStatus::OrSymbol,
             transaction_hash: String,
             platform_fee: Privy::AdvancedSwapPlatformFee
           }
         )
       end
       def to_hash
-      end
-
-      # "accepted" if the network has acknowledged the transaction, "rejected" if the
-      # network refused it, "skipped" if dry_run was set. Not an onchain confirmation.
-      module SubmissionStatus
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::AdvancedSwapResponse::SubmissionStatus)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ACCEPTED =
-          T.let(
-            :accepted,
-            Privy::AdvancedSwapResponse::SubmissionStatus::TaggedSymbol
-          )
-        REJECTED =
-          T.let(
-            :rejected,
-            Privy::AdvancedSwapResponse::SubmissionStatus::TaggedSymbol
-          )
-        SKIPPED =
-          T.let(
-            :skipped,
-            Privy::AdvancedSwapResponse::SubmissionStatus::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::AdvancedSwapResponse::SubmissionStatus::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

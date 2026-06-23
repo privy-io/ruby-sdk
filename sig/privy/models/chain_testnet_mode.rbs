@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type chain_testnet_mode = :true | :false
+
+    module ChainTestnetMode
+      extend Privy::Internal::Type::Enum
+
+      TRUE: :true
+      FALSE: :false
+
+      def self?.values: -> ::Array[Privy::Models::chain_testnet_mode]
+    end
+  end
+end

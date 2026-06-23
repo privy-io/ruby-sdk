@@ -135,7 +135,7 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action. Only returned if `?include=steps` is provided.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>, nil]
+      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>, nil]
       optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
 
       # @!method initialize(id:, created_at:, destination_address:, destination_amount:, source_chain:, status:, type:, wallet_id:, amount_type: nil, destination_asset: nil, destination_chain: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
@@ -184,7 +184,7 @@ module Privy
       #
       #   @param source_asset_decimals [Integer] Number of decimals for the transferred token. Present when the transfer was init
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
+      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
 
       # @see Privy::Models::TransferActionResponse#type
       module Type

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type captcha_provider = :turnstile | :hcaptcha
+
+    module CaptchaProvider
+      extend Privy::Internal::Type::Enum
+
+      TURNSTILE: :turnstile
+      HCAPTCHA: :hcaptcha
+
+      def self?.values: -> ::Array[Privy::Models::captcha_provider]
+    end
+  end
+end

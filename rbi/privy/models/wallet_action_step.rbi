@@ -12,6 +12,7 @@ module Privy
             Privy::EvmTransactionWalletActionStep,
             Privy::EvmUserOperationWalletActionStep,
             Privy::SvmTransactionWalletActionStep,
+            Privy::TvmTransactionWalletActionStep,
             Privy::ExternalTransactionWalletActionStep,
             Privy::CustodianTransactionWalletActionStep
           )

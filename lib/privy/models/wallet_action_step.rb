@@ -17,6 +17,9 @@ module Privy
       # A wallet action step consisting of an SVM (Solana) transaction.
       variant :svm_transaction, -> { Privy::SvmTransactionWalletActionStep }
 
+      # A wallet action step consisting of a TVM (Tron) transaction.
+      variant :tvm_transaction, -> { Privy::TvmTransactionWalletActionStep }
+
       # A wallet action step representing a cross-chain/cross-asset fill by an external provider.
       variant :external_transaction, -> { Privy::ExternalTransactionWalletActionStep }
 
@@ -24,7 +27,7 @@ module Privy
       variant :custodian_transaction, -> { Privy::CustodianTransactionWalletActionStep }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep)]
+      #   @return [Array(Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep)]
     end
   end
 end

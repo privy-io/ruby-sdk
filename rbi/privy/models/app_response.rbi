@@ -71,11 +71,8 @@ module Privy
       end
       attr_writer :embedded_wallet_config
 
-      sig do
-        returns(
-          T.nilable(Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol)
-        )
-      end
+      # The captcha provider enabled for an app.
+      sig { returns(T.nilable(Privy::CaptchaProvider::TaggedSymbol)) }
       attr_accessor :enabled_captcha_provider
 
       sig { returns(T::Boolean) }
@@ -126,7 +123,7 @@ module Privy
       sig { returns(T::Boolean) }
       attr_accessor :merge_accounts_by_email
 
-      sig { returns(T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol]) }
+      sig { returns(T::Array[Privy::MfaMethod::TaggedSymbol]) }
       attr_accessor :mfa_methods
 
       sig { returns(String) }
@@ -243,8 +240,7 @@ module Privy
           discord_oauth: T::Boolean,
           email_auth: T::Boolean,
           embedded_wallet_config: Privy::EmbeddedWalletConfigSchema::OrHash,
-          enabled_captcha_provider:
-            T.nilable(Privy::AppResponse::EnabledCaptchaProvider::OrSymbol),
+          enabled_captcha_provider: T.nilable(Privy::CaptchaProvider::OrSymbol),
           enforce_wallet_uis: T::Boolean,
           external_wallets_for_signup_enabled: T::Boolean,
           farcaster_auth: T::Boolean,
@@ -261,7 +257,7 @@ module Privy
           logo_url: T.nilable(String),
           max_linked_wallets_per_user: T.nilable(Float),
           merge_accounts_by_email: T::Boolean,
-          mfa_methods: T::Array[Privy::AppResponse::MfaMethod::OrSymbol],
+          mfa_methods: T::Array[Privy::MfaMethod::OrSymbol],
           name: String,
           passkey_auth: T::Boolean,
           passkeys_for_signup_enabled: T::Boolean,
@@ -315,6 +311,7 @@ module Privy
         email_auth:,
         # Configuration for embedded wallets including the mode.
         embedded_wallet_config:,
+        # The captcha provider enabled for an app.
         enabled_captcha_provider:,
         enforce_wallet_uis:,
         external_wallets_for_signup_enabled:,
@@ -386,9 +383,7 @@ module Privy
             email_auth: T::Boolean,
             embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
             enabled_captcha_provider:
-              T.nilable(
-                Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
-              ),
+              T.nilable(Privy::CaptchaProvider::TaggedSymbol),
             enforce_wallet_uis: T::Boolean,
             external_wallets_for_signup_enabled: T::Boolean,
             farcaster_auth: T::Boolean,
@@ -405,7 +400,7 @@ module Privy
             logo_url: T.nilable(String),
             max_linked_wallets_per_user: T.nilable(Float),
             merge_accounts_by_email: T::Boolean,
-            mfa_methods: T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol],
+            mfa_methods: T::Array[Privy::MfaMethod::TaggedSymbol],
             name: String,
             passkey_auth: T::Boolean,
             passkeys_for_signup_enabled: T::Boolean,
@@ -452,55 +447,6 @@ module Privy
         sig do
           override.returns(
             T::Array[Privy::AppResponse::DataClassification::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module EnabledCaptchaProvider
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::AppResponse::EnabledCaptchaProvider)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TURNSTILE =
-          T.let(
-            :turnstile,
-            Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
-          )
-        HCAPTCHA =
-          T.let(
-            :hcaptcha,
-            Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module MfaMethod
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Privy::AppResponse::MfaMethod) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SMS = T.let(:sms, Privy::AppResponse::MfaMethod::TaggedSymbol)
-        TOTP = T.let(:totp, Privy::AppResponse::MfaMethod::TaggedSymbol)
-        PASSKEY = T.let(:passkey, Privy::AppResponse::MfaMethod::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol]
           )
         end
         def self.values

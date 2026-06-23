@@ -19,7 +19,7 @@ module Privy
         discord_oauth: bool,
         email_auth: bool,
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
-        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enabled_captcha_provider: Privy::Models::captcha_provider?,
         enforce_wallet_uis: bool,
         external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
@@ -36,7 +36,7 @@ module Privy
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
         merge_accounts_by_email: bool,
-        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        mfa_methods: ::Array[Privy::Models::mfa_method],
         name: String,
         passkey_auth: bool,
         passkeys_for_signup_enabled: bool,
@@ -99,7 +99,7 @@ module Privy
 
       attr_accessor embedded_wallet_config: Privy::EmbeddedWalletConfigSchema
 
-      attr_accessor enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?
+      attr_accessor enabled_captcha_provider: Privy::Models::captcha_provider?
 
       attr_accessor enforce_wallet_uis: bool
 
@@ -133,7 +133,7 @@ module Privy
 
       attr_accessor merge_accounts_by_email: bool
 
-      attr_accessor mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method]
+      attr_accessor mfa_methods: ::Array[Privy::Models::mfa_method]
 
       attr_accessor name: String
 
@@ -213,7 +213,7 @@ module Privy
         discord_oauth: bool,
         email_auth: bool,
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
-        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enabled_captcha_provider: Privy::Models::captcha_provider?,
         enforce_wallet_uis: bool,
         external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
@@ -230,7 +230,7 @@ module Privy
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
         merge_accounts_by_email: bool,
-        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        mfa_methods: ::Array[Privy::Models::mfa_method],
         name: String,
         passkey_auth: bool,
         passkeys_for_signup_enabled: bool,
@@ -276,7 +276,7 @@ module Privy
         discord_oauth: bool,
         email_auth: bool,
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
-        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enabled_captcha_provider: Privy::Models::captcha_provider?,
         enforce_wallet_uis: bool,
         external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
@@ -293,7 +293,7 @@ module Privy
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
         merge_accounts_by_email: bool,
-        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        mfa_methods: ::Array[Privy::Models::mfa_method],
         name: String,
         passkey_auth: bool,
         passkeys_for_signup_enabled: bool,
@@ -329,29 +329,6 @@ module Privy
         PUBLIC: :public
 
         def self?.values: -> ::Array[Privy::Models::AppResponse::data_classification]
-      end
-
-      type enabled_captcha_provider = :turnstile | :hcaptcha
-
-      module EnabledCaptchaProvider
-        extend Privy::Internal::Type::Enum
-
-        TURNSTILE: :turnstile
-        HCAPTCHA: :hcaptcha
-
-        def self?.values: -> ::Array[Privy::Models::AppResponse::enabled_captcha_provider]
-      end
-
-      type mfa_method = :sms | :totp | :passkey
-
-      module MfaMethod
-        extend Privy::Internal::Type::Enum
-
-        SMS: :sms
-        TOTP: :totp
-        PASSKEY: :passkey
-
-        def self?.values: -> ::Array[Privy::Models::AppResponse::mfa_method]
       end
     end
   end
