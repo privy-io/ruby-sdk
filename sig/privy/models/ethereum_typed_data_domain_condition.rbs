@@ -2,14 +2,14 @@ module Privy
   module Models
     type ethereum_typed_data_domain_condition =
       {
-        field: Privy::Models::EthereumTypedDataDomainCondition::field,
+        field: Privy::Models::ethereum_typed_data_domain_condition_field,
         field_source: Privy::Models::EthereumTypedDataDomainCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       }
 
     class EthereumTypedDataDomainCondition < Privy::Internal::Type::BaseModel
-      attr_accessor field: Privy::Models::EthereumTypedDataDomainCondition::field
+      attr_accessor field: Privy::Models::ethereum_typed_data_domain_condition_field
 
       attr_accessor field_source: Privy::Models::EthereumTypedDataDomainCondition::field_source
 
@@ -18,32 +18,18 @@ module Privy
       attr_accessor value: Privy::Models::condition_value
 
       def initialize: (
-        field: Privy::Models::EthereumTypedDataDomainCondition::field,
+        field: Privy::Models::ethereum_typed_data_domain_condition_field,
         field_source: Privy::Models::EthereumTypedDataDomainCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       ) -> void
 
       def to_hash: -> {
-        field: Privy::Models::EthereumTypedDataDomainCondition::field,
+        field: Privy::Models::ethereum_typed_data_domain_condition_field,
         field_source: Privy::Models::EthereumTypedDataDomainCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       }
-
-      type field =
-        :chainId | :verifyingContract | :chain_id | :verifying_contract
-
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        CHAIN_ID: :chainId
-        CHAIN_ID_2: :chain_id
-        VERIFYING_CONTRACT: :verifyingContract
-        VERIFYING_CONTRACT_2: :verifying_contract
-
-        def self?.values: -> ::Array[Privy::Models::EthereumTypedDataDomainCondition::field]
-      end
 
       type field_source = :ethereum_typed_data_domain
 

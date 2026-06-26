@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type kraken_embed_transaction_status =
+      :unspecified | :in_progress | :successful | :failed
+
+    module KrakenEmbedTransactionStatus
+      extend Privy::Internal::Type::Enum
+
+      UNSPECIFIED: :unspecified
+      IN_PROGRESS: :in_progress
+      SUCCESSFUL: :successful
+      FAILED: :failed
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_transaction_status]
+    end
+  end
+end

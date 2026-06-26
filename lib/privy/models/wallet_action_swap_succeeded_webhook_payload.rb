@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute caip2
       #   Chain identifier.
@@ -61,8 +61,8 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action, including transaction hashes.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -88,7 +88,7 @@ module Privy
       #
       #   Payload for the wallet_action.swap.succeeded webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param caip2 [String] Chain identifier.
       #
@@ -106,7 +106,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionSwapSucceededWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
       #
       #   @param type [Symbol, Privy::Models::WalletActionSwapSucceededWebhookPayload::Type] The type of webhook event.
       #

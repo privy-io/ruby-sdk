@@ -2,39 +2,26 @@ module Privy
   module Models
     type kraken_embed_custom_order_status =
       {
-        status: Privy::Models::KrakenEmbedCustomOrderStatus::status,
+        status: Privy::Models::kraken_embed_custom_order_status_value,
         reason: top
       }
 
     class KrakenEmbedCustomOrderStatus < Privy::Internal::Type::BaseModel
-      attr_accessor status: Privy::Models::KrakenEmbedCustomOrderStatus::status
+      attr_accessor status: Privy::Models::kraken_embed_custom_order_status_value
 
       attr_reader reason: top?
 
       def reason=: (top) -> top
 
       def initialize: (
-        status: Privy::Models::KrakenEmbedCustomOrderStatus::status,
+        status: Privy::Models::kraken_embed_custom_order_status_value,
         ?reason: top
       ) -> void
 
       def to_hash: -> {
-        status: Privy::Models::KrakenEmbedCustomOrderStatus::status,
+        status: Privy::Models::kraken_embed_custom_order_status_value,
         reason: top
       }
-
-      type status = :active | :completed | :cancelled | :paused
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        ACTIVE: :active
-        COMPLETED: :completed
-        CANCELLED: :cancelled
-        PAUSED: :paused
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderStatus::status]
-      end
     end
   end
 end

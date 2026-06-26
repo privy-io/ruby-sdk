@@ -2,13 +2,13 @@ module Privy
   module Models
     type oauth_token_device_code_pending_error =
       {
-        error: Privy::Models::OAuthTokenDeviceCodePendingError::error,
+        error: Privy::Models::oauth_token_device_code_pending_error_code,
         error_description: String,
         interval: Float
       }
 
     class OAuthTokenDeviceCodePendingError < Privy::Internal::Type::BaseModel
-      attr_accessor error: Privy::Models::OAuthTokenDeviceCodePendingError::error
+      attr_accessor error: Privy::Models::oauth_token_device_code_pending_error_code
 
       attr_reader error_description: String?
 
@@ -19,30 +19,16 @@ module Privy
       def interval=: (Float) -> Float
 
       def initialize: (
-        error: Privy::Models::OAuthTokenDeviceCodePendingError::error,
+        error: Privy::Models::oauth_token_device_code_pending_error_code,
         ?error_description: String,
         ?interval: Float
       ) -> void
 
       def to_hash: -> {
-        error: Privy::Models::OAuthTokenDeviceCodePendingError::error,
+        error: Privy::Models::oauth_token_device_code_pending_error_code,
         error_description: String,
         interval: Float
       }
-
-      type error =
-        :authorization_pending | :slow_down | :access_denied | :expired_token
-
-      module Error
-        extend Privy::Internal::Type::Enum
-
-        AUTHORIZATION_PENDING: :authorization_pending
-        SLOW_DOWN: :slow_down
-        ACCESS_DENIED: :access_denied
-        EXPIRED_TOKEN: :expired_token
-
-        def self?.values: -> ::Array[Privy::Models::OAuthTokenDeviceCodePendingError::error]
-      end
     end
   end
 end

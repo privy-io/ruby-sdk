@@ -4,10 +4,11 @@ module Privy
   module Models
     class TronTransactionCondition < Privy::Internal::Type::BaseModel
       # @!attribute field
-      #   Supported TRON transaction fields in format "TransactionType.field_name"
+      #   Supported TRON transaction fields for TransferContract and TriggerSmartContract
+      #   in format "TransactionType.field_name".
       #
-      #   @return [Symbol, Privy::Models::TronTransactionCondition::Field]
-      required :field, enum: -> { Privy::TronTransactionCondition::Field }
+      #   @return [Symbol, Privy::Models::TronTransactionConditionField]
+      required :field, enum: -> { Privy::TronTransactionConditionField }
 
       # @!attribute field_source
       #
@@ -34,30 +35,13 @@ module Privy
       #   TRON transaction fields for TransferContract and TriggerSmartContract
       #   transaction types.
       #
-      #   @param field [Symbol, Privy::Models::TronTransactionCondition::Field] Supported TRON transaction fields in format "TransactionType.field_name"
+      #   @param field [Symbol, Privy::Models::TronTransactionConditionField] Supported TRON transaction fields for TransferContract and TriggerSmartContract
       #
       #   @param field_source [Symbol, Privy::Models::TronTransactionCondition::FieldSource]
       #
       #   @param operator [Symbol, Privy::Models::ConditionOperator] Operator to use for policy conditions.
       #
       #   @param value [String, Array<String>] Value to compare against in a policy condition. Can be a single string or an arr
-
-      # Supported TRON transaction fields in format "TransactionType.field_name"
-      #
-      # @see Privy::Models::TronTransactionCondition#field
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        TRANSFER_CONTRACT_TO_ADDRESS = :"TransferContract.to_address"
-        TRANSFER_CONTRACT_AMOUNT = :"TransferContract.amount"
-        TRIGGER_SMART_CONTRACT_CONTRACT_ADDRESS = :"TriggerSmartContract.contract_address"
-        TRIGGER_SMART_CONTRACT_CALL_VALUE = :"TriggerSmartContract.call_value"
-        TRIGGER_SMART_CONTRACT_TOKEN_ID = :"TriggerSmartContract.token_id"
-        TRIGGER_SMART_CONTRACT_CALL_TOKEN_VALUE = :"TriggerSmartContract.call_token_value"
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # @see Privy::Models::TronTransactionCondition#field_source
       module FieldSource

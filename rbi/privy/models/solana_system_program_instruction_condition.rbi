@@ -11,8 +11,10 @@ module Privy
           )
         end
 
+      # Supported fields for Solana System Program conditions including Transfer
+      # instruction fields.
       sig do
-        returns(Privy::SolanaSystemProgramInstructionCondition::Field::OrSymbol)
+        returns(Privy::SolanaSystemProgramInstructionConditionField::OrSymbol)
       end
       attr_accessor :field
 
@@ -36,8 +38,7 @@ module Privy
       # fields.
       sig do
         params(
-          field:
-            Privy::SolanaSystemProgramInstructionCondition::Field::OrSymbol,
+          field: Privy::SolanaSystemProgramInstructionConditionField::OrSymbol,
           field_source:
             Privy::SolanaSystemProgramInstructionCondition::FieldSource::OrSymbol,
           operator: Privy::ConditionOperator::OrSymbol,
@@ -45,6 +46,8 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # Supported fields for Solana System Program conditions including Transfer
+        # instruction fields.
         field:,
         field_source:,
         # Operator to use for policy conditions.
@@ -59,7 +62,7 @@ module Privy
         override.returns(
           {
             field:
-              Privy::SolanaSystemProgramInstructionCondition::Field::OrSymbol,
+              Privy::SolanaSystemProgramInstructionConditionField::OrSymbol,
             field_source:
               Privy::SolanaSystemProgramInstructionCondition::FieldSource::OrSymbol,
             operator: Privy::ConditionOperator::OrSymbol,
@@ -68,47 +71,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::SolanaSystemProgramInstructionCondition::Field)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        INSTRUCTION_NAME =
-          T.let(
-            :instructionName,
-            Privy::SolanaSystemProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_FROM =
-          T.let(
-            :"Transfer.from",
-            Privy::SolanaSystemProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_TO =
-          T.let(
-            :"Transfer.to",
-            Privy::SolanaSystemProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_LAMPORTS =
-          T.let(
-            :"Transfer.lamports",
-            Privy::SolanaSystemProgramInstructionCondition::Field::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::SolanaSystemProgramInstructionCondition::Field::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       module FieldSource

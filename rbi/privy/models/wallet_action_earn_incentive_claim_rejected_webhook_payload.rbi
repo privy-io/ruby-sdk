@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # EVM chain name (e.g. "base", "ethereum").
@@ -24,10 +24,10 @@ module Privy
       attr_accessor :created_at
 
       # A description of why a wallet action (or a step within a wallet action) failed.
-      sig { returns(Privy::FailureReason) }
+      sig { returns(Privy::Wallets::FailureReason) }
       attr_reader :failure_reason
 
-      sig { params(failure_reason: Privy::FailureReason::OrHash).void }
+      sig { params(failure_reason: Privy::Wallets::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
       # ISO 8601 timestamp of when the wallet action was rejected.
@@ -35,7 +35,11 @@ module Privy
       attr_accessor :rejected_at
 
       # Claimed reward tokens. Populated after the preparation step fetches from Merkl.
-      sig { returns(T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry])) }
+      sig do
+        returns(
+          T.nilable(T::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry])
+        )
+      end
       attr_accessor :rewards
 
       # The status of the wallet action.
@@ -47,7 +51,7 @@ module Privy
       attr_accessor :status
 
       # The steps of the wallet action at the time of rejection.
-      sig { returns(T::Array[Privy::WalletActionStep::Variants]) }
+      sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
       # The type of webhook event.
@@ -69,24 +73,26 @@ module Privy
       # Payload for the wallet_action.earn_incentive_claim.rejected webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           chain: String,
           created_at: String,
-          failure_reason: Privy::FailureReason::OrHash,
+          failure_reason: Privy::Wallets::FailureReason::OrHash,
           rejected_at: String,
           rewards:
-            T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry::OrHash]),
+            T.nilable(
+              T::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry::OrHash]
+            ),
           status:
             Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload::Status::OrSymbol,
           steps:
             T::Array[
               T.any(
-                Privy::EvmTransactionWalletActionStep::OrHash,
-                Privy::EvmUserOperationWalletActionStep::OrHash,
-                Privy::SvmTransactionWalletActionStep::OrHash,
-                Privy::TvmTransactionWalletActionStep::OrHash,
-                Privy::ExternalTransactionWalletActionStep::OrHash,
-                Privy::CustodianTransactionWalletActionStep::OrHash
+                Privy::Wallets::EvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::EvmUserOperationWalletActionStep::OrHash,
+                Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
               )
             ],
           type:
@@ -124,15 +130,16 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             chain: String,
             created_at: String,
-            failure_reason: Privy::FailureReason,
+            failure_reason: Privy::Wallets::FailureReason,
             rejected_at: String,
-            rewards: T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry]),
+            rewards:
+              T.nilable(T::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]),
             status:
               Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload::Status::TaggedSymbol,
-            steps: T::Array[Privy::WalletActionStep::Variants],
+            steps: T::Array[Privy::Wallets::WalletActionStep::Variants],
             type:
               Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,

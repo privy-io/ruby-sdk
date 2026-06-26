@@ -18,7 +18,7 @@ module Privy
         #
         # @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
-        # @param chain [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        # @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
         #
         # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #

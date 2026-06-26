@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute asset_address
       #   Underlying asset token address.
@@ -30,8 +30,8 @@ module Privy
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
-      #   @return [Privy::Models::FailureReason]
-      required :failure_reason, -> { Privy::FailureReason }
+      #   @return [Privy::Models::Wallets::FailureReason]
+      required :failure_reason, -> { Privy::Wallets::FailureReason }
 
       # @!attribute raw_amount
       #   Base-unit amount of asset deposited (e.g. "1500000").
@@ -54,8 +54,8 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action at the time of rejection.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -114,7 +114,7 @@ module Privy
       #
       #   Payload for the wallet_action.earn_deposit.rejected webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param asset_address [String] Underlying asset token address.
       #
@@ -122,7 +122,7 @@ module Privy
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
-      #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
       #   @param raw_amount [String] Base-unit amount of asset deposited (e.g. "1500000").
       #
@@ -130,7 +130,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action at the time of rejection.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action at the time of rejection.
       #
       #   @param type [Symbol, Privy::Models::WalletActionEarnDepositRejectedWebhookPayload::Type] The type of webhook event.
       #

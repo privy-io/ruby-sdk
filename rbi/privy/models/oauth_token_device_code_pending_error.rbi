@@ -11,8 +11,8 @@ module Privy
           )
         end
 
-      # The error code indicating why the token request failed.
-      sig { returns(Privy::OAuthTokenDeviceCodePendingError::Error::OrSymbol) }
+      # Error codes for the device authorization pending response per RFC 8628.
+      sig { returns(Privy::OAuthTokenDeviceCodePendingErrorCode::OrSymbol) }
       attr_accessor :error
 
       # Human-readable description of the error.
@@ -33,13 +33,13 @@ module Privy
       # 8628 Section 3.5).
       sig do
         params(
-          error: Privy::OAuthTokenDeviceCodePendingError::Error::OrSymbol,
+          error: Privy::OAuthTokenDeviceCodePendingErrorCode::OrSymbol,
           error_description: String,
           interval: Float
         ).returns(T.attached_class)
       end
       def self.new(
-        # The error code indicating why the token request failed.
+        # Error codes for the device authorization pending response per RFC 8628.
         error:,
         # Human-readable description of the error.
         error_description: nil,
@@ -51,55 +51,13 @@ module Privy
       sig do
         override.returns(
           {
-            error: Privy::OAuthTokenDeviceCodePendingError::Error::OrSymbol,
+            error: Privy::OAuthTokenDeviceCodePendingErrorCode::OrSymbol,
             error_description: String,
             interval: Float
           }
         )
       end
       def to_hash
-      end
-
-      # The error code indicating why the token request failed.
-      module Error
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::OAuthTokenDeviceCodePendingError::Error)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        AUTHORIZATION_PENDING =
-          T.let(
-            :authorization_pending,
-            Privy::OAuthTokenDeviceCodePendingError::Error::TaggedSymbol
-          )
-        SLOW_DOWN =
-          T.let(
-            :slow_down,
-            Privy::OAuthTokenDeviceCodePendingError::Error::TaggedSymbol
-          )
-        ACCESS_DENIED =
-          T.let(
-            :access_denied,
-            Privy::OAuthTokenDeviceCodePendingError::Error::TaggedSymbol
-          )
-        EXPIRED_TOKEN =
-          T.let(
-            :expired_token,
-            Privy::OAuthTokenDeviceCodePendingError::Error::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::OAuthTokenDeviceCodePendingError::Error::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

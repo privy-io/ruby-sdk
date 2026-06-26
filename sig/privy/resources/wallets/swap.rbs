@@ -12,8 +12,9 @@ module Privy
           ?slippage_bps: Integer,
           ?privy_authorization_signature: String,
           ?privy_idempotency_key: String,
+          ?privy_request_expiry: String,
           ?request_options: Privy::request_opts
-        ) -> Privy::SwapActionResponse
+        ) -> Privy::Wallets::SwapActionResponse
 
         def quote: (
           String wallet_id,
@@ -24,6 +25,7 @@ module Privy
           ?fee_configuration: Privy::FeeConfiguration,
           ?slippage_bps: Integer,
           ?privy_authorization_signature: String,
+          ?privy_request_expiry: String,
           ?request_options: Privy::request_opts
         ) -> Privy::SwapQuoteResponse
 

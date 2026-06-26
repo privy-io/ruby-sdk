@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # ISO 8601 timestamp of when the wallet action was created.
@@ -86,7 +86,7 @@ module Privy
       # Payload for the wallet_action.transfer.created webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           created_at: String,
           destination_address: String,
           source_chain: String,
@@ -137,7 +137,7 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             created_at: String,
             destination_address: String,
             source_chain: String,

@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_occurrence_status =
+      :success | :failure | :skipped
+
+    module KrakenEmbedCustomOrderOccurrenceStatus
+      extend Privy::Internal::Type::Enum
+
+      SUCCESS: :success
+      FAILURE: :failure
+      SKIPPED: :skipped
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_custom_order_occurrence_status]
+    end
+  end
+end

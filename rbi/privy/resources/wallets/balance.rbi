@@ -17,10 +17,8 @@ module Privy
               ),
             chain:
               T.any(
-                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
-                T::Array[
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1::OrSymbol
-                ]
+                Privy::WalletAssetChainNameInput::OrSymbol,
+                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
               ),
             include_archived: T::Boolean,
             include_currency:

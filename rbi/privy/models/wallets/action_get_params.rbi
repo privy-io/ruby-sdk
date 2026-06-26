@@ -21,10 +21,14 @@ module Privy
         attr_accessor :action_id
 
         # Expandable relations to include on a wallet action response.
-        sig { returns(T.nilable(Privy::WalletActionInclude::OrSymbol)) }
+        sig do
+          returns(T.nilable(Privy::Wallets::WalletActionInclude::OrSymbol))
+        end
         attr_reader :include
 
-        sig { params(include: Privy::WalletActionInclude::OrSymbol).void }
+        sig do
+          params(include: Privy::Wallets::WalletActionInclude::OrSymbol).void
+        end
         attr_writer :include
 
         # Request authorization signature. If multiple signatures are required, they
@@ -39,7 +43,7 @@ module Privy
           params(
             wallet_id: String,
             action_id: String,
-            include: Privy::WalletActionInclude::OrSymbol,
+            include: Privy::Wallets::WalletActionInclude::OrSymbol,
             privy_authorization_signature: String,
             request_options: Privy::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -63,7 +67,7 @@ module Privy
             {
               wallet_id: String,
               action_id: String,
-              include: Privy::WalletActionInclude::OrSymbol,
+              include: Privy::Wallets::WalletActionInclude::OrSymbol,
               privy_authorization_signature: String,
               request_options: Privy::RequestOptions
             }

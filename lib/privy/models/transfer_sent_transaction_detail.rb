@@ -9,9 +9,10 @@ module Privy
       required :asset, union: -> { Privy::TransferSentTransactionDetail::Asset }
 
       # @!attribute chain
+      #   Supported blockchain network names for wallet balance and transaction queries.
       #
-      #   @return [Symbol, Privy::Models::TransferSentTransactionDetail::Chain]
-      required :chain, enum: -> { Privy::TransferSentTransactionDetail::Chain }
+      #   @return [Symbol, Privy::Models::WalletAssetChainNameInput]
+      required :chain, enum: -> { Privy::WalletAssetChainNameInput }
 
       # @!attribute display_values
       #
@@ -57,14 +58,23 @@ module Privy
       #   Details for a sent transfer transaction.
       #
       #   @param asset [Symbol, String, Privy::Models::TransferSentTransactionDetail::Asset]
-      #   @param chain [Symbol, Privy::Models::TransferSentTransactionDetail::Chain]
+      #
+      #   @param chain [Symbol, Privy::Models::WalletAssetChainNameInput] Supported blockchain network names for wallet balance and transaction queries.
+      #
       #   @param display_values [Hash{Symbol=>String}]
+      #
       #   @param raw_value [String]
+      #
       #   @param raw_value_decimals [Float]
+      #
       #   @param recipient [String]
+      #
       #   @param recipient_privy_user_id [String, nil]
+      #
       #   @param sender [String]
+      #
       #   @param sender_privy_user_id [String, nil]
+      #
       #   @param type [Symbol, Privy::Models::TransferSentTransactionDetail::Type]
 
       # @see Privy::Models::TransferSentTransactionDetail#asset
@@ -111,34 +121,6 @@ module Privy
         SOL = :sol
 
         # @!endgroup
-      end
-
-      # @see Privy::Models::TransferSentTransactionDetail#chain
-      module Chain
-        extend Privy::Internal::Type::Enum
-
-        ETHEREUM = :ethereum
-        ARBITRUM = :arbitrum
-        AVALANCHE = :avalanche
-        BASE = :base
-        TEMPO = :tempo
-        LINEA = :linea
-        OPTIMISM = :optimism
-        POLYGON = :polygon
-        SOLANA = :solana
-        ZKSYNC_ERA = :zksync_era
-        SEPOLIA = :sepolia
-        ARBITRUM_SEPOLIA = :arbitrum_sepolia
-        AVALANCHE_FUJI = :avalanche_fuji
-        BASE_SEPOLIA = :base_sepolia
-        LINEA_TESTNET = :linea_testnet
-        OPTIMISM_SEPOLIA = :optimism_sepolia
-        POLYGON_AMOY = :polygon_amoy
-        SOLANA_DEVNET = :solana_devnet
-        SOLANA_TESTNET = :solana_testnet
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
       end
 
       # @see Privy::Models::TransferSentTransactionDetail#type

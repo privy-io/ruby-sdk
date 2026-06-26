@@ -53,8 +53,6 @@ module Privy
 
     attr_reader cross_app: Privy::Resources::CrossApp
 
-    attr_reader wallet_actions: Privy::Resources::WalletActions
-
     attr_reader oauth: Privy::Resources::OAuth
 
     attr_reader yield_: Privy::Resources::Yield

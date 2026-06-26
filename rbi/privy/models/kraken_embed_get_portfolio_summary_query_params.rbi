@@ -11,11 +11,11 @@ module Privy
           )
         end
 
+      # A string-encoded boolean query parameter on including current day profit and
+      # loss.
       sig do
         returns(
-          T.nilable(
-            Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::OrSymbol
-          )
+          T.nilable(Privy::KrakenEmbedIncludeCurrentDayPnlQueryParam::OrSymbol)
         )
       end
       attr_reader :include_current_day_pnl
@@ -23,7 +23,7 @@ module Privy
       sig do
         params(
           include_current_day_pnl:
-            Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::OrSymbol
+            Privy::KrakenEmbedIncludeCurrentDayPnlQueryParam::OrSymbol
         ).void
       end
       attr_writer :include_current_day_pnl
@@ -38,57 +38,28 @@ module Privy
       sig do
         params(
           include_current_day_pnl:
-            Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::OrSymbol,
+            Privy::KrakenEmbedIncludeCurrentDayPnlQueryParam::OrSymbol,
           quote: String
         ).returns(T.attached_class)
       end
-      def self.new(include_current_day_pnl: nil, quote: nil)
+      def self.new(
+        # A string-encoded boolean query parameter on including current day profit and
+        # loss.
+        include_current_day_pnl: nil,
+        quote: nil
+      )
       end
 
       sig do
         override.returns(
           {
             include_current_day_pnl:
-              Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::OrSymbol,
+              Privy::KrakenEmbedIncludeCurrentDayPnlQueryParam::OrSymbol,
             quote: String
           }
         )
       end
       def to_hash
-      end
-
-      module IncludeCurrentDayPnl
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TRUE =
-          T.let(
-            :true,
-            Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::TaggedSymbol
-          )
-        FALSE =
-          T.let(
-            :false,
-            Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioSummaryQueryParams::IncludeCurrentDayPnl::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

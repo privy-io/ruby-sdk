@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    module Wallets
+      type evm_user_operation_entrypoint_version =
+        :"0.6" | :"0.7" | :"0.8" | :"0.9"
+
+      module EvmUserOperationEntrypointVersion
+        extend Privy::Internal::Type::Enum
+
+        EVM_USER_OPERATION_ENTRYPOINT_VERSION_0_6: :"0.6"
+        EVM_USER_OPERATION_ENTRYPOINT_VERSION_0_7: :"0.7"
+        EVM_USER_OPERATION_ENTRYPOINT_VERSION_0_8: :"0.8"
+        EVM_USER_OPERATION_ENTRYPOINT_VERSION_0_9: :"0.9"
+
+        def self?.values: -> ::Array[Privy::Models::Wallets::evm_user_operation_entrypoint_version]
+      end
+    end
+  end
+end

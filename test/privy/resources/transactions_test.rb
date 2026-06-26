@@ -17,7 +17,7 @@ class Privy::Test::Resources::TransactionsTest < Privy::Test::ResourceTest
         id: String,
         caip2: String,
         created_at: Float,
-        status: Privy::Transaction::Status,
+        status: Privy::BlockchainTransactionStatus,
         transaction_hash: String | nil,
         wallet_id: String,
         reference_id: String | nil,

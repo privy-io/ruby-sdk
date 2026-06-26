@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_sorting_order = :descending | :ascending
+
+    module KrakenEmbedSortingOrder
+      extend Privy::Internal::Type::Enum
+
+      DESCENDING: :descending
+      ASCENDING: :ascending
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_sorting_order]
+    end
+  end
+end

@@ -9,9 +9,10 @@ module Privy
       required :base_asset, String
 
       # @!attribute condition
+      #   Comparison operator for a custom order price trigger.
       #
-      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderTrigger::Condition]
-      required :condition, enum: -> { Privy::KrakenEmbedCustomOrderTrigger::Condition }
+      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderTriggerCondition]
+      required :condition, enum: -> { Privy::KrakenEmbedCustomOrderTriggerCondition }
 
       # @!attribute quote_asset
       #
@@ -33,21 +34,14 @@ module Privy
       #   rate meets the condition against target_price.
       #
       #   @param base_asset [String]
-      #   @param condition [Symbol, Privy::Models::KrakenEmbedCustomOrderTrigger::Condition]
+      #
+      #   @param condition [Symbol, Privy::Models::KrakenEmbedCustomOrderTriggerCondition] Comparison operator for a custom order price trigger.
+      #
       #   @param quote_asset [String]
+      #
       #   @param target_price [String]
+      #
       #   @param type [Symbol, Privy::Models::KrakenEmbedCustomOrderTrigger::Type]
-
-      # @see Privy::Models::KrakenEmbedCustomOrderTrigger#condition
-      module Condition
-        extend Privy::Internal::Type::Enum
-
-        GTE = :gte
-        LTE = :lte
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # @see Privy::Models::KrakenEmbedCustomOrderTrigger#type
       module Type

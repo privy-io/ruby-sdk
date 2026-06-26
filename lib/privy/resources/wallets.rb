@@ -235,7 +235,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::TransferActionResponse]
+      # @return [Privy::Models::Wallets::TransferActionResponse]
       #
       # @see Privy::Models::WalletTransferParams
       def _transfer(wallet_id, params)
@@ -251,7 +251,7 @@ module Privy
           path: ["v1/wallets/%1$s/transfer", wallet_id],
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Privy::TransferActionResponse,
+          model: Privy::Wallets::TransferActionResponse,
           options: options
         )
       end

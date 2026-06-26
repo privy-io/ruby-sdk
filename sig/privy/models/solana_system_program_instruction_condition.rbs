@@ -2,14 +2,14 @@ module Privy
   module Models
     type solana_system_program_instruction_condition =
       {
-        field: Privy::Models::SolanaSystemProgramInstructionCondition::field,
+        field: Privy::Models::solana_system_program_instruction_condition_field,
         field_source: Privy::Models::SolanaSystemProgramInstructionCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       }
 
     class SolanaSystemProgramInstructionCondition < Privy::Internal::Type::BaseModel
-      attr_accessor field: Privy::Models::SolanaSystemProgramInstructionCondition::field
+      attr_accessor field: Privy::Models::solana_system_program_instruction_condition_field
 
       attr_accessor field_source: Privy::Models::SolanaSystemProgramInstructionCondition::field_source
 
@@ -18,35 +18,18 @@ module Privy
       attr_accessor value: Privy::Models::condition_value
 
       def initialize: (
-        field: Privy::Models::SolanaSystemProgramInstructionCondition::field,
+        field: Privy::Models::solana_system_program_instruction_condition_field,
         field_source: Privy::Models::SolanaSystemProgramInstructionCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       ) -> void
 
       def to_hash: -> {
-        field: Privy::Models::SolanaSystemProgramInstructionCondition::field,
+        field: Privy::Models::solana_system_program_instruction_condition_field,
         field_source: Privy::Models::SolanaSystemProgramInstructionCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       }
-
-      type field =
-        :instructionName
-        | :"Transfer.from"
-        | :"Transfer.to"
-        | :"Transfer.lamports"
-
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        INSTRUCTION_NAME: :instructionName
-        TRANSFER_FROM: :"Transfer.from"
-        TRANSFER_TO: :"Transfer.to"
-        TRANSFER_LAMPORTS: :"Transfer.lamports"
-
-        def self?.values: -> ::Array[Privy::Models::SolanaSystemProgramInstructionCondition::field]
-      end
 
       type field_source = :solana_system_program_instruction
 

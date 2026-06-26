@@ -11,10 +11,10 @@ module Privy
           params(
             action_id: String,
             wallet_id: String,
-            include: Privy::WalletActionInclude::OrSymbol,
+            include: Privy::Wallets::WalletActionInclude::OrSymbol,
             privy_authorization_signature: String,
             request_options: Privy::RequestOptions::OrHash
-          ).returns(Privy::WalletActionResponse::Variants)
+          ).returns(Privy::Wallets::WalletActionResponse::Variants)
         end
         def get(
           # Path param: ID of the wallet action.

@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute caip2
       #   Chain identifier.
@@ -30,8 +30,8 @@ module Privy
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
-      #   @return [Privy::Models::FailureReason]
-      required :failure_reason, -> { Privy::FailureReason }
+      #   @return [Privy::Models::Wallets::FailureReason]
+      required :failure_reason, -> { Privy::Wallets::FailureReason }
 
       # @!attribute input_amount
       #   Amount of input token in base units. Populated after onchain confirmation.
@@ -61,8 +61,8 @@ module Privy
       #   The steps of the wallet action. Completed steps will have transaction hashes;
       #   the failing step will have a failure_reason.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -88,7 +88,7 @@ module Privy
       #
       #   Payload for the wallet_action.swap.failed webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param caip2 [String] Chain identifier.
       #
@@ -96,7 +96,7 @@ module Privy
       #
       #   @param failed_at [String] ISO 8601 timestamp of when the wallet action failed.
       #
-      #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
       #   @param input_amount [String, nil] Amount of input token in base units. Populated after onchain confirmation.
       #
@@ -106,7 +106,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionSwapFailedWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action. Completed steps will have transaction hashes; th
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action. Completed steps will have transaction hashes; th
       #
       #   @param type [Symbol, Privy::Models::WalletActionSwapFailedWebhookPayload::Type] The type of webhook event.
       #

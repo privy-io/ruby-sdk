@@ -17,8 +17,8 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :refresh_token
 
-      # Instructs the client on how to handle tokens received
-      sig { returns(Privy::AuthenticatedUser::SessionUpdateAction::OrSymbol) }
+      # Instructs the client on how to handle tokens received from a session response.
+      sig { returns(Privy::ClientSessionUpdateAction::OrSymbol) }
       attr_accessor :session_update_action
 
       # A Privy user object.
@@ -53,8 +53,7 @@ module Privy
           token: T.nilable(String),
           privy_access_token: T.nilable(String),
           refresh_token: T.nilable(String),
-          session_update_action:
-            Privy::AuthenticatedUser::SessionUpdateAction::OrSymbol,
+          session_update_action: Privy::ClientSessionUpdateAction::OrSymbol,
           user: Privy::User::OrHash,
           identity_token: String,
           is_new_user: T::Boolean,
@@ -65,7 +64,7 @@ module Privy
         token:,
         privy_access_token:,
         refresh_token:,
-        # Instructs the client on how to handle tokens received
+        # Instructs the client on how to handle tokens received from a session response.
         session_update_action:,
         # A Privy user object.
         user:,
@@ -82,8 +81,7 @@ module Privy
             token: T.nilable(String),
             privy_access_token: T.nilable(String),
             refresh_token: T.nilable(String),
-            session_update_action:
-              Privy::AuthenticatedUser::SessionUpdateAction::OrSymbol,
+            session_update_action: Privy::ClientSessionUpdateAction::OrSymbol,
             user: Privy::User,
             identity_token: String,
             is_new_user: T::Boolean,
@@ -92,43 +90,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      # Instructs the client on how to handle tokens received
-      module SessionUpdateAction
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::AuthenticatedUser::SessionUpdateAction)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SET =
-          T.let(
-            :set,
-            Privy::AuthenticatedUser::SessionUpdateAction::TaggedSymbol
-          )
-        IGNORE =
-          T.let(
-            :ignore,
-            Privy::AuthenticatedUser::SessionUpdateAction::TaggedSymbol
-          )
-        CLEAR =
-          T.let(
-            :clear,
-            Privy::AuthenticatedUser::SessionUpdateAction::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::AuthenticatedUser::SessionUpdateAction::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

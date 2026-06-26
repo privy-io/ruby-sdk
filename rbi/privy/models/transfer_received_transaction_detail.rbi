@@ -14,9 +14,8 @@ module Privy
       sig { returns(Privy::TransferReceivedTransactionDetail::Asset::Variants) }
       attr_accessor :asset
 
-      sig do
-        returns(Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol)
-      end
+      # Supported blockchain network names for wallet balance and transaction queries.
+      sig { returns(Privy::WalletAssetChainNameInput::TaggedSymbol) }
       attr_accessor :chain
 
       sig { returns(T::Hash[Symbol, String]) }
@@ -53,7 +52,7 @@ module Privy
               Privy::TransferReceivedTransactionDetail::Asset::OrSymbol,
               String
             ),
-          chain: Privy::TransferReceivedTransactionDetail::Chain::OrSymbol,
+          chain: Privy::WalletAssetChainNameInput::OrSymbol,
           display_values: T::Hash[Symbol, String],
           raw_value: String,
           raw_value_decimals: Float,
@@ -66,6 +65,7 @@ module Privy
       end
       def self.new(
         asset:,
+        # Supported blockchain network names for wallet balance and transaction queries.
         chain:,
         display_values:,
         raw_value:,
@@ -82,8 +82,7 @@ module Privy
         override.returns(
           {
             asset: Privy::TransferReceivedTransactionDetail::Asset::Variants,
-            chain:
-              Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol,
+            chain: Privy::WalletAssetChainNameInput::TaggedSymbol,
             display_values: T::Hash[Symbol, String],
             raw_value: String,
             raw_value_decimals: Float,
@@ -168,122 +167,6 @@ module Privy
             :sol,
             Privy::TransferReceivedTransactionDetail::Asset::TaggedSymbol
           )
-      end
-
-      module Chain
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::TransferReceivedTransactionDetail::Chain)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ETHEREUM =
-          T.let(
-            :ethereum,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        ARBITRUM =
-          T.let(
-            :arbitrum,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        AVALANCHE =
-          T.let(
-            :avalanche,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        BASE =
-          T.let(
-            :base,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        TEMPO =
-          T.let(
-            :tempo,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        LINEA =
-          T.let(
-            :linea,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        OPTIMISM =
-          T.let(
-            :optimism,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        POLYGON =
-          T.let(
-            :polygon,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        SOLANA =
-          T.let(
-            :solana,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        ZKSYNC_ERA =
-          T.let(
-            :zksync_era,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        SEPOLIA =
-          T.let(
-            :sepolia,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        ARBITRUM_SEPOLIA =
-          T.let(
-            :arbitrum_sepolia,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        AVALANCHE_FUJI =
-          T.let(
-            :avalanche_fuji,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        BASE_SEPOLIA =
-          T.let(
-            :base_sepolia,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        LINEA_TESTNET =
-          T.let(
-            :linea_testnet,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        OPTIMISM_SEPOLIA =
-          T.let(
-            :optimism_sepolia,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        POLYGON_AMOY =
-          T.let(
-            :polygon_amoy,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        SOLANA_DEVNET =
-          T.let(
-            :solana_devnet,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-        SOLANA_TESTNET =
-          T.let(
-            :solana_testnet,
-            Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::TransferReceivedTransactionDetail::Chain::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       module Type

@@ -5,7 +5,7 @@ module Privy
         {
           wallet_id: String,
           action_id: String,
-          include: Privy::Models::wallet_action_include,
+          include: Privy::Models::Wallets::wallet_action_include,
           privy_authorization_signature: String
         }
         & Privy::Internal::Type::request_parameters
@@ -18,11 +18,11 @@ module Privy
 
         attr_accessor action_id: String
 
-        attr_reader include: Privy::Models::wallet_action_include?
+        attr_reader include: Privy::Models::Wallets::wallet_action_include?
 
         def include=: (
-          Privy::Models::wallet_action_include
-        ) -> Privy::Models::wallet_action_include
+          Privy::Models::Wallets::wallet_action_include
+        ) -> Privy::Models::Wallets::wallet_action_include
 
         attr_reader privy_authorization_signature: String?
 
@@ -31,7 +31,7 @@ module Privy
         def initialize: (
           wallet_id: String,
           action_id: String,
-          ?include: Privy::Models::wallet_action_include,
+          ?include: Privy::Models::Wallets::wallet_action_include,
           ?privy_authorization_signature: String,
           ?request_options: Privy::request_opts
         ) -> void
@@ -39,7 +39,7 @@ module Privy
         def to_hash: -> {
           wallet_id: String,
           action_id: String,
-          include: Privy::Models::wallet_action_include,
+          include: Privy::Models::Wallets::wallet_action_include,
           privy_authorization_signature: String,
           request_options: Privy::RequestOptions
         }

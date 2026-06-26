@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module WalletActionResponse = Wallets::WalletActionResponse
+
+    module Wallets
+      type wallet_action_response =
+        Privy::Wallets::SwapActionResponse
+        | Privy::Wallets::TransferActionResponse
+        | Privy::Wallets::EarnDepositActionResponse
+        | Privy::Wallets::EarnWithdrawActionResponse
+        | Privy::Wallets::EarnIncentiveClaimActionResponse
+
+      module WalletActionResponse
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::wallet_action_response]
+      end
+    end
+  end
+end

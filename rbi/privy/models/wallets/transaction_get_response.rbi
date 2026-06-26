@@ -84,11 +84,8 @@ module Privy
           sig { returns(String) }
           attr_accessor :privy_transaction_id
 
-          sig do
-            returns(
-              Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-            )
-          end
+          # Status of a blockchain transaction submitted by Privy.
+          sig { returns(Privy::BlockchainTransactionStatus::TaggedSymbol) }
           attr_accessor :status
 
           sig { returns(T.nilable(String)) }
@@ -116,8 +113,7 @@ module Privy
               details:
                 Privy::Models::Wallets::TransactionGetResponse::Transaction::Details::OrHash,
               privy_transaction_id: String,
-              status:
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::OrSymbol,
+              status: Privy::BlockchainTransactionStatus::OrSymbol,
               transaction_hash: T.nilable(String),
               wallet_id: String,
               sponsored: T::Boolean,
@@ -130,6 +126,7 @@ module Privy
             # Details of a wallet transaction, varying by transaction type.
             details:,
             privy_transaction_id:,
+            # Status of a blockchain transaction submitted by Privy.
             status:,
             transaction_hash:,
             wallet_id:,
@@ -146,8 +143,7 @@ module Privy
                 details:
                   Privy::Models::Wallets::TransactionGetResponse::Transaction::Details,
                 privy_transaction_id: String,
-                status:
-                  Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol,
+                status: Privy::BlockchainTransactionStatus::TaggedSymbol,
                 transaction_hash: T.nilable(String),
                 wallet_id: String,
                 sponsored: T::Boolean,
@@ -174,70 +170,6 @@ module Privy
 
             sig { override.returns({}) }
             def to_hash
-            end
-          end
-
-          module Status
-            extend Privy::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Privy::Models::Wallets::TransactionGetResponse::Transaction::Status
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            BROADCASTED =
-              T.let(
-                :broadcasted,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            CONFIRMED =
-              T.let(
-                :confirmed,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            EXECUTION_REVERTED =
-              T.let(
-                :execution_reverted,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            FAILED =
-              T.let(
-                :failed,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            REPLACED =
-              T.let(
-                :replaced,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            FINALIZED =
-              T.let(
-                :finalized,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            PROVIDER_ERROR =
-              T.let(
-                :provider_error,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-            PENDING =
-              T.let(
-                :pending,
-                Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Privy::Models::Wallets::TransactionGetResponse::Transaction::Status::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
             end
           end
         end

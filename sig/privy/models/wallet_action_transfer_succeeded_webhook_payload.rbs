@@ -2,13 +2,13 @@ module Privy
   module Models
     type wallet_action_transfer_succeeded_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         completed_at: String,
         created_at: String,
         destination_address: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionTransferSucceededWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
@@ -19,7 +19,7 @@ module Privy
       }
 
     class WalletActionTransferSucceededWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor completed_at: String
 
@@ -31,7 +31,7 @@ module Privy
 
       attr_accessor status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status
 
-      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+      attr_accessor steps: ::Array[Privy::Models::Wallets::wallet_action_step]
 
       attr_accessor type: Privy::Models::WalletActionTransferSucceededWebhookPayload::type_
 
@@ -56,13 +56,13 @@ module Privy
       def source_asset_decimals=: (Integer) -> Integer
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         completed_at: String,
         created_at: String,
         destination_address: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionTransferSucceededWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
@@ -73,13 +73,13 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         completed_at: String,
         created_at: String,
         destination_address: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionTransferSucceededWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,

@@ -2,41 +2,30 @@ module Privy
   module Models
     type kraken_embed_get_portfolio_summary_query_params =
       {
-        include_current_day_pnl: Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl,
+        include_current_day_pnl: Privy::Models::kraken_embed_include_current_day_pnl_query_param,
         quote: String
       }
 
     class KrakenEmbedGetPortfolioSummaryQueryParams < Privy::Internal::Type::BaseModel
-      attr_reader include_current_day_pnl: Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl?
+      attr_reader include_current_day_pnl: Privy::Models::kraken_embed_include_current_day_pnl_query_param?
 
       def include_current_day_pnl=: (
-        Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl
-      ) -> Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl
+        Privy::Models::kraken_embed_include_current_day_pnl_query_param
+      ) -> Privy::Models::kraken_embed_include_current_day_pnl_query_param
 
       attr_reader quote: String?
 
       def quote=: (String) -> String
 
       def initialize: (
-        ?include_current_day_pnl: Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl,
+        ?include_current_day_pnl: Privy::Models::kraken_embed_include_current_day_pnl_query_param,
         ?quote: String
       ) -> void
 
       def to_hash: -> {
-        include_current_day_pnl: Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl,
+        include_current_day_pnl: Privy::Models::kraken_embed_include_current_day_pnl_query_param,
         quote: String
       }
-
-      type include_current_day_pnl = :true | :false
-
-      module IncludeCurrentDayPnl
-        extend Privy::Internal::Type::Enum
-
-        TRUE: :true
-        FALSE: :false
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedGetPortfolioSummaryQueryParams::include_current_day_pnl]
-      end
     end
   end
 end

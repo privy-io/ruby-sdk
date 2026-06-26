@@ -2,10 +2,10 @@ module Privy
   module Models
     type wallet_action_earn_incentive_claim_created_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
-        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
         wallet_action_id: String,
@@ -13,13 +13,13 @@ module Privy
       }
 
     class WalletActionEarnIncentiveClaimCreatedWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor chain: String
 
       attr_accessor created_at: String
 
-      attr_accessor rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?
+      attr_accessor rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?
 
       attr_accessor status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status
 
@@ -30,10 +30,10 @@ module Privy
       attr_accessor wallet_id: String
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
-        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
         wallet_action_id: String,
@@ -41,10 +41,10 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
-        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::type_,
         wallet_action_id: String,

@@ -15,7 +15,7 @@ class Privy::Test::Resources::Wallets::SwapTest < Privy::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Privy::SwapActionResponse
+      response => Privy::Wallets::SwapActionResponse
     end
 
     assert_pattern do
@@ -27,17 +27,17 @@ class Privy::Test::Resources::Wallets::SwapTest < Privy::Test::ResourceTest
         input_token: String,
         output_amount: String | nil,
         output_token: String,
-        status: Privy::WalletActionStatus,
-        type: Privy::SwapActionResponse::Type,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::SwapActionResponse::Type,
         wallet_id: String,
         destination_address: String | nil,
         destination_caip2: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         estimated_gas: Privy::Gas | nil,
-        failure_reason: Privy::FailureReason | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end
   end

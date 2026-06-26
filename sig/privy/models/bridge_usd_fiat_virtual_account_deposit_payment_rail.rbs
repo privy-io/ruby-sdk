@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type bridge_usd_fiat_virtual_account_deposit_payment_rail =
+      :ach_push | :wire
+
+    module BridgeUsdFiatVirtualAccountDepositPaymentRail
+      extend Privy::Internal::Type::Enum
+
+      ACH_PUSH: :ach_push
+      WIRE: :wire
+
+      def self?.values: -> ::Array[Privy::Models::bridge_usd_fiat_virtual_account_deposit_payment_rail]
+    end
+  end
+end

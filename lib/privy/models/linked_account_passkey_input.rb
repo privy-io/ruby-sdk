@@ -4,9 +4,11 @@ module Privy
   module Models
     class LinkedAccountPasskeyInput < Privy::Internal::Type::BaseModel
       # @!attribute credential_device_type
+      #   WebAuthn credential device type indicating platform or cross-platform
+      #   authenticator residency.
       #
-      #   @return [Symbol, Privy::Models::LinkedAccountPasskeyInput::CredentialDeviceType]
-      required :credential_device_type, enum: -> { Privy::LinkedAccountPasskeyInput::CredentialDeviceType }
+      #   @return [Symbol, Privy::Models::LinkedAccountPasskeyCredentialDeviceType]
+      required :credential_device_type, enum: -> { Privy::LinkedAccountPasskeyCredentialDeviceType }
 
       # @!attribute credential_id
       #
@@ -29,24 +31,20 @@ module Privy
       required :type, const: :passkey
 
       # @!method initialize(credential_device_type:, credential_id:, credential_public_key:, credential_username:, type: :passkey)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::LinkedAccountPasskeyInput} for more details.
+      #
       #   The payload for importing a passkey account.
       #
-      #   @param credential_device_type [Symbol, Privy::Models::LinkedAccountPasskeyInput::CredentialDeviceType]
+      #   @param credential_device_type [Symbol, Privy::Models::LinkedAccountPasskeyCredentialDeviceType] WebAuthn credential device type indicating platform or cross-platform authentica
+      #
       #   @param credential_id [String]
+      #
       #   @param credential_public_key [String]
+      #
       #   @param credential_username [String]
+      #
       #   @param type [Symbol, :passkey]
-
-      # @see Privy::Models::LinkedAccountPasskeyInput#credential_device_type
-      module CredentialDeviceType
-        extend Privy::Internal::Type::Enum
-
-        SINGLE_DEVICE = :singleDevice
-        MULTI_DEVICE = :multiDevice
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

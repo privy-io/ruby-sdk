@@ -39,21 +39,20 @@ module Privy
       optional :ref_ids, -> { Privy::Internal::Type::ArrayOf[Privy::KrakenEmbedPortfolioTransactionRefID] }
 
       # @!attribute sorting
+      #   Sort direction for paginated transaction lists.
       #
-      #   @return [Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting, nil]
-      optional :sorting, enum: -> { Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting }
+      #   @return [Symbol, Privy::Models::KrakenEmbedSortingOrder, nil]
+      optional :sorting, enum: -> { Privy::KrakenEmbedSortingOrder }
 
       # @!attribute statuses
       #
-      #   @return [Array<Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status>, nil]
-      optional :statuses,
-               -> { Privy::Internal::Type::ArrayOf[enum: Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status] }
+      #   @return [Array<Symbol, Privy::Models::KrakenEmbedTransactionStatus>, nil]
+      optional :statuses, -> { Privy::Internal::Type::ArrayOf[enum: Privy::KrakenEmbedTransactionStatus] }
 
       # @!attribute types
       #
-      #   @return [Array<Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type>, nil]
-      optional :types,
-               -> { Privy::Internal::Type::ArrayOf[enum: Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type] }
+      #   @return [Array<Symbol, Privy::Models::KrakenEmbedTransactionType>, nil]
+      optional :types, -> { Privy::Internal::Type::ArrayOf[enum: Privy::KrakenEmbedTransactionType] }
 
       # @!attribute until_time
       #
@@ -64,50 +63,26 @@ module Privy
       #   Query parameters for filtering and paginating portfolio transactions.
       #
       #   @param assets [Array<String>]
+      #
       #   @param cursor [String]
+      #
       #   @param from_time [Time]
+      #
       #   @param ids [Array<String>]
+      #
       #   @param page_size [Integer]
+      #
       #   @param quote [String]
+      #
       #   @param ref_ids [Array<Privy::Models::KrakenEmbedPortfolioTransactionRefID>]
-      #   @param sorting [Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting]
-      #   @param statuses [Array<Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status>]
-      #   @param types [Array<Symbol, Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type>]
+      #
+      #   @param sorting [Symbol, Privy::Models::KrakenEmbedSortingOrder] Sort direction for paginated transaction lists.
+      #
+      #   @param statuses [Array<Symbol, Privy::Models::KrakenEmbedTransactionStatus>]
+      #
+      #   @param types [Array<Symbol, Privy::Models::KrakenEmbedTransactionType>]
+      #
       #   @param until_time [Time]
-
-      # @see Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema#sorting
-      module Sorting
-        extend Privy::Internal::Type::Enum
-
-        DESCENDING = :descending
-        ASCENDING = :ascending
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        UNSPECIFIED = :unspecified
-        IN_PROGRESS = :in_progress
-        SUCCESSFUL = :successful
-        FAILED = :failed
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        SIMPLE_ORDER = :simple_order
-        SIMPLE_ORDER_FAILED = :simple_order_failed
-        EARN_REWARD = :earn_reward
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

@@ -1,0 +1,51 @@
+module Privy
+  module Models
+    module Wallets
+      type custodian_transaction_wallet_action_step =
+        {
+          custodian: String,
+          status: Privy::Models::Wallets::custodian_transaction_wallet_action_step_status,
+          type: Privy::Models::Wallets::CustodianTransactionWalletActionStep::type_,
+          failure_reason: Privy::Wallets::FailureReason
+        }
+
+      class CustodianTransactionWalletActionStep < Privy::Internal::Type::BaseModel
+        attr_accessor custodian: String
+
+        attr_accessor status: Privy::Models::Wallets::custodian_transaction_wallet_action_step_status
+
+        attr_accessor type: Privy::Models::Wallets::CustodianTransactionWalletActionStep::type_
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        def initialize: (
+          custodian: String,
+          status: Privy::Models::Wallets::custodian_transaction_wallet_action_step_status,
+          type: Privy::Models::Wallets::CustodianTransactionWalletActionStep::type_,
+          ?failure_reason: Privy::Wallets::FailureReason
+        ) -> void
+
+        def to_hash: -> {
+          custodian: String,
+          status: Privy::Models::Wallets::custodian_transaction_wallet_action_step_status,
+          type: Privy::Models::Wallets::CustodianTransactionWalletActionStep::type_,
+          failure_reason: Privy::Wallets::FailureReason
+        }
+
+        type type_ = :custodian_transaction
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          CUSTODIAN_TRANSACTION: :custodian_transaction
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::CustodianTransactionWalletActionStep::type_]
+        end
+      end
+    end
+  end
+end

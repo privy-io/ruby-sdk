@@ -20,6 +20,8 @@ module Privy
       EXPORT_SEED_PHRASE = :exportSeedPhrase
       SIGN_TRANSACTION_BYTES = :signTransactionBytes
       SIGN_RAW_MESSAGE_BYTES = :signRawMessageBytes
+      TRON_SEND_TRANSACTION = :tron_sendTransaction
+      TRON_SIGN_TRANSACTION = :tron_signTransaction
       EARN_DEPOSIT = :earn_deposit
       EARN_WITHDRAW = :earn_withdraw
       TRANSFER = :transfer

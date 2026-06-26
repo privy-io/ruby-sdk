@@ -17,7 +17,8 @@ module Privy
       sig { returns(Time) }
       attr_accessor :created_at
 
-      sig { returns(Privy::KrakenEmbedCustomOrderOccurrence::Status::OrSymbol) }
+      # Outcome status of a custom order execution occurrence.
+      sig { returns(Privy::KrakenEmbedCustomOrderOccurrenceStatus::OrSymbol) }
       attr_accessor :status
 
       # Trigger metadata for a custom order occurrence.
@@ -69,7 +70,7 @@ module Privy
         params(
           id: String,
           created_at: Time,
-          status: Privy::KrakenEmbedCustomOrderOccurrence::Status::OrSymbol,
+          status: Privy::KrakenEmbedCustomOrderOccurrenceStatus::OrSymbol,
           trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger::OrHash,
           updated_at: Time,
           executed_action:
@@ -83,6 +84,7 @@ module Privy
       def self.new(
         id:,
         created_at:,
+        # Outcome status of a custom order execution occurrence.
         status:,
         # Trigger metadata for a custom order occurrence.
         trigger:,
@@ -99,7 +101,7 @@ module Privy
           {
             id: String,
             created_at: Time,
-            status: Privy::KrakenEmbedCustomOrderOccurrence::Status::OrSymbol,
+            status: Privy::KrakenEmbedCustomOrderOccurrenceStatus::OrSymbol,
             trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
             updated_at: Time,
             executed_action:
@@ -110,42 +112,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::KrakenEmbedCustomOrderOccurrence::Status)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SUCCESS =
-          T.let(
-            :success,
-            Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-          )
-        FAILURE =
-          T.let(
-            :failure,
-            Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-          )
-        SKIPPED =
-          T.let(
-            :skipped,
-            Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

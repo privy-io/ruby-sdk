@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type client_session_update_action = :set | :ignore | :clear
+
+    module ClientSessionUpdateAction
+      extend Privy::Internal::Type::Enum
+
+      SET: :set
+      IGNORE: :ignore
+      CLEAR: :clear
+
+      def self?.values: -> ::Array[Privy::Models::client_session_update_action]
+    end
+  end
+end

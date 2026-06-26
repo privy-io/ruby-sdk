@@ -107,100 +107,15 @@ module Privy
         end
 
         type chain =
-          :ethereum
-          | :arbitrum
-          | :avalanche
-          | :base
-          | :tempo
-          | :linea
-          | :optimism
-          | :polygon
-          | :solana
-          | :zksync_era
-          | :sepolia
-          | :arbitrum_sepolia
-          | :avalanche_fuji
-          | :base_sepolia
-          | :linea_testnet
-          | :optimism_sepolia
-          | :polygon_amoy
-          | :solana_devnet
-          | :solana_testnet
-          | ::Array[Privy::Models::Wallets::BalanceGetParams::Chain::union_member1]
+          Privy::Models::wallet_asset_chain_name_input
+          | ::Array[Privy::Models::wallet_asset_chain_name_input]
 
         module Chain
           extend Privy::Internal::Type::Union
 
-          type union_member1 =
-            :ethereum
-            | :arbitrum
-            | :avalanche
-            | :base
-            | :tempo
-            | :linea
-            | :optimism
-            | :polygon
-            | :solana
-            | :zksync_era
-            | :sepolia
-            | :arbitrum_sepolia
-            | :avalanche_fuji
-            | :base_sepolia
-            | :linea_testnet
-            | :optimism_sepolia
-            | :polygon_amoy
-            | :solana_devnet
-            | :solana_testnet
-
-          module UnionMember1
-            extend Privy::Internal::Type::Enum
-
-            ETHEREUM: :ethereum
-            ARBITRUM: :arbitrum
-            AVALANCHE: :avalanche
-            BASE: :base
-            TEMPO: :tempo
-            LINEA: :linea
-            OPTIMISM: :optimism
-            POLYGON: :polygon
-            SOLANA: :solana
-            ZKSYNC_ERA: :zksync_era
-            SEPOLIA: :sepolia
-            ARBITRUM_SEPOLIA: :arbitrum_sepolia
-            AVALANCHE_FUJI: :avalanche_fuji
-            BASE_SEPOLIA: :base_sepolia
-            LINEA_TESTNET: :linea_testnet
-            OPTIMISM_SEPOLIA: :optimism_sepolia
-            POLYGON_AMOY: :polygon_amoy
-            SOLANA_DEVNET: :solana_devnet
-            SOLANA_TESTNET: :solana_testnet
-
-            def self?.values: -> ::Array[Privy::Models::Wallets::BalanceGetParams::Chain::union_member1]
-          end
-
           def self?.variants: -> ::Array[Privy::Models::Wallets::BalanceGetParams::chain]
 
-          ETHEREUM: :ethereum
-          ARBITRUM: :arbitrum
-          AVALANCHE: :avalanche
-          BASE: :base
-          TEMPO: :tempo
-          LINEA: :linea
-          OPTIMISM: :optimism
-          POLYGON: :polygon
-          SOLANA: :solana
-          ZKSYNC_ERA: :zksync_era
-          SEPOLIA: :sepolia
-          ARBITRUM_SEPOLIA: :arbitrum_sepolia
-          AVALANCHE_FUJI: :avalanche_fuji
-          BASE_SEPOLIA: :base_sepolia
-          LINEA_TESTNET: :linea_testnet
-          OPTIMISM_SEPOLIA: :optimism_sepolia
-          POLYGON_AMOY: :polygon_amoy
-          SOLANA_DEVNET: :solana_devnet
-          SOLANA_TESTNET: :solana_testnet
-
-          UnionMember1Array: Privy::Internal::Type::Converter
+          WalletAssetChainNameInputArray: Privy::Internal::Type::Converter
         end
 
         type include_currency = :usd | :eur

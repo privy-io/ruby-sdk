@@ -39,7 +39,7 @@ module Privy
       sig do
         returns(
           T::Array[
-            Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail::OrSymbol
+            Privy::BridgeUsdFiatVirtualAccountDepositPaymentRail::OrSymbol
           ]
         )
       end
@@ -58,7 +58,7 @@ module Privy
           bank_routing_number: String,
           payment_rails:
             T::Array[
-              Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail::OrSymbol
+              Privy::BridgeUsdFiatVirtualAccountDepositPaymentRail::OrSymbol
             ]
         ).returns(T.attached_class)
       end
@@ -87,7 +87,7 @@ module Privy
             bank_routing_number: String,
             payment_rails:
               T::Array[
-                Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail::OrSymbol
+                Privy::BridgeUsdFiatVirtualAccountDepositPaymentRail::OrSymbol
               ]
           }
         )
@@ -117,40 +117,6 @@ module Privy
           override.returns(
             T::Array[
               Privy::BridgeUsdFiatVirtualAccountDepositInstructions::Asset::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module PaymentRail
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ACH_PUSH =
-          T.let(
-            :ach_push,
-            Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail::TaggedSymbol
-          )
-        WIRE =
-          T.let(
-            :wire,
-            Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail::TaggedSymbol
             ]
           )
         end

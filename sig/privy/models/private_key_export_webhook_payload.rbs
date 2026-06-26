@@ -6,7 +6,7 @@ module Privy
         user_id: String,
         wallet_address: String,
         wallet_id: String,
-        export_source: Privy::Models::PrivateKeyExportWebhookPayload::export_source
+        export_source: Privy::Models::export_type
       }
 
     class PrivateKeyExportWebhookPayload < Privy::Internal::Type::BaseModel
@@ -18,18 +18,18 @@ module Privy
 
       attr_accessor wallet_id: String
 
-      attr_reader export_source: Privy::Models::PrivateKeyExportWebhookPayload::export_source?
+      attr_reader export_source: Privy::Models::export_type?
 
       def export_source=: (
-        Privy::Models::PrivateKeyExportWebhookPayload::export_source
-      ) -> Privy::Models::PrivateKeyExportWebhookPayload::export_source
+        Privy::Models::export_type
+      ) -> Privy::Models::export_type
 
       def initialize: (
         type: Privy::Models::PrivateKeyExportWebhookPayload::type_,
         user_id: String,
         wallet_address: String,
         wallet_id: String,
-        ?export_source: Privy::Models::PrivateKeyExportWebhookPayload::export_source
+        ?export_source: Privy::Models::export_type
       ) -> void
 
       def to_hash: -> {
@@ -37,7 +37,7 @@ module Privy
         user_id: String,
         wallet_address: String,
         wallet_id: String,
-        export_source: Privy::Models::PrivateKeyExportWebhookPayload::export_source
+        export_source: Privy::Models::export_type
       }
 
       type type_ = :"wallet.private_key_export"
@@ -48,17 +48,6 @@ module Privy
         WALLET_PRIVATE_KEY_EXPORT: :"wallet.private_key_export"
 
         def self?.values: -> ::Array[Privy::Models::PrivateKeyExportWebhookPayload::type_]
-      end
-
-      type export_source = :display | :client
-
-      module ExportSource
-        extend Privy::Internal::Type::Enum
-
-        DISPLAY: :display
-        CLIENT: :client
-
-        def self?.values: -> ::Array[Privy::Models::PrivateKeyExportWebhookPayload::export_source]
       end
     end
   end

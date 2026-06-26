@@ -74,7 +74,7 @@ module Privy
         ?privy_idempotency_key: String,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
-      ) -> Privy::TransferActionResponse
+      ) -> Privy::Wallets::TransferActionResponse
 
       def archive: (
         String wallet_id,

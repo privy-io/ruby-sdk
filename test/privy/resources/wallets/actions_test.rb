@@ -9,16 +9,16 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
     response = @privy_api.wallets.actions.get("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", wallet_id: "wallet_id")
 
     assert_pattern do
-      response => Privy::WalletActionResponse
+      response => Privy::Wallets::WalletActionResponse
     end
 
     assert_pattern do
       case response
-      in Privy::SwapActionResponse
-      in Privy::TransferActionResponse
-      in Privy::EarnDepositActionResponse
-      in Privy::EarnWithdrawActionResponse
-      in Privy::EarnIncentiveClaimActionResponse
+      in Privy::Wallets::SwapActionResponse
+      in Privy::Wallets::TransferActionResponse
+      in Privy::Wallets::EarnDepositActionResponse
+      in Privy::Wallets::EarnWithdrawActionResponse
+      in Privy::Wallets::EarnIncentiveClaimActionResponse
       end
     end
 
@@ -33,16 +33,16 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         input_token: String,
         output_amount: String | nil,
         output_token: String,
-        status: Privy::WalletActionStatus,
+        status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
         destination_address: String | nil,
         destination_caip2: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         estimated_gas: Privy::Gas | nil,
-        failure_reason: Privy::FailureReason | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
         type: :transfer,
@@ -51,21 +51,21 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         destination_address: String,
         destination_amount: String | nil,
         source_chain: String,
-        status: Privy::WalletActionStatus,
+        status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
         amount_type: Privy::AmountType | nil,
         destination_asset: String | nil,
         destination_chain: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         estimated_gas: Privy::Gas | nil,
-        failure_reason: Privy::FailureReason | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
         source_amount: String | nil,
         source_asset: String | nil,
         source_asset_address: String | nil,
         source_asset_decimals: Integer | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
         type: :earn_deposit,
@@ -75,15 +75,15 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         created_at: Time,
         raw_amount: String,
         share_amount: String | nil,
-        status: Privy::WalletActionStatus,
+        status: Privy::Wallets::WalletActionStatus,
         vault_address: String,
         vault_id: String,
         wallet_id: String,
         amount: String | nil,
         asset: String | nil,
         decimals: Integer | nil,
-        failure_reason: Privy::FailureReason | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
         type: :earn_withdraw,
@@ -93,26 +93,26 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         created_at: Time,
         raw_amount: String,
         share_amount: String | nil,
-        status: Privy::WalletActionStatus,
+        status: Privy::Wallets::WalletActionStatus,
         vault_address: String,
         vault_id: String,
         wallet_id: String,
         amount: String | nil,
         asset: String | nil,
         decimals: Integer | nil,
-        failure_reason: Privy::FailureReason | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
         type: :earn_incentive_claim,
         id: String,
         chain: String,
         created_at: Time,
-        rewards: ^(Privy::Internal::Type::ArrayOf[Privy::EarnIncetiveClaimRewardEntry]) | nil,
-        status: Privy::WalletActionStatus,
+        rewards: ^(Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnIncetiveClaimRewardEntry]) | nil,
+        status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
-        failure_reason: Privy::FailureReason | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       end
     end
