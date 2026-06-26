@@ -1,3 +1,5 @@
+hello, bot was here
+
 # Privy API Ruby API library
 
 The Privy API Ruby library provides convenient access to the Privy API REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/privy-io/ruby-sdk#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
