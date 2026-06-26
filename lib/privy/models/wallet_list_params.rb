@@ -7,6 +7,14 @@ module Privy
       extend Privy::Internal::Type::RequestParameters::Converter
       include Privy::Internal::Type::RequestParameters
 
+      # @!attribute address
+      #   A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+      #   checksum format. Solana addresses are validated as base58. All other chain
+      #   addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+      #
+      #   @return [String, nil]
+      optional :address, String
+
       # @!attribute authorization_key
       #   Filter wallets by authorization public key. Returns wallets owned by key quorums
       #   that include the specified P-256 public key (base64-encoded DER format). Cannot
@@ -49,9 +57,11 @@ module Privy
       #   @return [String, nil]
       optional :user_id, String
 
-      # @!method initialize(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
+      # @!method initialize(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletListParams} for more details.
+      #
+      #   @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
       #
       #   @param authorization_key [String] Filter wallets by authorization public key. Returns wallets owned by key quorums
       #
