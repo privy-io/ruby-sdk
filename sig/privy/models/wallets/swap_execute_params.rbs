@@ -5,7 +5,8 @@ module Privy
         {
           wallet_id: String,
           privy_authorization_signature: String,
-          privy_idempotency_key: String
+          privy_idempotency_key: String,
+          privy_request_expiry: String
         }
         & Privy::Internal::Type::request_parameters
 
@@ -25,10 +26,15 @@ module Privy
 
         def privy_idempotency_key=: (String _) -> String
 
+        def privy_request_expiry: -> String?
+
+        def privy_request_expiry=: (String _) -> String
+
         def initialize: (
           wallet_id: String,
           ?privy_authorization_signature: String,
           ?privy_idempotency_key: String,
+          ?privy_request_expiry: String,
           ?request_options: Privy::request_opts
         ) -> void
 
@@ -36,6 +42,7 @@ module Privy
           wallet_id: String,
           privy_authorization_signature: String,
           privy_idempotency_key: String,
+          privy_request_expiry: String,
           request_options: Privy::RequestOptions
         }
       end

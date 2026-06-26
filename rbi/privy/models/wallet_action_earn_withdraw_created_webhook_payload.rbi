@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # Underlying asset token address.
@@ -90,7 +90,7 @@ module Privy
       # Payload for the wallet_action.earn_withdraw.created webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
           created_at: String,
@@ -146,7 +146,7 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
             created_at: String,

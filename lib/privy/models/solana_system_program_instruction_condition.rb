@@ -4,9 +4,11 @@ module Privy
   module Models
     class SolanaSystemProgramInstructionCondition < Privy::Internal::Type::BaseModel
       # @!attribute field
+      #   Supported fields for Solana System Program conditions including Transfer
+      #   instruction fields.
       #
-      #   @return [Symbol, Privy::Models::SolanaSystemProgramInstructionCondition::Field]
-      required :field, enum: -> { Privy::SolanaSystemProgramInstructionCondition::Field }
+      #   @return [Symbol, Privy::Models::SolanaSystemProgramInstructionConditionField]
+      required :field, enum: -> { Privy::SolanaSystemProgramInstructionConditionField }
 
       # @!attribute field_source
       #
@@ -33,26 +35,13 @@ module Privy
       #   Solana System Program attributes, including more granular Transfer instruction
       #   fields.
       #
-      #   @param field [Symbol, Privy::Models::SolanaSystemProgramInstructionCondition::Field]
+      #   @param field [Symbol, Privy::Models::SolanaSystemProgramInstructionConditionField] Supported fields for Solana System Program conditions including Transfer instruc
       #
       #   @param field_source [Symbol, Privy::Models::SolanaSystemProgramInstructionCondition::FieldSource]
       #
       #   @param operator [Symbol, Privy::Models::ConditionOperator] Operator to use for policy conditions.
       #
       #   @param value [String, Array<String>] Value to compare against in a policy condition. Can be a single string or an arr
-
-      # @see Privy::Models::SolanaSystemProgramInstructionCondition#field
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        INSTRUCTION_NAME = :instructionName
-        TRANSFER_FROM = :"Transfer.from"
-        TRANSFER_TO = :"Transfer.to"
-        TRANSFER_LAMPORTS = :"Transfer.lamports"
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # @see Privy::Models::SolanaSystemProgramInstructionCondition#field_source
       module FieldSource

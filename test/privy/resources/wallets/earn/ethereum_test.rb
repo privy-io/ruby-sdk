@@ -9,7 +9,7 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
     response = @privy_api.wallets.earn.ethereum._deposit("wallet_id", vault_id: "cm7oxq1el000e11o8iwp7d0d0")
 
     assert_pattern do
-      response => Privy::EarnDepositActionResponse
+      response => Privy::Wallets::EarnDepositActionResponse
     end
 
     assert_pattern do
@@ -20,16 +20,16 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
         created_at: Time,
         raw_amount: String,
         share_amount: String | nil,
-        status: Privy::WalletActionStatus,
-        type: Privy::EarnDepositActionResponse::Type,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::EarnDepositActionResponse::Type,
         vault_address: String,
         vault_id: String,
         wallet_id: String,
         amount: String | nil,
         asset: String | nil,
         decimals: Integer | nil,
-        failure_reason: Privy::FailureReason | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end
   end
@@ -40,7 +40,7 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
     response = @privy_api.wallets.earn.ethereum._withdraw("wallet_id", vault_id: "cm7oxq1el000e11o8iwp7d0d0")
 
     assert_pattern do
-      response => Privy::EarnWithdrawActionResponse
+      response => Privy::Wallets::EarnWithdrawActionResponse
     end
 
     assert_pattern do
@@ -51,16 +51,16 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
         created_at: Time,
         raw_amount: String,
         share_amount: String | nil,
-        status: Privy::WalletActionStatus,
-        type: Privy::EarnWithdrawActionResponse::Type,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::EarnWithdrawActionResponse::Type,
         vault_address: String,
         vault_id: String,
         wallet_id: String,
         amount: String | nil,
         asset: String | nil,
         decimals: Integer | nil,
-        failure_reason: Privy::FailureReason | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end
   end

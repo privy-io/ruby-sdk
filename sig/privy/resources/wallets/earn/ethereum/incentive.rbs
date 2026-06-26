@@ -11,7 +11,7 @@ module Privy
               ?privy_idempotency_key: String,
               ?privy_request_expiry: String,
               ?request_options: Privy::request_opts
-            ) -> Privy::EarnIncentiveClaimActionResponse
+            ) -> Privy::Wallets::EarnIncentiveClaimActionResponse
 
             def initialize: (client: Privy::Client) -> void
           end

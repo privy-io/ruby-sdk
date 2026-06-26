@@ -68,56 +68,10 @@ module Privy
         Variants =
           T.type_alias do
             T.any(
-              T::Array[
-                Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0::TaggedSymbol
-              ],
+              T::Array[Privy::KrakenEmbedCustomOrderStatusValue::TaggedSymbol],
               String
             )
           end
-
-        module UnionMember0
-          extend Privy::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ACTIVE =
-            T.let(
-              :active,
-              Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0::TaggedSymbol
-            )
-          PAUSED =
-            T.let(
-              :paused,
-              Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0::TaggedSymbol
-            )
-          CANCELLED =
-            T.let(
-              :cancelled,
-              Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0::TaggedSymbol
-            )
-          COMPLETED =
-            T.let(
-              :completed,
-              Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
 
         sig do
           override.returns(
@@ -129,11 +83,10 @@ module Privy
         def self.variants
         end
 
-        UnionMember0Array =
+        KrakenEmbedCustomOrderStatusValueArray =
           T.let(
             Privy::Internal::Type::ArrayOf[
-              enum:
-                Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0
+              enum: Privy::KrakenEmbedCustomOrderStatusValue
             ],
             Privy::Internal::Type::Converter
           )

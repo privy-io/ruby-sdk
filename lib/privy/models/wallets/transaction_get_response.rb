@@ -43,9 +43,10 @@ module Privy
           required :privy_transaction_id, String
 
           # @!attribute status
+          #   Status of a blockchain transaction submitted by Privy.
           #
-          #   @return [Symbol, Privy::Models::Wallets::TransactionGetResponse::Transaction::Status]
-          required :status, enum: -> { Privy::Models::Wallets::TransactionGetResponse::Transaction::Status }
+          #   @return [Symbol, Privy::Models::BlockchainTransactionStatus]
+          required :status, enum: -> { Privy::BlockchainTransactionStatus }
 
           # @!attribute transaction_hash
           #
@@ -76,7 +77,7 @@ module Privy
           #
           #   @param privy_transaction_id [String]
           #
-          #   @param status [Symbol, Privy::Models::Wallets::TransactionGetResponse::Transaction::Status]
+          #   @param status [Symbol, Privy::Models::BlockchainTransactionStatus] Status of a blockchain transaction submitted by Privy.
           #
           #   @param transaction_hash [String, nil]
           #
@@ -90,23 +91,6 @@ module Privy
           class Details < Privy::Internal::Type::BaseModel
             # @!method initialize
             #   Details of a wallet transaction, varying by transaction type.
-          end
-
-          # @see Privy::Models::Wallets::TransactionGetResponse::Transaction#status
-          module Status
-            extend Privy::Internal::Type::Enum
-
-            BROADCASTED = :broadcasted
-            CONFIRMED = :confirmed
-            EXECUTION_REVERTED = :execution_reverted
-            FAILED = :failed
-            REPLACED = :replaced
-            FINALIZED = :finalized
-            PROVIDER_ERROR = :provider_error
-            PENDING = :pending
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
           end
         end
       end

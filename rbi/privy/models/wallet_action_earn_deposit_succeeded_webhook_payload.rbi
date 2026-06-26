@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # Underlying asset token address.
@@ -48,7 +48,7 @@ module Privy
       attr_accessor :status
 
       # The steps of the wallet action, including transaction hashes.
-      sig { returns(T::Array[Privy::WalletActionStep::Variants]) }
+      sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
       # The type of webhook event.
@@ -102,7 +102,7 @@ module Privy
       # Payload for the wallet_action.earn_deposit.succeeded webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
           completed_at: String,
@@ -114,12 +114,12 @@ module Privy
           steps:
             T::Array[
               T.any(
-                Privy::EvmTransactionWalletActionStep::OrHash,
-                Privy::EvmUserOperationWalletActionStep::OrHash,
-                Privy::SvmTransactionWalletActionStep::OrHash,
-                Privy::TvmTransactionWalletActionStep::OrHash,
-                Privy::ExternalTransactionWalletActionStep::OrHash,
-                Privy::CustodianTransactionWalletActionStep::OrHash
+                Privy::Wallets::EvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::EvmUserOperationWalletActionStep::OrHash,
+                Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
               )
             ],
           type:
@@ -177,7 +177,7 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
             completed_at: String,
@@ -186,7 +186,7 @@ module Privy
             share_amount: String,
             status:
               Privy::WalletActionEarnDepositSucceededWebhookPayload::Status::TaggedSymbol,
-            steps: T::Array[Privy::WalletActionStep::Variants],
+            steps: T::Array[Privy::Wallets::WalletActionStep::Variants],
             type:
               Privy::WalletActionEarnDepositSucceededWebhookPayload::Type::TaggedSymbol,
             vault_address: String,

@@ -21,7 +21,7 @@ module Privy
               privy_idempotency_key: String,
               privy_request_expiry: String,
               request_options: Privy::RequestOptions::OrHash
-            ).returns(Privy::EarnDepositActionResponse)
+            ).returns(Privy::Wallets::EarnDepositActionResponse)
           end
           def _deposit(
             # Path param: ID of the wallet.
@@ -58,7 +58,7 @@ module Privy
               privy_idempotency_key: String,
               privy_request_expiry: String,
               request_options: Privy::RequestOptions::OrHash
-            ).returns(Privy::EarnWithdrawActionResponse)
+            ).returns(Privy::Wallets::EarnWithdrawActionResponse)
           end
           def _withdraw(
             # Path param: ID of the wallet.

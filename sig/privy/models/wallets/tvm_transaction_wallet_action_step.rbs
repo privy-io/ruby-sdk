@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    module Wallets
+      type tvm_transaction_wallet_action_step =
+        {
+          :caip2 => String,
+          status: Privy::Models::Wallets::tvm_wallet_action_step_status,
+          transaction_id: String?,
+          type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_,
+          failure_reason: Privy::Wallets::FailureReason
+        }
+
+      class TvmTransactionWalletActionStep < Privy::Internal::Type::BaseModel
+        attr_accessor caip2: String
+
+        attr_accessor status: Privy::Models::Wallets::tvm_wallet_action_step_status
+
+        attr_accessor transaction_id: String?
+
+        attr_accessor type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        def initialize: (
+          caip2: String,
+          status: Privy::Models::Wallets::tvm_wallet_action_step_status,
+          transaction_id: String?,
+          type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_,
+          ?failure_reason: Privy::Wallets::FailureReason
+        ) -> void
+
+        def to_hash: -> {
+          :caip2 => String,
+          status: Privy::Models::Wallets::tvm_wallet_action_step_status,
+          transaction_id: String?,
+          type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_,
+          failure_reason: Privy::Wallets::FailureReason
+        }
+
+        type type_ = :tvm_transaction
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          TVM_TRANSACTION: :tvm_transaction
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::TvmTransactionWalletActionStep::type_]
+        end
+      end
+    end
+  end
+end

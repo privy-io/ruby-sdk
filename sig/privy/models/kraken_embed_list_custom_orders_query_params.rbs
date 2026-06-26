@@ -33,28 +33,14 @@ module Privy
       }
 
       type statuses =
-        ::Array[Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::union_member0]
-        | String
+        ::Array[Privy::Models::kraken_embed_custom_order_status_value] | String
 
       module Statuses
         extend Privy::Internal::Type::Union
 
-        type union_member0 = :active | :paused | :cancelled | :completed
-
-        module UnionMember0
-          extend Privy::Internal::Type::Enum
-
-          ACTIVE: :active
-          PAUSED: :paused
-          CANCELLED: :cancelled
-          COMPLETED: :completed
-
-          def self?.values: -> ::Array[Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::union_member0]
-        end
-
         def self?.variants: -> ::Array[Privy::Models::KrakenEmbedListCustomOrdersQueryParams::statuses]
 
-        UnionMember0Array: Privy::Internal::Type::Converter
+        KrakenEmbedCustomOrderStatusValueArray: Privy::Internal::Type::Converter
       end
     end
   end

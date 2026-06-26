@@ -1,7 +1,0 @@
-module Privy
-  module Resources
-    class WalletActions
-      def initialize: (client: Privy::Client) -> void
-    end
-  end
-end

@@ -3,39 +3,28 @@ module Privy
     type linked_account_wallet_input =
       {
         address: String,
-        chain_type: Privy::Models::LinkedAccountWalletInput::chain_type,
+        chain_type: Privy::Models::first_class_chain_type,
         type: :wallet
       }
 
     class LinkedAccountWalletInput < Privy::Internal::Type::BaseModel
       attr_accessor address: String
 
-      attr_accessor chain_type: Privy::Models::LinkedAccountWalletInput::chain_type
+      attr_accessor chain_type: Privy::Models::first_class_chain_type
 
       attr_accessor type: :wallet
 
       def initialize: (
         address: String,
-        chain_type: Privy::Models::LinkedAccountWalletInput::chain_type,
+        chain_type: Privy::Models::first_class_chain_type,
         ?type: :wallet
       ) -> void
 
       def to_hash: -> {
         address: String,
-        chain_type: Privy::Models::LinkedAccountWalletInput::chain_type,
+        chain_type: Privy::Models::first_class_chain_type,
         type: :wallet
       }
-
-      type chain_type = :ethereum | :solana
-
-      module ChainType
-        extend Privy::Internal::Type::Enum
-
-        ETHEREUM: :ethereum
-        SOLANA: :solana
-
-        def self?.values: -> ::Array[Privy::Models::LinkedAccountWalletInput::chain_type]
-      end
     end
   end
 end

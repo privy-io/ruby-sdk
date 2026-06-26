@@ -14,7 +14,7 @@ module Privy
             ?privy_idempotency_key: String,
             ?privy_request_expiry: String,
             ?request_options: Privy::request_opts
-          ) -> Privy::EarnDepositActionResponse
+          ) -> Privy::Wallets::EarnDepositActionResponse
 
           def _withdraw: (
             String wallet_id,
@@ -25,7 +25,7 @@ module Privy
             ?privy_idempotency_key: String,
             ?privy_request_expiry: String,
             ?request_options: Privy::request_opts
-          ) -> Privy::EarnWithdrawActionResponse
+          ) -> Privy::Wallets::EarnWithdrawActionResponse
 
           def initialize: (client: Privy::Client) -> void
         end

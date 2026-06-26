@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute chain
       #   EVM chain name (e.g. "base", "ethereum").
@@ -30,11 +30,9 @@ module Privy
       # @!attribute rewards
       #   Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #
-      #   @return [Array<Privy::Models::EarnIncetiveClaimRewardEntry>, nil]
+      #   @return [Array<Privy::Models::Wallets::EarnIncetiveClaimRewardEntry>, nil]
       required :rewards,
-               -> {
-                 Privy::Internal::Type::ArrayOf[Privy::EarnIncetiveClaimRewardEntry]
-               },
+               -> { Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnIncetiveClaimRewardEntry] },
                nil?: true
 
       # @!attribute status
@@ -46,8 +44,8 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action, including transaction hashes.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -70,7 +68,7 @@ module Privy
       # @!method initialize(action_type:, chain:, completed_at:, created_at:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:)
       #   Payload for the wallet_action.earn_incentive_claim.succeeded webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param chain [String] EVM chain name (e.g. "base", "ethereum").
       #
@@ -78,11 +76,11 @@ module Privy
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
-      #   @param rewards [Array<Privy::Models::EarnIncetiveClaimRewardEntry>, nil] Claimed reward tokens. Populated after the preparation step fetches from Merkl.
+      #   @param rewards [Array<Privy::Models::Wallets::EarnIncetiveClaimRewardEntry>, nil] Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::TvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep, Privy::Models::CustodianTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
       #
       #   @param type [Symbol, Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::Type] The type of webhook event.
       #

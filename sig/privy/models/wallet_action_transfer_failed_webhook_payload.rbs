@@ -2,14 +2,14 @@ module Privy
   module Models
     type wallet_action_transfer_failed_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
         destination_address: String,
         failed_at: String,
-        failure_reason: Privy::FailureReason,
+        failure_reason: Privy::Wallets::FailureReason,
         source_chain: String,
         status: Privy::Models::WalletActionTransferFailedWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
@@ -20,7 +20,7 @@ module Privy
       }
 
     class WalletActionTransferFailedWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor created_at: String
 
@@ -28,13 +28,13 @@ module Privy
 
       attr_accessor failed_at: String
 
-      attr_accessor failure_reason: Privy::FailureReason
+      attr_accessor failure_reason: Privy::Wallets::FailureReason
 
       attr_accessor source_chain: String
 
       attr_accessor status: Privy::Models::WalletActionTransferFailedWebhookPayload::status
 
-      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+      attr_accessor steps: ::Array[Privy::Models::Wallets::wallet_action_step]
 
       attr_accessor type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_
 
@@ -59,14 +59,14 @@ module Privy
       def source_asset_decimals=: (Integer) -> Integer
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
         destination_address: String,
         failed_at: String,
-        failure_reason: Privy::FailureReason,
+        failure_reason: Privy::Wallets::FailureReason,
         source_chain: String,
         status: Privy::Models::WalletActionTransferFailedWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
@@ -77,14 +77,14 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
         destination_address: String,
         failed_at: String,
-        failure_reason: Privy::FailureReason,
+        failure_reason: Privy::Wallets::FailureReason,
         source_chain: String,
         status: Privy::Models::WalletActionTransferFailedWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,

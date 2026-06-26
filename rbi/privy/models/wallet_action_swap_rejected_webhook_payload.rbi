@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # Chain identifier.
@@ -24,10 +24,10 @@ module Privy
       attr_accessor :created_at
 
       # A description of why a wallet action (or a step within a wallet action) failed.
-      sig { returns(Privy::FailureReason) }
+      sig { returns(Privy::Wallets::FailureReason) }
       attr_reader :failure_reason
 
-      sig { params(failure_reason: Privy::FailureReason::OrHash).void }
+      sig { params(failure_reason: Privy::Wallets::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
       # Amount of input token in base units. Populated after onchain confirmation.
@@ -55,7 +55,7 @@ module Privy
       attr_accessor :status
 
       # The steps of the wallet action at the time of rejection.
-      sig { returns(T::Array[Privy::WalletActionStep::Variants]) }
+      sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
       # The type of webhook event.
@@ -77,10 +77,10 @@ module Privy
       # Payload for the wallet_action.swap.rejected webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           caip2: String,
           created_at: String,
-          failure_reason: Privy::FailureReason::OrHash,
+          failure_reason: Privy::Wallets::FailureReason::OrHash,
           input_amount: T.nilable(String),
           input_token: String,
           output_token: String,
@@ -90,12 +90,12 @@ module Privy
           steps:
             T::Array[
               T.any(
-                Privy::EvmTransactionWalletActionStep::OrHash,
-                Privy::EvmUserOperationWalletActionStep::OrHash,
-                Privy::SvmTransactionWalletActionStep::OrHash,
-                Privy::TvmTransactionWalletActionStep::OrHash,
-                Privy::ExternalTransactionWalletActionStep::OrHash,
-                Privy::CustodianTransactionWalletActionStep::OrHash
+                Privy::Wallets::EvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::EvmUserOperationWalletActionStep::OrHash,
+                Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
               )
             ],
           type: Privy::WalletActionSwapRejectedWebhookPayload::Type::OrSymbol,
@@ -136,17 +136,17 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             caip2: String,
             created_at: String,
-            failure_reason: Privy::FailureReason,
+            failure_reason: Privy::Wallets::FailureReason,
             input_amount: T.nilable(String),
             input_token: String,
             output_token: String,
             rejected_at: String,
             status:
               Privy::WalletActionSwapRejectedWebhookPayload::Status::TaggedSymbol,
-            steps: T::Array[Privy::WalletActionStep::Variants],
+            steps: T::Array[Privy::Wallets::WalletActionStep::Variants],
             type:
               Privy::WalletActionSwapRejectedWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,

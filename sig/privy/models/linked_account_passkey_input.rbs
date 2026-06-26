@@ -2,7 +2,7 @@ module Privy
   module Models
     type linked_account_passkey_input =
       {
-        credential_device_type: Privy::Models::LinkedAccountPasskeyInput::credential_device_type,
+        credential_device_type: Privy::Models::linked_account_passkey_credential_device_type,
         credential_id: String,
         credential_public_key: String,
         credential_username: String,
@@ -10,7 +10,7 @@ module Privy
       }
 
     class LinkedAccountPasskeyInput < Privy::Internal::Type::BaseModel
-      attr_accessor credential_device_type: Privy::Models::LinkedAccountPasskeyInput::credential_device_type
+      attr_accessor credential_device_type: Privy::Models::linked_account_passkey_credential_device_type
 
       attr_accessor credential_id: String
 
@@ -21,7 +21,7 @@ module Privy
       attr_accessor type: :passkey
 
       def initialize: (
-        credential_device_type: Privy::Models::LinkedAccountPasskeyInput::credential_device_type,
+        credential_device_type: Privy::Models::linked_account_passkey_credential_device_type,
         credential_id: String,
         credential_public_key: String,
         credential_username: String,
@@ -29,23 +29,12 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        credential_device_type: Privy::Models::LinkedAccountPasskeyInput::credential_device_type,
+        credential_device_type: Privy::Models::linked_account_passkey_credential_device_type,
         credential_id: String,
         credential_public_key: String,
         credential_username: String,
         type: :passkey
       }
-
-      type credential_device_type = :singleDevice | :multiDevice
-
-      module CredentialDeviceType
-        extend Privy::Internal::Type::Enum
-
-        SINGLE_DEVICE: :singleDevice
-        MULTI_DEVICE: :multiDevice
-
-        def self?.values: -> ::Array[Privy::Models::LinkedAccountPasskeyInput::credential_device_type]
-      end
     end
   end
 end

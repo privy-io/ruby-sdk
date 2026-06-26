@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_status_value =
+      :active | :completed | :cancelled | :paused
+
+    module KrakenEmbedCustomOrderStatusValue
+      extend Privy::Internal::Type::Enum
+
+      ACTIVE: :active
+      COMPLETED: :completed
+      CANCELLED: :cancelled
+      PAUSED: :paused
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_custom_order_status_value]
+    end
+  end
+end

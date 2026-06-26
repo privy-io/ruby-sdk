@@ -9,7 +9,7 @@ module Privy
         bank_beneficiary_name: String,
         bank_name: String,
         bank_routing_number: String,
-        payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+        payment_rails: ::Array[Privy::Models::bridge_usd_fiat_virtual_account_deposit_payment_rail]
       }
 
     class BridgeUsdFiatVirtualAccountDepositInstructions < Privy::Internal::Type::BaseModel
@@ -27,7 +27,7 @@ module Privy
 
       attr_accessor bank_routing_number: String
 
-      attr_accessor payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+      attr_accessor payment_rails: ::Array[Privy::Models::bridge_usd_fiat_virtual_account_deposit_payment_rail]
 
       def initialize: (
         asset: Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset,
@@ -37,7 +37,7 @@ module Privy
         bank_beneficiary_name: String,
         bank_name: String,
         bank_routing_number: String,
-        payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+        payment_rails: ::Array[Privy::Models::bridge_usd_fiat_virtual_account_deposit_payment_rail]
       ) -> void
 
       def to_hash: -> {
@@ -48,7 +48,7 @@ module Privy
         bank_beneficiary_name: String,
         bank_name: String,
         bank_routing_number: String,
-        payment_rails: ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
+        payment_rails: ::Array[Privy::Models::bridge_usd_fiat_virtual_account_deposit_payment_rail]
       }
 
       type asset = :usd
@@ -59,17 +59,6 @@ module Privy
         USD: :usd
 
         def self?.values: -> ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::asset]
-      end
-
-      type payment_rail = :ach_push | :wire
-
-      module PaymentRail
-        extend Privy::Internal::Type::Enum
-
-        ACH_PUSH: :ach_push
-        WIRE: :wire
-
-        def self?.values: -> ::Array[Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::payment_rail]
       end
     end
   end

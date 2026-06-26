@@ -176,7 +176,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Privy::TransferActionResponse
+      response => Privy::Wallets::TransferActionResponse
     end
 
     assert_pattern do
@@ -186,22 +186,22 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         destination_address: String,
         destination_amount: String | nil,
         source_chain: String,
-        status: Privy::WalletActionStatus,
-        type: Privy::TransferActionResponse::Type,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::TransferActionResponse::Type,
         wallet_id: String,
         amount_type: Privy::AmountType | nil,
         destination_asset: String | nil,
         destination_chain: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         estimated_gas: Privy::Gas | nil,
-        failure_reason: Privy::FailureReason | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
         source_amount: String | nil,
         source_asset: String | nil,
         source_asset_address: String | nil,
         source_asset_decimals: Integer | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end
   end

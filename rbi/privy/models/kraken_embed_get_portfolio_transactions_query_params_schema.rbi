@@ -61,61 +61,37 @@ module Privy
       end
       attr_writer :ref_ids
 
-      sig do
-        returns(
-          T.nilable(
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::OrSymbol
-          )
-        )
-      end
+      # Sort direction for paginated transaction lists.
+      sig { returns(T.nilable(Privy::KrakenEmbedSortingOrder::OrSymbol)) }
       attr_reader :sorting
 
-      sig do
-        params(
-          sorting:
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::OrSymbol
-        ).void
-      end
+      sig { params(sorting: Privy::KrakenEmbedSortingOrder::OrSymbol).void }
       attr_writer :sorting
 
       sig do
         returns(
-          T.nilable(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::OrSymbol
-            ]
-          )
+          T.nilable(T::Array[Privy::KrakenEmbedTransactionStatus::OrSymbol])
         )
       end
       attr_reader :statuses
 
       sig do
         params(
-          statuses:
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::OrSymbol
-            ]
+          statuses: T::Array[Privy::KrakenEmbedTransactionStatus::OrSymbol]
         ).void
       end
       attr_writer :statuses
 
       sig do
         returns(
-          T.nilable(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::OrSymbol
-            ]
-          )
+          T.nilable(T::Array[Privy::KrakenEmbedTransactionType::OrSymbol])
         )
       end
       attr_reader :types
 
       sig do
         params(
-          types:
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::OrSymbol
-            ]
+          types: T::Array[Privy::KrakenEmbedTransactionType::OrSymbol]
         ).void
       end
       attr_writer :types
@@ -137,16 +113,9 @@ module Privy
           quote: String,
           ref_ids:
             T::Array[Privy::KrakenEmbedPortfolioTransactionRefID::OrHash],
-          sorting:
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::OrSymbol,
-          statuses:
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::OrSymbol
-            ],
-          types:
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::OrSymbol
-            ],
+          sorting: Privy::KrakenEmbedSortingOrder::OrSymbol,
+          statuses: T::Array[Privy::KrakenEmbedTransactionStatus::OrSymbol],
+          types: T::Array[Privy::KrakenEmbedTransactionType::OrSymbol],
           until_time: Time
         ).returns(T.attached_class)
       end
@@ -158,6 +127,7 @@ module Privy
         page_size: nil,
         quote: nil,
         ref_ids: nil,
+        # Sort direction for paginated transaction lists.
         sorting: nil,
         statuses: nil,
         types: nil,
@@ -175,138 +145,14 @@ module Privy
             page_size: Integer,
             quote: String,
             ref_ids: T::Array[Privy::KrakenEmbedPortfolioTransactionRefID],
-            sorting:
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::OrSymbol,
-            statuses:
-              T::Array[
-                Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::OrSymbol
-              ],
-            types:
-              T::Array[
-                Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::OrSymbol
-              ],
+            sorting: Privy::KrakenEmbedSortingOrder::OrSymbol,
+            statuses: T::Array[Privy::KrakenEmbedTransactionStatus::OrSymbol],
+            types: T::Array[Privy::KrakenEmbedTransactionType::OrSymbol],
             until_time: Time
           }
         )
       end
       def to_hash
-      end
-
-      module Sorting
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        DESCENDING =
-          T.let(
-            :descending,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::TaggedSymbol
-          )
-        ASCENDING =
-          T.let(
-            :ascending,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Sorting::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        UNSPECIFIED =
-          T.let(
-            :unspecified,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::TaggedSymbol
-          )
-        IN_PROGRESS =
-          T.let(
-            :in_progress,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::TaggedSymbol
-          )
-        SUCCESSFUL =
-          T.let(
-            :successful,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::TaggedSymbol
-          )
-        FAILED =
-          T.let(
-            :failed,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Status::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SIMPLE_ORDER =
-          T.let(
-            :simple_order,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::TaggedSymbol
-          )
-        SIMPLE_ORDER_FAILED =
-          T.let(
-            :simple_order_failed,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::TaggedSymbol
-          )
-        EARN_REWARD =
-          T.let(
-            :earn_reward,
-            Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::Type::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

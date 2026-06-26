@@ -10,7 +10,7 @@ module Privy
         #
         # Execute a token swap within a wallet.
         #
-        # @overload execute(wallet_id, base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, request_options: {})
+        # @overload execute(wallet_id, base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
         #
         # @param wallet_id [String] Path param: ID of the wallet.
         #
@@ -30,9 +30,11 @@ module Privy
         #
         # @param privy_idempotency_key [String] Header param: Idempotency keys ensure API requests are executed only once within
         #
+        # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+        #
         # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Privy::Models::SwapActionResponse]
+        # @return [Privy::Models::Wallets::SwapActionResponse]
         #
         # @see Privy::Models::Wallets::SwapExecuteParams
         def execute(wallet_id, params)
@@ -40,14 +42,15 @@ module Privy
           header_params =
             {
               privy_authorization_signature: "privy-authorization-signature",
-              privy_idempotency_key: "privy-idempotency-key"
+              privy_idempotency_key: "privy-idempotency-key",
+              privy_request_expiry: "privy-request-expiry"
             }
           @client.request(
             method: :post,
             path: ["v1/wallets/%1$s/swap", wallet_id],
             headers: parsed.slice(*header_params.keys).transform_keys(header_params),
             body: parsed.except(*header_params.keys),
-            model: Privy::SwapActionResponse,
+            model: Privy::Wallets::SwapActionResponse,
             options: options
           )
         end
@@ -57,7 +60,7 @@ module Privy
         #
         # Get a price quote for swapping tokens within a wallet.
         #
-        # @overload quote(wallet_id, base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, request_options: {})
+        # @overload quote(wallet_id, base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
         #
         # @param wallet_id [String] Path param: ID of the wallet.
         #
@@ -75,6 +78,8 @@ module Privy
         #
         # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
         #
+        # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+        #
         # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Privy::Models::SwapQuoteResponse]
@@ -82,7 +87,11 @@ module Privy
         # @see Privy::Models::Wallets::SwapQuoteParams
         def quote(wallet_id, params)
           parsed, options = Privy::Wallets::SwapQuoteParams.dump_request(params)
-          header_params = {privy_authorization_signature: "privy-authorization-signature"}
+          header_params =
+            {
+              privy_authorization_signature: "privy-authorization-signature",
+              privy_request_expiry: "privy-request-expiry"
+            }
           @client.request(
             method: :post,
             path: ["v1/wallets/%1$s/swap/quote", wallet_id],

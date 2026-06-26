@@ -2,21 +2,21 @@ module Privy
   module Models
     type wallet_action_earn_incentive_claim_failed_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
         failed_at: String,
-        failure_reason: Privy::FailureReason,
-        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        failure_reason: Privy::Wallets::FailureReason,
+        rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String
       }
 
     class WalletActionEarnIncentiveClaimFailedWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor chain: String
 
@@ -24,13 +24,13 @@ module Privy
 
       attr_accessor failed_at: String
 
-      attr_accessor failure_reason: Privy::FailureReason
+      attr_accessor failure_reason: Privy::Wallets::FailureReason
 
-      attr_accessor rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?
+      attr_accessor rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?
 
       attr_accessor status: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::status
 
-      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+      attr_accessor steps: ::Array[Privy::Models::Wallets::wallet_action_step]
 
       attr_accessor type: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::type_
 
@@ -39,28 +39,28 @@ module Privy
       attr_accessor wallet_id: String
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
         failed_at: String,
-        failure_reason: Privy::FailureReason,
-        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        failure_reason: Privy::Wallets::FailureReason,
+        rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
         failed_at: String,
-        failure_reason: Privy::FailureReason,
-        rewards: ::Array[Privy::EarnIncetiveClaimRewardEntry]?,
+        failure_reason: Privy::Wallets::FailureReason,
+        rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
         status: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String

@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_deposit_request_body =
+        { vault_id: String, amount: String, raw_amount: String }
+
+      class EarnDepositRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor vault_id: String
+
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader raw_amount: String?
+
+        def raw_amount=: (String) -> String
+
+        def initialize: (
+          vault_id: String,
+          ?amount: String,
+          ?raw_amount: String
+        ) -> void
+
+        def to_hash: -> { vault_id: String, amount: String, raw_amount: String }
+      end
+    end
+  end
+end

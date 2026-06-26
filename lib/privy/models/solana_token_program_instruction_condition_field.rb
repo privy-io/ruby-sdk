@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+module Privy
+  module Models
+    # Supported fields for Solana Token Program conditions including Transfer,
+    # TransferChecked, Burn, MintTo, CloseAccount, and InitializeAccount3 instruction
+    # fields.
+    module SolanaTokenProgramInstructionConditionField
+      extend Privy::Internal::Type::Enum
+
+      INSTRUCTION_NAME = :instructionName
+      TRANSFER_SOURCE = :"Transfer.source"
+      TRANSFER_DESTINATION = :"Transfer.destination"
+      TRANSFER_AUTHORITY = :"Transfer.authority"
+      TRANSFER_AMOUNT = :"Transfer.amount"
+      TRANSFER_CHECKED_SOURCE = :"TransferChecked.source"
+      TRANSFER_CHECKED_DESTINATION = :"TransferChecked.destination"
+      TRANSFER_CHECKED_AUTHORITY = :"TransferChecked.authority"
+      TRANSFER_CHECKED_AMOUNT = :"TransferChecked.amount"
+      TRANSFER_CHECKED_MINT = :"TransferChecked.mint"
+      BURN_ACCOUNT = :"Burn.account"
+      BURN_MINT = :"Burn.mint"
+      BURN_AUTHORITY = :"Burn.authority"
+      BURN_AMOUNT = :"Burn.amount"
+      MINT_TO_MINT = :"MintTo.mint"
+      MINT_TO_ACCOUNT = :"MintTo.account"
+      MINT_TO_AUTHORITY = :"MintTo.authority"
+      MINT_TO_AMOUNT = :"MintTo.amount"
+      CLOSE_ACCOUNT_ACCOUNT = :"CloseAccount.account"
+      CLOSE_ACCOUNT_DESTINATION = :"CloseAccount.destination"
+      CLOSE_ACCOUNT_AUTHORITY = :"CloseAccount.authority"
+      INITIALIZE_ACCOUNT3_ACCOUNT = :"InitializeAccount3.account"
+      INITIALIZE_ACCOUNT3_MINT = :"InitializeAccount3.mint"
+      INITIALIZE_ACCOUNT3_OWNER = :"InitializeAccount3.owner"
+
+      # @!method self.values
+      #   @return [Array<Symbol>]
+    end
+  end
+end

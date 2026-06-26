@@ -5,7 +5,7 @@ module Privy
         token: String?,
         privy_access_token: String?,
         refresh_token: String?,
-        session_update_action: Privy::Models::AuthenticatedUser::session_update_action,
+        session_update_action: Privy::Models::client_session_update_action,
         user: Privy::User,
         identity_token: String,
         is_new_user: bool,
@@ -19,7 +19,7 @@ module Privy
 
       attr_accessor refresh_token: String?
 
-      attr_accessor session_update_action: Privy::Models::AuthenticatedUser::session_update_action
+      attr_accessor session_update_action: Privy::Models::client_session_update_action
 
       attr_accessor user: Privy::User
 
@@ -39,7 +39,7 @@ module Privy
         token: String?,
         privy_access_token: String?,
         refresh_token: String?,
-        session_update_action: Privy::Models::AuthenticatedUser::session_update_action,
+        session_update_action: Privy::Models::client_session_update_action,
         user: Privy::User,
         ?identity_token: String,
         ?is_new_user: bool,
@@ -50,24 +50,12 @@ module Privy
         token: String?,
         privy_access_token: String?,
         refresh_token: String?,
-        session_update_action: Privy::Models::AuthenticatedUser::session_update_action,
+        session_update_action: Privy::Models::client_session_update_action,
         user: Privy::User,
         identity_token: String,
         is_new_user: bool,
         oauth_tokens: Privy::OAuthTokens
       }
-
-      type session_update_action = :set | :ignore | :clear
-
-      module SessionUpdateAction
-        extend Privy::Internal::Type::Enum
-
-        SET: :set
-        IGNORE: :ignore
-        CLEAR: :clear
-
-        def self?.values: -> ::Array[Privy::Models::AuthenticatedUser::session_update_action]
-      end
     end
   end
 end

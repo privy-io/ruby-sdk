@@ -11,10 +11,8 @@ module Privy
           )
         end
 
-      # The recovery method that was set up.
-      sig do
-        returns(Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol)
-      end
+      # Recovery method types for embedded wallet recovery setup webhooks.
+      sig { returns(Privy::WalletRecoverySetupMethod::TaggedSymbol) }
       attr_accessor :method_
 
       # The type of webhook event.
@@ -38,7 +36,7 @@ module Privy
       # Payload for the wallet.recovery_setup webhook event.
       sig do
         params(
-          method_: Privy::WalletRecoverySetupWebhookPayload::Method::OrSymbol,
+          method_: Privy::WalletRecoverySetupMethod::OrSymbol,
           type: Privy::WalletRecoverySetupWebhookPayload::Type::OrSymbol,
           user_id: String,
           wallet_address: String,
@@ -46,7 +44,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # The recovery method that was set up.
+        # Recovery method types for embedded wallet recovery setup webhooks.
         method_:,
         # The type of webhook event.
         type:,
@@ -62,8 +60,7 @@ module Privy
       sig do
         override.returns(
           {
-            method_:
-              Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol,
+            method_: Privy::WalletRecoverySetupMethod::TaggedSymbol,
             type: Privy::WalletRecoverySetupWebhookPayload::Type::TaggedSymbol,
             user_id: String,
             wallet_address: String,
@@ -72,58 +69,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      # The recovery method that was set up.
-      module Method
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::WalletRecoverySetupWebhookPayload::Method)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        USER_PASSCODE_DERIVED_RECOVERY_KEY =
-          T.let(
-            :user_passcode_derived_recovery_key,
-            Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-          )
-        PRIVY_PASSCODE_DERIVED_RECOVERY_KEY =
-          T.let(
-            :privy_passcode_derived_recovery_key,
-            Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-          )
-        PRIVY_GENERATED_RECOVERY_KEY =
-          T.let(
-            :privy_generated_recovery_key,
-            Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-          )
-        GOOGLE_DRIVE_RECOVERY_SECRET =
-          T.let(
-            :google_drive_recovery_secret,
-            Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-          )
-        ICLOUD_RECOVERY_SECRET =
-          T.let(
-            :icloud_recovery_secret,
-            Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-          )
-        RECOVERY_ENCRYPTION_KEY =
-          T.let(
-            :recovery_encryption_key,
-            Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::WalletRecoverySetupWebhookPayload::Method::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       # The type of webhook event.

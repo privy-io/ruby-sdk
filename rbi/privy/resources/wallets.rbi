@@ -231,7 +231,7 @@ module Privy
           privy_idempotency_key: String,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::TransferActionResponse)
+        ).returns(Privy::Wallets::TransferActionResponse)
       end
       def _transfer(
         # Path param: ID of the wallet.

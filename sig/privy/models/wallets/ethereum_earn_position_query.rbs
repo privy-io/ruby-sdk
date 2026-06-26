@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module Wallets
+      type ethereum_earn_position_query =
+        { vault_id: String, include_archived: bool }
+
+      class EthereumEarnPositionQuery < Privy::Internal::Type::BaseModel
+        attr_accessor vault_id: String
+
+        attr_reader include_archived: bool?
+
+        def include_archived=: (bool) -> bool
+
+        def initialize: (vault_id: String, ?include_archived: bool) -> void
+
+        def to_hash: -> { vault_id: String, include_archived: bool }
+      end
+    end
+  end
+end

@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute caip2
       #   Chain identifier.
@@ -66,7 +66,7 @@ module Privy
       # @!method initialize(action_type:, caip2:, created_at:, input_amount:, input_token:, output_token:, status:, type:, wallet_action_id:, wallet_id:)
       #   Payload for the wallet_action.swap.created webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param caip2 [String] Chain identifier.
       #

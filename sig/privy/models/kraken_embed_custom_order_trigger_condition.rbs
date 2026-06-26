@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_trigger_condition = :gte | :lte
+
+    module KrakenEmbedCustomOrderTriggerCondition
+      extend Privy::Internal::Type::Enum
+
+      GTE: :gte
+      LTE: :lte
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_custom_order_trigger_condition]
+    end
+  end
+end

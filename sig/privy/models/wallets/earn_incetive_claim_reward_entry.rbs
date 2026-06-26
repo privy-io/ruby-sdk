@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_incetive_claim_reward_entry =
+        {
+          amount: String,
+          token_address: String,
+          token_symbol: String,
+          token_decimals: Integer
+        }
+
+      class EarnIncetiveClaimRewardEntry < Privy::Internal::Type::BaseModel
+        attr_accessor amount: String
+
+        attr_accessor token_address: String
+
+        attr_accessor token_symbol: String
+
+        attr_reader token_decimals: Integer?
+
+        def token_decimals=: (Integer) -> Integer
+
+        def initialize: (
+          amount: String,
+          token_address: String,
+          token_symbol: String,
+          ?token_decimals: Integer
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          token_address: String,
+          token_symbol: String,
+          token_decimals: Integer
+        }
+      end
+    end
+  end
+end

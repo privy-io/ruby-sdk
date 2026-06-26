@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute chain
       #   EVM chain name (e.g. "base", "ethereum").
@@ -24,11 +24,9 @@ module Privy
       # @!attribute rewards
       #   Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #
-      #   @return [Array<Privy::Models::EarnIncetiveClaimRewardEntry>, nil]
+      #   @return [Array<Privy::Models::Wallets::EarnIncetiveClaimRewardEntry>, nil]
       required :rewards,
-               -> {
-                 Privy::Internal::Type::ArrayOf[Privy::EarnIncetiveClaimRewardEntry]
-               },
+               -> { Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnIncetiveClaimRewardEntry] },
                nil?: true
 
       # @!attribute status
@@ -58,13 +56,13 @@ module Privy
       # @!method initialize(action_type:, chain:, created_at:, rewards:, status:, type:, wallet_action_id:, wallet_id:)
       #   Payload for the wallet_action.earn_incentive_claim.created webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param chain [String] EVM chain name (e.g. "base", "ethereum").
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
-      #   @param rewards [Array<Privy::Models::EarnIncetiveClaimRewardEntry>, nil] Claimed reward tokens. Populated after the preparation step fetches from Merkl.
+      #   @param rewards [Array<Privy::Models::Wallets::EarnIncetiveClaimRewardEntry>, nil] Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload::Status] The status of the wallet action.
       #

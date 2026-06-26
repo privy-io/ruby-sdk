@@ -32,11 +32,20 @@ module Privy
         sig { params(privy_idempotency_key: String).void }
         attr_writer :privy_idempotency_key
 
+        # Request expiry. Value is a Unix timestamp in milliseconds representing the
+        # deadline by which the request must be processed.
+        sig { returns(T.nilable(String)) }
+        attr_reader :privy_request_expiry
+
+        sig { params(privy_request_expiry: String).void }
+        attr_writer :privy_request_expiry
+
         sig do
           params(
             wallet_id: String,
             privy_authorization_signature: String,
             privy_idempotency_key: String,
+            privy_request_expiry: String,
             request_options: Privy::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -49,6 +58,9 @@ module Privy
           # Idempotency keys ensure API requests are executed only once within a 24-hour
           # window.
           privy_idempotency_key: nil,
+          # Request expiry. Value is a Unix timestamp in milliseconds representing the
+          # deadline by which the request must be processed.
+          privy_request_expiry: nil,
           request_options: {}
         )
         end
@@ -59,6 +71,7 @@ module Privy
               wallet_id: String,
               privy_authorization_signature: String,
               privy_idempotency_key: String,
+              privy_request_expiry: String,
               request_options: Privy::RequestOptions
             }
           )

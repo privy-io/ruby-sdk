@@ -4,9 +4,10 @@ module Privy
   module Models
     class KrakenEmbedCustomOrderStatus < Privy::Internal::Type::BaseModel
       # @!attribute status
+      #   The lifecycle state of a custom order.
       #
-      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderStatus::Status]
-      required :status, enum: -> { Privy::KrakenEmbedCustomOrderStatus::Status }
+      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderStatusValue]
+      required :status, enum: -> { Privy::KrakenEmbedCustomOrderStatusValue }
 
       # @!attribute reason
       #
@@ -16,21 +17,9 @@ module Privy
       # @!method initialize(status:, reason: nil)
       #   Custom order status with optional reason for cancelled or paused states.
       #
-      #   @param status [Symbol, Privy::Models::KrakenEmbedCustomOrderStatus::Status]
+      #   @param status [Symbol, Privy::Models::KrakenEmbedCustomOrderStatusValue] The lifecycle state of a custom order.
+      #
       #   @param reason [Object]
-
-      # @see Privy::Models::KrakenEmbedCustomOrderStatus#status
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        ACTIVE = :active
-        COMPLETED = :completed
-        CANCELLED = :cancelled
-        PAUSED = :paused
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

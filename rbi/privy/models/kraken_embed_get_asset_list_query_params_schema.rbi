@@ -77,20 +77,11 @@ module Privy
       sig { params(quote: String).void }
       attr_writer :quote
 
-      sig do
-        returns(
-          T.nilable(
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::OrSymbol
-          )
-        )
-      end
+      # Sorting options for the asset list endpoint.
+      sig { returns(T.nilable(Privy::KrakenEmbedAssetSortOption::OrSymbol)) }
       attr_reader :sort
 
-      sig do
-        params(
-          sort: Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::OrSymbol
-        ).void
-      end
+      sig { params(sort: Privy::KrakenEmbedAssetSortOption::OrSymbol).void }
       attr_writer :sort
 
       # Query parameters for listing and filtering available assets.
@@ -110,7 +101,7 @@ module Privy
           page_number: Integer,
           page_size: Integer,
           quote: String,
-          sort: Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::OrSymbol
+          sort: Privy::KrakenEmbedAssetSortOption::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -122,6 +113,7 @@ module Privy
         page_number: nil,
         page_size: nil,
         quote: nil,
+        # Sorting options for the asset list endpoint.
         sort: nil
       )
       end
@@ -143,8 +135,7 @@ module Privy
             page_number: Integer,
             page_size: Integer,
             quote: String,
-            sort:
-              Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::OrSymbol
+            sort: Privy::KrakenEmbedAssetSortOption::OrSymbol
           }
         )
       end
@@ -206,122 +197,6 @@ module Privy
             :disabled,
             Privy::KrakenEmbedGetAssetListQueryParamsSchema::FilterPlatformStatus::TaggedSymbol
           )
-      end
-
-      module Sort
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TRENDING =
-          T.let(
-            :trending,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MARKET_CAP_RANK =
-          T.let(
-            :market_cap_rank,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_MARKET_CAP_RANK =
-          T.let(
-            :"-market_cap_rank",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        SYMBOL =
-          T.let(
-            :symbol,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_SYMBOL =
-          T.let(
-            :"-symbol",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        NAME =
-          T.let(
-            :name,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_NAME =
-          T.let(
-            :"-name",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        CHANGE_PERCENT_1H =
-          T.let(
-            :change_percent_1h,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_CHANGE_PERCENT_1_H =
-          T.let(
-            :"-change_percent_1h",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        CHANGE_PERCENT_24H =
-          T.let(
-            :change_percent_24h,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_CHANGE_PERCENT_24_H =
-          T.let(
-            :"-change_percent_24h",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        CHANGE_PERCENT_7D =
-          T.let(
-            :change_percent_7d,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_CHANGE_PERCENT_7_D =
-          T.let(
-            :"-change_percent_7d",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        CHANGE_PERCENT_30D =
-          T.let(
-            :change_percent_30d,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_CHANGE_PERCENT_30_D =
-          T.let(
-            :"-change_percent_30d",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        CHANGE_PERCENT_1Y =
-          T.let(
-            :change_percent_1y,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_CHANGE_PERCENT_1_Y =
-          T.let(
-            :"-change_percent_1y",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        LISTING_DATE =
-          T.let(
-            :listing_date,
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-        MINUS_LISTING_DATE =
-          T.let(
-            :"-listing_date",
-            Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

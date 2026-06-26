@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_incentive_rewards_response =
+        { rewards: ::Array[Privy::Wallets::EarnIncentiveRewardEntry] }
+
+      class EarnIncentiveRewardsResponse < Privy::Internal::Type::BaseModel
+        attr_accessor rewards: ::Array[Privy::Wallets::EarnIncentiveRewardEntry]
+
+        def initialize: (
+          rewards: ::Array[Privy::Wallets::EarnIncentiveRewardEntry]
+        ) -> void
+
+        def to_hash: -> {
+          rewards: ::Array[Privy::Wallets::EarnIncentiveRewardEntry]
+        }
+      end
+    end
+  end
+end

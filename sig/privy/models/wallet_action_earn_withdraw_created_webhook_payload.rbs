@@ -2,7 +2,7 @@ module Privy
   module Models
     type wallet_action_earn_withdraw_created_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
         :caip2 => String,
         created_at: String,
@@ -19,7 +19,7 @@ module Privy
       }
 
     class WalletActionEarnWithdrawCreatedWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor asset_address: String
 
@@ -54,7 +54,7 @@ module Privy
       def decimals=: (Integer) -> Integer
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
         caip2: String,
         created_at: String,
@@ -71,7 +71,7 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
         :caip2 => String,
         created_at: String,

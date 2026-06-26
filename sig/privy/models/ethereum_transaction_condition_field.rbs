@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type ethereum_transaction_condition_field = :to | :value | :chain_id
+
+    module EthereumTransactionConditionField
+      extend Privy::Internal::Type::Enum
+
+      TO: :to
+      VALUE: :value
+      CHAIN_ID: :chain_id
+
+      def self?.values: -> ::Array[Privy::Models::ethereum_transaction_condition_field]
+    end
+  end
+end

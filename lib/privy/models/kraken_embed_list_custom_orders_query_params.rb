@@ -15,7 +15,7 @@ module Privy
 
       # @!attribute statuses
       #
-      #   @return [Array<Symbol, Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0>, String, nil]
+      #   @return [Array<Symbol, Privy::Models::KrakenEmbedCustomOrderStatusValue>, String, nil]
       optional :statuses, union: -> { Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses }
 
       # @!method initialize(user_id:, cursor: nil, statuses: nil)
@@ -23,36 +23,22 @@ module Privy
       #
       #   @param user_id [String]
       #   @param cursor [String]
-      #   @param statuses [Array<Symbol, Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0>, String]
+      #   @param statuses [Array<Symbol, Privy::Models::KrakenEmbedCustomOrderStatusValue>, String]
 
       # @see Privy::Models::KrakenEmbedListCustomOrdersQueryParams#statuses
       module Statuses
         extend Privy::Internal::Type::Union
 
-        variant -> { Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0Array }
+        variant -> { Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::KrakenEmbedCustomOrderStatusValueArray }
 
         variant String
 
-        module UnionMember0
-          extend Privy::Internal::Type::Enum
-
-          ACTIVE = :active
-          PAUSED = :paused
-          CANCELLED = :cancelled
-          COMPLETED = :completed
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
         # @!method self.variants
-        #   @return [Array(Array<Symbol, Privy::Models::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0>, String)]
+        #   @return [Array(Array<Symbol, Privy::Models::KrakenEmbedCustomOrderStatusValue>, String)]
 
         # @type [Privy::Internal::Type::Converter]
-        UnionMember0Array =
-          Privy::Internal::Type::ArrayOf[enum: -> {
-            Privy::KrakenEmbedListCustomOrdersQueryParams::Statuses::UnionMember0
-          }]
+        KrakenEmbedCustomOrderStatusValueArray =
+          Privy::Internal::Type::ArrayOf[enum: -> { Privy::KrakenEmbedCustomOrderStatusValue }]
       end
     end
   end

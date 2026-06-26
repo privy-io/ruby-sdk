@@ -87,9 +87,6 @@ module Privy
     sig { returns(Privy::Resources::CrossApp) }
     attr_reader :cross_app
 
-    sig { returns(Privy::Resources::WalletActions) }
-    attr_reader :wallet_actions
-
     sig { returns(Privy::Resources::OAuth) }
     attr_reader :oauth
 

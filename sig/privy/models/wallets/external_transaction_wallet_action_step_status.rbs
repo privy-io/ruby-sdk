@@ -1,0 +1,21 @@
+module Privy
+  module Models
+    module Wallets
+      type external_transaction_wallet_action_step_status =
+        :preparing | :queued | :pending | :confirmed | :rejected | :failed
+
+      module ExternalTransactionWalletActionStepStatus
+        extend Privy::Internal::Type::Enum
+
+        PREPARING: :preparing
+        QUEUED: :queued
+        PENDING: :pending
+        CONFIRMED: :confirmed
+        REJECTED: :rejected
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Privy::Models::Wallets::external_transaction_wallet_action_step_status]
+      end
+    end
+  end
+end

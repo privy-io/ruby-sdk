@@ -2,14 +2,14 @@ module Privy
   module Models
     type tron_transaction_condition =
       {
-        field: Privy::Models::TronTransactionCondition::field,
+        field: Privy::Models::tron_transaction_condition_field,
         field_source: Privy::Models::TronTransactionCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       }
 
     class TronTransactionCondition < Privy::Internal::Type::BaseModel
-      attr_accessor field: Privy::Models::TronTransactionCondition::field
+      attr_accessor field: Privy::Models::tron_transaction_condition_field
 
       attr_accessor field_source: Privy::Models::TronTransactionCondition::field_source
 
@@ -18,39 +18,18 @@ module Privy
       attr_accessor value: Privy::Models::condition_value
 
       def initialize: (
-        field: Privy::Models::TronTransactionCondition::field,
+        field: Privy::Models::tron_transaction_condition_field,
         field_source: Privy::Models::TronTransactionCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       ) -> void
 
       def to_hash: -> {
-        field: Privy::Models::TronTransactionCondition::field,
+        field: Privy::Models::tron_transaction_condition_field,
         field_source: Privy::Models::TronTransactionCondition::field_source,
         operator: Privy::Models::condition_operator,
         value: Privy::Models::condition_value
       }
-
-      type field =
-        :"TransferContract.to_address"
-        | :"TransferContract.amount"
-        | :"TriggerSmartContract.contract_address"
-        | :"TriggerSmartContract.call_value"
-        | :"TriggerSmartContract.token_id"
-        | :"TriggerSmartContract.call_token_value"
-
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        TRANSFER_CONTRACT_TO_ADDRESS: :"TransferContract.to_address"
-        TRANSFER_CONTRACT_AMOUNT: :"TransferContract.amount"
-        TRIGGER_SMART_CONTRACT_CONTRACT_ADDRESS: :"TriggerSmartContract.contract_address"
-        TRIGGER_SMART_CONTRACT_CALL_VALUE: :"TriggerSmartContract.call_value"
-        TRIGGER_SMART_CONTRACT_TOKEN_ID: :"TriggerSmartContract.token_id"
-        TRIGGER_SMART_CONTRACT_CALL_TOKEN_VALUE: :"TriggerSmartContract.call_token_value"
-
-        def self?.values: -> ::Array[Privy::Models::TronTransactionCondition::field]
-      end
 
       type field_source = :tron_transaction
 

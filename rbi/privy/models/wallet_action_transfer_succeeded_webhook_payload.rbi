@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # ISO 8601 timestamp of when the wallet action completed successfully.
@@ -40,7 +40,7 @@ module Privy
       attr_accessor :status
 
       # The steps of the wallet action, including transaction hashes.
-      sig { returns(T::Array[Privy::WalletActionStep::Variants]) }
+      sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
       # The type of webhook event.
@@ -94,7 +94,7 @@ module Privy
       # Payload for the wallet_action.transfer.succeeded webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           completed_at: String,
           created_at: String,
           destination_address: String,
@@ -104,12 +104,12 @@ module Privy
           steps:
             T::Array[
               T.any(
-                Privy::EvmTransactionWalletActionStep::OrHash,
-                Privy::EvmUserOperationWalletActionStep::OrHash,
-                Privy::SvmTransactionWalletActionStep::OrHash,
-                Privy::TvmTransactionWalletActionStep::OrHash,
-                Privy::ExternalTransactionWalletActionStep::OrHash,
-                Privy::CustodianTransactionWalletActionStep::OrHash
+                Privy::Wallets::EvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::EvmUserOperationWalletActionStep::OrHash,
+                Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
               )
             ],
           type:
@@ -161,14 +161,14 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             completed_at: String,
             created_at: String,
             destination_address: String,
             source_chain: String,
             status:
               Privy::WalletActionTransferSucceededWebhookPayload::Status::TaggedSymbol,
-            steps: T::Array[Privy::WalletActionStep::Variants],
+            steps: T::Array[Privy::Wallets::WalletActionStep::Variants],
             type:
               Privy::WalletActionTransferSucceededWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,

@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    type wallet_recovery_setup_method =
+      :user_passcode_derived_recovery_key
+      | :privy_passcode_derived_recovery_key
+      | :privy_generated_recovery_key
+      | :google_drive_recovery_secret
+      | :icloud_recovery_secret
+      | :recovery_encryption_key
+
+    module WalletRecoverySetupMethod
+      extend Privy::Internal::Type::Enum
+
+      USER_PASSCODE_DERIVED_RECOVERY_KEY: :user_passcode_derived_recovery_key
+      PRIVY_PASSCODE_DERIVED_RECOVERY_KEY: :privy_passcode_derived_recovery_key
+      PRIVY_GENERATED_RECOVERY_KEY: :privy_generated_recovery_key
+      GOOGLE_DRIVE_RECOVERY_SECRET: :google_drive_recovery_secret
+      ICLOUD_RECOVERY_SECRET: :icloud_recovery_secret
+      RECOVERY_ENCRYPTION_KEY: :recovery_encryption_key
+
+      def self?.values: -> ::Array[Privy::Models::wallet_recovery_setup_method]
+    end
+  end
+end

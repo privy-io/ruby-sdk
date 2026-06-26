@@ -26,9 +26,10 @@ module Privy
       required :spread_bps, String
 
       # @!attribute type
+      #   Whether the quote amount refers to the asset being received or spent.
       #
-      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderAction::Type]
-      required :type, enum: -> { Privy::KrakenEmbedCustomOrderAction::Type }
+      #   @return [Symbol, Privy::Models::KrakenEmbedQuoteType]
+      required :type, enum: -> { Privy::KrakenEmbedQuoteType }
 
       # @!method initialize(amount:, fee_bps:, quote:, spread_bps:, type:)
       #   Trade action for a custom order.
@@ -41,18 +42,7 @@ module Privy
       #
       #   @param spread_bps [String]
       #
-      #   @param type [Symbol, Privy::Models::KrakenEmbedCustomOrderAction::Type]
-
-      # @see Privy::Models::KrakenEmbedCustomOrderAction#type
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        RECEIVE = :receive
-        SPEND = :spend
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+      #   @param type [Symbol, Privy::Models::KrakenEmbedQuoteType] Whether the quote amount refers to the asset being received or spent.
     end
   end
 end
