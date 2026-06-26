@@ -36,6 +36,7 @@ module Privy
       ) -> Privy::Wallet
 
       def list: (
+        ?address: String,
         ?authorization_key: String,
         ?chain_type: Privy::Models::wallet_chain_type,
         ?cursor: String,

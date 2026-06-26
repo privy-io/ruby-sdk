@@ -119,6 +119,7 @@ module Privy
       # Get all wallets in your app.
       sig do
         params(
+          address: String,
           authorization_key: String,
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
@@ -130,6 +131,10 @@ module Privy
         ).returns(Privy::Internal::Cursor[Privy::Wallet])
       end
       def list(
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+        address: nil,
         # Filter wallets by authorization public key. Returns wallets owned by key quorums
         # that include the specified P-256 public key (base64-encoded DER format). Cannot
         # be used together with user_id.
@@ -406,7 +411,9 @@ module Privy
         ).returns(Privy::Wallet)
       end
       def get_wallet_by_address(
-        # A blockchain wallet address (Ethereum or Solana).
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
         address:,
         # Include archived wallets in lookup. Defaults to false (archived wallets return
         # 404).

@@ -11,6 +11,15 @@ module Privy
           T.any(Privy::WalletListParams, Privy::Internal::AnyHash)
         end
 
+      # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+      # checksum format. Solana addresses are validated as base58. All other chain
+      # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+      sig { returns(T.nilable(String)) }
+      attr_reader :address
+
+      sig { params(address: String).void }
+      attr_writer :address
+
       # Filter wallets by authorization public key. Returns wallets owned by key quorums
       # that include the specified P-256 public key (base64-encoded DER format). Cannot
       # be used together with user_id.
@@ -59,6 +68,7 @@ module Privy
 
       sig do
         params(
+          address: String,
           authorization_key: String,
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
@@ -70,6 +80,10 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+        address: nil,
         # Filter wallets by authorization public key. Returns wallets owned by key quorums
         # that include the specified P-256 public key (base64-encoded DER format). Cannot
         # be used together with user_id.
@@ -91,6 +105,7 @@ module Privy
       sig do
         override.returns(
           {
+            address: String,
             authorization_key: String,
             chain_type: Privy::WalletChainType::OrSymbol,
             cursor: String,

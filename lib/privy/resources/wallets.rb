@@ -113,7 +113,9 @@ module Privy
       #
       # Get all wallets in your app.
       #
-      # @overload list(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
+      # @overload list(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
+      #
+      # @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
       #
       # @param authorization_key [String] Filter wallets by authorization public key. Returns wallets owned by key quorums
       #
@@ -432,7 +434,7 @@ module Privy
       #
       # @overload get_wallet_by_address(address:, include_archived: nil, request_options: {})
       #
-      # @param address [String] A blockchain wallet address (Ethereum or Solana).
+      # @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
       #
       # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false (archived wallets return 4
       #

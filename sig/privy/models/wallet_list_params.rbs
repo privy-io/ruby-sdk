@@ -2,6 +2,7 @@ module Privy
   module Models
     type wallet_list_params =
       {
+        address: String,
         authorization_key: String,
         chain_type: Privy::Models::wallet_chain_type,
         cursor: String,
@@ -15,6 +16,10 @@ module Privy
     class WalletListParams < Privy::Internal::Type::BaseModel
       extend Privy::Internal::Type::RequestParameters::Converter
       include Privy::Internal::Type::RequestParameters
+
+      attr_reader address: String?
+
+      def address=: (String) -> String
 
       attr_reader authorization_key: String?
 
@@ -45,6 +50,7 @@ module Privy
       def user_id=: (String) -> String
 
       def initialize: (
+        ?address: String,
         ?authorization_key: String,
         ?chain_type: Privy::Models::wallet_chain_type,
         ?cursor: String,
@@ -56,6 +62,7 @@ module Privy
       ) -> void
 
       def to_hash: -> {
+        address: String,
         authorization_key: String,
         chain_type: Privy::Models::wallet_chain_type,
         cursor: String,

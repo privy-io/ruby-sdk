@@ -4,7 +4,9 @@ module Privy
   module Models
     class GetByWalletAddressRequestBody < Privy::Internal::Type::BaseModel
       # @!attribute address
-      #   A blockchain wallet address (Ethereum or Solana).
+      #   A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+      #   checksum format. Solana addresses are validated as base58. All other chain
+      #   addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
       #
       #   @return [String]
       required :address, String
@@ -22,7 +24,7 @@ module Privy
       #
       #   Request body for looking up a wallet by its blockchain address.
       #
-      #   @param address [String] A blockchain wallet address (Ethereum or Solana).
+      #   @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
       #
       #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false (archived wallets return 4
     end

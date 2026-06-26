@@ -8,7 +8,9 @@ module Privy
           T.any(Privy::GetByWalletAddressRequestBody, Privy::Internal::AnyHash)
         end
 
-      # A blockchain wallet address (Ethereum or Solana).
+      # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+      # checksum format. Solana addresses are validated as base58. All other chain
+      # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
       sig { returns(String) }
       attr_accessor :address
 
@@ -27,7 +29,9 @@ module Privy
         )
       end
       def self.new(
-        # A blockchain wallet address (Ethereum or Solana).
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
         address:,
         # Include archived wallets in lookup. Defaults to false (archived wallets return
         # 404).
