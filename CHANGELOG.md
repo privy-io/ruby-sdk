@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.3.0 (2026-06-30)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/privy-io/ruby-sdk/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([c11ea9a](https://github.com/privy-io/ruby-sdk/commit/c11ea9a5d62d0f6e626e90d8681236db0accafcc))
+* **api:** api update ([7e3ffbe](https://github.com/privy-io/ruby-sdk/commit/7e3ffbe134e0688b9e7302fa44c1a7f0e01d6c38))
+* **api:** api update ([43e436e](https://github.com/privy-io/ruby-sdk/commit/43e436e499942f7d625df41840d5a6ea0084102c))
+* **api:** api update ([a6dbb5e](https://github.com/privy-io/ruby-sdk/commit/a6dbb5ea6b71438c80b9467bc1abc02394a2ac5d))
+* **api:** api update ([7d0d552](https://github.com/privy-io/ruby-sdk/commit/7d0d552761b076c02194ea3298368f4397f506c2))
+* **api:** api update ([217383d](https://github.com/privy-io/ruby-sdk/commit/217383d9619b2e05ad041e34aab748fe0c9e19f7))
+* **api:** api update ([8d8bf9c](https://github.com/privy-io/ruby-sdk/commit/8d8bf9c72e57eecf25b46d6ee73f0d11216be3e5))
+* **api:** api update ([3db61d7](https://github.com/privy-io/ruby-sdk/commit/3db61d7dd5a0f6624cd3d9013017e777025f575f))
+* **api:** api update ([7b711f4](https://github.com/privy-io/ruby-sdk/commit/7b711f4d5aa162d9f1c078e925c8d1e984e2a15a))
+* **api:** api update ([6a2cb69](https://github.com/privy-io/ruby-sdk/commit/6a2cb693fdae433fc33bf631808d85a43fb778f9))
+* **api:** api update ([61671f1](https://github.com/privy-io/ruby-sdk/commit/61671f1fac613975ecc669f54dc0852e586e2a5c))
+* **api:** api update ([8829d21](https://github.com/privy-io/ruby-sdk/commit/8829d21c18fc2eb3de36b70f32d04ae4ad15a101))
+* **api:** api update ([4405223](https://github.com/privy-io/ruby-sdk/commit/4405223bae1d6eb3fee33e136419a79e4325b170))
+* **api:** api update ([4e29145](https://github.com/privy-io/ruby-sdk/commit/4e29145002eaef060b33874658fddc5d5bf3102f))
+* **api:** api update ([5ae0da6](https://github.com/privy-io/ruby-sdk/commit/5ae0da6e942c05218ecdd2901baa3c05eedde5c4))
+* **api:** api update ([e2e3e18](https://github.com/privy-io/ruby-sdk/commit/e2e3e18ec3107ab2fa030d7bedc51adeb0f248f5))
+* **api:** api update ([d50fa93](https://github.com/privy-io/ruby-sdk/commit/d50fa93adb8156a4032931b66a515c3a2ef23e6f))
+* **api:** api update ([9a580ef](https://github.com/privy-io/ruby-sdk/commit/9a580ef6a5cdaf0756882916dce2412f96427a97))
+
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([bae0ce9](https://github.com/privy-io/ruby-sdk/commit/bae0ce9808103346ec6483750cfbcaaa46314867))
+
+
+### Chores
+
+* **internal:** bound formatter parallelism to CPU count ([def1bb2](https://github.com/privy-io/ruby-sdk/commit/def1bb2022e46763cd9a4d1940b0206adde54ded))
+
 ## 0.2.0 (2026-06-05)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/privy-io/ruby-sdk/compare/v0.1.0...v0.2.0)
