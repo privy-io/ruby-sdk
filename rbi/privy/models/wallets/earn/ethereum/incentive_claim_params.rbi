@@ -5,7 +5,7 @@ module Privy
     module Wallets
       module Earn
         module Ethereum
-          class IncentiveClaimParams < Privy::Models::EarnIncentiveClaimRequestBody
+          class IncentiveClaimParams < Privy::Models::Wallets::EarnIncentiveClaimRequestBody
             extend Privy::Internal::Type::RequestParameters::Converter
             include Privy::Internal::Type::RequestParameters
 

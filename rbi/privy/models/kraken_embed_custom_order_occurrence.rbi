@@ -17,7 +17,8 @@ module Privy
       sig { returns(Time) }
       attr_accessor :created_at
 
-      sig { returns(Privy::KrakenEmbedCustomOrderOccurrence::Status::OrSymbol) }
+      # Outcome status of a custom order execution occurrence.
+      sig { returns(Privy::KrakenEmbedCustomOrderOccurrenceStatus::OrSymbol) }
       attr_accessor :status
 
       # Trigger metadata for a custom order occurrence.
@@ -37,7 +38,7 @@ module Privy
       # Executed action details for a custom order occurrence.
       sig do
         returns(
-          T.nilable(Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction)
+          T.nilable(Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction)
         )
       end
       attr_reader :executed_action
@@ -45,7 +46,9 @@ module Privy
       sig do
         params(
           executed_action:
-            Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction::OrHash
+            T.nilable(
+              Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction::OrHash
+            )
         ).void
       end
       attr_writer :executed_action
@@ -67,11 +70,13 @@ module Privy
         params(
           id: String,
           created_at: Time,
-          status: Privy::KrakenEmbedCustomOrderOccurrence::Status::OrSymbol,
+          status: Privy::KrakenEmbedCustomOrderOccurrenceStatus::OrSymbol,
           trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger::OrHash,
           updated_at: Time,
           executed_action:
-            Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction::OrHash,
+            T.nilable(
+              Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction::OrHash
+            ),
           failure_reason: String,
           skip_reason: String
         ).returns(T.attached_class)
@@ -79,6 +84,7 @@ module Privy
       def self.new(
         id:,
         created_at:,
+        # Outcome status of a custom order execution occurrence.
         status:,
         # Trigger metadata for a custom order occurrence.
         trigger:,
@@ -95,72 +101,17 @@ module Privy
           {
             id: String,
             created_at: Time,
-            status: Privy::KrakenEmbedCustomOrderOccurrence::Status::OrSymbol,
+            status: Privy::KrakenEmbedCustomOrderOccurrenceStatus::OrSymbol,
             trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
             updated_at: Time,
             executed_action:
-              Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+              T.nilable(Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction),
             failure_reason: String,
             skip_reason: String
           }
         )
       end
       def to_hash
-      end
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::KrakenEmbedCustomOrderOccurrence::Status)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SUCCESS =
-          T.let(
-            :success,
-            Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-          )
-        FAILURE =
-          T.let(
-            :failure,
-            Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-          )
-        SKIPPED =
-          T.let(
-            :skipped,
-            Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedCustomOrderOccurrence::Status::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      class ExecutedAction < Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Executed action details for a custom order occurrence.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

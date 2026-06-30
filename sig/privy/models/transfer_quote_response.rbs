@@ -4,6 +4,7 @@ module Privy
       {
         destination: Privy::TokenTransferDestination,
         estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_input_amount: String,
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
@@ -15,6 +16,8 @@ module Privy
       attr_accessor destination: Privy::TokenTransferDestination
 
       attr_accessor estimated_fees: ::Array[Privy::Models::fee_line_item]
+
+      attr_accessor estimated_input_amount: String
 
       attr_accessor estimated_output_amount: String
 
@@ -35,6 +38,7 @@ module Privy
       def initialize: (
         destination: Privy::TokenTransferDestination,
         estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_input_amount: String,
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,
@@ -45,6 +49,7 @@ module Privy
       def to_hash: -> {
         destination: Privy::TokenTransferDestination,
         estimated_fees: ::Array[Privy::Models::fee_line_item],
+        estimated_input_amount: String,
         estimated_output_amount: String,
         expires_at: Float,
         source: Privy::Models::token_transfer_source,

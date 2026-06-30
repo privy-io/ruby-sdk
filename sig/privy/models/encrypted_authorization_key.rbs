@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type encrypted_authorization_key =
+      {
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::EncryptedAuthorizationKey::encryption_type
+      }
+
+    class EncryptedAuthorizationKey < Privy::Internal::Type::BaseModel
+      attr_accessor ciphertext: String
+
+      attr_accessor encapsulated_key: String
+
+      attr_accessor encryption_type: Privy::Models::EncryptedAuthorizationKey::encryption_type
+
+      def initialize: (
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::EncryptedAuthorizationKey::encryption_type
+      ) -> void
+
+      def to_hash: -> {
+        ciphertext: String,
+        encapsulated_key: String,
+        encryption_type: Privy::Models::EncryptedAuthorizationKey::encryption_type
+      }
+
+      type encryption_type = :HPKE
+
+      module EncryptionType
+        extend Privy::Internal::Type::Enum
+
+        HPKE: :HPKE
+
+        def self?.values: -> ::Array[Privy::Models::EncryptedAuthorizationKey::encryption_type]
+      end
+    end
+  end
+end

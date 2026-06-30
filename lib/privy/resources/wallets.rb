@@ -3,6 +3,10 @@
 module Privy
   module Resources
     class Wallets
+      # Operations related to wallet actions
+      # @return [Privy::Resources::Wallets::Actions]
+      attr_reader :actions
+
       # @return [Privy::Resources::Wallets::Earn]
       attr_reader :earn
 
@@ -109,7 +113,9 @@ module Privy
       #
       # Get all wallets in your app.
       #
-      # @overload list(authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, limit: nil, user_id: nil, request_options: {})
+      # @overload list(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
+      #
+      # @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
       #
       # @param authorization_key [String] Filter wallets by authorization public key. Returns wallets owned by key quorums
       #
@@ -118,6 +124,8 @@ module Privy
       # @param cursor [String]
       #
       # @param external_id [String] Filter wallets by external ID.
+      #
+      # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
       #
       # @param limit [Float, nil]
       #
@@ -205,13 +213,15 @@ module Privy
       #
       # Transfer tokens from a wallet to a destination address.
       #
-      # @overload _transfer(wallet_id, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+      # @overload _transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
       # @param destination [Privy::Models::TokenTransferDestination] Body param: The destination address for a token transfer. Optionally specify a d
       #
       # @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] Body param: The source asset, amount, and chain for a token transfer. Specify ei
+      #
+      # @param amount [String] Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
       #
       # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
       #
@@ -227,7 +237,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::TransferActionResponse]
+      # @return [Privy::Models::Wallets::TransferActionResponse]
       #
       # @see Privy::Models::WalletTransferParams
       def _transfer(wallet_id, params)
@@ -243,8 +253,30 @@ module Privy
           path: ["v1/wallets/%1$s/transfer", wallet_id],
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Privy::TransferActionResponse,
+          model: Privy::Wallets::TransferActionResponse,
           options: options
+        )
+      end
+
+      # Archives a wallet, preventing it from being used in any write or signing
+      # operations. Archived wallets are hidden from list endpoints by default. Returns
+      # 404 if the wallet does not exist or is already archived.
+      #
+      # @overload archive(wallet_id, request_options: {})
+      #
+      # @param wallet_id [String] ID of the wallet.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::Wallet]
+      #
+      # @see Privy::Models::WalletArchiveParams
+      def archive(wallet_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["v1/wallets/%1$s/archive", wallet_id],
+          model: Privy::Wallet,
+          options: params[:request_options]
         )
       end
 
@@ -264,7 +296,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::WalletAuthenticateWithJwtResponse::WithEncryption, Privy::Models::WalletAuthenticateWithJwtResponse::WithoutEncryption]
+      # @return [Privy::Models::EncryptedWalletAuthenticateResponse, Privy::Models::RawWalletAuthenticateResponse]
       #
       # @see Privy::Models::WalletAuthenticateWithJwtParams
       def authenticate_with_jwt(params)
@@ -372,9 +404,11 @@ module Privy
 
       # Get a wallet by wallet ID.
       #
-      # @overload get(wallet_id, request_options: {})
+      # @overload get(wallet_id, include_archived: nil, request_options: {})
       #
       # @param wallet_id [String] ID of the wallet.
+      #
+      # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -382,19 +416,27 @@ module Privy
       #
       # @see Privy::Models::WalletGetParams
       def get(wallet_id, params = {})
+        parsed, options = Privy::WalletGetParams.dump_request(params)
+        query = Privy::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["v1/wallets/%1$s", wallet_id],
+          query: query,
           model: Privy::Wallet,
-          options: params[:request_options]
+          options: options
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::WalletGetWalletByAddressParams} for more details.
+      #
       # Look up a wallet by its blockchain address. Returns the wallet object if found.
       #
-      # @overload get_wallet_by_address(address:, request_options: {})
+      # @overload get_wallet_by_address(address:, include_archived: nil, request_options: {})
       #
-      # @param address [String] A blockchain wallet address (Ethereum or Solana).
+      # @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
+      #
+      # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false (archived wallets return 4
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -461,7 +503,7 @@ module Privy
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
-      # @param wallet_rpc_request_body [Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput] Body param: Request body for wallet RPC operations, discriminated by method.
+      # @param wallet_rpc_request_body [Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput] Body param: Request body for wallet RPC operations, discriminated by method.
       #
       # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
       #
@@ -471,7 +513,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::EthereumPersonalSignRpcResponse, Privy::Models::EthereumSignTypedDataRpcResponse, Privy::Models::EthereumSignTransactionRpcResponse, Privy::Models::EthereumSendTransactionRpcResponse, Privy::Models::EthereumSignUserOperationRpcResponse, Privy::Models::EthereumSign7702AuthorizationRpcResponse, Privy::Models::EthereumSecp256k1SignRpcResponse, Privy::Models::EthereumSendCallsRpcResponse, Privy::Models::SolanaSignMessageRpcResponse, Privy::Models::SolanaSignTransactionRpcResponse, Privy::Models::SolanaSignAndSendTransactionRpcResponse, Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::ExportPrivateKeyRpcResponse, Privy::Models::ExportSeedPhraseRpcResponse]
+      # @return [Privy::Models::EthereumPersonalSignRpcResponse, Privy::Models::EthereumSignTypedDataRpcResponse, Privy::Models::EthereumSignTransactionRpcResponse, Privy::Models::EthereumSendTransactionRpcResponse, Privy::Models::EthereumSignUserOperationRpcResponse, Privy::Models::EthereumSign7702AuthorizationRpcResponse, Privy::Models::EthereumSecp256k1SignRpcResponse, Privy::Models::EthereumSendCallsRpcResponse, Privy::Models::SolanaSignMessageRpcResponse, Privy::Models::SolanaSignTransactionRpcResponse, Privy::Models::SolanaSignAndSendTransactionRpcResponse, Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::TronSignTransactionRpcResponse, Privy::Models::TronSendTransactionRpcResponse, Privy::Models::ExportPrivateKeyRpcResponse, Privy::Models::ExportSeedPhraseRpcResponse]
       #
       # @see Privy::Models::WalletRpcParams
       def rpc(wallet_id, params)
@@ -495,6 +537,7 @@ module Privy
       # @param client [Privy::Client]
       def initialize(client:)
         @client = client
+        @actions = Privy::Resources::Wallets::Actions.new(client: client)
         @earn = Privy::Resources::Wallets::Earn.new(client: client)
         @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
         @balance = Privy::Resources::Wallets::Balance.new(client: client)

@@ -23,6 +23,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -52,6 +53,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -88,6 +90,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -152,6 +155,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -172,7 +176,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Privy::TransferActionResponse
+      response => Privy::Wallets::TransferActionResponse
     end
 
     assert_pattern do
@@ -180,23 +184,54 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         id: String,
         created_at: Time,
         destination_address: String,
-        source_chain: String,
-        status: Privy::WalletActionStatus,
-        type: Privy::TransferActionResponse::Type,
-        wallet_id: String,
         destination_amount: String | nil,
+        source_chain: String,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::TransferActionResponse::Type,
+        wallet_id: String,
+        amount_type: Privy::AmountType | nil,
         destination_asset: String | nil,
         destination_chain: String | nil,
         estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         estimated_gas: Privy::Gas | nil,
-        failure_reason: Privy::FailureReason | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
         source_amount: String | nil,
         source_asset: String | nil,
         source_asset_address: String | nil,
         source_asset_decimals: Integer | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
+      }
+    end
+  end
+
+  def test_archive
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.archive("wallet_id")
+
+    assert_pattern do
+      response => Privy::Wallet
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        additional_signers: ^(Privy::Internal::Type::ArrayOf[Privy::WalletAdditionalSignerItem]),
+        address: String,
+        chain_type: Privy::WalletChainType,
+        created_at: Float,
+        exported_at: Float | nil,
+        imported_at: Float | nil,
+        owner_id: String | nil,
+        policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
+        authorization_threshold: Float | nil,
+        custody: Privy::WalletCustodian | nil,
+        display_name: String | nil,
+        external_id: String | nil,
+        public_key: String | nil
       }
     end
   end
@@ -217,8 +252,8 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
 
     assert_pattern do
       case response
-      in Privy::WalletAuthenticateWithJwtResponse::WithEncryption
-      in Privy::WalletAuthenticateWithJwtResponse::WithoutEncryption
+      in Privy::EncryptedWalletAuthenticateResponse
+      in Privy::RawWalletAuthenticateResponse
       end
     end
   end
@@ -304,6 +339,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -334,6 +370,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         imported_at: Float | nil,
         owner_id: String | nil,
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
+        archived_at: Float | nil,
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -407,6 +444,8 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in Privy::SparkCreateLightningInvoiceRpcResponse
       in Privy::SparkPayLightningInvoiceRpcResponse
       in Privy::SparkSignMessageWithIdentityKeyRpcResponse
+      in Privy::TronSignTransactionRpcResponse
+      in Privy::TronSendTransactionRpcResponse
       in Privy::ExportPrivateKeyRpcResponse
       in Privy::ExportSeedPhraseRpcResponse
       end
@@ -434,6 +473,8 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in {method_: :createLightningInvoice, data: Privy::SparkLightningReceiveRequest | nil}
       in {method_: :payLightningInvoice, data: Privy::SparkPayLightningInvoiceRpcResponse::Data | nil}
       in {method_: :signMessageWithIdentityKey, data: Privy::SparkSignMessageWithIdentityKeyRpcResponseData | nil}
+      in {method_: :tron_signTransaction, data: Privy::TronSignTransactionRpcResponseData}
+      in {method_: :tron_sendTransaction, data: Privy::TronSendTransactionRpcResponseData}
       in {method_: :exportPrivateKey, data: Privy::PrivateKeyExportInput}
       in {method_: :exportSeedPhrase, data: Privy::SeedPhraseExportResponse}
       end

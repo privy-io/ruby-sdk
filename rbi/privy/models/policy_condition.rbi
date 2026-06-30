@@ -24,7 +24,8 @@ module Privy
             Privy::SuiTransactionCommandCondition,
             Privy::SuiTransferObjectsCommandCondition,
             Privy::ActionRequestBodyCondition,
-            Privy::AggregationCondition
+            Privy::AggregationCondition,
+            Privy::MessageSigningCondition
           )
         end
 

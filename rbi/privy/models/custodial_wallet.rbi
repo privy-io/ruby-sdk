@@ -23,6 +23,7 @@ module Privy
       sig { params(custody: Privy::WalletCustodian::OrHash).void }
       attr_writer :custody
 
+      # A unique identifier for a key quorum.
       sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
@@ -64,6 +65,7 @@ module Privy
         chain_type:,
         # Information about the custodian managing this wallet.
         custody:,
+        # A unique identifier for a key quorum.
         owner_id:,
         # Additional signers for the wallet.
         additional_signers: nil,

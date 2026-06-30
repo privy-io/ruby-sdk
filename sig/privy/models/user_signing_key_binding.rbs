@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type user_signing_key_binding =
+      { intent_id: String, type: Privy::Models::UserSigningKeyBinding::type_ }
+
+    class UserSigningKeyBinding < Privy::Internal::Type::BaseModel
+      attr_accessor intent_id: String
+
+      attr_accessor type: Privy::Models::UserSigningKeyBinding::type_
+
+      def initialize: (
+        intent_id: String,
+        type: Privy::Models::UserSigningKeyBinding::type_
+      ) -> void
+
+      def to_hash: -> {
+        intent_id: String,
+        type: Privy::Models::UserSigningKeyBinding::type_
+      }
+
+      type type_ = :intent
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INTENT: :intent
+
+        def self?.values: -> ::Array[Privy::Models::UserSigningKeyBinding::type_]
+      end
+    end
+  end
+end

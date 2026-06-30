@@ -8,10 +8,10 @@ module Privy
         ids: ::Array[String],
         page_size: Integer,
         quote: String,
-        ref_ids: ::Array[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID],
-        sorting: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting,
-        statuses: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status],
-        types: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_],
+        ref_ids: ::Array[Privy::KrakenEmbedPortfolioTransactionRefID],
+        sorting: Privy::Models::kraken_embed_sorting_order,
+        statuses: ::Array[Privy::Models::kraken_embed_transaction_status],
+        types: ::Array[Privy::Models::kraken_embed_transaction_type],
         until_time: Time
       }
 
@@ -40,29 +40,29 @@ module Privy
 
       def quote=: (String) -> String
 
-      attr_reader ref_ids: ::Array[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID]?
+      attr_reader ref_ids: ::Array[Privy::KrakenEmbedPortfolioTransactionRefID]?
 
       def ref_ids=: (
-        ::Array[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID]
-      ) -> ::Array[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID]
+        ::Array[Privy::KrakenEmbedPortfolioTransactionRefID]
+      ) -> ::Array[Privy::KrakenEmbedPortfolioTransactionRefID]
 
-      attr_reader sorting: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting?
+      attr_reader sorting: Privy::Models::kraken_embed_sorting_order?
 
       def sorting=: (
-        Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting
-      ) -> Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting
+        Privy::Models::kraken_embed_sorting_order
+      ) -> Privy::Models::kraken_embed_sorting_order
 
-      attr_reader statuses: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status]?
+      attr_reader statuses: ::Array[Privy::Models::kraken_embed_transaction_status]?
 
       def statuses=: (
-        ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status]
-      ) -> ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status]
+        ::Array[Privy::Models::kraken_embed_transaction_status]
+      ) -> ::Array[Privy::Models::kraken_embed_transaction_status]
 
-      attr_reader types: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_]?
+      attr_reader types: ::Array[Privy::Models::kraken_embed_transaction_type]?
 
       def types=: (
-        ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_]
-      ) -> ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_]
+        ::Array[Privy::Models::kraken_embed_transaction_type]
+      ) -> ::Array[Privy::Models::kraken_embed_transaction_type]
 
       attr_reader until_time: Time?
 
@@ -75,10 +75,10 @@ module Privy
         ?ids: ::Array[String],
         ?page_size: Integer,
         ?quote: String,
-        ?ref_ids: ::Array[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID],
-        ?sorting: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting,
-        ?statuses: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status],
-        ?types: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_],
+        ?ref_ids: ::Array[Privy::KrakenEmbedPortfolioTransactionRefID],
+        ?sorting: Privy::Models::kraken_embed_sorting_order,
+        ?statuses: ::Array[Privy::Models::kraken_embed_transaction_status],
+        ?types: ::Array[Privy::Models::kraken_embed_transaction_type],
         ?until_time: Time
       ) -> void
 
@@ -89,81 +89,12 @@ module Privy
         ids: ::Array[String],
         page_size: Integer,
         quote: String,
-        ref_ids: ::Array[Privy::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID],
-        sorting: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting,
-        statuses: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status],
-        types: ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_],
+        ref_ids: ::Array[Privy::KrakenEmbedPortfolioTransactionRefID],
+        sorting: Privy::Models::kraken_embed_sorting_order,
+        statuses: ::Array[Privy::Models::kraken_embed_transaction_status],
+        types: ::Array[Privy::Models::kraken_embed_transaction_type],
         until_time: Time
       }
-
-      type ref_id =
-        {
-          ref_id: String,
-          type: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::type_
-        }
-
-      class RefID < Privy::Internal::Type::BaseModel
-        attr_accessor ref_id: String
-
-        attr_accessor type: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::type_
-
-        def initialize: (
-          ref_id: String,
-          type: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::type_
-        ) -> void
-
-        def to_hash: -> {
-          ref_id: String,
-          type: Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::type_
-        }
-
-        type type_ = :simple_order_quote | :simple_order_quote_failed
-
-        module Type
-          extend Privy::Internal::Type::Enum
-
-          SIMPLE_ORDER_QUOTE: :simple_order_quote
-          SIMPLE_ORDER_QUOTE_FAILED: :simple_order_quote_failed
-
-          def self?.values: -> ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::RefID::type_]
-        end
-      end
-
-      type sorting = :descending | :ascending
-
-      module Sorting
-        extend Privy::Internal::Type::Enum
-
-        DESCENDING: :descending
-        ASCENDING: :ascending
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::sorting]
-      end
-
-      type status = :unspecified | :in_progress | :successful | :failed
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        UNSPECIFIED: :unspecified
-        IN_PROGRESS: :in_progress
-        SUCCESSFUL: :successful
-        FAILED: :failed
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::status]
-      end
-
-      type type_ = :simple_order | :simple_order_failed | :earn_reward
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        SIMPLE_ORDER: :simple_order
-        SIMPLE_ORDER_FAILED: :simple_order_failed
-        EARN_REWARD: :earn_reward
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema::type_]
-      end
     end
   end
 end

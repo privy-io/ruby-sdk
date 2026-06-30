@@ -19,9 +19,10 @@ module Privy
       optional :connector_type, String, api_name: :connectorType, nil?: true
 
       # @!attribute message_type
+      #   The type of SIWS message being signed.
       #
-      #   @return [Symbol, Privy::Models::SiwsAuthenticateRequestBody::MessageType, nil]
-      optional :message_type, enum: -> { Privy::SiwsAuthenticateRequestBody::MessageType }
+      #   @return [Symbol, Privy::Models::SiwsMessageType, nil]
+      optional :message_type, enum: -> { Privy::SiwsMessageType }
 
       # @!attribute mode
       #   Whether to allow sign-up during authentication.
@@ -43,22 +44,11 @@ module Privy
       #
       #   @param connector_type [String, nil]
       #
-      #   @param message_type [Symbol, Privy::Models::SiwsAuthenticateRequestBody::MessageType]
+      #   @param message_type [Symbol, Privy::Models::SiwsMessageType] The type of SIWS message being signed.
       #
       #   @param mode [Symbol, Privy::Models::AuthenticateModeOption] Whether to allow sign-up during authentication.
       #
       #   @param wallet_client_type [String, nil]
-
-      # @see Privy::Models::SiwsAuthenticateRequestBody#message_type
-      module MessageType
-        extend Privy::Internal::Type::Enum
-
-        TRANSACTION = :transaction
-        PLAIN = :plain
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

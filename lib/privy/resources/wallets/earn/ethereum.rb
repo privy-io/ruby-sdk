@@ -33,7 +33,7 @@ module Privy
           #
           # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Privy::Models::EarnDepositActionResponse]
+          # @return [Privy::Models::Wallets::EarnDepositActionResponse]
           #
           # @see Privy::Models::Wallets::Earn::EthereumDepositParams
           def _deposit(wallet_id, params)
@@ -49,7 +49,7 @@ module Privy
               path: ["v1/wallets/%1$s/earn/ethereum/deposit", wallet_id],
               headers: parsed.slice(*header_params.keys).transform_keys(header_params),
               body: parsed.except(*header_params.keys),
-              model: Privy::EarnDepositActionResponse,
+              model: Privy::Wallets::EarnDepositActionResponse,
               options: options
             )
           end
@@ -77,7 +77,7 @@ module Privy
           #
           # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Privy::Models::EarnWithdrawActionResponse]
+          # @return [Privy::Models::Wallets::EarnWithdrawActionResponse]
           #
           # @see Privy::Models::Wallets::Earn::EthereumWithdrawParams
           def _withdraw(wallet_id, params)
@@ -93,7 +93,7 @@ module Privy
               path: ["v1/wallets/%1$s/earn/ethereum/withdraw", wallet_id],
               headers: parsed.slice(*header_params.keys).transform_keys(header_params),
               body: parsed.except(*header_params.keys),
-              model: Privy::EarnWithdrawActionResponse,
+              model: Privy::Wallets::EarnWithdrawActionResponse,
               options: options
             )
           end

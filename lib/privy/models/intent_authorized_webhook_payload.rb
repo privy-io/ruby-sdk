@@ -36,7 +36,7 @@ module Privy
       # @!attribute member
       #   A leaf member (user or key) of a nested key quorum in an intent authorization.
       #
-      #   @return [Privy::Models::IntentAuthorizationKeyQuorumMember::UserMember, Privy::Models::IntentAuthorizationKeyQuorumMember::KeyMember]
+      #   @return [Privy::Models::IntentAuthorizationUserMember, Privy::Models::IntentAuthorizationKeyMember]
       required :member, union: -> { Privy::IntentAuthorizationKeyQuorumMember }
 
       # @!attribute status
@@ -76,7 +76,7 @@ module Privy
       #
       #   @param intent_type [Symbol, Privy::Models::IntentType] Type of intent.
       #
-      #   @param member [Privy::Models::IntentAuthorizationKeyQuorumMember::UserMember, Privy::Models::IntentAuthorizationKeyQuorumMember::KeyMember] A leaf member (user or key) of a nested key quorum in an intent authorization.
+      #   @param member [Privy::Models::IntentAuthorizationUserMember, Privy::Models::IntentAuthorizationKeyMember] A leaf member (user or key) of a nested key quorum in an intent authorization.
       #
       #   @param status [String] The current status of the intent.
       #

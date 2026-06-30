@@ -24,6 +24,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :updated_at
 
+      sig { returns(T.nilable(String)) }
+      attr_accessor :name
+
       # A test account for an app.
       sig do
         params(
@@ -32,7 +35,8 @@ module Privy
           email: String,
           otp_code: String,
           phone_number: String,
-          updated_at: String
+          updated_at: String,
+          name: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -41,7 +45,8 @@ module Privy
         email:,
         otp_code:,
         phone_number:,
-        updated_at:
+        updated_at:,
+        name: nil
       )
       end
 
@@ -53,7 +58,8 @@ module Privy
             email: String,
             otp_code: String,
             phone_number: String,
-            updated_at: String
+            updated_at: String,
+            name: T.nilable(String)
           }
         )
       end

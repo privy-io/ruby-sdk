@@ -4,7 +4,7 @@ module Privy
   module Models
     module Wallets
       module Earn
-        class EthereumWithdrawParams < Privy::Models::EarnWithdrawRequestBody
+        class EthereumWithdrawParams < Privy::Models::Wallets::EarnWithdrawRequestBody
           extend Privy::Internal::Type::RequestParameters::Converter
           include Privy::Internal::Type::RequestParameters
 

@@ -17,9 +17,10 @@ module Privy
                api_name: :deletedUser
 
       # @!attribute from_user
+      #   A reference to a user by their unique identifier.
       #
-      #   @return [Privy::Models::UserTransferredAccountWebhookPayload::FromUser]
-      required :from_user, -> { Privy::UserTransferredAccountWebhookPayload::FromUser }, api_name: :fromUser
+      #   @return [Privy::Models::UserReference]
+      required :from_user, -> { Privy::UserReference }, api_name: :fromUser
 
       # @!attribute to_user
       #   A Privy user object.
@@ -40,7 +41,7 @@ module Privy
       #
       #   @param deleted_user [Boolean, Privy::Models::UserTransferredAccountWebhookPayload::DeletedUser]
       #
-      #   @param from_user [Privy::Models::UserTransferredAccountWebhookPayload::FromUser]
+      #   @param from_user [Privy::Models::UserReference] A reference to a user by their unique identifier.
       #
       #   @param to_user [Privy::Models::User] A Privy user object.
       #
@@ -54,17 +55,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Boolean>]
-      end
-
-      # @see Privy::Models::UserTransferredAccountWebhookPayload#from_user
-      class FromUser < Privy::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!method initialize(id:)
-        #   @param id [String]
       end
 
       # The type of webhook event.

@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type blockchain_transaction_status =
+      :broadcasted
+      | :confirmed
+      | :execution_reverted
+      | :failed
+      | :replaced
+      | :finalized
+      | :provider_error
+      | :pending
+
+    module BlockchainTransactionStatus
+      extend Privy::Internal::Type::Enum
+
+      BROADCASTED: :broadcasted
+      CONFIRMED: :confirmed
+      EXECUTION_REVERTED: :execution_reverted
+      FAILED: :failed
+      REPLACED: :replaced
+      FINALIZED: :finalized
+      PROVIDER_ERROR: :provider_error
+      PENDING: :pending
+
+      def self?.values: -> ::Array[Privy::Models::blockchain_transaction_status]
+    end
+  end
+end

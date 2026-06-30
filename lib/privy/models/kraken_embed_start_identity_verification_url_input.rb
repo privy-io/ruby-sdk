@@ -21,14 +21,14 @@ module Privy
       # @!attribute debug
       #   Debug options for start verification. Only works in non-production environments.
       #
-      #   @return [Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::Debug, nil]
-      optional :debug, -> { Privy::KrakenEmbedStartIdentityVerificationURLInput::Debug }
+      #   @return [Privy::Models::KrakenEmbedStartVerificationDebug, nil]
+      optional :debug, -> { Privy::KrakenEmbedStartVerificationDebug }, nil?: true
 
       # @!attribute metadata
       #   Optional best-effort metadata hints for proof of identity verification.
       #
-      #   @return [Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::Metadata, nil]
-      optional :metadata, -> { Privy::KrakenEmbedStartIdentityVerificationURLInput::Metadata }
+      #   @return [Privy::Models::KrakenEmbedStartIdentityMetadata, nil]
+      optional :metadata, -> { Privy::KrakenEmbedStartIdentityMetadata }, nil?: true
 
       # @!method initialize(front_url:, type:, back_url: nil, debug: nil, metadata: nil)
       #   Some parameter documentations has been truncated, see
@@ -42,9 +42,9 @@ module Privy
       #
       #   @param back_url [String, nil]
       #
-      #   @param debug [Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::Debug] Debug options for start verification. Only works in non-production environments.
+      #   @param debug [Privy::Models::KrakenEmbedStartVerificationDebug, nil] Debug options for start verification. Only works in non-production environments.
       #
-      #   @param metadata [Privy::Models::KrakenEmbedStartIdentityVerificationURLInput::Metadata] Optional best-effort metadata hints for proof of identity verification.
+      #   @param metadata [Privy::Models::KrakenEmbedStartIdentityMetadata, nil] Optional best-effort metadata hints for proof of identity verification.
 
       # @see Privy::Models::KrakenEmbedStartIdentityVerificationURLInput#type
       module Type
@@ -54,18 +54,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::KrakenEmbedStartIdentityVerificationURLInput#debug
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        # @!method initialize
-        #   Debug options for start verification. Only works in non-production environments.
-      end
-
-      # @see Privy::Models::KrakenEmbedStartIdentityVerificationURLInput#metadata
-      class Metadata < Privy::Models::KrakenEmbedStartIdentityMetadata
-        # @!method initialize
-        #   Optional best-effort metadata hints for proof of identity verification.
       end
     end
   end

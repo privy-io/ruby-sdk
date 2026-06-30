@@ -2,8 +2,9 @@ module Privy
   module Models
     type wallet_action_swap_created_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         :caip2 => String,
+        created_at: String,
         input_amount: String?,
         input_token: String,
         output_token: String,
@@ -14,9 +15,11 @@ module Privy
       }
 
     class WalletActionSwapCreatedWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor caip2: String
+
+      attr_accessor created_at: String
 
       attr_accessor input_amount: String?
 
@@ -33,8 +36,9 @@ module Privy
       attr_accessor wallet_id: String
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         caip2: String,
+        created_at: String,
         input_amount: String?,
         input_token: String,
         output_token: String,
@@ -45,8 +49,9 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         :caip2 => String,
+        created_at: String,
         input_amount: String?,
         input_token: String,
         output_token: String,

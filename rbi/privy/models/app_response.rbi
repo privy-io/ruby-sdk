@@ -21,14 +21,11 @@ module Privy
       sig { returns(T::Array[String]) }
       attr_accessor :allowed_native_app_url_schemes
 
-      sig { returns(Privy::AppResponse::AllowlistConfig) }
+      # Configuration for the allowlist error page shown to users not on the allowlist.
+      sig { returns(Privy::AppAllowlistConfig) }
       attr_reader :allowlist_config
 
-      sig do
-        params(
-          allowlist_config: Privy::AppResponse::AllowlistConfig::OrHash
-        ).void
-      end
+      sig { params(allowlist_config: Privy::AppAllowlistConfig::OrHash).void }
       attr_writer :allowlist_config
 
       sig { returns(T::Boolean) }
@@ -46,7 +43,7 @@ module Privy
       sig { returns(T::Boolean) }
       attr_accessor :custom_jwt_auth
 
-      sig { returns(T::Array[Privy::AppResponse::CustomOAuthProvider]) }
+      sig { returns(T::Array[Privy::AppCustomOAuthProvider]) }
       attr_accessor :custom_oauth_providers
 
       # Indicates that this response contains only publicly accessible data, not a
@@ -74,15 +71,15 @@ module Privy
       end
       attr_writer :embedded_wallet_config
 
-      sig do
-        returns(
-          T.nilable(Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol)
-        )
-      end
+      # The captcha provider enabled for an app.
+      sig { returns(T.nilable(Privy::CaptchaProvider::TaggedSymbol)) }
       attr_accessor :enabled_captcha_provider
 
       sig { returns(T::Boolean) }
       attr_accessor :enforce_wallet_uis
+
+      sig { returns(T::Boolean) }
+      attr_accessor :external_wallets_for_signup_enabled
 
       sig { returns(T::Boolean) }
       attr_accessor :farcaster_auth
@@ -123,7 +120,10 @@ module Privy
       sig { returns(T.nilable(Float)) }
       attr_accessor :max_linked_wallets_per_user
 
-      sig { returns(T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol]) }
+      sig { returns(T::Boolean) }
+      attr_accessor :merge_accounts_by_email
+
+      sig { returns(T::Array[Privy::MfaMethod::TaggedSymbol]) }
       attr_accessor :mfa_methods
 
       sig { returns(String) }
@@ -227,22 +227,22 @@ module Privy
           allowed_domains: T::Array[String],
           allowed_native_app_ids: T::Array[String],
           allowed_native_app_url_schemes: T::Array[String],
-          allowlist_config: Privy::AppResponse::AllowlistConfig::OrHash,
+          allowlist_config: Privy::AppAllowlistConfig::OrHash,
           allowlist_enabled: T::Boolean,
           apple_oauth: T::Boolean,
           captcha_enabled: T::Boolean,
           custom_api_url: T.nilable(String),
           custom_jwt_auth: T::Boolean,
           custom_oauth_providers:
-            T::Array[Privy::AppResponse::CustomOAuthProvider::OrHash],
+            T::Array[Privy::AppCustomOAuthProvider::OrHash],
           data_classification: Privy::AppResponse::DataClassification::OrSymbol,
           disable_plus_emails: T::Boolean,
           discord_oauth: T::Boolean,
           email_auth: T::Boolean,
           embedded_wallet_config: Privy::EmbeddedWalletConfigSchema::OrHash,
-          enabled_captcha_provider:
-            T.nilable(Privy::AppResponse::EnabledCaptchaProvider::OrSymbol),
+          enabled_captcha_provider: T.nilable(Privy::CaptchaProvider::OrSymbol),
           enforce_wallet_uis: T::Boolean,
+          external_wallets_for_signup_enabled: T::Boolean,
           farcaster_auth: T::Boolean,
           farcaster_link_wallets_enabled: T::Boolean,
           fiat_on_ramp_enabled: T::Boolean,
@@ -256,7 +256,8 @@ module Privy
           linkedin_oauth: T::Boolean,
           logo_url: T.nilable(String),
           max_linked_wallets_per_user: T.nilable(Float),
-          mfa_methods: T::Array[Privy::AppResponse::MfaMethod::OrSymbol],
+          merge_accounts_by_email: T::Boolean,
+          mfa_methods: T::Array[Privy::MfaMethod::OrSymbol],
           name: String,
           passkey_auth: T::Boolean,
           passkeys_for_signup_enabled: T::Boolean,
@@ -294,6 +295,7 @@ module Privy
         allowed_domains:,
         allowed_native_app_ids:,
         allowed_native_app_url_schemes:,
+        # Configuration for the allowlist error page shown to users not on the allowlist.
         allowlist_config:,
         allowlist_enabled:,
         apple_oauth:,
@@ -309,8 +311,10 @@ module Privy
         email_auth:,
         # Configuration for embedded wallets including the mode.
         embedded_wallet_config:,
+        # The captcha provider enabled for an app.
         enabled_captcha_provider:,
         enforce_wallet_uis:,
+        external_wallets_for_signup_enabled:,
         farcaster_auth:,
         farcaster_link_wallets_enabled:,
         fiat_on_ramp_enabled:,
@@ -324,6 +328,7 @@ module Privy
         linkedin_oauth:,
         logo_url:,
         max_linked_wallets_per_user:,
+        merge_accounts_by_email:,
         mfa_methods:,
         name:,
         passkey_auth:,
@@ -364,14 +369,13 @@ module Privy
             allowed_domains: T::Array[String],
             allowed_native_app_ids: T::Array[String],
             allowed_native_app_url_schemes: T::Array[String],
-            allowlist_config: Privy::AppResponse::AllowlistConfig,
+            allowlist_config: Privy::AppAllowlistConfig,
             allowlist_enabled: T::Boolean,
             apple_oauth: T::Boolean,
             captcha_enabled: T::Boolean,
             custom_api_url: T.nilable(String),
             custom_jwt_auth: T::Boolean,
-            custom_oauth_providers:
-              T::Array[Privy::AppResponse::CustomOAuthProvider],
+            custom_oauth_providers: T::Array[Privy::AppCustomOAuthProvider],
             data_classification:
               Privy::AppResponse::DataClassification::TaggedSymbol,
             disable_plus_emails: T::Boolean,
@@ -379,10 +383,9 @@ module Privy
             email_auth: T::Boolean,
             embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
             enabled_captcha_provider:
-              T.nilable(
-                Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
-              ),
+              T.nilable(Privy::CaptchaProvider::TaggedSymbol),
             enforce_wallet_uis: T::Boolean,
+            external_wallets_for_signup_enabled: T::Boolean,
             farcaster_auth: T::Boolean,
             farcaster_link_wallets_enabled: T::Boolean,
             fiat_on_ramp_enabled: T::Boolean,
@@ -396,7 +399,8 @@ module Privy
             linkedin_oauth: T::Boolean,
             logo_url: T.nilable(String),
             max_linked_wallets_per_user: T.nilable(Float),
-            mfa_methods: T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol],
+            merge_accounts_by_email: T::Boolean,
+            mfa_methods: T::Array[Privy::MfaMethod::TaggedSymbol],
             name: String,
             passkey_auth: T::Boolean,
             passkeys_for_signup_enabled: T::Boolean,
@@ -428,104 +432,6 @@ module Privy
       def to_hash
       end
 
-      class AllowlistConfig < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Privy::AppResponse::AllowlistConfig, Privy::Internal::AnyHash)
-          end
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :cta_link
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :cta_text
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :error_detail
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :error_title
-
-        sig do
-          params(
-            cta_link: T.nilable(String),
-            cta_text: T.nilable(String),
-            error_detail: T.nilable(String),
-            error_title: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(cta_link:, cta_text:, error_detail:, error_title:)
-        end
-
-        sig do
-          override.returns(
-            {
-              cta_link: T.nilable(String),
-              cta_text: T.nilable(String),
-              error_detail: T.nilable(String),
-              error_title: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::AppResponse::CustomOAuthProvider,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T::Boolean) }
-        attr_accessor :enabled
-
-        # The ID of a custom OAuth provider, set up for this app. Must start with
-        # "custom:".
-        sig { returns(String) }
-        attr_accessor :provider
-
-        sig { returns(String) }
-        attr_accessor :provider_display_name
-
-        sig { returns(String) }
-        attr_accessor :provider_icon_url
-
-        sig do
-          params(
-            enabled: T::Boolean,
-            provider: String,
-            provider_display_name: String,
-            provider_icon_url: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          enabled:,
-          # The ID of a custom OAuth provider, set up for this app. Must start with
-          # "custom:".
-          provider:,
-          provider_display_name:,
-          provider_icon_url:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              enabled: T::Boolean,
-              provider: String,
-              provider_display_name: String,
-              provider_icon_url: String
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
       # Indicates that this response contains only publicly accessible data, not a
       # privileged resource
       module DataClassification
@@ -541,55 +447,6 @@ module Privy
         sig do
           override.returns(
             T::Array[Privy::AppResponse::DataClassification::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module EnabledCaptchaProvider
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::AppResponse::EnabledCaptchaProvider)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TURNSTILE =
-          T.let(
-            :turnstile,
-            Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
-          )
-        HCAPTCHA =
-          T.let(
-            :hcaptcha,
-            Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Privy::AppResponse::EnabledCaptchaProvider::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module MfaMethod
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Privy::AppResponse::MfaMethod) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SMS = T.let(:sms, Privy::AppResponse::MfaMethod::TaggedSymbol)
-        TOTP = T.let(:totp, Privy::AppResponse::MfaMethod::TaggedSymbol)
-        PASSKEY = T.let(:passkey, Privy::AppResponse::MfaMethod::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Privy::AppResponse::MfaMethod::TaggedSymbol]
           )
         end
         def self.values

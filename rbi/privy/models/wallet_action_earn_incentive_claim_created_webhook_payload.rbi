@@ -12,15 +12,23 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # EVM chain name (e.g. "base", "ethereum").
       sig { returns(String) }
       attr_accessor :chain
 
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
       # Claimed reward tokens. Populated after the preparation step fetches from Merkl.
-      sig { returns(T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry])) }
+      sig do
+        returns(
+          T.nilable(T::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry])
+        )
+      end
       attr_accessor :rewards
 
       # The status of the wallet action.
@@ -50,10 +58,13 @@ module Privy
       # Payload for the wallet_action.earn_incentive_claim.created webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           chain: String,
+          created_at: String,
           rewards:
-            T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry::OrHash]),
+            T.nilable(
+              T::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry::OrHash]
+            ),
           status:
             Privy::WalletActionEarnIncentiveClaimCreatedWebhookPayload::Status::OrSymbol,
           type:
@@ -67,6 +78,8 @@ module Privy
         action_type:,
         # EVM chain name (e.g. "base", "ethereum").
         chain:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Claimed reward tokens. Populated after the preparation step fetches from Merkl.
         rewards:,
         # The status of the wallet action.
@@ -83,9 +96,11 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             chain: String,
-            rewards: T.nilable(T::Array[Privy::EarnIncetiveClaimRewardEntry]),
+            created_at: String,
+            rewards:
+              T.nilable(T::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]),
             status:
               Privy::WalletActionEarnIncentiveClaimCreatedWebhookPayload::Status::TaggedSymbol,
             type:

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type message_signing_field = :content | :byte_length
+
+    module MessageSigningField
+      extend Privy::Internal::Type::Enum
+
+      CONTENT: :content
+      BYTE_LENGTH: :byte_length
+
+      def self?.values: -> ::Array[Privy::Models::message_signing_field]
+    end
+  end
+end

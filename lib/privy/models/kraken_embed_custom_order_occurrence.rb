@@ -14,9 +14,10 @@ module Privy
       required :created_at, Time
 
       # @!attribute status
+      #   Outcome status of a custom order execution occurrence.
       #
-      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderOccurrence::Status]
-      required :status, enum: -> { Privy::KrakenEmbedCustomOrderOccurrence::Status }
+      #   @return [Symbol, Privy::Models::KrakenEmbedCustomOrderOccurrenceStatus]
+      required :status, enum: -> { Privy::KrakenEmbedCustomOrderOccurrenceStatus }
 
       # @!attribute trigger
       #   Trigger metadata for a custom order occurrence.
@@ -32,8 +33,8 @@ module Privy
       # @!attribute executed_action
       #   Executed action details for a custom order occurrence.
       #
-      #   @return [Privy::Models::KrakenEmbedCustomOrderOccurrence::ExecutedAction, nil]
-      optional :executed_action, -> { Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction }
+      #   @return [Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction, nil]
+      optional :executed_action, -> { Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction }, nil?: true
 
       # @!attribute failure_reason
       #
@@ -52,35 +53,17 @@ module Privy
       #
       #   @param created_at [Time]
       #
-      #   @param status [Symbol, Privy::Models::KrakenEmbedCustomOrderOccurrence::Status]
+      #   @param status [Symbol, Privy::Models::KrakenEmbedCustomOrderOccurrenceStatus] Outcome status of a custom order execution occurrence.
       #
       #   @param trigger [Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger] Trigger metadata for a custom order occurrence.
       #
       #   @param updated_at [Time]
       #
-      #   @param executed_action [Privy::Models::KrakenEmbedCustomOrderOccurrence::ExecutedAction] Executed action details for a custom order occurrence.
+      #   @param executed_action [Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction, nil] Executed action details for a custom order occurrence.
       #
       #   @param failure_reason [String]
       #
       #   @param skip_reason [String]
-
-      # @see Privy::Models::KrakenEmbedCustomOrderOccurrence#status
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        SUCCESS = :success
-        FAILURE = :failure
-        SKIPPED = :skipped
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::KrakenEmbedCustomOrderOccurrence#executed_action
-      class ExecutedAction < Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
-        # @!method initialize
-        #   Executed action details for a custom order occurrence.
-      end
     end
   end
 end

@@ -2,13 +2,15 @@ module Privy
   module Models
     type wallet_action_earn_withdraw_succeeded_webhook_payload =
       {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
         :caip2 => String,
+        completed_at: String,
+        created_at: String,
         raw_amount: String,
         share_amount: String,
         status: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::type_,
         vault_address: String,
         vault_id: String,
@@ -20,11 +22,15 @@ module Privy
       }
 
     class WalletActionEarnWithdrawSucceededWebhookPayload < Privy::Internal::Type::BaseModel
-      attr_accessor action_type: Privy::Models::wallet_action_type
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
 
       attr_accessor asset_address: String
 
       attr_accessor caip2: String
+
+      attr_accessor completed_at: String
+
+      attr_accessor created_at: String
 
       attr_accessor raw_amount: String
 
@@ -32,7 +38,7 @@ module Privy
 
       attr_accessor status: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::status
 
-      attr_accessor steps: ::Array[Privy::Models::wallet_action_step]
+      attr_accessor steps: ::Array[Privy::Models::Wallets::wallet_action_step]
 
       attr_accessor type: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::type_
 
@@ -57,13 +63,15 @@ module Privy
       def decimals=: (Integer) -> Integer
 
       def initialize: (
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
         caip2: String,
+        completed_at: String,
+        created_at: String,
         raw_amount: String,
         share_amount: String,
         status: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::type_,
         vault_address: String,
         vault_id: String,
@@ -75,13 +83,15 @@ module Privy
       ) -> void
 
       def to_hash: -> {
-        action_type: Privy::Models::wallet_action_type,
+        action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
         :caip2 => String,
+        completed_at: String,
+        created_at: String,
         raw_amount: String,
         share_amount: String,
         status: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::status,
-        steps: ::Array[Privy::Models::wallet_action_step],
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload::type_,
         vault_address: String,
         vault_id: String,

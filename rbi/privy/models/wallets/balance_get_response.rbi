@@ -55,11 +55,8 @@ module Privy
           end
           attr_accessor :asset
 
-          sig do
-            returns(
-              Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-            )
-          end
+          # Supported blockchain network names for wallet balance and transaction queries.
+          sig { returns(Privy::WalletAssetChainNameInput::TaggedSymbol) }
           attr_accessor :chain
 
           sig { returns(T::Hash[Symbol, String]) }
@@ -78,8 +75,7 @@ module Privy
                   Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::OrSymbol,
                   String
                 ),
-              chain:
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::OrSymbol,
+              chain: Privy::WalletAssetChainNameInput::OrSymbol,
               display_values: T::Hash[Symbol, String],
               raw_value: String,
               raw_value_decimals: Float
@@ -87,6 +83,7 @@ module Privy
           end
           def self.new(
             asset:,
+            # Supported blockchain network names for wallet balance and transaction queries.
             chain:,
             display_values:,
             raw_value:,
@@ -99,8 +96,7 @@ module Privy
               {
                 asset:
                   Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::Variants,
-                chain:
-                  Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol,
+                chain: Privy::WalletAssetChainNameInput::TaggedSymbol,
                 display_values: T::Hash[Symbol, String],
                 raw_value: String,
                 raw_value_decimals: Float
@@ -185,125 +181,6 @@ module Privy
                 :sol,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
               )
-          end
-
-          module Chain
-            extend Privy::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Privy::Models::Wallets::BalanceGetResponse::Balance::Chain
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ETHEREUM =
-              T.let(
-                :ethereum,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            ARBITRUM =
-              T.let(
-                :arbitrum,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            AVALANCHE =
-              T.let(
-                :avalanche,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            BASE =
-              T.let(
-                :base,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            TEMPO =
-              T.let(
-                :tempo,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            LINEA =
-              T.let(
-                :linea,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            OPTIMISM =
-              T.let(
-                :optimism,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            POLYGON =
-              T.let(
-                :polygon,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            SOLANA =
-              T.let(
-                :solana,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            ZKSYNC_ERA =
-              T.let(
-                :zksync_era,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            SEPOLIA =
-              T.let(
-                :sepolia,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            ARBITRUM_SEPOLIA =
-              T.let(
-                :arbitrum_sepolia,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            AVALANCHE_FUJI =
-              T.let(
-                :avalanche_fuji,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            BASE_SEPOLIA =
-              T.let(
-                :base_sepolia,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            LINEA_TESTNET =
-              T.let(
-                :linea_testnet,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            OPTIMISM_SEPOLIA =
-              T.let(
-                :optimism_sepolia,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            POLYGON_AMOY =
-              T.let(
-                :polygon_amoy,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            SOLANA_DEVNET =
-              T.let(
-                :solana_devnet,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-            SOLANA_TESTNET =
-              T.let(
-                :solana_testnet,
-                Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Privy::Models::Wallets::BalanceGetResponse::Balance::Chain::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

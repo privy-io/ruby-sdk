@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type yield_claim_reward =
+      { amount: String, token_address: String, token_symbol: String }
+
+    class YieldClaimReward < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor token_address: String
+
+      attr_accessor token_symbol: String
+
+      def initialize: (
+        amount: String,
+        token_address: String,
+        token_symbol: String
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        token_address: String,
+        token_symbol: String
+      }
+    end
+  end
+end

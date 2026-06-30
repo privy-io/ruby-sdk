@@ -9,7 +9,7 @@ class Privy::Test::Resources::Wallets::Earn::Ethereum::IncentiveTest < Privy::Te
     response = @privy_api.wallets.earn.ethereum.incentive._claim("wallet_id", chain: "base")
 
     assert_pattern do
-      response => Privy::EarnIncentiveClaimActionResponse
+      response => Privy::Wallets::EarnIncentiveClaimActionResponse
     end
 
     assert_pattern do
@@ -17,12 +17,12 @@ class Privy::Test::Resources::Wallets::Earn::Ethereum::IncentiveTest < Privy::Te
         id: String,
         chain: String,
         created_at: Time,
-        rewards: ^(Privy::Internal::Type::ArrayOf[Privy::EarnIncetiveClaimRewardEntry]) | nil,
-        status: Privy::WalletActionStatus,
-        type: Privy::EarnIncentiveClaimActionResponse::Type,
+        rewards: ^(Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnIncetiveClaimRewardEntry]) | nil,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::EarnIncentiveClaimActionResponse::Type,
         wallet_id: String,
-        failure_reason: Privy::FailureReason | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep]) | nil
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end
   end

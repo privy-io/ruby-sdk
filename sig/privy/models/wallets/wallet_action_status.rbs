@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module WalletActionStatus = Wallets::WalletActionStatus
+
+    module Wallets
+      type wallet_action_status = :pending | :succeeded | :rejected | :failed
+
+      module WalletActionStatus
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+        SUCCEEDED: :succeeded
+        REJECTED: :rejected
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Privy::Models::Wallets::wallet_action_status]
+      end
+    end
+  end
+end

@@ -11,6 +11,15 @@ module Privy
           T.any(Privy::WalletListParams, Privy::Internal::AnyHash)
         end
 
+      # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+      # checksum format. Solana addresses are validated as base58. All other chain
+      # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+      sig { returns(T.nilable(String)) }
+      attr_reader :address
+
+      sig { params(address: String).void }
+      attr_writer :address
+
       # Filter wallets by authorization public key. Returns wallets owned by key quorums
       # that include the specified P-256 public key (base64-encoded DER format). Cannot
       # be used together with user_id.
@@ -40,6 +49,13 @@ module Privy
       sig { params(external_id: String).void }
       attr_writer :external_id
 
+      # Include archived wallets in lookup. Defaults to false.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_archived
+
+      sig { params(include_archived: T::Boolean).void }
+      attr_writer :include_archived
+
       sig { returns(T.nilable(Float)) }
       attr_accessor :limit
 
@@ -52,16 +68,22 @@ module Privy
 
       sig do
         params(
+          address: String,
           authorization_key: String,
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
           external_id: String,
+          include_archived: T::Boolean,
           limit: T.nilable(Float),
           user_id: String,
           request_options: Privy::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+        address: nil,
         # Filter wallets by authorization public key. Returns wallets owned by key quorums
         # that include the specified P-256 public key (base64-encoded DER format). Cannot
         # be used together with user_id.
@@ -71,6 +93,8 @@ module Privy
         cursor: nil,
         # Filter wallets by external ID.
         external_id: nil,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         limit: nil,
         # Filter wallets by user ID. Cannot be used together with authorization_key.
         user_id: nil,
@@ -81,10 +105,12 @@ module Privy
       sig do
         override.returns(
           {
+            address: String,
             authorization_key: String,
             chain_type: Privy::WalletChainType::OrSymbol,
             cursor: String,
             external_id: String,
+            include_archived: T::Boolean,
             limit: T.nilable(Float),
             user_id: String,
             request_options: Privy::RequestOptions

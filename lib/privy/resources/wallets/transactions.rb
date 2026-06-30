@@ -10,7 +10,7 @@ module Privy
         #
         # Get incoming and outgoing transactions of a wallet by wallet ID.
         #
-        # @overload get(wallet_id, chain:, token: nil, asset: nil, cursor: nil, limit: nil, tx_hash: nil, request_options: {})
+        # @overload get(wallet_id, chain:, token: nil, asset: nil, cursor: nil, include_archived: nil, limit: nil, tx_hash: nil, request_options: {})
         #
         # @param wallet_id [String] ID of the wallet.
         #
@@ -21,6 +21,8 @@ module Privy
         # @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::TransactionGetParams::Asset] Exactly one of `asset` or `token` is required. Cannot be used together with `tok
         #
         # @param cursor [String]
+        #
+        # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
         # @param limit [Float, nil]
         #

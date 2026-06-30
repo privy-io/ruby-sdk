@@ -47,6 +47,7 @@ module Privy
         String wallet_id,
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
+        ?amount: String,
         ?amount_type: Privy::Models::amount_type,
         ?fee_configuration: Privy::FeeConfiguration,
         ?slippage_bps: Integer,

@@ -4,9 +4,10 @@ module Privy
   module Models
     class EthereumTransactionCondition < Privy::Internal::Type::BaseModel
       # @!attribute field
+      #   Ethereum transaction-level fields that can be referenced in a policy condition.
       #
-      #   @return [Symbol, Privy::Models::EthereumTransactionCondition::Field]
-      required :field, enum: -> { Privy::EthereumTransactionCondition::Field }
+      #   @return [Symbol, Privy::Models::EthereumTransactionConditionField]
+      required :field, enum: -> { Privy::EthereumTransactionConditionField }
 
       # @!attribute field_source
       #
@@ -33,25 +34,13 @@ module Privy
       #   The verbatim Ethereum transaction object in an eth_signTransaction or
       #   eth_sendTransaction request.
       #
-      #   @param field [Symbol, Privy::Models::EthereumTransactionCondition::Field]
+      #   @param field [Symbol, Privy::Models::EthereumTransactionConditionField] Ethereum transaction-level fields that can be referenced in a policy condition.
       #
       #   @param field_source [Symbol, Privy::Models::EthereumTransactionCondition::FieldSource]
       #
       #   @param operator [Symbol, Privy::Models::ConditionOperator] Operator to use for policy conditions.
       #
       #   @param value [String, Array<String>] Value to compare against in a policy condition. Can be a single string or an arr
-
-      # @see Privy::Models::EthereumTransactionCondition#field
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        TO = :to
-        VALUE = :value
-        CHAIN_ID = :chain_id
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # @see Privy::Models::EthereumTransactionCondition#field_source
       module FieldSource

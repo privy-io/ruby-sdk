@@ -22,15 +22,11 @@ module Privy
       end
       attr_accessor :deleted_user
 
-      sig { returns(Privy::UserTransferredAccountWebhookPayload::FromUser) }
+      # A reference to a user by their unique identifier.
+      sig { returns(Privy::UserReference) }
       attr_reader :from_user
 
-      sig do
-        params(
-          from_user:
-            Privy::UserTransferredAccountWebhookPayload::FromUser::OrHash
-        ).void
-      end
+      sig { params(from_user: Privy::UserReference::OrHash).void }
       attr_writer :from_user
 
       # A Privy user object.
@@ -82,8 +78,7 @@ module Privy
             ),
           deleted_user:
             Privy::UserTransferredAccountWebhookPayload::DeletedUser::OrBoolean,
-          from_user:
-            Privy::UserTransferredAccountWebhookPayload::FromUser::OrHash,
+          from_user: Privy::UserReference::OrHash,
           to_user: Privy::User::OrHash,
           type: Privy::UserTransferredAccountWebhookPayload::Type::OrSymbol
         ).returns(T.attached_class)
@@ -92,6 +87,7 @@ module Privy
         # A linked account for the user.
         account:,
         deleted_user:,
+        # A reference to a user by their unique identifier.
         from_user:,
         # A Privy user object.
         to_user:,
@@ -106,7 +102,7 @@ module Privy
             account: Privy::LinkedAccount::Variants,
             deleted_user:
               Privy::UserTransferredAccountWebhookPayload::DeletedUser::TaggedBoolean,
-            from_user: Privy::UserTransferredAccountWebhookPayload::FromUser,
+            from_user: Privy::UserReference,
             to_user: Privy::User,
             type:
               Privy::UserTransferredAccountWebhookPayload::Type::TaggedSymbol
@@ -142,27 +138,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class FromUser < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::UserTransferredAccountWebhookPayload::FromUser,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:)
-        end
-
-        sig { override.returns({ id: String }) }
-        def to_hash
         end
       end
 

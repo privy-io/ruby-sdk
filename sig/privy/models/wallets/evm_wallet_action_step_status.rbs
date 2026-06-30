@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    module Wallets
+      type evm_wallet_action_step_status =
+        :preparing
+        | :queued
+        | :pending
+        | :retrying
+        | :confirmed
+        | :rejected
+        | :reverted
+        | :replaced
+        | :abandoned
+
+      module EvmWalletActionStepStatus
+        extend Privy::Internal::Type::Enum
+
+        PREPARING: :preparing
+        QUEUED: :queued
+        PENDING: :pending
+        RETRYING: :retrying
+        CONFIRMED: :confirmed
+        REJECTED: :rejected
+        REVERTED: :reverted
+        REPLACED: :replaced
+        ABANDONED: :abandoned
+
+        def self?.values: -> ::Array[Privy::Models::Wallets::evm_wallet_action_step_status]
+      end
+    end
+  end
+end

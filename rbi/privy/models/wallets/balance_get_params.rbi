@@ -61,10 +61,8 @@ module Privy
           returns(
             T.nilable(
               T.any(
-                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
-                T::Array[
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1::OrSymbol
-                ]
+                Privy::WalletAssetChainNameInput::OrSymbol,
+                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
               )
             )
           )
@@ -75,14 +73,19 @@ module Privy
           params(
             chain:
               T.any(
-                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
-                T::Array[
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1::OrSymbol
-                ]
+                Privy::WalletAssetChainNameInput::OrSymbol,
+                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
               )
           ).void
         end
         attr_writer :chain
+
+        # Include archived wallets in lookup. Defaults to false.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_archived
+
+        sig { params(include_archived: T::Boolean).void }
+        attr_writer :include_archived
 
         # If set, balances are converted to the specified fiat currency. Not supported
         # when `token` is provided.
@@ -114,11 +117,10 @@ module Privy
               ),
             chain:
               T.any(
-                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
-                T::Array[
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1::OrSymbol
-                ]
+                Privy::WalletAssetChainNameInput::OrSymbol,
+                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
               ),
+            include_archived: T::Boolean,
             include_currency:
               Privy::Wallets::BalanceGetParams::IncludeCurrency::OrSymbol,
             request_options: Privy::RequestOptions::OrHash
@@ -138,6 +140,8 @@ module Privy
           # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
           # `asset`. Cannot be used with `token`.
           chain: nil,
+          # Include archived wallets in lookup. Defaults to false.
+          include_archived: nil,
           # If set, balances are converted to the specified fiat currency. Not supported
           # when `token` is provided.
           include_currency: nil,
@@ -157,11 +161,10 @@ module Privy
                 ),
               chain:
                 T.any(
-                  Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
-                  T::Array[
-                    Privy::Wallets::BalanceGetParams::Chain::UnionMember1::OrSymbol
-                  ]
+                  Privy::WalletAssetChainNameInput::OrSymbol,
+                  T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
                 ),
+              include_archived: T::Boolean,
               include_currency:
                 Privy::Wallets::BalanceGetParams::IncludeCurrency::OrSymbol,
               request_options: Privy::RequestOptions
@@ -259,131 +262,10 @@ module Privy
           Variants =
             T.type_alias do
               T.any(
-                Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol,
-                T::Array[
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-                ]
+                Privy::WalletAssetChainNameInput::TaggedSymbol,
+                T::Array[Privy::WalletAssetChainNameInput::TaggedSymbol]
               )
             end
-
-          module UnionMember1
-            extend Privy::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ETHEREUM =
-              T.let(
-                :ethereum,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            ARBITRUM =
-              T.let(
-                :arbitrum,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            AVALANCHE =
-              T.let(
-                :avalanche,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            BASE =
-              T.let(
-                :base,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            TEMPO =
-              T.let(
-                :tempo,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            LINEA =
-              T.let(
-                :linea,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            OPTIMISM =
-              T.let(
-                :optimism,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            POLYGON =
-              T.let(
-                :polygon,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            SOLANA =
-              T.let(
-                :solana,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            ZKSYNC_ERA =
-              T.let(
-                :zksync_era,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            SEPOLIA =
-              T.let(
-                :sepolia,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            ARBITRUM_SEPOLIA =
-              T.let(
-                :arbitrum_sepolia,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            AVALANCHE_FUJI =
-              T.let(
-                :avalanche_fuji,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            BASE_SEPOLIA =
-              T.let(
-                :base_sepolia,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            LINEA_TESTNET =
-              T.let(
-                :linea_testnet,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            OPTIMISM_SEPOLIA =
-              T.let(
-                :optimism_sepolia,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            POLYGON_AMOY =
-              T.let(
-                :polygon_amoy,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            SOLANA_DEVNET =
-              T.let(
-                :solana_devnet,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-            SOLANA_TESTNET =
-              T.let(
-                :solana_testnet,
-                Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
 
           sig do
             override.returns(
@@ -393,103 +275,10 @@ module Privy
           def self.variants
           end
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Privy::Wallets::BalanceGetParams::Chain)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ETHEREUM =
-            T.let(
-              :ethereum,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          ARBITRUM =
-            T.let(
-              :arbitrum,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          AVALANCHE =
-            T.let(
-              :avalanche,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          BASE =
-            T.let(:base, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
-          TEMPO =
-            T.let(:tempo, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
-          LINEA =
-            T.let(:linea, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
-          OPTIMISM =
-            T.let(
-              :optimism,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          POLYGON =
-            T.let(
-              :polygon,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          SOLANA =
-            T.let(
-              :solana,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          ZKSYNC_ERA =
-            T.let(
-              :zksync_era,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          SEPOLIA =
-            T.let(
-              :sepolia,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          ARBITRUM_SEPOLIA =
-            T.let(
-              :arbitrum_sepolia,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          AVALANCHE_FUJI =
-            T.let(
-              :avalanche_fuji,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          BASE_SEPOLIA =
-            T.let(
-              :base_sepolia,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          LINEA_TESTNET =
-            T.let(
-              :linea_testnet,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          OPTIMISM_SEPOLIA =
-            T.let(
-              :optimism_sepolia,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          POLYGON_AMOY =
-            T.let(
-              :polygon_amoy,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          SOLANA_DEVNET =
-            T.let(
-              :solana_devnet,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-          SOLANA_TESTNET =
-            T.let(
-              :solana_testnet,
-              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
-            )
-
-          UnionMember1Array =
+          WalletAssetChainNameInputArray =
             T.let(
               Privy::Internal::Type::ArrayOf[
-                enum: Privy::Wallets::BalanceGetParams::Chain::UnionMember1
+                enum: Privy::WalletAssetChainNameInput
               ],
               Privy::Internal::Type::Converter
             )

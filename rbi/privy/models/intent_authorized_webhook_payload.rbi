@@ -64,8 +64,8 @@ module Privy
           intent_type: Privy::IntentType::OrSymbol,
           member:
             T.any(
-              Privy::IntentAuthorizationKeyQuorumMember::UserMember::OrHash,
-              Privy::IntentAuthorizationKeyQuorumMember::KeyMember::OrHash
+              Privy::IntentAuthorizationUserMember::OrHash,
+              Privy::IntentAuthorizationKeyMember::OrHash
             ),
           status: String,
           type: Privy::IntentAuthorizedWebhookPayload::Type::OrSymbol,

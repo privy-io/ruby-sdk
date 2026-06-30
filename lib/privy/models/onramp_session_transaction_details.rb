@@ -18,42 +18,36 @@ module Privy
       #   @return [String, nil]
       required :destination_network, String, nil?: true
 
-      # @!attribute fees
-      #   Fee breakdown for a Stripe onramp transaction.
-      #
-      #   @return [Privy::Models::OnrampSessionTransactionDetails::Fees]
-      required :fees, -> { Privy::OnrampSessionTransactionDetails::Fees }
-
-      # @!attribute source_amount
+      # @!attribute fee
       #
       #   @return [String, nil]
-      required :source_amount, String, nil?: true
+      required :fee, String, nil?: true
 
       # @!attribute source_currency
       #
       #   @return [String, nil]
       required :source_currency, String, nil?: true
 
-      # @!method initialize(destination_amount:, destination_currency:, destination_network:, fees:, source_amount:, source_currency:)
+      # @!attribute source_total_amount
+      #
+      #   @return [String, nil]
+      required :source_total_amount, String, nil?: true
+
+      # @!attribute quote_expiration
+      #
+      #   @return [Float, nil]
+      optional :quote_expiration, Float, nil?: true
+
+      # @!method initialize(destination_amount:, destination_currency:, destination_network:, fee:, source_currency:, source_total_amount:, quote_expiration: nil)
       #   Transaction details returned from a Stripe onramp session.
       #
       #   @param destination_amount [String, nil]
-      #
       #   @param destination_currency [String, nil]
-      #
       #   @param destination_network [String, nil]
-      #
-      #   @param fees [Privy::Models::OnrampSessionTransactionDetails::Fees] Fee breakdown for a Stripe onramp transaction.
-      #
-      #   @param source_amount [String, nil]
-      #
+      #   @param fee [String, nil]
       #   @param source_currency [String, nil]
-
-      # @see Privy::Models::OnrampSessionTransactionDetails#fees
-      class Fees < Privy::Models::OnrampSessionFees
-        # @!method initialize
-        #   Fee breakdown for a Stripe onramp transaction.
-      end
+      #   @param source_total_amount [String, nil]
+      #   @param quote_expiration [Float, nil]
     end
   end
 end

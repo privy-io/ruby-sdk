@@ -16,12 +16,11 @@ module Privy
       sig { returns(Privy::WalletFundsAsset::Variants) }
       attr_accessor :asset
 
-      sig { returns(Privy::FundsDepositedWebhookPayload::Block) }
+      # Block metadata for a wallet transfer event.
+      sig { returns(Privy::BlockInfo) }
       attr_reader :block
 
-      sig do
-        params(block: Privy::FundsDepositedWebhookPayload::Block::OrHash).void
-      end
+      sig { params(block: Privy::BlockInfo::OrHash).void }
       attr_writer :block
 
       # The CAIP-2 chain identifier.
@@ -90,7 +89,7 @@ module Privy
               Privy::WalletFundsSplAsset::OrHash,
               Privy::WalletFundsSacAsset::OrHash
             ),
-          block: Privy::FundsDepositedWebhookPayload::Block::OrHash,
+          block: Privy::BlockInfo::OrHash,
           caip2: String,
           idempotency_key: String,
           recipient: String,
@@ -116,6 +115,7 @@ module Privy
         amount:,
         # An asset involved in a wallet transfer.
         asset:,
+        # Block metadata for a wallet transfer event.
         block:,
         # The CAIP-2 chain identifier.
         caip2:,
@@ -143,7 +143,7 @@ module Privy
           {
             amount: String,
             asset: Privy::WalletFundsAsset::Variants,
-            block: Privy::FundsDepositedWebhookPayload::Block,
+            block: Privy::BlockInfo,
             caip2: String,
             idempotency_key: String,
             recipient: String,
@@ -157,39 +157,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class Block < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::FundsDepositedWebhookPayload::Block,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # The block number.
-        sig { returns(Float) }
-        attr_accessor :number
-
-        # The block timestamp.
-        sig { returns(Float) }
-        attr_accessor :timestamp
-
-        sig do
-          params(number: Float, timestamp: Float).returns(T.attached_class)
-        end
-        def self.new(
-          # The block number.
-          number:,
-          # The block timestamp.
-          timestamp:
-        )
-        end
-
-        sig { override.returns({ number: Float, timestamp: Float }) }
-        def to_hash
-        end
       end
 
       # The type of webhook event.

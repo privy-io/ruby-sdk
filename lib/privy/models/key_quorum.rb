@@ -11,8 +11,8 @@ module Privy
 
       # @!attribute authorization_keys
       #
-      #   @return [Array<Privy::Models::KeyQuorum::AuthorizationKey>]
-      required :authorization_keys, -> { Privy::Internal::Type::ArrayOf[Privy::KeyQuorum::AuthorizationKey] }
+      #   @return [Array<Privy::Models::AuthorizationKey>]
+      required :authorization_keys, -> { Privy::Internal::Type::ArrayOf[Privy::AuthorizationKey] }
 
       # @!attribute authorization_threshold
       #
@@ -40,7 +40,7 @@ module Privy
       #
       #   @param id [String]
       #
-      #   @param authorization_keys [Array<Privy::Models::KeyQuorum::AuthorizationKey>]
+      #   @param authorization_keys [Array<Privy::Models::AuthorizationKey>]
       #
       #   @param authorization_threshold [Float, nil]
       #
@@ -49,22 +49,6 @@ module Privy
       #   @param user_ids [Array<String>, nil]
       #
       #   @param key_quorum_ids [Array<String>] List of nested key quorum IDs that are members of this key quorum.
-
-      class AuthorizationKey < Privy::Internal::Type::BaseModel
-        # @!attribute display_name
-        #
-        #   @return [String, nil]
-        required :display_name, String, nil?: true
-
-        # @!attribute public_key
-        #
-        #   @return [String]
-        required :public_key, String
-
-        # @!method initialize(display_name:, public_key:)
-        #   @param display_name [String, nil]
-        #   @param public_key [String]
-      end
     end
   end
 end

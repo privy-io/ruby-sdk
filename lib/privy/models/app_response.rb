@@ -30,9 +30,10 @@ module Privy
       required :allowed_native_app_url_schemes, Privy::Internal::Type::ArrayOf[String]
 
       # @!attribute allowlist_config
+      #   Configuration for the allowlist error page shown to users not on the allowlist.
       #
-      #   @return [Privy::Models::AppResponse::AllowlistConfig]
-      required :allowlist_config, -> { Privy::AppResponse::AllowlistConfig }
+      #   @return [Privy::Models::AppAllowlistConfig]
+      required :allowlist_config, -> { Privy::AppAllowlistConfig }
 
       # @!attribute allowlist_enabled
       #
@@ -61,9 +62,8 @@ module Privy
 
       # @!attribute custom_oauth_providers
       #
-      #   @return [Array<Privy::Models::AppResponse::CustomOAuthProvider>]
-      required :custom_oauth_providers,
-               -> { Privy::Internal::Type::ArrayOf[Privy::AppResponse::CustomOAuthProvider] }
+      #   @return [Array<Privy::Models::AppCustomOAuthProvider>]
+      required :custom_oauth_providers, -> { Privy::Internal::Type::ArrayOf[Privy::AppCustomOAuthProvider] }
 
       # @!attribute data_classification
       #   Indicates that this response contains only publicly accessible data, not a
@@ -94,14 +94,20 @@ module Privy
       required :embedded_wallet_config, -> { Privy::EmbeddedWalletConfigSchema }
 
       # @!attribute enabled_captcha_provider
+      #   The captcha provider enabled for an app.
       #
-      #   @return [Symbol, Privy::Models::AppResponse::EnabledCaptchaProvider, nil]
-      required :enabled_captcha_provider, enum: -> { Privy::AppResponse::EnabledCaptchaProvider }, nil?: true
+      #   @return [Symbol, Privy::Models::CaptchaProvider, nil]
+      required :enabled_captcha_provider, enum: -> { Privy::CaptchaProvider }, nil?: true
 
       # @!attribute enforce_wallet_uis
       #
       #   @return [Boolean]
       required :enforce_wallet_uis, Privy::Internal::Type::Boolean
+
+      # @!attribute external_wallets_for_signup_enabled
+      #
+      #   @return [Boolean]
+      required :external_wallets_for_signup_enabled, Privy::Internal::Type::Boolean
 
       # @!attribute farcaster_auth
       #
@@ -168,10 +174,15 @@ module Privy
       #   @return [Float, nil]
       required :max_linked_wallets_per_user, Float, nil?: true
 
+      # @!attribute merge_accounts_by_email
+      #
+      #   @return [Boolean]
+      required :merge_accounts_by_email, Privy::Internal::Type::Boolean
+
       # @!attribute mfa_methods
       #
-      #   @return [Array<Symbol, Privy::Models::AppResponse::MfaMethod>]
-      required :mfa_methods, -> { Privy::Internal::Type::ArrayOf[enum: Privy::AppResponse::MfaMethod] }
+      #   @return [Array<Symbol, Privy::Models::MfaMethod>]
+      required :mfa_methods, -> { Privy::Internal::Type::ArrayOf[enum: Privy::MfaMethod] }
 
       # @!attribute name
       #
@@ -301,7 +312,7 @@ module Privy
       #   @return [Privy::Models::TelegramAuthConfigSchema, nil]
       optional :telegram_auth_config, -> { Privy::TelegramAuthConfigSchema }
 
-      # @!method initialize(id:, accent_color:, allowed_domains:, allowed_native_app_ids:, allowed_native_app_url_schemes:, allowlist_config:, allowlist_enabled:, apple_oauth:, captcha_enabled:, custom_api_url:, custom_jwt_auth:, custom_oauth_providers:, data_classification:, disable_plus_emails:, discord_oauth:, email_auth:, embedded_wallet_config:, enabled_captcha_provider:, enforce_wallet_uis:, farcaster_auth:, farcaster_link_wallets_enabled:, fiat_on_ramp_enabled:, github_oauth:, google_oauth:, guest_auth:, icon_url:, instagram_oauth:, legacy_wallet_ui_config:, line_oauth:, linkedin_oauth:, logo_url:, max_linked_wallets_per_user:, mfa_methods:, name:, passkey_auth:, passkeys_for_signup_enabled:, privacy_policy_url:, require_users_accept_terms:, show_wallet_login_first:, smart_wallet_config:, sms_auth:, solana_wallet_auth:, spotify_oauth:, telegram_auth:, telegram_oauth:, terms_and_conditions_url:, theme:, tiktok_oauth:, twitch_oauth:, twitter_oauth:, twitter_oauth_on_mobile_enabled:, verification_key:, wallet_auth:, wallet_connect_cloud_project_id:, whatsapp_enabled:, captcha_site_key: nil, funding_config: nil, telegram_auth_config: nil)
+      # @!method initialize(id:, accent_color:, allowed_domains:, allowed_native_app_ids:, allowed_native_app_url_schemes:, allowlist_config:, allowlist_enabled:, apple_oauth:, captcha_enabled:, custom_api_url:, custom_jwt_auth:, custom_oauth_providers:, data_classification:, disable_plus_emails:, discord_oauth:, email_auth:, embedded_wallet_config:, enabled_captcha_provider:, enforce_wallet_uis:, external_wallets_for_signup_enabled:, farcaster_auth:, farcaster_link_wallets_enabled:, fiat_on_ramp_enabled:, github_oauth:, google_oauth:, guest_auth:, icon_url:, instagram_oauth:, legacy_wallet_ui_config:, line_oauth:, linkedin_oauth:, logo_url:, max_linked_wallets_per_user:, merge_accounts_by_email:, mfa_methods:, name:, passkey_auth:, passkeys_for_signup_enabled:, privacy_policy_url:, require_users_accept_terms:, show_wallet_login_first:, smart_wallet_config:, sms_auth:, solana_wallet_auth:, spotify_oauth:, telegram_auth:, telegram_oauth:, terms_and_conditions_url:, theme:, tiktok_oauth:, twitch_oauth:, twitter_oauth:, twitter_oauth_on_mobile_enabled:, verification_key:, wallet_auth:, wallet_connect_cloud_project_id:, whatsapp_enabled:, captcha_site_key: nil, funding_config: nil, telegram_auth_config: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::AppResponse} for more details.
       #
@@ -317,7 +328,7 @@ module Privy
       #
       #   @param allowed_native_app_url_schemes [Array<String>]
       #
-      #   @param allowlist_config [Privy::Models::AppResponse::AllowlistConfig]
+      #   @param allowlist_config [Privy::Models::AppAllowlistConfig] Configuration for the allowlist error page shown to users not on the allowlist.
       #
       #   @param allowlist_enabled [Boolean]
       #
@@ -329,7 +340,7 @@ module Privy
       #
       #   @param custom_jwt_auth [Boolean]
       #
-      #   @param custom_oauth_providers [Array<Privy::Models::AppResponse::CustomOAuthProvider>]
+      #   @param custom_oauth_providers [Array<Privy::Models::AppCustomOAuthProvider>]
       #
       #   @param data_classification [Symbol, Privy::Models::AppResponse::DataClassification] Indicates that this response contains only publicly accessible data, not a privi
       #
@@ -341,9 +352,11 @@ module Privy
       #
       #   @param embedded_wallet_config [Privy::Models::EmbeddedWalletConfigSchema] Configuration for embedded wallets including the mode.
       #
-      #   @param enabled_captcha_provider [Symbol, Privy::Models::AppResponse::EnabledCaptchaProvider, nil]
+      #   @param enabled_captcha_provider [Symbol, Privy::Models::CaptchaProvider, nil] The captcha provider enabled for an app.
       #
       #   @param enforce_wallet_uis [Boolean]
+      #
+      #   @param external_wallets_for_signup_enabled [Boolean]
       #
       #   @param farcaster_auth [Boolean]
       #
@@ -371,7 +384,9 @@ module Privy
       #
       #   @param max_linked_wallets_per_user [Float, nil]
       #
-      #   @param mfa_methods [Array<Symbol, Privy::Models::AppResponse::MfaMethod>]
+      #   @param merge_accounts_by_email [Boolean]
+      #
+      #   @param mfa_methods [Array<Symbol, Privy::Models::MfaMethod>]
       #
       #   @param name [String]
       #
@@ -423,71 +438,6 @@ module Privy
       #
       #   @param telegram_auth_config [Privy::Models::TelegramAuthConfigSchema] Configuration for Telegram authentication.
 
-      # @see Privy::Models::AppResponse#allowlist_config
-      class AllowlistConfig < Privy::Internal::Type::BaseModel
-        # @!attribute cta_link
-        #
-        #   @return [String, nil]
-        required :cta_link, String, nil?: true
-
-        # @!attribute cta_text
-        #
-        #   @return [String, nil]
-        required :cta_text, String, nil?: true
-
-        # @!attribute error_detail
-        #
-        #   @return [String, nil]
-        required :error_detail, String, nil?: true
-
-        # @!attribute error_title
-        #
-        #   @return [String, nil]
-        required :error_title, String, nil?: true
-
-        # @!method initialize(cta_link:, cta_text:, error_detail:, error_title:)
-        #   @param cta_link [String, nil]
-        #   @param cta_text [String, nil]
-        #   @param error_detail [String, nil]
-        #   @param error_title [String, nil]
-      end
-
-      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
-        # @!attribute enabled
-        #
-        #   @return [Boolean]
-        required :enabled, Privy::Internal::Type::Boolean
-
-        # @!attribute provider
-        #   The ID of a custom OAuth provider, set up for this app. Must start with
-        #   "custom:".
-        #
-        #   @return [String]
-        required :provider, String
-
-        # @!attribute provider_display_name
-        #
-        #   @return [String]
-        required :provider_display_name, String
-
-        # @!attribute provider_icon_url
-        #
-        #   @return [String]
-        required :provider_icon_url, String
-
-        # @!method initialize(enabled:, provider:, provider_display_name:, provider_icon_url:)
-        #   Some parameter documentations has been truncated, see
-        #   {Privy::Models::AppResponse::CustomOAuthProvider} for more details.
-        #
-        #   @param enabled [Boolean]
-        #
-        #   @param provider [String] The ID of a custom OAuth provider, set up for this app. Must start with "custom:
-        #
-        #   @param provider_display_name [String]
-        #
-        #   @param provider_icon_url [String]
-      end
-
       # Indicates that this response contains only publicly accessible data, not a
       # privileged resource
       #
@@ -496,28 +446,6 @@ module Privy
         extend Privy::Internal::Type::Enum
 
         PUBLIC = :public
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::AppResponse#enabled_captcha_provider
-      module EnabledCaptchaProvider
-        extend Privy::Internal::Type::Enum
-
-        TURNSTILE = :turnstile
-        HCAPTCHA = :hcaptcha
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      module MfaMethod
-        extend Privy::Internal::Type::Enum
-
-        SMS = :sms
-        TOTP = :totp
-        PASSKEY = :passkey
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -11,7 +11,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :base_asset
 
-      sig { returns(Privy::KrakenEmbedCustomOrderTrigger::Condition::OrSymbol) }
+      # Comparison operator for a custom order price trigger.
+      sig { returns(Privy::KrakenEmbedCustomOrderTriggerCondition::OrSymbol) }
       attr_accessor :condition
 
       sig { returns(String) }
@@ -28,21 +29,27 @@ module Privy
       sig do
         params(
           base_asset: String,
-          condition: Privy::KrakenEmbedCustomOrderTrigger::Condition::OrSymbol,
+          condition: Privy::KrakenEmbedCustomOrderTriggerCondition::OrSymbol,
           quote_asset: String,
           target_price: String,
           type: Privy::KrakenEmbedCustomOrderTrigger::Type::OrSymbol
         ).returns(T.attached_class)
       end
-      def self.new(base_asset:, condition:, quote_asset:, target_price:, type:)
+      def self.new(
+        base_asset:,
+        # Comparison operator for a custom order price trigger.
+        condition:,
+        quote_asset:,
+        target_price:,
+        type:
+      )
       end
 
       sig do
         override.returns(
           {
             base_asset: String,
-            condition:
-              Privy::KrakenEmbedCustomOrderTrigger::Condition::OrSymbol,
+            condition: Privy::KrakenEmbedCustomOrderTriggerCondition::OrSymbol,
             quote_asset: String,
             target_price: String,
             type: Privy::KrakenEmbedCustomOrderTrigger::Type::OrSymbol
@@ -50,37 +57,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      module Condition
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::KrakenEmbedCustomOrderTrigger::Condition)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        GTE =
-          T.let(
-            :gte,
-            Privy::KrakenEmbedCustomOrderTrigger::Condition::TaggedSymbol
-          )
-        LTE =
-          T.let(
-            :lte,
-            Privy::KrakenEmbedCustomOrderTrigger::Condition::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::KrakenEmbedCustomOrderTrigger::Condition::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       module Type

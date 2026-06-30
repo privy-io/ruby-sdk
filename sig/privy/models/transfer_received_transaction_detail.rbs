@@ -3,7 +3,7 @@ module Privy
     type transfer_received_transaction_detail =
       {
         asset: Privy::Models::TransferReceivedTransactionDetail::asset,
-        chain: Privy::Models::TransferReceivedTransactionDetail::chain,
+        chain: Privy::Models::wallet_asset_chain_name_input,
         display_values: ::Hash[Symbol, String],
         raw_value: String,
         raw_value_decimals: Float,
@@ -17,7 +17,7 @@ module Privy
     class TransferReceivedTransactionDetail < Privy::Internal::Type::BaseModel
       attr_accessor asset: Privy::Models::TransferReceivedTransactionDetail::asset
 
-      attr_accessor chain: Privy::Models::TransferReceivedTransactionDetail::chain
+      attr_accessor chain: Privy::Models::wallet_asset_chain_name_input
 
       attr_accessor display_values: ::Hash[Symbol, String]
 
@@ -37,7 +37,7 @@ module Privy
 
       def initialize: (
         asset: Privy::Models::TransferReceivedTransactionDetail::asset,
-        chain: Privy::Models::TransferReceivedTransactionDetail::chain,
+        chain: Privy::Models::wallet_asset_chain_name_input,
         display_values: ::Hash[Symbol, String],
         raw_value: String,
         raw_value_decimals: Float,
@@ -50,7 +50,7 @@ module Privy
 
       def to_hash: -> {
         asset: Privy::Models::TransferReceivedTransactionDetail::asset,
-        chain: Privy::Models::TransferReceivedTransactionDetail::chain,
+        chain: Privy::Models::wallet_asset_chain_name_input,
         display_values: ::Hash[Symbol, String],
         raw_value: String,
         raw_value_decimals: Float,
@@ -87,53 +87,6 @@ module Privy
         EURC: :eurc
         USDB: :usdb
         SOL: :sol
-      end
-
-      type chain =
-        :ethereum
-        | :arbitrum
-        | :avalanche
-        | :base
-        | :tempo
-        | :linea
-        | :optimism
-        | :polygon
-        | :solana
-        | :zksync_era
-        | :sepolia
-        | :arbitrum_sepolia
-        | :avalanche_fuji
-        | :base_sepolia
-        | :linea_testnet
-        | :optimism_sepolia
-        | :polygon_amoy
-        | :solana_devnet
-        | :solana_testnet
-
-      module Chain
-        extend Privy::Internal::Type::Enum
-
-        ETHEREUM: :ethereum
-        ARBITRUM: :arbitrum
-        AVALANCHE: :avalanche
-        BASE: :base
-        TEMPO: :tempo
-        LINEA: :linea
-        OPTIMISM: :optimism
-        POLYGON: :polygon
-        SOLANA: :solana
-        ZKSYNC_ERA: :zksync_era
-        SEPOLIA: :sepolia
-        ARBITRUM_SEPOLIA: :arbitrum_sepolia
-        AVALANCHE_FUJI: :avalanche_fuji
-        BASE_SEPOLIA: :base_sepolia
-        LINEA_TESTNET: :linea_testnet
-        OPTIMISM_SEPOLIA: :optimism_sepolia
-        POLYGON_AMOY: :polygon_amoy
-        SOLANA_DEVNET: :solana_devnet
-        SOLANA_TESTNET: :solana_testnet
-
-        def self?.values: -> ::Array[Privy::Models::TransferReceivedTransactionDetail::chain]
       end
 
       type type_ = :transfer_received

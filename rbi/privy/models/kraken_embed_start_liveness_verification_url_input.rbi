@@ -28,17 +28,12 @@ module Privy
       attr_accessor :type
 
       # Debug options for start verification. Only works in non-production environments.
-      sig do
-        returns(
-          T.nilable(Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug)
-        )
-      end
+      sig { returns(T.nilable(Privy::KrakenEmbedStartVerificationDebug)) }
       attr_reader :debug
 
       sig do
         params(
-          debug:
-            Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug::OrHash
+          debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug::OrHash)
         ).void
       end
       attr_writer :debug
@@ -51,8 +46,7 @@ module Privy
           right_url: String,
           type:
             Privy::KrakenEmbedStartLivenessVerificationURLInput::Type::OrSymbol,
-          debug:
-            Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug::OrHash
+          debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -73,7 +67,7 @@ module Privy
             right_url: String,
             type:
               Privy::KrakenEmbedStartLivenessVerificationURLInput::Type::OrSymbol,
-            debug: Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug
+            debug: T.nilable(Privy::KrakenEmbedStartVerificationDebug)
           }
         )
       end
@@ -106,25 +100,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Debug options for start verification. Only works in non-production environments.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
         end
       end
     end

@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    module Wallets
+      type action_get_params =
+        {
+          wallet_id: String,
+          action_id: String,
+          include: Privy::Models::Wallets::wallet_action_include,
+          privy_authorization_signature: String
+        }
+        & Privy::Internal::Type::request_parameters
+
+      class ActionGetParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor wallet_id: String
+
+        attr_accessor action_id: String
+
+        attr_reader include: Privy::Models::Wallets::wallet_action_include?
+
+        def include=: (
+          Privy::Models::Wallets::wallet_action_include
+        ) -> Privy::Models::Wallets::wallet_action_include
+
+        attr_reader privy_authorization_signature: String?
+
+        def privy_authorization_signature=: (String) -> String
+
+        def initialize: (
+          wallet_id: String,
+          action_id: String,
+          ?include: Privy::Models::Wallets::wallet_action_include,
+          ?privy_authorization_signature: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          wallet_id: String,
+          action_id: String,
+          include: Privy::Models::Wallets::wallet_action_include,
+          privy_authorization_signature: String,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

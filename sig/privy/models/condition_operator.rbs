@@ -1,7 +1,16 @@
 module Privy
   module Models
     type condition_operator =
-      :eq | :gt | :gte | :lt | :lte | :in | :in_condition_set
+      :eq
+      | :gt
+      | :gte
+      | :lt
+      | :lte
+      | :in
+      | :in_condition_set
+      | :contains
+      | :starts_with
+      | :ends_with
 
     module ConditionOperator
       extend Privy::Internal::Type::Enum
@@ -13,6 +22,9 @@ module Privy
       LTE: :lte
       IN: :in
       IN_CONDITION_SET: :in_condition_set
+      CONTAINS: :contains
+      STARTS_WITH: :starts_with
+      ENDS_WITH: :ends_with
 
       def self?.values: -> ::Array[Privy::Models::condition_operator]
     end

@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type intent_authorization_user_member =
+      {
+        signed_at: Float?,
+        type: Privy::Models::IntentAuthorizationUserMember::type_,
+        user_id: String
+      }
+
+    class IntentAuthorizationUserMember < Privy::Internal::Type::BaseModel
+      attr_accessor signed_at: Float?
+
+      attr_accessor type: Privy::Models::IntentAuthorizationUserMember::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        signed_at: Float?,
+        type: Privy::Models::IntentAuthorizationUserMember::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        signed_at: Float?,
+        type: Privy::Models::IntentAuthorizationUserMember::type_,
+        user_id: String
+      }
+
+      type type_ = :user
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USER: :user
+
+        def self?.values: -> ::Array[Privy::Models::IntentAuthorizationUserMember::type_]
+      end
+    end
+  end
+end

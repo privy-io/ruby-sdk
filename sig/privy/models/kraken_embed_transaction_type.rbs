@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type kraken_embed_transaction_type =
+      :simple_order | :simple_order_failed | :earn_reward
+
+    module KrakenEmbedTransactionType
+      extend Privy::Internal::Type::Enum
+
+      SIMPLE_ORDER: :simple_order
+      SIMPLE_ORDER_FAILED: :simple_order_failed
+      EARN_REWARD: :earn_reward
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_transaction_type]
+    end
+  end
+end

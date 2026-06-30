@@ -13,22 +13,36 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # Include archived wallets in lookup. Defaults to false.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_archived
+
+      sig { params(include_archived: T::Boolean).void }
+      attr_writer :include_archived
+
       sig do
         params(
           wallet_id: String,
+          include_archived: T::Boolean,
           request_options: Privy::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         # ID of the wallet.
         wallet_id:,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         request_options: {}
       )
       end
 
       sig do
         override.returns(
-          { wallet_id: String, request_options: Privy::RequestOptions }
+          {
+            wallet_id: String,
+            include_archived: T::Boolean,
+            request_options: Privy::RequestOptions
+          }
         )
       end
       def to_hash

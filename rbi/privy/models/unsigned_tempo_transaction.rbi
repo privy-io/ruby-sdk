@@ -24,19 +24,10 @@ module Privy
       end
       attr_writer :aa_authorization_list
 
-      sig do
-        returns(
-          T.nilable(T::Array[Privy::UnsignedTempoTransaction::AccessList])
-        )
-      end
+      sig { returns(T.nilable(T::Array[Privy::AccessListEntry])) }
       attr_reader :access_list
 
-      sig do
-        params(
-          access_list:
-            T::Array[Privy::UnsignedTempoTransaction::AccessList::OrHash]
-        ).void
-      end
+      sig { params(access_list: T::Array[Privy::AccessListEntry::OrHash]).void }
       attr_writer :access_list
 
       # A quantity value that can be either a hex string starting with '0x' or a
@@ -130,8 +121,7 @@ module Privy
           calls: T::Array[Privy::TempoCall::OrHash],
           type: Privy::UnsignedTempoTransaction::Type::OrFloat,
           aa_authorization_list: T::Array[Privy::TempoAaAuthorization::OrHash],
-          access_list:
-            T::Array[Privy::UnsignedTempoTransaction::AccessList::OrHash],
+          access_list: T::Array[Privy::AccessListEntry::OrHash],
           chain_id: Privy::Quantity::Variants,
           fee_payer_signature: Privy::TempoFeePayerSignature::OrHash,
           fee_token: String,
@@ -187,7 +177,7 @@ module Privy
             calls: T::Array[Privy::TempoCall],
             type: Privy::UnsignedTempoTransaction::Type::OrFloat,
             aa_authorization_list: T::Array[Privy::TempoAaAuthorization],
-            access_list: T::Array[Privy::UnsignedTempoTransaction::AccessList],
+            access_list: T::Array[Privy::AccessListEntry],
             chain_id: Privy::Quantity::Variants,
             fee_payer_signature: Privy::TempoFeePayerSignature,
             fee_token: String,
@@ -221,36 +211,6 @@ module Privy
           )
         end
         def self.values
-        end
-      end
-
-      class AccessList < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::UnsignedTempoTransaction::AccessList,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :address
-
-        sig { returns(T::Array[String]) }
-        attr_accessor :storage_keys
-
-        sig do
-          params(address: String, storage_keys: T::Array[String]).returns(
-            T.attached_class
-          )
-        end
-        def self.new(address:, storage_keys:)
-        end
-
-        sig do
-          override.returns({ address: String, storage_keys: T::Array[String] })
-        end
-        def to_hash
         end
       end
     end

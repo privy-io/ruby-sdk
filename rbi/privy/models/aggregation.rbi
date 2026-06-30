@@ -34,7 +34,7 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
-      # The time window configuration for an aggregation.
+      # A rolling time window defined by a duration in seconds.
       sig { returns(Privy::AggregationWindow) }
       attr_reader :window
 
@@ -62,7 +62,8 @@ module Privy
                 Privy::SuiTransactionCommandCondition,
                 Privy::SuiTransferObjectsCommandCondition,
                 Privy::ActionRequestBodyCondition,
-                Privy::AggregationCondition
+                Privy::AggregationCondition,
+                Privy::MessageSigningCondition
               )
             ]
           )
@@ -90,7 +91,8 @@ module Privy
                 Privy::SuiTransactionCommandCondition::OrHash,
                 Privy::SuiTransferObjectsCommandCondition::OrHash,
                 Privy::ActionRequestBodyCondition::OrHash,
-                Privy::AggregationCondition::OrHash
+                Privy::AggregationCondition::OrHash,
+                Privy::MessageSigningCondition::OrHash
               )
             ]
         ).void
@@ -132,7 +134,8 @@ module Privy
                 Privy::SuiTransactionCommandCondition::OrHash,
                 Privy::SuiTransferObjectsCommandCondition::OrHash,
                 Privy::ActionRequestBodyCondition::OrHash,
-                Privy::AggregationCondition::OrHash
+                Privy::AggregationCondition::OrHash,
+                Privy::MessageSigningCondition::OrHash
               )
             ],
           group_by: T::Array[Privy::AggregationGroupBy::OrHash]
@@ -152,7 +155,7 @@ module Privy
         name:,
         # The key quorum ID of the owner of the aggregation.
         owner_id:,
-        # The time window configuration for an aggregation.
+        # A rolling time window defined by a duration in seconds.
         window:,
         # Optional conditions to filter events before aggregation.
         conditions: nil,
@@ -189,7 +192,8 @@ module Privy
                   Privy::SuiTransactionCommandCondition,
                   Privy::SuiTransferObjectsCommandCondition,
                   Privy::ActionRequestBodyCondition,
-                  Privy::AggregationCondition
+                  Privy::AggregationCondition,
+                  Privy::MessageSigningCondition
                 )
               ],
             group_by: T::Array[Privy::AggregationGroupBy]

@@ -10,8 +10,8 @@ module Privy
 
       # @!attribute rewards
       #
-      #   @return [Array<Privy::Models::YieldClaimConfirmedWebhookPayload::Reward>]
-      required :rewards, -> { Privy::Internal::Type::ArrayOf[Privy::YieldClaimConfirmedWebhookPayload::Reward] }
+      #   @return [Array<Privy::Models::YieldClaimReward>]
+      required :rewards, -> { Privy::Internal::Type::ArrayOf[Privy::YieldClaimReward] }
 
       # @!attribute transaction_id
       #
@@ -34,35 +34,13 @@ module Privy
       #
       #   @param caip2 [String]
       #
-      #   @param rewards [Array<Privy::Models::YieldClaimConfirmedWebhookPayload::Reward>]
+      #   @param rewards [Array<Privy::Models::YieldClaimReward>]
       #
       #   @param transaction_id [String]
       #
       #   @param type [Symbol, Privy::Models::YieldClaimConfirmedWebhookPayload::Type] The type of webhook event.
       #
       #   @param wallet_id [String]
-
-      class Reward < Privy::Internal::Type::BaseModel
-        # @!attribute amount
-        #
-        #   @return [String]
-        required :amount, String
-
-        # @!attribute token_address
-        #
-        #   @return [String]
-        required :token_address, String
-
-        # @!attribute token_symbol
-        #
-        #   @return [String]
-        required :token_symbol, String
-
-        # @!method initialize(amount:, token_address:, token_symbol:)
-        #   @param amount [String]
-        #   @param token_address [String]
-        #   @param token_symbol [String]
-      end
 
       # The type of webhook event.
       #

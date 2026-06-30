@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    type kraken_embed_get_portfolio_summary_result =
+      {
+        result: Privy::KrakenEmbedPortfolioSummaryPayload?,
+        error: ::Array[String],
+        errors: ::Array[String]
+      }
+
+    class KrakenEmbedGetPortfolioSummaryResult < Privy::Internal::Type::BaseModel
+      attr_accessor result: Privy::KrakenEmbedPortfolioSummaryPayload?
+
+      attr_reader error: ::Array[String]?
+
+      def error=: (::Array[String]) -> ::Array[String]
+
+      attr_reader errors: ::Array[String]?
+
+      def errors=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        result: Privy::KrakenEmbedPortfolioSummaryPayload?,
+        ?error: ::Array[String],
+        ?errors: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        result: Privy::KrakenEmbedPortfolioSummaryPayload?,
+        error: ::Array[String],
+        errors: ::Array[String]
+      }
+    end
+  end
+end

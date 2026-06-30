@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type siws_message_type = :transaction | :plain | :"offchain-message"
+
+    module SiwsMessageType
+      extend Privy::Internal::Type::Enum
+
+      TRANSACTION: :transaction
+      PLAIN: :plain
+      OFFCHAIN_MESSAGE: :"offchain-message"
+
+      def self?.values: -> ::Array[Privy::Models::siws_message_type]
+    end
+  end
+end

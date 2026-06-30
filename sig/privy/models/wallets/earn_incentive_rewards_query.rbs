@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_incentive_rewards_query = { chain: String }
+
+      class EarnIncentiveRewardsQuery < Privy::Internal::Type::BaseModel
+        attr_accessor chain: String
+
+        def initialize: (chain: String) -> void
+
+        def to_hash: -> { chain: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type linked_account_base_wallet_type = :wallet | :smart_wallet
+
+    module LinkedAccountBaseWalletType
+      extend Privy::Internal::Type::Enum
+
+      WALLET: :wallet
+      SMART_WALLET: :smart_wallet
+
+      def self?.values: -> ::Array[Privy::Models::linked_account_base_wallet_type]
+    end
+  end
+end

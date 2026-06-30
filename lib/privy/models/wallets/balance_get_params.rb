@@ -34,8 +34,14 @@ module Privy
         #   Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
         #   `asset`. Cannot be used with `token`.
         #
-        #   @return [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain, nil]
+        #   @return [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>, nil]
         optional :chain, union: -> { Privy::Wallets::BalanceGetParams::Chain }
+
+        # @!attribute include_archived
+        #   Include archived wallets in lookup. Defaults to false.
+        #
+        #   @return [Boolean, nil]
+        optional :include_archived, Privy::Internal::Type::Boolean
 
         # @!attribute include_currency
         #   If set, balances are converted to the specified fiat currency. Not supported
@@ -44,7 +50,7 @@ module Privy
         #   @return [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency, nil]
         optional :include_currency, enum: -> { Privy::Wallets::BalanceGetParams::IncludeCurrency }
 
-        # @!method initialize(wallet_id:, token: nil, asset: nil, chain: nil, include_currency: nil, request_options: {})
+        # @!method initialize(wallet_id:, token: nil, asset: nil, chain: nil, include_archived: nil, include_currency: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::BalanceGetParams} for more details.
         #
@@ -54,7 +60,9 @@ module Privy
         #
         #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
-        #   @param chain [Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>, Privy::Models::Wallets::BalanceGetParams::Chain] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        #   @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        #
+        #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
         #   @param include_currency [Symbol, Privy::Models::Wallets::BalanceGetParams::IncludeCurrency] If set, balances are converted to the specified fiat currency. Not supported whe
         #
@@ -133,112 +141,17 @@ module Privy
         module Chain
           extend Privy::Internal::Type::Union
 
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ETHEREUM }
+          # Supported blockchain network names for wallet balance and transaction queries.
+          variant enum: -> { Privy::WalletAssetChainNameInput }
 
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARBITRUM }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::AVALANCHE }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BASE }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TEMPO }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::LINEA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::OPTIMISM }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::POLYGON }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SOLANA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ZKSYNC_ERA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SEPOLIA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARBITRUM_SEPOLIA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::AVALANCHE_FUJI }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BASE_SEPOLIA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::LINEA_TESTNET }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::OPTIMISM_SEPOLIA }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::POLYGON_AMOY }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SOLANA_DEVNET }
-
-          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SOLANA_TESTNET }
-
-          variant -> { Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1Array }
-
-          module UnionMember1
-            extend Privy::Internal::Type::Enum
-
-            ETHEREUM = :ethereum
-            ARBITRUM = :arbitrum
-            AVALANCHE = :avalanche
-            BASE = :base
-            TEMPO = :tempo
-            LINEA = :linea
-            OPTIMISM = :optimism
-            POLYGON = :polygon
-            SOLANA = :solana
-            ZKSYNC_ERA = :zksync_era
-            SEPOLIA = :sepolia
-            ARBITRUM_SEPOLIA = :arbitrum_sepolia
-            AVALANCHE_FUJI = :avalanche_fuji
-            BASE_SEPOLIA = :base_sepolia
-            LINEA_TESTNET = :linea_testnet
-            OPTIMISM_SEPOLIA = :optimism_sepolia
-            POLYGON_AMOY = :polygon_amoy
-            SOLANA_DEVNET = :solana_devnet
-            SOLANA_TESTNET = :solana_testnet
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
+          variant -> { Privy::Models::Wallets::BalanceGetParams::Chain::WalletAssetChainNameInputArray }
 
           # @!method self.variants
-          #   @return [Array(Symbol, Array<Symbol, Privy::Models::Wallets::BalanceGetParams::Chain::UnionMember1>)]
-
-          define_sorbet_constant!(:Variants) do
-            T.type_alias do
-              T.any(
-                Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol,
-                T::Array[Privy::Wallets::BalanceGetParams::Chain::UnionMember1::TaggedSymbol]
-              )
-            end
-          end
-
-          # @!group
-
-          ETHEREUM = :ethereum
-          ARBITRUM = :arbitrum
-          AVALANCHE = :avalanche
-          BASE = :base
-          TEMPO = :tempo
-          LINEA = :linea
-          OPTIMISM = :optimism
-          POLYGON = :polygon
-          SOLANA = :solana
-          ZKSYNC_ERA = :zksync_era
-          SEPOLIA = :sepolia
-          ARBITRUM_SEPOLIA = :arbitrum_sepolia
-          AVALANCHE_FUJI = :avalanche_fuji
-          BASE_SEPOLIA = :base_sepolia
-          LINEA_TESTNET = :linea_testnet
-          OPTIMISM_SEPOLIA = :optimism_sepolia
-          POLYGON_AMOY = :polygon_amoy
-          SOLANA_DEVNET = :solana_devnet
-          SOLANA_TESTNET = :solana_testnet
-
-          # @!endgroup
+          #   @return [Array(Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>)]
 
           # @type [Privy::Internal::Type::Converter]
-          UnionMember1Array =
-            Privy::Internal::Type::ArrayOf[enum: -> { Privy::Wallets::BalanceGetParams::Chain::UnionMember1 }]
+          WalletAssetChainNameInputArray =
+            Privy::Internal::Type::ArrayOf[enum: -> { Privy::WalletAssetChainNameInput }]
         end
 
         # If set, balances are converted to the specified fiat currency. Not supported

@@ -16,7 +16,7 @@ module Privy
       sig { params(destination: Privy::TokenTransferDestination::OrHash).void }
       attr_writer :destination
 
-      # Estimated fees in USD
+      # Estimated fees in USD for the transfer. Only present for cross-chain transfers.
       sig do
         returns(
           T::Array[
@@ -26,11 +26,18 @@ module Privy
       end
       attr_accessor :estimated_fees
 
-      # Estimated output amount in decimals
+      # Estimated input amount in decimals. For exact_input, this equals source.amount.
+      # For exact_output, this is the estimated amount the sender needs to provide.
+      sig { returns(String) }
+      attr_accessor :estimated_input_amount
+
+      # Estimated output amount in decimals. For exact_input, this is an estimate
+      # subject to slippage. For exact_output, this is the guaranteed exact amount to be
+      # received.
       sig { returns(String) }
       attr_accessor :estimated_output_amount
 
-      # Quote expiry as unix timestamp (seconds)
+      # Quote expiry as Unix timestamp (seconds).
       sig { returns(Float) }
       attr_accessor :expires_at
 
@@ -73,6 +80,7 @@ module Privy
                 Privy::DeveloperFee::OrHash
               )
             ],
+          estimated_input_amount: String,
           estimated_output_amount: String,
           expires_at: Float,
           source:
@@ -88,11 +96,16 @@ module Privy
         # The destination address for a token transfer. Optionally specify a different
         # asset or chain for cross-asset or cross-chain transfers.
         destination:,
-        # Estimated fees in USD
+        # Estimated fees in USD for the transfer. Only present for cross-chain transfers.
         estimated_fees:,
-        # Estimated output amount in decimals
+        # Estimated input amount in decimals. For exact_input, this equals source.amount.
+        # For exact_output, this is the estimated amount the sender needs to provide.
+        estimated_input_amount:,
+        # Estimated output amount in decimals. For exact_input, this is an estimate
+        # subject to slippage. For exact_output, this is the guaranteed exact amount to be
+        # received.
         estimated_output_amount:,
-        # Quote expiry as unix timestamp (seconds)
+        # Quote expiry as Unix timestamp (seconds).
         expires_at:,
         # The source asset, amount, and chain for a token transfer. Specify either `asset`
         # (named) or `asset_address` (custom), not both.
@@ -113,6 +126,7 @@ module Privy
               T::Array[
                 T.any(Privy::RelayerFee, Privy::PrivyFee, Privy::DeveloperFee)
               ],
+            estimated_input_amount: String,
             estimated_output_amount: String,
             expires_at: Float,
             source:

@@ -19,10 +19,10 @@ module Privy
       required :refresh_token, String, nil?: true
 
       # @!attribute session_update_action
-      #   Instructs the client on how to handle tokens received
+      #   Instructs the client on how to handle tokens received from a session response.
       #
-      #   @return [Symbol, Privy::Models::AuthenticatedUser::SessionUpdateAction]
-      required :session_update_action, enum: -> { Privy::AuthenticatedUser::SessionUpdateAction }
+      #   @return [Symbol, Privy::Models::ClientSessionUpdateAction]
+      required :session_update_action, enum: -> { Privy::ClientSessionUpdateAction }
 
       # @!attribute user
       #   A Privy user object.
@@ -55,7 +55,7 @@ module Privy
       #
       #   @param refresh_token [String, nil]
       #
-      #   @param session_update_action [Symbol, Privy::Models::AuthenticatedUser::SessionUpdateAction] Instructs the client on how to handle tokens received
+      #   @param session_update_action [Symbol, Privy::Models::ClientSessionUpdateAction] Instructs the client on how to handle tokens received from a session response.
       #
       #   @param user [Privy::Models::User] A Privy user object.
       #
@@ -64,20 +64,6 @@ module Privy
       #   @param is_new_user [Boolean]
       #
       #   @param oauth_tokens [Privy::Models::OAuthTokens] OAuth tokens associated with the user.
-
-      # Instructs the client on how to handle tokens received
-      #
-      # @see Privy::Models::AuthenticatedUser#session_update_action
-      module SessionUpdateAction
-        extend Privy::Internal::Type::Enum
-
-        SET = :set
-        IGNORE = :ignore
-        CLEAR = :clear
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

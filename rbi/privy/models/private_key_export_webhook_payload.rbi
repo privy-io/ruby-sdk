@@ -24,21 +24,12 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
-      sig do
-        returns(
-          T.nilable(
-            Privy::PrivateKeyExportWebhookPayload::ExportSource::TaggedSymbol
-          )
-        )
-      end
+      # The export type. 'display' is for showing the key to the user in the UI,
+      # 'client' is for exporting to the client application.
+      sig { returns(T.nilable(Privy::ExportType::TaggedSymbol)) }
       attr_reader :export_source
 
-      sig do
-        params(
-          export_source:
-            Privy::PrivateKeyExportWebhookPayload::ExportSource::OrSymbol
-        ).void
-      end
+      sig { params(export_source: Privy::ExportType::OrSymbol).void }
       attr_writer :export_source
 
       # Payload for the wallet.private_key_export webhook event.
@@ -48,8 +39,7 @@ module Privy
           user_id: String,
           wallet_address: String,
           wallet_id: String,
-          export_source:
-            Privy::PrivateKeyExportWebhookPayload::ExportSource::OrSymbol
+          export_source: Privy::ExportType::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -61,6 +51,8 @@ module Privy
         wallet_address:,
         # The ID of the wallet.
         wallet_id:,
+        # The export type. 'display' is for showing the key to the user in the UI,
+        # 'client' is for exporting to the client application.
         export_source: nil
       )
       end
@@ -72,8 +64,7 @@ module Privy
             user_id: String,
             wallet_address: String,
             wallet_id: String,
-            export_source:
-              Privy::PrivateKeyExportWebhookPayload::ExportSource::TaggedSymbol
+            export_source: Privy::ExportType::TaggedSymbol
           }
         )
       end
@@ -99,37 +90,6 @@ module Privy
         sig do
           override.returns(
             T::Array[Privy::PrivateKeyExportWebhookPayload::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      module ExportSource
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::PrivateKeyExportWebhookPayload::ExportSource)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        DISPLAY =
-          T.let(
-            :display,
-            Privy::PrivateKeyExportWebhookPayload::ExportSource::TaggedSymbol
-          )
-        CLIENT =
-          T.let(
-            :client,
-            Privy::PrivateKeyExportWebhookPayload::ExportSource::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::PrivateKeyExportWebhookPayload::ExportSource::TaggedSymbol
-            ]
           )
         end
         def self.values

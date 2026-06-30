@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type ethereum_typed_data_domain_condition_field =
+      :chainId | :verifyingContract | :chain_id | :verifying_contract
+
+    module EthereumTypedDataDomainConditionField
+      extend Privy::Internal::Type::Enum
+
+      CHAIN_ID: :chainId
+      CHAIN_ID_2: :chain_id
+      VERIFYING_CONTRACT: :verifyingContract
+      VERIFYING_CONTRACT_2: :verifying_contract
+
+      def self?.values: -> ::Array[Privy::Models::ethereum_typed_data_domain_condition_field]
+    end
+  end
+end

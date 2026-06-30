@@ -55,8 +55,6 @@ module Privy
 
     attr_reader oauth: Privy::Resources::OAuth
 
-    attr_reader wallet_actions: Privy::Resources::WalletActions
-
     attr_reader yield_: Privy::Resources::Yield
 
     attr_reader kraken_embed: Privy::Resources::KrakenEmbed

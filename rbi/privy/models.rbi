@@ -7,6 +7,8 @@ module Privy
 
   AbiSchemaItem = Privy::Models::AbiSchemaItem
 
+  AccessListEntry = Privy::Models::AccessListEntry
+
   AccountBalanceParams = Privy::Models::AccountBalanceParams
 
   AccountBalanceResponse = Privy::Models::AccountBalanceResponse
@@ -44,6 +46,12 @@ module Privy
 
   Address = Privy::Models::Address
 
+  AdvancedSwapPlatformFee = Privy::Models::AdvancedSwapPlatformFee
+
+  AdvancedSwapRequestBody = Privy::Models::AdvancedSwapRequestBody
+
+  AdvancedSwapResponse = Privy::Models::AdvancedSwapResponse
+
   Aggregation = Privy::Models::Aggregation
 
   AggregationCondition = Privy::Models::AggregationCondition
@@ -67,6 +75,10 @@ module Privy
   AmountType = Privy::Models::AmountType
 
   AnalyticsEventInput = Privy::Models::AnalyticsEventInput
+
+  AppAllowlistConfig = Privy::Models::AppAllowlistConfig
+
+  AppCustomOAuthProvider = Privy::Models::AppCustomOAuthProvider
 
   AppGetGasSpendParams = Privy::Models::AppGetGasSpendParams
 
@@ -92,6 +104,8 @@ module Privy
 
   AuthenticateSiwsInput = Privy::Models::AuthenticateSiwsInput
 
+  AuthorizationKey = Privy::Models::AuthorizationKey
+
   AuthorizationKeyDashboardResponse =
     Privy::Models::AuthorizationKeyDashboardResponse
 
@@ -110,6 +124,10 @@ module Privy
   BaseIntentResponse = Privy::Models::BaseIntentResponse
 
   BitcoinAddress = Privy::Models::BitcoinAddress
+
+  BlockchainTransactionStatus = Privy::Models::BlockchainTransactionStatus
+
+  BlockInfo = Privy::Models::BlockInfo
 
   BridgeBrlFiatVirtualAccountDepositInstructions =
     Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
@@ -176,9 +194,18 @@ module Privy
   BridgeUsdFiatVirtualAccountDepositInstructions =
     Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions
 
+  BridgeUsdFiatVirtualAccountDepositPaymentRail =
+    Privy::Models::BridgeUsdFiatVirtualAccountDepositPaymentRail
+
   Caip2 = Privy::Models::Caip2
 
   Caip2ChainID = Privy::Models::Caip2ChainID
+
+  CaptchaProvider = Privy::Models::CaptchaProvider
+
+  ChainTestnetMode = Privy::Models::ChainTestnetMode
+
+  ClientSessionUpdateAction = Privy::Models::ClientSessionUpdateAction
 
   CoinbaseBlockchain = Privy::Models::CoinbaseBlockchain
 
@@ -264,8 +291,6 @@ module Privy
 
   CrossAppSmartWallet = Privy::Models::CrossAppSmartWallet
 
-  CryptoCurrencyCode = Privy::Models::CryptoCurrencyCode
-
   Currency = Privy::Models::Currency
 
   CurrencyAmount = Privy::Models::CurrencyAmount
@@ -308,29 +333,6 @@ module Privy
 
   DeviceVerifyResponse = Privy::Models::DeviceVerifyResponse
 
-  EarnAsset = Privy::Models::EarnAsset
-
-  EarnDepositActionResponse = Privy::Models::EarnDepositActionResponse
-
-  EarnDepositRequestBody = Privy::Models::EarnDepositRequestBody
-
-  EarnIncentiveClaimActionResponse =
-    Privy::Models::EarnIncentiveClaimActionResponse
-
-  EarnIncentiveClaimRequestBody = Privy::Models::EarnIncentiveClaimRequestBody
-
-  EarnIncentiveRewardEntry = Privy::Models::EarnIncentiveRewardEntry
-
-  EarnIncentiveRewardsQuery = Privy::Models::EarnIncentiveRewardsQuery
-
-  EarnIncentiveRewardsResponse = Privy::Models::EarnIncentiveRewardsResponse
-
-  EarnIncetiveClaimRewardEntry = Privy::Models::EarnIncetiveClaimRewardEntry
-
-  EarnWithdrawActionResponse = Privy::Models::EarnWithdrawActionResponse
-
-  EarnWithdrawRequestBody = Privy::Models::EarnWithdrawRequestBody
-
   EmailDomain = Privy::Models::EmailDomain
 
   EmailDomainInviteInput = Privy::Models::EmailDomainInviteInput
@@ -351,19 +353,18 @@ module Privy
 
   EmbeddedWalletRecoveryMethod = Privy::Models::EmbeddedWalletRecoveryMethod
 
+  EncryptedAuthorizationKey = Privy::Models::EncryptedAuthorizationKey
+
+  EncryptedBoundAuthenticateResponse =
+    Privy::Models::EncryptedBoundAuthenticateResponse
+
+  EncryptedWalletAuthenticateResponse =
+    Privy::Models::EncryptedWalletAuthenticateResponse
+
   Ethereum7702AuthorizationCondition =
     Privy::Models::Ethereum7702AuthorizationCondition
 
   EthereumCalldataCondition = Privy::Models::EthereumCalldataCondition
-
-  EthereumEarnPositionQuery = Privy::Models::EthereumEarnPositionQuery
-
-  EthereumEarnPositionResponse = Privy::Models::EthereumEarnPositionResponse
-
-  EthereumEarnProvider = Privy::Models::EthereumEarnProvider
-
-  EthereumEarnVaultDetailsResponse =
-    Privy::Models::EthereumEarnVaultDetailsResponse
 
   EthereumPersonalSignRpcInput = Privy::Models::EthereumPersonalSignRpcInput
 
@@ -466,8 +467,14 @@ module Privy
 
   EthereumTransactionCondition = Privy::Models::EthereumTransactionCondition
 
+  EthereumTransactionConditionField =
+    Privy::Models::EthereumTransactionConditionField
+
   EthereumTypedDataDomainCondition =
     Privy::Models::EthereumTypedDataDomainCondition
+
+  EthereumTypedDataDomainConditionField =
+    Privy::Models::EthereumTypedDataDomainConditionField
 
   EthereumTypedDataInput = Privy::Models::EthereumTypedDataInput
 
@@ -514,13 +521,6 @@ module Privy
 
   EvmChecksumAddress = Privy::Models::EvmChecksumAddress
 
-  EvmTransactionWalletActionStep = Privy::Models::EvmTransactionWalletActionStep
-
-  EvmUserOperationWalletActionStep =
-    Privy::Models::EvmUserOperationWalletActionStep
-
-  EvmWalletActionStepStatus = Privy::Models::EvmWalletActionStepStatus
-
   ExchangeStripeTokensInput = Privy::Models::ExchangeStripeTokensInput
 
   ExchangeStripeTokensResponse = Privy::Models::ExchangeStripeTokensResponse
@@ -538,14 +538,6 @@ module Privy
   ExtendedChainType = Privy::Models::ExtendedChainType
 
   ExternalOAuthProviderID = Privy::Models::ExternalOAuthProviderID
-
-  ExternalTransactionWalletActionStep =
-    Privy::Models::ExternalTransactionWalletActionStep
-
-  ExternalTransactionWalletActionStepStatus =
-    Privy::Models::ExternalTransactionWalletActionStepStatus
-
-  FailureReason = Privy::Models::FailureReason
 
   FarcasterAuthenticateInput = Privy::Models::FarcasterAuthenticateInput
 
@@ -708,14 +700,22 @@ module Privy
 
   IntentAuthorization = Privy::Models::IntentAuthorization
 
+  IntentAuthorizationKeyMember = Privy::Models::IntentAuthorizationKeyMember
+
+  IntentAuthorizationKeyQuorum = Privy::Models::IntentAuthorizationKeyQuorum
+
   IntentAuthorizationKeyQuorumMember =
     Privy::Models::IntentAuthorizationKeyQuorumMember
 
   IntentAuthorizationMember = Privy::Models::IntentAuthorizationMember
 
+  IntentAuthorizationUserMember = Privy::Models::IntentAuthorizationUserMember
+
   IntentAuthorizedWebhookPayload = Privy::Models::IntentAuthorizedWebhookPayload
 
   IntentAuthorizeInput = Privy::Models::IntentAuthorizeInput
+
+  IntentBinding = Privy::Models::IntentBinding
 
   IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
 
@@ -773,6 +773,8 @@ module Privy
 
   KeyQuorumUpdateRequestBody = Privy::Models::KeyQuorumUpdateRequestBody
 
+  KrakenEmbedAssetSortOption = Privy::Models::KrakenEmbedAssetSortOption
+
   KrakenEmbedCancelCustomOrderInput =
     Privy::Models::KrakenEmbedCancelCustomOrderInput
 
@@ -784,6 +786,8 @@ module Privy
 
   KrakenEmbedCancelCustomOrderResult =
     Privy::Models::KrakenEmbedCancelCustomOrderResult
+
+  KrakenEmbedCountryCode = Privy::Models::KrakenEmbedCountryCode
 
   KrakenEmbedCreateCustomOrderInput =
     Privy::Models::KrakenEmbedCreateCustomOrderInput
@@ -817,15 +821,27 @@ module Privy
   KrakenEmbedCustomOrderOccurrenceExecutedAction =
     Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
 
+  KrakenEmbedCustomOrderOccurrenceStatus =
+    Privy::Models::KrakenEmbedCustomOrderOccurrenceStatus
+
   KrakenEmbedCustomOrderOccurrenceTrigger =
     Privy::Models::KrakenEmbedCustomOrderOccurrenceTrigger
+
+  KrakenEmbedCustomOrderOccurrenceTriggerType =
+    Privy::Models::KrakenEmbedCustomOrderOccurrenceTriggerType
 
   KrakenEmbedCustomOrderQuoteAsset =
     Privy::Models::KrakenEmbedCustomOrderQuoteAsset
 
   KrakenEmbedCustomOrderStatus = Privy::Models::KrakenEmbedCustomOrderStatus
 
+  KrakenEmbedCustomOrderStatusValue =
+    Privy::Models::KrakenEmbedCustomOrderStatusValue
+
   KrakenEmbedCustomOrderTrigger = Privy::Models::KrakenEmbedCustomOrderTrigger
+
+  KrakenEmbedCustomOrderTriggerCondition =
+    Privy::Models::KrakenEmbedCustomOrderTriggerCondition
 
   KrakenEmbedEarnAmount = Privy::Models::KrakenEmbedEarnAmount
 
@@ -834,6 +850,8 @@ module Privy
   KrakenEmbedEarnAsset = Privy::Models::KrakenEmbedEarnAsset
 
   KrakenEmbedEarnUserAllocation = Privy::Models::KrakenEmbedEarnUserAllocation
+
+  KrakenEmbedFullName = Privy::Models::KrakenEmbedFullName
 
   KrakenEmbedGetAssetListQueryParamsSchema =
     Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema
@@ -888,10 +906,19 @@ module Privy
   KrakenEmbedGetPortfolioSummaryResponse =
     Privy::Models::KrakenEmbedGetPortfolioSummaryResponse
 
+  KrakenEmbedGetPortfolioSummaryResult =
+    Privy::Models::KrakenEmbedGetPortfolioSummaryResult
+
   KrakenEmbedGetPortfolioTransactionsQueryParamsSchema =
     Privy::Models::KrakenEmbedGetPortfolioTransactionsQueryParamsSchema
 
   KrakenEmbedGetQuoteQueryParams = Privy::Models::KrakenEmbedGetQuoteQueryParams
+
+  KrakenEmbedIdentityDocumentType =
+    Privy::Models::KrakenEmbedIdentityDocumentType
+
+  KrakenEmbedIncludeCurrentDayPnlQueryParam =
+    Privy::Models::KrakenEmbedIncludeCurrentDayPnlQueryParam
 
   KrakenEmbedListCustomOrdersQueryParams =
     Privy::Models::KrakenEmbedListCustomOrdersQueryParams
@@ -902,6 +929,15 @@ module Privy
   KrakenEmbedListCustomOrdersResult =
     Privy::Models::KrakenEmbedListCustomOrdersResult
 
+  KrakenEmbedPortfolioSummaryPayload =
+    Privy::Models::KrakenEmbedPortfolioSummaryPayload
+
+  KrakenEmbedPortfolioTransactionRefID =
+    Privy::Models::KrakenEmbedPortfolioTransactionRefID
+
+  KrakenEmbedPortfolioTransactionRefIDType =
+    Privy::Models::KrakenEmbedPortfolioTransactionRefIDType
+
   KrakenEmbedQuoteCancelledWebhookPayload =
     Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload
 
@@ -910,6 +946,15 @@ module Privy
 
   KrakenEmbedQuoteExecutionFailedWebhookPayload =
     Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload
+
+  KrakenEmbedQuoteType = Privy::Models::KrakenEmbedQuoteType
+
+  KrakenEmbedResidence = Privy::Models::KrakenEmbedResidence
+
+  KrakenEmbedResidenceDocumentType =
+    Privy::Models::KrakenEmbedResidenceDocumentType
+
+  KrakenEmbedSortingOrder = Privy::Models::KrakenEmbedSortingOrder
 
   KrakenEmbedStartAddressMetadata =
     Privy::Models::KrakenEmbedStartAddressMetadata
@@ -949,6 +994,10 @@ module Privy
   KrakenEmbedToggleAutoEarnResponse =
     Privy::Models::KrakenEmbedToggleAutoEarnResponse
 
+  KrakenEmbedTransactionStatus = Privy::Models::KrakenEmbedTransactionStatus
+
+  KrakenEmbedTransactionType = Privy::Models::KrakenEmbedTransactionType
+
   KrakenEmbedUpcomingReward = Privy::Models::KrakenEmbedUpcomingReward
 
   KrakenEmbedUserClosedWebhookPayload =
@@ -973,6 +1022,8 @@ module Privy
   LinkedAccountAuthorizationKey = Privy::Models::LinkedAccountAuthorizationKey
 
   LinkedAccountBaseWallet = Privy::Models::LinkedAccountBaseWallet
+
+  LinkedAccountBaseWalletType = Privy::Models::LinkedAccountBaseWalletType
 
   LinkedAccountBitcoinSegwitEmbeddedWallet =
     Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet
@@ -1037,6 +1088,9 @@ module Privy
 
   LinkedAccountPasskey = Privy::Models::LinkedAccountPasskey
 
+  LinkedAccountPasskeyCredentialDeviceType =
+    Privy::Models::LinkedAccountPasskeyCredentialDeviceType
+
   LinkedAccountPasskeyInput = Privy::Models::LinkedAccountPasskeyInput
 
   LinkedAccountPhone = Privy::Models::LinkedAccountPhone
@@ -1084,9 +1138,15 @@ module Privy
   ListStripePaymentTokensResponse =
     Privy::Models::ListStripePaymentTokensResponse
 
+  MessageSigningCondition = Privy::Models::MessageSigningCondition
+
+  MessageSigningField = Privy::Models::MessageSigningField
+
   MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
 
   MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
+
+  MfaMethod = Privy::Models::MfaMethod
 
   MfaPasskeyEnrollmentRequestBody =
     Privy::Models::MfaPasskeyEnrollmentRequestBody
@@ -1178,6 +1238,9 @@ module Privy
   OAuthTokenDeviceCodePendingError =
     Privy::Models::OAuthTokenDeviceCodePendingError
 
+  OAuthTokenDeviceCodePendingErrorCode =
+    Privy::Models::OAuthTokenDeviceCodePendingErrorCode
+
   OAuthTokenDeviceCodeRequestBody =
     Privy::Models::OAuthTokenDeviceCodeRequestBody
 
@@ -1205,8 +1268,6 @@ module Privy
   OAuthVerifyResponseBody = Privy::Models::OAuthVerifyResponseBody
 
   OnrampProvider = Privy::Models::OnrampProvider
-
-  OnrampSessionFees = Privy::Models::OnrampSessionFees
 
   OnrampSessionParams = Privy::Models::OnrampSessionParams
 
@@ -1370,6 +1431,8 @@ module Privy
 
   Quantity = Privy::Models::Quantity
 
+  RawBoundAuthenticateResponse = Privy::Models::RawBoundAuthenticateResponse
+
   RawSignBytesEncoding = Privy::Models::RawSignBytesEncoding
 
   RawSignBytesHashFunction = Privy::Models::RawSignBytesHashFunction
@@ -1385,6 +1448,8 @@ module Privy
   RawSignResponse = Privy::Models::RawSignResponse
 
   RawSignResponseData = Privy::Models::RawSignResponseData
+
+  RawWalletAuthenticateResponse = Privy::Models::RawWalletAuthenticateResponse
 
   RecipientPublicKey = Privy::Models::RecipientPublicKey
 
@@ -1411,6 +1476,8 @@ module Privy
 
   ResponsePasskeyInitRegister = Privy::Models::ResponsePasskeyInitRegister
 
+  RollingAggregationWindow = Privy::Models::RollingAggregationWindow
+
   RpcIntentRequestDetails = Privy::Models::RpcIntentRequestDetails
 
   RpcIntentResponse = Privy::Models::RpcIntentResponse
@@ -1418,6 +1485,8 @@ module Privy
   RuleDeleteIntentResponse = Privy::Models::RuleDeleteIntentResponse
 
   RuleIntentCreateRequestDetails = Privy::Models::RuleIntentCreateRequestDetails
+
+  RuleIntentDeleteRequestBody = Privy::Models::RuleIntentDeleteRequestBody
 
   RuleIntentDeleteRequestDetails = Privy::Models::RuleIntentDeleteRequestDetails
 
@@ -1434,6 +1503,10 @@ module Privy
   SeedPhraseExportResponse = Privy::Models::SeedPhraseExportResponse
 
   SeedPhraseExportWebhookPayload = Privy::Models::SeedPhraseExportWebhookPayload
+
+  SignatureOptions = Privy::Models::SignatureOptions
+
+  SignatureType = Privy::Models::SignatureType
 
   SigningAlgorithm = Privy::Models::SigningAlgorithm
 
@@ -1470,6 +1543,8 @@ module Privy
   SiwsInput = Privy::Models::SiwsInput
 
   SiwsLinkRequestBody = Privy::Models::SiwsLinkRequestBody
+
+  SiwsMessageType = Privy::Models::SiwsMessageType
 
   SiwsNonce = Privy::Models::SiwsNonce
 
@@ -1545,8 +1620,14 @@ module Privy
   SolanaSystemProgramInstructionCondition =
     Privy::Models::SolanaSystemProgramInstructionCondition
 
+  SolanaSystemProgramInstructionConditionField =
+    Privy::Models::SolanaSystemProgramInstructionConditionField
+
   SolanaTokenProgramInstructionCondition =
     Privy::Models::SolanaTokenProgramInstructionCondition
+
+  SolanaTokenProgramInstructionConditionField =
+    Privy::Models::SolanaTokenProgramInstructionConditionField
 
   SolanaWalletDerivationStrategy = Privy::Models::SolanaWalletDerivationStrategy
 
@@ -1669,13 +1750,15 @@ module Privy
 
   StripeCryptoCustomerNone = Privy::Models::StripeCryptoCustomerNone
 
+  StripeKYCRegion = Privy::Models::StripeKYCRegion
+
+  StripeKYCTier = Privy::Models::StripeKYCTier
+
   StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse
 
   StripeOnrampSessionStatus = Privy::Models::StripeOnrampSessionStatus
 
   StripePaymentToken = Privy::Models::StripePaymentToken
-
-  StripeQuote = Privy::Models::StripeQuote
 
   StripeTransactionDetails = Privy::Models::StripeTransactionDetails
 
@@ -1694,12 +1777,6 @@ module Privy
 
   SuiTransferObjectsCommandField = Privy::Models::SuiTransferObjectsCommandField
 
-  SvmTransactionWalletActionStep = Privy::Models::SvmTransactionWalletActionStep
-
-  SvmWalletActionStepStatus = Privy::Models::SvmWalletActionStepStatus
-
-  SwapActionResponse = Privy::Models::SwapActionResponse
-
   SwapDestination = Privy::Models::SwapDestination
 
   SwapQuoteDestination = Privy::Models::SwapQuoteDestination
@@ -1711,6 +1788,8 @@ module Privy
   SwapRequestBody = Privy::Models::SwapRequestBody
 
   SwapSource = Privy::Models::SwapSource
+
+  SwapSubmissionStatus = Privy::Models::SwapSubmissionStatus
 
   SystemCondition = Privy::Models::SystemCondition
 
@@ -1744,6 +1823,8 @@ module Privy
   TestAccount = Privy::Models::TestAccount
 
   TestAccountsResponse = Privy::Models::TestAccountsResponse
+
+  TokenIdentifier = Privy::Models::TokenIdentifier
 
   TokenOutput = Privy::Models::TokenOutput
 
@@ -1825,8 +1906,6 @@ module Privy
 
   TransactionTokenAddressInput = Privy::Models::TransactionTokenAddressInput
 
-  TransferActionResponse = Privy::Models::TransferActionResponse
-
   TransferFarcasterInput = Privy::Models::TransferFarcasterInput
 
   TransferIntentRequestDetails = Privy::Models::TransferIntentRequestDetails
@@ -1854,13 +1933,53 @@ module Privy
 
   TronCalldataCondition = Privy::Models::TronCalldataCondition
 
+  TronContract = Privy::Models::TronContract
+
+  TronHexAddress = Privy::Models::TronHexAddress
+
+  TronRawDataForSend = Privy::Models::TronRawDataForSend
+
+  TronRawDataForSign = Privy::Models::TronRawDataForSign
+
+  TronRpcInput = Privy::Models::TronRpcInput
+
+  TronRpcResponse = Privy::Models::TronRpcResponse
+
+  TronSendTransactionRpcInput = Privy::Models::TronSendTransactionRpcInput
+
+  TronSendTransactionRpcInputParams =
+    Privy::Models::TronSendTransactionRpcInputParams
+
+  TronSendTransactionRpcResponse = Privy::Models::TronSendTransactionRpcResponse
+
+  TronSendTransactionRpcResponseData =
+    Privy::Models::TronSendTransactionRpcResponseData
+
+  TronSignTransactionRpcInput = Privy::Models::TronSignTransactionRpcInput
+
+  TronSignTransactionRpcInputParams =
+    Privy::Models::TronSignTransactionRpcInputParams
+
+  TronSignTransactionRpcResponse = Privy::Models::TronSignTransactionRpcResponse
+
+  TronSignTransactionRpcResponseData =
+    Privy::Models::TronSignTransactionRpcResponseData
+
   TronTransactionCondition = Privy::Models::TronTransactionCondition
+
+  TronTransactionConditionField = Privy::Models::TronTransactionConditionField
+
+  TronTransferContract = Privy::Models::TronTransferContract
+
+  TronTriggerSmartContract = Privy::Models::TronTriggerSmartContract
 
   TypedDataDomainInputParams =
     T.let(
       Privy::Models::TypedDataDomainInputParams,
       Privy::Internal::Type::Converter
     )
+
+  TypedDataInput = Privy::Models::TypedDataInput
 
   TypedDataTypeFieldInput = Privy::Models::TypedDataTypeFieldInput
 
@@ -1951,9 +2070,13 @@ module Privy
 
   UserPregenerateWalletsParams = Privy::Models::UserPregenerateWalletsParams
 
+  UserReference = Privy::Models::UserReference
+
   UserSearchParams = Privy::Models::UserSearchParams
 
   UserSetCustomMetadataParams = Privy::Models::UserSetCustomMetadataParams
+
+  UserSigningKeyBinding = Privy::Models::UserSigningKeyBinding
 
   UserTransferredAccountWebhookPayload =
     Privy::Models::UserTransferredAccountWebhookPayload
@@ -1970,6 +2093,8 @@ module Privy
     Privy::Models::UserWalletCreatedWebhookPayload
 
   UserWithIdentityToken = Privy::Models::UserWithIdentityToken
+
+  VaultAsset = Privy::Models::VaultAsset
 
   Wallet = Privy::Models::Wallet
 
@@ -2009,14 +2134,6 @@ module Privy
   WalletActionEarnWithdrawSucceededWebhookPayload =
     Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload
 
-  WalletActionResponse = Privy::Models::WalletActionResponse
-
-  WalletActionStatus = Privy::Models::WalletActionStatus
-
-  WalletActionStep = Privy::Models::WalletActionStep
-
-  WalletActionStepType = Privy::Models::WalletActionStepType
-
   WalletActionSwapCreatedWebhookPayload =
     Privy::Models::WalletActionSwapCreatedWebhookPayload
 
@@ -2041,8 +2158,6 @@ module Privy
   WalletActionTransferSucceededWebhookPayload =
     Privy::Models::WalletActionTransferSucceededWebhookPayload
 
-  WalletActionType = Privy::Models::WalletActionType
-
   WalletAdditionalSigner =
     T.let(
       Privy::Models::WalletAdditionalSigner,
@@ -2057,7 +2172,25 @@ module Privy
   WalletAPIRevokeAuthorizationKeyInput =
     Privy::Models::WalletAPIRevokeAuthorizationKeyInput
 
+  WalletArchivedWebhookPayload = Privy::Models::WalletArchivedWebhookPayload
+
+  WalletArchiveParams = Privy::Models::WalletArchiveParams
+
   WalletAsset = Privy::Models::WalletAsset
+
+  WalletAssetChainNameInput = Privy::Models::WalletAssetChainNameInput
+
+  WalletAuthenticateBoundEncryptedRequestBody =
+    Privy::Models::WalletAuthenticateBoundEncryptedRequestBody
+
+  WalletAuthenticateBoundRequestBody =
+    Privy::Models::WalletAuthenticateBoundRequestBody
+
+  WalletAuthenticateBoundUnencryptedRequestBody =
+    Privy::Models::WalletAuthenticateBoundUnencryptedRequestBody
+
+  WalletAuthenticateIntentsResponse =
+    Privy::Models::WalletAuthenticateIntentsResponse
 
   WalletAuthenticateRequestBody = Privy::Models::WalletAuthenticateRequestBody
 
@@ -2139,8 +2272,12 @@ module Privy
 
   WalletRecoveredWebhookPayload = Privy::Models::WalletRecoveredWebhookPayload
 
+  WalletRecoverySetupMethod = Privy::Models::WalletRecoverySetupMethod
+
   WalletRecoverySetupWebhookPayload =
     Privy::Models::WalletRecoverySetupWebhookPayload
+
+  WalletRestoredWebhookPayload = Privy::Models::WalletRestoredWebhookPayload
 
   WalletRevokeResponse = Privy::Models::WalletRevokeResponse
 
@@ -2170,6 +2307,8 @@ module Privy
 
   YieldClaimConfirmedWebhookPayload =
     Privy::Models::YieldClaimConfirmedWebhookPayload
+
+  YieldClaimReward = Privy::Models::YieldClaimReward
 
   YieldDepositConfirmedWebhookPayload =
     Privy::Models::YieldDepositConfirmedWebhookPayload

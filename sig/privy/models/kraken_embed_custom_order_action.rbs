@@ -6,7 +6,7 @@ module Privy
         fee_bps: String,
         quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
         spread_bps: String,
-        type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+        type: Privy::Models::kraken_embed_quote_type
       }
 
     class KrakenEmbedCustomOrderAction < Privy::Internal::Type::BaseModel
@@ -18,14 +18,14 @@ module Privy
 
       attr_accessor spread_bps: String
 
-      attr_accessor type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+      attr_accessor type: Privy::Models::kraken_embed_quote_type
 
       def initialize: (
         amount: Privy::KrakenEmbedCustomOrderAmount,
         fee_bps: String,
         quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
         spread_bps: String,
-        type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+        type: Privy::Models::kraken_embed_quote_type
       ) -> void
 
       def to_hash: -> {
@@ -33,19 +33,8 @@ module Privy
         fee_bps: String,
         quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
         spread_bps: String,
-        type: Privy::Models::KrakenEmbedCustomOrderAction::type_
+        type: Privy::Models::kraken_embed_quote_type
       }
-
-      type type_ = :receive | :spend
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        RECEIVE: :receive
-        SPEND: :spend
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderAction::type_]
-      end
     end
   end
 end

@@ -1,7 +1,8 @@
 module Privy
   module Models
     type wallet_get_params =
-      { wallet_id: String } & Privy::Internal::Type::request_parameters
+      { wallet_id: String, include_archived: bool }
+      & Privy::Internal::Type::request_parameters
 
     class WalletGetParams < Privy::Internal::Type::BaseModel
       extend Privy::Internal::Type::RequestParameters::Converter
@@ -9,13 +10,19 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_reader include_archived: bool?
+
+      def include_archived=: (bool) -> bool
+
       def initialize: (
         wallet_id: String,
+        ?include_archived: bool,
         ?request_options: Privy::request_opts
       ) -> void
 
       def to_hash: -> {
         wallet_id: String,
+        include_archived: bool,
         request_options: Privy::RequestOptions
       }
     end

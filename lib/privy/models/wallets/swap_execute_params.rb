@@ -28,7 +28,14 @@ module Privy
         #   @return [String, nil]
         optional :privy_idempotency_key, String
 
-        # @!method initialize(wallet_id:, privy_authorization_signature: nil, privy_idempotency_key: nil, request_options: {})
+        # @!attribute privy_request_expiry
+        #   Request expiry. Value is a Unix timestamp in milliseconds representing the
+        #   deadline by which the request must be processed.
+        #
+        #   @return [String, nil]
+        optional :privy_request_expiry, String
+
+        # @!method initialize(wallet_id:, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::SwapExecuteParams} for more details.
         #
@@ -37,6 +44,8 @@ module Privy
         #   @param privy_authorization_signature [String] Request authorization signature. If multiple signatures are required, they shoul
         #
         #   @param privy_idempotency_key [String] Idempotency keys ensure API requests are executed only once within a 24-hour win
+        #
+        #   @param privy_request_expiry [String] Request expiry. Value is a Unix timestamp in milliseconds representing the deadl
         #
         #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
       end

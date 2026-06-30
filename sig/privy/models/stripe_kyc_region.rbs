@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type stripe_kyc_region = :us | :eu
+
+    module StripeKYCRegion
+      extend Privy::Internal::Type::Enum
+
+      US: :us
+      EU: :eu
+
+      def self?.values: -> ::Array[Privy::Models::stripe_kyc_region]
+    end
+  end
+end

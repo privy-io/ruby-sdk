@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type kraken_embed_custom_order_occurrence_trigger_type =
+      :time | :price | :crypto_deposit | :market_open
+
+    module KrakenEmbedCustomOrderOccurrenceTriggerType
+      extend Privy::Internal::Type::Enum
+
+      TIME: :time
+      PRICE: :price
+      CRYPTO_DEPOSIT: :crypto_deposit
+      MARKET_OPEN: :market_open
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_custom_order_occurrence_trigger_type]
+    end
+  end
+end

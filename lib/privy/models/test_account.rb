@@ -33,7 +33,12 @@ module Privy
       #   @return [String]
       required :updated_at, String
 
-      # @!method initialize(id:, created_at:, email:, otp_code:, phone_number:, updated_at:)
+      # @!attribute name
+      #
+      #   @return [String, nil]
+      optional :name, String, nil?: true
+
+      # @!method initialize(id:, created_at:, email:, otp_code:, phone_number:, updated_at:, name: nil)
       #   A test account for an app.
       #
       #   @param id [String]
@@ -42,6 +47,7 @@ module Privy
       #   @param otp_code [String]
       #   @param phone_number [String]
       #   @param updated_at [String]
+      #   @param name [String, nil]
     end
   end
 end

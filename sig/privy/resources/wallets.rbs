@@ -1,6 +1,8 @@
 module Privy
   module Resources
     class Wallets
+      attr_reader actions: Privy::Resources::Wallets::Actions
+
       attr_reader earn: Privy::Resources::Wallets::Earn
 
       attr_reader transactions: Privy::Resources::Wallets::Transactions
@@ -34,10 +36,12 @@ module Privy
       ) -> Privy::Wallet
 
       def list: (
+        ?address: String,
         ?authorization_key: String,
         ?chain_type: Privy::Models::wallet_chain_type,
         ?cursor: String,
         ?external_id: String,
+        ?include_archived: bool,
         ?limit: Float?,
         ?user_id: String,
         ?request_options: Privy::request_opts
@@ -63,6 +67,7 @@ module Privy
         String wallet_id,
         destination: Privy::TokenTransferDestination,
         source: Privy::Models::token_transfer_source,
+        ?amount: String,
         ?amount_type: Privy::Models::amount_type,
         ?fee_configuration: Privy::FeeConfiguration,
         ?slippage_bps: Integer,
@@ -70,7 +75,12 @@ module Privy
         ?privy_idempotency_key: String,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
-      ) -> Privy::TransferActionResponse
+      ) -> Privy::Wallets::TransferActionResponse
+
+      def archive: (
+        String wallet_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallet
 
       def authenticate_with_jwt: (
         encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
@@ -103,11 +113,13 @@ module Privy
 
       def get: (
         String wallet_id,
+        ?include_archived: bool,
         ?request_options: Privy::request_opts
       ) -> Privy::Wallet
 
       def get_wallet_by_address: (
         address: String,
+        ?include_archived: bool,
         ?request_options: Privy::request_opts
       ) -> Privy::Wallet
 

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type kraken_embed_identity_document_type =
+      :passport
+      | :drivers_license
+      | :id_card
+      | :residence_card
+      | :special_permanent_residence_card
+
+    module KrakenEmbedIdentityDocumentType
+      extend Privy::Internal::Type::Enum
+
+      PASSPORT: :passport
+      DRIVERS_LICENSE: :drivers_license
+      ID_CARD: :id_card
+      RESIDENCE_CARD: :residence_card
+      SPECIAL_PERMANENT_RESIDENCE_CARD: :special_permanent_residence_card
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_identity_document_type]
+    end
+  end
+end

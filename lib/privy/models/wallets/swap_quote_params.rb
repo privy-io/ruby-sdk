@@ -21,13 +21,22 @@ module Privy
         #   @return [String, nil]
         optional :privy_authorization_signature, String
 
-        # @!method initialize(wallet_id:, privy_authorization_signature: nil, request_options: {})
+        # @!attribute privy_request_expiry
+        #   Request expiry. Value is a Unix timestamp in milliseconds representing the
+        #   deadline by which the request must be processed.
+        #
+        #   @return [String, nil]
+        optional :privy_request_expiry, String
+
+        # @!method initialize(wallet_id:, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::SwapQuoteParams} for more details.
         #
         #   @param wallet_id [String] ID of the wallet.
         #
         #   @param privy_authorization_signature [String] Request authorization signature. If multiple signatures are required, they shoul
+        #
+        #   @param privy_request_expiry [String] Request expiry. Value is a Unix timestamp in milliseconds representing the deadl
         #
         #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
       end

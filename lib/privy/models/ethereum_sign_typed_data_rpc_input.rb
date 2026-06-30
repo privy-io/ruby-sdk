@@ -19,17 +19,33 @@ module Privy
       #   @return [String, nil]
       optional :address, String
 
+      # @!attribute caip2
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #
+      #   @return [String, nil]
+      optional :caip2, String
+
       # @!attribute chain_type
       #
       #   @return [Symbol, Privy::Models::EthereumSignTypedDataRpcInput::ChainType, nil]
       optional :chain_type, enum: -> { Privy::EthereumSignTypedDataRpcInput::ChainType }
+
+      # @!attribute signature_options
+      #   Options controlling signature production for personal_sign and
+      #   eth_signTypedData_v4.
+      #
+      #   @return [Privy::Models::SignatureOptions, nil]
+      optional :signature_options, -> { Privy::SignatureOptions }
 
       # @!attribute wallet_id
       #
       #   @return [String, nil]
       optional :wallet_id, String
 
-      # @!method initialize(method_:, params:, address: nil, chain_type: nil, wallet_id: nil)
+      # @!method initialize(method_:, params:, address: nil, caip2: nil, chain_type: nil, signature_options: nil, wallet_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::EthereumSignTypedDataRpcInput} for more details.
+      #
       #   Executes the EVM `eth_signTypedData_v4` RPC (EIP-712) to sign a typed data
       #   object.
       #
@@ -39,7 +55,11 @@ module Privy
       #
       #   @param address [String]
       #
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #
       #   @param chain_type [Symbol, Privy::Models::EthereumSignTypedDataRpcInput::ChainType]
+      #
+      #   @param signature_options [Privy::Models::SignatureOptions] Options controlling signature production for personal_sign and eth_signTypedData
       #
       #   @param wallet_id [String]
 

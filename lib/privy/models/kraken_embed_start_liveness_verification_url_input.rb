@@ -26,8 +26,8 @@ module Privy
       # @!attribute debug
       #   Debug options for start verification. Only works in non-production environments.
       #
-      #   @return [Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::Debug, nil]
-      optional :debug, -> { Privy::KrakenEmbedStartLivenessVerificationURLInput::Debug }
+      #   @return [Privy::Models::KrakenEmbedStartVerificationDebug, nil]
+      optional :debug, -> { Privy::KrakenEmbedStartVerificationDebug }, nil?: true
 
       # @!method initialize(center_url:, left_url:, right_url:, type:, debug: nil)
       #   Some parameter documentations has been truncated, see
@@ -43,7 +43,7 @@ module Privy
       #
       #   @param type [Symbol, Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::Type]
       #
-      #   @param debug [Privy::Models::KrakenEmbedStartLivenessVerificationURLInput::Debug] Debug options for start verification. Only works in non-production environments.
+      #   @param debug [Privy::Models::KrakenEmbedStartVerificationDebug, nil] Debug options for start verification. Only works in non-production environments.
 
       # @see Privy::Models::KrakenEmbedStartLivenessVerificationURLInput#type
       module Type
@@ -53,12 +53,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::KrakenEmbedStartLivenessVerificationURLInput#debug
-      class Debug < Privy::Models::KrakenEmbedStartVerificationDebug
-        # @!method initialize
-        #   Debug options for start verification. Only works in non-production environments.
       end
     end
   end

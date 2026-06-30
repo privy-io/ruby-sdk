@@ -7,7 +7,8 @@ module Privy
         email: String,
         otp_code: String,
         phone_number: String,
-        updated_at: String
+        updated_at: String,
+        name: String?
       }
 
     class TestAccount < Privy::Internal::Type::BaseModel
@@ -23,13 +24,16 @@ module Privy
 
       attr_accessor updated_at: String
 
+      attr_accessor name: String?
+
       def initialize: (
         id: String,
         created_at: String,
         email: String,
         otp_code: String,
         phone_number: String,
-        updated_at: String
+        updated_at: String,
+        ?name: String?
       ) -> void
 
       def to_hash: -> {
@@ -38,7 +42,8 @@ module Privy
         email: String,
         otp_code: String,
         phone_number: String,
-        updated_at: String
+        updated_at: String,
+        name: String?
       }
     end
   end

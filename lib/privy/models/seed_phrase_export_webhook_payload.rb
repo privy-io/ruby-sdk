@@ -28,11 +28,16 @@ module Privy
       required :wallet_id, String
 
       # @!attribute export_source
+      #   The export type. 'display' is for showing the key to the user in the UI,
+      #   'client' is for exporting to the client application.
       #
-      #   @return [Symbol, Privy::Models::SeedPhraseExportWebhookPayload::ExportSource, nil]
-      optional :export_source, enum: -> { Privy::SeedPhraseExportWebhookPayload::ExportSource }
+      #   @return [Symbol, Privy::Models::ExportType, nil]
+      optional :export_source, enum: -> { Privy::ExportType }
 
       # @!method initialize(type:, user_id:, wallet_address:, wallet_id:, export_source: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::SeedPhraseExportWebhookPayload} for more details.
+      #
       #   Payload for the wallet.seed_phrase_export webhook event.
       #
       #   @param type [Symbol, Privy::Models::SeedPhraseExportWebhookPayload::Type] The type of webhook event.
@@ -43,7 +48,7 @@ module Privy
       #
       #   @param wallet_id [String] The ID of the wallet.
       #
-      #   @param export_source [Symbol, Privy::Models::SeedPhraseExportWebhookPayload::ExportSource]
+      #   @param export_source [Symbol, Privy::Models::ExportType] The export type. 'display' is for showing the key to the user in the UI, 'client
 
       # The type of webhook event.
       #
@@ -52,17 +57,6 @@ module Privy
         extend Privy::Internal::Type::Enum
 
         WALLET_SEED_PHRASE_EXPORT = :"wallet.seed_phrase_export"
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # @see Privy::Models::SeedPhraseExportWebhookPayload#export_source
-      module ExportSource
-        extend Privy::Internal::Type::Enum
-
-        DISPLAY = :display
-        CLIENT = :client
 
         # @!method self.values
         #   @return [Array<Symbol>]

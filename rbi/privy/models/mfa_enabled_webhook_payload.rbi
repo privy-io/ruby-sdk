@@ -8,8 +8,8 @@ module Privy
           T.any(Privy::MfaEnabledWebhookPayload, Privy::Internal::AnyHash)
         end
 
-      # The MFA method that was enabled.
-      sig { returns(Privy::MfaEnabledWebhookPayload::Method::TaggedSymbol) }
+      # A multi-factor authentication method supported by the app.
+      sig { returns(Privy::MfaMethod::TaggedSymbol) }
       attr_accessor :method_
 
       # The type of webhook event.
@@ -23,13 +23,13 @@ module Privy
       # Payload for the mfa.enabled webhook event.
       sig do
         params(
-          method_: Privy::MfaEnabledWebhookPayload::Method::OrSymbol,
+          method_: Privy::MfaMethod::OrSymbol,
           type: Privy::MfaEnabledWebhookPayload::Type::OrSymbol,
           user_id: String
         ).returns(T.attached_class)
       end
       def self.new(
-        # The MFA method that was enabled.
+        # A multi-factor authentication method supported by the app.
         method_:,
         # The type of webhook event.
         type:,
@@ -41,38 +41,13 @@ module Privy
       sig do
         override.returns(
           {
-            method_: Privy::MfaEnabledWebhookPayload::Method::TaggedSymbol,
+            method_: Privy::MfaMethod::TaggedSymbol,
             type: Privy::MfaEnabledWebhookPayload::Type::TaggedSymbol,
             user_id: String
           }
         )
       end
       def to_hash
-      end
-
-      # The MFA method that was enabled.
-      module Method
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::MfaEnabledWebhookPayload::Method)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SMS = T.let(:sms, Privy::MfaEnabledWebhookPayload::Method::TaggedSymbol)
-        TOTP =
-          T.let(:totp, Privy::MfaEnabledWebhookPayload::Method::TaggedSymbol)
-        PASSKEY =
-          T.let(:passkey, Privy::MfaEnabledWebhookPayload::Method::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Privy::MfaEnabledWebhookPayload::Method::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
 
       # The type of webhook event.

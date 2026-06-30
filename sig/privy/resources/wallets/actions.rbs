@@ -1,0 +1,17 @@
+module Privy
+  module Resources
+    class Wallets
+      class Actions
+        def get: (
+          String action_id,
+          wallet_id: String,
+          ?include: Privy::Models::Wallets::wallet_action_include,
+          ?privy_authorization_signature: String,
+          ?request_options: Privy::request_opts
+        ) -> Privy::Models::Wallets::wallet_action_response
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

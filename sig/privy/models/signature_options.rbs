@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type signature_options = { type: Privy::Models::signature_type }
+
+    class SignatureOptions < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::signature_type
+
+      def initialize: (type: Privy::Models::signature_type) -> void
+
+      def to_hash: -> { type: Privy::Models::signature_type }
+    end
+  end
+end

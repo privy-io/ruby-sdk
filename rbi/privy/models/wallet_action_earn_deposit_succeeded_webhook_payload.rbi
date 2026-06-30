@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # Underlying asset token address.
@@ -22,6 +22,14 @@ module Privy
       # CAIP-2 chain identifier.
       sig { returns(String) }
       attr_accessor :caip2
+
+      # ISO 8601 timestamp of when the wallet action completed successfully.
+      sig { returns(String) }
+      attr_accessor :completed_at
+
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
 
       # Base-unit amount of asset deposited (e.g. "1500000").
       sig { returns(String) }
@@ -40,7 +48,7 @@ module Privy
       attr_accessor :status
 
       # The steps of the wallet action, including transaction hashes.
-      sig { returns(T::Array[Privy::WalletActionStep::Variants]) }
+      sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
       # The type of webhook event.
@@ -94,9 +102,11 @@ module Privy
       # Payload for the wallet_action.earn_deposit.succeeded webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
+          completed_at: String,
+          created_at: String,
           raw_amount: String,
           share_amount: String,
           status:
@@ -104,10 +114,12 @@ module Privy
           steps:
             T::Array[
               T.any(
-                Privy::EvmTransactionWalletActionStep::OrHash,
-                Privy::EvmUserOperationWalletActionStep::OrHash,
-                Privy::SvmTransactionWalletActionStep::OrHash,
-                Privy::ExternalTransactionWalletActionStep::OrHash
+                Privy::Wallets::EvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::EvmUserOperationWalletActionStep::OrHash,
+                Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
               )
             ],
           type:
@@ -128,6 +140,10 @@ module Privy
         asset_address:,
         # CAIP-2 chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action completed successfully.
+        completed_at:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Base-unit amount of asset deposited (e.g. "1500000").
         raw_amount:,
         # Vault shares received in base units.
@@ -161,14 +177,16 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
+            completed_at: String,
+            created_at: String,
             raw_amount: String,
             share_amount: String,
             status:
               Privy::WalletActionEarnDepositSucceededWebhookPayload::Status::TaggedSymbol,
-            steps: T::Array[Privy::WalletActionStep::Variants],
+            steps: T::Array[Privy::Wallets::WalletActionStep::Variants],
             type:
               Privy::WalletActionEarnDepositSucceededWebhookPayload::Type::TaggedSymbol,
             vault_address: String,

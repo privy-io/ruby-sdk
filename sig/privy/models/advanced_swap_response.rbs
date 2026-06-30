@@ -1,0 +1,74 @@
+module Privy
+  module Models
+    type advanced_swap_response =
+      {
+        in_amount: String,
+        input_token: String,
+        min_out_amount: String,
+        out_amount: String,
+        output_token: String,
+        provider: String,
+        signed_transaction: String,
+        slippage_bps: Integer,
+        submission_status: Privy::Models::swap_submission_status,
+        transaction_hash: String,
+        platform_fee: Privy::AdvancedSwapPlatformFee
+      }
+
+    class AdvancedSwapResponse < Privy::Internal::Type::BaseModel
+      attr_accessor in_amount: String
+
+      attr_accessor input_token: String
+
+      attr_accessor min_out_amount: String
+
+      attr_accessor out_amount: String
+
+      attr_accessor output_token: String
+
+      attr_accessor provider: String
+
+      attr_accessor signed_transaction: String
+
+      attr_accessor slippage_bps: Integer
+
+      attr_accessor submission_status: Privy::Models::swap_submission_status
+
+      attr_accessor transaction_hash: String
+
+      attr_reader platform_fee: Privy::AdvancedSwapPlatformFee?
+
+      def platform_fee=: (
+        Privy::AdvancedSwapPlatformFee
+      ) -> Privy::AdvancedSwapPlatformFee
+
+      def initialize: (
+        in_amount: String,
+        input_token: String,
+        min_out_amount: String,
+        out_amount: String,
+        output_token: String,
+        provider: String,
+        signed_transaction: String,
+        slippage_bps: Integer,
+        submission_status: Privy::Models::swap_submission_status,
+        transaction_hash: String,
+        ?platform_fee: Privy::AdvancedSwapPlatformFee
+      ) -> void
+
+      def to_hash: -> {
+        in_amount: String,
+        input_token: String,
+        min_out_amount: String,
+        out_amount: String,
+        output_token: String,
+        provider: String,
+        signed_transaction: String,
+        slippage_bps: Integer,
+        submission_status: Privy::Models::swap_submission_status,
+        transaction_hash: String,
+        platform_fee: Privy::AdvancedSwapPlatformFee
+      }
+    end
+  end
+end

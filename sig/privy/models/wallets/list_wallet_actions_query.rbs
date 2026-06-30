@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    module Wallets
+      type list_wallet_actions_query =
+        {
+          cursor: String,
+          limit: Float?,
+          type: Privy::Models::Wallets::wallet_action_type
+        }
+
+      class ListWalletActionsQuery < Privy::Internal::Type::BaseModel
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
+        attr_accessor limit: Float?
+
+        attr_reader type: Privy::Models::Wallets::wallet_action_type?
+
+        def type=: (
+          Privy::Models::Wallets::wallet_action_type
+        ) -> Privy::Models::Wallets::wallet_action_type
+
+        def initialize: (
+          ?cursor: String,
+          ?limit: Float?,
+          ?type: Privy::Models::Wallets::wallet_action_type
+        ) -> void
+
+        def to_hash: -> {
+          cursor: String,
+          limit: Float?,
+          type: Privy::Models::Wallets::wallet_action_type
+        }
+      end
+    end
+  end
+end

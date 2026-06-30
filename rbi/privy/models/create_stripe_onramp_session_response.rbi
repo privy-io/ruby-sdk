@@ -18,19 +18,13 @@ module Privy
       attr_accessor :session_id
 
       # Transaction details returned from a Stripe onramp session.
-      sig do
-        returns(
-          T.nilable(
-            Privy::CreateStripeOnrampSessionResponse::TransactionDetails
-          )
-        )
-      end
+      sig { returns(T.nilable(Privy::OnrampSessionTransactionDetails)) }
       attr_reader :transaction_details
 
       sig do
         params(
           transaction_details:
-            Privy::CreateStripeOnrampSessionResponse::TransactionDetails::OrHash
+            T.nilable(Privy::OnrampSessionTransactionDetails::OrHash)
         ).void
       end
       attr_writer :transaction_details
@@ -41,7 +35,7 @@ module Privy
           id: String,
           session_id: String,
           transaction_details:
-            Privy::CreateStripeOnrampSessionResponse::TransactionDetails::OrHash
+            T.nilable(Privy::OnrampSessionTransactionDetails::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -58,30 +52,11 @@ module Privy
             id: String,
             session_id: String,
             transaction_details:
-              Privy::CreateStripeOnrampSessionResponse::TransactionDetails
+              T.nilable(Privy::OnrampSessionTransactionDetails)
           }
         )
       end
       def to_hash
-      end
-
-      class TransactionDetails < Privy::Models::OnrampSessionTransactionDetails
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::CreateStripeOnrampSessionResponse::TransactionDetails,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Transaction details returned from a Stripe onramp session.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

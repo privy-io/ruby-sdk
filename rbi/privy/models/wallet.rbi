@@ -44,6 +44,11 @@ module Privy
       sig { returns(T::Array[String]) }
       attr_accessor :policy_ids
 
+      # Unix timestamp of when the wallet was archived in milliseconds, or null if the
+      # wallet is active.
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :archived_at
+
       # The number of keys that must sign for an action to be valid.
       sig { returns(T.nilable(Float)) }
       attr_reader :authorization_threshold
@@ -94,6 +99,7 @@ module Privy
           imported_at: T.nilable(Float),
           owner_id: T.nilable(String),
           policy_ids: T::Array[String],
+          archived_at: T.nilable(Float),
           authorization_threshold: Float,
           custody: Privy::WalletCustodian::OrHash,
           display_name: String,
@@ -123,6 +129,9 @@ module Privy
         owner_id:,
         # List of policy IDs for policies that are enforced on the wallet.
         policy_ids:,
+        # Unix timestamp of when the wallet was archived in milliseconds, or null if the
+        # wallet is active.
+        archived_at: nil,
         # The number of keys that must sign for an action to be valid.
         authorization_threshold: nil,
         # Information about the custodian managing this wallet.
@@ -150,6 +159,7 @@ module Privy
             imported_at: T.nilable(Float),
             owner_id: T.nilable(String),
             policy_ids: T::Array[String],
+            archived_at: T.nilable(Float),
             authorization_threshold: Float,
             custody: Privy::WalletCustodian,
             display_name: String,

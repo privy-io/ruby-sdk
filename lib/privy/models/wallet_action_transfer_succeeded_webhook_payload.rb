@@ -6,8 +6,20 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
+
+      # @!attribute completed_at
+      #   ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @return [String]
+      required :completed_at, String
+
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
 
       # @!attribute destination_address
       #   Recipient address.
@@ -30,8 +42,8 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action, including transaction hashes.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -74,18 +86,22 @@ module Privy
 
       # @!attribute source_asset_decimals
       #   Number of decimals for the transferred token. Present when the transfer was
-      #   initiated with `asset_address` and the decimals were resolved on-chain.
+      #   initiated with `asset_address` and the decimals were resolved onchain.
       #
       #   @return [Integer, nil]
       optional :source_asset_decimals, Integer
 
-      # @!method initialize(action_type:, destination_address:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
+      # @!method initialize(action_type:, completed_at:, created_at:, destination_address:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionTransferSucceededWebhookPayload} for more details.
       #
       #   Payload for the wallet_action.transfer.succeeded webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
+      #
+      #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param destination_address [String] Recipient address.
       #
@@ -93,7 +109,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionTransferSucceededWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
       #
       #   @param type [Symbol, Privy::Models::WalletActionTransferSucceededWebhookPayload::Type] The type of webhook event.
       #

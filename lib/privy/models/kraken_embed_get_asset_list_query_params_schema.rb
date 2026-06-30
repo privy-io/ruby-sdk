@@ -51,22 +51,31 @@ module Privy
       optional :quote, String
 
       # @!attribute sort
+      #   Sorting options for the asset list endpoint.
       #
-      #   @return [Symbol, Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::Sort, nil]
-      optional :sort, enum: -> { Privy::KrakenEmbedGetAssetListQueryParamsSchema::Sort }
+      #   @return [Symbol, Privy::Models::KrakenEmbedAssetSortOption, nil]
+      optional :sort, enum: -> { Privy::KrakenEmbedAssetSortOption }
 
       # @!method initialize(filter_assets: nil, filter_platform_statuses: nil, filter_tradable_only: nil, filter_user: nil, lang: nil, page_number: nil, page_size: nil, quote: nil, sort: nil)
       #   Query parameters for listing and filtering available assets.
       #
       #   @param filter_assets [Array<String>]
+      #
       #   @param filter_platform_statuses [Array<Symbol, String, Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::FilterPlatformStatus>]
+      #
       #   @param filter_tradable_only [Boolean, nil]
+      #
       #   @param filter_user [String]
+      #
       #   @param lang [String]
+      #
       #   @param page_number [Integer]
+      #
       #   @param page_size [Integer]
+      #
       #   @param quote [String]
-      #   @param sort [Symbol, Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema::Sort]
+      #
+      #   @param sort [Symbol, Privy::Models::KrakenEmbedAssetSortOption] Sorting options for the asset list endpoint.
 
       module FilterPlatformStatus
         extend Privy::Internal::Type::Union
@@ -99,34 +108,6 @@ module Privy
         DISABLED = :disabled
 
         # @!endgroup
-      end
-
-      # @see Privy::Models::KrakenEmbedGetAssetListQueryParamsSchema#sort
-      module Sort
-        extend Privy::Internal::Type::Enum
-
-        TRENDING = :trending
-        MARKET_CAP_RANK = :market_cap_rank
-        MINUS_MARKET_CAP_RANK = :"-market_cap_rank"
-        SYMBOL = :symbol
-        MINUS_SYMBOL = :"-symbol"
-        NAME = :name
-        MINUS_NAME = :"-name"
-        CHANGE_PERCENT_1H = :change_percent_1h
-        MINUS_CHANGE_PERCENT_1_H = :"-change_percent_1h"
-        CHANGE_PERCENT_24H = :change_percent_24h
-        MINUS_CHANGE_PERCENT_24_H = :"-change_percent_24h"
-        CHANGE_PERCENT_7D = :change_percent_7d
-        MINUS_CHANGE_PERCENT_7_D = :"-change_percent_7d"
-        CHANGE_PERCENT_30D = :change_percent_30d
-        MINUS_CHANGE_PERCENT_30_D = :"-change_percent_30d"
-        CHANGE_PERCENT_1Y = :change_percent_1y
-        MINUS_CHANGE_PERCENT_1_Y = :"-change_percent_1y"
-        LISTING_DATE = :listing_date
-        MINUS_LISTING_DATE = :"-listing_date"
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
       end
     end
   end

@@ -5,7 +5,7 @@ module Privy
         message: String,
         signature: String,
         connector_type: String?,
-        message_type: Privy::Models::SiwsLinkRequestBody::message_type,
+        message_type: Privy::Models::siws_message_type,
         wallet_client_type: String?
       }
 
@@ -16,11 +16,11 @@ module Privy
 
       attr_accessor connector_type: String?
 
-      attr_reader message_type: Privy::Models::SiwsLinkRequestBody::message_type?
+      attr_reader message_type: Privy::Models::siws_message_type?
 
       def message_type=: (
-        Privy::Models::SiwsLinkRequestBody::message_type
-      ) -> Privy::Models::SiwsLinkRequestBody::message_type
+        Privy::Models::siws_message_type
+      ) -> Privy::Models::siws_message_type
 
       attr_accessor wallet_client_type: String?
 
@@ -28,7 +28,7 @@ module Privy
         message: String,
         signature: String,
         ?connector_type: String?,
-        ?message_type: Privy::Models::SiwsLinkRequestBody::message_type,
+        ?message_type: Privy::Models::siws_message_type,
         ?wallet_client_type: String?
       ) -> void
 
@@ -36,20 +36,9 @@ module Privy
         message: String,
         signature: String,
         connector_type: String?,
-        message_type: Privy::Models::SiwsLinkRequestBody::message_type,
+        message_type: Privy::Models::siws_message_type,
         wallet_client_type: String?
       }
-
-      type message_type = :transaction | :plain
-
-      module MessageType
-        extend Privy::Internal::Type::Enum
-
-        TRANSACTION: :transaction
-        PLAIN: :plain
-
-        def self?.values: -> ::Array[Privy::Models::SiwsLinkRequestBody::message_type]
-      end
     end
   end
 end

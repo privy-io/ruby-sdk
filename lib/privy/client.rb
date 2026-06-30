@@ -91,9 +91,6 @@ module Privy
     # @return [Privy::Resources::OAuth]
     attr_reader :oauth
 
-    # @return [Privy::Resources::WalletActions]
-    attr_reader :wallet_actions
-
     # @return [Privy::Resources::Yield]
     attr_reader :yield_
 
@@ -203,7 +200,6 @@ module Privy
       @organizations = Privy::Resources::Organizations.new(client: self)
       @cross_app = Privy::Resources::CrossApp.new(client: self)
       @oauth = Privy::Resources::OAuth.new(client: self)
-      @wallet_actions = Privy::Resources::WalletActions.new(client: self)
       @yield_ = Privy::Resources::Yield.new(client: self)
       @kraken_embed = Privy::Resources::KrakenEmbed.new(client: self)
       @swaps = Privy::Resources::Swaps.new(client: self)

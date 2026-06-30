@@ -19,9 +19,10 @@ module Privy
       optional :connector_type, String, api_name: :connectorType, nil?: true
 
       # @!attribute message_type
+      #   The type of SIWS message being signed.
       #
-      #   @return [Symbol, Privy::Models::SiwsLinkRequestBody::MessageType, nil]
-      optional :message_type, enum: -> { Privy::SiwsLinkRequestBody::MessageType }
+      #   @return [Symbol, Privy::Models::SiwsMessageType, nil]
+      optional :message_type, enum: -> { Privy::SiwsMessageType }
 
       # @!attribute wallet_client_type
       #
@@ -32,21 +33,14 @@ module Privy
       #   The request body for linking a SIWS ceremony.
       #
       #   @param message [String]
+      #
       #   @param signature [String]
+      #
       #   @param connector_type [String, nil]
-      #   @param message_type [Symbol, Privy::Models::SiwsLinkRequestBody::MessageType]
+      #
+      #   @param message_type [Symbol, Privy::Models::SiwsMessageType] The type of SIWS message being signed.
+      #
       #   @param wallet_client_type [String, nil]
-
-      # @see Privy::Models::SiwsLinkRequestBody#message_type
-      module MessageType
-        extend Privy::Internal::Type::Enum
-
-        TRANSACTION = :transaction
-        PLAIN = :plain
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

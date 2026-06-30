@@ -5,7 +5,7 @@ module Privy
         id: String,
         :caip2 => String,
         created_at: Float,
-        status: Privy::Models::Transaction::status,
+        status: Privy::Models::blockchain_transaction_status,
         transaction_hash: String?,
         wallet_id: String,
         reference_id: String?,
@@ -20,7 +20,7 @@ module Privy
 
       attr_accessor created_at: Float
 
-      attr_accessor status: Privy::Models::Transaction::status
+      attr_accessor status: Privy::Models::blockchain_transaction_status
 
       attr_accessor transaction_hash: String?
 
@@ -40,7 +40,7 @@ module Privy
         id: String,
         caip2: String,
         created_at: Float,
-        status: Privy::Models::Transaction::status,
+        status: Privy::Models::blockchain_transaction_status,
         transaction_hash: String?,
         wallet_id: String,
         ?reference_id: String?,
@@ -52,38 +52,13 @@ module Privy
         id: String,
         :caip2 => String,
         created_at: Float,
-        status: Privy::Models::Transaction::status,
+        status: Privy::Models::blockchain_transaction_status,
         transaction_hash: String?,
         wallet_id: String,
         reference_id: String?,
         sponsored: bool,
         user_operation_hash: String
       }
-
-      type status =
-        :broadcasted
-        | :confirmed
-        | :execution_reverted
-        | :failed
-        | :replaced
-        | :finalized
-        | :provider_error
-        | :pending
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        BROADCASTED: :broadcasted
-        CONFIRMED: :confirmed
-        EXECUTION_REVERTED: :execution_reverted
-        FAILED: :failed
-        REPLACED: :replaced
-        FINALIZED: :finalized
-        PROVIDER_ERROR: :provider_error
-        PENDING: :pending
-
-        def self?.values: -> ::Array[Privy::Models::Transaction::status]
-      end
     end
   end
 end

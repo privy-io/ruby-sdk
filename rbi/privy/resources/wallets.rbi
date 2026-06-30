@@ -3,6 +3,10 @@
 module Privy
   module Resources
     class Wallets
+      # Operations related to wallet actions
+      sig { returns(Privy::Resources::Wallets::Actions) }
+      attr_reader :actions
+
       sig { returns(Privy::Resources::Wallets::Earn) }
       attr_reader :earn
 
@@ -115,16 +119,22 @@ module Privy
       # Get all wallets in your app.
       sig do
         params(
+          address: String,
           authorization_key: String,
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
           external_id: String,
+          include_archived: T::Boolean,
           limit: T.nilable(Float),
           user_id: String,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Internal::Cursor[Privy::Wallet])
       end
       def list(
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
+        address: nil,
         # Filter wallets by authorization public key. Returns wallets owned by key quorums
         # that include the specified P-256 public key (base64-encoded DER format). Cannot
         # be used together with user_id.
@@ -134,6 +144,8 @@ module Privy
         cursor: nil,
         # Filter wallets by external ID.
         external_id: nil,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         limit: nil,
         # Filter wallets by user ID. Cannot be used together with authorization_key.
         user_id: nil,
@@ -216,6 +228,7 @@ module Privy
               Privy::NamedTokenTransferSource::OrHash,
               Privy::CustomTokenTransferSource::OrHash
             ),
+          amount: String,
           amount_type: Privy::AmountType::OrSymbol,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           slippage_bps: Integer,
@@ -223,7 +236,7 @@ module Privy
           privy_idempotency_key: String,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::TransferActionResponse)
+        ).returns(Privy::Wallets::TransferActionResponse)
       end
       def _transfer(
         # Path param: ID of the wallet.
@@ -234,6 +247,10 @@ module Privy
         # Body param: The source asset, amount, and chain for a token transfer. Specify
         # either `asset` (named) or `asset_address` (custom), not both.
         source:,
+        # Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
+        # for 1.5 USDC). For exact_input, the amount to send. For exact_output, the exact
+        # amount to receive. Takes precedence over source.amount when both are provided.
+        amount: nil,
         # Body param: Whether the amount refers to the input token or output token.
         amount_type: nil,
         # Body param: Total fees assessed on a transfer, in BPS
@@ -251,6 +268,22 @@ module Privy
         # Header param: Request expiry. Value is a Unix timestamp in milliseconds
         # representing the deadline by which the request must be processed.
         privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # Archives a wallet, preventing it from being used in any write or signing
+      # operations. Archived wallets are hidden from list endpoints by default. Returns
+      # 404 if the wallet does not exist or is already archived.
+      sig do
+        params(
+          wallet_id: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::Wallet)
+      end
+      def archive(
+        # ID of the wallet.
+        wallet_id,
         request_options: {}
       )
       end
@@ -356,12 +389,15 @@ module Privy
       sig do
         params(
           wallet_id: String,
+          include_archived: T::Boolean,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Wallet)
       end
       def get(
         # ID of the wallet.
         wallet_id,
+        # Include archived wallets in lookup. Defaults to false.
+        include_archived: nil,
         request_options: {}
       )
       end
@@ -370,12 +406,18 @@ module Privy
       sig do
         params(
           address: String,
+          include_archived: T::Boolean,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Wallet)
       end
       def get_wallet_by_address(
-        # A blockchain wallet address (Ethereum or Solana).
+        # A blockchain wallet address. Ethereum addresses are normalized to EIP-55
+        # checksum format. Solana addresses are validated as base58. All other chain
+        # addresses (Stellar, Tron, Sui, Aptos, etc.) are accepted as-is.
         address:,
+        # Include archived wallets in lookup. Defaults to false (archived wallets return
+        # 404).
+        include_archived: nil,
         request_options: {}
       )
       end
@@ -439,6 +481,8 @@ module Privy
               Privy::SparkCreateLightningInvoiceRpcInput::OrHash,
               Privy::SparkPayLightningInvoiceRpcInput::OrHash,
               Privy::SparkSignMessageWithIdentityKeyRpcInput::OrHash,
+              Privy::TronSignTransactionRpcInput::OrHash,
+              Privy::TronSendTransactionRpcInput::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),

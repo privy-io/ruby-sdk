@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_quote_type = :receive | :spend
+
+    module KrakenEmbedQuoteType
+      extend Privy::Internal::Type::Enum
+
+      RECEIVE: :receive
+      SPEND: :spend
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_quote_type]
+    end
+  end
+end

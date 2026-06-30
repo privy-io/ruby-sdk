@@ -5,7 +5,7 @@ module Privy
         accumulated_amount: Privy::KrakenEmbedEarnAmount,
         asset: String,
         date: Time,
-        estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+        estimated_pending_amount: Privy::KrakenEmbedEarnAmount?
       }
 
     class KrakenEmbedUpcomingReward < Privy::Internal::Type::BaseModel
@@ -15,29 +15,21 @@ module Privy
 
       attr_accessor date: Time
 
-      attr_accessor estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+      attr_accessor estimated_pending_amount: Privy::KrakenEmbedEarnAmount?
 
       def initialize: (
         accumulated_amount: Privy::KrakenEmbedEarnAmount,
         asset: String,
         date: Time,
-        estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+        estimated_pending_amount: Privy::KrakenEmbedEarnAmount?
       ) -> void
 
       def to_hash: -> {
         accumulated_amount: Privy::KrakenEmbedEarnAmount,
         asset: String,
         date: Time,
-        estimated_pending_amount: Privy::KrakenEmbedUpcomingReward::EstimatedPendingAmount
+        estimated_pending_amount: Privy::KrakenEmbedEarnAmount?
       }
-
-      type estimated_pending_amount = {  }
-
-      class EstimatedPendingAmount < Privy::Models::KrakenEmbedEarnAmount
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
     end
   end
 end

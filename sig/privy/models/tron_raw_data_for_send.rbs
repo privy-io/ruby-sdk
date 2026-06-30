@@ -1,0 +1,62 @@
+module Privy
+  module Models
+    type tron_raw_data_for_send =
+      {
+        contract: ::Array[Privy::Models::tron_contract],
+        data: String,
+        expiration: Integer,
+        fee_limit: Integer,
+        ref_block_bytes: String,
+        ref_block_hash: String,
+        timestamp: Integer
+      }
+
+    class TronRawDataForSend < Privy::Internal::Type::BaseModel
+      attr_accessor contract: ::Array[Privy::Models::tron_contract]
+
+      attr_reader data: String?
+
+      def data=: (String) -> String
+
+      attr_reader expiration: Integer?
+
+      def expiration=: (Integer) -> Integer
+
+      attr_reader fee_limit: Integer?
+
+      def fee_limit=: (Integer) -> Integer
+
+      attr_reader ref_block_bytes: String?
+
+      def ref_block_bytes=: (String) -> String
+
+      attr_reader ref_block_hash: String?
+
+      def ref_block_hash=: (String) -> String
+
+      attr_reader timestamp: Integer?
+
+      def timestamp=: (Integer) -> Integer
+
+      def initialize: (
+        contract: ::Array[Privy::Models::tron_contract],
+        ?data: String,
+        ?expiration: Integer,
+        ?fee_limit: Integer,
+        ?ref_block_bytes: String,
+        ?ref_block_hash: String,
+        ?timestamp: Integer
+      ) -> void
+
+      def to_hash: -> {
+        contract: ::Array[Privy::Models::tron_contract],
+        data: String,
+        expiration: Integer,
+        fee_limit: Integer,
+        ref_block_bytes: String,
+        ref_block_hash: String,
+        timestamp: Integer
+      }
+    end
+  end
+end

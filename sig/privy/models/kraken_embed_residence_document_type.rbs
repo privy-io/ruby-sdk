@@ -1,0 +1,46 @@
+module Privy
+  module Models
+    type kraken_embed_residence_document_type =
+      :bank_statement
+      | :credit_card_statement
+      | :employer_letter_or_work_contract
+      | :government_issued_document
+      | :home_or_rental_insurance
+      | :internet_or_cable_bill
+      | :mobile_phone_bill
+      | :mortgage_statement
+      | :official_government_letter
+      | :passport_address_page
+      | :rental_or_lease_agreement
+      | :residence_certificate
+      | :social_insurance_payment_receipt
+      | :tax_receipt
+      | :tax_return
+      | :utility_bill
+      | :other
+
+    module KrakenEmbedResidenceDocumentType
+      extend Privy::Internal::Type::Enum
+
+      BANK_STATEMENT: :bank_statement
+      CREDIT_CARD_STATEMENT: :credit_card_statement
+      EMPLOYER_LETTER_OR_WORK_CONTRACT: :employer_letter_or_work_contract
+      GOVERNMENT_ISSUED_DOCUMENT: :government_issued_document
+      HOME_OR_RENTAL_INSURANCE: :home_or_rental_insurance
+      INTERNET_OR_CABLE_BILL: :internet_or_cable_bill
+      MOBILE_PHONE_BILL: :mobile_phone_bill
+      MORTGAGE_STATEMENT: :mortgage_statement
+      OFFICIAL_GOVERNMENT_LETTER: :official_government_letter
+      PASSPORT_ADDRESS_PAGE: :passport_address_page
+      RENTAL_OR_LEASE_AGREEMENT: :rental_or_lease_agreement
+      RESIDENCE_CERTIFICATE: :residence_certificate
+      SOCIAL_INSURANCE_PAYMENT_RECEIPT: :social_insurance_payment_receipt
+      TAX_RECEIPT: :tax_receipt
+      TAX_RETURN: :tax_return
+      UTILITY_BILL: :utility_bill
+      OTHER: :other
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_residence_document_type]
+    end
+  end
+end

@@ -16,7 +16,7 @@ module Privy
                 privy_idempotency_key: String,
                 privy_request_expiry: String,
                 request_options: Privy::RequestOptions::OrHash
-              ).returns(Privy::EarnIncentiveClaimActionResponse)
+              ).returns(Privy::Wallets::EarnIncentiveClaimActionResponse)
             end
             def _claim(
               # Path param: ID of the wallet.

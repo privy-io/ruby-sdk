@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type kraken_embed_full_name =
+      { first_name: String, last_name: String, middle_name: String? }
+
+    class KrakenEmbedFullName < Privy::Internal::Type::BaseModel
+      attr_accessor first_name: String
+
+      attr_accessor last_name: String
+
+      attr_accessor middle_name: String?
+
+      def initialize: (
+        first_name: String,
+        last_name: String,
+        ?middle_name: String?
+      ) -> void
+
+      def to_hash: -> {
+        first_name: String,
+        last_name: String,
+        middle_name: String?
+      }
+    end
+  end
+end

@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type wallet_archived_webhook_payload =
+      {
+        archived_at: Float,
+        chain_type: String,
+        type: Privy::Models::WalletArchivedWebhookPayload::type_,
+        wallet_address: String,
+        wallet_id: String
+      }
+
+    class WalletArchivedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor archived_at: Float
+
+      attr_accessor chain_type: String
+
+      attr_accessor type: Privy::Models::WalletArchivedWebhookPayload::type_
+
+      attr_accessor wallet_address: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        archived_at: Float,
+        chain_type: String,
+        type: Privy::Models::WalletArchivedWebhookPayload::type_,
+        wallet_address: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        archived_at: Float,
+        chain_type: String,
+        type: Privy::Models::WalletArchivedWebhookPayload::type_,
+        wallet_address: String,
+        wallet_id: String
+      }
+
+      type type_ = :"wallet.archived"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ARCHIVED: :"wallet.archived"
+
+        def self?.values: -> ::Array[Privy::Models::WalletArchivedWebhookPayload::type_]
+      end
+    end
+  end
+end

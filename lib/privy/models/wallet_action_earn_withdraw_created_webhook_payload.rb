@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute asset_address
       #   Underlying asset token address.
@@ -20,6 +20,12 @@ module Privy
       #
       #   @return [String]
       required :caip2, String
+
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
 
       # @!attribute raw_amount
       #   Base-unit amount of asset withdrawn (e.g. "1500000").
@@ -84,17 +90,19 @@ module Privy
       #   @return [Integer, nil]
       optional :decimals, Integer
 
-      # @!method initialize(action_type:, asset_address:, caip2:, raw_amount:, status:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
+      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, raw_amount:, status:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload} for more details.
       #
       #   Payload for the wallet_action.earn_withdraw.created webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param asset_address [String] Underlying asset token address.
       #
       #   @param caip2 [String] CAIP-2 chain identifier.
+      #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param raw_amount [String] Base-unit amount of asset withdrawn (e.g. "1500000").
       #

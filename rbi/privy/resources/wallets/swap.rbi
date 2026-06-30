@@ -17,8 +17,9 @@ module Privy
             slippage_bps: Integer,
             privy_authorization_signature: String,
             privy_idempotency_key: String,
+            privy_request_expiry: String,
             request_options: Privy::RequestOptions::OrHash
-          ).returns(Privy::SwapActionResponse)
+          ).returns(Privy::Wallets::SwapActionResponse)
         end
         def execute(
           # Path param: ID of the wallet.
@@ -42,6 +43,9 @@ module Privy
           # Header param: Idempotency keys ensure API requests are executed only once within
           # a 24-hour window.
           privy_idempotency_key: nil,
+          # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+          # representing the deadline by which the request must be processed.
+          privy_request_expiry: nil,
           request_options: {}
         )
         end
@@ -57,6 +61,7 @@ module Privy
             fee_configuration: Privy::FeeConfiguration::OrHash,
             slippage_bps: Integer,
             privy_authorization_signature: String,
+            privy_request_expiry: String,
             request_options: Privy::RequestOptions::OrHash
           ).returns(Privy::SwapQuoteResponse)
         end
@@ -80,6 +85,9 @@ module Privy
           # Header param: Request authorization signature. If multiple signatures are
           # required, they should be comma separated.
           privy_authorization_signature: nil,
+          # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+          # representing the deadline by which the request must be processed.
+          privy_request_expiry: nil,
           request_options: {}
         )
         end

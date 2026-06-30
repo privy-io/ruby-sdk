@@ -40,9 +40,9 @@ module Privy
 
       # @!attribute payment_rails
       #
-      #   @return [Array<Symbol, Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail>]
+      #   @return [Array<Symbol, Privy::Models::BridgeUsdFiatVirtualAccountDepositPaymentRail>]
       required :payment_rails,
-               -> { Privy::Internal::Type::ArrayOf[enum: Privy::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail] }
+               -> { Privy::Internal::Type::ArrayOf[enum: Privy::BridgeUsdFiatVirtualAccountDepositPaymentRail] }
 
       # @!method initialize(asset:, bank_account_number:, bank_address:, bank_beneficiary_address:, bank_beneficiary_name:, bank_name:, bank_routing_number:, payment_rails:)
       #   The deposit instructions for a virtual account.
@@ -54,23 +54,13 @@ module Privy
       #   @param bank_beneficiary_name [String]
       #   @param bank_name [String]
       #   @param bank_routing_number [String]
-      #   @param payment_rails [Array<Symbol, Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions::PaymentRail>]
+      #   @param payment_rails [Array<Symbol, Privy::Models::BridgeUsdFiatVirtualAccountDepositPaymentRail>]
 
       # @see Privy::Models::BridgeUsdFiatVirtualAccountDepositInstructions#asset
       module Asset
         extend Privy::Internal::Type::Enum
 
         USD = :usd
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      module PaymentRail
-        extend Privy::Internal::Type::Enum
-
-        ACH_PUSH = :ach_push
-        WIRE = :wire
 
         # @!method self.values
         #   @return [Array<Symbol>]

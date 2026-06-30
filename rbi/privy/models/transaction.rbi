@@ -15,7 +15,8 @@ module Privy
       sig { returns(Float) }
       attr_accessor :created_at
 
-      sig { returns(Privy::Transaction::Status::TaggedSymbol) }
+      # Status of a blockchain transaction submitted by Privy.
+      sig { returns(Privy::BlockchainTransactionStatus::TaggedSymbol) }
       attr_accessor :status
 
       sig { returns(T.nilable(String)) }
@@ -45,7 +46,7 @@ module Privy
           id: String,
           caip2: String,
           created_at: Float,
-          status: Privy::Transaction::Status::OrSymbol,
+          status: Privy::BlockchainTransactionStatus::OrSymbol,
           transaction_hash: T.nilable(String),
           wallet_id: String,
           reference_id: T.nilable(String),
@@ -57,6 +58,7 @@ module Privy
         id:,
         caip2:,
         created_at:,
+        # Status of a blockchain transaction submitted by Privy.
         status:,
         transaction_hash:,
         wallet_id:,
@@ -72,7 +74,7 @@ module Privy
             id: String,
             caip2: String,
             created_at: Float,
-            status: Privy::Transaction::Status::TaggedSymbol,
+            status: Privy::BlockchainTransactionStatus::TaggedSymbol,
             transaction_hash: T.nilable(String),
             wallet_id: String,
             reference_id: T.nilable(String),
@@ -82,32 +84,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Privy::Transaction::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        BROADCASTED =
-          T.let(:broadcasted, Privy::Transaction::Status::TaggedSymbol)
-        CONFIRMED = T.let(:confirmed, Privy::Transaction::Status::TaggedSymbol)
-        EXECUTION_REVERTED =
-          T.let(:execution_reverted, Privy::Transaction::Status::TaggedSymbol)
-        FAILED = T.let(:failed, Privy::Transaction::Status::TaggedSymbol)
-        REPLACED = T.let(:replaced, Privy::Transaction::Status::TaggedSymbol)
-        FINALIZED = T.let(:finalized, Privy::Transaction::Status::TaggedSymbol)
-        PROVIDER_ERROR =
-          T.let(:provider_error, Privy::Transaction::Status::TaggedSymbol)
-        PENDING = T.let(:pending, Privy::Transaction::Status::TaggedSymbol)
-
-        sig do
-          override.returns(T::Array[Privy::Transaction::Status::TaggedSymbol])
-        end
-        def self.values
-        end
       end
     end
   end

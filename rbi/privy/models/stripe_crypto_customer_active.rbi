@@ -11,6 +11,16 @@ module Privy
       sig { returns(String) }
       attr_accessor :crypto_customer_id
 
+      # Region derived from a Stripe user's country of residence.
+      sig { returns(T.nilable(Privy::StripeKYCRegion::OrSymbol)) }
+      attr_accessor :kyc_region
+
+      sig { returns(T::Array[Privy::StripeKYCTier]) }
+      attr_accessor :kyc_tiers
+
+      sig { returns(T::Array[String]) }
+      attr_accessor :provided_fields
+
       sig { returns(Privy::StripeCryptoCustomerActive::Status::OrSymbol) }
       attr_accessor :status
 
@@ -21,17 +31,31 @@ module Privy
       sig do
         params(
           crypto_customer_id: String,
+          kyc_region: T.nilable(Privy::StripeKYCRegion::OrSymbol),
+          kyc_tiers: T::Array[Privy::StripeKYCTier::OrHash],
+          provided_fields: T::Array[String],
           status: Privy::StripeCryptoCustomerActive::Status::OrSymbol,
           verifications: T::Array[Privy::StripeVerification::OrHash]
         ).returns(T.attached_class)
       end
-      def self.new(crypto_customer_id:, status:, verifications:)
+      def self.new(
+        crypto_customer_id:,
+        # Region derived from a Stripe user's country of residence.
+        kyc_region:,
+        kyc_tiers:,
+        provided_fields:,
+        status:,
+        verifications:
+      )
       end
 
       sig do
         override.returns(
           {
             crypto_customer_id: String,
+            kyc_region: T.nilable(Privy::StripeKYCRegion::OrSymbol),
+            kyc_tiers: T::Array[Privy::StripeKYCTier],
+            provided_fields: T::Array[String],
             status: Privy::StripeCryptoCustomerActive::Status::OrSymbol,
             verifications: T::Array[Privy::StripeVerification]
           }

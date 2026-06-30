@@ -11,8 +11,11 @@ module Privy
           )
         end
 
+      # Supported fields for Solana Token Program conditions including Transfer,
+      # TransferChecked, Burn, MintTo, CloseAccount, and InitializeAccount3 instruction
+      # fields.
       sig do
-        returns(Privy::SolanaTokenProgramInstructionCondition::Field::OrSymbol)
+        returns(Privy::SolanaTokenProgramInstructionConditionField::OrSymbol)
       end
       attr_accessor :field
 
@@ -36,7 +39,7 @@ module Privy
       # instruction fields.
       sig do
         params(
-          field: Privy::SolanaTokenProgramInstructionCondition::Field::OrSymbol,
+          field: Privy::SolanaTokenProgramInstructionConditionField::OrSymbol,
           field_source:
             Privy::SolanaTokenProgramInstructionCondition::FieldSource::OrSymbol,
           operator: Privy::ConditionOperator::OrSymbol,
@@ -44,6 +47,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # Supported fields for Solana Token Program conditions including Transfer,
+        # TransferChecked, Burn, MintTo, CloseAccount, and InitializeAccount3 instruction
+        # fields.
         field:,
         field_source:,
         # Operator to use for policy conditions.
@@ -57,8 +63,7 @@ module Privy
       sig do
         override.returns(
           {
-            field:
-              Privy::SolanaTokenProgramInstructionCondition::Field::OrSymbol,
+            field: Privy::SolanaTokenProgramInstructionConditionField::OrSymbol,
             field_source:
               Privy::SolanaTokenProgramInstructionCondition::FieldSource::OrSymbol,
             operator: Privy::ConditionOperator::OrSymbol,
@@ -67,147 +72,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      module Field
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::SolanaTokenProgramInstructionCondition::Field)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        INSTRUCTION_NAME =
-          T.let(
-            :instructionName,
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_SOURCE =
-          T.let(
-            :"Transfer.source",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_DESTINATION =
-          T.let(
-            :"Transfer.destination",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_AUTHORITY =
-          T.let(
-            :"Transfer.authority",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_AMOUNT =
-          T.let(
-            :"Transfer.amount",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_CHECKED_SOURCE =
-          T.let(
-            :"TransferChecked.source",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_CHECKED_DESTINATION =
-          T.let(
-            :"TransferChecked.destination",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_CHECKED_AUTHORITY =
-          T.let(
-            :"TransferChecked.authority",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_CHECKED_AMOUNT =
-          T.let(
-            :"TransferChecked.amount",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        TRANSFER_CHECKED_MINT =
-          T.let(
-            :"TransferChecked.mint",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        BURN_ACCOUNT =
-          T.let(
-            :"Burn.account",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        BURN_MINT =
-          T.let(
-            :"Burn.mint",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        BURN_AUTHORITY =
-          T.let(
-            :"Burn.authority",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        BURN_AMOUNT =
-          T.let(
-            :"Burn.amount",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        MINT_TO_MINT =
-          T.let(
-            :"MintTo.mint",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        MINT_TO_ACCOUNT =
-          T.let(
-            :"MintTo.account",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        MINT_TO_AUTHORITY =
-          T.let(
-            :"MintTo.authority",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        MINT_TO_AMOUNT =
-          T.let(
-            :"MintTo.amount",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        CLOSE_ACCOUNT_ACCOUNT =
-          T.let(
-            :"CloseAccount.account",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        CLOSE_ACCOUNT_DESTINATION =
-          T.let(
-            :"CloseAccount.destination",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        CLOSE_ACCOUNT_AUTHORITY =
-          T.let(
-            :"CloseAccount.authority",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        INITIALIZE_ACCOUNT3_ACCOUNT =
-          T.let(
-            :"InitializeAccount3.account",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        INITIALIZE_ACCOUNT3_MINT =
-          T.let(
-            :"InitializeAccount3.mint",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-        INITIALIZE_ACCOUNT3_OWNER =
-          T.let(
-            :"InitializeAccount3.owner",
-            Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::SolanaTokenProgramInstructionCondition::Field::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       module FieldSource

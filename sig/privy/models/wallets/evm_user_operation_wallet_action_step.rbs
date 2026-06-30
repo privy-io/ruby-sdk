@@ -1,0 +1,80 @@
+module Privy
+  module Models
+    module Wallets
+      type evm_user_operation_wallet_action_step =
+        {
+          bundle_transaction_hash: String?,
+          :caip2 => String,
+          entrypoint_version: Privy::Models::Wallets::evm_user_operation_entrypoint_version,
+          status: Privy::Models::Wallets::evm_wallet_action_step_status,
+          type: Privy::Models::Wallets::EvmUserOperationWalletActionStep::type_,
+          user_operation_hash: String?,
+          failure_reason: Privy::Wallets::FailureReason,
+          finalized: bool,
+          gas_credits_charged_usd: String
+        }
+
+      class EvmUserOperationWalletActionStep < Privy::Internal::Type::BaseModel
+        attr_accessor bundle_transaction_hash: String?
+
+        attr_accessor caip2: String
+
+        attr_accessor entrypoint_version: Privy::Models::Wallets::evm_user_operation_entrypoint_version
+
+        attr_accessor status: Privy::Models::Wallets::evm_wallet_action_step_status
+
+        attr_accessor type: Privy::Models::Wallets::EvmUserOperationWalletActionStep::type_
+
+        attr_accessor user_operation_hash: String?
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        attr_reader finalized: bool?
+
+        def finalized=: (bool) -> bool
+
+        attr_reader gas_credits_charged_usd: String?
+
+        def gas_credits_charged_usd=: (String) -> String
+
+        def initialize: (
+          bundle_transaction_hash: String?,
+          caip2: String,
+          entrypoint_version: Privy::Models::Wallets::evm_user_operation_entrypoint_version,
+          status: Privy::Models::Wallets::evm_wallet_action_step_status,
+          type: Privy::Models::Wallets::EvmUserOperationWalletActionStep::type_,
+          user_operation_hash: String?,
+          ?failure_reason: Privy::Wallets::FailureReason,
+          ?finalized: bool,
+          ?gas_credits_charged_usd: String
+        ) -> void
+
+        def to_hash: -> {
+          bundle_transaction_hash: String?,
+          :caip2 => String,
+          entrypoint_version: Privy::Models::Wallets::evm_user_operation_entrypoint_version,
+          status: Privy::Models::Wallets::evm_wallet_action_step_status,
+          type: Privy::Models::Wallets::EvmUserOperationWalletActionStep::type_,
+          user_operation_hash: String?,
+          failure_reason: Privy::Wallets::FailureReason,
+          finalized: bool,
+          gas_credits_charged_usd: String
+        }
+
+        type type_ = :evm_user_operation
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          EVM_USER_OPERATION: :evm_user_operation
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::EvmUserOperationWalletActionStep::type_]
+        end
+      end
+    end
+  end
+end

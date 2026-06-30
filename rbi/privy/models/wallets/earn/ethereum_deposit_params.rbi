@@ -4,7 +4,7 @@ module Privy
   module Models
     module Wallets
       module Earn
-        class EthereumDepositParams < Privy::Models::EarnDepositRequestBody
+        class EthereumDepositParams < Privy::Models::Wallets::EarnDepositRequestBody
           extend Privy::Internal::Type::RequestParameters::Converter
           include Privy::Internal::Type::RequestParameters
 

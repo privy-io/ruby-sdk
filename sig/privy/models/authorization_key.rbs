@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type authorization_key = { display_name: String?, public_key: String }
+
+    class AuthorizationKey < Privy::Internal::Type::BaseModel
+      attr_accessor display_name: String?
+
+      attr_accessor public_key: String
+
+      def initialize: (display_name: String?, public_key: String) -> void
+
+      def to_hash: -> { display_name: String?, public_key: String }
+    end
+  end
+end

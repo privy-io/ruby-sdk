@@ -1,0 +1,11 @@
+module Privy
+  module Models
+    type rule_intent_delete_request_body = {  }
+
+    class RuleIntentDeleteRequestBody < Privy::Internal::Type::BaseModel
+      def initialize: -> void
+
+      def to_hash: -> {  }
+    end
+  end
+end

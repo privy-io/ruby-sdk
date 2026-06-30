@@ -15,9 +15,13 @@ module Privy
       WALLET_SEND_CALLS = :wallet_sendCalls
       SIGN_TRANSACTION = :signTransaction
       SIGN_AND_SEND_TRANSACTION = :signAndSendTransaction
+      SIGN_MESSAGE = :signMessage
       EXPORT_PRIVATE_KEY = :exportPrivateKey
       EXPORT_SEED_PHRASE = :exportSeedPhrase
       SIGN_TRANSACTION_BYTES = :signTransactionBytes
+      SIGN_RAW_MESSAGE_BYTES = :signRawMessageBytes
+      TRON_SEND_TRANSACTION = :tron_sendTransaction
+      TRON_SIGN_TRANSACTION = :tron_signTransaction
       EARN_DEPOSIT = :earn_deposit
       EARN_WITHDRAW = :earn_withdraw
       TRANSFER = :transfer

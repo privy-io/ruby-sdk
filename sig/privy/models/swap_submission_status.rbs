@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type swap_submission_status = :accepted | :rejected | :skipped
+
+    module SwapSubmissionStatus
+      extend Privy::Internal::Type::Enum
+
+      ACCEPTED: :accepted
+      REJECTED: :rejected
+      SKIPPED: :skipped
+
+      def self?.values: -> ::Array[Privy::Models::swap_submission_status]
+    end
+  end
+end

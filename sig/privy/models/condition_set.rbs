@@ -1,7 +1,7 @@
 module Privy
   module Models
     type condition_set =
-      { id: String, created_at: Float, name: String, owner_id: String }
+      { id: String, created_at: Float, name: String, owner_id: String? }
 
     class ConditionSet < Privy::Internal::Type::BaseModel
       attr_accessor id: String
@@ -10,20 +10,20 @@ module Privy
 
       attr_accessor name: String
 
-      attr_accessor owner_id: String
+      attr_accessor owner_id: String?
 
       def initialize: (
         id: String,
         created_at: Float,
         name: String,
-        owner_id: String
+        owner_id: String?
       ) -> void
 
       def to_hash: -> {
         id: String,
         created_at: Float,
         name: String,
-        owner_id: String
+        owner_id: String?
       }
     end
   end

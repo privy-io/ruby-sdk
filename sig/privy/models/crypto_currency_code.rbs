@@ -1,5 +1,0 @@
-module Privy
-  module Models
-    class CryptoCurrencyCode = String
-  end
-end

@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute asset_address
       #   Underlying asset token address.
@@ -21,11 +21,23 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
+      # @!attribute failed_at
+      #   ISO 8601 timestamp of when the wallet action failed.
+      #
+      #   @return [String]
+      required :failed_at, String
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
-      #   @return [Privy::Models::FailureReason]
-      required :failure_reason, -> { Privy::FailureReason }
+      #   @return [Privy::Models::Wallets::FailureReason]
+      required :failure_reason, -> { Privy::Wallets::FailureReason }
 
       # @!attribute raw_amount
       #   Base-unit amount of asset withdrawn (e.g. "1500000").
@@ -43,8 +55,8 @@ module Privy
       #   The steps of the wallet action. Completed steps will have transaction hashes;
       #   the failing step will have a failure_reason.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -97,25 +109,29 @@ module Privy
       #   @return [Integer, nil]
       optional :decimals, Integer
 
-      # @!method initialize(action_type:, asset_address:, caip2:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
+      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, failed_at:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload} for more details.
       #
       #   Payload for the wallet_action.earn_withdraw.failed webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param asset_address [String] Underlying asset token address.
       #
       #   @param caip2 [String] CAIP-2 chain identifier.
       #
-      #   @param failure_reason [Privy::Models::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @param failed_at [String] ISO 8601 timestamp of when the wallet action failed.
+      #
+      #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
       #   @param raw_amount [String] Base-unit amount of asset withdrawn (e.g. "1500000").
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>] The steps of the wallet action. Completed steps will have transaction hashes; th
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action. Completed steps will have transaction hashes; th
       #
       #   @param type [Symbol, Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload::Type] The type of webhook event.
       #

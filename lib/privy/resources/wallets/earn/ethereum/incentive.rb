@@ -26,7 +26,7 @@ module Privy
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Privy::Models::EarnIncentiveClaimActionResponse]
+            # @return [Privy::Models::Wallets::EarnIncentiveClaimActionResponse]
             #
             # @see Privy::Models::Wallets::Earn::Ethereum::IncentiveClaimParams
             def _claim(wallet_id, params)
@@ -42,7 +42,7 @@ module Privy
                 path: ["v1/wallets/%1$s/earn/ethereum/incentive/claim", wallet_id],
                 headers: parsed.slice(*header_params.keys).transform_keys(header_params),
                 body: parsed.except(*header_params.keys),
-                model: Privy::EarnIncentiveClaimActionResponse,
+                model: Privy::Wallets::EarnIncentiveClaimActionResponse,
                 options: options
               )
             end

@@ -1,13 +1,18 @@
 module Privy
   module Models
-    type get_by_wallet_address_request_body = { address: String }
+    type get_by_wallet_address_request_body =
+      { address: String, include_archived: bool }
 
     class GetByWalletAddressRequestBody < Privy::Internal::Type::BaseModel
       attr_accessor address: String
 
-      def initialize: (address: String) -> void
+      attr_reader include_archived: bool?
 
-      def to_hash: -> { address: String }
+      def include_archived=: (bool) -> bool
+
+      def initialize: (address: String, ?include_archived: bool) -> void
+
+      def to_hash: -> { address: String, include_archived: bool }
     end
   end
 end

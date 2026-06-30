@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type intent_binding =
+      { intent_id: String, type: Privy::Models::IntentBinding::type_ }
+
+    class IntentBinding < Privy::Internal::Type::BaseModel
+      attr_accessor intent_id: String
+
+      attr_accessor type: Privy::Models::IntentBinding::type_
+
+      def initialize: (
+        intent_id: String,
+        type: Privy::Models::IntentBinding::type_
+      ) -> void
+
+      def to_hash: -> {
+        intent_id: String,
+        type: Privy::Models::IntentBinding::type_
+      }
+
+      type type_ = :intent
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INTENT: :intent
+
+        def self?.values: -> ::Array[Privy::Models::IntentBinding::type_]
+      end
+    end
+  end
+end

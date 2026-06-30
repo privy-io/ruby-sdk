@@ -20,7 +20,7 @@ module Privy
       attr_accessor :name
 
       # A unique identifier for a key quorum.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
       # A condition set for grouping related condition values.
@@ -29,7 +29,7 @@ module Privy
           id: String,
           created_at: Float,
           name: String,
-          owner_id: String
+          owner_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -47,7 +47,12 @@ module Privy
 
       sig do
         override.returns(
-          { id: String, created_at: Float, name: String, owner_id: String }
+          {
+            id: String,
+            created_at: Float,
+            name: String,
+            owner_id: T.nilable(String)
+          }
         )
       end
       def to_hash

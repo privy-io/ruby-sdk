@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::WalletActionType]
-      required :action_type, enum: -> { Privy::WalletActionType }
+      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
+      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute caip2
       #   Chain identifier.
@@ -15,8 +15,20 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute completed_at
+      #   ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @return [String]
+      required :completed_at, String
+
+      # @!attribute created_at
+      #   ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute input_amount
-      #   Amount of input token in base units. Populated after on-chain confirmation.
+      #   Amount of input token in base units. Populated after onchain confirmation.
       #
       #   @return [String, nil]
       required :input_amount, String, nil?: true
@@ -28,7 +40,7 @@ module Privy
       required :input_token, String
 
       # @!attribute output_amount
-      #   Amount of output token received, in base units. Populated after on-chain
+      #   Amount of output token received, in base units. Populated after onchain
       #   confirmation.
       #
       #   @return [String, nil]
@@ -49,8 +61,8 @@ module Privy
       # @!attribute steps
       #   The steps of the wallet action, including transaction hashes.
       #
-      #   @return [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>]
-      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::WalletActionStep] }
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>]
+      required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
       #   The type of webhook event.
@@ -70,27 +82,31 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_type:, caip2:, input_amount:, input_token:, output_amount:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:)
+      # @!method initialize(action_type:, caip2:, completed_at:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionSwapSucceededWebhookPayload} for more details.
       #
       #   Payload for the wallet_action.swap.succeeded webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param caip2 [String] Chain identifier.
       #
-      #   @param input_amount [String, nil] Amount of input token in base units. Populated after on-chain confirmation.
+      #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
+      #
+      #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @param input_amount [String, nil] Amount of input token in base units. Populated after onchain confirmation.
       #
       #   @param input_token [String] Token address being sold.
       #
-      #   @param output_amount [String, nil] Amount of output token received, in base units. Populated after on-chain confirm
+      #   @param output_amount [String, nil] Amount of output token received, in base units. Populated after onchain confirma
       #
       #   @param output_token [String] Token address being bought.
       #
       #   @param status [Symbol, Privy::Models::WalletActionSwapSucceededWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::EvmTransactionWalletActionStep, Privy::Models::EvmUserOperationWalletActionStep, Privy::Models::SvmTransactionWalletActionStep, Privy::Models::ExternalTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action, including transaction hashes.
       #
       #   @param type [Symbol, Privy::Models::WalletActionSwapSucceededWebhookPayload::Type] The type of webhook event.
       #

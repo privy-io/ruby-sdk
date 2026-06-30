@@ -12,12 +12,13 @@ module Privy
         end
 
       # Result payload for start verification URL response.
-      sig { returns(Privy::KrakenEmbedStartVerificationURLResponse::Result) }
+      sig { returns(T.nilable(Privy::KrakenEmbedStartVerificationURLResult)) }
       attr_reader :result
 
       sig do
         params(
-          result: Privy::KrakenEmbedStartVerificationURLResponse::Result::OrHash
+          result:
+            T.nilable(Privy::KrakenEmbedStartVerificationURLResult::OrHash)
         ).void
       end
       attr_writer :result
@@ -25,7 +26,8 @@ module Privy
       # Response body for starting verification via URL.
       sig do
         params(
-          result: Privy::KrakenEmbedStartVerificationURLResponse::Result::OrHash
+          result:
+            T.nilable(Privy::KrakenEmbedStartVerificationURLResult::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -36,29 +38,10 @@ module Privy
 
       sig do
         override.returns(
-          { result: Privy::KrakenEmbedStartVerificationURLResponse::Result }
+          { result: T.nilable(Privy::KrakenEmbedStartVerificationURLResult) }
         )
       end
       def to_hash
-      end
-
-      class Result < Privy::Models::KrakenEmbedStartVerificationURLResult
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedStartVerificationURLResponse::Result,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Result payload for start verification URL response.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

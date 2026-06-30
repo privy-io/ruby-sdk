@@ -1,12 +1,17 @@
 module Privy
   module Models
-    type wallet_import_supported_chains = :ethereum | :solana
+    type wallet_import_supported_chains =
+      :ethereum | :solana | :stellar | :tron | :sui | :aptos
 
     module WalletImportSupportedChains
       extend Privy::Internal::Type::Enum
 
       ETHEREUM: :ethereum
       SOLANA: :solana
+      STELLAR: :stellar
+      TRON: :tron
+      SUI: :sui
+      APTOS: :aptos
 
       def self?.values: -> ::Array[Privy::Models::wallet_import_supported_chains]
     end

@@ -8,10 +8,11 @@ module Privy
           T.any(Privy::EthereumVaultPosition, Privy::Internal::AnyHash)
         end
 
-      sig { returns(Privy::EthereumVaultPosition::Asset) }
+      # The underlying token of a vault position.
+      sig { returns(Privy::VaultAsset) }
       attr_reader :asset
 
-      sig { params(asset: Privy::EthereumVaultPosition::Asset::OrHash).void }
+      sig { params(asset: Privy::VaultAsset::OrHash).void }
       attr_writer :asset
 
       # Current asset value in the vault (realtime from ERC4626), in smallest unit.
@@ -33,7 +34,7 @@ module Privy
       # A user's position in a DeFi vault.
       sig do
         params(
-          asset: Privy::EthereumVaultPosition::Asset::OrHash,
+          asset: Privy::VaultAsset::OrHash,
           assets_in_vault: String,
           shares_in_vault: String,
           total_deposited: String,
@@ -41,6 +42,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The underlying token of a vault position.
         asset:,
         # Current asset value in the vault (realtime from ERC4626), in smallest unit.
         assets_in_vault:,
@@ -56,7 +58,7 @@ module Privy
       sig do
         override.returns(
           {
-            asset: Privy::EthereumVaultPosition::Asset,
+            asset: Privy::VaultAsset,
             assets_in_vault: String,
             shares_in_vault: String,
             total_deposited: String,
@@ -65,36 +67,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class Asset < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Privy::EthereumVaultPosition::Asset, Privy::Internal::AnyHash)
-          end
-
-        # Token contract address.
-        sig { returns(String) }
-        attr_accessor :address
-
-        # Token symbol (e.g., "USDC").
-        sig { returns(String) }
-        attr_accessor :symbol
-
-        sig do
-          params(address: String, symbol: String).returns(T.attached_class)
-        end
-        def self.new(
-          # Token contract address.
-          address:,
-          # Token symbol (e.g., "USDC").
-          symbol:
-        )
-        end
-
-        sig { override.returns({ address: String, symbol: String }) }
-        def to_hash
-        end
       end
     end
   end

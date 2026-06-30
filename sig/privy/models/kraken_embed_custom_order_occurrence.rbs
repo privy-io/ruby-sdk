@@ -4,10 +4,10 @@ module Privy
       {
         id: String,
         created_at: Time,
-        status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status,
+        status: Privy::Models::kraken_embed_custom_order_occurrence_status,
         trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
         updated_at: Time,
-        executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+        executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?,
         failure_reason: String,
         skip_reason: String
       }
@@ -17,17 +17,13 @@ module Privy
 
       attr_accessor created_at: Time
 
-      attr_accessor status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status
+      attr_accessor status: Privy::Models::kraken_embed_custom_order_occurrence_status
 
       attr_accessor trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger
 
       attr_accessor updated_at: Time
 
-      attr_reader executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction?
-
-      def executed_action=: (
-        Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction
-      ) -> Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction
+      attr_accessor executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?
 
       attr_reader failure_reason: String?
 
@@ -40,10 +36,10 @@ module Privy
       def initialize: (
         id: String,
         created_at: Time,
-        status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status,
+        status: Privy::Models::kraken_embed_custom_order_occurrence_status,
         trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
         updated_at: Time,
-        ?executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+        ?executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?,
         ?failure_reason: String,
         ?skip_reason: String
       ) -> void
@@ -51,33 +47,13 @@ module Privy
       def to_hash: -> {
         id: String,
         created_at: Time,
-        status: Privy::Models::KrakenEmbedCustomOrderOccurrence::status,
+        status: Privy::Models::kraken_embed_custom_order_occurrence_status,
         trigger: Privy::KrakenEmbedCustomOrderOccurrenceTrigger,
         updated_at: Time,
-        executed_action: Privy::KrakenEmbedCustomOrderOccurrence::ExecutedAction,
+        executed_action: Privy::KrakenEmbedCustomOrderOccurrenceExecutedAction?,
         failure_reason: String,
         skip_reason: String
       }
-
-      type status = :success | :failure | :skipped
-
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        SUCCESS: :success
-        FAILURE: :failure
-        SKIPPED: :skipped
-
-        def self?.values: -> ::Array[Privy::Models::KrakenEmbedCustomOrderOccurrence::status]
-      end
-
-      type executed_action = {  }
-
-      class ExecutedAction < Privy::Models::KrakenEmbedCustomOrderOccurrenceExecutedAction
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
     end
   end
 end

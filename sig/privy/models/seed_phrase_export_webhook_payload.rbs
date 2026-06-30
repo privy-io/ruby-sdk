@@ -6,7 +6,7 @@ module Privy
         user_id: String,
         wallet_address: String,
         wallet_id: String,
-        export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source
+        export_source: Privy::Models::export_type
       }
 
     class SeedPhraseExportWebhookPayload < Privy::Internal::Type::BaseModel
@@ -18,18 +18,18 @@ module Privy
 
       attr_accessor wallet_id: String
 
-      attr_reader export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source?
+      attr_reader export_source: Privy::Models::export_type?
 
       def export_source=: (
-        Privy::Models::SeedPhraseExportWebhookPayload::export_source
-      ) -> Privy::Models::SeedPhraseExportWebhookPayload::export_source
+        Privy::Models::export_type
+      ) -> Privy::Models::export_type
 
       def initialize: (
         type: Privy::Models::SeedPhraseExportWebhookPayload::type_,
         user_id: String,
         wallet_address: String,
         wallet_id: String,
-        ?export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source
+        ?export_source: Privy::Models::export_type
       ) -> void
 
       def to_hash: -> {
@@ -37,7 +37,7 @@ module Privy
         user_id: String,
         wallet_address: String,
         wallet_id: String,
-        export_source: Privy::Models::SeedPhraseExportWebhookPayload::export_source
+        export_source: Privy::Models::export_type
       }
 
       type type_ = :"wallet.seed_phrase_export"
@@ -48,17 +48,6 @@ module Privy
         WALLET_SEED_PHRASE_EXPORT: :"wallet.seed_phrase_export"
 
         def self?.values: -> ::Array[Privy::Models::SeedPhraseExportWebhookPayload::type_]
-      end
-
-      type export_source = :display | :client
-
-      module ExportSource
-        extend Privy::Internal::Type::Enum
-
-        DISPLAY: :display
-        CLIENT: :client
-
-        def self?.values: -> ::Array[Privy::Models::SeedPhraseExportWebhookPayload::export_source]
       end
     end
   end

@@ -7,20 +7,21 @@ module Privy
         allowed_domains: ::Array[String],
         allowed_native_app_ids: ::Array[String],
         allowed_native_app_url_schemes: ::Array[String],
-        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_config: Privy::AppAllowlistConfig,
         allowlist_enabled: bool,
         apple_oauth: bool,
         captcha_enabled: bool,
         custom_api_url: String?,
         custom_jwt_auth: bool,
-        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider],
         data_classification: Privy::Models::AppResponse::data_classification,
         disable_plus_emails: bool,
         discord_oauth: bool,
         email_auth: bool,
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
-        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enabled_captcha_provider: Privy::Models::captcha_provider?,
         enforce_wallet_uis: bool,
+        external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
         farcaster_link_wallets_enabled: bool,
         fiat_on_ramp_enabled: bool,
@@ -34,7 +35,8 @@ module Privy
         linkedin_oauth: bool,
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
-        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        merge_accounts_by_email: bool,
+        mfa_methods: ::Array[Privy::Models::mfa_method],
         name: String,
         passkey_auth: bool,
         passkeys_for_signup_enabled: bool,
@@ -73,7 +75,7 @@ module Privy
 
       attr_accessor allowed_native_app_url_schemes: ::Array[String]
 
-      attr_accessor allowlist_config: Privy::AppResponse::AllowlistConfig
+      attr_accessor allowlist_config: Privy::AppAllowlistConfig
 
       attr_accessor allowlist_enabled: bool
 
@@ -85,7 +87,7 @@ module Privy
 
       attr_accessor custom_jwt_auth: bool
 
-      attr_accessor custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider]
+      attr_accessor custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider]
 
       attr_accessor data_classification: Privy::Models::AppResponse::data_classification
 
@@ -97,9 +99,11 @@ module Privy
 
       attr_accessor embedded_wallet_config: Privy::EmbeddedWalletConfigSchema
 
-      attr_accessor enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?
+      attr_accessor enabled_captcha_provider: Privy::Models::captcha_provider?
 
       attr_accessor enforce_wallet_uis: bool
+
+      attr_accessor external_wallets_for_signup_enabled: bool
 
       attr_accessor farcaster_auth: bool
 
@@ -127,7 +131,9 @@ module Privy
 
       attr_accessor max_linked_wallets_per_user: Float?
 
-      attr_accessor mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method]
+      attr_accessor merge_accounts_by_email: bool
+
+      attr_accessor mfa_methods: ::Array[Privy::Models::mfa_method]
 
       attr_accessor name: String
 
@@ -195,20 +201,21 @@ module Privy
         allowed_domains: ::Array[String],
         allowed_native_app_ids: ::Array[String],
         allowed_native_app_url_schemes: ::Array[String],
-        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_config: Privy::AppAllowlistConfig,
         allowlist_enabled: bool,
         apple_oauth: bool,
         captcha_enabled: bool,
         custom_api_url: String?,
         custom_jwt_auth: bool,
-        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider],
         data_classification: Privy::Models::AppResponse::data_classification,
         disable_plus_emails: bool,
         discord_oauth: bool,
         email_auth: bool,
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
-        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enabled_captcha_provider: Privy::Models::captcha_provider?,
         enforce_wallet_uis: bool,
+        external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
         farcaster_link_wallets_enabled: bool,
         fiat_on_ramp_enabled: bool,
@@ -222,7 +229,8 @@ module Privy
         linkedin_oauth: bool,
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
-        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        merge_accounts_by_email: bool,
+        mfa_methods: ::Array[Privy::Models::mfa_method],
         name: String,
         passkey_auth: bool,
         passkeys_for_signup_enabled: bool,
@@ -256,20 +264,21 @@ module Privy
         allowed_domains: ::Array[String],
         allowed_native_app_ids: ::Array[String],
         allowed_native_app_url_schemes: ::Array[String],
-        allowlist_config: Privy::AppResponse::AllowlistConfig,
+        allowlist_config: Privy::AppAllowlistConfig,
         allowlist_enabled: bool,
         apple_oauth: bool,
         captcha_enabled: bool,
         custom_api_url: String?,
         custom_jwt_auth: bool,
-        custom_oauth_providers: ::Array[Privy::AppResponse::CustomOAuthProvider],
+        custom_oauth_providers: ::Array[Privy::AppCustomOAuthProvider],
         data_classification: Privy::Models::AppResponse::data_classification,
         disable_plus_emails: bool,
         discord_oauth: bool,
         email_auth: bool,
         embedded_wallet_config: Privy::EmbeddedWalletConfigSchema,
-        enabled_captcha_provider: Privy::Models::AppResponse::enabled_captcha_provider?,
+        enabled_captcha_provider: Privy::Models::captcha_provider?,
         enforce_wallet_uis: bool,
+        external_wallets_for_signup_enabled: bool,
         farcaster_auth: bool,
         farcaster_link_wallets_enabled: bool,
         fiat_on_ramp_enabled: bool,
@@ -283,7 +292,8 @@ module Privy
         linkedin_oauth: bool,
         logo_url: String?,
         max_linked_wallets_per_user: Float?,
-        mfa_methods: ::Array[Privy::Models::AppResponse::mfa_method],
+        merge_accounts_by_email: bool,
+        mfa_methods: ::Array[Privy::Models::mfa_method],
         name: String,
         passkey_auth: bool,
         passkeys_for_signup_enabled: bool,
@@ -311,70 +321,6 @@ module Privy
         telegram_auth_config: Privy::TelegramAuthConfigSchema
       }
 
-      type allowlist_config =
-        {
-          cta_link: String?,
-          cta_text: String?,
-          error_detail: String?,
-          error_title: String?
-        }
-
-      class AllowlistConfig < Privy::Internal::Type::BaseModel
-        attr_accessor cta_link: String?
-
-        attr_accessor cta_text: String?
-
-        attr_accessor error_detail: String?
-
-        attr_accessor error_title: String?
-
-        def initialize: (
-          cta_link: String?,
-          cta_text: String?,
-          error_detail: String?,
-          error_title: String?
-        ) -> void
-
-        def to_hash: -> {
-          cta_link: String?,
-          cta_text: String?,
-          error_detail: String?,
-          error_title: String?
-        }
-      end
-
-      type custom_oauth_provider =
-        {
-          enabled: bool,
-          provider: String,
-          provider_display_name: String,
-          provider_icon_url: String
-        }
-
-      class CustomOAuthProvider < Privy::Internal::Type::BaseModel
-        attr_accessor enabled: bool
-
-        attr_accessor provider: String
-
-        attr_accessor provider_display_name: String
-
-        attr_accessor provider_icon_url: String
-
-        def initialize: (
-          enabled: bool,
-          provider: String,
-          provider_display_name: String,
-          provider_icon_url: String
-        ) -> void
-
-        def to_hash: -> {
-          enabled: bool,
-          provider: String,
-          provider_display_name: String,
-          provider_icon_url: String
-        }
-      end
-
       type data_classification = :public
 
       module DataClassification
@@ -383,29 +329,6 @@ module Privy
         PUBLIC: :public
 
         def self?.values: -> ::Array[Privy::Models::AppResponse::data_classification]
-      end
-
-      type enabled_captcha_provider = :turnstile | :hcaptcha
-
-      module EnabledCaptchaProvider
-        extend Privy::Internal::Type::Enum
-
-        TURNSTILE: :turnstile
-        HCAPTCHA: :hcaptcha
-
-        def self?.values: -> ::Array[Privy::Models::AppResponse::enabled_captcha_provider]
-      end
-
-      type mfa_method = :sms | :totp | :passkey
-
-      module MfaMethod
-        extend Privy::Internal::Type::Enum
-
-        SMS: :sms
-        TOTP: :totp
-        PASSKEY: :passkey
-
-        def self?.values: -> ::Array[Privy::Models::AppResponse::mfa_method]
       end
     end
   end

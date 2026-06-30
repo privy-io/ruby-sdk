@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    type tron_raw_data_for_sign =
+      {
+        contract: ::Array[Privy::Models::tron_contract],
+        expiration: Integer,
+        ref_block_bytes: String,
+        ref_block_hash: String,
+        data: String,
+        fee_limit: Integer,
+        timestamp: Integer
+      }
+
+    class TronRawDataForSign < Privy::Internal::Type::BaseModel
+      attr_accessor contract: ::Array[Privy::Models::tron_contract]
+
+      attr_accessor expiration: Integer
+
+      attr_accessor ref_block_bytes: String
+
+      attr_accessor ref_block_hash: String
+
+      attr_reader data: String?
+
+      def data=: (String) -> String
+
+      attr_reader fee_limit: Integer?
+
+      def fee_limit=: (Integer) -> Integer
+
+      attr_reader timestamp: Integer?
+
+      def timestamp=: (Integer) -> Integer
+
+      def initialize: (
+        contract: ::Array[Privy::Models::tron_contract],
+        expiration: Integer,
+        ref_block_bytes: String,
+        ref_block_hash: String,
+        ?data: String,
+        ?fee_limit: Integer,
+        ?timestamp: Integer
+      ) -> void
+
+      def to_hash: -> {
+        contract: ::Array[Privy::Models::tron_contract],
+        expiration: Integer,
+        ref_block_bytes: String,
+        ref_block_hash: String,
+        data: String,
+        fee_limit: Integer,
+        timestamp: Integer
+      }
+    end
+  end
+end

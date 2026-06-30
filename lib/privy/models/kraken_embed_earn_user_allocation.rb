@@ -6,14 +6,14 @@ module Privy
       # @!attribute total_allocated
       #   An earn amount with native and converted values.
       #
-      #   @return [Privy::Models::KrakenEmbedEarnUserAllocation::TotalAllocated]
-      required :total_allocated, -> { Privy::KrakenEmbedEarnUserAllocation::TotalAllocated }
+      #   @return [Privy::Models::KrakenEmbedEarnAmount, nil]
+      required :total_allocated, -> { Privy::KrakenEmbedEarnAmount }, nil?: true
 
       # @!attribute total_rewarded
       #   An earn amount with native and converted values.
       #
-      #   @return [Privy::Models::KrakenEmbedEarnUserAllocation::TotalRewarded]
-      required :total_rewarded, -> { Privy::KrakenEmbedEarnUserAllocation::TotalRewarded }
+      #   @return [Privy::Models::KrakenEmbedEarnAmount, nil]
+      required :total_rewarded, -> { Privy::KrakenEmbedEarnAmount }, nil?: true
 
       # @!attribute upcoming_reward_date
       #
@@ -23,23 +23,11 @@ module Privy
       # @!method initialize(total_allocated:, total_rewarded:, upcoming_reward_date: nil)
       #   User allocation for an earn asset.
       #
-      #   @param total_allocated [Privy::Models::KrakenEmbedEarnUserAllocation::TotalAllocated] An earn amount with native and converted values.
+      #   @param total_allocated [Privy::Models::KrakenEmbedEarnAmount, nil] An earn amount with native and converted values.
       #
-      #   @param total_rewarded [Privy::Models::KrakenEmbedEarnUserAllocation::TotalRewarded] An earn amount with native and converted values.
+      #   @param total_rewarded [Privy::Models::KrakenEmbedEarnAmount, nil] An earn amount with native and converted values.
       #
       #   @param upcoming_reward_date [Time, nil]
-
-      # @see Privy::Models::KrakenEmbedEarnUserAllocation#total_allocated
-      class TotalAllocated < Privy::Models::KrakenEmbedEarnAmount
-        # @!method initialize
-        #   An earn amount with native and converted values.
-      end
-
-      # @see Privy::Models::KrakenEmbedEarnUserAllocation#total_rewarded
-      class TotalRewarded < Privy::Models::KrakenEmbedEarnAmount
-        # @!method initialize
-        #   An earn amount with native and converted values.
-      end
     end
   end
 end

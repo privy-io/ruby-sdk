@@ -5,9 +5,11 @@ module Privy
         payment_method: String,
         provider: Privy::Models::fiat_onramp_provider,
         destination_currency_code: String?,
+        payment_method_category: String,
         source_amount: Float?,
         source_currency_code: String?,
-        sub_provider: String?
+        sub_provider: String?,
+        warning: String?
       }
 
     class FiatOnrampQuote < Privy::Internal::Type::BaseModel
@@ -17,28 +19,38 @@ module Privy
 
       attr_accessor destination_currency_code: String?
 
+      attr_reader payment_method_category: String?
+
+      def payment_method_category=: (String) -> String
+
       attr_accessor source_amount: Float?
 
       attr_accessor source_currency_code: String?
 
       attr_accessor sub_provider: String?
 
+      attr_accessor warning: String?
+
       def initialize: (
         payment_method: String,
         provider: Privy::Models::fiat_onramp_provider,
         ?destination_currency_code: String?,
+        ?payment_method_category: String,
         ?source_amount: Float?,
         ?source_currency_code: String?,
-        ?sub_provider: String?
+        ?sub_provider: String?,
+        ?warning: String?
       ) -> void
 
       def to_hash: -> {
         payment_method: String,
         provider: Privy::Models::fiat_onramp_provider,
         destination_currency_code: String?,
+        payment_method_category: String,
         source_amount: Float?,
         source_currency_code: String?,
-        sub_provider: String?
+        sub_provider: String?,
+        warning: String?
       }
     end
   end

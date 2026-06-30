@@ -90,9 +90,6 @@ module Privy
     sig { returns(Privy::Resources::OAuth) }
     attr_reader :oauth
 
-    sig { returns(Privy::Resources::WalletActions) }
-    attr_reader :wallet_actions
-
     sig { returns(Privy::Resources::Yield) }
     attr_reader :yield_
 

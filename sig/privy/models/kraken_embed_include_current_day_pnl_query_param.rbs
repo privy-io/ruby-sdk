@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kraken_embed_include_current_day_pnl_query_param = :true | :false
+
+    module KrakenEmbedIncludeCurrentDayPnlQueryParam
+      extend Privy::Internal::Type::Enum
+
+      TRUE: :true
+      FALSE: :false
+
+      def self?.values: -> ::Array[Privy::Models::kraken_embed_include_current_day_pnl_query_param]
+    end
+  end
+end

@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type kraken_embed_residence =
+      {
+        city: String,
+        country: Privy::Models::kraken_embed_country_code,
+        :line1 => String,
+        postal_code: String,
+        :line2 => String?,
+        province: String?
+      }
+
+    class KrakenEmbedResidence < Privy::Internal::Type::BaseModel
+      attr_accessor city: String
+
+      attr_accessor country: Privy::Models::kraken_embed_country_code
+
+      attr_accessor line1: String
+
+      attr_accessor postal_code: String
+
+      attr_accessor line2: String?
+
+      attr_accessor province: String?
+
+      def initialize: (
+        city: String,
+        country: Privy::Models::kraken_embed_country_code,
+        line1: String,
+        postal_code: String,
+        ?line2: String?,
+        ?province: String?
+      ) -> void
+
+      def to_hash: -> {
+        city: String,
+        country: Privy::Models::kraken_embed_country_code,
+        :line1 => String,
+        postal_code: String,
+        :line2 => String?,
+        province: String?
+      }
+    end
+  end
+end

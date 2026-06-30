@@ -16,9 +16,10 @@ module Privy
       required :asset, union: -> { Privy::WalletFundsAsset }
 
       # @!attribute block
+      #   Block metadata for a wallet transfer event.
       #
-      #   @return [Privy::Models::FundsWithdrawnWebhookPayload::Block]
-      required :block, -> { Privy::FundsWithdrawnWebhookPayload::Block }
+      #   @return [Privy::Models::BlockInfo]
+      required :block, -> { Privy::BlockInfo }
 
       # @!attribute caip2
       #   The CAIP-2 chain identifier.
@@ -75,7 +76,7 @@ module Privy
       #
       #   @param asset [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset] An asset involved in a wallet transfer.
       #
-      #   @param block [Privy::Models::FundsWithdrawnWebhookPayload::Block]
+      #   @param block [Privy::Models::BlockInfo] Block metadata for a wallet transfer event.
       #
       #   @param caip2 [String] The CAIP-2 chain identifier.
       #
@@ -92,26 +93,6 @@ module Privy
       #   @param wallet_id [String] The ID of the wallet.
       #
       #   @param transaction_fee [String] The transaction fee paid, as a stringified bigint in the chain's native token.
-
-      # @see Privy::Models::FundsWithdrawnWebhookPayload#block
-      class Block < Privy::Internal::Type::BaseModel
-        # @!attribute number
-        #   The block number.
-        #
-        #   @return [Float]
-        required :number, Float
-
-        # @!attribute timestamp
-        #   The block timestamp.
-        #
-        #   @return [Float]
-        required :timestamp, Float
-
-        # @!method initialize(number:, timestamp:)
-        #   @param number [Float] The block number.
-        #
-        #   @param timestamp [Float] The block timestamp.
-      end
 
       # The type of webhook event.
       #

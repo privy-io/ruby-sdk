@@ -12,12 +12,12 @@ module Privy
         end
 
       # Result payload for earn assets response.
-      sig { returns(Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result) }
+      sig { returns(T.nilable(Privy::KrakenEmbedGetEarnAssetsResult)) }
       attr_reader :result
 
       sig do
         params(
-          result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result::OrHash
+          result: T.nilable(Privy::KrakenEmbedGetEarnAssetsResult::OrHash)
         ).void
       end
       attr_writer :result
@@ -37,7 +37,7 @@ module Privy
       # Kraken API response envelope for earn assets.
       sig do
         params(
-          result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result::OrHash,
+          result: T.nilable(Privy::KrakenEmbedGetEarnAssetsResult::OrHash),
           error: T::Array[T.anything],
           errors: T::Array[T.anything]
         ).returns(T.attached_class)
@@ -53,32 +53,13 @@ module Privy
       sig do
         override.returns(
           {
-            result: Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result,
+            result: T.nilable(Privy::KrakenEmbedGetEarnAssetsResult),
             error: T::Array[T.anything],
             errors: T::Array[T.anything]
           }
         )
       end
       def to_hash
-      end
-
-      class Result < Privy::Models::KrakenEmbedGetEarnAssetsResult
-        OrHash =
-          T.type_alias do
-            T.any(
-              Privy::KrakenEmbedGetEarnAssetsKrakenResponse::Result,
-              Privy::Internal::AnyHash
-            )
-          end
-
-        # Result payload for earn assets response.
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

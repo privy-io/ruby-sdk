@@ -30,7 +30,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :spread_bps
 
-      sig { returns(Privy::KrakenEmbedCustomOrderAction::Type::OrSymbol) }
+      # Whether the quote amount refers to the asset being received or spent.
+      sig { returns(Privy::KrakenEmbedQuoteType::OrSymbol) }
       attr_accessor :type
 
       # Trade action for a custom order.
@@ -40,7 +41,7 @@ module Privy
           fee_bps: String,
           quote: Privy::KrakenEmbedCustomOrderQuoteAsset::OrHash,
           spread_bps: String,
-          type: Privy::KrakenEmbedCustomOrderAction::Type::OrSymbol
+          type: Privy::KrakenEmbedQuoteType::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -50,6 +51,7 @@ module Privy
         # Target asset for the other side of the custom order trade.
         quote:,
         spread_bps:,
+        # Whether the quote amount refers to the asset being received or spent.
         type:
       )
       end
@@ -61,37 +63,11 @@ module Privy
             fee_bps: String,
             quote: Privy::KrakenEmbedCustomOrderQuoteAsset,
             spread_bps: String,
-            type: Privy::KrakenEmbedCustomOrderAction::Type::OrSymbol
+            type: Privy::KrakenEmbedQuoteType::OrSymbol
           }
         )
       end
       def to_hash
-      end
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::KrakenEmbedCustomOrderAction::Type)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        RECEIVE =
-          T.let(
-            :receive,
-            Privy::KrakenEmbedCustomOrderAction::Type::TaggedSymbol
-          )
-        SPEND =
-          T.let(:spend, Privy::KrakenEmbedCustomOrderAction::Type::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Privy::KrakenEmbedCustomOrderAction::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

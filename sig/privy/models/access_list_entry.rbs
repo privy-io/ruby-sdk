@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type access_list_entry = { address: String, storage_keys: ::Array[String] }
+
+    class AccessListEntry < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor storage_keys: ::Array[String]
+
+      def initialize: (address: String, storage_keys: ::Array[String]) -> void
+
+      def to_hash: -> { address: String, storage_keys: ::Array[String] }
+    end
+  end
+end

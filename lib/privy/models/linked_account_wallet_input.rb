@@ -9,9 +9,10 @@ module Privy
       required :address, String
 
       # @!attribute chain_type
+      #   The wallet chain types that offer first class support.
       #
-      #   @return [Symbol, Privy::Models::LinkedAccountWalletInput::ChainType]
-      required :chain_type, enum: -> { Privy::LinkedAccountWalletInput::ChainType }
+      #   @return [Symbol, Privy::Models::FirstClassChainType]
+      required :chain_type, enum: -> { Privy::FirstClassChainType }
 
       # @!attribute type
       #
@@ -22,19 +23,10 @@ module Privy
       #   The payload for importing a wallet account.
       #
       #   @param address [String]
-      #   @param chain_type [Symbol, Privy::Models::LinkedAccountWalletInput::ChainType]
+      #
+      #   @param chain_type [Symbol, Privy::Models::FirstClassChainType] The wallet chain types that offer first class support.
+      #
       #   @param type [Symbol, :wallet]
-
-      # @see Privy::Models::LinkedAccountWalletInput#chain_type
-      module ChainType
-        extend Privy::Internal::Type::Enum
-
-        ETHEREUM = :ethereum
-        SOLANA = :solana
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

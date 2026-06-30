@@ -12,14 +12,22 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # Chain identifier.
       sig { returns(String) }
       attr_accessor :caip2
 
-      # Amount of input token in base units. Populated after on-chain confirmation.
+      # ISO 8601 timestamp of when the wallet action completed successfully.
+      sig { returns(String) }
+      attr_accessor :completed_at
+
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
+
+      # Amount of input token in base units. Populated after onchain confirmation.
       sig { returns(T.nilable(String)) }
       attr_accessor :input_amount
 
@@ -27,7 +35,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :input_token
 
-      # Amount of output token received, in base units. Populated after on-chain
+      # Amount of output token received, in base units. Populated after onchain
       # confirmation.
       sig { returns(T.nilable(String)) }
       attr_accessor :output_amount
@@ -45,7 +53,7 @@ module Privy
       attr_accessor :status
 
       # The steps of the wallet action, including transaction hashes.
-      sig { returns(T::Array[Privy::WalletActionStep::Variants]) }
+      sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
       # The type of webhook event.
@@ -67,8 +75,10 @@ module Privy
       # Payload for the wallet_action.swap.succeeded webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           caip2: String,
+          completed_at: String,
+          created_at: String,
           input_amount: T.nilable(String),
           input_token: String,
           output_amount: T.nilable(String),
@@ -78,10 +88,12 @@ module Privy
           steps:
             T::Array[
               T.any(
-                Privy::EvmTransactionWalletActionStep::OrHash,
-                Privy::EvmUserOperationWalletActionStep::OrHash,
-                Privy::SvmTransactionWalletActionStep::OrHash,
-                Privy::ExternalTransactionWalletActionStep::OrHash
+                Privy::Wallets::EvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::EvmUserOperationWalletActionStep::OrHash,
+                Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
+                Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
               )
             ],
           type: Privy::WalletActionSwapSucceededWebhookPayload::Type::OrSymbol,
@@ -94,11 +106,15 @@ module Privy
         action_type:,
         # Chain identifier.
         caip2:,
-        # Amount of input token in base units. Populated after on-chain confirmation.
+        # ISO 8601 timestamp of when the wallet action completed successfully.
+        completed_at:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
+        # Amount of input token in base units. Populated after onchain confirmation.
         input_amount:,
         # Token address being sold.
         input_token:,
-        # Amount of output token received, in base units. Populated after on-chain
+        # Amount of output token received, in base units. Populated after onchain
         # confirmation.
         output_amount:,
         # Token address being bought.
@@ -119,15 +135,17 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             caip2: String,
+            completed_at: String,
+            created_at: String,
             input_amount: T.nilable(String),
             input_token: String,
             output_amount: T.nilable(String),
             output_token: String,
             status:
               Privy::WalletActionSwapSucceededWebhookPayload::Status::TaggedSymbol,
-            steps: T::Array[Privy::WalletActionStep::Variants],
+            steps: T::Array[Privy::Wallets::WalletActionStep::Variants],
             type:
               Privy::WalletActionSwapSucceededWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,

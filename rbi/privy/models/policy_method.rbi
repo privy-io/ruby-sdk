@@ -26,12 +26,19 @@ module Privy
         T.let(:signTransaction, Privy::PolicyMethod::TaggedSymbol)
       SIGN_AND_SEND_TRANSACTION =
         T.let(:signAndSendTransaction, Privy::PolicyMethod::TaggedSymbol)
+      SIGN_MESSAGE = T.let(:signMessage, Privy::PolicyMethod::TaggedSymbol)
       EXPORT_PRIVATE_KEY =
         T.let(:exportPrivateKey, Privy::PolicyMethod::TaggedSymbol)
       EXPORT_SEED_PHRASE =
         T.let(:exportSeedPhrase, Privy::PolicyMethod::TaggedSymbol)
       SIGN_TRANSACTION_BYTES =
         T.let(:signTransactionBytes, Privy::PolicyMethod::TaggedSymbol)
+      SIGN_RAW_MESSAGE_BYTES =
+        T.let(:signRawMessageBytes, Privy::PolicyMethod::TaggedSymbol)
+      TRON_SEND_TRANSACTION =
+        T.let(:tron_sendTransaction, Privy::PolicyMethod::TaggedSymbol)
+      TRON_SIGN_TRANSACTION =
+        T.let(:tron_signTransaction, Privy::PolicyMethod::TaggedSymbol)
       EARN_DEPOSIT = T.let(:earn_deposit, Privy::PolicyMethod::TaggedSymbol)
       EARN_WITHDRAW = T.let(:earn_withdraw, Privy::PolicyMethod::TaggedSymbol)
       TRANSFER = T.let(:transfer, Privy::PolicyMethod::TaggedSymbol)

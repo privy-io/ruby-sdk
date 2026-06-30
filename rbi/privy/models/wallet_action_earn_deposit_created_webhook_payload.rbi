@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
       # Underlying asset token address.
@@ -22,6 +22,10 @@ module Privy
       # CAIP-2 chain identifier.
       sig { returns(String) }
       attr_accessor :caip2
+
+      # ISO 8601 timestamp of when the wallet action was created.
+      sig { returns(String) }
+      attr_accessor :created_at
 
       # Base-unit amount of asset deposited (e.g. "1500000").
       sig { returns(String) }
@@ -86,9 +90,10 @@ module Privy
       # Payload for the wallet_action.earn_deposit.created webhook event.
       sig do
         params(
-          action_type: Privy::WalletActionType::OrSymbol,
+          action_type: Privy::Wallets::WalletActionType::OrSymbol,
           asset_address: String,
           caip2: String,
+          created_at: String,
           raw_amount: String,
           status:
             Privy::WalletActionEarnDepositCreatedWebhookPayload::Status::OrSymbol,
@@ -110,6 +115,8 @@ module Privy
         asset_address:,
         # CAIP-2 chain identifier.
         caip2:,
+        # ISO 8601 timestamp of when the wallet action was created.
+        created_at:,
         # Base-unit amount of asset deposited (e.g. "1500000").
         raw_amount:,
         # The status of the wallet action.
@@ -139,9 +146,10 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             asset_address: String,
             caip2: String,
+            created_at: String,
             raw_amount: String,
             status:
               Privy::WalletActionEarnDepositCreatedWebhookPayload::Status::TaggedSymbol,
