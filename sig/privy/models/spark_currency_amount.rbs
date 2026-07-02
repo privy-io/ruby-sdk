@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type spark_currency_amount =
+      { original_unit: String, original_value: Float }
+
+    class SparkCurrencyAmount < Privy::Internal::Type::BaseModel
+      attr_accessor original_unit: String
+
+      attr_accessor original_value: Float
+
+      def initialize: (original_unit: String, original_value: Float) -> void
+
+      def to_hash: -> { original_unit: String, original_value: Float }
+    end
+  end
+end

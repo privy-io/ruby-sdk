@@ -153,6 +153,8 @@ module Privy
               Privy::SparkCreateLightningInvoiceRpcInput::OrHash,
               Privy::SparkPayLightningInvoiceRpcInput::OrHash,
               Privy::SparkSignMessageWithIdentityKeyRpcInput::OrHash,
+              Privy::SparkWithdrawRpcInput::OrHash,
+              Privy::SparkGetWithdrawalFeeQuoteRpcInput::OrHash,
               Privy::TronSignTransactionRpcInput::OrHash,
               Privy::TronSendTransactionRpcInput::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,

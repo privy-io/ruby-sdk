@@ -35,8 +35,14 @@ module Privy
       # Signs a message with the Spark identity key.
       variant :signMessageWithIdentityKey, -> { Privy::SparkSignMessageWithIdentityKeyRpcInput }
 
+      # Withdraws from Spark to a Bitcoin L1 address (cooperative exit).
+      variant :withdraw, -> { Privy::SparkWithdrawRpcInput }
+
+      # Gets a fee quote for withdrawing from Spark to a Bitcoin L1 address.
+      variant :getWithdrawalFeeQuote, -> { Privy::SparkGetWithdrawalFeeQuoteRpcInput }
+
       # @!method self.variants
-      #   @return [Array(Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput)]
+      #   @return [Array(Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::SparkWithdrawRpcInput, Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput)]
     end
   end
 end

@@ -14,10 +14,12 @@ module Privy
       ETH = T.let(:eth, Privy::WalletAsset::TaggedSymbol)
       AVAX = T.let(:avax, Privy::WalletAsset::TaggedSymbol)
       POL = T.let(:pol, Privy::WalletAsset::TaggedSymbol)
+      BNB = T.let(:bnb, Privy::WalletAsset::TaggedSymbol)
       USDT = T.let(:usdt, Privy::WalletAsset::TaggedSymbol)
       EURC = T.let(:eurc, Privy::WalletAsset::TaggedSymbol)
       USDB = T.let(:usdb, Privy::WalletAsset::TaggedSymbol)
       SOL = T.let(:sol, Privy::WalletAsset::TaggedSymbol)
+      TRX = T.let(:trx, Privy::WalletAsset::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::WalletAsset::TaggedSymbol]) }
       def self.values

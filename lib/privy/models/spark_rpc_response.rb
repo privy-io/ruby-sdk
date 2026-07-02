@@ -35,8 +35,14 @@ module Privy
       # Response to the Spark `signMessageWithIdentityKey` RPC.
       variant :signMessageWithIdentityKey, -> { Privy::SparkSignMessageWithIdentityKeyRpcResponse }
 
+      # Response to the Spark `withdraw` RPC.
+      variant :withdraw, -> { Privy::SparkWithdrawRpcResponse }
+
+      # Response to the Spark `getWithdrawalFeeQuote` RPC.
+      variant :getWithdrawalFeeQuote, -> { Privy::SparkGetWithdrawalFeeQuoteRpcResponse }
+
       # @!method self.variants
-      #   @return [Array(Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse)]
+      #   @return [Array(Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::SparkWithdrawRpcResponse, Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse)]
     end
   end
 end

@@ -14,7 +14,9 @@ module Privy
       LINEA = :linea
       OPTIMISM = :optimism
       POLYGON = :polygon
+      BSC = :bsc
       SOLANA = :solana
+      TRON = :tron
       ZKSYNC_ERA = :zksync_era
       SEPOLIA = :sepolia
       ARBITRUM_SEPOLIA = :arbitrum_sepolia
@@ -25,6 +27,7 @@ module Privy
       POLYGON_AMOY = :polygon_amoy
       SOLANA_DEVNET = :solana_devnet
       SOLANA_TESTNET = :solana_testnet
+      TRON_NILE = :tron_nile
 
       # @!method self.values
       #   @return [Array<Symbol>]

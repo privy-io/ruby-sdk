@@ -147,6 +147,11 @@ module Privy
             :pol,
             Privy::TransferReceivedTransactionDetail::Asset::TaggedSymbol
           )
+        BNB =
+          T.let(
+            :bnb,
+            Privy::TransferReceivedTransactionDetail::Asset::TaggedSymbol
+          )
         USDT =
           T.let(
             :usdt,
@@ -165,6 +170,11 @@ module Privy
         SOL =
           T.let(
             :sol,
+            Privy::TransferReceivedTransactionDetail::Asset::TaggedSymbol
+          )
+        TRX =
+          T.let(
+            :trx,
             Privy::TransferReceivedTransactionDetail::Asset::TaggedSymbol
           )
       end

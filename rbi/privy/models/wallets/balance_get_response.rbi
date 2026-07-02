@@ -161,6 +161,11 @@ module Privy
                 :pol,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
               )
+            BNB =
+              T.let(
+                :bnb,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
+              )
             USDT =
               T.let(
                 :usdt,
@@ -179,6 +184,11 @@ module Privy
             SOL =
               T.let(
                 :sol,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
+              )
+            TRX =
+              T.let(
+                :trx,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
               )
           end

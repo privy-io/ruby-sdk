@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type wallet_tron_asset = :trx | :usdt | :usdc
+
+    module WalletTronAsset
+      extend Privy::Internal::Type::Enum
+
+      TRX: :trx
+      USDT: :usdt
+      USDC: :usdc
+
+      def self?.values: -> ::Array[Privy::Models::wallet_tron_asset]
+    end
+  end
+end

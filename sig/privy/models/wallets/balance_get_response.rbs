@@ -59,10 +59,12 @@ module Privy
             | :eth
             | :avax
             | :pol
+            | :bnb
             | :usdt
             | :eurc
             | :usdb
             | :sol
+            | :trx
             | String
 
           module Asset
@@ -75,10 +77,12 @@ module Privy
             ETH: :eth
             AVAX: :avax
             POL: :pol
+            BNB: :bnb
             USDT: :usdt
             EURC: :eurc
             USDB: :usdb
             SOL: :sol
+            TRX: :trx
           end
         end
       end

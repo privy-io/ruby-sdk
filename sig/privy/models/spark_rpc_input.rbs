@@ -10,6 +10,8 @@ module Privy
       | Privy::SparkCreateLightningInvoiceRpcInput
       | Privy::SparkPayLightningInvoiceRpcInput
       | Privy::SparkSignMessageWithIdentityKeyRpcInput
+      | Privy::SparkWithdrawRpcInput
+      | Privy::SparkGetWithdrawalFeeQuoteRpcInput
 
     module SparkRpcInput
       extend Privy::Internal::Type::Union

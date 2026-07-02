@@ -444,6 +444,8 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in Privy::SparkCreateLightningInvoiceRpcResponse
       in Privy::SparkPayLightningInvoiceRpcResponse
       in Privy::SparkSignMessageWithIdentityKeyRpcResponse
+      in Privy::SparkWithdrawRpcResponse
+      in Privy::SparkGetWithdrawalFeeQuoteRpcResponse
       in Privy::TronSignTransactionRpcResponse
       in Privy::TronSendTransactionRpcResponse
       in Privy::ExportPrivateKeyRpcResponse
@@ -473,6 +475,8 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in {method_: :createLightningInvoice, data: Privy::SparkLightningReceiveRequest | nil}
       in {method_: :payLightningInvoice, data: Privy::SparkPayLightningInvoiceRpcResponse::Data | nil}
       in {method_: :signMessageWithIdentityKey, data: Privy::SparkSignMessageWithIdentityKeyRpcResponseData | nil}
+      in {method_: :withdraw, data: Privy::SparkCoopExitRequest | nil}
+      in {method_: :getWithdrawalFeeQuote, data: Privy::SparkCoopExitFeeQuote | nil}
       in {method_: :tron_signTransaction, data: Privy::TronSignTransactionRpcResponseData}
       in {method_: :tron_sendTransaction, data: Privy::TronSendTransactionRpcResponseData}
       in {method_: :exportPrivateKey, data: Privy::PrivateKeyExportInput}

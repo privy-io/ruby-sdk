@@ -1498,11 +1498,19 @@ module Privy
 
   SparkClaimStaticDepositRpcResponseData = Privy::Models::SparkClaimStaticDepositRpcResponseData
 
+  SparkCoopExitFeeQuote = Privy::Models::SparkCoopExitFeeQuote
+
+  SparkCoopExitRequest = Privy::Models::SparkCoopExitRequest
+
   SparkCreateLightningInvoiceRpcInput = Privy::Models::SparkCreateLightningInvoiceRpcInput
 
   SparkCreateLightningInvoiceRpcInputParams = Privy::Models::SparkCreateLightningInvoiceRpcInputParams
 
   SparkCreateLightningInvoiceRpcResponse = Privy::Models::SparkCreateLightningInvoiceRpcResponse
+
+  SparkCurrencyAmount = Privy::Models::SparkCurrencyAmount
+
+  SparkExitSpeed = Privy::Models::SparkExitSpeed
 
   SparkGetBalanceRpcInput = Privy::Models::SparkGetBalanceRpcInput
 
@@ -1523,6 +1531,12 @@ module Privy
   SparkGetStaticDepositAddressRpcResponse = Privy::Models::SparkGetStaticDepositAddressRpcResponse
 
   SparkGetStaticDepositAddressRpcResponseData = Privy::Models::SparkGetStaticDepositAddressRpcResponseData
+
+  SparkGetWithdrawalFeeQuoteRpcInput = Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput
+
+  SparkGetWithdrawalFeeQuoteRpcInputParams = Privy::Models::SparkGetWithdrawalFeeQuoteRpcInputParams
+
+  SparkGetWithdrawalFeeQuoteRpcResponse = Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse
 
   SparkLightningFee = Privy::Models::SparkLightningFee
 
@@ -1579,6 +1593,12 @@ module Privy
   SparkUserTokenMetadata = Privy::Models::SparkUserTokenMetadata
 
   SparkWalletLeaf = Privy::Models::SparkWalletLeaf
+
+  SparkWithdrawRpcInput = Privy::Models::SparkWithdrawRpcInput
+
+  SparkWithdrawRpcInputParams = Privy::Models::SparkWithdrawRpcInputParams
+
+  SparkWithdrawRpcResponse = Privy::Models::SparkWithdrawRpcResponse
 
   StripeConsumerWallet = Privy::Models::StripeConsumerWallet
 
@@ -2068,6 +2088,8 @@ module Privy
   WalletSubmitImportParams = Privy::Models::WalletSubmitImportParams
 
   WalletTransferParams = Privy::Models::WalletTransferParams
+
+  WalletTronAsset = Privy::Models::WalletTronAsset
 
   WalletUpdateParams = Privy::Models::WalletUpdateParams
 

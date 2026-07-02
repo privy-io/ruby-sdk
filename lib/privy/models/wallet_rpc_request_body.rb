@@ -68,6 +68,12 @@ module Privy
       # Signs a message with the Spark identity key.
       variant :signMessageWithIdentityKey, -> { Privy::SparkSignMessageWithIdentityKeyRpcInput }
 
+      # Withdraws from Spark to a Bitcoin L1 address (cooperative exit).
+      variant :withdraw, -> { Privy::SparkWithdrawRpcInput }
+
+      # Gets a fee quote for withdrawing from Spark to a Bitcoin L1 address.
+      variant :getWithdrawalFeeQuote, -> { Privy::SparkGetWithdrawalFeeQuoteRpcInput }
+
       # Executes the Tron `tron_signTransaction` RPC to sign a transaction. The caller is responsible for broadcasting.
       variant :tron_signTransaction, -> { Privy::TronSignTransactionRpcInput }
 
@@ -81,7 +87,7 @@ module Privy
       variant :exportSeedPhrase, -> { Privy::ExportSeedPhraseRpcInput }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput)]
+      #   @return [Array(Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::SparkWithdrawRpcInput, Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput)]
     end
   end
 end
