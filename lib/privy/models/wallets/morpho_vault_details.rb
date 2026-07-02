@@ -58,6 +58,12 @@ module Privy
         #   @return [Symbol, Privy::Models::Wallets::MorphoVaultDetails::Provider]
         required :provider, enum: -> { Privy::Wallets::MorphoVaultDetails::Provider }
 
+        # @!attribute total_rewards_apr
+        #   Total rewards annual percentage rate in basis points.
+        #
+        #   @return [Float]
+        required :total_rewards_apr, Float
+
         # @!attribute tvl_usd
         #   Total value locked in USD.
         #
@@ -65,8 +71,8 @@ module Privy
         required :tvl_usd, Float, nil?: true
 
         # @!attribute user_apy
-        #   Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
-        #   = 0.01%.
+        #   Annual percentage yield available to the user, after fees and excluding rewards,
+        #   in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
         #
         #   @return [Float, nil]
         required :user_apy, Float, nil?: true
@@ -77,7 +83,7 @@ module Privy
         #   @return [String]
         required :vault_address, String
 
-        # @!method initialize(id:, admin_wallet_address:, admin_wallet_id:, app_apy:, asset:, available_liquidity_usd:, caip2:, name:, provider:, tvl_usd:, user_apy:, vault_address:)
+        # @!method initialize(id:, admin_wallet_address:, admin_wallet_id:, app_apy:, asset:, available_liquidity_usd:, caip2:, name:, provider:, total_rewards_apr:, tvl_usd:, user_apy:, vault_address:)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::MorphoVaultDetails} for more details.
         #
@@ -101,9 +107,11 @@ module Privy
         #
         #   @param provider [Symbol, Privy::Models::Wallets::MorphoVaultDetails::Provider]
         #
+        #   @param total_rewards_apr [Float] Total rewards annual percentage rate in basis points.
+        #
         #   @param tvl_usd [Float, nil] Total value locked in USD.
         #
-        #   @param user_apy [Float, nil] Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
+        #   @param user_apy [Float, nil] Annual percentage yield available to the user, after fees and excluding rewards,
         #
         #   @param vault_address [String] Onchain vault contract address.
 

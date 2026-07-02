@@ -71,8 +71,8 @@ module Privy
         required :tvl_usd, Float, nil?: true
 
         # @!attribute user_apy
-        #   Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
-        #   = 0.01%.
+        #   Annual percentage yield available to the user, after fees and excluding rewards,
+        #   in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
         #
         #   @return [Float, nil]
         required :user_apy, Float, nil?: true
@@ -111,7 +111,7 @@ module Privy
         #
         #   @param tvl_usd [Float, nil] Total value locked in USD.
         #
-        #   @param user_apy [Float, nil] Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
+        #   @param user_apy [Float, nil] Annual percentage yield available to the user, after fees and excluding rewards,
         #
         #   @param vault_address [String] Onchain vault contract address.
 

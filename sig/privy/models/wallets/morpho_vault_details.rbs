@@ -12,6 +12,7 @@ module Privy
           :caip2 => String,
           name: String,
           provider: Privy::Models::Wallets::MorphoVaultDetails::provider,
+          total_rewards_apr: Float,
           tvl_usd: Float?,
           user_apy: Float?,
           vault_address: String
@@ -36,6 +37,8 @@ module Privy
 
         attr_accessor provider: Privy::Models::Wallets::MorphoVaultDetails::provider
 
+        attr_accessor total_rewards_apr: Float
+
         attr_accessor tvl_usd: Float?
 
         attr_accessor user_apy: Float?
@@ -52,6 +55,7 @@ module Privy
           caip2: String,
           name: String,
           provider: Privy::Models::Wallets::MorphoVaultDetails::provider,
+          total_rewards_apr: Float,
           tvl_usd: Float?,
           user_apy: Float?,
           vault_address: String
@@ -67,6 +71,7 @@ module Privy
           :caip2 => String,
           name: String,
           provider: Privy::Models::Wallets::MorphoVaultDetails::provider,
+          total_rewards_apr: Float,
           tvl_usd: Float?,
           user_apy: Float?,
           vault_address: String

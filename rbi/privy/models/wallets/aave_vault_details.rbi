@@ -56,8 +56,8 @@ module Privy
         sig { returns(T.nilable(Float)) }
         attr_accessor :tvl_usd
 
-        # Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
-        # = 0.01%.
+        # Annual percentage yield available to the user, after fees and excluding rewards,
+        # in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
         sig { returns(T.nilable(Float)) }
         attr_accessor :user_apy
 
@@ -106,8 +106,8 @@ module Privy
           provider:,
           # Total value locked in USD.
           tvl_usd:,
-          # Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
-          # = 0.01%.
+          # Annual percentage yield available to the user, after fees and excluding rewards,
+          # in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
           user_apy:,
           # Onchain vault contract address.
           vault_address:

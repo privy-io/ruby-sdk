@@ -48,12 +48,16 @@ module Privy
         sig { returns(Privy::Wallets::MorphoVaultDetails::Provider::OrSymbol) }
         attr_accessor :provider
 
+        # Total rewards annual percentage rate in basis points.
+        sig { returns(Float) }
+        attr_accessor :total_rewards_apr
+
         # Total value locked in USD.
         sig { returns(T.nilable(Float)) }
         attr_accessor :tvl_usd
 
-        # Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
-        # = 0.01%.
+        # Annual percentage yield available to the user, after fees and excluding rewards,
+        # in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
         sig { returns(T.nilable(Float)) }
         attr_accessor :user_apy
 
@@ -73,6 +77,7 @@ module Privy
             caip2: String,
             name: String,
             provider: Privy::Wallets::MorphoVaultDetails::Provider::OrSymbol,
+            total_rewards_apr: Float,
             tvl_usd: T.nilable(Float),
             user_apy: T.nilable(Float),
             vault_address: String
@@ -97,10 +102,12 @@ module Privy
           # Human-readable vault name from the yield provider.
           name:,
           provider:,
+          # Total rewards annual percentage rate in basis points.
+          total_rewards_apr:,
           # Total value locked in USD.
           tvl_usd:,
-          # Current annual percentage yield in basis points (e.g. 500 for 5%). 1 basis point
-          # = 0.01%.
+          # Annual percentage yield available to the user, after fees and excluding rewards,
+          # in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
           user_apy:,
           # Onchain vault contract address.
           vault_address:
@@ -119,6 +126,7 @@ module Privy
               caip2: String,
               name: String,
               provider: Privy::Wallets::MorphoVaultDetails::Provider::OrSymbol,
+              total_rewards_apr: Float,
               tvl_usd: T.nilable(Float),
               user_apy: T.nilable(Float),
               vault_address: String
