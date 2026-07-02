@@ -136,6 +136,8 @@ module Privy
           )
         POL =
           T.let(:pol, Privy::TransferSentTransactionDetail::Asset::TaggedSymbol)
+        BNB =
+          T.let(:bnb, Privy::TransferSentTransactionDetail::Asset::TaggedSymbol)
         USDT =
           T.let(
             :usdt,
@@ -153,6 +155,8 @@ module Privy
           )
         SOL =
           T.let(:sol, Privy::TransferSentTransactionDetail::Asset::TaggedSymbol)
+        TRX =
+          T.let(:trx, Privy::TransferSentTransactionDetail::Asset::TaggedSymbol)
       end
 
       module Type

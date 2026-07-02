@@ -11,6 +11,7 @@ module Privy
       ETH = :eth
       AVAX = :avax
       POL = :pol
+      BNB = :bnb
       USDT = :usdt
       EURC = :eurc
       USDB = :usdb

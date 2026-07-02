@@ -1,0 +1,75 @@
+module Privy
+  module Models
+    type spark_coop_exit_fee_quote =
+      {
+        id: String,
+        created_at: String,
+        expires_at: String,
+        :l1_broadcast_fee_fast => Privy::SparkCurrencyAmount,
+        :l1_broadcast_fee_medium => Privy::SparkCurrencyAmount,
+        :l1_broadcast_fee_slow => Privy::SparkCurrencyAmount,
+        network: String,
+        total_amount: Privy::SparkCurrencyAmount,
+        updated_at: String,
+        user_fee_fast: Privy::SparkCurrencyAmount,
+        user_fee_medium: Privy::SparkCurrencyAmount,
+        user_fee_slow: Privy::SparkCurrencyAmount
+      }
+
+    class SparkCoopExitFeeQuote < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor expires_at: String
+
+      attr_accessor l1_broadcast_fee_fast: Privy::SparkCurrencyAmount
+
+      attr_accessor l1_broadcast_fee_medium: Privy::SparkCurrencyAmount
+
+      attr_accessor l1_broadcast_fee_slow: Privy::SparkCurrencyAmount
+
+      attr_accessor network: String
+
+      attr_accessor total_amount: Privy::SparkCurrencyAmount
+
+      attr_accessor updated_at: String
+
+      attr_accessor user_fee_fast: Privy::SparkCurrencyAmount
+
+      attr_accessor user_fee_medium: Privy::SparkCurrencyAmount
+
+      attr_accessor user_fee_slow: Privy::SparkCurrencyAmount
+
+      def initialize: (
+        id: String,
+        created_at: String,
+        expires_at: String,
+        l1_broadcast_fee_fast: Privy::SparkCurrencyAmount,
+        l1_broadcast_fee_medium: Privy::SparkCurrencyAmount,
+        l1_broadcast_fee_slow: Privy::SparkCurrencyAmount,
+        network: String,
+        total_amount: Privy::SparkCurrencyAmount,
+        updated_at: String,
+        user_fee_fast: Privy::SparkCurrencyAmount,
+        user_fee_medium: Privy::SparkCurrencyAmount,
+        user_fee_slow: Privy::SparkCurrencyAmount
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        expires_at: String,
+        :l1_broadcast_fee_fast => Privy::SparkCurrencyAmount,
+        :l1_broadcast_fee_medium => Privy::SparkCurrencyAmount,
+        :l1_broadcast_fee_slow => Privy::SparkCurrencyAmount,
+        network: String,
+        total_amount: Privy::SparkCurrencyAmount,
+        updated_at: String,
+        user_fee_fast: Privy::SparkCurrencyAmount,
+        user_fee_medium: Privy::SparkCurrencyAmount,
+        user_fee_slow: Privy::SparkCurrencyAmount
+      }
+    end
+  end
+end

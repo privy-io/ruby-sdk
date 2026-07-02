@@ -29,6 +29,8 @@ module Privy
             Privy::SparkCreateLightningInvoiceRpcResponse,
             Privy::SparkPayLightningInvoiceRpcResponse,
             Privy::SparkSignMessageWithIdentityKeyRpcResponse,
+            Privy::SparkWithdrawRpcResponse,
+            Privy::SparkGetWithdrawalFeeQuoteRpcResponse,
             Privy::TronSignTransactionRpcResponse,
             Privy::TronSendTransactionRpcResponse,
             Privy::ExportPrivateKeyRpcResponse,

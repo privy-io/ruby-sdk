@@ -283,6 +283,11 @@ module Privy
               :pol,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
+          BNB =
+            T.let(
+              :bnb,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
           USDT =
             T.let(
               :usdt,
@@ -301,6 +306,11 @@ module Privy
           SOL =
             T.let(
               :sol,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
+          TRX =
+            T.let(
+              :trx,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
 

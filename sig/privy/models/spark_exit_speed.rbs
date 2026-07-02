@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type spark_exit_speed = :FAST | :MEDIUM | :SLOW
+
+    module SparkExitSpeed
+      extend Privy::Internal::Type::Enum
+
+      FAST: :FAST
+      MEDIUM: :MEDIUM
+      SLOW: :SLOW
+
+      def self?.values: -> ::Array[Privy::Models::spark_exit_speed]
+    end
+  end
+end

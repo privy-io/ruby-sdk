@@ -10,6 +10,8 @@ module Privy
       | Privy::SparkCreateLightningInvoiceRpcResponse
       | Privy::SparkPayLightningInvoiceRpcResponse
       | Privy::SparkSignMessageWithIdentityKeyRpcResponse
+      | Privy::SparkWithdrawRpcResponse
+      | Privy::SparkGetWithdrawalFeeQuoteRpcResponse
 
     module SparkRpcResponse
       extend Privy::Internal::Type::Union

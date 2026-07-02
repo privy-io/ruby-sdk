@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type spark_get_withdrawal_fee_quote_rpc_input_params =
+      { amount_sats: Float, onchain_address: String }
+
+    class SparkGetWithdrawalFeeQuoteRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor amount_sats: Float
+
+      attr_accessor onchain_address: String
+
+      def initialize: (amount_sats: Float, onchain_address: String) -> void
+
+      def to_hash: -> { amount_sats: Float, onchain_address: String }
+    end
+  end
+end

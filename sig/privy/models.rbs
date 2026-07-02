@@ -1433,11 +1433,19 @@ module Privy
 
   class SparkClaimStaticDepositRpcResponseData = Privy::Models::SparkClaimStaticDepositRpcResponseData
 
+  class SparkCoopExitFeeQuote = Privy::Models::SparkCoopExitFeeQuote
+
+  class SparkCoopExitRequest = Privy::Models::SparkCoopExitRequest
+
   class SparkCreateLightningInvoiceRpcInput = Privy::Models::SparkCreateLightningInvoiceRpcInput
 
   class SparkCreateLightningInvoiceRpcInputParams = Privy::Models::SparkCreateLightningInvoiceRpcInputParams
 
   class SparkCreateLightningInvoiceRpcResponse = Privy::Models::SparkCreateLightningInvoiceRpcResponse
+
+  class SparkCurrencyAmount = Privy::Models::SparkCurrencyAmount
+
+  module SparkExitSpeed = Privy::Models::SparkExitSpeed
 
   class SparkGetBalanceRpcInput = Privy::Models::SparkGetBalanceRpcInput
 
@@ -1456,6 +1464,12 @@ module Privy
   class SparkGetStaticDepositAddressRpcResponse = Privy::Models::SparkGetStaticDepositAddressRpcResponse
 
   class SparkGetStaticDepositAddressRpcResponseData = Privy::Models::SparkGetStaticDepositAddressRpcResponseData
+
+  class SparkGetWithdrawalFeeQuoteRpcInput = Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput
+
+  class SparkGetWithdrawalFeeQuoteRpcInputParams = Privy::Models::SparkGetWithdrawalFeeQuoteRpcInputParams
+
+  class SparkGetWithdrawalFeeQuoteRpcResponse = Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse
 
   class SparkLightningFee = Privy::Models::SparkLightningFee
 
@@ -1510,6 +1524,12 @@ module Privy
   class SparkUserTokenMetadata = Privy::Models::SparkUserTokenMetadata
 
   class SparkWalletLeaf = Privy::Models::SparkWalletLeaf
+
+  class SparkWithdrawRpcInput = Privy::Models::SparkWithdrawRpcInput
+
+  class SparkWithdrawRpcInputParams = Privy::Models::SparkWithdrawRpcInputParams
+
+  class SparkWithdrawRpcResponse = Privy::Models::SparkWithdrawRpcResponse
 
   class StripeConsumerWallet = Privy::Models::StripeConsumerWallet
 
@@ -1984,6 +2004,8 @@ module Privy
   class WalletSubmitImportParams = Privy::Models::WalletSubmitImportParams
 
   class WalletTransferParams = Privy::Models::WalletTransferParams
+
+  module WalletTronAsset = Privy::Models::WalletTronAsset
 
   class WalletUpdateParams = Privy::Models::WalletUpdateParams
 

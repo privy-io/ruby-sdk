@@ -101,6 +101,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::POL }
 
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::BNB }
+
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::USDT }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::EURC }
@@ -108,6 +110,8 @@ module Privy
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::USDB }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::SOL }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::TRX }
 
           variant -> { Privy::Models::Wallets::BalanceGetParams::Asset::WalletAssetArray }
 
@@ -125,10 +129,12 @@ module Privy
           ETH = :eth
           AVAX = :avax
           POL = :pol
+          BNB = :bnb
           USDT = :usdt
           EURC = :eurc
           USDB = :usdb
           SOL = :sol
+          TRX = :trx
 
           # @!endgroup
 

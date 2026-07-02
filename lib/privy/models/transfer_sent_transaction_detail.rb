@@ -91,6 +91,8 @@ module Privy
 
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::POL }
 
+        variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::BNB }
+
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::USDT }
 
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::EURC }
@@ -98,6 +100,8 @@ module Privy
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::USDB }
 
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::SOL }
+
+        variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::TRX }
 
         variant String
 
@@ -115,10 +119,12 @@ module Privy
         ETH = :eth
         AVAX = :avax
         POL = :pol
+        BNB = :bnb
         USDT = :usdt
         EURC = :eurc
         USDB = :usdb
         SOL = :sol
+        TRX = :trx
 
         # @!endgroup
       end

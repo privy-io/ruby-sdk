@@ -238,6 +238,8 @@ module Privy
             T.let(:avax, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           POL =
             T.let(:pol, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
+          BNB =
+            T.let(:bnb, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           USDT =
             T.let(:usdt, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           EURC =
@@ -246,6 +248,8 @@ module Privy
             T.let(:usdb, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           SOL =
             T.let(:sol, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
+          TRX =
+            T.let(:trx, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
 
           WalletAssetArray =
             T.let(
