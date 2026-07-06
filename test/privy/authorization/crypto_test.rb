@@ -18,6 +18,21 @@ class Privy::CryptographyTest < Minitest::Test
     assert_equal('{"outer":{"a":{"nested":true},"z":1}}', result)
   end
 
+  def test_canonicalize_symbol_values_are_converted_to_strings
+    result = Privy::Authorization::Canonicalization.canonicalize(
+      {
+        method: :tron_signTransaction,
+        chain_type: :tron
+      }
+    )
+    assert_equal('{"chain_type":"tron","method":"tron_signTransaction"}', result)
+  end
+
+  def test_canonicalize_symbol_values_nested_in_arrays
+    result = Privy::Authorization::Canonicalization.canonicalize({items: [:foo, :bar]})
+    assert_equal('{"items":["foo","bar"]}', result)
+  end
+
   def test_round_trip_signature_verifies
     kp = Privy::Cryptography.generate_p256_key_pair
     pubkey = OpenSSL::PKey.read(kp.public_key.unpack1("m0"))
