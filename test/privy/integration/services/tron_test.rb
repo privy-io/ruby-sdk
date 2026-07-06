@@ -52,7 +52,7 @@ class Privy::Test::Integration::TronTest < Privy::Test::IntegrationTest
     owner_hex = tron_base58_to_hex(wallet.address)
     raw_data = minimal_raw_data(owner_hex)
 
-    response = client.wallets.tron.sign_transaction(wallet.id, params: raw_data)
+    response = client.wallets.tron.sign_transaction(wallet.id, params: {raw_data: raw_data})
 
     refute_nil(response.signed_transaction, "expected signed_transaction to be set")
     assert_equal(:hex, response.encoding, "expected encoding to be :hex")
@@ -90,7 +90,7 @@ class Privy::Test::Integration::TronTest < Privy::Test::IntegrationTest
 
     response = client.wallets.tron.sign_transaction(
       wallet.id,
-      params: raw_data,
+      params: {raw_data: raw_data},
       authorization_context: ctx
     )
 
