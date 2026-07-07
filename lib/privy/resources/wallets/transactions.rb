@@ -14,7 +14,7 @@ module Privy
         #
         # @param wallet_id [String] ID of the wallet.
         #
-        # @param chain [Symbol, Privy::Models::Wallets::TransactionGetParams::Chain]
+        # @param chain [Symbol, Privy::Models::TransactionChainNameInput] Chains supported for transaction history queries.
         #
         # @param token [String, Array<String>] Exactly one of `token` or `asset` is required. Cannot be used together with `ass
         #

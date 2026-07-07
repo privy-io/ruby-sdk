@@ -4,7 +4,7 @@ module Privy
       type transaction_get_params =
         {
           wallet_id: String,
-          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          chain: Privy::Models::transaction_chain_name_input,
           token: Privy::Models::Wallets::TransactionGetParams::token,
           asset: Privy::Models::Wallets::TransactionGetParams::asset,
           cursor: String,
@@ -20,7 +20,7 @@ module Privy
 
         attr_accessor wallet_id: String
 
-        attr_accessor chain: Privy::Models::Wallets::TransactionGetParams::chain
+        attr_accessor chain: Privy::Models::transaction_chain_name_input
 
         attr_reader token: Privy::Models::Wallets::TransactionGetParams::token?
 
@@ -50,7 +50,7 @@ module Privy
 
         def initialize: (
           wallet_id: String,
-          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          chain: Privy::Models::transaction_chain_name_input,
           ?token: Privy::Models::Wallets::TransactionGetParams::token,
           ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
           ?cursor: String,
@@ -62,7 +62,7 @@ module Privy
 
         def to_hash: -> {
           wallet_id: String,
-          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          chain: Privy::Models::transaction_chain_name_input,
           token: Privy::Models::Wallets::TransactionGetParams::token,
           asset: Privy::Models::Wallets::TransactionGetParams::asset,
           cursor: String,
@@ -71,33 +71,6 @@ module Privy
           tx_hash: String,
           request_options: Privy::RequestOptions
         }
-
-        type chain =
-          :ethereum
-          | :arbitrum
-          | :base
-          | :tempo
-          | :linea
-          | :optimism
-          | :polygon
-          | :solana
-          | :sepolia
-
-        module Chain
-          extend Privy::Internal::Type::Enum
-
-          ETHEREUM: :ethereum
-          ARBITRUM: :arbitrum
-          BASE: :base
-          TEMPO: :tempo
-          LINEA: :linea
-          OPTIMISM: :optimism
-          POLYGON: :polygon
-          SOLANA: :solana
-          SEPOLIA: :sepolia
-
-          def self?.values: -> ::Array[Privy::Models::Wallets::TransactionGetParams::chain]
-        end
 
         type token = String | ::Array[String]
 

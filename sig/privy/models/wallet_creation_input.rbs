@@ -5,6 +5,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem],
         create_smart_wallet: bool,
+        external_id: String,
         policy_ids: ::Array[String]
       }
 
@@ -21,6 +22,10 @@ module Privy
 
       def create_smart_wallet=: (bool) -> bool
 
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
       attr_reader policy_ids: ::Array[String]?
 
       def policy_ids=: (::Array[String]) -> ::Array[String]
@@ -29,6 +34,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem],
         ?create_smart_wallet: bool,
+        ?external_id: String,
         ?policy_ids: ::Array[String]
       ) -> void
 
@@ -36,6 +42,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         additional_signers: ::Array[Privy::WalletCreationAdditionalSignerItem],
         create_smart_wallet: bool,
+        external_id: String,
         policy_ids: ::Array[String]
       }
     end
