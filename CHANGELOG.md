@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 (2026-07-07)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/privy-io/ruby-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* add typed wallets.tron service for sign_transaction and send_transaction ([#60](https://github.com/privy-io/ruby-sdk/issues/60)) ([c56b749](https://github.com/privy-io/ruby-sdk/commit/c56b749a86ca37aaca45eeb22c81d70888b13b80))
+* **api:** api update ([d459062](https://github.com/privy-io/ruby-sdk/commit/d4590623529c056f59b7c93ff63489ec8b5654b2))
+* **api:** api update ([da42888](https://github.com/privy-io/ruby-sdk/commit/da42888314c78e306e359b61535b25e5f44a98a0))
+* **api:** api update ([58aafa5](https://github.com/privy-io/ruby-sdk/commit/58aafa543ba23dc18f813e4a558e7c9f1f458467))
+
 ## 0.3.0 (2026-06-30)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/privy-io/ruby-sdk/compare/v0.2.0...v0.3.0)
