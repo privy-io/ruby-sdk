@@ -1696,6 +1696,8 @@ module Privy
 
   TransactionBroadcastedWebhookPayload = Privy::Models::TransactionBroadcastedWebhookPayload
 
+  TransactionChainNameInput = Privy::Models::TransactionChainNameInput
+
   TransactionConfirmedWebhookPayload = Privy::Models::TransactionConfirmedWebhookPayload
 
   TransactionDetail = Privy::Models::TransactionDetail

@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    type transaction_chain_name_input =
+      :ethereum
+      | :arbitrum
+      | :avalanche
+      | :base
+      | :bsc
+      | :tempo
+      | :linea
+      | :optimism
+      | :polygon
+      | :solana
+      | :sepolia
+
+    module TransactionChainNameInput
+      extend Privy::Internal::Type::Enum
+
+      ETHEREUM: :ethereum
+      ARBITRUM: :arbitrum
+      AVALANCHE: :avalanche
+      BASE: :base
+      BSC: :bsc
+      TEMPO: :tempo
+      LINEA: :linea
+      OPTIMISM: :optimism
+      POLYGON: :polygon
+      SOLANA: :solana
+      SEPOLIA: :sepolia
+
+      def self?.values: -> ::Array[Privy::Models::transaction_chain_name_input]
+    end
+  end
+end

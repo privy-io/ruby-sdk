@@ -4,7 +4,7 @@ module Privy
       class Transactions
         def get: (
           String wallet_id,
-          chain: Privy::Models::Wallets::TransactionGetParams::chain,
+          chain: Privy::Models::transaction_chain_name_input,
           ?token: Privy::Models::Wallets::TransactionGetParams::token,
           ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
           ?cursor: String,

@@ -34,6 +34,15 @@ module Privy
       sig { params(create_smart_wallet: T::Boolean).void }
       attr_writer :create_smart_wallet
 
+      # A customer-provided identifier for mapping to external systems. Write-once, set
+      # only at creation. Must be alphanumeric, hyphens, or underscores, max 64
+      # characters.
+      sig { returns(T.nilable(String)) }
+      attr_reader :external_id
+
+      sig { params(external_id: String).void }
+      attr_writer :external_id
+
       # Policy IDs to enforce on the wallet. Currently, only one policy is supported per
       # wallet.
       sig { returns(T.nilable(T::Array[String])) }
@@ -50,6 +59,7 @@ module Privy
           additional_signers:
             T::Array[Privy::WalletCreationAdditionalSignerItem::OrHash],
           create_smart_wallet: T::Boolean,
+          external_id: String,
           policy_ids: T::Array[String]
         ).returns(T.attached_class)
       end
@@ -61,6 +71,10 @@ module Privy
         # Create a smart wallet with this wallet as the signer. Only supported for wallets
         # with `chain_type: "ethereum"`.
         create_smart_wallet: nil,
+        # A customer-provided identifier for mapping to external systems. Write-once, set
+        # only at creation. Must be alphanumeric, hyphens, or underscores, max 64
+        # characters.
+        external_id: nil,
         # Policy IDs to enforce on the wallet. Currently, only one policy is supported per
         # wallet.
         policy_ids: nil
@@ -74,6 +88,7 @@ module Privy
             additional_signers:
               T::Array[Privy::WalletCreationAdditionalSignerItem],
             create_smart_wallet: T::Boolean,
+            external_id: String,
             policy_ids: T::Array[String]
           }
         )

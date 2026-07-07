@@ -9,7 +9,7 @@ module Privy
         sig do
           params(
             wallet_id: String,
-            chain: Privy::Wallets::TransactionGetParams::Chain::OrSymbol,
+            chain: Privy::TransactionChainNameInput::OrSymbol,
             token: Privy::Wallets::TransactionGetParams::Token::Variants,
             asset:
               T.any(
@@ -26,6 +26,7 @@ module Privy
         def get(
           # ID of the wallet.
           wallet_id,
+          # Chains supported for transaction history queries.
           chain:,
           # Exactly one of `token` or `asset` is required. Cannot be used together with
           # `asset`.
