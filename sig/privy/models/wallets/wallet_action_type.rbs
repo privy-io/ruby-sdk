@@ -9,6 +9,7 @@ module Privy
         | :earn_deposit
         | :earn_withdraw
         | :earn_incentive_claim
+        | :earn_fee_collect
 
       module WalletActionType
         extend Privy::Internal::Type::Enum
@@ -18,6 +19,7 @@ module Privy
         EARN_DEPOSIT: :earn_deposit
         EARN_WITHDRAW: :earn_withdraw
         EARN_INCENTIVE_CLAIM: :earn_incentive_claim
+        EARN_FEE_COLLECT: :earn_fee_collect
 
         def self?.values: -> ::Array[Privy::Models::Wallets::wallet_action_type]
       end

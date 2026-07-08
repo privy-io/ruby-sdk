@@ -1,13 +1,14 @@
 module Privy
   module Models
     module Wallets
-      type ethereum_earn_provider = :morpho | :aave
+      type ethereum_earn_provider = :morpho | :aave | :veda
 
       module EthereumEarnProvider
         extend Privy::Internal::Type::Enum
 
         MORPHO: :morpho
         AAVE: :aave
+        VEDA: :veda
 
         def self?.values: -> ::Array[Privy::Models::Wallets::ethereum_earn_provider]
       end

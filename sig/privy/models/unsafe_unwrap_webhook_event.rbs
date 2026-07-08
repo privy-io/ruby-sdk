@@ -34,6 +34,10 @@ module Privy
       | Privy::WalletActionEarnDepositFailedWebhookPayload
       | Privy::WalletActionEarnDepositRejectedWebhookPayload
       | Privy::WalletActionEarnDepositSucceededWebhookPayload
+      | Privy::WalletActionEarnFeeCollectCreatedWebhookPayload
+      | Privy::WalletActionEarnFeeCollectFailedWebhookPayload
+      | Privy::WalletActionEarnFeeCollectRejectedWebhookPayload
+      | Privy::WalletActionEarnFeeCollectSucceededWebhookPayload
       | Privy::WalletActionEarnIncentiveClaimCreatedWebhookPayload
       | Privy::WalletActionEarnIncentiveClaimFailedWebhookPayload
       | Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload

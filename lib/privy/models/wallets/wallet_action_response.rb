@@ -26,8 +26,11 @@ module Privy
         # Response for an earn incentive claim action.
         variant :earn_incentive_claim, -> { Privy::Wallets::EarnIncentiveClaimActionResponse }
 
+        # Response for an earn fee collect action.
+        variant :earn_fee_collect, -> { Privy::Wallets::EarnFeeCollectActionResponse }
+
         # @!method self.variants
-        #   @return [Array(Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse)]
+        #   @return [Array(Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse)]
       end
     end
 

@@ -23,7 +23,7 @@ module Privy
         #
         # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse]
+        # @return [Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse]
         #
         # @see Privy::Models::Wallets::ActionGetParams
         def get(action_id, params)

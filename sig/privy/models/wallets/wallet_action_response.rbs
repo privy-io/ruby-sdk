@@ -9,6 +9,7 @@ module Privy
         | Privy::Wallets::EarnDepositActionResponse
         | Privy::Wallets::EarnWithdrawActionResponse
         | Privy::Wallets::EarnIncentiveClaimActionResponse
+        | Privy::Wallets::EarnFeeCollectActionResponse
 
       module WalletActionResponse
         extend Privy::Internal::Type::Union
