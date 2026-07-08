@@ -29,6 +29,8 @@ module Privy
             Privy::SparkCreateLightningInvoiceRpcInput,
             Privy::SparkPayLightningInvoiceRpcInput,
             Privy::SparkSignMessageWithIdentityKeyRpcInput,
+            Privy::SparkWithdrawRpcInput,
+            Privy::SparkGetWithdrawalFeeQuoteRpcInput,
             Privy::TronSignTransactionRpcInput,
             Privy::TronSendTransactionRpcInput,
             Privy::ExportPrivateKeyRpcInput,

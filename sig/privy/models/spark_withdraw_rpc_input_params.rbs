@@ -1,0 +1,53 @@
+module Privy
+  module Models
+    type spark_withdraw_rpc_input_params =
+      {
+        exit_speed: Privy::Models::spark_exit_speed,
+        onchain_address: String,
+        amount_sats: Float,
+        deduct_fee_from_withdrawal_amount: bool,
+        fee_amount_sats: Float,
+        fee_quote_id: String
+      }
+
+    class SparkWithdrawRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor exit_speed: Privy::Models::spark_exit_speed
+
+      attr_accessor onchain_address: String
+
+      attr_reader amount_sats: Float?
+
+      def amount_sats=: (Float) -> Float
+
+      attr_reader deduct_fee_from_withdrawal_amount: bool?
+
+      def deduct_fee_from_withdrawal_amount=: (bool) -> bool
+
+      attr_reader fee_amount_sats: Float?
+
+      def fee_amount_sats=: (Float) -> Float
+
+      attr_reader fee_quote_id: String?
+
+      def fee_quote_id=: (String) -> String
+
+      def initialize: (
+        exit_speed: Privy::Models::spark_exit_speed,
+        onchain_address: String,
+        ?amount_sats: Float,
+        ?deduct_fee_from_withdrawal_amount: bool,
+        ?fee_amount_sats: Float,
+        ?fee_quote_id: String
+      ) -> void
+
+      def to_hash: -> {
+        exit_speed: Privy::Models::spark_exit_speed,
+        onchain_address: String,
+        amount_sats: Float,
+        deduct_fee_from_withdrawal_amount: bool,
+        fee_amount_sats: Float,
+        fee_quote_id: String
+      }
+    end
+  end
+end

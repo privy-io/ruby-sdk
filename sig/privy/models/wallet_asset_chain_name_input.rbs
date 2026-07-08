@@ -9,7 +9,9 @@ module Privy
       | :linea
       | :optimism
       | :polygon
+      | :bsc
       | :solana
+      | :tron
       | :zksync_era
       | :sepolia
       | :arbitrum_sepolia
@@ -20,6 +22,7 @@ module Privy
       | :polygon_amoy
       | :solana_devnet
       | :solana_testnet
+      | :tron_nile
 
     module WalletAssetChainNameInput
       extend Privy::Internal::Type::Enum
@@ -32,7 +35,9 @@ module Privy
       LINEA: :linea
       OPTIMISM: :optimism
       POLYGON: :polygon
+      BSC: :bsc
       SOLANA: :solana
+      TRON: :tron
       ZKSYNC_ERA: :zksync_era
       SEPOLIA: :sepolia
       ARBITRUM_SEPOLIA: :arbitrum_sepolia
@@ -43,6 +48,7 @@ module Privy
       POLYGON_AMOY: :polygon_amoy
       SOLANA_DEVNET: :solana_devnet
       SOLANA_TESTNET: :solana_testnet
+      TRON_NILE: :tron_nile
 
       def self?.values: -> ::Array[Privy::Models::wallet_asset_chain_name_input]
     end

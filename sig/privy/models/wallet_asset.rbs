@@ -1,7 +1,17 @@
 module Privy
   module Models
     type wallet_asset =
-      :usdc | :"usdc.e" | :eth | :avax | :pol | :usdt | :eurc | :usdb | :sol
+      :usdc
+      | :"usdc.e"
+      | :eth
+      | :avax
+      | :pol
+      | :bnb
+      | :usdt
+      | :eurc
+      | :usdb
+      | :sol
+      | :trx
 
     module WalletAsset
       extend Privy::Internal::Type::Enum
@@ -11,10 +21,12 @@ module Privy
       ETH: :eth
       AVAX: :avax
       POL: :pol
+      BNB: :bnb
       USDT: :usdt
       EURC: :eurc
       USDB: :usdb
       SOL: :sol
+      TRX: :trx
 
       def self?.values: -> ::Array[Privy::Models::wallet_asset]
     end

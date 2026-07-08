@@ -17,6 +17,8 @@ module Privy
           value.each_with_object({}) { |(k, v), h| h[k.to_s] = coerce_keys(v) }
         when Array
           value.map { |v| coerce_keys(v) }
+        when Symbol
+          value.to_s
         else
           value
         end

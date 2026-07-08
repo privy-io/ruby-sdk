@@ -1,0 +1,76 @@
+module Privy
+  module Models
+    type spark_coop_exit_request =
+      {
+        id: String,
+        coop_exit_txid: String,
+        created_at: String,
+        expires_at: String,
+        fee: Privy::SparkCurrencyAmount,
+        :l1_broadcast_fee => Privy::SparkCurrencyAmount,
+        network: String,
+        status: String,
+        updated_at: String,
+        exit_speed: Privy::Models::spark_exit_speed,
+        fee_quote_id: String
+      }
+
+    class SparkCoopExitRequest < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor coop_exit_txid: String
+
+      attr_accessor created_at: String
+
+      attr_accessor expires_at: String
+
+      attr_accessor fee: Privy::SparkCurrencyAmount
+
+      attr_accessor l1_broadcast_fee: Privy::SparkCurrencyAmount
+
+      attr_accessor network: String
+
+      attr_accessor status: String
+
+      attr_accessor updated_at: String
+
+      attr_reader exit_speed: Privy::Models::spark_exit_speed?
+
+      def exit_speed=: (
+        Privy::Models::spark_exit_speed
+      ) -> Privy::Models::spark_exit_speed
+
+      attr_reader fee_quote_id: String?
+
+      def fee_quote_id=: (String) -> String
+
+      def initialize: (
+        id: String,
+        coop_exit_txid: String,
+        created_at: String,
+        expires_at: String,
+        fee: Privy::SparkCurrencyAmount,
+        l1_broadcast_fee: Privy::SparkCurrencyAmount,
+        network: String,
+        status: String,
+        updated_at: String,
+        ?exit_speed: Privy::Models::spark_exit_speed,
+        ?fee_quote_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        coop_exit_txid: String,
+        created_at: String,
+        expires_at: String,
+        fee: Privy::SparkCurrencyAmount,
+        :l1_broadcast_fee => Privy::SparkCurrencyAmount,
+        network: String,
+        status: String,
+        updated_at: String,
+        exit_speed: Privy::Models::spark_exit_speed,
+        fee_quote_id: String
+      }
+    end
+  end
+end

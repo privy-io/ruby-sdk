@@ -22,7 +22,9 @@ module Privy
       OPTIMISM =
         T.let(:optimism, Privy::WalletAssetChainNameInput::TaggedSymbol)
       POLYGON = T.let(:polygon, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      BSC = T.let(:bsc, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SOLANA = T.let(:solana, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      TRON = T.let(:tron, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ZKSYNC_ERA =
         T.let(:zksync_era, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SEPOLIA = T.let(:sepolia, Privy::WalletAssetChainNameInput::TaggedSymbol)
@@ -42,6 +44,8 @@ module Privy
         T.let(:solana_devnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SOLANA_TESTNET =
         T.let(:solana_testnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      TRON_NILE =
+        T.let(:tron_nile, Privy::WalletAssetChainNameInput::TaggedSymbol)
 
       sig do
         override.returns(

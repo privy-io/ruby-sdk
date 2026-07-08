@@ -1,0 +1,92 @@
+module Privy
+  module Models
+    module Wallets
+      type morpho_vault_details =
+        {
+          id: String,
+          admin_wallet_address: String,
+          admin_wallet_id: String,
+          app_apy: Float?,
+          asset: Privy::Wallets::EarnAsset,
+          available_liquidity_usd: Float?,
+          :caip2 => String,
+          name: String,
+          provider: Privy::Models::Wallets::MorphoVaultDetails::provider,
+          total_rewards_apr: Float,
+          tvl_usd: Float?,
+          user_apy: Float?,
+          vault_address: String
+        }
+
+      class MorphoVaultDetails < Privy::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor admin_wallet_address: String
+
+        attr_accessor admin_wallet_id: String
+
+        attr_accessor app_apy: Float?
+
+        attr_accessor asset: Privy::Wallets::EarnAsset
+
+        attr_accessor available_liquidity_usd: Float?
+
+        attr_accessor caip2: String
+
+        attr_accessor name: String
+
+        attr_accessor provider: Privy::Models::Wallets::MorphoVaultDetails::provider
+
+        attr_accessor total_rewards_apr: Float
+
+        attr_accessor tvl_usd: Float?
+
+        attr_accessor user_apy: Float?
+
+        attr_accessor vault_address: String
+
+        def initialize: (
+          id: String,
+          admin_wallet_address: String,
+          admin_wallet_id: String,
+          app_apy: Float?,
+          asset: Privy::Wallets::EarnAsset,
+          available_liquidity_usd: Float?,
+          caip2: String,
+          name: String,
+          provider: Privy::Models::Wallets::MorphoVaultDetails::provider,
+          total_rewards_apr: Float,
+          tvl_usd: Float?,
+          user_apy: Float?,
+          vault_address: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          admin_wallet_address: String,
+          admin_wallet_id: String,
+          app_apy: Float?,
+          asset: Privy::Wallets::EarnAsset,
+          available_liquidity_usd: Float?,
+          :caip2 => String,
+          name: String,
+          provider: Privy::Models::Wallets::MorphoVaultDetails::provider,
+          total_rewards_apr: Float,
+          tvl_usd: Float?,
+          user_apy: Float?,
+          vault_address: String
+        }
+
+        type provider = :morpho
+
+        module Provider
+          extend Privy::Internal::Type::Enum
+
+          MORPHO: :morpho
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::MorphoVaultDetails::provider]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type spark_withdraw_rpc_response =
+      {
+        method_: Privy::Models::SparkWithdrawRpcResponse::method_,
+        data: Privy::SparkCoopExitRequest
+      }
+
+    class SparkWithdrawRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkWithdrawRpcResponse::method_
+
+      attr_reader data: Privy::SparkCoopExitRequest?
+
+      def data=: (Privy::SparkCoopExitRequest) -> Privy::SparkCoopExitRequest
+
+      def initialize: (
+        method_: Privy::Models::SparkWithdrawRpcResponse::method_,
+        ?data: Privy::SparkCoopExitRequest
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkWithdrawRpcResponse::method_,
+        data: Privy::SparkCoopExitRequest
+      }
+
+      type method_ = :withdraw
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        WITHDRAW: :withdraw
+
+        def self?.values: -> ::Array[Privy::Models::SparkWithdrawRpcResponse::method_]
+      end
+    end
+  end
+end

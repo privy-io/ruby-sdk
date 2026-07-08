@@ -17,7 +17,9 @@ module Privy
             Privy::SparkClaimStaticDepositRpcResponse,
             Privy::SparkCreateLightningInvoiceRpcResponse,
             Privy::SparkPayLightningInvoiceRpcResponse,
-            Privy::SparkSignMessageWithIdentityKeyRpcResponse
+            Privy::SparkSignMessageWithIdentityKeyRpcResponse,
+            Privy::SparkWithdrawRpcResponse,
+            Privy::SparkGetWithdrawalFeeQuoteRpcResponse
           )
         end
 

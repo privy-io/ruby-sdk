@@ -15,9 +15,10 @@ module Privy
         required :wallet_id, String
 
         # @!attribute chain
+        #   Chains supported for transaction history queries.
         #
-        #   @return [Symbol, Privy::Models::Wallets::TransactionGetParams::Chain]
-        required :chain, enum: -> { Privy::Wallets::TransactionGetParams::Chain }
+        #   @return [Symbol, Privy::Models::TransactionChainNameInput]
+        required :chain, enum: -> { Privy::TransactionChainNameInput }
 
         # @!attribute token
         #   Exactly one of `token` or `asset` is required. Cannot be used together with
@@ -60,7 +61,7 @@ module Privy
         #
         #   @param wallet_id [String] ID of the wallet.
         #
-        #   @param chain [Symbol, Privy::Models::Wallets::TransactionGetParams::Chain]
+        #   @param chain [Symbol, Privy::Models::TransactionChainNameInput] Chains supported for transaction history queries.
         #
         #   @param token [String, Array<String>] Exactly one of `token` or `asset` is required. Cannot be used together with `ass
         #
@@ -75,23 +76,6 @@ module Privy
         #   @param tx_hash [String]
         #
         #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
-
-        module Chain
-          extend Privy::Internal::Type::Enum
-
-          ETHEREUM = :ethereum
-          ARBITRUM = :arbitrum
-          BASE = :base
-          TEMPO = :tempo
-          LINEA = :linea
-          OPTIMISM = :optimism
-          POLYGON = :polygon
-          SOLANA = :solana
-          SEPOLIA = :sepolia
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
 
         # Exactly one of `token` or `asset` is required. Cannot be used together with
         # `asset`.
@@ -125,6 +109,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::POL }
 
+          variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::BNB }
+
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::USDT }
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::EURC }
@@ -132,6 +118,8 @@ module Privy
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::USDB }
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::SOL }
+
+          variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::TRX }
 
           variant -> { Privy::Models::Wallets::TransactionGetParams::Asset::WalletAssetArray }
 
@@ -154,10 +142,12 @@ module Privy
           ETH = :eth
           AVAX = :avax
           POL = :pol
+          BNB = :bnb
           USDT = :usdt
           EURC = :eurc
           USDB = :usdb
           SOL = :sol
+          TRX = :trx
 
           # @!endgroup
 

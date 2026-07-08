@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type spark_get_withdrawal_fee_quote_rpc_input =
+      {
+        method_: Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput::method_,
+        params: Privy::SparkGetWithdrawalFeeQuoteRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+    class SparkGetWithdrawalFeeQuoteRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput::method_
+
+      attr_accessor params: Privy::SparkGetWithdrawalFeeQuoteRpcInputParams
+
+      attr_reader network: Privy::Models::spark_network?
+
+      def network=: (
+        Privy::Models::spark_network
+      ) -> Privy::Models::spark_network
+
+      def initialize: (
+        method_: Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput::method_,
+        params: Privy::SparkGetWithdrawalFeeQuoteRpcInputParams,
+        ?network: Privy::Models::spark_network
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput::method_,
+        params: Privy::SparkGetWithdrawalFeeQuoteRpcInputParams,
+        network: Privy::Models::spark_network
+      }
+
+      type method_ = :getWithdrawalFeeQuote
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        GET_WITHDRAWAL_FEE_QUOTE: :getWithdrawalFeeQuote
+
+        def self?.values: -> ::Array[Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput::method_]
+      end
+    end
+  end
+end

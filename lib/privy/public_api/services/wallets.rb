@@ -8,10 +8,14 @@ module Privy
       # @return [Privy::Services::Earn]
       attr_reader :earn
 
+      # @return [Privy::Services::Tron]
+      attr_reader :tron
+
       def initialize(client:, privy_client:)
         super(client: client)
         @privy_client = privy_client
         @earn = Privy::Services::Earn.new(client: client, privy_client: privy_client)
+        @tron = Privy::Services::Tron.new(wallets: self)
       end
 
       # Create a new wallet on the requested chain and for the requested owner.

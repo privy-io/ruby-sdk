@@ -19,7 +19,8 @@ module Privy
         sig { returns(String) }
         attr_accessor :wallet_id
 
-        sig { returns(Privy::Wallets::TransactionGetParams::Chain::OrSymbol) }
+        # Chains supported for transaction history queries.
+        sig { returns(Privy::TransactionChainNameInput::OrSymbol) }
         attr_accessor :chain
 
         # Exactly one of `token` or `asset` is required. Cannot be used together with
@@ -88,7 +89,7 @@ module Privy
         sig do
           params(
             wallet_id: String,
-            chain: Privy::Wallets::TransactionGetParams::Chain::OrSymbol,
+            chain: Privy::TransactionChainNameInput::OrSymbol,
             token: Privy::Wallets::TransactionGetParams::Token::Variants,
             asset:
               T.any(
@@ -105,6 +106,7 @@ module Privy
         def self.new(
           # ID of the wallet.
           wallet_id:,
+          # Chains supported for transaction history queries.
           chain:,
           # Exactly one of `token` or `asset` is required. Cannot be used together with
           # `asset`.
@@ -125,7 +127,7 @@ module Privy
           override.returns(
             {
               wallet_id: String,
-              chain: Privy::Wallets::TransactionGetParams::Chain::OrSymbol,
+              chain: Privy::TransactionChainNameInput::OrSymbol,
               token: Privy::Wallets::TransactionGetParams::Token::Variants,
               asset:
                 T.any(
@@ -141,72 +143,6 @@ module Privy
           )
         end
         def to_hash
-        end
-
-        module Chain
-          extend Privy::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Privy::Wallets::TransactionGetParams::Chain)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ETHEREUM =
-            T.let(
-              :ethereum,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          ARBITRUM =
-            T.let(
-              :arbitrum,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          BASE =
-            T.let(
-              :base,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          TEMPO =
-            T.let(
-              :tempo,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          LINEA =
-            T.let(
-              :linea,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          OPTIMISM =
-            T.let(
-              :optimism,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          POLYGON =
-            T.let(
-              :polygon,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          SOLANA =
-            T.let(
-              :solana,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-          SEPOLIA =
-            T.let(
-              :sepolia,
-              Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Privy::Wallets::TransactionGetParams::Chain::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # Exactly one of `token` or `asset` is required. Cannot be used together with
@@ -283,6 +219,11 @@ module Privy
               :pol,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
+          BNB =
+            T.let(
+              :bnb,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
           USDT =
             T.let(
               :usdt,
@@ -301,6 +242,11 @@ module Privy
           SOL =
             T.let(
               :sol,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
+          TRX =
+            T.let(
+              :trx,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
 
