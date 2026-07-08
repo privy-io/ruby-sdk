@@ -14,6 +14,7 @@ module Privy
         MORPHO =
           T.let(:morpho, Privy::Wallets::EthereumEarnProvider::TaggedSymbol)
         AAVE = T.let(:aave, Privy::Wallets::EthereumEarnProvider::TaggedSymbol)
+        VEDA = T.let(:veda, Privy::Wallets::EthereumEarnProvider::TaggedSymbol)
 
         sig do
           override.returns(

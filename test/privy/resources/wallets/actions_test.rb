@@ -19,6 +19,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
       in Privy::Wallets::EarnDepositActionResponse
       in Privy::Wallets::EarnWithdrawActionResponse
       in Privy::Wallets::EarnIncentiveClaimActionResponse
+      in Privy::Wallets::EarnFeeCollectActionResponse
       end
     end
 
@@ -111,6 +112,23 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         rewards: ^(Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnIncetiveClaimRewardEntry]) | nil,
         status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
+      }
+      in {
+        type: :earn_fee_collect,
+        id: String,
+        asset_address: String,
+        caip2: String,
+        created_at: Time,
+        raw_amount: String | nil,
+        status: Privy::Wallets::WalletActionStatus,
+        vault_address: String,
+        vault_id: String,
+        wallet_id: String,
+        amount: String | nil,
+        asset: String | nil,
+        decimals: Integer | nil,
         failure_reason: Privy::Wallets::FailureReason | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
