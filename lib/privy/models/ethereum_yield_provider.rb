@@ -8,6 +8,7 @@ module Privy
 
       MORPHO = :morpho
       AAVE = :aave
+      VEDA = :veda
 
       # @!method self.values
       #   @return [Array<Symbol>]

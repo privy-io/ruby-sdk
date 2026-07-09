@@ -100,7 +100,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       @privy_api.intents.transfer(
         "wallet_id",
         destination: {address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2"},
-        source: {amount: "10.5", asset: "usdc", chain: "base"}
+        source: {asset: "usdc", chain: "base"}
       )
 
     assert_pattern do
