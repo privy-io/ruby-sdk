@@ -12,7 +12,8 @@ module Privy
           T.type_alias do
             T.any(
               Privy::Wallets::AaveVaultDetails,
-              Privy::Wallets::MorphoVaultDetails
+              Privy::Wallets::MorphoVaultDetails,
+              Privy::Wallets::VedaVaultDetails
             )
           end
 
