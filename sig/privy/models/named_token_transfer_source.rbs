@@ -1,18 +1,20 @@
 module Privy
   module Models
     type named_token_transfer_source =
-      { amount: String, asset: String, chain: String }
+      { asset: String, chain: String, amount: String }
 
     class NamedTokenTransferSource < Privy::Internal::Type::BaseModel
-      attr_accessor amount: String
-
       attr_accessor asset: String
 
       attr_accessor chain: String
 
-      def initialize: (amount: String, asset: String, chain: String) -> void
+      attr_reader amount: String?
 
-      def to_hash: -> { amount: String, asset: String, chain: String }
+      def amount=: (String) -> String
+
+      def initialize: (asset: String, chain: String, ?amount: String) -> void
+
+      def to_hash: -> { asset: String, chain: String, amount: String }
     end
   end
 end

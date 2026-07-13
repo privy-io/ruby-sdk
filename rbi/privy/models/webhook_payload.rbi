@@ -61,7 +61,11 @@ module Privy
             Privy::WalletActionEarnIncentiveClaimCreatedWebhookPayload,
             Privy::WalletActionEarnIncentiveClaimSucceededWebhookPayload,
             Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload,
-            Privy::WalletActionEarnIncentiveClaimFailedWebhookPayload
+            Privy::WalletActionEarnIncentiveClaimFailedWebhookPayload,
+            Privy::WalletActionEarnFeeCollectCreatedWebhookPayload,
+            Privy::WalletActionEarnFeeCollectSucceededWebhookPayload,
+            Privy::WalletActionEarnFeeCollectRejectedWebhookPayload,
+            Privy::WalletActionEarnFeeCollectFailedWebhookPayload
           )
         end
 

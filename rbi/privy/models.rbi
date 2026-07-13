@@ -2135,6 +2135,18 @@ module Privy
   WalletActionEarnDepositSucceededWebhookPayload =
     Privy::Models::WalletActionEarnDepositSucceededWebhookPayload
 
+  WalletActionEarnFeeCollectCreatedWebhookPayload =
+    Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload
+
+  WalletActionEarnFeeCollectFailedWebhookPayload =
+    Privy::Models::WalletActionEarnFeeCollectFailedWebhookPayload
+
+  WalletActionEarnFeeCollectRejectedWebhookPayload =
+    Privy::Models::WalletActionEarnFeeCollectRejectedWebhookPayload
+
+  WalletActionEarnFeeCollectSucceededWebhookPayload =
+    Privy::Models::WalletActionEarnFeeCollectSucceededWebhookPayload
+
   WalletActionEarnIncentiveClaimCreatedWebhookPayload =
     Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload
 

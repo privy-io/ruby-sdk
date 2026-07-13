@@ -1,0 +1,111 @@
+module Privy
+  module Models
+    type wallet_action_earn_fee_collect_created_webhook_payload =
+      {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        asset_address: String,
+        :caip2 => String,
+        created_at: String,
+        raw_amount: String,
+        status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_,
+        vault_address: String,
+        vault_id: String,
+        wallet_action_id: String,
+        wallet_id: String,
+        amount: String,
+        asset: String,
+        decimals: Integer
+      }
+
+    class WalletActionEarnFeeCollectCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
+
+      attr_accessor asset_address: String
+
+      attr_accessor caip2: String
+
+      attr_accessor created_at: String
+
+      attr_accessor raw_amount: String
+
+      attr_accessor status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status
+
+      attr_accessor type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_
+
+      attr_accessor vault_address: String
+
+      attr_accessor vault_id: String
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      attr_reader amount: String?
+
+      def amount=: (String) -> String
+
+      attr_reader asset: String?
+
+      def asset=: (String) -> String
+
+      attr_reader decimals: Integer?
+
+      def decimals=: (Integer) -> Integer
+
+      def initialize: (
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        asset_address: String,
+        caip2: String,
+        created_at: String,
+        raw_amount: String,
+        status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_,
+        vault_address: String,
+        vault_id: String,
+        wallet_action_id: String,
+        wallet_id: String,
+        ?amount: String,
+        ?asset: String,
+        ?decimals: Integer
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        asset_address: String,
+        :caip2 => String,
+        created_at: String,
+        raw_amount: String,
+        status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_,
+        vault_address: String,
+        vault_id: String,
+        wallet_action_id: String,
+        wallet_id: String,
+        amount: String,
+        asset: String,
+        decimals: Integer
+      }
+
+      type status = :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.earn_fee_collect.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_EARN_FEE_COLLECT_CREATED: :"wallet_action.earn_fee_collect.created"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

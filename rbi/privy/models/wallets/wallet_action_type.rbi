@@ -25,6 +25,11 @@ module Privy
             :earn_incentive_claim,
             Privy::Wallets::WalletActionType::TaggedSymbol
           )
+        EARN_FEE_COLLECT =
+          T.let(
+            :earn_fee_collect,
+            Privy::Wallets::WalletActionType::TaggedSymbol
+          )
 
         sig do
           override.returns(

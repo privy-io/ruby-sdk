@@ -1,12 +1,13 @@
 module Privy
   module Models
-    type ethereum_yield_provider = :morpho | :aave
+    type ethereum_yield_provider = :morpho | :aave | :veda
 
     module EthereumYieldProvider
       extend Privy::Internal::Type::Enum
 
       MORPHO: :morpho
       AAVE: :aave
+      VEDA: :veda
 
       def self?.values: -> ::Array[Privy::Models::ethereum_yield_provider]
     end

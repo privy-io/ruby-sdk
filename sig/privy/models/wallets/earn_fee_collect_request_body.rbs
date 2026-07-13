@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_fee_collect_request_body = { vault_id: String }
+
+      class EarnFeeCollectRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor vault_id: String
+
+        def initialize: (vault_id: String) -> void
+
+        def to_hash: -> { vault_id: String }
+      end
+    end
+  end
+end
