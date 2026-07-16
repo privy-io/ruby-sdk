@@ -11,7 +11,7 @@ module Privy
           )
         end
 
-      # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       sig { returns(String) }
       attr_accessor :caip2
 
@@ -96,7 +96,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+        # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         caip2:,
         method_:,
         # Parameters for the SVM `signAndSendTransaction` RPC.

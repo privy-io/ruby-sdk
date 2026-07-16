@@ -18,7 +18,7 @@ module Privy
 
       # @!attribute chain
       #   The destination blockchain network. Required for cross-chain transfers (e.g.,
-      #   source 'base' to destination 'arbitrum').
+      #   source 'tempo' to destination 'base').
       #
       #   @return [String, nil]
       optional :chain, String

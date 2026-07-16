@@ -26,7 +26,7 @@ module Privy
       sig { params(address: String).void }
       attr_writer :address
 
-      # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       sig { returns(T.nilable(String)) }
       attr_reader :caip2
 
@@ -78,7 +78,7 @@ module Privy
         # Parameters for the EVM `personal_sign` RPC.
         params:,
         address: nil,
-        # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+        # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         caip2: nil,
         chain_type: nil,
         # Options controlling signature production for personal_sign and

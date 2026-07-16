@@ -17,8 +17,8 @@ module Privy
       required :asset, String
 
       # @!attribute chain
-      #   A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:1" for
-      #   Ethereum mainnet, "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
+      #   A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:4217" for
+      #   Tempo or "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
       #
       #   @return [String]
       required :chain, String
@@ -33,7 +33,7 @@ module Privy
       #
       #   @param asset [String] Token identifier string. EVM-shaped 40-hex token addresses normalize to checksum
       #
-      #   @param chain [String] A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:1" for Eth
+      #   @param chain [String] A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:4217" for
     end
   end
 end

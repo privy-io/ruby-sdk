@@ -14,11 +14,11 @@ module Privy
         #
         # @param wallet_id [String] ID of the wallet.
         #
-        # @param token [String, Array<String>] The token contract address(es) to query in format "chain:address" (e.g., "base:0
+        # @param token [String, Array<String>] The token contract address(es) to query in format "chain:address" (e.g., "tempo:
         #
         # @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
-        # @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        # @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with `ass
         #
         # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #

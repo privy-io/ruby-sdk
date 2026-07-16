@@ -4,7 +4,8 @@ module Privy
   module Models
     class TransactionProviderErrorWebhookPayload < Privy::Internal::Type::BaseModel
       # @!attribute caip2
-      #   The CAIP-2 chain identifier (e.g., eip155:1 for Ethereum mainnet).
+      #   The CAIP-2 chain identifier (e.g., eip155:4217 for Tempo, eip155:1 for Ethereum
+      #   mainnet).
       #
       #   @return [String]
       required :caip2, String
@@ -46,7 +47,7 @@ module Privy
       #
       #   Payload for the transaction.provider_error webhook event.
       #
-      #   @param caip2 [String] The CAIP-2 chain identifier (e.g., eip155:1 for Ethereum mainnet).
+      #   @param caip2 [String] The CAIP-2 chain identifier (e.g., eip155:4217 for Tempo, eip155:1 for Ethereum
       #
       #   @param transaction_hash [String] The blockchain transaction hash.
       #

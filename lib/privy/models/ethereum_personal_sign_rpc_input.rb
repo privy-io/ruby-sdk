@@ -20,7 +20,7 @@ module Privy
       optional :address, String
 
       # @!attribute caip2
-      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String, nil]
       optional :caip2, String
@@ -54,7 +54,7 @@ module Privy
       #
       #   @param address [String]
       #
-      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @param chain_type [Symbol, Privy::Models::EthereumPersonalSignRpcInput::ChainType]
       #

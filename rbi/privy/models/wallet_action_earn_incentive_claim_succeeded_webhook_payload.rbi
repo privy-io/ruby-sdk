@@ -15,7 +15,7 @@ module Privy
       sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
       attr_accessor :action_type
 
-      # EVM chain name (e.g. "base", "ethereum").
+      # EVM chain name (e.g. "tempo", "base").
       sig { returns(String) }
       attr_accessor :chain
 
@@ -96,7 +96,7 @@ module Privy
       def self.new(
         # Type of wallet action
         action_type:,
-        # EVM chain name (e.g. "base", "ethereum").
+        # EVM chain name (e.g. "tempo", "base").
         chain:,
         # ISO 8601 timestamp of when the wallet action completed successfully.
         completed_at:,

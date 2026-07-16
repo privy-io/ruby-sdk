@@ -17,8 +17,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :asset
 
-      # A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:1" for
-      # Ethereum mainnet, "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
+      # A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:4217" for
+      # Tempo or "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
       sig { returns(String) }
       attr_accessor :chain
 
@@ -34,8 +34,8 @@ module Privy
         # case, 16-byte Hyperliquid token IDs normalize to lowercase, and all other
         # identifiers pass through unchanged.
         asset:,
-        # A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:1" for
-        # Ethereum mainnet, "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
+        # A CAIP-2 chain identifier in namespace:reference format (e.g. "eip155:4217" for
+        # Tempo or "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" for Solana mainnet).
         chain:
       )
       end

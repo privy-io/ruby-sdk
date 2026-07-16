@@ -5,7 +5,7 @@ module Privy
     class Currency < Privy::Internal::Type::BaseModel
       OrHash = T.type_alias { T.any(Privy::Currency, Privy::Internal::AnyHash) }
 
-      # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       sig { returns(String) }
       attr_accessor :chain
 
@@ -23,7 +23,7 @@ module Privy
         )
       end
       def self.new(
-        # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+        # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         chain:,
         # A currency asset type.
         asset: nil

@@ -4,7 +4,7 @@ module Privy
   module Models
     class SolanaSignAndSendTransactionRpcInput < Privy::Internal::Type::BaseModel
       # @!attribute caip2
-      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String]
       required :caip2, String
@@ -51,10 +51,13 @@ module Privy
       optional :wallet_id, String
 
       # @!method initialize(caip2:, method_:, params:, address: nil, chain_type: nil, optimistic_broadcast: nil, reference_id: nil, sponsor: nil, wallet_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::SolanaSignAndSendTransactionRpcInput} for more details.
+      #
       #   Executes the SVM `signAndSendTransaction` RPC to sign and broadcast a
       #   transaction.
       #
-      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @param method_ [Symbol, Privy::Models::SolanaSignAndSendTransactionRpcInput::Method]
       #

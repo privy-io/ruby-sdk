@@ -4,7 +4,7 @@ module Privy
   module Models
     class SolanaSignAndSendTransactionRpcResponseData < Privy::Internal::Type::BaseModel
       # @!attribute caip2
-      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String]
       required :caip2, String
@@ -30,9 +30,12 @@ module Privy
       optional :transaction_id, String
 
       # @!method initialize(caip2:, hash_:, reference_id: nil, signed_transaction: nil, transaction_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::SolanaSignAndSendTransactionRpcResponseData} for more details.
+      #
       #   Data returned by the SVM `signAndSendTransaction` RPC.
       #
-      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @param hash_ [String]
       #

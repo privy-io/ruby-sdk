@@ -11,7 +11,8 @@ module Privy
           )
         end
 
-      # The CAIP-2 chain identifier (e.g., eip155:1 for Ethereum mainnet).
+      # The CAIP-2 chain identifier (e.g., eip155:4217 for Tempo, eip155:1 for Ethereum
+      # mainnet).
       sig { returns(String) }
       attr_accessor :caip2
 
@@ -52,7 +53,8 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # The CAIP-2 chain identifier (e.g., eip155:1 for Ethereum mainnet).
+        # The CAIP-2 chain identifier (e.g., eip155:4217 for Tempo, eip155:1 for Ethereum
+        # mainnet).
         caip2:,
         # The blockchain transaction hash.
         transaction_hash:,

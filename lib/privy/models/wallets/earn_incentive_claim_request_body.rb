@@ -6,8 +6,8 @@ module Privy
       class EarnIncentiveClaimRequestBody < Privy::Internal::Type::BaseModel
         # @!attribute chain
         #   The blockchain network on which to perform the incentive claim. Supported chains
-        #   include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and more, along
-        #   with their respective testnets.
+        #   include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and more,
+        #   along with their respective testnets.
         #
         #   @return [String]
         required :chain, String

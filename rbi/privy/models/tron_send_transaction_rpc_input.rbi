@@ -20,7 +20,7 @@ module Privy
       end
       attr_writer :params
 
-      # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       sig { returns(T.nilable(String)) }
       attr_reader :caip2
 
@@ -40,7 +40,7 @@ module Privy
         method_:,
         # Parameters for the Tron `tron_sendTransaction` RPC.
         params:,
-        # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+        # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         caip2: nil
       )
       end

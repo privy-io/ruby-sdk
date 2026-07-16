@@ -31,7 +31,7 @@ module Privy
         required :destination_amount, String, nil?: true
 
         # @!attribute source_chain
-        #   Chain name (e.g. "base", "ethereum").
+        #   Chain name (e.g. "tempo", "base").
         #
         #   @return [String]
         required :source_chain, String
@@ -153,7 +153,7 @@ module Privy
         #
         #   @param destination_amount [String, nil] Amount received on the destination chain. For exact_output cross-chain transfers
         #
-        #   @param source_chain [String] Chain name (e.g. "base", "ethereum").
+        #   @param source_chain [String] Chain name (e.g. "tempo", "base").
         #
         #   @param status [Symbol, Privy::Models::Wallets::WalletActionStatus] Status of a wallet action.
         #

@@ -16,7 +16,7 @@ module Privy
 
         # @!attribute token
         #   The token contract address(es) to query in format "chain:address" (e.g.,
-        #   "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
+        #   "tempo:0x20c000000000000000000000b9537d11c60e8b50" or
         #   "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
         #   with `asset`/`chain` or with `include_currency`.
         #
@@ -31,7 +31,7 @@ module Privy
         optional :asset, union: -> { Privy::Wallets::BalanceGetParams::Asset }
 
         # @!attribute chain
-        #   Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+        #   Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with
         #   `asset`. Cannot be used with `token`.
         #
         #   @return [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>, nil]
@@ -56,11 +56,11 @@ module Privy
         #
         #   @param wallet_id [String] ID of the wallet.
         #
-        #   @param token [String, Array<String>] The token contract address(es) to query in format "chain:address" (e.g., "base:0
+        #   @param token [String, Array<String>] The token contract address(es) to query in format "chain:address" (e.g., "tempo:
         #
         #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
-        #   @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with `
+        #   @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with `ass
         #
         #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
@@ -69,7 +69,7 @@ module Privy
         #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
 
         # The token contract address(es) to query in format "chain:address" (e.g.,
-        # "base:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" or
+        # "tempo:0x20c000000000000000000000b9537d11c60e8b50" or
         # "solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"). Cannot be used together
         # with `asset`/`chain` or with `include_currency`.
         module Token
@@ -142,7 +142,7 @@ module Privy
           WalletAssetArray = Privy::Internal::Type::ArrayOf[enum: -> { Privy::WalletAsset }]
         end
 
-        # Chain(s) to query named assets on (e.g. `base`, `ethereum`). Use together with
+        # Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with
         # `asset`. Cannot be used with `token`.
         module Chain
           extend Privy::Internal::Type::Union

@@ -11,7 +11,7 @@ module Privy
           )
         end
 
-      # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       sig { returns(String) }
       attr_accessor :caip2
 
@@ -23,7 +23,7 @@ module Privy
         params(caip2: String, transaction_id: String).returns(T.attached_class)
       end
       def self.new(
-        # A valid CAIP-2 chain ID (e.g. 'eip155:1').
+        # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         caip2:,
         transaction_id:
       )

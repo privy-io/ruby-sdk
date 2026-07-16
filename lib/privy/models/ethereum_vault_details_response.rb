@@ -29,7 +29,7 @@ module Privy
       required :available_liquidity_usd, Float, nil?: true
 
       # @!attribute caip2
-      #   Chain identifier (e.g., eip155:8453).
+      #   Chain identifier (e.g., eip155:4217 for Tempo, eip155:8453 for Base).
       #
       #   @return [String]
       required :caip2, String
@@ -79,7 +79,7 @@ module Privy
       #
       #   @param available_liquidity_usd [Float, nil] Assets available for instant withdrawal in USD.
       #
-      #   @param caip2 [String] Chain identifier (e.g., eip155:8453).
+      #   @param caip2 [String] Chain identifier (e.g., eip155:4217 for Tempo, eip155:8453 for Base).
       #
       #   @param name [String] Human-readable vault name from the yield provider.
       #
