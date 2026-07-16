@@ -12,14 +12,14 @@ module Privy
             )
           end
 
-        # Chain name to fetch rewards for (e.g. "base", "ethereum").
+        # Chain name to fetch rewards for (e.g. "tempo", "base").
         sig { returns(String) }
         attr_accessor :chain
 
         # Query parameters for fetching incentive rewards.
         sig { params(chain: String).returns(T.attached_class) }
         def self.new(
-          # Chain name to fetch rewards for (e.g. "base", "ethereum").
+          # Chain name to fetch rewards for (e.g. "tempo", "base").
           chain:
         )
         end

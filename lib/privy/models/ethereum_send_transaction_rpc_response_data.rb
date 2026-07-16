@@ -4,7 +4,7 @@ module Privy
   module Models
     class EthereumSendTransactionRpcResponseData < Privy::Internal::Type::BaseModel
       # @!attribute caip2
-      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String]
       required :caip2, String
@@ -42,7 +42,7 @@ module Privy
       #
       #   Data returned by the EVM `eth_sendTransaction` RPC.
       #
-      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @param hash_ [String]
       #

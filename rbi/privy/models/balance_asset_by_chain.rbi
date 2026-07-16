@@ -13,7 +13,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :amount
 
-      # The CAIP-2 chain identifier (e.g. eip155:8453).
+      # The CAIP-2 chain identifier (e.g. eip155:4217 for Tempo, eip155:8453 for Base).
       sig { returns(String) }
       attr_accessor :chain_id
 
@@ -41,7 +41,7 @@ module Privy
         # The amount of the asset held on this chain, denominated in the unit of the asset
         # itself.
         amount:,
-        # The CAIP-2 chain identifier (e.g. eip155:8453).
+        # The CAIP-2 chain identifier (e.g. eip155:4217 for Tempo, eip155:8453 for Base).
         chain_id:,
         # A monetary value with its currency denomination.
         price:,

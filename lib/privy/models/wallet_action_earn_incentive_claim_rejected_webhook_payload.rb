@@ -10,7 +10,7 @@ module Privy
       required :action_type, enum: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute chain
-      #   EVM chain name (e.g. "base", "ethereum").
+      #   EVM chain name (e.g. "tempo", "base").
       #
       #   @return [String]
       required :chain, String
@@ -76,7 +76,7 @@ module Privy
       #
       #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
-      #   @param chain [String] EVM chain name (e.g. "base", "ethereum").
+      #   @param chain [String] EVM chain name (e.g. "tempo", "base").
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #

@@ -11,7 +11,7 @@ module Privy
         required :id, String
 
         # @!attribute chain
-        #   EVM chain name (e.g. "base", "ethereum").
+        #   EVM chain name (e.g. "tempo", "base").
         #
         #   @return [String]
         required :chain, String
@@ -64,7 +64,7 @@ module Privy
         #
         #   @param id [String] The ID of the wallet action.
         #
-        #   @param chain [String] EVM chain name (e.g. "base", "ethereum").
+        #   @param chain [String] EVM chain name (e.g. "tempo", "base").
         #
         #   @param created_at [Time] ISO 8601 timestamp of when the wallet action was created.
         #

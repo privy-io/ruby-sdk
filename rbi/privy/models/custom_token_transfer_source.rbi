@@ -14,7 +14,7 @@ module Privy
       attr_accessor :asset_address
 
       # The blockchain network on which to perform the transfer. Supported chains
-      # include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
+      # include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
       # respective testnets.
       sig { returns(String) }
       attr_accessor :chain
@@ -41,7 +41,7 @@ module Privy
         # transfer.
         asset_address:,
         # The blockchain network on which to perform the transfer. Supported chains
-        # include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
+        # include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
         # respective testnets.
         chain:,
         # Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5

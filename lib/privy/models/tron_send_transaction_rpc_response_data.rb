@@ -4,7 +4,7 @@ module Privy
   module Models
     class TronSendTransactionRpcResponseData < Privy::Internal::Type::BaseModel
       # @!attribute caip2
-      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String]
       required :caip2, String
@@ -25,9 +25,12 @@ module Privy
       optional :reference_id, String
 
       # @!method initialize(caip2:, hash_:, transaction_id:, reference_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::TronSendTransactionRpcResponseData} for more details.
+      #
       #   Data returned by the Tron `tron_sendTransaction` RPC.
       #
-      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @param hash_ [String]
       #

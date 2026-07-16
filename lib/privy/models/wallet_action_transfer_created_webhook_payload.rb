@@ -22,7 +22,7 @@ module Privy
       required :destination_address, String
 
       # @!attribute source_chain
-      #   Chain name (e.g. "base", "ethereum").
+      #   Chain name (e.g. "tempo", "base").
       #
       #   @return [String]
       required :source_chain, String
@@ -91,7 +91,7 @@ module Privy
       #
       #   @param destination_address [String] Recipient address.
       #
-      #   @param source_chain [String] Chain name (e.g. "base", "ethereum").
+      #   @param source_chain [String] Chain name (e.g. "tempo", "base").
       #
       #   @param status [Symbol, Privy::Models::WalletActionTransferCreatedWebhookPayload::Status] The status of the wallet action.
       #

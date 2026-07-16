@@ -22,8 +22,8 @@ module Privy
               # Path param: ID of the wallet.
               wallet_id,
               # Body param: The blockchain network on which to perform the incentive claim.
-              # Supported chains include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana',
-              # and more, along with their respective testnets.
+              # Supported chains include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon',
+              # 'solana', and more, along with their respective testnets.
               chain:,
               # Header param: Request authorization signature. If multiple signatures are
               # required, they should be comma separated.

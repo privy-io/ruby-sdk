@@ -12,7 +12,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
-      # An EVM CAIP-2 chain identifier (e.g., "eip155:8453" for Base).
+      # An EVM CAIP-2 chain identifier (e.g., "eip155:4217" for Tempo, "eip155:8453" for
+      # Base).
       sig { returns(String) }
       attr_accessor :caip2
 
@@ -46,7 +47,8 @@ module Privy
       def self.new(
         # Privy transaction record ID for the claim operation.
         id:,
-        # An EVM CAIP-2 chain identifier (e.g., "eip155:8453" for Base).
+        # An EVM CAIP-2 chain identifier (e.g., "eip155:4217" for Tempo, "eip155:8453" for
+        # Base).
         caip2:,
         # Unix timestamp of when the claim was created, in milliseconds.
         created_at:,

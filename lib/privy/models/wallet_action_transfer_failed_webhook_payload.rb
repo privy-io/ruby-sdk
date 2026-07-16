@@ -34,7 +34,7 @@ module Privy
       required :failure_reason, -> { Privy::Wallets::FailureReason }
 
       # @!attribute source_chain
-      #   Chain name (e.g. "base", "ethereum").
+      #   Chain name (e.g. "tempo", "base").
       #
       #   @return [String]
       required :source_chain, String
@@ -114,7 +114,7 @@ module Privy
       #
       #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #
-      #   @param source_chain [String] Chain name (e.g. "base", "ethereum").
+      #   @param source_chain [String] Chain name (e.g. "tempo", "base").
       #
       #   @param status [Symbol, Privy::Models::WalletActionTransferFailedWebhookPayload::Status] The status of the wallet action.
       #

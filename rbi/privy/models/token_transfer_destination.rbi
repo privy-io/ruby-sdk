@@ -21,7 +21,7 @@ module Privy
       attr_writer :asset
 
       # The destination blockchain network. Required for cross-chain transfers (e.g.,
-      # source 'base' to destination 'arbitrum').
+      # source 'tempo' to destination 'base').
       sig { returns(T.nilable(String)) }
       attr_reader :chain
 
@@ -42,7 +42,7 @@ module Privy
         # to destination 'usdc').
         asset: nil,
         # The destination blockchain network. Required for cross-chain transfers (e.g.,
-        # source 'base' to destination 'arbitrum').
+        # source 'tempo' to destination 'base').
         chain: nil
       )
       end

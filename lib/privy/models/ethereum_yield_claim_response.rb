@@ -10,7 +10,8 @@ module Privy
       required :id, String
 
       # @!attribute caip2
-      #   An EVM CAIP-2 chain identifier (e.g., "eip155:8453" for Base).
+      #   An EVM CAIP-2 chain identifier (e.g., "eip155:4217" for Tempo, "eip155:8453" for
+      #   Base).
       #
       #   @return [String]
       required :caip2, String
@@ -40,11 +41,14 @@ module Privy
       required :updated_at, Float
 
       # @!method initialize(id:, caip2:, created_at:, rewards:, status:, updated_at:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::EthereumYieldClaimResponse} for more details.
+      #
       #   Response from a yield reward claim operation.
       #
       #   @param id [String] Privy transaction record ID for the claim operation.
       #
-      #   @param caip2 [String] An EVM CAIP-2 chain identifier (e.g., "eip155:8453" for Base).
+      #   @param caip2 [String] An EVM CAIP-2 chain identifier (e.g., "eip155:4217" for Tempo, "eip155:8453" for
       #
       #   @param created_at [Float] Unix timestamp of when the claim was created, in milliseconds.
       #

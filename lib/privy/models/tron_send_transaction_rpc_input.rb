@@ -15,12 +15,15 @@ module Privy
       required :params, -> { Privy::TronSendTransactionRpcInputParams }
 
       # @!attribute caip2
-      #   A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String, nil]
       optional :caip2, String
 
       # @!method initialize(method_:, params:, caip2: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::TronSendTransactionRpcInput} for more details.
+      #
       #   Executes the Tron `tron_sendTransaction` RPC to sign and broadcast a
       #   transaction.
       #
@@ -28,7 +31,7 @@ module Privy
       #
       #   @param params [Privy::Models::TronSendTransactionRpcInputParams] Parameters for the Tron `tron_sendTransaction` RPC.
       #
-      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:1').
+      #   @param caip2 [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
 
       # @see Privy::Models::TronSendTransactionRpcInput#method_
       module Method
