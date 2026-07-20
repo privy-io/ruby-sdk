@@ -10,6 +10,8 @@ module Privy
         pre_verification_gas: String,
         sender: String,
         verification_gas_limit: String,
+        factory: String,
+        factory_data: String,
         paymaster: String,
         paymaster_data: String,
         paymaster_post_op_gas_limit: String,
@@ -32,6 +34,14 @@ module Privy
       attr_accessor sender: String
 
       attr_accessor verification_gas_limit: String
+
+      attr_reader factory: String?
+
+      def factory=: (String) -> String
+
+      attr_reader factory_data: String?
+
+      def factory_data=: (String) -> String
 
       attr_reader paymaster: String?
 
@@ -58,6 +68,8 @@ module Privy
         pre_verification_gas: String,
         sender: String,
         verification_gas_limit: String,
+        ?factory: String,
+        ?factory_data: String,
         ?paymaster: String,
         ?paymaster_data: String,
         ?paymaster_post_op_gas_limit: String,
@@ -73,6 +85,8 @@ module Privy
         pre_verification_gas: String,
         sender: String,
         verification_gas_limit: String,
+        factory: String,
+        factory_data: String,
         paymaster: String,
         paymaster_data: String,
         paymaster_post_op_gas_limit: String,
