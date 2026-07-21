@@ -239,6 +239,11 @@ module Privy
               :usdb,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
+          PATHUSD =
+            T.let(
+              :pathusd,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
           SOL =
             T.let(
               :sol,

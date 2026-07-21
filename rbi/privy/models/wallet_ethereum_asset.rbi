@@ -18,6 +18,7 @@ module Privy
       USDT = T.let(:usdt, Privy::WalletEthereumAsset::TaggedSymbol)
       EURC = T.let(:eurc, Privy::WalletEthereumAsset::TaggedSymbol)
       USDB = T.let(:usdb, Privy::WalletEthereumAsset::TaggedSymbol)
+      PATHUSD = T.let(:pathusd, Privy::WalletEthereumAsset::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Privy::WalletEthereumAsset::TaggedSymbol])

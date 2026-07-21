@@ -15,6 +15,7 @@ module Privy
       USDT = :usdt
       EURC = :eurc
       USDB = :usdb
+      PATHUSD = :pathusd
 
       # @!method self.values
       #   @return [Array<Symbol>]
