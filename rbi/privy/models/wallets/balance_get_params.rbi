@@ -246,6 +246,11 @@ module Privy
             T.let(:eurc, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           USDB =
             T.let(:usdb, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
+          PATHUSD =
+            T.let(
+              :pathusd,
+              Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol
+            )
           SOL =
             T.let(:sol, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           TRX =

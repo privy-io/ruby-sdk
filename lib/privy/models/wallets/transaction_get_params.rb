@@ -117,6 +117,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::USDB }
 
+          variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::PATHUSD }
+
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::SOL }
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::TRX }
@@ -146,6 +148,7 @@ module Privy
           USDT = :usdt
           EURC = :eurc
           USDB = :usdb
+          PATHUSD = :pathusd
           SOL = :sol
           TRX = :trx
 

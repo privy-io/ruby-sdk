@@ -63,6 +63,7 @@ module Privy
             | :usdt
             | :eurc
             | :usdb
+            | :pathusd
             | :sol
             | :trx
             | String
@@ -81,6 +82,7 @@ module Privy
             USDT: :usdt
             EURC: :eurc
             USDB: :usdb
+            PATHUSD: :pathusd
             SOL: :sol
             TRX: :trx
           end

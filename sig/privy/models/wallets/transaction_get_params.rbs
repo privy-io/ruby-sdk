@@ -92,6 +92,7 @@ module Privy
           | :usdt
           | :eurc
           | :usdb
+          | :pathusd
           | :sol
           | :trx
           | ::Array[Privy::Models::wallet_asset]
@@ -110,6 +111,7 @@ module Privy
           USDT: :usdt
           EURC: :eurc
           USDB: :usdb
+          PATHUSD: :pathusd
           SOL: :sol
           TRX: :trx
 
