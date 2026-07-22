@@ -8,8 +8,8 @@ module Privy
           T.any(Privy::NamedTokenTransferSource, Privy::Internal::AnyHash)
         end
 
-      # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt' (stablecoins), 'eth'
-      # (native Ethereum), 'sol' (native Solana).
+      # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt', 'pathusd'
+      # (stablecoins), 'eth' (native Ethereum), 'sol' (native Solana).
       sig { returns(String) }
       attr_accessor :asset
 
@@ -37,8 +37,8 @@ module Privy
         )
       end
       def self.new(
-        # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt' (stablecoins), 'eth'
-        # (native Ethereum), 'sol' (native Solana).
+        # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt', 'pathusd'
+        # (stablecoins), 'eth' (native Ethereum), 'sol' (native Solana).
         asset:,
         # The blockchain network on which to perform the transfer. Supported chains
         # include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
