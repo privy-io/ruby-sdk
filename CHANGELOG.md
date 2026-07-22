@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.0 (2026-07-22)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/privy-io/ruby-sdk/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** api update ([44a9457](https://github.com/privy-io/ruby-sdk/commit/44a94575bfba4240a63f13f1ed190d90cd8acada))
+* **api:** api update ([24431b8](https://github.com/privy-io/ruby-sdk/commit/24431b8cf491a36dabdf0bbe51c33ba1b2599913))
+* **api:** api update ([3b76c00](https://github.com/privy-io/ruby-sdk/commit/3b76c00f2ebc28e1636a90b7e182698c49f2c293))
+* **api:** api update ([d2d1208](https://github.com/privy-io/ruby-sdk/commit/d2d12088c0336ec81d3505e254a62a695738c556))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([4620ce8](https://github.com/privy-io/ruby-sdk/commit/4620ce8b862b39b7449446b5bf7eadea38d2e107))
+
 ## 0.5.0 (2026-07-10)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/privy-io/ruby-sdk/compare/v0.4.0...v0.5.0)
