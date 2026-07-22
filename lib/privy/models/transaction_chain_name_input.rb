@@ -10,6 +10,7 @@ module Privy
       ARBITRUM = :arbitrum
       AVALANCHE = :avalanche
       BASE = :base
+      BASE_SEPOLIA = :base_sepolia
       BSC = :bsc
       TEMPO = :tempo
       LINEA = :linea

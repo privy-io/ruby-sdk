@@ -4,8 +4,8 @@ module Privy
   module Models
     class NamedTokenTransferSource < Privy::Internal::Type::BaseModel
       # @!attribute asset
-      #   The asset to transfer. Supported: 'usdc', 'usdb', 'usdt' (stablecoins), 'eth'
-      #   (native Ethereum), 'sol' (native Solana).
+      #   The asset to transfer. Supported: 'usdc', 'usdb', 'usdt', 'pathusd'
+      #   (stablecoins), 'eth' (native Ethereum), 'sol' (native Solana).
       #
       #   @return [String]
       required :asset, String
@@ -36,7 +36,7 @@ module Privy
       #   Source for a transfer identified by a named asset (e.g. "usdc", "eth"). Use this
       #   variant for first-class assets maintained by Privy.
       #
-      #   @param asset [String] The asset to transfer. Supported: 'usdc', 'usdb', 'usdt' (stablecoins), 'eth' (n
+      #   @param asset [String] The asset to transfer. Supported: 'usdc', 'usdb', 'usdt', 'pathusd' (stablecoins
       #
       #   @param chain [String] The blockchain network on which to perform the transfer. Supported chains includ
       #
