@@ -11,7 +11,7 @@ module Privy
       required :amount, String
 
       # @!attribute chain_id
-      #   The CAIP-2 chain identifier (e.g. eip155:8453).
+      #   The CAIP-2 chain identifier (e.g. eip155:4217 for Tempo, eip155:8453 for Base).
       #
       #   @return [String]
       required :chain_id, String
@@ -36,7 +36,7 @@ module Privy
       #
       #   @param amount [String] The amount of the asset held on this chain, denominated in the unit of the asset
       #
-      #   @param chain_id [String] The CAIP-2 chain identifier (e.g. eip155:8453).
+      #   @param chain_id [String] The CAIP-2 chain identifier (e.g. eip155:4217 for Tempo, eip155:8453 for Base).
       #
       #   @param price [Privy::Models::CurrencyAmount] A monetary value with its currency denomination.
       #

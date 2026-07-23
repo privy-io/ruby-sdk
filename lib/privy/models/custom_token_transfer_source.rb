@@ -12,7 +12,7 @@ module Privy
 
       # @!attribute chain
       #   The blockchain network on which to perform the transfer. Supported chains
-      #   include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
+      #   include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
       #   respective testnets.
       #
       #   @return [String]

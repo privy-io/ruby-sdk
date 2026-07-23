@@ -47,6 +47,20 @@ module Privy
       attr_accessor :verification_gas_limit
 
       sig { returns(T.nilable(String)) }
+      attr_reader :factory
+
+      sig { params(factory: String).void }
+      attr_writer :factory
+
+      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # bytes).
+      sig { returns(T.nilable(String)) }
+      attr_reader :factory_data
+
+      sig { params(factory_data: String).void }
+      attr_writer :factory_data
+
+      sig { returns(T.nilable(String)) }
       attr_reader :paymaster
 
       sig { params(paymaster: String).void }
@@ -87,6 +101,8 @@ module Privy
           pre_verification_gas: String,
           sender: String,
           verification_gas_limit: String,
+          factory: String,
+          factory_data: String,
           paymaster: String,
           paymaster_data: String,
           paymaster_post_op_gas_limit: String,
@@ -116,6 +132,10 @@ module Privy
         # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
         # bytes).
         verification_gas_limit:,
+        factory: nil,
+        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # bytes).
+        factory_data: nil,
         paymaster: nil,
         # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
         # bytes).
@@ -140,6 +160,8 @@ module Privy
             pre_verification_gas: String,
             sender: String,
             verification_gas_limit: String,
+            factory: String,
+            factory_data: String,
             paymaster: String,
             paymaster_data: String,
             paymaster_post_op_gas_limit: String,

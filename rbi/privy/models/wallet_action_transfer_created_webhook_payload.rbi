@@ -23,7 +23,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :destination_address
 
-      # Chain name (e.g. "base", "ethereum").
+      # Chain name (e.g. "tempo", "base").
       sig { returns(String) }
       attr_accessor :source_chain
 
@@ -109,7 +109,7 @@ module Privy
         created_at:,
         # Recipient address.
         destination_address:,
-        # Chain name (e.g. "base", "ethereum").
+        # Chain name (e.g. "tempo", "base").
         source_chain:,
         # The status of the wallet action.
         status:,

@@ -34,7 +34,7 @@ module Privy
       sig { params(failure_reason: Privy::Wallets::FailureReason::OrHash).void }
       attr_writer :failure_reason
 
-      # Chain name (e.g. "base", "ethereum").
+      # Chain name (e.g. "tempo", "base").
       sig { returns(String) }
       attr_accessor :source_chain
 
@@ -141,7 +141,7 @@ module Privy
         failed_at:,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason:,
-        # Chain name (e.g. "base", "ethereum").
+        # Chain name (e.g. "tempo", "base").
         source_chain:,
         # The status of the wallet action.
         status:,

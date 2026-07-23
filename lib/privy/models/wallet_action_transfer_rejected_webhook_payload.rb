@@ -34,7 +34,7 @@ module Privy
       required :rejected_at, String
 
       # @!attribute source_chain
-      #   Chain name (e.g. "base", "ethereum").
+      #   Chain name (e.g. "tempo", "base").
       #
       #   @return [String]
       required :source_chain, String
@@ -113,7 +113,7 @@ module Privy
       #
       #   @param rejected_at [String] ISO 8601 timestamp of when the wallet action was rejected.
       #
-      #   @param source_chain [String] Chain name (e.g. "base", "ethereum").
+      #   @param source_chain [String] Chain name (e.g. "tempo", "base").
       #
       #   @param status [Symbol, Privy::Models::WalletActionTransferRejectedWebhookPayload::Status] The status of the wallet action.
       #

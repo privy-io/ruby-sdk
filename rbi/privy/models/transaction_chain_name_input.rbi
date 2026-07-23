@@ -17,6 +17,8 @@ module Privy
       AVALANCHE =
         T.let(:avalanche, Privy::TransactionChainNameInput::TaggedSymbol)
       BASE = T.let(:base, Privy::TransactionChainNameInput::TaggedSymbol)
+      BASE_SEPOLIA =
+        T.let(:base_sepolia, Privy::TransactionChainNameInput::TaggedSymbol)
       BSC = T.let(:bsc, Privy::TransactionChainNameInput::TaggedSymbol)
       TEMPO = T.let(:tempo, Privy::TransactionChainNameInput::TaggedSymbol)
       LINEA = T.let(:linea, Privy::TransactionChainNameInput::TaggedSymbol)

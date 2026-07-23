@@ -8,13 +8,13 @@ module Privy
           T.any(Privy::NamedTokenTransferSource, Privy::Internal::AnyHash)
         end
 
-      # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt' (stablecoins), 'eth'
-      # (native Ethereum), 'sol' (native Solana).
+      # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt', 'pathusd'
+      # (stablecoins), 'eth' (native Ethereum), 'sol' (native Solana).
       sig { returns(String) }
       attr_accessor :asset
 
       # The blockchain network on which to perform the transfer. Supported chains
-      # include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
+      # include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
       # respective testnets.
       sig { returns(String) }
       attr_accessor :chain
@@ -37,11 +37,11 @@ module Privy
         )
       end
       def self.new(
-        # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt' (stablecoins), 'eth'
-        # (native Ethereum), 'sol' (native Solana).
+        # The asset to transfer. Supported: 'usdc', 'usdb', 'usdt', 'pathusd'
+        # (stablecoins), 'eth' (native Ethereum), 'sol' (native Solana).
         asset:,
         # The blockchain network on which to perform the transfer. Supported chains
-        # include: 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
+        # include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their
         # respective testnets.
         chain:,
         # Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5

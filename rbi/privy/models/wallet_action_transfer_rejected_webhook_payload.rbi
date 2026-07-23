@@ -34,7 +34,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :rejected_at
 
-      # Chain name (e.g. "base", "ethereum").
+      # Chain name (e.g. "tempo", "base").
       sig { returns(String) }
       attr_accessor :source_chain
 
@@ -141,7 +141,7 @@ module Privy
         failure_reason:,
         # ISO 8601 timestamp of when the wallet action was rejected.
         rejected_at:,
-        # Chain name (e.g. "base", "ethereum").
+        # Chain name (e.g. "tempo", "base").
         source_chain:,
         # The status of the wallet action.
         status:,

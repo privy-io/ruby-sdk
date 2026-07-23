@@ -18,6 +18,7 @@ module Privy
       USDT = T.let(:usdt, Privy::WalletAsset::TaggedSymbol)
       EURC = T.let(:eurc, Privy::WalletAsset::TaggedSymbol)
       USDB = T.let(:usdb, Privy::WalletAsset::TaggedSymbol)
+      PATHUSD = T.let(:pathusd, Privy::WalletAsset::TaggedSymbol)
       SOL = T.let(:sol, Privy::WalletAsset::TaggedSymbol)
       TRX = T.let(:trx, Privy::WalletAsset::TaggedSymbol)
 

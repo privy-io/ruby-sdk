@@ -10,7 +10,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :asset_address
 
-      # CAIP-2 chain identifier (e.g., "eip155:1").
+      # CAIP-2 chain identifier (e.g., "eip155:4217" for Tempo, "eip155:1" for
+      # Ethereum).
       sig { returns(String) }
       attr_accessor :caip2
 
@@ -21,7 +22,8 @@ module Privy
       def self.new(
         # Token contract address to sell, or "native" for the chain's native token.
         asset_address:,
-        # CAIP-2 chain identifier (e.g., "eip155:1").
+        # CAIP-2 chain identifier (e.g., "eip155:4217" for Tempo, "eip155:1" for
+        # Ethereum).
         caip2:
       )
       end

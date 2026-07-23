@@ -30,7 +30,7 @@ module Privy
         sig { returns(T.nilable(String)) }
         attr_accessor :destination_amount
 
-        # Chain name (e.g. "base", "ethereum").
+        # Chain name (e.g. "tempo", "base").
         sig { returns(String) }
         attr_accessor :source_chain
 
@@ -225,7 +225,7 @@ module Privy
           # transfers, set at creation (the guaranteed exact amount). For exact_input
           # cross-chain transfers, null until fill confirmation.
           destination_amount:,
-          # Chain name (e.g. "base", "ethereum").
+          # Chain name (e.g. "tempo", "base").
           source_chain:,
           # Status of a wallet action.
           status:,

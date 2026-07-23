@@ -41,7 +41,7 @@ module Privy
         sig { returns(T.nilable(Float)) }
         attr_accessor :available_liquidity_usd
 
-        # CAIP-2 chain identifier (e.g. "eip155:8453").
+        # CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:8453" for Base).
         sig { returns(String) }
         attr_accessor :caip2
 
@@ -99,7 +99,7 @@ module Privy
           available_fees:,
           # Available liquidity in USD.
           available_liquidity_usd:,
-          # CAIP-2 chain identifier (e.g. "eip155:8453").
+          # CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:8453" for Base).
           caip2:,
           # Human-readable vault name from the yield provider.
           name:,
