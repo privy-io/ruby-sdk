@@ -31,7 +31,7 @@ module Privy
       optional :chain_type, enum: -> { Privy::EthereumSendTransactionRpcInput::ChainType }
 
       # @!attribute experimental_data_suffix
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String, nil]
@@ -68,7 +68,7 @@ module Privy
       #
       #   @param chain_type [Symbol, Privy::Models::EthereumSendTransactionRpcInput::ChainType]
       #
-      #   @param experimental_data_suffix [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param experimental_data_suffix [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param reference_id [String]
       #

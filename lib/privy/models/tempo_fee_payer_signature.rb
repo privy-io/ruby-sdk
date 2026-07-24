@@ -4,14 +4,14 @@ module Privy
   module Models
     class TempoFeePayerSignature < Privy::Internal::Type::BaseModel
       # @!attribute r
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
       required :r, String
 
       # @!attribute s
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
@@ -28,9 +28,9 @@ module Privy
       #
       #   A fee payer signature for sponsored Tempo transactions (secp256k1 only).
       #
-      #   @param r [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param r [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param s [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param s [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param y_parity [Float, Privy::Models::TempoFeePayerSignature::YParity]
 

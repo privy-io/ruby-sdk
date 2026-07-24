@@ -11,7 +11,7 @@ module Privy
           )
         end
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :hash_
@@ -19,7 +19,7 @@ module Privy
       # Parameters for the EVM `secp256k1_sign` RPC.
       sig { params(hash_: String).returns(T.attached_class) }
       def self.new(
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         hash_:
       )

@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type mfa_email_init_enroll_input =
+      {
+        action: Privy::Models::MfaEmailInitEnrollInput::action,
+        email_address: String
+      }
+
+    class MfaEmailInitEnrollInput < Privy::Internal::Type::BaseModel
+      attr_accessor action: Privy::Models::MfaEmailInitEnrollInput::action
+
+      attr_accessor email_address: String
+
+      def initialize: (
+        action: Privy::Models::MfaEmailInitEnrollInput::action,
+        email_address: String
+      ) -> void
+
+      def to_hash: -> {
+        action: Privy::Models::MfaEmailInitEnrollInput::action,
+        email_address: String
+      }
+
+      type action = :enroll
+
+      module Action
+        extend Privy::Internal::Type::Enum
+
+        ENROLL: :enroll
+
+        def self?.values: -> ::Array[Privy::Models::MfaEmailInitEnrollInput::action]
+      end
+    end
+  end
+end

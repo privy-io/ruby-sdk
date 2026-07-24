@@ -7,7 +7,7 @@ module Privy
     module Quantity
       extend Privy::Internal::Type::Union
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 bytes).
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 bytes).
       variant -> { Privy::Hex }
 
       variant Integer

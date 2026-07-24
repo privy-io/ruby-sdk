@@ -12,6 +12,7 @@ module Privy
       SMS = T.let(:sms, Privy::MfaMethod::TaggedSymbol)
       TOTP = T.let(:totp, Privy::MfaMethod::TaggedSymbol)
       PASSKEY = T.let(:passkey, Privy::MfaMethod::TaggedSymbol)
+      EMAIL = T.let(:email, Privy::MfaMethod::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::MfaMethod::TaggedSymbol]) }
       def self.values
