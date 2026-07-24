@@ -84,7 +84,8 @@ module Privy
               T.any(
                 Privy::SMSMfaMethod::OrHash,
                 Privy::TotpMfaMethod::OrHash,
-                Privy::PasskeyMfaMethod::OrHash
+                Privy::PasskeyMfaMethod::OrHash,
+                Privy::EmailMfaMethod::OrHash
               )
             ],
           custom_metadata: T::Hash[Symbol, Privy::CustomMetadataItem::Variants]

@@ -21,12 +21,12 @@ module Privy
       sig { returns(Privy::Quantity::Variants) }
       attr_accessor :nonce
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :r
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :s
@@ -54,10 +54,10 @@ module Privy
         # A quantity value that can be either a hex string starting with '0x' or a
         # non-negative integer.
         nonce:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         r:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         s:,
         y_parity:

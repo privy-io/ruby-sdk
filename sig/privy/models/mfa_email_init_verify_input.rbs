@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type mfa_email_init_verify_input =
+      { action: Privy::Models::MfaEmailInitVerifyInput::action }
+
+    class MfaEmailInitVerifyInput < Privy::Internal::Type::BaseModel
+      attr_accessor action: Privy::Models::MfaEmailInitVerifyInput::action
+
+      def initialize: (
+        action: Privy::Models::MfaEmailInitVerifyInput::action
+      ) -> void
+
+      def to_hash: -> { action: Privy::Models::MfaEmailInitVerifyInput::action }
+
+      type action = :verify
+
+      module Action
+        extend Privy::Internal::Type::Enum
+
+        VERIFY: :verify
+
+        def self?.values: -> ::Array[Privy::Models::MfaEmailInitVerifyInput::action]
+      end
+    end
+  end
+end

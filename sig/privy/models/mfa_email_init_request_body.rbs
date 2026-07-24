@@ -1,0 +1,12 @@
+module Privy
+  module Models
+    type mfa_email_init_request_body =
+      Privy::MfaEmailInitVerifyInput | Privy::MfaEmailInitEnrollInput
+
+    module MfaEmailInitRequestBody
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::mfa_email_init_request_body]
+    end
+  end
+end

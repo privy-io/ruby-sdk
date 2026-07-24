@@ -34,7 +34,7 @@ module Privy
 
       # @!attribute mfa_methods
       #
-      #   @return [Array<Privy::Models::SMSMfaMethod, Privy::Models::TotpMfaMethod, Privy::Models::PasskeyMfaMethod>]
+      #   @return [Array<Privy::Models::SMSMfaMethod, Privy::Models::TotpMfaMethod, Privy::Models::PasskeyMfaMethod, Privy::Models::EmailMfaMethod>]
       required :mfa_methods, -> { Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod] }
 
       # @!attribute custom_metadata
@@ -56,7 +56,7 @@ module Privy
       #
       #   @param linked_accounts [Array<Privy::Models::LinkedAccountEmail, Privy::Models::LinkedAccountPhone, Privy::Models::LinkedAccountEthereum, Privy::Models::LinkedAccountSolana, Privy::Models::LinkedAccountSmartWallet, Privy::Models::LinkedAccountEthereumEmbeddedWallet, Privy::Models::LinkedAccountSolanaEmbeddedWallet, Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet, Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet, Privy::Models::LinkedAccountCurveSigningEmbeddedWallet, Privy::Models::LinkedAccountGoogleOAuth, Privy::Models::LinkedAccountTwitterOAuth, Privy::Models::LinkedAccountDiscordOAuth, Privy::Models::LinkedAccountGitHubOAuth, Privy::Models::LinkedAccountSpotifyOAuth, Privy::Models::LinkedAccountInstagramOAuth, Privy::Models::LinkedAccountTiktokOAuth, Privy::Models::LinkedAccountLineOAuth, Privy::Models::LinkedAccountTwitchOAuth, Privy::Models::LinkedAccountLinkedInOAuth, Privy::Models::LinkedAccountAppleOAuth, Privy::Models::LinkedAccountCustomOAuth, Privy::Models::LinkedAccountCustomJwt, Privy::Models::LinkedAccountFarcaster, Privy::Models::LinkedAccountPasskey, Privy::Models::LinkedAccountTelegram, Privy::Models::LinkedAccountCrossApp, Privy::Models::LinkedAccountAuthorizationKey>]
       #
-      #   @param mfa_methods [Array<Privy::Models::SMSMfaMethod, Privy::Models::TotpMfaMethod, Privy::Models::PasskeyMfaMethod>]
+      #   @param mfa_methods [Array<Privy::Models::SMSMfaMethod, Privy::Models::TotpMfaMethod, Privy::Models::PasskeyMfaMethod, Privy::Models::EmailMfaMethod>]
       #
       #   @param custom_metadata [Hash{Symbol=>String, Float, Boolean}] Custom metadata associated with the user.
     end

@@ -1,7 +1,10 @@
 module Privy
   module Models
     type linked_mfa_method =
-      Privy::SMSMfaMethod | Privy::TotpMfaMethod | Privy::PasskeyMfaMethod
+      Privy::SMSMfaMethod
+      | Privy::TotpMfaMethod
+      | Privy::PasskeyMfaMethod
+      | Privy::EmailMfaMethod
 
     module LinkedMfaMethod
       extend Privy::Internal::Type::Union

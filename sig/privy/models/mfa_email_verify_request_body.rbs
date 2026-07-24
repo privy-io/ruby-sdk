@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type mfa_email_verify_request_body = { code: String }
+
+    class MfaEmailVerifyRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      def initialize: (code: String) -> void
+
+      def to_hash: -> { code: String }
+    end
+  end
+end

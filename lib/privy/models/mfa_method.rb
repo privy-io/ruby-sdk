@@ -9,6 +9,7 @@ module Privy
       SMS = :sms
       TOTP = :totp
       PASSKEY = :passkey
+      EMAIL = :email
 
       # @!method self.values
       #   @return [Array<Symbol>]

@@ -11,7 +11,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :to
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(T.nilable(String)) }
       attr_reader :data
@@ -37,7 +37,7 @@ module Privy
       end
       def self.new(
         to:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         data: nil,
         # A quantity value that can be either a hex string starting with '0x' or a
