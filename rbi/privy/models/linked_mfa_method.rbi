@@ -11,7 +11,8 @@ module Privy
           T.any(
             Privy::SMSMfaMethod,
             Privy::TotpMfaMethod,
-            Privy::PasskeyMfaMethod
+            Privy::PasskeyMfaMethod,
+            Privy::EmailMfaMethod
           )
         end
 

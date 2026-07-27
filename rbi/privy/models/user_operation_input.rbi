@@ -8,32 +8,32 @@ module Privy
           T.any(Privy::UserOperationInput, Privy::Internal::AnyHash)
         end
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :call_data
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :call_gas_limit
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :max_fee_per_gas
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :max_priority_fee_per_gas
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :nonce
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :pre_verification_gas
@@ -41,7 +41,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :sender
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :verification_gas_limit
@@ -52,7 +52,7 @@ module Privy
       sig { params(factory: String).void }
       attr_writer :factory
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(T.nilable(String)) }
       attr_reader :factory_data
@@ -66,7 +66,7 @@ module Privy
       sig { params(paymaster: String).void }
       attr_writer :paymaster
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(T.nilable(String)) }
       attr_reader :paymaster_data
@@ -74,7 +74,7 @@ module Privy
       sig { params(paymaster_data: String).void }
       attr_writer :paymaster_data
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(T.nilable(String)) }
       attr_reader :paymaster_post_op_gas_limit
@@ -82,7 +82,7 @@ module Privy
       sig { params(paymaster_post_op_gas_limit: String).void }
       attr_writer :paymaster_post_op_gas_limit
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(T.nilable(String)) }
       attr_reader :paymaster_verification_gas_limit
@@ -110,40 +110,40 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         call_data:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         call_gas_limit:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         max_fee_per_gas:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         max_priority_fee_per_gas:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         nonce:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         pre_verification_gas:,
         sender:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         verification_gas_limit:,
         factory: nil,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         factory_data: nil,
         paymaster: nil,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         paymaster_data: nil,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         paymaster_post_op_gas_limit: nil,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         paymaster_verification_gas_limit: nil
       )

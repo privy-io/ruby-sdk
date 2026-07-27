@@ -9,7 +9,7 @@ module Privy
       required :to, String
 
       # @!attribute data
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String, nil]
@@ -30,7 +30,7 @@ module Privy
       #
       #   @param to [String]
       #
-      #   @param data [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param data [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param value [String, Integer] A quantity value that can be either a hex string starting with '0x' or a non-neg
     end

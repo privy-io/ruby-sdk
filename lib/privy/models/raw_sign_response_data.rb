@@ -9,7 +9,7 @@ module Privy
       required :encoding, enum: -> { Privy::RawSignResponseData::Encoding }
 
       # @!attribute signature
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
@@ -23,7 +23,7 @@ module Privy
       #
       #   @param encoding [Symbol, Privy::Models::RawSignResponseData::Encoding]
       #
-      #   @param signature [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param signature [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
 
       # @see Privy::Models::RawSignResponseData#encoding
       module Encoding

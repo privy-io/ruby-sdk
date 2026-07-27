@@ -50,7 +50,7 @@ module Privy
       end
       attr_writer :chain_type
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(T.nilable(String)) }
       attr_reader :experimental_data_suffix
@@ -99,7 +99,7 @@ module Privy
         params:,
         address: nil,
         chain_type: nil,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         experimental_data_suffix: nil,
         reference_id: nil,

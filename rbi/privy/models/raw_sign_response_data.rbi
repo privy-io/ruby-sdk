@@ -11,7 +11,7 @@ module Privy
       sig { returns(Privy::RawSignResponseData::Encoding::TaggedSymbol) }
       attr_accessor :encoding
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :signature
@@ -25,7 +25,7 @@ module Privy
       end
       def self.new(
         encoding:,
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         signature:
       )

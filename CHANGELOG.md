@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 (2026-07-24)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/privy-io/ruby-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([2e2009e](https://github.com/privy-io/ruby-sdk/commit/2e2009e70fec4091485f25cc1902179f364eeb84))
+
 ## 0.6.0 (2026-07-22)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/privy-io/ruby-sdk/compare/v0.5.0...v0.6.0)

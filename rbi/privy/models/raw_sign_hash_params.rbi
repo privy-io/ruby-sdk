@@ -8,7 +8,7 @@ module Privy
           T.any(Privy::RawSignHashParams, Privy::Internal::AnyHash)
         end
 
-      # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       # bytes).
       sig { returns(String) }
       attr_accessor :hash_
@@ -16,7 +16,7 @@ module Privy
       # Parameters for signing a pre-computed hash with the `raw_sign` RPC.
       sig { params(hash_: String).returns(T.attached_class) }
       def self.new(
-        # A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+        # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         hash_:
       )

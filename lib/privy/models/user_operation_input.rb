@@ -4,42 +4,42 @@ module Privy
   module Models
     class UserOperationInput < Privy::Internal::Type::BaseModel
       # @!attribute call_data
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
       required :call_data, String
 
       # @!attribute call_gas_limit
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
       required :call_gas_limit, String
 
       # @!attribute max_fee_per_gas
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
       required :max_fee_per_gas, String
 
       # @!attribute max_priority_fee_per_gas
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
       required :max_priority_fee_per_gas, String
 
       # @!attribute nonce
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
       required :nonce, String
 
       # @!attribute pre_verification_gas
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
@@ -51,7 +51,7 @@ module Privy
       required :sender, String
 
       # @!attribute verification_gas_limit
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String]
@@ -63,7 +63,7 @@ module Privy
       optional :factory, String
 
       # @!attribute factory_data
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String, nil]
@@ -75,21 +75,21 @@ module Privy
       optional :paymaster, String
 
       # @!attribute paymaster_data
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String, nil]
       optional :paymaster_data, String
 
       # @!attribute paymaster_post_op_gas_limit
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String, nil]
       optional :paymaster_post_op_gas_limit, String
 
       # @!attribute paymaster_verification_gas_limit
-      #   A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000
+      #   A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
       #   bytes).
       #
       #   @return [String, nil]
@@ -101,33 +101,33 @@ module Privy
       #
       #   An ERC-4337 user operation.
       #
-      #   @param call_data [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param call_data [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param call_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param call_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param max_fee_per_gas [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param max_fee_per_gas [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param max_priority_fee_per_gas [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param max_priority_fee_per_gas [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param nonce [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param nonce [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param pre_verification_gas [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param pre_verification_gas [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param sender [String]
       #
-      #   @param verification_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param verification_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param factory [String]
       #
-      #   @param factory_data [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param factory_data [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param paymaster [String]
       #
-      #   @param paymaster_data [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param paymaster_data [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param paymaster_post_op_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param paymaster_post_op_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param paymaster_verification_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 100002 characters (50,000 byt
+      #   @param paymaster_verification_gas_limit [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
     end
   end
 end

@@ -299,6 +299,8 @@ module Privy
 
   class EmailInviteInput = Privy::Models::EmailInviteInput
 
+  class EmailMfaMethod = Privy::Models::EmailMfaMethod
+
   class EmbeddedWalletChainConfig = Privy::Models::EmbeddedWalletChainConfig
 
   class EmbeddedWalletConfigSchema = Privy::Models::EmbeddedWalletConfigSchema
@@ -980,6 +982,16 @@ module Privy
   module MessageSigningField = Privy::Models::MessageSigningField
 
   class MfaDisabledWebhookPayload = Privy::Models::MfaDisabledWebhookPayload
+
+  class MfaEmailEnrollRequestBody = Privy::Models::MfaEmailEnrollRequestBody
+
+  class MfaEmailInitEnrollInput = Privy::Models::MfaEmailInitEnrollInput
+
+  module MfaEmailInitRequestBody = Privy::Models::MfaEmailInitRequestBody
+
+  class MfaEmailInitVerifyInput = Privy::Models::MfaEmailInitVerifyInput
+
+  class MfaEmailVerifyRequestBody = Privy::Models::MfaEmailVerifyRequestBody
 
   class MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
 
