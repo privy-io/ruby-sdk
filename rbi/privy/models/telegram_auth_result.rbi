@@ -17,8 +17,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :first_name
 
-      sig { returns(String) }
-      attr_accessor :hash_
+      sig { returns(T.nilable(String)) }
+      attr_reader :hash_
+
+      sig { params(hash_: String).void }
+      attr_writer :hash_
 
       sig { returns(T.nilable(String)) }
       attr_reader :last_name
@@ -55,7 +58,7 @@ module Privy
         id:,
         auth_date:,
         first_name:,
-        hash_:,
+        hash_: nil,
         last_name: nil,
         photo_url: nil,
         username: nil

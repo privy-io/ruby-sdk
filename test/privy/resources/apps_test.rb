@@ -73,7 +73,8 @@ class Privy::Test::Resources::AppsTest < Privy::Test::ResourceTest
         whatsapp_enabled: Privy::Internal::Type::Boolean,
         captcha_site_key: String | nil,
         funding_config: Privy::FundingConfigResponseSchema | nil,
-        telegram_auth_config: Privy::TelegramAuthConfigSchema | nil
+        telegram_auth_config: Privy::TelegramAuthConfigSchema | nil,
+        telegram_seamless_auth_enabled: Privy::Internal::Type::Boolean | nil
       }
     end
   end

@@ -18,7 +18,9 @@ module Privy
 
       attr_accessor first_name: String
 
-      attr_accessor hash_: String
+      attr_reader hash_: String?
+
+      def hash_=: (String) -> String
 
       attr_reader last_name: String?
 
@@ -36,7 +38,7 @@ module Privy
         id: Float?,
         auth_date: Float?,
         first_name: String,
-        hash_: String,
+        ?hash_: String,
         ?last_name: String,
         ?photo_url: String,
         ?username: String

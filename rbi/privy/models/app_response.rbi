@@ -219,6 +219,12 @@ module Privy
       end
       attr_writer :telegram_auth_config
 
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :telegram_seamless_auth_enabled
+
+      sig { params(telegram_seamless_auth_enabled: T::Boolean).void }
+      attr_writer :telegram_seamless_auth_enabled
+
       # The response for getting an app.
       sig do
         params(
@@ -286,7 +292,8 @@ module Privy
           whatsapp_enabled: T::Boolean,
           captcha_site_key: String,
           funding_config: Privy::FundingConfigResponseSchema::OrHash,
-          telegram_auth_config: Privy::TelegramAuthConfigSchema::OrHash
+          telegram_auth_config: Privy::TelegramAuthConfigSchema::OrHash,
+          telegram_seamless_auth_enabled: T::Boolean
         ).returns(T.attached_class)
       end
       def self.new(
@@ -357,7 +364,8 @@ module Privy
         # Configuration for funding and on-ramp options.
         funding_config: nil,
         # Configuration for Telegram authentication.
-        telegram_auth_config: nil
+        telegram_auth_config: nil,
+        telegram_seamless_auth_enabled: nil
       )
       end
 
@@ -425,7 +433,8 @@ module Privy
             whatsapp_enabled: T::Boolean,
             captcha_site_key: String,
             funding_config: Privy::FundingConfigResponseSchema,
-            telegram_auth_config: Privy::TelegramAuthConfigSchema
+            telegram_auth_config: Privy::TelegramAuthConfigSchema,
+            telegram_seamless_auth_enabled: T::Boolean
           }
         )
       end

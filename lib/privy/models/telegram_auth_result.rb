@@ -20,8 +20,8 @@ module Privy
 
       # @!attribute hash_
       #
-      #   @return [String]
-      required :hash_, String, api_name: :hash
+      #   @return [String, nil]
+      optional :hash_, String, api_name: :hash
 
       # @!attribute last_name
       #
@@ -38,7 +38,7 @@ module Privy
       #   @return [String, nil]
       optional :username, String
 
-      # @!method initialize(id:, auth_date:, first_name:, hash_:, last_name: nil, photo_url: nil, username: nil)
+      # @!method initialize(id:, auth_date:, first_name:, hash_: nil, last_name: nil, photo_url: nil, username: nil)
       #   Auth result object returned by Telegram when a user authenticates using the
       #   login widget.
       #
