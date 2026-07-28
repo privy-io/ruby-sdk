@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type onramp_response =
+      {
+        id: String,
+        deposit_instructions: Privy::OnrampDepositInstructions,
+        status: Privy::Models::onramp_transfer_status
+      }
+
+    class OnrampResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor deposit_instructions: Privy::OnrampDepositInstructions
+
+      attr_accessor status: Privy::Models::onramp_transfer_status
+
+      def initialize: (
+        id: String,
+        deposit_instructions: Privy::OnrampDepositInstructions,
+        status: Privy::Models::onramp_transfer_status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        deposit_instructions: Privy::OnrampDepositInstructions,
+        status: Privy::Models::onramp_transfer_status
+      }
+    end
+  end
+end

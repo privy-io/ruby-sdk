@@ -20,9 +20,7 @@ module Privy
       attr_accessor :provider
 
       # Status of the KYC verification process.
-      sig do
-        returns(Privy::BridgeSandboxFiatCustomerResponse::Status::OrSymbol)
-      end
+      sig { returns(Privy::OnrampKYCStatus::OrSymbol) }
       attr_accessor :status
 
       sig { returns(T.nilable(String)) }
@@ -47,7 +45,7 @@ module Privy
           has_accepted_terms: T::Boolean,
           provider:
             Privy::BridgeSandboxFiatCustomerResponse::Provider::OrSymbol,
-          status: Privy::BridgeSandboxFiatCustomerResponse::Status::OrSymbol,
+          status: Privy::OnrampKYCStatus::OrSymbol,
           kyc_url: String,
           rejection_reasons: T::Array[Privy::BridgeFiatRejectionReason::OrHash]
         ).returns(T.attached_class)
@@ -68,7 +66,7 @@ module Privy
             has_accepted_terms: T::Boolean,
             provider:
               Privy::BridgeSandboxFiatCustomerResponse::Provider::OrSymbol,
-            status: Privy::BridgeSandboxFiatCustomerResponse::Status::OrSymbol,
+            status: Privy::OnrampKYCStatus::OrSymbol,
             kyc_url: String,
             rejection_reasons: T::Array[Privy::BridgeFiatRejectionReason]
           }
@@ -96,78 +94,6 @@ module Privy
           override.returns(
             T::Array[
               Privy::BridgeSandboxFiatCustomerResponse::Provider::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Status of the KYC verification process.
-      module Status
-        extend Privy::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Privy::BridgeSandboxFiatCustomerResponse::Status)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        NOT_FOUND =
-          T.let(
-            :not_found,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        ACTIVE =
-          T.let(
-            :active,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        AWAITING_QUESTIONNAIRE =
-          T.let(
-            :awaiting_questionnaire,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        AWAITING_UBO =
-          T.let(
-            :awaiting_ubo,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        INCOMPLETE =
-          T.let(
-            :incomplete,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        NOT_STARTED =
-          T.let(
-            :not_started,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        OFFBOARDED =
-          T.let(
-            :offboarded,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        PAUSED =
-          T.let(
-            :paused,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        REJECTED =
-          T.let(
-            :rejected,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-        UNDER_REVIEW =
-          T.let(
-            :under_review,
-            Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Privy::BridgeSandboxFiatCustomerResponse::Status::TaggedSymbol
             ]
           )
         end
