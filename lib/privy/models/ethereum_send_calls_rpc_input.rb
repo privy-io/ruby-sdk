@@ -42,12 +42,19 @@ module Privy
       #   @return [Boolean, nil]
       optional :sponsor, Privy::Internal::Type::Boolean
 
+      # @!attribute sponsor_options
+      #   Options for user-pays gas sponsorship on the RPC endpoint. When provided
+      #   alongside `sponsor: true`, controls which token asset the user pays gas with.
+      #
+      #   @return [Privy::Models::RpcSponsorOptions, nil]
+      optional :sponsor_options, -> { Privy::RpcSponsorOptions }
+
       # @!attribute wallet_id
       #
       #   @return [String, nil]
       optional :wallet_id, String
 
-      # @!method initialize(caip2:, method_:, params:, address: nil, chain_type: nil, experimental_data_suffix: nil, sponsor: nil, wallet_id: nil)
+      # @!method initialize(caip2:, method_:, params:, address: nil, chain_type: nil, experimental_data_suffix: nil, sponsor: nil, sponsor_options: nil, wallet_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::EthereumSendCallsRpcInput} for more details.
       #
@@ -67,6 +74,8 @@ module Privy
       #   @param experimental_data_suffix [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
       #   @param sponsor [Boolean]
+      #
+      #   @param sponsor_options [Privy::Models::RpcSponsorOptions] Options for user-pays gas sponsorship on the RPC endpoint. When provided alongsi
       #
       #   @param wallet_id [String]
 

@@ -70,6 +70,14 @@ module Privy
       sig { params(sponsor: T::Boolean).void }
       attr_writer :sponsor
 
+      # Options for user-pays gas sponsorship on the RPC endpoint. When provided
+      # alongside `sponsor: true`, controls which token asset the user pays gas with.
+      sig { returns(T.nilable(Privy::RpcSponsorOptions)) }
+      attr_reader :sponsor_options
+
+      sig { params(sponsor_options: Privy::RpcSponsorOptions::OrHash).void }
+      attr_writer :sponsor_options
+
       sig { returns(T.nilable(String)) }
       attr_reader :wallet_id
 
@@ -88,6 +96,7 @@ module Privy
           experimental_data_suffix: String,
           reference_id: String,
           sponsor: T::Boolean,
+          sponsor_options: Privy::RpcSponsorOptions::OrHash,
           wallet_id: String
         ).returns(T.attached_class)
       end
@@ -104,6 +113,9 @@ module Privy
         experimental_data_suffix: nil,
         reference_id: nil,
         sponsor: nil,
+        # Options for user-pays gas sponsorship on the RPC endpoint. When provided
+        # alongside `sponsor: true`, controls which token asset the user pays gas with.
+        sponsor_options: nil,
         wallet_id: nil
       )
       end
@@ -120,6 +132,7 @@ module Privy
             experimental_data_suffix: String,
             reference_id: String,
             sponsor: T::Boolean,
+            sponsor_options: Privy::RpcSponsorOptions,
             wallet_id: String
           }
         )

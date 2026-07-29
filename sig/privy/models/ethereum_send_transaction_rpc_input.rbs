@@ -10,6 +10,7 @@ module Privy
         experimental_data_suffix: String,
         reference_id: String,
         sponsor: bool,
+        sponsor_options: Privy::RpcSponsorOptions,
         wallet_id: String
       }
 
@@ -42,6 +43,12 @@ module Privy
 
       def sponsor=: (bool) -> bool
 
+      attr_reader sponsor_options: Privy::RpcSponsorOptions?
+
+      def sponsor_options=: (
+        Privy::RpcSponsorOptions
+      ) -> Privy::RpcSponsorOptions
+
       attr_reader wallet_id: String?
 
       def wallet_id=: (String) -> String
@@ -55,6 +62,7 @@ module Privy
         ?experimental_data_suffix: String,
         ?reference_id: String,
         ?sponsor: bool,
+        ?sponsor_options: Privy::RpcSponsorOptions,
         ?wallet_id: String
       ) -> void
 
@@ -67,6 +75,7 @@ module Privy
         experimental_data_suffix: String,
         reference_id: String,
         sponsor: bool,
+        sponsor_options: Privy::RpcSponsorOptions,
         wallet_id: String
       }
 

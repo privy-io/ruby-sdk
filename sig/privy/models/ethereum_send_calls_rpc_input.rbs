@@ -9,6 +9,7 @@ module Privy
         chain_type: Privy::Models::EthereumSendCallsRpcInput::chain_type,
         experimental_data_suffix: String,
         sponsor: bool,
+        sponsor_options: Privy::RpcSponsorOptions,
         wallet_id: String
       }
 
@@ -37,6 +38,12 @@ module Privy
 
       def sponsor=: (bool) -> bool
 
+      attr_reader sponsor_options: Privy::RpcSponsorOptions?
+
+      def sponsor_options=: (
+        Privy::RpcSponsorOptions
+      ) -> Privy::RpcSponsorOptions
+
       attr_reader wallet_id: String?
 
       def wallet_id=: (String) -> String
@@ -49,6 +56,7 @@ module Privy
         ?chain_type: Privy::Models::EthereumSendCallsRpcInput::chain_type,
         ?experimental_data_suffix: String,
         ?sponsor: bool,
+        ?sponsor_options: Privy::RpcSponsorOptions,
         ?wallet_id: String
       ) -> void
 
@@ -60,6 +68,7 @@ module Privy
         chain_type: Privy::Models::EthereumSendCallsRpcInput::chain_type,
         experimental_data_suffix: String,
         sponsor: bool,
+        sponsor_options: Privy::RpcSponsorOptions,
         wallet_id: String
       }
 

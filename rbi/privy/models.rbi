@@ -1516,6 +1516,10 @@ module Privy
 
   RpcIntentResponse = Privy::Models::RpcIntentResponse
 
+  RpcSponsorAsset = Privy::Models::RpcSponsorAsset
+
+  RpcSponsorOptions = Privy::Models::RpcSponsorOptions
+
   RuleDeleteIntentResponse = Privy::Models::RuleDeleteIntentResponse
 
   RuleIntentCreateRequestDetails = Privy::Models::RuleIntentCreateRequestDetails
