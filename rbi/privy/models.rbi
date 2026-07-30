@@ -2304,6 +2304,8 @@ module Privy
 
   WalletCustodian = Privy::Models::WalletCustodian
 
+  WalletEntity = Privy::Models::WalletEntity
+
   WalletEntropyType = Privy::Models::WalletEntropyType
 
   WalletEthereumAsset = Privy::Models::WalletEthereumAsset

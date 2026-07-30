@@ -27,6 +27,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }
@@ -57,6 +58,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }
@@ -94,6 +96,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }
@@ -159,6 +162,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }
@@ -230,6 +234,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }
@@ -343,6 +348,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }
@@ -374,6 +380,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         authorization_threshold: Float | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
+        entity: Privy::WalletEntity | nil,
         external_id: String | nil,
         public_key: String | nil
       }

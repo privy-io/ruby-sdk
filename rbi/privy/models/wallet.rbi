@@ -70,6 +70,13 @@ module Privy
       sig { params(display_name: String).void }
       attr_writer :display_name
 
+      # The entity a wallet is attributed to.
+      sig { returns(T.nilable(Privy::WalletEntity)) }
+      attr_reader :entity
+
+      sig { params(entity: T.nilable(Privy::WalletEntity::OrHash)).void }
+      attr_writer :entity
+
       # A customer-provided identifier for mapping to external systems. Write-once, set
       # only at creation.
       sig { returns(T.nilable(String)) }
@@ -103,6 +110,7 @@ module Privy
           authorization_threshold: Float,
           custody: Privy::WalletCustodian::OrHash,
           display_name: String,
+          entity: T.nilable(Privy::WalletEntity::OrHash),
           external_id: String,
           public_key: String
         ).returns(T.attached_class)
@@ -138,6 +146,8 @@ module Privy
         custody: nil,
         # A human-readable label for the wallet.
         display_name: nil,
+        # The entity a wallet is attributed to.
+        entity: nil,
         # A customer-provided identifier for mapping to external systems. Write-once, set
         # only at creation.
         external_id: nil,
@@ -163,6 +173,7 @@ module Privy
             authorization_threshold: Float,
             custody: Privy::WalletCustodian,
             display_name: String,
+            entity: T.nilable(Privy::WalletEntity),
             external_id: String,
             public_key: String
           }

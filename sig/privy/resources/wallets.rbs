@@ -15,6 +15,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: Privy::Models::additional_signer_input,
         ?display_name: String,
+        ?entity: Privy::WalletCreateParams::Entity,
         ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,

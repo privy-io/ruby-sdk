@@ -29,6 +29,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: String,
+          entity: Privy::WalletCreateParams::Entity::OrHash,
           external_id: String,
           owner:
             T.nilable(
@@ -50,6 +51,8 @@ module Privy
         additional_signers: nil,
         # Body param: A human-readable label for the wallet.
         display_name: nil,
+        # Body param: The entity the wallet is attributed to.
+        entity: nil,
         # Body param: A customer-provided identifier for mapping to external systems.
         # URL-safe characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be
         # changed after creation.

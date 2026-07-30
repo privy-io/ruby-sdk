@@ -1989,6 +1989,8 @@ module Privy
 
   class WalletCustodian = Privy::Models::WalletCustodian
 
+  class WalletEntity = Privy::Models::WalletEntity
+
   module WalletEntropyType = Privy::Models::WalletEntropyType
 
   module WalletEthereumAsset = Privy::Models::WalletEthereumAsset

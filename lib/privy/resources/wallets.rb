@@ -27,13 +27,15 @@ module Privy
       #
       # Creates a new wallet on the requested chain and for the requested owner.
       #
-      # @overload create(chain_type:, additional_signers: nil, display_name: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, privy_idempotency_key: nil, request_options: {})
+      # @overload create(chain_type:, additional_signers: nil, display_name: nil, entity: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, privy_idempotency_key: nil, request_options: {})
       #
       # @param chain_type [Symbol, Privy::Models::WalletChainType] Body param: The wallet chain types.
       #
       # @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Body param: Additional signers for the wallet.
       #
       # @param display_name [String] Body param: A human-readable label for the wallet.
+      #
+      # @param entity [Privy::Models::WalletCreateParams::Entity] Body param: The entity the wallet is attributed to.
       #
       # @param external_id [String] Body param: A customer-provided identifier for mapping to external systems. URL-
       #

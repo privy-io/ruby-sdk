@@ -86,6 +86,12 @@ module Privy
       #   @return [String, nil]
       optional :display_name, String
 
+      # @!attribute entity
+      #   The entity a wallet is attributed to.
+      #
+      #   @return [Privy::Models::WalletEntity, nil]
+      optional :entity, -> { Privy::WalletEntity }, nil?: true
+
       # @!attribute external_id
       #   A customer-provided identifier for mapping to external systems. Write-once, set
       #   only at creation.
@@ -100,7 +106,7 @@ module Privy
       #   @return [String, nil]
       optional :public_key, String
 
-      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, custody: nil, display_name: nil, external_id: nil, public_key: nil)
+      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, public_key: nil)
       #   Some parameter documentations has been truncated, see {Privy::Models::Wallet}
       #   for more details.
       #
@@ -131,6 +137,8 @@ module Privy
       #   @param custody [Privy::Models::WalletCustodian] Information about the custodian managing this wallet.
       #
       #   @param display_name [String] A human-readable label for the wallet.
+      #
+      #   @param entity [Privy::Models::WalletEntity, nil] The entity a wallet is attributed to.
       #
       #   @param external_id [String] A customer-provided identifier for mapping to external systems. Write-once, set
       #
