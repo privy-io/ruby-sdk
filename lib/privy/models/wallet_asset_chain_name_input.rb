@@ -18,6 +18,7 @@ module Privy
       SOLANA = :solana
       TRON = :tron
       ZKSYNC_ERA = :zksync_era
+      HOODI = :hoodi
       SEPOLIA = :sepolia
       ARBITRUM_SEPOLIA = :arbitrum_sepolia
       AVALANCHE_FUJI = :avalanche_fuji

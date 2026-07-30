@@ -27,6 +27,7 @@ module Privy
       TRON = T.let(:tron, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ZKSYNC_ERA =
         T.let(:zksync_era, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      HOODI = T.let(:hoodi, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SEPOLIA = T.let(:sepolia, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ARBITRUM_SEPOLIA =
         T.let(:arbitrum_sepolia, Privy::WalletAssetChainNameInput::TaggedSymbol)
