@@ -34,6 +34,12 @@ module Privy
       #   @return [String, nil]
       optional :cursor, String
 
+      # @!attribute entity_id
+      #   Filter wallets by the entity ID the wallet is attributed to.
+      #
+      #   @return [String, nil]
+      optional :entity_id, String
+
       # @!attribute external_id
       #   Filter wallets by external ID.
       #
@@ -57,7 +63,7 @@ module Privy
       #   @return [String, nil]
       optional :user_id, String
 
-      # @!method initialize(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
+      # @!method initialize(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, entity_id: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletListParams} for more details.
       #
@@ -68,6 +74,8 @@ module Privy
       #   @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
       #
       #   @param cursor [String]
+      #
+      #   @param entity_id [String] Filter wallets by the entity ID the wallet is attributed to.
       #
       #   @param external_id [String] Filter wallets by external ID.
       #

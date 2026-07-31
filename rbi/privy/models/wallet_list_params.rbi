@@ -42,6 +42,13 @@ module Privy
       sig { params(cursor: String).void }
       attr_writer :cursor
 
+      # Filter wallets by the entity ID the wallet is attributed to.
+      sig { returns(T.nilable(String)) }
+      attr_reader :entity_id
+
+      sig { params(entity_id: String).void }
+      attr_writer :entity_id
+
       # Filter wallets by external ID.
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
@@ -72,6 +79,7 @@ module Privy
           authorization_key: String,
           chain_type: Privy::WalletChainType::OrSymbol,
           cursor: String,
+          entity_id: String,
           external_id: String,
           include_archived: T::Boolean,
           limit: T.nilable(Float),
@@ -91,6 +99,8 @@ module Privy
         # The wallet chain types.
         chain_type: nil,
         cursor: nil,
+        # Filter wallets by the entity ID the wallet is attributed to.
+        entity_id: nil,
         # Filter wallets by external ID.
         external_id: nil,
         # Include archived wallets in lookup. Defaults to false.
@@ -109,6 +119,7 @@ module Privy
             authorization_key: String,
             chain_type: Privy::WalletChainType::OrSymbol,
             cursor: String,
+            entity_id: String,
             external_id: String,
             include_archived: T::Boolean,
             limit: T.nilable(Float),

@@ -115,7 +115,7 @@ module Privy
       #
       # Get all wallets in your app.
       #
-      # @overload list(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
+      # @overload list(address: nil, authorization_key: nil, chain_type: nil, cursor: nil, entity_id: nil, external_id: nil, include_archived: nil, limit: nil, user_id: nil, request_options: {})
       #
       # @param address [String] A blockchain wallet address. Ethereum addresses are normalized to EIP-55 checksu
       #
@@ -124,6 +124,8 @@ module Privy
       # @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
       #
       # @param cursor [String]
+      #
+      # @param entity_id [String] Filter wallets by the entity ID the wallet is attributed to.
       #
       # @param external_id [String] Filter wallets by external ID.
       #

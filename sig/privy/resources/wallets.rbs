@@ -41,6 +41,7 @@ module Privy
         ?authorization_key: String,
         ?chain_type: Privy::Models::wallet_chain_type,
         ?cursor: String,
+        ?entity_id: String,
         ?external_id: String,
         ?include_archived: bool,
         ?limit: Float?,
