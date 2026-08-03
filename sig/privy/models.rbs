@@ -527,8 +527,6 @@ module Privy
 
   class FiatAmount = Privy::Models::FiatAmount
 
-  module FiatCurrency = Privy::Models::FiatCurrency
-
   class FiatCurrencyCode = Privy::Models::FiatCurrencyCode
 
   module FiatCustomerResponse = Privy::Models::FiatCustomerResponse
@@ -550,8 +548,6 @@ module Privy
   module FiatOnrampTransactionStatus = Privy::Models::FiatOnrampTransactionStatus
 
   class FiatOnrampURLSessionResponse = Privy::Models::FiatOnrampURLSessionResponse
-
-  module FiatPaymentRail = Privy::Models::FiatPaymentRail
 
   module FiatVirtualAccountRequest = Privy::Models::FiatVirtualAccountRequest
 
@@ -1111,29 +1107,11 @@ module Privy
 
   class OAuthVerifyResponseBody = Privy::Models::OAuthVerifyResponseBody
 
-  class OfframpDepositInstructions = Privy::Models::OfframpDepositInstructions
-
-  class OfframpResponse = Privy::Models::OfframpResponse
-
-  module OnrampAsset = Privy::Models::OnrampAsset
-
-  module OnrampChain = Privy::Models::OnrampChain
-
-  class OnrampDepositInstructions = Privy::Models::OnrampDepositInstructions
-
-  class OnrampKYCResponse = Privy::Models::OnrampKYCResponse
-
-  module OnrampKYCStatus = Privy::Models::OnrampKYCStatus
-
   module OnrampProvider = Privy::Models::OnrampProvider
-
-  class OnrampResponse = Privy::Models::OnrampResponse
 
   class OnrampSessionParams = Privy::Models::OnrampSessionParams
 
   class OnrampSessionTransactionDetails = Privy::Models::OnrampSessionTransactionDetails
-
-  module OnrampTransferStatus = Privy::Models::OnrampTransferStatus
 
   class OptionalRefreshTokenInput = Privy::Models::OptionalRefreshTokenInput
 

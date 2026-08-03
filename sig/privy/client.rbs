@@ -57,8 +57,6 @@ module Privy
 
     attr_reader yield_: Privy::Resources::Yield
 
-    attr_reader fiat: Privy::Resources::Fiat
-
     attr_reader kraken_embed: Privy::Resources::KrakenEmbed
 
     attr_reader swaps: Privy::Resources::Swaps

@@ -16,8 +16,8 @@ module Privy
       # @!attribute status
       #   Status of the KYC verification process.
       #
-      #   @return [Symbol, Privy::Models::OnrampKYCStatus]
-      required :status, enum: -> { Privy::OnrampKYCStatus }
+      #   @return [Symbol, Privy::Models::BridgeFiatCustomerResponse::Status]
+      required :status, enum: -> { Privy::BridgeFiatCustomerResponse::Status }
 
       # @!attribute kyc_url
       #
@@ -36,7 +36,7 @@ module Privy
       #
       #   @param provider [Symbol, Privy::Models::BridgeFiatCustomerResponse::Provider]
       #
-      #   @param status [Symbol, Privy::Models::OnrampKYCStatus] Status of the KYC verification process.
+      #   @param status [Symbol, Privy::Models::BridgeFiatCustomerResponse::Status] Status of the KYC verification process.
       #
       #   @param kyc_url [String]
       #
@@ -47,6 +47,27 @@ module Privy
         extend Privy::Internal::Type::Enum
 
         BRIDGE = :bridge
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Status of the KYC verification process.
+      #
+      # @see Privy::Models::BridgeFiatCustomerResponse#status
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        NOT_FOUND = :not_found
+        ACTIVE = :active
+        AWAITING_QUESTIONNAIRE = :awaiting_questionnaire
+        AWAITING_UBO = :awaiting_ubo
+        INCOMPLETE = :incomplete
+        NOT_STARTED = :not_started
+        OFFBOARDED = :offboarded
+        PAUSED = :paused
+        REJECTED = :rejected
+        UNDER_REVIEW = :under_review
 
         # @!method self.values
         #   @return [Array<Symbol>]

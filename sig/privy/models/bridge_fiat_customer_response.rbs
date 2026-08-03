@@ -4,7 +4,7 @@ module Privy
       {
         has_accepted_terms: bool,
         provider: Privy::Models::BridgeFiatCustomerResponse::provider,
-        status: Privy::Models::onramp_kyc_status,
+        status: Privy::Models::BridgeFiatCustomerResponse::status,
         kyc_url: String,
         rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
       }
@@ -14,7 +14,7 @@ module Privy
 
       attr_accessor provider: Privy::Models::BridgeFiatCustomerResponse::provider
 
-      attr_accessor status: Privy::Models::onramp_kyc_status
+      attr_accessor status: Privy::Models::BridgeFiatCustomerResponse::status
 
       attr_reader kyc_url: String?
 
@@ -29,7 +29,7 @@ module Privy
       def initialize: (
         has_accepted_terms: bool,
         provider: Privy::Models::BridgeFiatCustomerResponse::provider,
-        status: Privy::Models::onramp_kyc_status,
+        status: Privy::Models::BridgeFiatCustomerResponse::status,
         ?kyc_url: String,
         ?rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
       ) -> void
@@ -37,7 +37,7 @@ module Privy
       def to_hash: -> {
         has_accepted_terms: bool,
         provider: Privy::Models::BridgeFiatCustomerResponse::provider,
-        status: Privy::Models::onramp_kyc_status,
+        status: Privy::Models::BridgeFiatCustomerResponse::status,
         kyc_url: String,
         rejection_reasons: ::Array[Privy::BridgeFiatRejectionReason]
       }
@@ -50,6 +50,35 @@ module Privy
         BRIDGE: :bridge
 
         def self?.values: -> ::Array[Privy::Models::BridgeFiatCustomerResponse::provider]
+      end
+
+      type status =
+        :not_found
+        | :active
+        | :awaiting_questionnaire
+        | :awaiting_ubo
+        | :incomplete
+        | :not_started
+        | :offboarded
+        | :paused
+        | :rejected
+        | :under_review
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        NOT_FOUND: :not_found
+        ACTIVE: :active
+        AWAITING_QUESTIONNAIRE: :awaiting_questionnaire
+        AWAITING_UBO: :awaiting_ubo
+        INCOMPLETE: :incomplete
+        NOT_STARTED: :not_started
+        OFFBOARDED: :offboarded
+        PAUSED: :paused
+        REJECTED: :rejected
+        UNDER_REVIEW: :under_review
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatCustomerResponse::status]
       end
     end
   end

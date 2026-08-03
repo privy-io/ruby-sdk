@@ -1,7 +1,0 @@
-module Privy
-  module Resources
-    class Fiat
-      def initialize: (client: Privy::Client) -> void
-    end
-  end
-end

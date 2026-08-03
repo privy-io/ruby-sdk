@@ -17,7 +17,8 @@ module Privy
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet::wallet_client_type,
-        wallet_index: Float
+        wallet_index: Float,
+        user_can_sign: bool
       }
 
     class LinkedAccountBitcoinSegwitEmbeddedWallet < Privy::Internal::Type::BaseModel
@@ -53,6 +54,10 @@ module Privy
 
       attr_accessor wallet_index: Float
 
+      attr_reader user_can_sign: bool?
+
+      def user_can_sign=: (bool) -> bool
+
       def initialize: (
         id: String?,
         address: String,
@@ -69,7 +74,8 @@ module Privy
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet::wallet_client_type,
-        wallet_index: Float
+        wallet_index: Float,
+        ?user_can_sign: bool
       ) -> void
 
       def to_hash: -> {
@@ -88,7 +94,8 @@ module Privy
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet::wallet_client_type,
-        wallet_index: Float
+        wallet_index: Float,
+        user_can_sign: bool
       }
 
       type chain_type = :"bitcoin-segwit"
