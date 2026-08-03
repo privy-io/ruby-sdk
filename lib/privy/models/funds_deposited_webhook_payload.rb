@@ -12,7 +12,7 @@ module Privy
       # @!attribute asset
       #   An asset involved in a wallet transfer.
       #
-      #   @return [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset]
+      #   @return [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset, Privy::Models::WalletFundsTrc20Asset]
       required :asset, union: -> { Privy::WalletFundsAsset }
 
       # @!attribute block
@@ -80,7 +80,7 @@ module Privy
       #
       #   @param amount [String] The amount transferred, as a stringified bigint.
       #
-      #   @param asset [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset] An asset involved in a wallet transfer.
+      #   @param asset [Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset, Privy::Models::WalletFundsTrc20Asset] An asset involved in a wallet transfer.
       #
       #   @param block [Privy::Models::BlockInfo] Block metadata for a wallet transfer event.
       #

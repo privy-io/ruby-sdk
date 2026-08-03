@@ -2011,6 +2011,8 @@ module Privy
 
   class WalletFundsSplAsset = Privy::Models::WalletFundsSplAsset
 
+  class WalletFundsTrc20Asset = Privy::Models::WalletFundsTrc20Asset
+
   class WalletGetParams = Privy::Models::WalletGetParams
 
   class WalletGetWalletByAddressParams = Privy::Models::WalletGetWalletByAddressParams

@@ -20,8 +20,11 @@ module Privy
       # A Stellar Asset Contract (SAC) asset.
       variant :sac, -> { Privy::WalletFundsSacAsset }
 
+      # A Tron TRC-20 token asset.
+      variant :trc20, -> { Privy::WalletFundsTrc20Asset }
+
       # @!method self.variants
-      #   @return [Array(Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset)]
+      #   @return [Array(Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset, Privy::Models::WalletFundsTrc20Asset)]
     end
   end
 end

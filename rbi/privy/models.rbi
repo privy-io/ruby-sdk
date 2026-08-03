@@ -2326,6 +2326,8 @@ module Privy
 
   WalletFundsSplAsset = Privy::Models::WalletFundsSplAsset
 
+  WalletFundsTrc20Asset = Privy::Models::WalletFundsTrc20Asset
+
   WalletGetParams = Privy::Models::WalletGetParams
 
   WalletGetWalletByAddressParams = Privy::Models::WalletGetWalletByAddressParams

@@ -87,7 +87,8 @@ module Privy
               Privy::WalletFundsNativeTokenAsset::OrHash,
               Privy::WalletFundsErc20Asset::OrHash,
               Privy::WalletFundsSplAsset::OrHash,
-              Privy::WalletFundsSacAsset::OrHash
+              Privy::WalletFundsSacAsset::OrHash,
+              Privy::WalletFundsTrc20Asset::OrHash
             ),
           block: Privy::BlockInfo::OrHash,
           caip2: String,

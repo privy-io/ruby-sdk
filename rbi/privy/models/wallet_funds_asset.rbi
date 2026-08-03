@@ -12,7 +12,8 @@ module Privy
             Privy::WalletFundsNativeTokenAsset,
             Privy::WalletFundsErc20Asset,
             Privy::WalletFundsSplAsset,
-            Privy::WalletFundsSacAsset
+            Privy::WalletFundsSacAsset,
+            Privy::WalletFundsTrc20Asset
           )
         end
 
