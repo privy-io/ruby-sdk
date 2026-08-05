@@ -19,6 +19,11 @@ module Privy
       #   @return [Array<Privy::Models::StripeKYCTier>]
       required :kyc_tiers, -> { Privy::Internal::Type::ArrayOf[Privy::StripeKYCTier] }
 
+      # @!attribute link_auth_intent_id
+      #
+      #   @return [String, nil]
+      required :link_auth_intent_id, String, nil?: true
+
       # @!attribute provided_fields
       #
       #   @return [Array<String>]
@@ -34,7 +39,7 @@ module Privy
       #   @return [Array<Privy::Models::StripeVerification>]
       required :verifications, -> { Privy::Internal::Type::ArrayOf[Privy::StripeVerification] }
 
-      # @!method initialize(crypto_customer_id:, kyc_region:, kyc_tiers:, provided_fields:, status:, verifications:)
+      # @!method initialize(crypto_customer_id:, kyc_region:, kyc_tiers:, link_auth_intent_id:, provided_fields:, status:, verifications:)
       #   Active onramp session with customer verifications.
       #
       #   @param crypto_customer_id [String]
@@ -42,6 +47,8 @@ module Privy
       #   @param kyc_region [Symbol, Privy::Models::StripeKYCRegion, nil] Region derived from a Stripe user's country of residence.
       #
       #   @param kyc_tiers [Array<Privy::Models::StripeKYCTier>]
+      #
+      #   @param link_auth_intent_id [String, nil]
       #
       #   @param provided_fields [Array<String>]
       #

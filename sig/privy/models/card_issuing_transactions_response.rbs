@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type card_issuing_transactions_response =
+      {
+        data: ::Array[Privy::CardIssuingTransactionResponse],
+        next_cursor: String?
+      }
+
+    class CardIssuingTransactionsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::CardIssuingTransactionResponse]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        data: ::Array[Privy::CardIssuingTransactionResponse],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Privy::CardIssuingTransactionResponse],
+        next_cursor: String?
+      }
+    end
+  end
+end

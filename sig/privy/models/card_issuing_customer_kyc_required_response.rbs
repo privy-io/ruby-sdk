@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type card_issuing_customer_kyc_required_response =
+      {
+        kyc_url: String,
+        status: Privy::Models::CardIssuingCustomerKYCRequiredResponse::status
+      }
+
+    class CardIssuingCustomerKYCRequiredResponse < Privy::Internal::Type::BaseModel
+      attr_accessor kyc_url: String
+
+      attr_accessor status: Privy::Models::CardIssuingCustomerKYCRequiredResponse::status
+
+      def initialize: (
+        kyc_url: String,
+        status: Privy::Models::CardIssuingCustomerKYCRequiredResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        kyc_url: String,
+        status: Privy::Models::CardIssuingCustomerKYCRequiredResponse::status
+      }
+
+      type status = :kyc_required
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        KYC_REQUIRED: :kyc_required
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerKYCRequiredResponse::status]
+      end
+    end
+  end
+end

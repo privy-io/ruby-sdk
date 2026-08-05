@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type card_issuing_transaction_response =
+      {
+        id: String,
+        amount: Float,
+        created: Float,
+        currency: String,
+        merchant: Privy::CardIssuingMerchant,
+        status: Privy::Models::card_issuing_transaction_status,
+        type: String
+      }
+
+    class CardIssuingTransactionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor amount: Float
+
+      attr_accessor created: Float
+
+      attr_accessor currency: String
+
+      attr_accessor merchant: Privy::CardIssuingMerchant
+
+      attr_accessor status: Privy::Models::card_issuing_transaction_status
+
+      attr_accessor type: String
+
+      def initialize: (
+        id: String,
+        amount: Float,
+        created: Float,
+        currency: String,
+        merchant: Privy::CardIssuingMerchant,
+        status: Privy::Models::card_issuing_transaction_status,
+        type: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        amount: Float,
+        created: Float,
+        currency: String,
+        merchant: Privy::CardIssuingMerchant,
+        status: Privy::Models::card_issuing_transaction_status,
+        type: String
+      }
+    end
+  end
+end

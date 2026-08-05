@@ -126,6 +126,21 @@ module Privy
       )
       end
 
+      # Reject a pending intent, preventing it from being executed. Can be called by the
+      # intent creator (via user token) or with the app secret.
+      sig do
+        params(
+          intent_id: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::IntentResponse::Variants)
+      end
+      def reject(
+        # ID of the intent.
+        intent_id,
+        request_options: {}
+      )
+      end
+
       # Create an intent to execute an RPC method on a wallet. The intent must be
       # authorized by either the wallet owner or signers before it can be executed.
       sig do

@@ -18,6 +18,9 @@ module Privy
       sig { returns(T::Array[Privy::StripeKYCTier]) }
       attr_accessor :kyc_tiers
 
+      sig { returns(T.nilable(String)) }
+      attr_accessor :link_auth_intent_id
+
       sig { returns(T::Array[String]) }
       attr_accessor :provided_fields
 
@@ -33,6 +36,7 @@ module Privy
           crypto_customer_id: String,
           kyc_region: T.nilable(Privy::StripeKYCRegion::OrSymbol),
           kyc_tiers: T::Array[Privy::StripeKYCTier::OrHash],
+          link_auth_intent_id: T.nilable(String),
           provided_fields: T::Array[String],
           status: Privy::StripeCryptoCustomerActive::Status::OrSymbol,
           verifications: T::Array[Privy::StripeVerification::OrHash]
@@ -43,6 +47,7 @@ module Privy
         # Region derived from a Stripe user's country of residence.
         kyc_region:,
         kyc_tiers:,
+        link_auth_intent_id:,
         provided_fields:,
         status:,
         verifications:
@@ -55,6 +60,7 @@ module Privy
             crypto_customer_id: String,
             kyc_region: T.nilable(Privy::StripeKYCRegion::OrSymbol),
             kyc_tiers: T::Array[Privy::StripeKYCTier],
+            link_auth_intent_id: T.nilable(String),
             provided_fields: T::Array[String],
             status: Privy::StripeCryptoCustomerActive::Status::OrSymbol,
             verifications: T::Array[Privy::StripeVerification]

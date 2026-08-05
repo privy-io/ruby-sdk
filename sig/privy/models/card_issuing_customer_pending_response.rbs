@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type card_issuing_customer_pending_response =
+      { status: Privy::Models::CardIssuingCustomerPendingResponse::status }
+
+    class CardIssuingCustomerPendingResponse < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::CardIssuingCustomerPendingResponse::status
+
+      def initialize: (
+        status: Privy::Models::CardIssuingCustomerPendingResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::CardIssuingCustomerPendingResponse::status
+      }
+
+      type status = :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerPendingResponse::status]
+      end
+    end
+  end
+end

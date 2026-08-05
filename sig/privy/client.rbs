@@ -19,6 +19,8 @@ module Privy
 
     attr_reader wallets: Privy::Resources::Wallets
 
+    attr_reader cards: Privy::Resources::Cards
+
     attr_reader users: Privy::Resources::Users
 
     attr_reader policies: Privy::Resources::Policies

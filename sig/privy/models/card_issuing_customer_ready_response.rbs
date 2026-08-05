@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type card_issuing_customer_ready_response =
+      {
+        external_id: String,
+        status: Privy::Models::CardIssuingCustomerReadyResponse::status
+      }
+
+    class CardIssuingCustomerReadyResponse < Privy::Internal::Type::BaseModel
+      attr_accessor external_id: String
+
+      attr_accessor status: Privy::Models::CardIssuingCustomerReadyResponse::status
+
+      def initialize: (
+        external_id: String,
+        status: Privy::Models::CardIssuingCustomerReadyResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        external_id: String,
+        status: Privy::Models::CardIssuingCustomerReadyResponse::status
+      }
+
+      type status = :ready
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        READY: :ready
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerReadyResponse::status]
+      end
+    end
+  end
+end

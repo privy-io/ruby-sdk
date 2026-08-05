@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type card_issuing_list_transactions_input =
+      {
+        environment: Privy::Models::environment,
+        ending_before: String,
+        limit: Float?,
+        starting_after: String
+      }
+
+    class CardIssuingListTransactionsInput < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::environment
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_accessor limit: Float?
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        environment: Privy::Models::environment,
+        ?ending_before: String,
+        ?limit: Float?,
+        ?starting_after: String
+      ) -> void
+
+      def to_hash: -> {
+        environment: Privy::Models::environment,
+        ending_before: String,
+        limit: Float?,
+        starting_after: String
+      }
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type environment = :sandbox | :production
+
+    module Environment
+      extend Privy::Internal::Type::Enum
+
+      SANDBOX: :sandbox
+      PRODUCTION: :production
+
+      def self?.values: -> ::Array[Privy::Models::environment]
+    end
+  end
+end

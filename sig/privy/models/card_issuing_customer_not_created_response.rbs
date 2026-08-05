@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type card_issuing_customer_not_created_response =
+      { status: Privy::Models::CardIssuingCustomerNotCreatedResponse::status }
+
+    class CardIssuingCustomerNotCreatedResponse < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::CardIssuingCustomerNotCreatedResponse::status
+
+      def initialize: (
+        status: Privy::Models::CardIssuingCustomerNotCreatedResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::CardIssuingCustomerNotCreatedResponse::status
+      }
+
+      type status = :not_created
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        NOT_CREATED: :not_created
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerNotCreatedResponse::status]
+      end
+    end
+  end
+end

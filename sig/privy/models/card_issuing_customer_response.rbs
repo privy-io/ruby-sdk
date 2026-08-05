@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type card_issuing_customer_response =
+      { data: Privy::Models::CardIssuingCustomerResponse::data }
+
+    class CardIssuingCustomerResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::Models::CardIssuingCustomerResponse::data
+
+      def initialize: (
+        data: Privy::Models::CardIssuingCustomerResponse::data
+      ) -> void
+
+      def to_hash: -> { data: Privy::Models::CardIssuingCustomerResponse::data }
+
+      type data =
+        Privy::CardIssuingCustomerNotCreatedResponse
+        | Privy::CardIssuingCustomerTermsRequiredResponse
+        | Privy::CardIssuingCustomerKYCRequiredResponse
+        | Privy::CardIssuingCustomerPendingResponse
+        | Privy::CardIssuingCustomerReadyResponse
+
+      module Data
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::CardIssuingCustomerResponse::data]
+      end
+    end
+  end
+end

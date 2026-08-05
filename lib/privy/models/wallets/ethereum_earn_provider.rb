@@ -10,6 +10,7 @@ module Privy
         MORPHO = :morpho
         AAVE = :aave
         VEDA = :veda
+        TEMPO = :tempo
 
         # @!method self.values
         #   @return [Array<Symbol>]

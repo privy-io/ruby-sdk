@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type card_issuing_card_response =
+      {
+        id: String,
+        balance: String?,
+        brand: String?,
+        chain_id: String,
+        :last4 => String?,
+        provider_id: String,
+        status: String,
+        wallet_id: String
+      }
+
+    class CardIssuingCardResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor balance: String?
+
+      attr_accessor brand: String?
+
+      attr_accessor chain_id: String
+
+      attr_accessor last4: String?
+
+      attr_accessor provider_id: String
+
+      attr_accessor status: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        id: String,
+        balance: String?,
+        brand: String?,
+        chain_id: String,
+        last4: String?,
+        provider_id: String,
+        status: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        balance: String?,
+        brand: String?,
+        chain_id: String,
+        :last4 => String?,
+        provider_id: String,
+        status: String,
+        wallet_id: String
+      }
+    end
+  end
+end

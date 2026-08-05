@@ -5,6 +5,7 @@ module Privy
         crypto_customer_id: String,
         kyc_region: Privy::Models::stripe_kyc_region?,
         kyc_tiers: ::Array[Privy::StripeKYCTier],
+        link_auth_intent_id: String?,
         provided_fields: ::Array[String],
         status: Privy::Models::StripeCryptoCustomerActive::status,
         verifications: ::Array[Privy::StripeVerification]
@@ -17,6 +18,8 @@ module Privy
 
       attr_accessor kyc_tiers: ::Array[Privy::StripeKYCTier]
 
+      attr_accessor link_auth_intent_id: String?
+
       attr_accessor provided_fields: ::Array[String]
 
       attr_accessor status: Privy::Models::StripeCryptoCustomerActive::status
@@ -27,6 +30,7 @@ module Privy
         crypto_customer_id: String,
         kyc_region: Privy::Models::stripe_kyc_region?,
         kyc_tiers: ::Array[Privy::StripeKYCTier],
+        link_auth_intent_id: String?,
         provided_fields: ::Array[String],
         status: Privy::Models::StripeCryptoCustomerActive::status,
         verifications: ::Array[Privy::StripeVerification]
@@ -36,6 +40,7 @@ module Privy
         crypto_customer_id: String,
         kyc_region: Privy::Models::stripe_kyc_region?,
         kyc_tiers: ::Array[Privy::StripeKYCTier],
+        link_auth_intent_id: String?,
         provided_fields: ::Array[String],
         status: Privy::Models::StripeCryptoCustomerActive::status,
         verifications: ::Array[Privy::StripeVerification]

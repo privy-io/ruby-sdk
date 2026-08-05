@@ -79,6 +79,27 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_reject
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.intents.reject("intent_id")
+
+    assert_pattern do
+      response => Privy::IntentResponse
+    end
+
+    assert_pattern do
+      case response
+      in Privy::RpcIntentResponse
+      in Privy::TransferIntentResponse
+      in Privy::WalletIntentResponse
+      in Privy::PolicyIntentResponse
+      in Privy::RuleIntentResponse
+      in Privy::KeyQuorumIntentResponse
+      end
+    end
+  end
+
   def test_rpc_required_params
     skip("Mock server tests are disabled")
 

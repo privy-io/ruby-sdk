@@ -31,6 +31,9 @@ module Privy
     # @return [Privy::Resources::Wallets]
     attr_reader :wallets
 
+    # @return [Privy::Resources::Cards]
+    attr_reader :cards
+
     # Operations related to users
     # @return [Privy::Resources::Users]
     attr_reader :users
@@ -185,6 +188,7 @@ module Privy
       )
 
       @wallets = Privy::Resources::Wallets.new(client: self)
+      @cards = Privy::Resources::Cards.new(client: self)
       @users = Privy::Resources::Users.new(client: self)
       @policies = Privy::Resources::Policies.new(client: self)
       @transactions = Privy::Resources::Transactions.new(client: self)

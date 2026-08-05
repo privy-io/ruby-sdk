@@ -227,6 +227,38 @@ module Privy
 
   CaptchaProvider = Privy::Models::CaptchaProvider
 
+  CardIssuingCardResponse = Privy::Models::CardIssuingCardResponse
+
+  CardIssuingCardsResponse = Privy::Models::CardIssuingCardsResponse
+
+  CardIssuingCreateCardInput = Privy::Models::CardIssuingCreateCardInput
+
+  CardIssuingCustomerInput = Privy::Models::CardIssuingCustomerInput
+
+  CardIssuingCustomerKYCRequiredResponse = Privy::Models::CardIssuingCustomerKYCRequiredResponse
+
+  CardIssuingCustomerNotCreatedResponse = Privy::Models::CardIssuingCustomerNotCreatedResponse
+
+  CardIssuingCustomerPendingResponse = Privy::Models::CardIssuingCustomerPendingResponse
+
+  CardIssuingCustomerReadyResponse = Privy::Models::CardIssuingCustomerReadyResponse
+
+  CardIssuingCustomerResponse = Privy::Models::CardIssuingCustomerResponse
+
+  CardIssuingCustomerTermsRequiredResponse = Privy::Models::CardIssuingCustomerTermsRequiredResponse
+
+  CardIssuingListCardsInput = Privy::Models::CardIssuingListCardsInput
+
+  CardIssuingListTransactionsInput = Privy::Models::CardIssuingListTransactionsInput
+
+  CardIssuingMerchant = Privy::Models::CardIssuingMerchant
+
+  CardIssuingTransactionResponse = Privy::Models::CardIssuingTransactionResponse
+
+  CardIssuingTransactionsResponse = Privy::Models::CardIssuingTransactionsResponse
+
+  CardIssuingTransactionStatus = Privy::Models::CardIssuingTransactionStatus
+
   ChainTestnetMode = Privy::Models::ChainTestnetMode
 
   ClientSessionUpdateAction = Privy::Models::ClientSessionUpdateAction
@@ -373,6 +405,8 @@ module Privy
   EncryptedBoundAuthenticateResponse = Privy::Models::EncryptedBoundAuthenticateResponse
 
   EncryptedWalletAuthenticateResponse = Privy::Models::EncryptedWalletAuthenticateResponse
+
+  Environment = Privy::Models::Environment
 
   Ethereum7702AuthorizationCondition = Privy::Models::Ethereum7702AuthorizationCondition
 
@@ -704,6 +738,8 @@ module Privy
   IntentListParams = Privy::Models::IntentListParams
 
   IntentRejectedWebhookPayload = Privy::Models::IntentRejectedWebhookPayload
+
+  IntentRejectParams = Privy::Models::IntentRejectParams
 
   IntentResponse = Privy::Models::IntentResponse
 

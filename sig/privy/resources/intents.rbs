@@ -36,6 +36,11 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::Models::intent_response
 
+      def reject: (
+        String intent_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Models::intent_response
+
       def rpc: (
         String wallet_id,
         wallet_rpc_request_body: Privy::Models::wallet_rpc_request_body,

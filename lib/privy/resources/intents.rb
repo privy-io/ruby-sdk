@@ -138,6 +138,27 @@ module Privy
         )
       end
 
+      # Reject a pending intent, preventing it from being executed. Can be called by the
+      # intent creator (via user token) or with the app secret.
+      #
+      # @overload reject(intent_id, request_options: {})
+      #
+      # @param intent_id [String] ID of the intent.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse]
+      #
+      # @see Privy::Models::IntentRejectParams
+      def reject(intent_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["v1/intents/%1$s/reject", intent_id],
+          model: Privy::IntentResponse,
+          options: params[:request_options]
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Privy::Models::IntentRpcParams} for more details.
       #

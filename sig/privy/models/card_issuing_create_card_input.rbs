@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type card_issuing_create_card_input =
+      {
+        chain_id: String,
+        environment: Privy::Models::environment,
+        wallet_id: String
+      }
+
+    class CardIssuingCreateCardInput < Privy::Internal::Type::BaseModel
+      attr_accessor chain_id: String
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        chain_id: String,
+        environment: Privy::Models::environment,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        chain_id: String,
+        environment: Privy::Models::environment,
+        wallet_id: String
+      }
+    end
+  end
+end

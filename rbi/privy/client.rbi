@@ -30,6 +30,9 @@ module Privy
     sig { returns(Privy::Resources::Wallets) }
     attr_reader :wallets
 
+    sig { returns(Privy::Resources::Cards) }
+    attr_reader :cards
+
     # Operations related to users
     sig { returns(Privy::Resources::Users) }
     attr_reader :users

@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type card_issuing_merchant = { name: String? }
+
+    class CardIssuingMerchant < Privy::Internal::Type::BaseModel
+      attr_accessor name: String?
+
+      def initialize: (name: String?) -> void
+
+      def to_hash: -> { name: String? }
+    end
+  end
+end
