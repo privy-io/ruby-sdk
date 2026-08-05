@@ -1,0 +1,100 @@
+module Privy
+  module Models
+    type onramp_deposit_instructions =
+      {
+        amount: String,
+        currency: Privy::Models::fiat_currency,
+        payment_rail: Privy::Models::fiat_payment_rail,
+        account_holder_name: String,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        bic: String,
+        deposit_message: String,
+        iban: String
+      }
+
+    class OnrampDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor currency: Privy::Models::fiat_currency
+
+      attr_accessor payment_rail: Privy::Models::fiat_payment_rail
+
+      attr_reader account_holder_name: String?
+
+      def account_holder_name=: (String) -> String
+
+      attr_reader bank_account_number: String?
+
+      def bank_account_number=: (String) -> String
+
+      attr_reader bank_address: String?
+
+      def bank_address=: (String) -> String
+
+      attr_reader bank_beneficiary_address: String?
+
+      def bank_beneficiary_address=: (String) -> String
+
+      attr_reader bank_beneficiary_name: String?
+
+      def bank_beneficiary_name=: (String) -> String
+
+      attr_reader bank_name: String?
+
+      def bank_name=: (String) -> String
+
+      attr_reader bank_routing_number: String?
+
+      def bank_routing_number=: (String) -> String
+
+      attr_reader bic: String?
+
+      def bic=: (String) -> String
+
+      attr_reader deposit_message: String?
+
+      def deposit_message=: (String) -> String
+
+      attr_reader iban: String?
+
+      def iban=: (String) -> String
+
+      def initialize: (
+        amount: String,
+        currency: Privy::Models::fiat_currency,
+        payment_rail: Privy::Models::fiat_payment_rail,
+        ?account_holder_name: String,
+        ?bank_account_number: String,
+        ?bank_address: String,
+        ?bank_beneficiary_address: String,
+        ?bank_beneficiary_name: String,
+        ?bank_name: String,
+        ?bank_routing_number: String,
+        ?bic: String,
+        ?deposit_message: String,
+        ?iban: String
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        currency: Privy::Models::fiat_currency,
+        payment_rail: Privy::Models::fiat_payment_rail,
+        account_holder_name: String,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        bic: String,
+        deposit_message: String,
+        iban: String
+      }
+    end
+  end
+end

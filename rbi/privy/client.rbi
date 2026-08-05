@@ -93,6 +93,9 @@ module Privy
     sig { returns(Privy::Resources::Yield) }
     attr_reader :yield_
 
+    sig { returns(Privy::Resources::Fiat) }
+    attr_reader :fiat
+
     sig { returns(Privy::Resources::KrakenEmbed) }
     attr_reader :kraken_embed
 
