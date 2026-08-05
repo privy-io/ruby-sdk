@@ -86,13 +86,7 @@ module Privy
       #   @return [Float]
       required :wallet_index, Float
 
-      # @!attribute user_can_sign
-      #   Whether the user can unilaterally sign with this wallet.
-      #
-      #   @return [Boolean, nil]
-      optional :user_can_sign, Privy::Internal::Type::Boolean
-
-      # @!method initialize(id:, address:, chain_id:, chain_type:, connector_type:, delegated:, first_verified_at:, imported:, latest_verified_at:, public_key:, recovery_method:, type:, verified_at:, wallet_client:, wallet_client_type:, wallet_index:, user_can_sign: nil)
+      # @!method initialize(id:, address:, chain_id:, chain_type:, connector_type:, delegated:, first_verified_at:, imported:, latest_verified_at:, public_key:, recovery_method:, type:, verified_at:, wallet_client:, wallet_client_type:, wallet_index:)
       #   A curve signing embedded wallet account linked to the user.
       #
       #   @param id [String, nil]
@@ -126,8 +120,6 @@ module Privy
       #   @param wallet_client_type [Symbol, Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::WalletClientType]
       #
       #   @param wallet_index [Float]
-      #
-      #   @param user_can_sign [Boolean] Whether the user can unilaterally sign with this wallet.
 
       # @see Privy::Models::LinkedAccountCurveSigningEmbeddedWallet#connector_type
       module ConnectorType

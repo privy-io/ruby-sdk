@@ -77,13 +77,6 @@ module Privy
       sig { returns(Float) }
       attr_accessor :wallet_index
 
-      # Whether the user can unilaterally sign with this wallet.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :user_can_sign
-
-      sig { params(user_can_sign: T::Boolean).void }
-      attr_writer :user_can_sign
-
       # A curve signing embedded wallet account linked to the user.
       sig do
         params(
@@ -105,8 +98,7 @@ module Privy
             Privy::LinkedAccountCurveSigningEmbeddedWallet::WalletClient::OrSymbol,
           wallet_client_type:
             Privy::LinkedAccountCurveSigningEmbeddedWallet::WalletClientType::OrSymbol,
-          wallet_index: Float,
-          user_can_sign: T::Boolean
+          wallet_index: Float
         ).returns(T.attached_class)
       end
       def self.new(
@@ -127,9 +119,7 @@ module Privy
         verified_at:,
         wallet_client:,
         wallet_client_type:,
-        wallet_index:,
-        # Whether the user can unilaterally sign with this wallet.
-        user_can_sign: nil
+        wallet_index:
       )
       end
 
@@ -155,8 +145,7 @@ module Privy
               Privy::LinkedAccountCurveSigningEmbeddedWallet::WalletClient::TaggedSymbol,
             wallet_client_type:
               Privy::LinkedAccountCurveSigningEmbeddedWallet::WalletClientType::TaggedSymbol,
-            wallet_index: Float,
-            user_can_sign: T::Boolean
+            wallet_index: Float
           }
         )
       end
