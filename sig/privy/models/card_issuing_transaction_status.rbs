@@ -1,16 +1,12 @@
 module Privy
   module Models
-    type card_issuing_transaction_status =
-      :pending | :completed | :declined | :disputed | :refunded
+    type card_issuing_transaction_status = :pending | :posted
 
     module CardIssuingTransactionStatus
       extend Privy::Internal::Type::Enum
 
       PENDING: :pending
-      COMPLETED: :completed
-      DECLINED: :declined
-      DISPUTED: :disputed
-      REFUNDED: :refunded
+      POSTED: :posted
 
       def self?.values: -> ::Array[Privy::Models::card_issuing_transaction_status]
     end

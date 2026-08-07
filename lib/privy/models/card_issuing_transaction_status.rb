@@ -7,10 +7,7 @@ module Privy
       extend Privy::Internal::Type::Enum
 
       PENDING = :pending
-      COMPLETED = :completed
-      DECLINED = :declined
-      DISPUTED = :disputed
-      REFUNDED = :refunded
+      POSTED = :posted
 
       # @!method self.values
       #   @return [Array<Symbol>]

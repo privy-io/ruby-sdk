@@ -12,14 +12,7 @@ module Privy
 
       PENDING =
         T.let(:pending, Privy::CardIssuingTransactionStatus::TaggedSymbol)
-      COMPLETED =
-        T.let(:completed, Privy::CardIssuingTransactionStatus::TaggedSymbol)
-      DECLINED =
-        T.let(:declined, Privy::CardIssuingTransactionStatus::TaggedSymbol)
-      DISPUTED =
-        T.let(:disputed, Privy::CardIssuingTransactionStatus::TaggedSymbol)
-      REFUNDED =
-        T.let(:refunded, Privy::CardIssuingTransactionStatus::TaggedSymbol)
+      POSTED = T.let(:posted, Privy::CardIssuingTransactionStatus::TaggedSymbol)
 
       sig do
         override.returns(
