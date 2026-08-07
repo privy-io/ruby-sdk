@@ -3,10 +3,10 @@
 require_relative "../../../test_helper"
 
 class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::ResourceTest
-  def test__deposit_required_params
+  def test_deposit_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.wallets.earn.ethereum._deposit("wallet_id", vault_id: "cm7oxq1el000e11o8iwp7d0d0")
+    response = @privy_api.wallets.earn.ethereum.deposit("wallet_id", vault_id: "cm7oxq1el000e11o8iwp7d0d0")
 
     assert_pattern do
       response => Privy::Wallets::EarnDepositActionResponse
@@ -34,10 +34,10 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
     end
   end
 
-  def test__withdraw_required_params
+  def test_withdraw_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.wallets.earn.ethereum._withdraw("wallet_id", vault_id: "cm7oxq1el000e11o8iwp7d0d0")
+    response = @privy_api.wallets.earn.ethereum.withdraw("wallet_id", vault_id: "cm7oxq1el000e11o8iwp7d0d0")
 
     assert_pattern do
       response => Privy::Wallets::EarnWithdrawActionResponse

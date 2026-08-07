@@ -18,7 +18,7 @@ module Privy
                 request_options: Privy::RequestOptions::OrHash
               ).returns(Privy::Wallets::EarnIncentiveClaimActionResponse)
             end
-            def _claim(
+            def claim(
               # Path param: ID of the wallet.
               wallet_id,
               # Body param: The blockchain network on which to perform the incentive claim.

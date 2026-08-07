@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    # @see Privy::Resources::Wallets#_transfer
+    # @see Privy::Resources::Wallets#transfer
     class WalletTransferParams < Privy::Models::TransferRequestBody
       extend Privy::Internal::Type::RequestParameters::Converter
       include Privy::Internal::Type::RequestParameters

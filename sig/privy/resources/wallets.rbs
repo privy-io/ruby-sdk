@@ -65,20 +65,6 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::Wallet
 
-      def _transfer: (
-        String wallet_id,
-        destination: Privy::TokenTransferDestination,
-        source: Privy::Models::token_transfer_source,
-        ?amount: String,
-        ?amount_type: Privy::Models::amount_type,
-        ?fee_configuration: Privy::FeeConfiguration,
-        ?slippage_bps: Integer,
-        ?privy_authorization_signature: String,
-        ?privy_idempotency_key: String,
-        ?privy_request_expiry: String,
-        ?request_options: Privy::request_opts
-      ) -> Privy::Wallets::TransferActionResponse
-
       def archive: (
         String wallet_id,
         ?request_options: Privy::request_opts
@@ -142,6 +128,20 @@ module Privy
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
       ) -> Privy::Models::wallet_rpc_response
+
+      def transfer: (
+        String wallet_id,
+        destination: Privy::TokenTransferDestination,
+        source: Privy::Models::token_transfer_source,
+        ?amount: String,
+        ?amount_type: Privy::Models::amount_type,
+        ?fee_configuration: Privy::FeeConfiguration,
+        ?slippage_bps: Integer,
+        ?privy_authorization_signature: String,
+        ?privy_idempotency_key: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Wallets::TransferActionResponse
 
       def initialize: (client: Privy::Client) -> void
     end

@@ -4,7 +4,7 @@ module Privy
       class Earn
         class Ethereum
           class Incentive
-            def _claim: (
+            def claim: (
               String wallet_id,
               chain: String,
               ?privy_authorization_signature: String,

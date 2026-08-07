@@ -23,7 +23,7 @@ module Privy
               request_options: Privy::RequestOptions::OrHash
             ).returns(Privy::Wallets::EarnDepositActionResponse)
           end
-          def _deposit(
+          def deposit(
             # Path param: ID of the wallet.
             wallet_id,
             # Body param: The ID of the vault to deposit into.
@@ -60,7 +60,7 @@ module Privy
               request_options: Privy::RequestOptions::OrHash
             ).returns(Privy::Wallets::EarnWithdrawActionResponse)
           end
-          def _withdraw(
+          def withdraw(
             # Path param: ID of the wallet.
             wallet_id,
             # Body param: The ID of the vault to withdraw from.

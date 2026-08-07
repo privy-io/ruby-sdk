@@ -212,56 +212,6 @@ module Privy
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Privy::Models::WalletTransferParams} for more details.
-      #
-      # Transfer tokens from a wallet to a destination address.
-      #
-      # @overload _transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
-      #
-      # @param wallet_id [String] Path param: ID of the wallet.
-      #
-      # @param destination [Privy::Models::TokenTransferDestination] Body param: The destination address for a token transfer. Optionally specify a d
-      #
-      # @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] Body param: The source asset, amount, and chain for a token transfer. Specify ei
-      #
-      # @param amount [String] Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
-      #
-      # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
-      #
-      # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
-      #
-      # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only appli
-      #
-      # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
-      #
-      # @param privy_idempotency_key [String] Header param: Idempotency keys ensure API requests are executed only once within
-      #
-      # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
-      #
-      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Privy::Models::Wallets::TransferActionResponse]
-      #
-      # @see Privy::Models::WalletTransferParams
-      def _transfer(wallet_id, params)
-        parsed, options = Privy::WalletTransferParams.dump_request(params)
-        header_params =
-          {
-            privy_authorization_signature: "privy-authorization-signature",
-            privy_idempotency_key: "privy-idempotency-key",
-            privy_request_expiry: "privy-request-expiry"
-          }
-        @client.request(
-          method: :post,
-          path: ["v1/wallets/%1$s/transfer", wallet_id],
-          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
-          body: parsed.except(*header_params.keys),
-          model: Privy::Wallets::TransferActionResponse,
-          options: options
-        )
-      end
-
       # Archives a wallet, preventing it from being used in any write or signing
       # operations. Archived wallets are hidden from list endpoints by default. Returns
       # 404 if the wallet does not exist or is already archived.
@@ -532,6 +482,56 @@ module Privy
           ),
           body: parsed[:wallet_rpc_request_body],
           model: Privy::WalletRpcResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::WalletTransferParams} for more details.
+      #
+      # Transfer tokens from a wallet to a destination address.
+      #
+      # @overload transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+      #
+      # @param wallet_id [String] Path param: ID of the wallet.
+      #
+      # @param destination [Privy::Models::TokenTransferDestination] Body param: The destination address for a token transfer. Optionally specify a d
+      #
+      # @param source [Privy::Models::NamedTokenTransferSource, Privy::Models::CustomTokenTransferSource] Body param: The source asset, amount, and chain for a token transfer. Specify ei
+      #
+      # @param amount [String] Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
+      #
+      # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
+      #
+      # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
+      #
+      # @param slippage_bps [Integer] Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only appli
+      #
+      # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
+      #
+      # @param privy_idempotency_key [String] Header param: Idempotency keys ensure API requests are executed only once within
+      #
+      # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::Wallets::TransferActionResponse]
+      #
+      # @see Privy::Models::WalletTransferParams
+      def transfer(wallet_id, params)
+        parsed, options = Privy::WalletTransferParams.dump_request(params)
+        header_params =
+          {
+            privy_authorization_signature: "privy-authorization-signature",
+            privy_idempotency_key: "privy-idempotency-key",
+            privy_request_expiry: "privy-request-expiry"
+          }
+        @client.request(
+          method: :post,
+          path: ["v1/wallets/%1$s/transfer", wallet_id],
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
+          model: Privy::Wallets::TransferActionResponse,
           options: options
         )
       end

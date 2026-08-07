@@ -224,60 +224,6 @@ module Privy
       )
       end
 
-      # Transfer tokens from a wallet to a destination address.
-      sig do
-        params(
-          wallet_id: String,
-          destination: Privy::TokenTransferDestination::OrHash,
-          source:
-            T.any(
-              Privy::NamedTokenTransferSource::OrHash,
-              Privy::CustomTokenTransferSource::OrHash
-            ),
-          amount: String,
-          amount_type: Privy::AmountType::OrSymbol,
-          fee_configuration: Privy::FeeConfiguration::OrHash,
-          slippage_bps: Integer,
-          privy_authorization_signature: String,
-          privy_idempotency_key: String,
-          privy_request_expiry: String,
-          request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::Wallets::TransferActionResponse)
-      end
-      def _transfer(
-        # Path param: ID of the wallet.
-        wallet_id,
-        # Body param: The destination address for a token transfer. Optionally specify a
-        # different asset or chain for cross-asset or cross-chain transfers.
-        destination:,
-        # Body param: The source asset, amount, and chain for a token transfer. Specify
-        # either `asset` (named) or `asset_address` (custom), not both.
-        source:,
-        # Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
-        # for 1.5 USDC). For exact_input, the amount to send. For exact_output, the exact
-        # amount to receive. Takes precedence over source.amount when both are provided.
-        amount: nil,
-        # Body param: Whether the amount refers to the input token or output token.
-        amount_type: nil,
-        # Body param: Total fees assessed on a transfer, in BPS
-        fee_configuration: nil,
-        # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only
-        # applicable for cross-chain or cross-asset transfers; omit to use the provider
-        # default.
-        slippage_bps: nil,
-        # Header param: Request authorization signature. If multiple signatures are
-        # required, they should be comma separated.
-        privy_authorization_signature: nil,
-        # Header param: Idempotency keys ensure API requests are executed only once within
-        # a 24-hour window.
-        privy_idempotency_key: nil,
-        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
-        # representing the deadline by which the request must be processed.
-        privy_request_expiry: nil,
-        request_options: {}
-      )
-      end
-
       # Archives a wallet, preventing it from being used in any write or signing
       # operations. Archived wallets are hidden from list endpoints by default. Returns
       # 404 if the wallet does not exist or is already archived.
@@ -505,6 +451,60 @@ module Privy
         wallet_id,
         # Body param: Request body for wallet RPC operations, discriminated by method.
         wallet_rpc_request_body:,
+        # Header param: Request authorization signature. If multiple signatures are
+        # required, they should be comma separated.
+        privy_authorization_signature: nil,
+        # Header param: Idempotency keys ensure API requests are executed only once within
+        # a 24-hour window.
+        privy_idempotency_key: nil,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # Transfer tokens from a wallet to a destination address.
+      sig do
+        params(
+          wallet_id: String,
+          destination: Privy::TokenTransferDestination::OrHash,
+          source:
+            T.any(
+              Privy::NamedTokenTransferSource::OrHash,
+              Privy::CustomTokenTransferSource::OrHash
+            ),
+          amount: String,
+          amount_type: Privy::AmountType::OrSymbol,
+          fee_configuration: Privy::FeeConfiguration::OrHash,
+          slippage_bps: Integer,
+          privy_authorization_signature: String,
+          privy_idempotency_key: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::Wallets::TransferActionResponse)
+      end
+      def transfer(
+        # Path param: ID of the wallet.
+        wallet_id,
+        # Body param: The destination address for a token transfer. Optionally specify a
+        # different asset or chain for cross-asset or cross-chain transfers.
+        destination:,
+        # Body param: The source asset, amount, and chain for a token transfer. Specify
+        # either `asset` (named) or `asset_address` (custom), not both.
+        source:,
+        # Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
+        # for 1.5 USDC). For exact_input, the amount to send. For exact_output, the exact
+        # amount to receive. Takes precedence over source.amount when both are provided.
+        amount: nil,
+        # Body param: Whether the amount refers to the input token or output token.
+        amount_type: nil,
+        # Body param: Total fees assessed on a transfer, in BPS
+        fee_configuration: nil,
+        # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only
+        # applicable for cross-chain or cross-asset transfers; omit to use the provider
+        # default.
+        slippage_bps: nil,
         # Header param: Request authorization signature. If multiple signatures are
         # required, they should be comma separated.
         privy_authorization_signature: nil,

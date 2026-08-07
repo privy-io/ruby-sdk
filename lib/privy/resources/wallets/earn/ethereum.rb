@@ -15,7 +15,7 @@ module Privy
           #
           # Deposit assets into an ERC-4626 vault.
           #
-          # @overload _deposit(wallet_id, vault_id:, amount: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload deposit(wallet_id, vault_id:, amount: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: ID of the wallet.
           #
@@ -36,7 +36,7 @@ module Privy
           # @return [Privy::Models::Wallets::EarnDepositActionResponse]
           #
           # @see Privy::Models::Wallets::Earn::EthereumDepositParams
-          def _deposit(wallet_id, params)
+          def deposit(wallet_id, params)
             parsed, options = Privy::Wallets::Earn::EthereumDepositParams.dump_request(params)
             header_params =
               {
@@ -59,7 +59,7 @@ module Privy
           #
           # Withdraw assets from an ERC-4626 vault.
           #
-          # @overload _withdraw(wallet_id, vault_id:, amount: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload withdraw(wallet_id, vault_id:, amount: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: ID of the wallet.
           #
@@ -80,7 +80,7 @@ module Privy
           # @return [Privy::Models::Wallets::EarnWithdrawActionResponse]
           #
           # @see Privy::Models::Wallets::Earn::EthereumWithdrawParams
-          def _withdraw(wallet_id, params)
+          def withdraw(wallet_id, params)
             parsed, options = Privy::Wallets::Earn::EthereumWithdrawParams.dump_request(params)
             header_params =
               {

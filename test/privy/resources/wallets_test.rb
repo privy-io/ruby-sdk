@@ -169,47 +169,6 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
     end
   end
 
-  def test__transfer_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @privy_api.wallets._transfer(
-        "wallet_id",
-        destination: {address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2"},
-        source: {asset: "usdc", chain: "base"}
-      )
-
-    assert_pattern do
-      response => Privy::Wallets::TransferActionResponse
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        created_at: Time,
-        destination_address: String,
-        destination_amount: String | nil,
-        source_chain: String,
-        status: Privy::Wallets::WalletActionStatus,
-        type: Privy::Wallets::TransferActionResponse::Type,
-        wallet_id: String,
-        amount_type: Privy::AmountType | nil,
-        destination_asset: String | nil,
-        destination_chain: String | nil,
-        estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
-        estimated_gas: Privy::Gas | nil,
-        failure_reason: Privy::Wallets::FailureReason | nil,
-        fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
-        gas: Privy::Gas | nil,
-        source_amount: String | nil,
-        source_asset: String | nil,
-        source_asset_address: String | nil,
-        source_asset_decimals: Integer | nil,
-        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
-      }
-    end
-  end
-
   def test_archive
     skip("Mock server tests are disabled")
 
@@ -489,6 +448,47 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in {method_: :exportPrivateKey, data: Privy::PrivateKeyExportInput}
       in {method_: :exportSeedPhrase, data: Privy::SeedPhraseExportResponse}
       end
+    end
+  end
+
+  def test_transfer_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @privy_api.wallets.transfer(
+        "wallet_id",
+        destination: {address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2"},
+        source: {asset: "usdc", chain: "base"}
+      )
+
+    assert_pattern do
+      response => Privy::Wallets::TransferActionResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        destination_address: String,
+        destination_amount: String | nil,
+        source_chain: String,
+        status: Privy::Wallets::WalletActionStatus,
+        type: Privy::Wallets::TransferActionResponse::Type,
+        wallet_id: String,
+        amount_type: Privy::AmountType | nil,
+        destination_asset: String | nil,
+        destination_chain: String | nil,
+        estimated_fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
+        estimated_gas: Privy::Gas | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
+        gas: Privy::Gas | nil,
+        source_amount: String | nil,
+        source_asset: String | nil,
+        source_asset_address: String | nil,
+        source_asset_decimals: Integer | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
+      }
     end
   end
 end

@@ -12,7 +12,7 @@ module Privy
             #
             # Claim incentive rewards for a wallet.
             #
-            # @overload _claim(wallet_id, chain:, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+            # @overload claim(wallet_id, chain:, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
             #
             # @param wallet_id [String] Path param: ID of the wallet.
             #
@@ -29,7 +29,7 @@ module Privy
             # @return [Privy::Models::Wallets::EarnIncentiveClaimActionResponse]
             #
             # @see Privy::Models::Wallets::Earn::Ethereum::IncentiveClaimParams
-            def _claim(wallet_id, params)
+            def claim(wallet_id, params)
               parsed, options = Privy::Wallets::Earn::Ethereum::IncentiveClaimParams.dump_request(params)
               header_params =
                 {
