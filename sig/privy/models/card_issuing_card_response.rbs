@@ -3,7 +3,7 @@ module Privy
     type card_issuing_card_response =
       {
         id: String,
-        balance: String?,
+        balance_formatted: String?,
         brand: String?,
         chain_id: String,
         :last4 => String?,
@@ -15,7 +15,7 @@ module Privy
     class CardIssuingCardResponse < Privy::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor balance: String?
+      attr_accessor balance_formatted: String?
 
       attr_accessor brand: String?
 
@@ -31,7 +31,7 @@ module Privy
 
       def initialize: (
         id: String,
-        balance: String?,
+        balance_formatted: String?,
         brand: String?,
         chain_id: String,
         last4: String?,
@@ -42,7 +42,7 @@ module Privy
 
       def to_hash: -> {
         id: String,
-        balance: String?,
+        balance_formatted: String?,
         brand: String?,
         chain_id: String,
         :last4 => String?,

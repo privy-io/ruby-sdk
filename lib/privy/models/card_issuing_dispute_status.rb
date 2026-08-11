@@ -2,15 +2,15 @@
 
 module Privy
   module Models
-    # Status for card activity.
-    module CardIssuingTransactionStatus
+    # Status of a dispute for card activity.
+    module CardIssuingDisputeStatus
       extend Privy::Internal::Type::Enum
 
-      PENDING = :pending
-      POSTED = :posted
-      DECLINED = :declined
       EXPIRED = :expired
-      REVERSED = :reversed
+      LOST = :lost
+      SUBMITTED = :submitted
+      UNSUBMITTED = :unsubmitted
+      WON = :won
 
       # @!method self.values
       #   @return [Array<Symbol>]

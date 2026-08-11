@@ -34,7 +34,7 @@ module Privy
         #   Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with
         #   `asset`. Cannot be used with `token`.
         #
-        #   @return [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>, nil]
+        #   @return [Symbol, String, Array<Symbol, String, Privy::Models::WalletAssetChainNameInput>, Privy::Models::Wallets::BalanceGetParams::Chain, nil]
         optional :chain, union: -> { Privy::Wallets::BalanceGetParams::Chain }
 
         # @!attribute include_archived
@@ -60,7 +60,7 @@ module Privy
         #
         #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::BalanceGetParams::Asset] Named asset(s) to query (e.g. `eth`, `usdc`). Use together with `chain` to scope
         #
-        #   @param chain [Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>] Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with `ass
+        #   @param chain [Symbol, String, Array<Symbol, String, Privy::Models::WalletAssetChainNameInput>, Privy::Models::Wallets::BalanceGetParams::Chain] Chain(s) to query named assets on (e.g. `tempo`, `base`). Use together with `ass
         #
         #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
@@ -150,17 +150,100 @@ module Privy
         module Chain
           extend Privy::Internal::Type::Union
 
-          # Supported blockchain network names for wallet balance and transaction queries.
-          variant enum: -> { Privy::WalletAssetChainNameInput }
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ETHEREUM }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARBITRUM }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::AVALANCHE }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BASE }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TEMPO }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::LINEA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::OPTIMISM }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::POLYGON }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BSC }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SOLANA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TRON }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ZKSYNC_ERA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::HOODI }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SEPOLIA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARBITRUM_SEPOLIA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::AVALANCHE_FUJI }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::BASE_SEPOLIA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::LINEA_TESTNET }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::OPTIMISM_SEPOLIA }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::POLYGON_AMOY }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SOLANA_DEVNET }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SOLANA_TESTNET }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TRON_NILE }
+
+          variant String
 
           variant -> { Privy::Models::Wallets::BalanceGetParams::Chain::WalletAssetChainNameInputArray }
 
           # @!method self.variants
-          #   @return [Array(Symbol, Privy::Models::WalletAssetChainNameInput, Array<Symbol, Privy::Models::WalletAssetChainNameInput>)]
+          #   @return [Array(Symbol, String, Array<Symbol, String, Privy::Models::WalletAssetChainNameInput>)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias do
+              T.any(
+                Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol,
+                String,
+                T::Array[Privy::WalletAssetChainNameInput::Variants]
+              )
+            end
+          end
+
+          # @!group
+
+          ETHEREUM = :ethereum
+          ARBITRUM = :arbitrum
+          AVALANCHE = :avalanche
+          BASE = :base
+          TEMPO = :tempo
+          LINEA = :linea
+          OPTIMISM = :optimism
+          POLYGON = :polygon
+          BSC = :bsc
+          SOLANA = :solana
+          TRON = :tron
+          ZKSYNC_ERA = :zksync_era
+          HOODI = :hoodi
+          SEPOLIA = :sepolia
+          ARBITRUM_SEPOLIA = :arbitrum_sepolia
+          AVALANCHE_FUJI = :avalanche_fuji
+          BASE_SEPOLIA = :base_sepolia
+          LINEA_TESTNET = :linea_testnet
+          OPTIMISM_SEPOLIA = :optimism_sepolia
+          POLYGON_AMOY = :polygon_amoy
+          SOLANA_DEVNET = :solana_devnet
+          SOLANA_TESTNET = :solana_testnet
+          TRON_NILE = :tron_nile
+
+          # @!endgroup
 
           # @type [Privy::Internal::Type::Converter]
           WalletAssetChainNameInputArray =
-            Privy::Internal::Type::ArrayOf[enum: -> { Privy::WalletAssetChainNameInput }]
+            Privy::Internal::Type::ArrayOf[union: -> { Privy::WalletAssetChainNameInput }]
         end
 
         # If set, balances are converted to the specified fiat currency. Not supported

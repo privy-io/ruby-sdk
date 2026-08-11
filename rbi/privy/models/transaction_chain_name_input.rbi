@@ -4,7 +4,18 @@ module Privy
   module Models
     # Chains supported for transaction history queries.
     module TransactionChainNameInput
-      extend Privy::Internal::Type::Enum
+      extend Privy::Internal::Type::Union
+
+      Variants =
+        T.type_alias do
+          T.any(Privy::TransactionChainNameInput::TaggedSymbol, String)
+        end
+
+      sig do
+        override.returns(T::Array[Privy::TransactionChainNameInput::Variants])
+      end
+      def self.variants
+      end
 
       TaggedSymbol =
         T.type_alias { T.all(Symbol, Privy::TransactionChainNameInput) }
@@ -27,14 +38,6 @@ module Privy
       POLYGON = T.let(:polygon, Privy::TransactionChainNameInput::TaggedSymbol)
       SOLANA = T.let(:solana, Privy::TransactionChainNameInput::TaggedSymbol)
       SEPOLIA = T.let(:sepolia, Privy::TransactionChainNameInput::TaggedSymbol)
-
-      sig do
-        override.returns(
-          T::Array[Privy::TransactionChainNameInput::TaggedSymbol]
-        )
-      end
-      def self.values
-      end
     end
   end
 end

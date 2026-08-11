@@ -11,8 +11,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
+      # USD balance of the card funding wallet on the configured chain, or null when
+      # unavailable.
       sig { returns(T.nilable(String)) }
-      attr_accessor :balance
+      attr_accessor :balance_formatted
 
       sig { returns(T.nilable(String)) }
       attr_accessor :brand
@@ -37,7 +39,7 @@ module Privy
       sig do
         params(
           id: String,
-          balance: T.nilable(String),
+          balance_formatted: T.nilable(String),
           brand: T.nilable(String),
           chain_id: String,
           last4: T.nilable(String),
@@ -48,7 +50,9 @@ module Privy
       end
       def self.new(
         id:,
-        balance:,
+        # USD balance of the card funding wallet on the configured chain, or null when
+        # unavailable.
+        balance_formatted:,
         brand:,
         # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         chain_id:,
@@ -63,7 +67,7 @@ module Privy
         override.returns(
           {
             id: String,
-            balance: T.nilable(String),
+            balance_formatted: T.nilable(String),
             brand: T.nilable(String),
             chain_id: String,
             last4: T.nilable(String),

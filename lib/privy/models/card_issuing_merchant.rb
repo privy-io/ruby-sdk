@@ -9,7 +9,7 @@ module Privy
       required :name, String, nil?: true
 
       # @!method initialize(name:)
-      #   Merchant metadata for a card issuing transaction.
+      #   Merchant metadata for card activity.
       #
       #   @param name [String, nil]
     end

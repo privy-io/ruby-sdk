@@ -11,7 +11,7 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :name
 
-      # Merchant metadata for a card issuing transaction.
+      # Merchant metadata for card activity.
       sig { params(name: T.nilable(String)).returns(T.attached_class) }
       def self.new(name:)
       end

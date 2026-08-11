@@ -13,9 +13,12 @@ module Privy
       | :polygon
       | :solana
       | :sepolia
+      | String
 
     module TransactionChainNameInput
-      extend Privy::Internal::Type::Enum
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transaction_chain_name_input]
 
       ETHEREUM: :ethereum
       ARBITRUM: :arbitrum
@@ -29,8 +32,6 @@ module Privy
       POLYGON: :polygon
       SOLANA: :solana
       SEPOLIA: :sepolia
-
-      def self?.values: -> ::Array[Privy::Models::transaction_chain_name_input]
     end
   end
 end

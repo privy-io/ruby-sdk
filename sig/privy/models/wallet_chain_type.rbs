@@ -15,6 +15,7 @@ module Privy
       | :near
       | :ton
       | :starknet
+      | :xrpl
       | :spark
 
     module WalletChainType
@@ -34,6 +35,7 @@ module Privy
       NEAR: :near
       TON: :ton
       STARKNET: :starknet
+      XRPL: :xrpl
       SPARK: :spark
 
       def self?.values: -> ::Array[Privy::Models::wallet_chain_type]

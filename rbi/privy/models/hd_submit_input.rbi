@@ -11,7 +11,7 @@ module Privy
       attr_accessor :address
 
       # The chain type of the wallet to import. Supports `ethereum`, `solana`,
-      # `stellar`, `tron`, `sui`, and `aptos`.
+      # `stellar`, `tron`, `sui`, `aptos`, and `xrpl`.
       sig { returns(Privy::WalletImportSupportedChains::OrSymbol) }
       attr_accessor :chain_type
 
@@ -62,7 +62,7 @@ module Privy
         # The address of the wallet to import.
         address:,
         # The chain type of the wallet to import. Supports `ethereum`, `solana`,
-        # `stellar`, `tron`, `sui`, and `aptos`.
+        # `stellar`, `tron`, `sui`, `aptos`, and `xrpl`.
         chain_type:,
         # The encrypted entropy of the wallet to import.
         ciphertext:,

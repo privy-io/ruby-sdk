@@ -18,6 +18,7 @@ module Privy
       NEAR = :near
       TON = :ton
       STARKNET = :starknet
+      XRPL = :xrpl
       SPARK = :spark
 
       # @!method self.values

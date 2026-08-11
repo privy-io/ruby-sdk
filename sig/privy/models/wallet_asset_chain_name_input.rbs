@@ -24,9 +24,12 @@ module Privy
       | :solana_devnet
       | :solana_testnet
       | :tron_nile
+      | String
 
     module WalletAssetChainNameInput
-      extend Privy::Internal::Type::Enum
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_asset_chain_name_input]
 
       ETHEREUM: :ethereum
       ARBITRUM: :arbitrum
@@ -51,8 +54,6 @@ module Privy
       SOLANA_DEVNET: :solana_devnet
       SOLANA_TESTNET: :solana_testnet
       TRON_NILE: :tron_nile
-
-      def self?.values: -> ::Array[Privy::Models::wallet_asset_chain_name_input]
     end
   end
 end

@@ -11,7 +11,7 @@ module Privy
 
       # @!attribute chain_type
       #   The chain type of the wallet to import. Supports `ethereum`, `solana`,
-      #   `stellar`, `tron`, `sui`, and `aptos`.
+      #   `stellar`, `tron`, `sui`, `aptos`, and `xrpl`.
       #
       #   @return [Symbol, Privy::Models::WalletImportSupportedChains]
       required :chain_type, enum: -> { Privy::WalletImportSupportedChains }

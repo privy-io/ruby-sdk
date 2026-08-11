@@ -9,7 +9,7 @@ module Privy
         sig do
           params(
             wallet_id: String,
-            chain: Privy::TransactionChainNameInput::OrSymbol,
+            chain: T.any(Privy::TransactionChainNameInput::OrSymbol, String),
             token: Privy::Wallets::TransactionGetParams::Token::Variants,
             asset:
               T.any(

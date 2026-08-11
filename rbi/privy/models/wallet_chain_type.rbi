@@ -25,6 +25,7 @@ module Privy
       NEAR = T.let(:near, Privy::WalletChainType::TaggedSymbol)
       TON = T.let(:ton, Privy::WalletChainType::TaggedSymbol)
       STARKNET = T.let(:starknet, Privy::WalletChainType::TaggedSymbol)
+      XRPL = T.let(:xrpl, Privy::WalletChainType::TaggedSymbol)
       SPARK = T.let(:spark, Privy::WalletChainType::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::WalletChainType::TaggedSymbol]) }

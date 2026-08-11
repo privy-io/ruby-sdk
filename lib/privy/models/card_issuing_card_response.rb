@@ -8,10 +8,12 @@ module Privy
       #   @return [String]
       required :id, String
 
-      # @!attribute balance
+      # @!attribute balance_formatted
+      #   USD balance of the card funding wallet on the configured chain, or null when
+      #   unavailable.
       #
       #   @return [String, nil]
-      required :balance, String, nil?: true
+      required :balance_formatted, String, nil?: true
 
       # @!attribute brand
       #
@@ -44,7 +46,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, balance:, brand:, chain_id:, last4:, provider_id:, status:, wallet_id:)
+      # @!method initialize(id:, balance_formatted:, brand:, chain_id:, last4:, provider_id:, status:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CardIssuingCardResponse} for more details.
       #
@@ -52,7 +54,7 @@ module Privy
       #
       #   @param id [String]
       #
-      #   @param balance [String, nil]
+      #   @param balance_formatted [String, nil] USD balance of the card funding wallet on the configured chain, or null when una
       #
       #   @param brand [String, nil]
       #

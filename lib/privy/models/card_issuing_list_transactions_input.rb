@@ -9,31 +9,26 @@ module Privy
       #   @return [Symbol, Privy::Models::Environment]
       required :environment, enum: -> { Privy::Environment }
 
-      # @!attribute ending_before
+      # @!attribute cursor
+      #   Opaque cursor returned by the previous page.
       #
       #   @return [String, nil]
-      optional :ending_before, String
+      optional :cursor, String
 
       # @!attribute limit
+      #   Maximum number of records requested from each card activity source.
       #
-      #   @return [Float, nil]
-      optional :limit, Float, nil?: true
+      #   @return [Integer, nil]
+      optional :limit, Integer
 
-      # @!attribute starting_after
-      #
-      #   @return [String, nil]
-      optional :starting_after, String
-
-      # @!method initialize(environment:, ending_before: nil, limit: nil, starting_after: nil)
-      #   Query parameters for listing Stripe Issuing transactions for a Privy card.
+      # @!method initialize(environment:, cursor: nil, limit: nil)
+      #   Query parameters for listing activity for a Privy card.
       #
       #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
       #
-      #   @param ending_before [String]
+      #   @param cursor [String] Opaque cursor returned by the previous page.
       #
-      #   @param limit [Float, nil]
-      #
-      #   @param starting_after [String]
+      #   @param limit [Integer] Maximum number of records requested from each card activity source.
     end
   end
 end

@@ -56,7 +56,7 @@ module Privy
           attr_accessor :asset
 
           # Supported blockchain network names for wallet balance and transaction queries.
-          sig { returns(Privy::WalletAssetChainNameInput::TaggedSymbol) }
+          sig { returns(Privy::WalletAssetChainNameInput::Variants) }
           attr_accessor :chain
 
           sig { returns(T::Hash[Symbol, String]) }
@@ -75,7 +75,7 @@ module Privy
                   Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::OrSymbol,
                   String
                 ),
-              chain: Privy::WalletAssetChainNameInput::OrSymbol,
+              chain: T.any(Privy::WalletAssetChainNameInput::OrSymbol, String),
               display_values: T::Hash[Symbol, String],
               raw_value: String,
               raw_value_decimals: Float
@@ -96,7 +96,7 @@ module Privy
               {
                 asset:
                   Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::Variants,
-                chain: Privy::WalletAssetChainNameInput::TaggedSymbol,
+                chain: Privy::WalletAssetChainNameInput::Variants,
                 display_values: T::Hash[Symbol, String],
                 raw_value: String,
                 raw_value_decimals: Float

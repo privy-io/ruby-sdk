@@ -11,8 +11,8 @@ module Privy
       # @!attribute chain
       #   Supported blockchain network names for wallet balance and transaction queries.
       #
-      #   @return [Symbol, Privy::Models::WalletAssetChainNameInput]
-      required :chain, enum: -> { Privy::WalletAssetChainNameInput }
+      #   @return [Symbol, String, Privy::Models::WalletAssetChainNameInput]
+      required :chain, union: -> { Privy::WalletAssetChainNameInput }
 
       # @!attribute display_values
       #
@@ -59,7 +59,7 @@ module Privy
       #
       #   @param asset [Symbol, String, Privy::Models::TransferSentTransactionDetail::Asset]
       #
-      #   @param chain [Symbol, Privy::Models::WalletAssetChainNameInput] Supported blockchain network names for wallet balance and transaction queries.
+      #   @param chain [Symbol, String, Privy::Models::WalletAssetChainNameInput] Supported blockchain network names for wallet balance and transaction queries.
       #
       #   @param display_values [Hash{Symbol=>String}]
       #

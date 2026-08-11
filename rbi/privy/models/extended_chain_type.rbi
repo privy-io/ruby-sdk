@@ -23,6 +23,7 @@ module Privy
       NEAR = T.let(:near, Privy::ExtendedChainType::TaggedSymbol)
       TON = T.let(:ton, Privy::ExtendedChainType::TaggedSymbol)
       STARKNET = T.let(:starknet, Privy::ExtendedChainType::TaggedSymbol)
+      XRPL = T.let(:xrpl, Privy::ExtendedChainType::TaggedSymbol)
       SPARK = T.let(:spark, Privy::ExtendedChainType::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::ExtendedChainType::TaggedSymbol]) }

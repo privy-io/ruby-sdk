@@ -15,36 +15,35 @@ module Privy
       sig { returns(Privy::Environment::OrSymbol) }
       attr_accessor :environment
 
+      # Opaque cursor returned by the previous page.
       sig { returns(T.nilable(String)) }
-      attr_reader :ending_before
+      attr_reader :cursor
 
-      sig { params(ending_before: String).void }
-      attr_writer :ending_before
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :limit
+      # Maximum number of records requested from each card activity source.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :limit
 
-      sig { returns(T.nilable(String)) }
-      attr_reader :starting_after
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
-      sig { params(starting_after: String).void }
-      attr_writer :starting_after
-
-      # Query parameters for listing Stripe Issuing transactions for a Privy card.
+      # Query parameters for listing activity for a Privy card.
       sig do
         params(
           environment: Privy::Environment::OrSymbol,
-          ending_before: String,
-          limit: T.nilable(Float),
-          starting_after: String
+          cursor: String,
+          limit: Integer
         ).returns(T.attached_class)
       end
       def self.new(
         # The Privy API environment.
         environment:,
-        ending_before: nil,
-        limit: nil,
-        starting_after: nil
+        # Opaque cursor returned by the previous page.
+        cursor: nil,
+        # Maximum number of records requested from each card activity source.
+        limit: nil
       )
       end
 
@@ -52,9 +51,8 @@ module Privy
         override.returns(
           {
             environment: Privy::Environment::OrSymbol,
-            ending_before: String,
-            limit: T.nilable(Float),
-            starting_after: String
+            cursor: String,
+            limit: Integer
           }
         )
       end

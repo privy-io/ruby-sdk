@@ -197,6 +197,10 @@ module Privy
 
   class CardIssuingCustomerTermsRequiredResponse = Privy::Models::CardIssuingCustomerTermsRequiredResponse
 
+  class CardIssuingDispute = Privy::Models::CardIssuingDispute
+
+  module CardIssuingDisputeStatus = Privy::Models::CardIssuingDisputeStatus
+
   class CardIssuingListCardsInput = Privy::Models::CardIssuingListCardsInput
 
   class CardIssuingListTransactionsInput = Privy::Models::CardIssuingListTransactionsInput

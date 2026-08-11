@@ -17,8 +17,8 @@ module Privy
         # @!attribute chain
         #   Chains supported for transaction history queries.
         #
-        #   @return [Symbol, Privy::Models::TransactionChainNameInput]
-        required :chain, enum: -> { Privy::TransactionChainNameInput }
+        #   @return [Symbol, String, Privy::Models::TransactionChainNameInput]
+        required :chain, union: -> { Privy::TransactionChainNameInput }
 
         # @!attribute token
         #   Exactly one of `token` or `asset` is required. Cannot be used together with
@@ -61,7 +61,7 @@ module Privy
         #
         #   @param wallet_id [String] ID of the wallet.
         #
-        #   @param chain [Symbol, Privy::Models::TransactionChainNameInput] Chains supported for transaction history queries.
+        #   @param chain [Symbol, String, Privy::Models::TransactionChainNameInput] Chains supported for transaction history queries.
         #
         #   @param token [String, Array<String>] Exactly one of `token` or `asset` is required. Cannot be used together with `ass
         #

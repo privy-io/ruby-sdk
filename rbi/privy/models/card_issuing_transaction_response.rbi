@@ -20,30 +20,34 @@ module Privy
       sig { returns(String) }
       attr_accessor :currency
 
-      # Merchant metadata for a card issuing transaction.
+      # Dispute associated with card activity.
+      sig { returns(T.nilable(Privy::CardIssuingDispute)) }
+      attr_reader :dispute
+
+      sig { params(dispute: T.nilable(Privy::CardIssuingDispute::OrHash)).void }
+      attr_writer :dispute
+
+      # Merchant metadata for card activity.
       sig { returns(Privy::CardIssuingMerchant) }
       attr_reader :merchant
 
       sig { params(merchant: Privy::CardIssuingMerchant::OrHash).void }
       attr_writer :merchant
 
-      # Status for a card issuing transaction.
+      # Status for card activity.
       sig { returns(Privy::CardIssuingTransactionStatus::OrSymbol) }
       attr_accessor :status
 
-      sig { returns(String) }
-      attr_accessor :type
-
-      # Stripe Issuing transaction state for a Privy card.
+      # Card activity
       sig do
         params(
           id: String,
           amount: Float,
           created: Float,
           currency: String,
+          dispute: T.nilable(Privy::CardIssuingDispute::OrHash),
           merchant: Privy::CardIssuingMerchant::OrHash,
-          status: Privy::CardIssuingTransactionStatus::OrSymbol,
-          type: String
+          status: Privy::CardIssuingTransactionStatus::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -51,11 +55,12 @@ module Privy
         amount:,
         created:,
         currency:,
-        # Merchant metadata for a card issuing transaction.
+        # Dispute associated with card activity.
+        dispute:,
+        # Merchant metadata for card activity.
         merchant:,
-        # Status for a card issuing transaction.
-        status:,
-        type:
+        # Status for card activity.
+        status:
       )
       end
 
@@ -66,9 +71,9 @@ module Privy
             amount: Float,
             created: Float,
             currency: String,
+            dispute: T.nilable(Privy::CardIssuingDispute),
             merchant: Privy::CardIssuingMerchant,
-            status: Privy::CardIssuingTransactionStatus::OrSymbol,
-            type: String
+            status: Privy::CardIssuingTransactionStatus::OrSymbol
           }
         )
       end

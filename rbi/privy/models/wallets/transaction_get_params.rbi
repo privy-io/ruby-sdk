@@ -20,7 +20,9 @@ module Privy
         attr_accessor :wallet_id
 
         # Chains supported for transaction history queries.
-        sig { returns(Privy::TransactionChainNameInput::OrSymbol) }
+        sig do
+          returns(T.any(Privy::TransactionChainNameInput::OrSymbol, String))
+        end
         attr_accessor :chain
 
         # Exactly one of `token` or `asset` is required. Cannot be used together with
@@ -89,7 +91,7 @@ module Privy
         sig do
           params(
             wallet_id: String,
-            chain: Privy::TransactionChainNameInput::OrSymbol,
+            chain: T.any(Privy::TransactionChainNameInput::OrSymbol, String),
             token: Privy::Wallets::TransactionGetParams::Token::Variants,
             asset:
               T.any(
@@ -127,7 +129,7 @@ module Privy
           override.returns(
             {
               wallet_id: String,
-              chain: Privy::TransactionChainNameInput::OrSymbol,
+              chain: T.any(Privy::TransactionChainNameInput::OrSymbol, String),
               token: Privy::Wallets::TransactionGetParams::Token::Variants,
               asset:
                 T.any(

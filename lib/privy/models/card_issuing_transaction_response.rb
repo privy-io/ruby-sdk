@@ -23,25 +23,26 @@ module Privy
       #   @return [String]
       required :currency, String
 
+      # @!attribute dispute
+      #   Dispute associated with card activity.
+      #
+      #   @return [Privy::Models::CardIssuingDispute, nil]
+      required :dispute, -> { Privy::CardIssuingDispute }, nil?: true
+
       # @!attribute merchant
-      #   Merchant metadata for a card issuing transaction.
+      #   Merchant metadata for card activity.
       #
       #   @return [Privy::Models::CardIssuingMerchant]
       required :merchant, -> { Privy::CardIssuingMerchant }
 
       # @!attribute status
-      #   Status for a card issuing transaction.
+      #   Status for card activity.
       #
       #   @return [Symbol, Privy::Models::CardIssuingTransactionStatus]
       required :status, enum: -> { Privy::CardIssuingTransactionStatus }
 
-      # @!attribute type
-      #
-      #   @return [String]
-      required :type, String
-
-      # @!method initialize(id:, amount:, created:, currency:, merchant:, status:, type:)
-      #   Stripe Issuing transaction state for a Privy card.
+      # @!method initialize(id:, amount:, created:, currency:, dispute:, merchant:, status:)
+      #   Card activity
       #
       #   @param id [String]
       #
@@ -51,11 +52,11 @@ module Privy
       #
       #   @param currency [String]
       #
-      #   @param merchant [Privy::Models::CardIssuingMerchant] Merchant metadata for a card issuing transaction.
+      #   @param dispute [Privy::Models::CardIssuingDispute, nil] Dispute associated with card activity.
       #
-      #   @param status [Symbol, Privy::Models::CardIssuingTransactionStatus] Status for a card issuing transaction.
+      #   @param merchant [Privy::Models::CardIssuingMerchant] Merchant metadata for card activity.
       #
-      #   @param type [String]
+      #   @param status [Symbol, Privy::Models::CardIssuingTransactionStatus] Status for card activity.
     end
   end
 end

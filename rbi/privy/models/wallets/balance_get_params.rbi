@@ -61,8 +61,11 @@ module Privy
           returns(
             T.nilable(
               T.any(
-                Privy::WalletAssetChainNameInput::OrSymbol,
-                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
+                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
+                String,
+                T::Array[
+                  T.any(Privy::WalletAssetChainNameInput::OrSymbol, String)
+                ]
               )
             )
           )
@@ -73,8 +76,11 @@ module Privy
           params(
             chain:
               T.any(
-                Privy::WalletAssetChainNameInput::OrSymbol,
-                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
+                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
+                String,
+                T::Array[
+                  T.any(Privy::WalletAssetChainNameInput::OrSymbol, String)
+                ]
               )
           ).void
         end
@@ -117,8 +123,11 @@ module Privy
               ),
             chain:
               T.any(
-                Privy::WalletAssetChainNameInput::OrSymbol,
-                T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
+                Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
+                String,
+                T::Array[
+                  T.any(Privy::WalletAssetChainNameInput::OrSymbol, String)
+                ]
               ),
             include_archived: T::Boolean,
             include_currency:
@@ -161,8 +170,11 @@ module Privy
                 ),
               chain:
                 T.any(
-                  Privy::WalletAssetChainNameInput::OrSymbol,
-                  T::Array[Privy::WalletAssetChainNameInput::OrSymbol]
+                  Privy::Wallets::BalanceGetParams::Chain::OrSymbol,
+                  String,
+                  T::Array[
+                    T.any(Privy::WalletAssetChainNameInput::OrSymbol, String)
+                  ]
                 ),
               include_archived: T::Boolean,
               include_currency:
@@ -271,8 +283,9 @@ module Privy
           Variants =
             T.type_alias do
               T.any(
-                Privy::WalletAssetChainNameInput::TaggedSymbol,
-                T::Array[Privy::WalletAssetChainNameInput::TaggedSymbol]
+                Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol,
+                String,
+                T::Array[Privy::WalletAssetChainNameInput::Variants]
               )
             end
 
@@ -284,10 +297,114 @@ module Privy
           def self.variants
           end
 
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Privy::Wallets::BalanceGetParams::Chain)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ETHEREUM =
+            T.let(
+              :ethereum,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          ARBITRUM =
+            T.let(
+              :arbitrum,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          AVALANCHE =
+            T.let(
+              :avalanche,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          BASE =
+            T.let(:base, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          TEMPO =
+            T.let(:tempo, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          LINEA =
+            T.let(:linea, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          OPTIMISM =
+            T.let(
+              :optimism,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          POLYGON =
+            T.let(
+              :polygon,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          BSC =
+            T.let(:bsc, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          SOLANA =
+            T.let(
+              :solana,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          TRON =
+            T.let(:tron, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          ZKSYNC_ERA =
+            T.let(
+              :zksync_era,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          HOODI =
+            T.let(:hoodi, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          SEPOLIA =
+            T.let(
+              :sepolia,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          ARBITRUM_SEPOLIA =
+            T.let(
+              :arbitrum_sepolia,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          AVALANCHE_FUJI =
+            T.let(
+              :avalanche_fuji,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          BASE_SEPOLIA =
+            T.let(
+              :base_sepolia,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          LINEA_TESTNET =
+            T.let(
+              :linea_testnet,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          OPTIMISM_SEPOLIA =
+            T.let(
+              :optimism_sepolia,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          POLYGON_AMOY =
+            T.let(
+              :polygon_amoy,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          SOLANA_DEVNET =
+            T.let(
+              :solana_devnet,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          SOLANA_TESTNET =
+            T.let(
+              :solana_testnet,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          TRON_NILE =
+            T.let(
+              :tron_nile,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+
           WalletAssetChainNameInputArray =
             T.let(
               Privy::Internal::Type::ArrayOf[
-                enum: Privy::WalletAssetChainNameInput
+                union: Privy::WalletAssetChainNameInput
               ],
               Privy::Internal::Type::Converter
             )

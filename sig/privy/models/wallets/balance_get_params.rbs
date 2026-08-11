@@ -113,13 +113,60 @@ module Privy
         end
 
         type chain =
-          Privy::Models::wallet_asset_chain_name_input
+          :ethereum
+          | :arbitrum
+          | :avalanche
+          | :base
+          | :tempo
+          | :linea
+          | :optimism
+          | :polygon
+          | :bsc
+          | :solana
+          | :tron
+          | :zksync_era
+          | :hoodi
+          | :sepolia
+          | :arbitrum_sepolia
+          | :avalanche_fuji
+          | :base_sepolia
+          | :linea_testnet
+          | :optimism_sepolia
+          | :polygon_amoy
+          | :solana_devnet
+          | :solana_testnet
+          | :tron_nile
+          | String
           | ::Array[Privy::Models::wallet_asset_chain_name_input]
 
         module Chain
           extend Privy::Internal::Type::Union
 
           def self?.variants: -> ::Array[Privy::Models::Wallets::BalanceGetParams::chain]
+
+          ETHEREUM: :ethereum
+          ARBITRUM: :arbitrum
+          AVALANCHE: :avalanche
+          BASE: :base
+          TEMPO: :tempo
+          LINEA: :linea
+          OPTIMISM: :optimism
+          POLYGON: :polygon
+          BSC: :bsc
+          SOLANA: :solana
+          TRON: :tron
+          ZKSYNC_ERA: :zksync_era
+          HOODI: :hoodi
+          SEPOLIA: :sepolia
+          ARBITRUM_SEPOLIA: :arbitrum_sepolia
+          AVALANCHE_FUJI: :avalanche_fuji
+          BASE_SEPOLIA: :base_sepolia
+          LINEA_TESTNET: :linea_testnet
+          OPTIMISM_SEPOLIA: :optimism_sepolia
+          POLYGON_AMOY: :polygon_amoy
+          SOLANA_DEVNET: :solana_devnet
+          SOLANA_TESTNET: :solana_testnet
+          TRON_NILE: :tron_nile
 
           WalletAssetChainNameInputArray: Privy::Internal::Type::Converter
         end

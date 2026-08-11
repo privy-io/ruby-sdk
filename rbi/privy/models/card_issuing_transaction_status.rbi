@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    # Status for a card issuing transaction.
+    # Status for card activity.
     module CardIssuingTransactionStatus
       extend Privy::Internal::Type::Enum
 
@@ -13,6 +13,12 @@ module Privy
       PENDING =
         T.let(:pending, Privy::CardIssuingTransactionStatus::TaggedSymbol)
       POSTED = T.let(:posted, Privy::CardIssuingTransactionStatus::TaggedSymbol)
+      DECLINED =
+        T.let(:declined, Privy::CardIssuingTransactionStatus::TaggedSymbol)
+      EXPIRED =
+        T.let(:expired, Privy::CardIssuingTransactionStatus::TaggedSymbol)
+      REVERSED =
+        T.let(:reversed, Privy::CardIssuingTransactionStatus::TaggedSymbol)
 
       sig do
         override.returns(

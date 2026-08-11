@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type card_issuing_dispute =
+      { status: Privy::Models::card_issuing_dispute_status }
+
+    class CardIssuingDispute < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::card_issuing_dispute_status
+
+      def initialize: (
+        status: Privy::Models::card_issuing_dispute_status
+      ) -> void
+
+      def to_hash: -> { status: Privy::Models::card_issuing_dispute_status }
+    end
+  end
+end

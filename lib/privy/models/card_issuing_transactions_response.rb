@@ -14,7 +14,7 @@ module Privy
       required :next_cursor, String, nil?: true
 
       # @!method initialize(data:, next_cursor:)
-      #   A list of Stripe Issuing transactions for a Privy card.
+      #   A chronological list of card activity.
       #
       #   @param data [Array<Privy::Models::CardIssuingTransactionResponse>]
       #   @param next_cursor [String, nil]

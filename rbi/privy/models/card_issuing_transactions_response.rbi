@@ -17,7 +17,7 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :next_cursor
 
-      # A list of Stripe Issuing transactions for a Privy card.
+      # A chronological list of card activity.
       sig do
         params(
           data: T::Array[Privy::CardIssuingTransactionResponse::OrHash],

@@ -13,6 +13,7 @@ module Privy
       | :near
       | :ton
       | :starknet
+      | :xrpl
 
     module CurveSigningChainType
       extend Privy::Internal::Type::Enum
@@ -29,6 +30,7 @@ module Privy
       NEAR: :near
       TON: :ton
       STARKNET: :starknet
+      XRPL: :xrpl
 
       def self?.values: -> ::Array[Privy::Models::curve_signing_chain_type]
     end

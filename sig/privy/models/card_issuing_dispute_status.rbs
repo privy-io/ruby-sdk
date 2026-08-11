@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type card_issuing_dispute_status =
+      :expired | :lost | :submitted | :unsubmitted | :won
+
+    module CardIssuingDisputeStatus
+      extend Privy::Internal::Type::Enum
+
+      EXPIRED: :expired
+      LOST: :lost
+      SUBMITTED: :submitted
+      UNSUBMITTED: :unsubmitted
+      WON: :won
+
+      def self?.values: -> ::Array[Privy::Models::card_issuing_dispute_status]
+    end
+  end
+end

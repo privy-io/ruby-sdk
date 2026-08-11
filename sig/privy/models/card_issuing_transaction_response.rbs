@@ -6,9 +6,9 @@ module Privy
         amount: Float,
         created: Float,
         currency: String,
+        dispute: Privy::CardIssuingDispute?,
         merchant: Privy::CardIssuingMerchant,
-        status: Privy::Models::card_issuing_transaction_status,
-        type: String
+        status: Privy::Models::card_issuing_transaction_status
       }
 
     class CardIssuingTransactionResponse < Privy::Internal::Type::BaseModel
@@ -20,20 +20,20 @@ module Privy
 
       attr_accessor currency: String
 
+      attr_accessor dispute: Privy::CardIssuingDispute?
+
       attr_accessor merchant: Privy::CardIssuingMerchant
 
       attr_accessor status: Privy::Models::card_issuing_transaction_status
-
-      attr_accessor type: String
 
       def initialize: (
         id: String,
         amount: Float,
         created: Float,
         currency: String,
+        dispute: Privy::CardIssuingDispute?,
         merchant: Privy::CardIssuingMerchant,
-        status: Privy::Models::card_issuing_transaction_status,
-        type: String
+        status: Privy::Models::card_issuing_transaction_status
       ) -> void
 
       def to_hash: -> {
@@ -41,9 +41,9 @@ module Privy
         amount: Float,
         created: Float,
         currency: String,
+        dispute: Privy::CardIssuingDispute?,
         merchant: Privy::CardIssuingMerchant,
-        status: Privy::Models::card_issuing_transaction_status,
-        type: String
+        status: Privy::Models::card_issuing_transaction_status
       }
     end
   end

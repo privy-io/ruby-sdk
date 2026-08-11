@@ -4,7 +4,18 @@ module Privy
   module Models
     # Supported blockchain network names for wallet balance and transaction queries.
     module WalletAssetChainNameInput
-      extend Privy::Internal::Type::Enum
+      extend Privy::Internal::Type::Union
+
+      Variants =
+        T.type_alias do
+          T.any(Privy::WalletAssetChainNameInput::TaggedSymbol, String)
+        end
+
+      sig do
+        override.returns(T::Array[Privy::WalletAssetChainNameInput::Variants])
+      end
+      def self.variants
+      end
 
       TaggedSymbol =
         T.type_alias { T.all(Symbol, Privy::WalletAssetChainNameInput) }
@@ -47,14 +58,6 @@ module Privy
         T.let(:solana_testnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       TRON_NILE =
         T.let(:tron_nile, Privy::WalletAssetChainNameInput::TaggedSymbol)
-
-      sig do
-        override.returns(
-          T::Array[Privy::WalletAssetChainNameInput::TaggedSymbol]
-        )
-      end
-      def self.values
-      end
     end
   end
 end
