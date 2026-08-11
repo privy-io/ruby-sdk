@@ -10,6 +10,7 @@ module Privy
         T.type_alias do
           T.any(
             Privy::UserCreatedWebhookPayload,
+            Privy::UserDeletedWebhookPayload,
             Privy::UserAuthenticatedWebhookPayload,
             Privy::UserLinkedAccountWebhookPayload,
             Privy::UserUnlinkedAccountWebhookPayload,

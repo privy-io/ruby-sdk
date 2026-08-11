@@ -22,6 +22,7 @@ module Privy
             Privy::TransactionStillPendingWebhookPayload,
             Privy::UserAuthenticatedWebhookPayload,
             Privy::UserCreatedWebhookPayload,
+            Privy::UserDeletedWebhookPayload,
             Privy::UserLinkedAccountWebhookPayload,
             Privy::UserTransferredAccountWebhookPayload,
             Privy::UserUnlinkedAccountWebhookPayload,

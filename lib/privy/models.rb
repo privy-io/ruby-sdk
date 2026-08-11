@@ -1930,6 +1930,8 @@ module Privy
 
   UserCreateParams = Privy::Models::UserCreateParams
 
+  UserDeletedWebhookPayload = Privy::Models::UserDeletedWebhookPayload
+
   UserDeleteParams = Privy::Models::UserDeleteParams
 
   UserGetByCustomAuthIDParams = Privy::Models::UserGetByCustomAuthIDParams

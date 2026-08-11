@@ -1859,6 +1859,8 @@ module Privy
 
   class UserCreateParams = Privy::Models::UserCreateParams
 
+  class UserDeletedWebhookPayload = Privy::Models::UserDeletedWebhookPayload
+
   class UserDeleteParams = Privy::Models::UserDeleteParams
 
   class UserGetByCustomAuthIDParams = Privy::Models::UserGetByCustomAuthIDParams
