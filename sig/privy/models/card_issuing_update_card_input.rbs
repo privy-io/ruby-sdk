@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    type card_issuing_update_card_input =
+      {
+        environment: Privy::Models::environment,
+        status: Privy::Models::card_issuing_card_status,
+        cancellation_reason: Privy::Models::card_issuing_cancellation_reason
+      }
+
+    class CardIssuingUpdateCardInput < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor status: Privy::Models::card_issuing_card_status
+
+      attr_reader cancellation_reason: Privy::Models::card_issuing_cancellation_reason?
+
+      def cancellation_reason=: (
+        Privy::Models::card_issuing_cancellation_reason
+      ) -> Privy::Models::card_issuing_cancellation_reason
+
+      def initialize: (
+        environment: Privy::Models::environment,
+        status: Privy::Models::card_issuing_card_status,
+        ?cancellation_reason: Privy::Models::card_issuing_cancellation_reason
+      ) -> void
+
+      def to_hash: -> {
+        environment: Privy::Models::environment,
+        status: Privy::Models::card_issuing_card_status,
+        cancellation_reason: Privy::Models::card_issuing_cancellation_reason
+      }
+    end
+  end
+end

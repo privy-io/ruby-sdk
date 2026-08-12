@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type card_issuing_cancellation_reason = :lost | :stolen
+
+    module CardIssuingCancellationReason
+      extend Privy::Internal::Type::Enum
+
+      LOST: :lost
+      STOLEN: :stolen
+
+      def self?.values: -> ::Array[Privy::Models::card_issuing_cancellation_reason]
+    end
+  end
+end

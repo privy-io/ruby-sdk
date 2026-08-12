@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type card_issuing_card_status = :active | :inactive | :canceled
+
+    module CardIssuingCardStatus
+      extend Privy::Internal::Type::Enum
+
+      ACTIVE: :active
+      INACTIVE: :inactive
+      CANCELED: :canceled
+
+      def self?.values: -> ::Array[Privy::Models::card_issuing_card_status]
+    end
+  end
+end

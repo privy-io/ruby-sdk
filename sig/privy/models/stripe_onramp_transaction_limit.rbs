@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type stripe_onramp_transaction_limit = { limit: Float }
+
+    class StripeOnrampTransactionLimit < Privy::Internal::Type::BaseModel
+      attr_accessor limit: Float
+
+      def initialize: (limit: Float) -> void
+
+      def to_hash: -> { limit: Float }
+    end
+  end
+end

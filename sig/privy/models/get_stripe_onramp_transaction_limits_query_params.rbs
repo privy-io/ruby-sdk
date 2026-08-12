@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type get_stripe_onramp_transaction_limits_query_params =
+      {
+        destination_chain: String,
+        environment: Privy::Models::fiat_onramp_environment,
+        wallet_address: String
+      }
+
+    class GetStripeOnrampTransactionLimitsQueryParams < Privy::Internal::Type::BaseModel
+      attr_accessor destination_chain: String
+
+      attr_accessor environment: Privy::Models::fiat_onramp_environment
+
+      attr_accessor wallet_address: String
+
+      def initialize: (
+        destination_chain: String,
+        environment: Privy::Models::fiat_onramp_environment,
+        wallet_address: String
+      ) -> void
+
+      def to_hash: -> {
+        destination_chain: String,
+        environment: Privy::Models::fiat_onramp_environment,
+        wallet_address: String
+      }
+    end
+  end
+end

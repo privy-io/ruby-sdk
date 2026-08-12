@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type card_issuing_statement_query_params =
+      { environment: Privy::Models::environment }
+
+    class CardIssuingStatementQueryParams < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::environment
+
+      def initialize: (environment: Privy::Models::environment) -> void
+
+      def to_hash: -> { environment: Privy::Models::environment }
+    end
+  end
+end

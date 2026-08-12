@@ -203,9 +203,13 @@ module Privy
 
   CaptchaProvider = Privy::Models::CaptchaProvider
 
+  CardIssuingCancellationReason = Privy::Models::CardIssuingCancellationReason
+
   CardIssuingCardResponse = Privy::Models::CardIssuingCardResponse
 
   CardIssuingCardsResponse = Privy::Models::CardIssuingCardsResponse
+
+  CardIssuingCardStatus = Privy::Models::CardIssuingCardStatus
 
   CardIssuingCreateCardInput = Privy::Models::CardIssuingCreateCardInput
 
@@ -239,12 +243,17 @@ module Privy
 
   CardIssuingMerchant = Privy::Models::CardIssuingMerchant
 
+  CardIssuingStatementQueryParams =
+    Privy::Models::CardIssuingStatementQueryParams
+
   CardIssuingTransactionResponse = Privy::Models::CardIssuingTransactionResponse
 
   CardIssuingTransactionsResponse =
     Privy::Models::CardIssuingTransactionsResponse
 
   CardIssuingTransactionStatus = Privy::Models::CardIssuingTransactionStatus
+
+  CardIssuingUpdateCardInput = Privy::Models::CardIssuingUpdateCardInput
 
   ChainTestnetMode = Privy::Models::ChainTestnetMode
 
@@ -728,6 +737,12 @@ module Privy
 
   GetStripeCryptoCustomerResponse =
     Privy::Models::GetStripeCryptoCustomerResponse
+
+  GetStripeOnrampTransactionLimitsQueryParams =
+    Privy::Models::GetStripeOnrampTransactionLimitsQueryParams
+
+  GetStripeOnrampTransactionLimitsResponse =
+    Privy::Models::GetStripeOnrampTransactionLimitsResponse
 
   GuestAuthenticateRequestBody = Privy::Models::GuestAuthenticateRequestBody
 
@@ -1865,6 +1880,8 @@ module Privy
   StripeOnrampCheckoutResponse = Privy::Models::StripeOnrampCheckoutResponse
 
   StripeOnrampSessionStatus = Privy::Models::StripeOnrampSessionStatus
+
+  StripeOnrampTransactionLimit = Privy::Models::StripeOnrampTransactionLimit
 
   StripePaymentToken = Privy::Models::StripePaymentToken
 

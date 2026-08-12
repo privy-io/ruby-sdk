@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type get_stripe_onramp_transaction_limits_response =
+      {
+        limits: ::Hash[Symbol, ::Hash[Symbol, ::Array[Privy::StripeOnrampTransactionLimit]]]
+      }
+
+    class GetStripeOnrampTransactionLimitsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor limits: ::Hash[Symbol, ::Hash[Symbol, ::Array[Privy::StripeOnrampTransactionLimit]]]
+
+      def initialize: (
+        limits: ::Hash[Symbol, ::Hash[Symbol, ::Array[Privy::StripeOnrampTransactionLimit]]]
+      ) -> void
+
+      def to_hash: -> {
+        limits: ::Hash[Symbol, ::Hash[Symbol, ::Array[Privy::StripeOnrampTransactionLimit]]]
+      }
+    end
+  end
+end
