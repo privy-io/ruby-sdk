@@ -112,6 +112,7 @@ module Privy
           extend Privy::Internal::Type::Enum
 
           USER = :user
+          ORGANIZATION = :organization
 
           # @!method self.values
           #   @return [Array<Symbol>]

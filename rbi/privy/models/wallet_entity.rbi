@@ -6,7 +6,7 @@ module Privy
       OrHash =
         T.type_alias { T.any(Privy::WalletEntity, Privy::Internal::AnyHash) }
 
-      # The Privy DID of the entity.
+      # The Privy entity ID.
       sig { returns(String) }
       attr_accessor :id
 
@@ -20,7 +20,7 @@ module Privy
         )
       end
       def self.new(
-        # The Privy DID of the entity.
+        # The Privy entity ID.
         id:,
         type:
       )
@@ -41,6 +41,8 @@ module Privy
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         USER = T.let(:user, Privy::WalletEntity::Type::TaggedSymbol)
+        ORGANIZATION =
+          T.let(:organization, Privy::WalletEntity::Type::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Privy::WalletEntity::Type::TaggedSymbol])

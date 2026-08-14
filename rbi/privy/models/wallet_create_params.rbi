@@ -193,6 +193,11 @@ module Privy
 
           USER =
             T.let(:user, Privy::WalletCreateParams::Entity::Type::TaggedSymbol)
+          ORGANIZATION =
+            T.let(
+              :organization,
+              Privy::WalletCreateParams::Entity::Type::TaggedSymbol
+            )
 
           sig do
             override.returns(

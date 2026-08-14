@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type orchestration_provider = :bridge
+
+    module OrchestrationProvider
+      extend Privy::Internal::Type::Enum
+
+      BRIDGE: :bridge
+
+      def self?.values: -> ::Array[Privy::Models::orchestration_provider]
+    end
+  end
+end

@@ -15,12 +15,13 @@ module Privy
 
       def to_hash: -> { id: String, type: Privy::Models::WalletEntity::type_ }
 
-      type type_ = :user
+      type type_ = :user | :organization
 
       module Type
         extend Privy::Internal::Type::Enum
 
         USER: :user
+        ORGANIZATION: :organization
 
         def self?.values: -> ::Array[Privy::Models::WalletEntity::type_]
       end

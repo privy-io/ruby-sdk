@@ -1199,6 +1199,8 @@ module Privy
 
   class OptionalRefreshTokenInput = Privy::Models::OptionalRefreshTokenInput
 
+  module OrchestrationProvider = Privy::Models::OrchestrationProvider
+
   class OrganizationSecretIDInput = Privy::Models::OrganizationSecretIDInput
 
   class OrganizationSecretsListResponse = Privy::Models::OrganizationSecretsListResponse

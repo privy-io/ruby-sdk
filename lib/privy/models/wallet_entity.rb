@@ -4,7 +4,7 @@ module Privy
   module Models
     class WalletEntity < Privy::Internal::Type::BaseModel
       # @!attribute id
-      #   The Privy DID of the entity.
+      #   The Privy entity ID.
       #
       #   @return [String]
       required :id, String
@@ -17,7 +17,7 @@ module Privy
       # @!method initialize(id:, type:)
       #   The entity a wallet is attributed to.
       #
-      #   @param id [String] The Privy DID of the entity.
+      #   @param id [String] The Privy entity ID.
       #
       #   @param type [Symbol, Privy::Models::WalletEntity::Type]
 
@@ -26,6 +26,7 @@ module Privy
         extend Privy::Internal::Type::Enum
 
         USER = :user
+        ORGANIZATION = :organization
 
         # @!method self.values
         #   @return [Array<Symbol>]
