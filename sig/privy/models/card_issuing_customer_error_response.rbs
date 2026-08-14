@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type card_issuing_customer_error_response =
+      { status: Privy::Models::CardIssuingCustomerErrorResponse::status }
+
+    class CardIssuingCustomerErrorResponse < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::CardIssuingCustomerErrorResponse::status
+
+      def initialize: (
+        status: Privy::Models::CardIssuingCustomerErrorResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::CardIssuingCustomerErrorResponse::status
+      }
+
+      type status = :error
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        ERROR: :error
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerErrorResponse::status]
+      end
+    end
+  end
+end

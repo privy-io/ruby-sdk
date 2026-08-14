@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type card_issuing_ephemeral_key_response =
+      { data: Privy::CardIssuingEphemeralKey }
+
+    class CardIssuingEphemeralKeyResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::CardIssuingEphemeralKey
+
+      def initialize: (data: Privy::CardIssuingEphemeralKey) -> void
+
+      def to_hash: -> { data: Privy::CardIssuingEphemeralKey }
+    end
+  end
+end

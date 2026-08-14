@@ -6,13 +6,13 @@ module Privy
       # @!attribute data
       #   No cards customer has been created for this Privy user.
       #
-      #   @return [Privy::Models::CardIssuingCustomerNotCreatedResponse, Privy::Models::CardIssuingCustomerTermsRequiredResponse, Privy::Models::CardIssuingCustomerKYCRequiredResponse, Privy::Models::CardIssuingCustomerPendingResponse, Privy::Models::CardIssuingCustomerReadyResponse]
+      #   @return [Privy::Models::CardIssuingCustomerNotCreatedResponse, Privy::Models::CardIssuingCustomerTermsRequiredResponse, Privy::Models::CardIssuingCustomerKYCRequiredResponse, Privy::Models::CardIssuingCustomerPendingResponse, Privy::Models::CardIssuingCustomerRejectedResponse, Privy::Models::CardIssuingCustomerErrorResponse, Privy::Models::CardIssuingCustomerReadyResponse]
       required :data, union: -> { Privy::CardIssuingCustomerResponse::Data }
 
       # @!method initialize(data:)
       #   Cards customer state for a Privy user.
       #
-      #   @param data [Privy::Models::CardIssuingCustomerNotCreatedResponse, Privy::Models::CardIssuingCustomerTermsRequiredResponse, Privy::Models::CardIssuingCustomerKYCRequiredResponse, Privy::Models::CardIssuingCustomerPendingResponse, Privy::Models::CardIssuingCustomerReadyResponse] No cards customer has been created for this Privy user.
+      #   @param data [Privy::Models::CardIssuingCustomerNotCreatedResponse, Privy::Models::CardIssuingCustomerTermsRequiredResponse, Privy::Models::CardIssuingCustomerKYCRequiredResponse, Privy::Models::CardIssuingCustomerPendingResponse, Privy::Models::CardIssuingCustomerRejectedResponse, Privy::Models::CardIssuingCustomerErrorResponse, Privy::Models::CardIssuingCustomerReadyResponse] No cards customer has been created for this Privy user.
 
       # No cards customer has been created for this Privy user.
       #
@@ -34,11 +34,17 @@ module Privy
         # A cards customer waiting for card issuing to become available.
         variant :pending, -> { Privy::CardIssuingCustomerPendingResponse }
 
+        # Bridge rejected the cards customer during verification.
+        variant :rejected, -> { Privy::CardIssuingCustomerRejectedResponse }
+
+        # The cards customer cannot continue onboarding or issue cards.
+        variant :error, -> { Privy::CardIssuingCustomerErrorResponse }
+
         # A cards customer that has a Stripe cardholder external ID and can issue cards.
         variant :ready, -> { Privy::CardIssuingCustomerReadyResponse }
 
         # @!method self.variants
-        #   @return [Array(Privy::Models::CardIssuingCustomerNotCreatedResponse, Privy::Models::CardIssuingCustomerTermsRequiredResponse, Privy::Models::CardIssuingCustomerKYCRequiredResponse, Privy::Models::CardIssuingCustomerPendingResponse, Privy::Models::CardIssuingCustomerReadyResponse)]
+        #   @return [Array(Privy::Models::CardIssuingCustomerNotCreatedResponse, Privy::Models::CardIssuingCustomerTermsRequiredResponse, Privy::Models::CardIssuingCustomerKYCRequiredResponse, Privy::Models::CardIssuingCustomerPendingResponse, Privy::Models::CardIssuingCustomerRejectedResponse, Privy::Models::CardIssuingCustomerErrorResponse, Privy::Models::CardIssuingCustomerReadyResponse)]
       end
     end
   end

@@ -27,7 +27,7 @@ module Privy
             :caip2 => String,
             created_at: Float,
             details: Privy::Models::transaction_detail,
-            privy_transaction_id: String,
+            privy_transaction_id: String?,
             status: Privy::Models::blockchain_transaction_status,
             transaction_hash: String?,
             wallet_id: String,
@@ -42,7 +42,7 @@ module Privy
 
           attr_accessor details: Privy::Models::transaction_detail
 
-          attr_accessor privy_transaction_id: String
+          attr_accessor privy_transaction_id: String?
 
           attr_accessor status: Privy::Models::blockchain_transaction_status
 
@@ -62,7 +62,7 @@ module Privy
             caip2: String,
             created_at: Float,
             details: Privy::Models::transaction_detail,
-            privy_transaction_id: String,
+            privy_transaction_id: String?,
             status: Privy::Models::blockchain_transaction_status,
             transaction_hash: String?,
             wallet_id: String,
@@ -74,7 +74,7 @@ module Privy
             :caip2 => String,
             created_at: Float,
             details: Privy::Models::transaction_detail,
-            privy_transaction_id: String,
+            privy_transaction_id: String?,
             status: Privy::Models::blockchain_transaction_status,
             transaction_hash: String?,
             wallet_id: String,

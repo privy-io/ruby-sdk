@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type card_issuing_ephemeral_key = { ephemeral_key_secret: String }
+
+    class CardIssuingEphemeralKey < Privy::Internal::Type::BaseModel
+      attr_accessor ephemeral_key_secret: String
+
+      def initialize: (ephemeral_key_secret: String) -> void
+
+      def to_hash: -> { ephemeral_key_secret: String }
+    end
+  end
+end

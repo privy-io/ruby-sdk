@@ -16,6 +16,8 @@ module Privy
             Privy::CardIssuingCustomerTermsRequiredResponse,
             Privy::CardIssuingCustomerKYCRequiredResponse,
             Privy::CardIssuingCustomerPendingResponse,
+            Privy::CardIssuingCustomerRejectedResponse,
+            Privy::CardIssuingCustomerErrorResponse,
             Privy::CardIssuingCustomerReadyResponse
           )
         )
@@ -31,6 +33,8 @@ module Privy
               Privy::CardIssuingCustomerTermsRequiredResponse::OrHash,
               Privy::CardIssuingCustomerKYCRequiredResponse::OrHash,
               Privy::CardIssuingCustomerPendingResponse::OrHash,
+              Privy::CardIssuingCustomerRejectedResponse::OrHash,
+              Privy::CardIssuingCustomerErrorResponse::OrHash,
               Privy::CardIssuingCustomerReadyResponse::OrHash
             )
         ).returns(T.attached_class)
@@ -50,6 +54,8 @@ module Privy
                 Privy::CardIssuingCustomerTermsRequiredResponse,
                 Privy::CardIssuingCustomerKYCRequiredResponse,
                 Privy::CardIssuingCustomerPendingResponse,
+                Privy::CardIssuingCustomerRejectedResponse,
+                Privy::CardIssuingCustomerErrorResponse,
                 Privy::CardIssuingCustomerReadyResponse
               )
           }
@@ -69,6 +75,8 @@ module Privy
               Privy::CardIssuingCustomerTermsRequiredResponse,
               Privy::CardIssuingCustomerKYCRequiredResponse,
               Privy::CardIssuingCustomerPendingResponse,
+              Privy::CardIssuingCustomerRejectedResponse,
+              Privy::CardIssuingCustomerErrorResponse,
               Privy::CardIssuingCustomerReadyResponse
             )
           end

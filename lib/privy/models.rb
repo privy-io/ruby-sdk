@@ -237,6 +237,8 @@ module Privy
 
   CardIssuingCreateCardInput = Privy::Models::CardIssuingCreateCardInput
 
+  CardIssuingCustomerErrorResponse = Privy::Models::CardIssuingCustomerErrorResponse
+
   CardIssuingCustomerInput = Privy::Models::CardIssuingCustomerInput
 
   CardIssuingCustomerKYCRequiredResponse = Privy::Models::CardIssuingCustomerKYCRequiredResponse
@@ -247,6 +249,8 @@ module Privy
 
   CardIssuingCustomerReadyResponse = Privy::Models::CardIssuingCustomerReadyResponse
 
+  CardIssuingCustomerRejectedResponse = Privy::Models::CardIssuingCustomerRejectedResponse
+
   CardIssuingCustomerResponse = Privy::Models::CardIssuingCustomerResponse
 
   CardIssuingCustomerTermsRequiredResponse = Privy::Models::CardIssuingCustomerTermsRequiredResponse
@@ -254,6 +258,12 @@ module Privy
   CardIssuingDispute = Privy::Models::CardIssuingDispute
 
   CardIssuingDisputeStatus = Privy::Models::CardIssuingDisputeStatus
+
+  CardIssuingEphemeralKey = Privy::Models::CardIssuingEphemeralKey
+
+  CardIssuingEphemeralKeyRequestBody = Privy::Models::CardIssuingEphemeralKeyRequestBody
+
+  CardIssuingEphemeralKeyResponse = Privy::Models::CardIssuingEphemeralKeyResponse
 
   CardIssuingListCardsInput = Privy::Models::CardIssuingListCardsInput
 
@@ -1933,6 +1943,12 @@ module Privy
   UpdateConditionSetRequestBody = Privy::Models::UpdateConditionSetRequestBody
 
   UpdateOrganizationSecretSigningKeyInput = Privy::Models::UpdateOrganizationSecretSigningKeyInput
+
+  UsageCrossChainFeeRecordedWebhookPayload = Privy::Models::UsageCrossChainFeeRecordedWebhookPayload
+
+  UsageGasSponsorshipRecordedWebhookPayload = Privy::Models::UsageGasSponsorshipRecordedWebhookPayload
+
+  UsageSourceType = Privy::Models::UsageSourceType
 
   User = Privy::Models::User
 

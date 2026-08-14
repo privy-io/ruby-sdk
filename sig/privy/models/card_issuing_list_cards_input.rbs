@@ -3,29 +3,31 @@ module Privy
     type card_issuing_list_cards_input =
       {
         environment: Privy::Models::environment,
-        limit: Float?,
-        starting_after: String
+        cursor: String,
+        limit: Integer
       }
 
     class CardIssuingListCardsInput < Privy::Internal::Type::BaseModel
       attr_accessor environment: Privy::Models::environment
 
-      attr_accessor limit: Float?
+      attr_reader cursor: String?
 
-      attr_reader starting_after: String?
+      def cursor=: (String) -> String
 
-      def starting_after=: (String) -> String
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
 
       def initialize: (
         environment: Privy::Models::environment,
-        ?limit: Float?,
-        ?starting_after: String
+        ?cursor: String,
+        ?limit: Integer
       ) -> void
 
       def to_hash: -> {
         environment: Privy::Models::environment,
-        limit: Float?,
-        starting_after: String
+        cursor: String,
+        limit: Integer
       }
     end
   end

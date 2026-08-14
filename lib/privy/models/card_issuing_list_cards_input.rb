@@ -9,24 +9,26 @@ module Privy
       #   @return [Symbol, Privy::Models::Environment]
       required :environment, enum: -> { Privy::Environment }
 
-      # @!attribute limit
-      #
-      #   @return [Float, nil]
-      optional :limit, Float, nil?: true
-
-      # @!attribute starting_after
+      # @!attribute cursor
+      #   Cursor returned by the previous page.
       #
       #   @return [String, nil]
-      optional :starting_after, String
+      optional :cursor, String
 
-      # @!method initialize(environment:, limit: nil, starting_after: nil)
+      # @!attribute limit
+      #   Maximum number of cards to return.
+      #
+      #   @return [Integer, nil]
+      optional :limit, Integer
+
+      # @!method initialize(environment:, cursor: nil, limit: nil)
       #   Query parameters for listing cards bound to the authenticated Privy user.
       #
       #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
       #
-      #   @param limit [Float, nil]
+      #   @param cursor [String] Cursor returned by the previous page.
       #
-      #   @param starting_after [String]
+      #   @param limit [Integer] Maximum number of cards to return.
     end
   end
 end

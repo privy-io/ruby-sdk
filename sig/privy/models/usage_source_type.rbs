@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type usage_source_type = :"wallet-action-transfer" | :"wallet-action-swap"
+
+    module UsageSourceType
+      extend Privy::Internal::Type::Enum
+
+      WALLET_ACTION_TRANSFER: :"wallet-action-transfer"
+      WALLET_ACTION_SWAP: :"wallet-action-swap"
+
+      def self?.values: -> ::Array[Privy::Models::usage_source_type]
+    end
+  end
+end

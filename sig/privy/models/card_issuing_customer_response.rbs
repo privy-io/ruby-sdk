@@ -17,6 +17,8 @@ module Privy
         | Privy::CardIssuingCustomerTermsRequiredResponse
         | Privy::CardIssuingCustomerKYCRequiredResponse
         | Privy::CardIssuingCustomerPendingResponse
+        | Privy::CardIssuingCustomerRejectedResponse
+        | Privy::CardIssuingCustomerErrorResponse
         | Privy::CardIssuingCustomerReadyResponse
 
       module Data

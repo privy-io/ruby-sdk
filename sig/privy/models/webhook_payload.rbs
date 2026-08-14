@@ -30,6 +30,8 @@ module Privy
       | Privy::YieldWithdrawConfirmedWebhookPayload
       | Privy::YieldClaimConfirmedWebhookPayload
       | Privy::UserOperationCompletedWebhookPayload
+      | Privy::UsageGasSponsorshipRecordedWebhookPayload
+      | Privy::UsageCrossChainFeeRecordedWebhookPayload
       | Privy::IntentCreatedWebhookPayload
       | Privy::IntentAuthorizedWebhookPayload
       | Privy::IntentRejectedWebhookPayload

@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type card_issuing_ephemeral_key_request_body =
+      { environment: Privy::Models::environment, nonce: String }
+
+    class CardIssuingEphemeralKeyRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor nonce: String
+
+      def initialize: (
+        environment: Privy::Models::environment,
+        nonce: String
+      ) -> void
+
+      def to_hash: -> { environment: Privy::Models::environment, nonce: String }
+    end
+  end
+end

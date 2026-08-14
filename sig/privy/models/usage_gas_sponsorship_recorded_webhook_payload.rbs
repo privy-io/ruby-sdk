@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type usage_gas_sponsorship_recorded_webhook_payload =
+      {
+        amount_usd: String,
+        recorded_at: Integer,
+        source_id: String,
+        source_type: Privy::Models::usage_source_type,
+        type: Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::type_
+      }
+
+    class UsageGasSponsorshipRecordedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor amount_usd: String
+
+      attr_accessor recorded_at: Integer
+
+      attr_accessor source_id: String
+
+      attr_accessor source_type: Privy::Models::usage_source_type
+
+      attr_accessor type: Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::type_
+
+      def initialize: (
+        amount_usd: String,
+        recorded_at: Integer,
+        source_id: String,
+        source_type: Privy::Models::usage_source_type,
+        type: Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::type_
+      ) -> void
+
+      def to_hash: -> {
+        amount_usd: String,
+        recorded_at: Integer,
+        source_id: String,
+        source_type: Privy::Models::usage_source_type,
+        type: Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::type_
+      }
+
+      type type_ = :"usage.gas_sponsorship.recorded"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USAGE_GAS_SPONSORSHIP_RECORDED: :"usage.gas_sponsorship.recorded"
+
+        def self?.values: -> ::Array[Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::type_]
+      end
+    end
+  end
+end

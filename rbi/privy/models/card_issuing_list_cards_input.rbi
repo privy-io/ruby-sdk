@@ -12,28 +12,35 @@ module Privy
       sig { returns(Privy::Environment::OrSymbol) }
       attr_accessor :environment
 
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :limit
-
+      # Cursor returned by the previous page.
       sig { returns(T.nilable(String)) }
-      attr_reader :starting_after
+      attr_reader :cursor
 
-      sig { params(starting_after: String).void }
-      attr_writer :starting_after
+      sig { params(cursor: String).void }
+      attr_writer :cursor
+
+      # Maximum number of cards to return.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :limit
+
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Query parameters for listing cards bound to the authenticated Privy user.
       sig do
         params(
           environment: Privy::Environment::OrSymbol,
-          limit: T.nilable(Float),
-          starting_after: String
+          cursor: String,
+          limit: Integer
         ).returns(T.attached_class)
       end
       def self.new(
         # The Privy API environment.
         environment:,
-        limit: nil,
-        starting_after: nil
+        # Cursor returned by the previous page.
+        cursor: nil,
+        # Maximum number of cards to return.
+        limit: nil
       )
       end
 
@@ -41,8 +48,8 @@ module Privy
         override.returns(
           {
             environment: Privy::Environment::OrSymbol,
-            limit: T.nilable(Float),
-            starting_after: String
+            cursor: String,
+            limit: Integer
           }
         )
       end

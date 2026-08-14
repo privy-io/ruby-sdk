@@ -69,7 +69,9 @@ module Privy
           sig { returns(Privy::TransactionDetail::Variants) }
           attr_accessor :details
 
-          sig { returns(String) }
+          # Privy's ID for the transaction, or `null` if the transaction was not broadcasted
+          # through Privy.
+          sig { returns(T.nilable(String)) }
           attr_accessor :privy_transaction_id
 
           # Status of a blockchain transaction submitted by Privy.
@@ -79,6 +81,9 @@ module Privy
           sig { returns(T.nilable(String)) }
           attr_accessor :transaction_hash
 
+          # The wallet whose history this transaction belongs to. The sending wallet for
+          # outbound transactions, including every transaction Privy broadcasted, and the
+          # receiving wallet for inbound transfers.
           sig { returns(String) }
           attr_accessor :wallet_id
 
@@ -103,7 +108,7 @@ module Privy
                   Privy::TransferSentTransactionDetail::OrHash,
                   Privy::TransferReceivedTransactionDetail::OrHash
                 ),
-              privy_transaction_id: String,
+              privy_transaction_id: T.nilable(String),
               status: Privy::BlockchainTransactionStatus::OrSymbol,
               transaction_hash: T.nilable(String),
               wallet_id: String,
@@ -116,10 +121,15 @@ module Privy
             created_at:,
             # Details of a wallet transaction, varying by transaction type.
             details:,
+            # Privy's ID for the transaction, or `null` if the transaction was not broadcasted
+            # through Privy.
             privy_transaction_id:,
             # Status of a blockchain transaction submitted by Privy.
             status:,
             transaction_hash:,
+            # The wallet whose history this transaction belongs to. The sending wallet for
+            # outbound transactions, including every transaction Privy broadcasted, and the
+            # receiving wallet for inbound transfers.
             wallet_id:,
             sponsored: nil,
             user_operation_hash: nil
@@ -132,7 +142,7 @@ module Privy
                 caip2: String,
                 created_at: Float,
                 details: Privy::TransactionDetail::Variants,
-                privy_transaction_id: String,
+                privy_transaction_id: T.nilable(String),
                 status: Privy::BlockchainTransactionStatus::TaggedSymbol,
                 transaction_hash: T.nilable(String),
                 wallet_id: String,
