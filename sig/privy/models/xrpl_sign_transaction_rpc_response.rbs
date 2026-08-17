@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type xrpl_sign_transaction_rpc_response =
+      {
+        data: Privy::XrplSignTransactionRpcResponseData,
+        method_: Privy::Models::XrplSignTransactionRpcResponse::method_
+      }
+
+    class XrplSignTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::XrplSignTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::XrplSignTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::XrplSignTransactionRpcResponseData,
+        method_: Privy::Models::XrplSignTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::XrplSignTransactionRpcResponseData,
+        method_: Privy::Models::XrplSignTransactionRpcResponse::method_
+      }
+
+      type method_ = :xrpl_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        XRPL_SIGN_TRANSACTION: :xrpl_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::XrplSignTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type xrpl_sign_transaction_rpc_input_params =
+      {
+        encoding: Privy::Models::XrplSignTransactionRpcInputParams::encoding,
+        transaction: String
+      }
+
+    class XrplSignTransactionRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::XrplSignTransactionRpcInputParams::encoding
+
+      attr_accessor transaction: String
+
+      def initialize: (
+        encoding: Privy::Models::XrplSignTransactionRpcInputParams::encoding,
+        transaction: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::XrplSignTransactionRpcInputParams::encoding,
+        transaction: String
+      }
+
+      type encoding = :hex
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        HEX: :hex
+
+        def self?.values: -> ::Array[Privy::Models::XrplSignTransactionRpcInputParams::encoding]
+      end
+    end
+  end
+end

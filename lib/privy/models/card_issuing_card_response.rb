@@ -20,11 +20,29 @@ module Privy
       #   @return [String, nil]
       required :brand, String, nil?: true
 
+      # @!attribute cardholder
+      #   Cardholder metadata for a card.
+      #
+      #   @return [Privy::Models::CardIssuingCardholder]
+      required :cardholder, -> { Privy::CardIssuingCardholder }
+
       # @!attribute chain_id
       #   A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
       #   @return [String]
       required :chain_id, String
+
+      # @!attribute exp_month
+      #   Card expiration month from 1 to 12, or null when unavailable.
+      #
+      #   @return [Integer, nil]
+      required :exp_month, Integer, nil?: true
+
+      # @!attribute exp_year
+      #   Four-digit card expiration year, or null when unavailable.
+      #
+      #   @return [Integer, nil]
+      required :exp_year, Integer, nil?: true
 
       # @!attribute last4
       #
@@ -46,7 +64,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, balance_formatted:, brand:, chain_id:, last4:, provider_id:, status:, wallet_id:)
+      # @!method initialize(id:, balance_formatted:, brand:, cardholder:, chain_id:, exp_month:, exp_year:, last4:, provider_id:, status:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CardIssuingCardResponse} for more details.
       #
@@ -58,7 +76,13 @@ module Privy
       #
       #   @param brand [String, nil]
       #
+      #   @param cardholder [Privy::Models::CardIssuingCardholder] Cardholder metadata for a card.
+      #
       #   @param chain_id [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
+      #
+      #   @param exp_month [Integer, nil] Card expiration month from 1 to 12, or null when unavailable.
+      #
+      #   @param exp_year [Integer, nil] Four-digit card expiration year, or null when unavailable.
       #
       #   @param last4 [String, nil]
       #

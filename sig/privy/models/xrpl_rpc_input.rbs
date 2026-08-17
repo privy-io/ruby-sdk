@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type xrpl_rpc_input =
+      {
+        method_: Privy::Models::XrplRpcInput::method_,
+        params: Privy::XrplSignTransactionRpcInputParams
+      }
+
+    class XrplRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::XrplRpcInput::method_
+
+      attr_accessor params: Privy::XrplSignTransactionRpcInputParams
+
+      def initialize: (
+        method_: Privy::Models::XrplRpcInput::method_,
+        params: Privy::XrplSignTransactionRpcInputParams
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::XrplRpcInput::method_,
+        params: Privy::XrplSignTransactionRpcInputParams
+      }
+
+      type method_ = :xrpl_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        XRPL_SIGN_TRANSACTION: :xrpl_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::XrplRpcInput::method_]
+      end
+    end
+  end
+end

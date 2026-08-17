@@ -36,6 +36,7 @@ module Privy
             Privy::SparkGetWithdrawalFeeQuoteRpcInput,
             Privy::TronSignTransactionRpcInput,
             Privy::TronSendTransactionRpcInput,
+            Privy::XrplSignTransactionRpcInput,
             Privy::ExportPrivateKeyRpcInput,
             Privy::ExportSeedPhraseRpcInput
           )
@@ -78,6 +79,7 @@ module Privy
               Privy::SparkGetWithdrawalFeeQuoteRpcInput::OrHash,
               Privy::TronSignTransactionRpcInput::OrHash,
               Privy::TronSendTransactionRpcInput::OrHash,
+              Privy::XrplSignTransactionRpcInput::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),
@@ -122,6 +124,7 @@ module Privy
                 Privy::SparkGetWithdrawalFeeQuoteRpcInput,
                 Privy::TronSignTransactionRpcInput,
                 Privy::TronSendTransactionRpcInput,
+                Privy::XrplSignTransactionRpcInput,
                 Privy::ExportPrivateKeyRpcInput,
                 Privy::ExportSeedPhraseRpcInput
               ),

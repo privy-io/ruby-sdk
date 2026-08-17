@@ -5,7 +5,10 @@ module Privy
         id: String,
         balance_formatted: String?,
         brand: String?,
+        cardholder: Privy::CardIssuingCardholder,
         chain_id: String,
+        exp_month: Integer?,
+        exp_year: Integer?,
         :last4 => String?,
         provider_id: String,
         status: String,
@@ -19,7 +22,13 @@ module Privy
 
       attr_accessor brand: String?
 
+      attr_accessor cardholder: Privy::CardIssuingCardholder
+
       attr_accessor chain_id: String
+
+      attr_accessor exp_month: Integer?
+
+      attr_accessor exp_year: Integer?
 
       attr_accessor last4: String?
 
@@ -33,7 +42,10 @@ module Privy
         id: String,
         balance_formatted: String?,
         brand: String?,
+        cardholder: Privy::CardIssuingCardholder,
         chain_id: String,
+        exp_month: Integer?,
+        exp_year: Integer?,
         last4: String?,
         provider_id: String,
         status: String,
@@ -44,7 +56,10 @@ module Privy
         id: String,
         balance_formatted: String?,
         brand: String?,
+        cardholder: Privy::CardIssuingCardholder,
         chain_id: String,
+        exp_month: Integer?,
+        exp_year: Integer?,
         :last4 => String?,
         provider_id: String,
         status: String,

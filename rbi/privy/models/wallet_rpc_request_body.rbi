@@ -33,6 +33,7 @@ module Privy
             Privy::SparkGetWithdrawalFeeQuoteRpcInput,
             Privy::TronSignTransactionRpcInput,
             Privy::TronSendTransactionRpcInput,
+            Privy::XrplSignTransactionRpcInput,
             Privy::ExportPrivateKeyRpcInput,
             Privy::ExportSeedPhraseRpcInput
           )

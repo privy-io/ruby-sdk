@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type card_issuing_config = { publishable_key: String }
+
+    class CardIssuingConfig < Privy::Internal::Type::BaseModel
+      attr_accessor publishable_key: String
+
+      def initialize: (publishable_key: String) -> void
+
+      def to_hash: -> { publishable_key: String }
+    end
+  end
+end

@@ -179,11 +179,19 @@ module Privy
 
   module CardIssuingCancellationReason = Privy::Models::CardIssuingCancellationReason
 
+  class CardIssuingCardholder = Privy::Models::CardIssuingCardholder
+
   class CardIssuingCardResponse = Privy::Models::CardIssuingCardResponse
 
   class CardIssuingCardsResponse = Privy::Models::CardIssuingCardsResponse
 
   module CardIssuingCardStatus = Privy::Models::CardIssuingCardStatus
+
+  class CardIssuingConfig = Privy::Models::CardIssuingConfig
+
+  class CardIssuingConfigQueryParams = Privy::Models::CardIssuingConfigQueryParams
+
+  class CardIssuingConfigResponse = Privy::Models::CardIssuingConfigResponse
 
   class CardIssuingCreateCardInput = Privy::Models::CardIssuingCreateCardInput
 
@@ -2140,6 +2148,18 @@ module Privy
   module WebhookPayload = Privy::Models::WebhookPayload
 
   class WebhookUnsafeUnwrapParams = Privy::Models::WebhookUnsafeUnwrapParams
+
+  class XrplRpcInput = Privy::Models::XrplRpcInput
+
+  class XrplRpcResponse = Privy::Models::XrplRpcResponse
+
+  class XrplSignTransactionRpcInput = Privy::Models::XrplSignTransactionRpcInput
+
+  class XrplSignTransactionRpcInputParams = Privy::Models::XrplSignTransactionRpcInputParams
+
+  class XrplSignTransactionRpcResponse = Privy::Models::XrplSignTransactionRpcResponse
+
+  class XrplSignTransactionRpcResponseData = Privy::Models::XrplSignTransactionRpcResponseData
 
   class YieldAuthorizationHeaders = Privy::Models::YieldAuthorizationHeaders
 

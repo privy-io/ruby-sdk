@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type card_issuing_config_response = { data: Privy::CardIssuingConfig }
+
+    class CardIssuingConfigResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::CardIssuingConfig
+
+      def initialize: (data: Privy::CardIssuingConfig) -> void
+
+      def to_hash: -> { data: Privy::CardIssuingConfig }
+    end
+  end
+end

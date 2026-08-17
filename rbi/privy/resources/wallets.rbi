@@ -437,6 +437,7 @@ module Privy
               Privy::SparkGetWithdrawalFeeQuoteRpcInput::OrHash,
               Privy::TronSignTransactionRpcInput::OrHash,
               Privy::TronSendTransactionRpcInput::OrHash,
+              Privy::XrplSignTransactionRpcInput::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),

@@ -33,6 +33,7 @@ module Privy
             Privy::SparkGetWithdrawalFeeQuoteRpcResponse,
             Privy::TronSignTransactionRpcResponse,
             Privy::TronSendTransactionRpcResponse,
+            Privy::XrplSignTransactionRpcResponse,
             Privy::ExportPrivateKeyRpcResponse,
             Privy::ExportSeedPhraseRpcResponse
           )

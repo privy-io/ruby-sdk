@@ -19,9 +19,24 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :brand
 
+      # Cardholder metadata for a card.
+      sig { returns(Privy::CardIssuingCardholder) }
+      attr_reader :cardholder
+
+      sig { params(cardholder: Privy::CardIssuingCardholder::OrHash).void }
+      attr_writer :cardholder
+
       # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       sig { returns(String) }
       attr_accessor :chain_id
+
+      # Card expiration month from 1 to 12, or null when unavailable.
+      sig { returns(T.nilable(Integer)) }
+      attr_accessor :exp_month
+
+      # Four-digit card expiration year, or null when unavailable.
+      sig { returns(T.nilable(Integer)) }
+      attr_accessor :exp_year
 
       sig { returns(T.nilable(String)) }
       attr_accessor :last4
@@ -41,7 +56,10 @@ module Privy
           id: String,
           balance_formatted: T.nilable(String),
           brand: T.nilable(String),
+          cardholder: Privy::CardIssuingCardholder::OrHash,
           chain_id: String,
+          exp_month: T.nilable(Integer),
+          exp_year: T.nilable(Integer),
           last4: T.nilable(String),
           provider_id: String,
           status: String,
@@ -54,8 +72,14 @@ module Privy
         # unavailable.
         balance_formatted:,
         brand:,
+        # Cardholder metadata for a card.
+        cardholder:,
         # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         chain_id:,
+        # Card expiration month from 1 to 12, or null when unavailable.
+        exp_month:,
+        # Four-digit card expiration year, or null when unavailable.
+        exp_year:,
         last4:,
         provider_id:,
         status:,
@@ -69,7 +93,10 @@ module Privy
             id: String,
             balance_formatted: T.nilable(String),
             brand: T.nilable(String),
+            cardholder: Privy::CardIssuingCardholder,
             chain_id: String,
+            exp_month: T.nilable(Integer),
+            exp_year: T.nilable(Integer),
             last4: T.nilable(String),
             provider_id: String,
             status: String,
