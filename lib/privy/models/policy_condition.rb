@@ -44,6 +44,9 @@ module Privy
       # Decoded calldata from a TRON TriggerSmartContract interaction.
       variant :tron_trigger_smart_contract_data, -> { Privy::TronCalldataCondition }
 
+      # Policy condition evaluated against decoded XRPL transaction fields.
+      variant :xrpl_transaction, -> { Privy::XrplTransactionCondition }
+
       # SUI transaction command attributes, enables allowlisting specific command types. Allowed commands: 'TransferObjects', 'SplitCoins', 'MergeCoins'. Only 'eq' and 'in' operators are supported.
       variant :sui_transaction_command, -> { Privy::SuiTransactionCommandCondition }
 
@@ -60,7 +63,7 @@ module Privy
       variant :message, -> { Privy::MessageSigningCondition }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition, Privy::Models::MessageSigningCondition)]
+      #   @return [Array(Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::XrplTransactionCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition, Privy::Models::MessageSigningCondition)]
     end
   end
 end

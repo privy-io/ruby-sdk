@@ -39,6 +39,8 @@ module Privy
         T.let(:tron_sendTransaction, Privy::PolicyMethod::TaggedSymbol)
       TRON_SIGN_TRANSACTION =
         T.let(:tron_signTransaction, Privy::PolicyMethod::TaggedSymbol)
+      XRPL_SIGN_TRANSACTION =
+        T.let(:xrpl_signTransaction, Privy::PolicyMethod::TaggedSymbol)
       EARN_DEPOSIT = T.let(:earn_deposit, Privy::PolicyMethod::TaggedSymbol)
       EARN_WITHDRAW = T.let(:earn_withdraw, Privy::PolicyMethod::TaggedSymbol)
       TRANSFER = T.let(:transfer, Privy::PolicyMethod::TaggedSymbol)

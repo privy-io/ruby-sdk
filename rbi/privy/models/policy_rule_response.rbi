@@ -46,6 +46,7 @@ module Privy
                 Privy::SystemCondition::OrHash,
                 Privy::TronTransactionCondition::OrHash,
                 Privy::TronCalldataCondition::OrHash,
+                Privy::XrplTransactionCondition::OrHash,
                 Privy::SuiTransactionCommandCondition::OrHash,
                 Privy::SuiTransferObjectsCommandCondition::OrHash,
                 Privy::ActionRequestBodyCondition::OrHash,

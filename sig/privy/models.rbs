@@ -2161,6 +2161,10 @@ module Privy
 
   class XrplSignTransactionRpcResponseData = Privy::Models::XrplSignTransactionRpcResponseData
 
+  class XrplTransactionCondition = Privy::Models::XrplTransactionCondition
+
+  module XrplTransactionConditionField = Privy::Models::XrplTransactionConditionField
+
   class YieldAuthorizationHeaders = Privy::Models::YieldAuthorizationHeaders
 
   class YieldClaimConfirmedWebhookPayload = Privy::Models::YieldClaimConfirmedWebhookPayload

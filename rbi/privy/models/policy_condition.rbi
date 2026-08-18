@@ -21,6 +21,7 @@ module Privy
             Privy::SystemCondition,
             Privy::TronTransactionCondition,
             Privy::TronCalldataCondition,
+            Privy::XrplTransactionCondition,
             Privy::SuiTransactionCommandCondition,
             Privy::SuiTransferObjectsCommandCondition,
             Privy::ActionRequestBodyCondition,
