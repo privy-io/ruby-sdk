@@ -1,14 +1,18 @@
 module Privy
   module Models
     module Wallets
-      type earn_incentive_claim_request_body = { chain: String }
+      type earn_incentive_claim_request_body = { chain: String, nonce: String }
 
       class EarnIncentiveClaimRequestBody < Privy::Internal::Type::BaseModel
         attr_accessor chain: String
 
-        def initialize: (chain: String) -> void
+        attr_reader nonce: String?
 
-        def to_hash: -> { chain: String }
+        def nonce=: (String) -> String
+
+        def initialize: (chain: String, ?nonce: String) -> void
+
+        def to_hash: -> { chain: String, nonce: String }
       end
     end
   end

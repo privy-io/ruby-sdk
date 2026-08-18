@@ -7,6 +7,7 @@ module Privy
             def claim: (
               String wallet_id,
               chain: String,
+              ?nonce: String,
               ?privy_authorization_signature: String,
               ?privy_idempotency_key: String,
               ?privy_request_expiry: String,

@@ -15,13 +15,15 @@ module Privy
           #
           # Deposit assets into an ERC-4626 vault.
           #
-          # @overload deposit(wallet_id, vault_id:, amount: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload deposit(wallet_id, vault_id:, amount: nil, nonce: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: ID of the wallet.
           #
           # @param vault_id [String] Body param: The ID of the vault to deposit into.
           #
           # @param amount [String] Body param: Human-readable decimal amount to deposit (e.g. "1.5" for 1.5 USDC).
+          #
+          # @param nonce [String] Body param: Unique caller-generated nonce used to prevent replaying a signed wal
           #
           # @param raw_amount [String] Body param: Amount in smallest unit to deposit (e.g. "1500000" for 1.5 USDC with
           #
@@ -59,13 +61,15 @@ module Privy
           #
           # Withdraw assets from an ERC-4626 vault.
           #
-          # @overload withdraw(wallet_id, vault_id:, amount: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload withdraw(wallet_id, vault_id:, amount: nil, nonce: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: ID of the wallet.
           #
           # @param vault_id [String] Body param: The ID of the vault to withdraw from.
           #
           # @param amount [String] Body param: Human-readable decimal amount to withdraw (e.g. "1.5" for 1.5 USDC).
+          #
+          # @param nonce [String] Body param: Unique caller-generated nonce used to prevent replaying a signed wal
           #
           # @param raw_amount [String] Body param: Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC wit
           #

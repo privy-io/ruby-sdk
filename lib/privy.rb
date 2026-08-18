@@ -1062,6 +1062,7 @@ require_relative "privy/models/wallet_action_earn_withdraw_created_webhook_paylo
 require_relative "privy/models/wallet_action_earn_withdraw_failed_webhook_payload"
 require_relative "privy/models/wallet_action_earn_withdraw_rejected_webhook_payload"
 require_relative "privy/models/wallet_action_earn_withdraw_succeeded_webhook_payload"
+require_relative "privy/models/wallet_action_nonce"
 require_relative "privy/models/wallet_action_swap_created_webhook_payload"
 require_relative "privy/models/wallet_action_swap_failed_webhook_payload"
 require_relative "privy/models/wallet_action_swap_rejected_webhook_payload"

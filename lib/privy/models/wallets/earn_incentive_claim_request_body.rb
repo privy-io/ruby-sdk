@@ -12,13 +12,22 @@ module Privy
         #   @return [String]
         required :chain, String
 
-        # @!method initialize(chain:)
+        # @!attribute nonce
+        #   Unique caller-generated nonce used to prevent replaying a signed wallet action
+        #   request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+        #
+        #   @return [String, nil]
+        optional :nonce, String
+
+        # @!method initialize(chain:, nonce: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EarnIncentiveClaimRequestBody} for more details.
         #
         #   Input for claiming incentive rewards.
         #
         #   @param chain [String] The blockchain network on which to perform the incentive claim. Supported chains
+        #
+        #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
       end
     end
   end

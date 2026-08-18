@@ -10,7 +10,7 @@ module Privy
         #
         # Execute a token swap within a wallet.
         #
-        # @overload execute(wallet_id, base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+        # @overload execute(wallet_id, base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, nonce: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
         #
         # @param wallet_id [String] Path param: ID of the wallet.
         #
@@ -23,6 +23,8 @@ module Privy
         # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
         #
         # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
+        #
+        # @param nonce [String] Body param: Unique caller-generated nonce used to prevent replaying a signed wal
         #
         # @param slippage_bps [Integer] Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
         #

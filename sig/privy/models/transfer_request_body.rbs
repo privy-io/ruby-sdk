@@ -7,6 +7,7 @@ module Privy
         amount: String,
         amount_type: Privy::Models::amount_type,
         fee_configuration: Privy::FeeConfiguration,
+        nonce: String,
         slippage_bps: Integer
       }
 
@@ -31,6 +32,10 @@ module Privy
         Privy::FeeConfiguration
       ) -> Privy::FeeConfiguration
 
+      attr_reader nonce: String?
+
+      def nonce=: (String) -> String
+
       attr_reader slippage_bps: Integer?
 
       def slippage_bps=: (Integer) -> Integer
@@ -41,6 +46,7 @@ module Privy
         ?amount: String,
         ?amount_type: Privy::Models::amount_type,
         ?fee_configuration: Privy::FeeConfiguration,
+        ?nonce: String,
         ?slippage_bps: Integer
       ) -> void
 
@@ -50,6 +56,7 @@ module Privy
         amount: String,
         amount_type: Privy::Models::amount_type,
         fee_configuration: Privy::FeeConfiguration,
+        nonce: String,
         slippage_bps: Integer
       }
     end

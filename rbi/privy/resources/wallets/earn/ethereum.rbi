@@ -16,6 +16,7 @@ module Privy
               wallet_id: String,
               vault_id: String,
               amount: String,
+              nonce: String,
               raw_amount: String,
               privy_authorization_signature: String,
               privy_idempotency_key: String,
@@ -31,6 +32,9 @@ module Privy
             # Body param: Human-readable decimal amount to deposit (e.g. "1.5" for 1.5 USDC).
             # Exactly one of `amount` or `raw_amount` must be provided.
             amount: nil,
+            # Body param: Unique caller-generated nonce used to prevent replaying a signed
+            # wallet action request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+            nonce: nil,
             # Body param: Amount in smallest unit to deposit (e.g. "1500000" for 1.5 USDC with
             # 6 decimals). Exactly one of `amount` or `raw_amount` must be provided.
             raw_amount: nil,
@@ -53,6 +57,7 @@ module Privy
               wallet_id: String,
               vault_id: String,
               amount: String,
+              nonce: String,
               raw_amount: String,
               privy_authorization_signature: String,
               privy_idempotency_key: String,
@@ -68,6 +73,9 @@ module Privy
             # Body param: Human-readable decimal amount to withdraw (e.g. "1.5" for 1.5 USDC).
             # Exactly one of `amount` or `raw_amount` must be provided.
             amount: nil,
+            # Body param: Unique caller-generated nonce used to prevent replaying a signed
+            # wallet action request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+            nonce: nil,
             # Body param: Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC
             # with 6 decimals). Exactly one of `amount` or `raw_amount` must be provided.
             raw_amount: nil,

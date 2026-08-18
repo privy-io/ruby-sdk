@@ -14,6 +14,7 @@ module Privy
             source: Privy::SwapSource::OrHash,
             amount_type: Privy::AmountType::OrSymbol,
             fee_configuration: Privy::FeeConfiguration::OrHash,
+            nonce: String,
             slippage_bps: Integer,
             privy_authorization_signature: String,
             privy_idempotency_key: String,
@@ -35,6 +36,9 @@ module Privy
           amount_type: nil,
           # Body param: Total fees assessed on a transfer, in BPS
           fee_configuration: nil,
+          # Body param: Unique caller-generated nonce used to prevent replaying a signed
+          # wallet action request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+          nonce: nil,
           # Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
           slippage_bps: nil,
           # Header param: Request authorization signature. If multiple signatures are

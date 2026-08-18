@@ -207,6 +207,7 @@ module Privy
           amount: String,
           amount_type: Privy::AmountType::OrSymbol,
           fee_configuration: Privy::FeeConfiguration::OrHash,
+          nonce: String,
           slippage_bps: Integer,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
@@ -229,6 +230,9 @@ module Privy
         amount_type: nil,
         # Body param: Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
+        # Body param: Unique caller-generated nonce used to prevent replaying a signed
+        # wallet action request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+        nonce: nil,
         # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only
         # applicable for cross-chain or cross-asset transfers; omit to use the provider
         # default.

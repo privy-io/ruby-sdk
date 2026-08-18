@@ -1999,6 +1999,8 @@ module Privy
 
   class WalletActionEarnWithdrawSucceededWebhookPayload = Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload
 
+  class WalletActionNonce = Privy::Models::WalletActionNonce
+
   class WalletActionSwapCreatedWebhookPayload = Privy::Models::WalletActionSwapCreatedWebhookPayload
 
   class WalletActionSwapFailedWebhookPayload = Privy::Models::WalletActionSwapFailedWebhookPayload

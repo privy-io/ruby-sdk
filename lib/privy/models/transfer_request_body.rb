@@ -37,6 +37,13 @@ module Privy
       #   @return [Privy::Models::FeeConfiguration, nil]
       optional :fee_configuration, -> { Privy::FeeConfiguration }
 
+      # @!attribute nonce
+      #   Unique caller-generated nonce used to prevent replaying a signed wallet action
+      #   request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+      #
+      #   @return [String, nil]
+      optional :nonce, String
+
       # @!attribute slippage_bps
       #   Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
       #   cross-chain or cross-asset transfers; omit to use the provider default.
@@ -44,7 +51,7 @@ module Privy
       #   @return [Integer, nil]
       optional :slippage_bps, Integer
 
-      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, slippage_bps: nil)
+      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, nonce: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferRequestBody} for more details.
       #
@@ -59,6 +66,8 @@ module Privy
       #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
       #
       #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
+      #
+      #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
       #
       #   @param slippage_bps [Integer] Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for cr
     end

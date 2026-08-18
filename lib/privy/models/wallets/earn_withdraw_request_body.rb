@@ -17,6 +17,13 @@ module Privy
         #   @return [String, nil]
         optional :amount, String
 
+        # @!attribute nonce
+        #   Unique caller-generated nonce used to prevent replaying a signed wallet action
+        #   request. Must be at least 24 characters (e.g. a cuid2 or UUID).
+        #
+        #   @return [String, nil]
+        optional :nonce, String
+
         # @!attribute raw_amount
         #   Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC with 6
         #   decimals). Exactly one of `amount` or `raw_amount` must be provided.
@@ -24,7 +31,7 @@ module Privy
         #   @return [String, nil]
         optional :raw_amount, String
 
-        # @!method initialize(vault_id:, amount: nil, raw_amount: nil)
+        # @!method initialize(vault_id:, amount: nil, nonce: nil, raw_amount: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EarnWithdrawRequestBody} for more details.
         #
@@ -34,6 +41,8 @@ module Privy
         #   @param vault_id [String] The ID of the vault to withdraw from.
         #
         #   @param amount [String] Human-readable decimal amount to withdraw (e.g. "1.5" for 1.5 USDC). Exactly one
+        #
+        #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
         #
         #   @param raw_amount [String] Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC with 6 decimals
       end
