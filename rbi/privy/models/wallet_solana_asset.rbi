@@ -13,6 +13,7 @@ module Privy
       USDC = T.let(:usdc, Privy::WalletSolanaAsset::TaggedSymbol)
       EURC = T.let(:eurc, Privy::WalletSolanaAsset::TaggedSymbol)
       USDB = T.let(:usdb, Privy::WalletSolanaAsset::TaggedSymbol)
+      OUSD = T.let(:ousd, Privy::WalletSolanaAsset::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::WalletSolanaAsset::TaggedSymbol]) }
       def self.values

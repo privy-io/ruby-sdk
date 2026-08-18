@@ -74,6 +74,8 @@ module Privy
 
             variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::USDB }
 
+            variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::OUSD }
+
             variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::PATHUSD }
 
             variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::SOL }
@@ -100,6 +102,7 @@ module Privy
             USDT = :usdt
             EURC = :eurc
             USDB = :usdb
+            OUSD = :ousd
             PATHUSD = :pathusd
             SOL = :sol
             TRX = :trx

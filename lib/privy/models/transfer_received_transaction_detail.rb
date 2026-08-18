@@ -99,6 +99,8 @@ module Privy
 
         variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::USDB }
 
+        variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::OUSD }
+
         variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::PATHUSD }
 
         variant const: -> { Privy::Models::TransferReceivedTransactionDetail::Asset::SOL }
@@ -125,6 +127,7 @@ module Privy
         USDT = :usdt
         EURC = :eurc
         USDB = :usdb
+        OUSD = :ousd
         PATHUSD = :pathusd
         SOL = :sol
         TRX = :trx

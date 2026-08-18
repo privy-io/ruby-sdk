@@ -10,6 +10,7 @@ module Privy
       | :usdt
       | :eurc
       | :usdb
+      | :ousd
       | :pathusd
 
     module WalletEthereumAsset
@@ -24,6 +25,7 @@ module Privy
       USDT: :usdt
       EURC: :eurc
       USDB: :usdb
+      OUSD: :ousd
       PATHUSD: :pathusd
 
       def self?.values: -> ::Array[Privy::Models::wallet_ethereum_asset]

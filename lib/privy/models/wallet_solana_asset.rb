@@ -10,6 +10,7 @@ module Privy
       USDC = :usdc
       EURC = :eurc
       USDB = :usdb
+      OUSD = :ousd
 
       # @!method self.values
       #   @return [Array<Symbol>]

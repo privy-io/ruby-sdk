@@ -153,6 +153,11 @@ module Privy
             :usdb,
             Privy::TransferSentTransactionDetail::Asset::TaggedSymbol
           )
+        OUSD =
+          T.let(
+            :ousd,
+            Privy::TransferSentTransactionDetail::Asset::TaggedSymbol
+          )
         PATHUSD =
           T.let(
             :pathusd,

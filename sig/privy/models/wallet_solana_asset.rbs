@@ -1,6 +1,6 @@
 module Privy
   module Models
-    type wallet_solana_asset = :sol | :usdc | :eurc | :usdb
+    type wallet_solana_asset = :sol | :usdc | :eurc | :usdb | :ousd
 
     module WalletSolanaAsset
       extend Privy::Internal::Type::Enum
@@ -9,6 +9,7 @@ module Privy
       USDC: :usdc
       EURC: :eurc
       USDB: :usdb
+      OUSD: :ousd
 
       def self?.values: -> ::Array[Privy::Models::wallet_solana_asset]
     end

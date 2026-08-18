@@ -181,6 +181,11 @@ module Privy
                 :usdb,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
               )
+            OUSD =
+              T.let(
+                :ousd,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
+              )
             PATHUSD =
               T.let(
                 :pathusd,

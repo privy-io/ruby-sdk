@@ -15,6 +15,7 @@ module Privy
       USDT = :usdt
       EURC = :eurc
       USDB = :usdb
+      OUSD = :ousd
       PATHUSD = :pathusd
 
       # @!method self.values

@@ -92,6 +92,7 @@ module Privy
           | :usdt
           | :eurc
           | :usdb
+          | :ousd
           | :pathusd
           | :sol
           | :trx
@@ -111,6 +112,7 @@ module Privy
           USDT: :usdt
           EURC: :eurc
           USDB: :usdb
+          OUSD: :ousd
           PATHUSD: :pathusd
           SOL: :sol
           TRX: :trx
