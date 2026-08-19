@@ -383,6 +383,8 @@ module Privy
 
   class EncryptedWalletAuthenticateResponse = Privy::Models::EncryptedWalletAuthenticateResponse
 
+  class EntityID = Privy::Models::EntityID
+
   module Environment = Privy::Models::Environment
 
   class Ethereum7702AuthorizationCondition = Privy::Models::Ethereum7702AuthorizationCondition
@@ -1209,11 +1211,29 @@ module Privy
 
   module OrchestrationProvider = Privy::Models::OrchestrationProvider
 
+  class Organization = Privy::Models::Organization
+
+  class OrganizationCreateParams = Privy::Models::OrganizationCreateParams
+
+  class OrganizationCreateRequestBody = Privy::Models::OrganizationCreateRequestBody
+
+  class OrganizationDeleteParams = Privy::Models::OrganizationDeleteParams
+
+  class OrganizationGetParams = Privy::Models::OrganizationGetParams
+
+  class OrganizationListParams = Privy::Models::OrganizationListParams
+
   class OrganizationSecretIDInput = Privy::Models::OrganizationSecretIDInput
 
   class OrganizationSecretsListResponse = Privy::Models::OrganizationSecretsListResponse
 
   class OrganizationSecretView = Privy::Models::OrganizationSecretView
+
+  class OrganizationsListResponse = Privy::Models::OrganizationsListResponse
+
+  class OrganizationUpdateParams = Privy::Models::OrganizationUpdateParams
+
+  class OrganizationUpdateRequestBody = Privy::Models::OrganizationUpdateRequestBody
 
   class OutputWithPreviousTransactionData = Privy::Models::OutputWithPreviousTransactionData
 
@@ -2033,6 +2053,8 @@ module Privy
 
   module WalletAssetChainNameInput = Privy::Models::WalletAssetChainNameInput
 
+  class WalletAssignEntityParams = Privy::Models::WalletAssignEntityParams
+
   class WalletAuthenticateBoundEncryptedRequestBody = Privy::Models::WalletAuthenticateBoundEncryptedRequestBody
 
   module WalletAuthenticateBoundRequestBody = Privy::Models::WalletAuthenticateBoundRequestBody
@@ -2074,6 +2096,12 @@ module Privy
   class WalletCustodian = Privy::Models::WalletCustodian
 
   class WalletEntity = Privy::Models::WalletEntity
+
+  class WalletEntityAssignmentRequestBody = Privy::Models::WalletEntityAssignmentRequestBody
+
+  class WalletEntityAssignmentResponse = Privy::Models::WalletEntityAssignmentResponse
+
+  module WalletEntityType = Privy::Models::WalletEntityType
 
   module WalletEntropyType = Privy::Models::WalletEntropyType
 

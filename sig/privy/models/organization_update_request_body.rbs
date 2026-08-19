@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type organization_update_request_body =
+      { default_key_quorum_id: String, display_name: String }
+
+    class OrganizationUpdateRequestBody < Privy::Internal::Type::BaseModel
+      attr_reader default_key_quorum_id: String?
+
+      def default_key_quorum_id=: (String) -> String
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      def initialize: (
+        ?default_key_quorum_id: String,
+        ?display_name: String
+      ) -> void
+
+      def to_hash: -> { default_key_quorum_id: String, display_name: String }
+    end
+  end
+end

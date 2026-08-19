@@ -37,6 +37,10 @@ module Privy
     sig { returns(Privy::Resources::Users) }
     attr_reader :users
 
+    # Operations related to organizations
+    sig { returns(Privy::Resources::Organizations) }
+    attr_reader :organizations
+
     # Operations related to policies
     sig { returns(Privy::Resources::Policies) }
     attr_reader :policies
@@ -83,9 +87,6 @@ module Privy
 
     sig { returns(Privy::Resources::Funding) }
     attr_reader :funding
-
-    sig { returns(Privy::Resources::Organizations) }
-    attr_reader :organizations
 
     sig { returns(Privy::Resources::CrossApp) }
     attr_reader :cross_app

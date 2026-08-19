@@ -25,6 +25,7 @@ module Privy
       TON = T.let(:ton, Privy::CurveSigningChainType::TaggedSymbol)
       STARKNET = T.let(:starknet, Privy::CurveSigningChainType::TaggedSymbol)
       XRPL = T.let(:xrpl, Privy::CurveSigningChainType::TaggedSymbol)
+      CANTON = T.let(:canton, Privy::CurveSigningChainType::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Privy::CurveSigningChainType::TaggedSymbol])

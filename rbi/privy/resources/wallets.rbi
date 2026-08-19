@@ -29,7 +29,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: String,
-          entity: Privy::WalletCreateParams::Entity::OrHash,
+          entity: Privy::WalletEntityAssignmentRequestBody::OrHash,
           external_id: String,
           owner:
             T.nilable(
@@ -51,7 +51,7 @@ module Privy
         additional_signers: nil,
         # Body param: A human-readable label for the wallet.
         display_name: nil,
-        # Body param: The entity the wallet is attributed to.
+        # Body param: Request body for assigning an entity to a wallet.
         entity: nil,
         # Body param: A customer-provided identifier for mapping to external systems.
         # URL-safe characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be
@@ -236,6 +236,26 @@ module Privy
       def archive(
         # ID of the wallet.
         wallet_id,
+        request_options: {}
+      )
+      end
+
+      # Assign a user or organization to a wallet.
+      sig do
+        params(
+          wallet_id: String,
+          id: String,
+          type: Privy::WalletEntityType::OrSymbol,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::WalletEntityAssignmentResponse)
+      end
+      def assign_entity(
+        # ID of the wallet.
+        wallet_id,
+        # A Privy entity ID.
+        id:,
+        # The type of entity a wallet is attributed to.
+        type:,
         request_options: {}
       )
       end

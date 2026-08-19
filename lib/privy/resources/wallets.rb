@@ -35,7 +35,7 @@ module Privy
       #
       # @param display_name [String] Body param: A human-readable label for the wallet.
       #
-      # @param entity [Privy::Models::WalletCreateParams::Entity] Body param: The entity the wallet is attributed to.
+      # @param entity [Privy::Models::WalletEntityAssignmentRequestBody] Body param: Request body for assigning an entity to a wallet.
       #
       # @param external_id [String] Body param: A customer-provided identifier for mapping to external systems. URL-
       #
@@ -231,6 +231,32 @@ module Privy
           path: ["v1/wallets/%1$s/archive", wallet_id],
           model: Privy::Wallet,
           options: params[:request_options]
+        )
+      end
+
+      # Assign a user or organization to a wallet.
+      #
+      # @overload assign_entity(wallet_id, id:, type:, request_options: {})
+      #
+      # @param wallet_id [String] ID of the wallet.
+      #
+      # @param id [String] A Privy entity ID.
+      #
+      # @param type [Symbol, Privy::Models::WalletEntityType] The type of entity a wallet is attributed to.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::WalletEntityAssignmentResponse]
+      #
+      # @see Privy::Models::WalletAssignEntityParams
+      def assign_entity(wallet_id, params)
+        parsed, options = Privy::WalletAssignEntityParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/wallets/%1$s/entity", wallet_id],
+          body: parsed,
+          model: Privy::WalletEntityAssignmentResponse,
+          options: options
         )
       end
 

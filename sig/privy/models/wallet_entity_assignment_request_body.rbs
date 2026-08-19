@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type wallet_entity_assignment_request_body =
+      { id: String, type: Privy::Models::wallet_entity_type }
+
+    class WalletEntityAssignmentRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor type: Privy::Models::wallet_entity_type
+
+      def initialize: (
+        id: String,
+        type: Privy::Models::wallet_entity_type
+      ) -> void
+
+      def to_hash: -> { id: String, type: Privy::Models::wallet_entity_type }
+    end
+  end
+end

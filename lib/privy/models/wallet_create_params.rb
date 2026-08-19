@@ -26,10 +26,10 @@ module Privy
       optional :display_name, String
 
       # @!attribute entity
-      #   The entity the wallet is attributed to.
+      #   Request body for assigning an entity to a wallet.
       #
-      #   @return [Privy::Models::WalletCreateParams::Entity, nil]
-      optional :entity, -> { Privy::WalletCreateParams::Entity }
+      #   @return [Privy::Models::WalletEntityAssignmentRequestBody, nil]
+      optional :entity, -> { Privy::WalletEntityAssignmentRequestBody }
 
       # @!attribute external_id
       #   A customer-provided identifier for mapping to external systems. URL-safe
@@ -76,7 +76,7 @@ module Privy
       #
       #   @param display_name [String] A human-readable label for the wallet.
       #
-      #   @param entity [Privy::Models::WalletCreateParams::Entity] The entity the wallet is attributed to.
+      #   @param entity [Privy::Models::WalletEntityAssignmentRequestBody] Request body for assigning an entity to a wallet.
       #
       #   @param external_id [String] A customer-provided identifier for mapping to external systems. URL-safe charact
       #
@@ -89,35 +89,6 @@ module Privy
       #   @param privy_idempotency_key [String] Idempotency keys ensure API requests are executed only once within a 24-hour win
       #
       #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
-
-      class Entity < Privy::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute type
-        #
-        #   @return [Symbol, Privy::Models::WalletCreateParams::Entity::Type]
-        required :type, enum: -> { Privy::WalletCreateParams::Entity::Type }
-
-        # @!method initialize(id:, type:)
-        #   The entity the wallet is attributed to.
-        #
-        #   @param id [String]
-        #   @param type [Symbol, Privy::Models::WalletCreateParams::Entity::Type]
-
-        # @see Privy::Models::WalletCreateParams::Entity#type
-        module Type
-          extend Privy::Internal::Type::Enum
-
-          USER = :user
-          ORGANIZATION = :organization
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
     end
   end
 end

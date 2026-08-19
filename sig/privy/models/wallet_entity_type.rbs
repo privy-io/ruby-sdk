@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type wallet_entity_type = :user | :organization
+
+    module WalletEntityType
+      extend Privy::Internal::Type::Enum
+
+      USER: :user
+      ORGANIZATION: :organization
+
+      def self?.values: -> ::Array[Privy::Models::wallet_entity_type]
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type organization =
+      {
+        id: String,
+        created_at: Float,
+        default_key_quorum_id: String,
+        display_name: String,
+        updated_at: Float
+      }
+
+    class Organization < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Float
+
+      attr_accessor default_key_quorum_id: String
+
+      attr_accessor display_name: String
+
+      attr_accessor updated_at: Float
+
+      def initialize: (
+        id: String,
+        created_at: Float,
+        default_key_quorum_id: String,
+        display_name: String,
+        updated_at: Float
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Float,
+        default_key_quorum_id: String,
+        display_name: String,
+        updated_at: Float
+      }
+    end
+  end
+end

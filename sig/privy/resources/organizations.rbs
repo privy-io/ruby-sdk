@@ -1,6 +1,35 @@
 module Privy
   module Resources
     class Organizations
+      def create: (
+        default_key_quorum_id: String,
+        display_name: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Organization
+
+      def update: (
+        String organization_id,
+        ?default_key_quorum_id: String,
+        ?display_name: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Organization
+
+      def list: (
+        ?cursor: String,
+        ?limit: Float?,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::Organization]
+
+      def delete: (
+        String organization_id,
+        ?request_options: Privy::request_opts
+      ) -> nil
+
+      def get: (
+        String organization_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Organization
+
       def initialize: (client: Privy::Client) -> void
     end
   end

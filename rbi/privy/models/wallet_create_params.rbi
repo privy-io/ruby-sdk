@@ -33,11 +33,13 @@ module Privy
       sig { params(display_name: String).void }
       attr_writer :display_name
 
-      # The entity the wallet is attributed to.
-      sig { returns(T.nilable(Privy::WalletCreateParams::Entity)) }
+      # Request body for assigning an entity to a wallet.
+      sig { returns(T.nilable(Privy::WalletEntityAssignmentRequestBody)) }
       attr_reader :entity
 
-      sig { params(entity: Privy::WalletCreateParams::Entity::OrHash).void }
+      sig do
+        params(entity: Privy::WalletEntityAssignmentRequestBody::OrHash).void
+      end
       attr_writer :entity
 
       # A customer-provided identifier for mapping to external systems. URL-safe
@@ -84,7 +86,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: String,
-          entity: Privy::WalletCreateParams::Entity::OrHash,
+          entity: Privy::WalletEntityAssignmentRequestBody::OrHash,
           external_id: String,
           owner:
             T.nilable(
@@ -106,7 +108,7 @@ module Privy
         additional_signers: nil,
         # A human-readable label for the wallet.
         display_name: nil,
-        # The entity the wallet is attributed to.
+        # Request body for assigning an entity to a wallet.
         entity: nil,
         # A customer-provided identifier for mapping to external systems. URL-safe
         # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
@@ -133,7 +135,7 @@ module Privy
             chain_type: Privy::WalletChainType::OrSymbol,
             additional_signers: T::Array[Privy::AdditionalSignerItemInput],
             display_name: String,
-            entity: Privy::WalletCreateParams::Entity,
+            entity: Privy::WalletEntityAssignmentRequestBody,
             external_id: String,
             owner:
               T.nilable(
@@ -147,66 +149,6 @@ module Privy
         )
       end
       def to_hash
-      end
-
-      class Entity < Privy::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Privy::WalletCreateParams::Entity, Privy::Internal::AnyHash)
-          end
-
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(Privy::WalletCreateParams::Entity::Type::OrSymbol) }
-        attr_accessor :type
-
-        # The entity the wallet is attributed to.
-        sig do
-          params(
-            id: String,
-            type: Privy::WalletCreateParams::Entity::Type::OrSymbol
-          ).returns(T.attached_class)
-        end
-        def self.new(id:, type:)
-        end
-
-        sig do
-          override.returns(
-            {
-              id: String,
-              type: Privy::WalletCreateParams::Entity::Type::OrSymbol
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module Type
-          extend Privy::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Privy::WalletCreateParams::Entity::Type)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          USER =
-            T.let(:user, Privy::WalletCreateParams::Entity::Type::TaggedSymbol)
-          ORGANIZATION =
-            T.let(
-              :organization,
-              Privy::WalletCreateParams::Entity::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[Privy::WalletCreateParams::Entity::Type::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
       end
     end
   end

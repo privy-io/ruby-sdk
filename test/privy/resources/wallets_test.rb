@@ -200,6 +200,26 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_assign_entity_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.assign_entity("wallet_id", id: "jorpjo4rfxj62nx1itt8y1zt", type: :user)
+
+    assert_pattern do
+      response => Privy::WalletEntityAssignmentResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Float,
+        entity: Privy::WalletEntity,
+        updated_at: Float,
+        wallet_id: String
+      }
+    end
+  end
+
   def test_authenticate_with_jwt_required_params
     skip("Mock server tests are disabled")
 

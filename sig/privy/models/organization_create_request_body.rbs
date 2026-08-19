@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type organization_create_request_body =
+      { default_key_quorum_id: String, display_name: String }
+
+    class OrganizationCreateRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor default_key_quorum_id: String
+
+      attr_accessor display_name: String
+
+      def initialize: (
+        default_key_quorum_id: String,
+        display_name: String
+      ) -> void
+
+      def to_hash: -> { default_key_quorum_id: String, display_name: String }
+    end
+  end
+end

@@ -38,6 +38,10 @@ module Privy
     # @return [Privy::Resources::Users]
     attr_reader :users
 
+    # Operations related to organizations
+    # @return [Privy::Resources::Organizations]
+    attr_reader :organizations
+
     # Operations related to policies
     # @return [Privy::Resources::Policies]
     attr_reader :policies
@@ -84,9 +88,6 @@ module Privy
 
     # @return [Privy::Resources::Funding]
     attr_reader :funding
-
-    # @return [Privy::Resources::Organizations]
-    attr_reader :organizations
 
     # @return [Privy::Resources::CrossApp]
     attr_reader :cross_app
@@ -190,6 +191,7 @@ module Privy
       @wallets = Privy::Resources::Wallets.new(client: self)
       @cards = Privy::Resources::Cards.new(client: self)
       @users = Privy::Resources::Users.new(client: self)
+      @organizations = Privy::Resources::Organizations.new(client: self)
       @policies = Privy::Resources::Policies.new(client: self)
       @transactions = Privy::Resources::Transactions.new(client: self)
       @key_quorums = Privy::Resources::KeyQuorums.new(client: self)
@@ -204,7 +206,6 @@ module Privy
       @shared = Privy::Resources::Shared.new(client: self)
       @onramps = Privy::Resources::Onramps.new(client: self)
       @funding = Privy::Resources::Funding.new(client: self)
-      @organizations = Privy::Resources::Organizations.new(client: self)
       @cross_app = Privy::Resources::CrossApp.new(client: self)
       @oauth = Privy::Resources::OAuth.new(client: self)
       @yield_ = Privy::Resources::Yield.new(client: self)

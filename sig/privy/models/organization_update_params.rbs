@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type organization_update_params =
+      { organization_id: String } & Privy::Internal::Type::request_parameters
+
+    class OrganizationUpdateParams < Privy::Models::OrganizationUpdateRequestBody
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      def organization_id: -> String
+
+      def organization_id=: (String _) -> String
+
+      def initialize: (
+        organization_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        organization_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

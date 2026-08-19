@@ -5,7 +5,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         additional_signers: Privy::Models::additional_signer_input,
         display_name: String,
-        entity: Privy::WalletCreateParams::Entity,
+        entity: Privy::WalletEntityAssignmentRequestBody,
         external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
@@ -30,11 +30,11 @@ module Privy
 
       def display_name=: (String) -> String
 
-      attr_reader entity: Privy::WalletCreateParams::Entity?
+      attr_reader entity: Privy::WalletEntityAssignmentRequestBody?
 
       def entity=: (
-        Privy::WalletCreateParams::Entity
-      ) -> Privy::WalletCreateParams::Entity
+        Privy::WalletEntityAssignmentRequestBody
+      ) -> Privy::WalletEntityAssignmentRequestBody
 
       attr_reader external_id: String?
 
@@ -58,7 +58,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: Privy::Models::additional_signer_input,
         ?display_name: String,
-        ?entity: Privy::WalletCreateParams::Entity,
+        ?entity: Privy::WalletEntityAssignmentRequestBody,
         ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,
@@ -71,7 +71,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         additional_signers: Privy::Models::additional_signer_input,
         display_name: String,
-        entity: Privy::WalletCreateParams::Entity,
+        entity: Privy::WalletEntityAssignmentRequestBody,
         external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
@@ -79,36 +79,6 @@ module Privy
         privy_idempotency_key: String,
         request_options: Privy::RequestOptions
       }
-
-      type entity =
-        { id: String, type: Privy::Models::WalletCreateParams::Entity::type_ }
-
-      class Entity < Privy::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor type: Privy::Models::WalletCreateParams::Entity::type_
-
-        def initialize: (
-          id: String,
-          type: Privy::Models::WalletCreateParams::Entity::type_
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          type: Privy::Models::WalletCreateParams::Entity::type_
-        }
-
-        type type_ = :user | :organization
-
-        module Type
-          extend Privy::Internal::Type::Enum
-
-          USER: :user
-          ORGANIZATION: :organization
-
-          def self?.values: -> ::Array[Privy::Models::WalletCreateParams::Entity::type_]
-        end
-      end
     end
   end
 end

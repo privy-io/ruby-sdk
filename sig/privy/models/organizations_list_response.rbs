@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type organizations_list_response =
+      { data: ::Array[Privy::Organization], next_cursor: String? }
+
+    class OrganizationsListResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::Organization]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        data: ::Array[Privy::Organization],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Privy::Organization],
+        next_cursor: String?
+      }
+    end
+  end
+end
