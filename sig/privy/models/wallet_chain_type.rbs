@@ -16,7 +16,6 @@ module Privy
       | :ton
       | :starknet
       | :xrpl
-      | :canton
       | :spark
 
     module WalletChainType
@@ -37,7 +36,6 @@ module Privy
       TON: :ton
       STARKNET: :starknet
       XRPL: :xrpl
-      CANTON: :canton
       SPARK: :spark
 
       def self?.values: -> ::Array[Privy::Models::wallet_chain_type]

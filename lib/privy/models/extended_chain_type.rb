@@ -19,7 +19,6 @@ module Privy
       TON = :ton
       STARKNET = :starknet
       XRPL = :xrpl
-      CANTON = :canton
       SPARK = :spark
 
       # @!method self.values

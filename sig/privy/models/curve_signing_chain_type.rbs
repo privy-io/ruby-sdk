@@ -14,7 +14,6 @@ module Privy
       | :ton
       | :starknet
       | :xrpl
-      | :canton
 
     module CurveSigningChainType
       extend Privy::Internal::Type::Enum
@@ -32,7 +31,6 @@ module Privy
       TON: :ton
       STARKNET: :starknet
       XRPL: :xrpl
-      CANTON: :canton
 
       def self?.values: -> ::Array[Privy::Models::curve_signing_chain_type]
     end
