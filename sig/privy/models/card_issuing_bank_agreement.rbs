@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type card_issuing_bank_agreement =
+      {
+        id: String,
+        name: String,
+        url: Privy::Models::CardIssuingBankAgreement::url
+      }
+
+    class CardIssuingBankAgreement < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor url: Privy::Models::CardIssuingBankAgreement::url
+
+      def initialize: (
+        id: String,
+        name: String,
+        url: Privy::Models::CardIssuingBankAgreement::url
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        url: Privy::Models::CardIssuingBankAgreement::url
+      }
+
+      type url = String | :""
+
+      module URL
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::CardIssuingBankAgreement::url]
+
+        EMPTY: :""
+      end
+    end
+  end
+end

@@ -203,6 +203,10 @@ module Privy
 
   CaptchaProvider = Privy::Models::CaptchaProvider
 
+  CardIssuingBankAgreement = Privy::Models::CardIssuingBankAgreement
+
+  CardIssuingBankInfo = Privy::Models::CardIssuingBankInfo
+
   CardIssuingCancellationReason = Privy::Models::CardIssuingCancellationReason
 
   CardIssuingCardholder = Privy::Models::CardIssuingCardholder
@@ -220,6 +224,18 @@ module Privy
   CardIssuingConfigResponse = Privy::Models::CardIssuingConfigResponse
 
   CardIssuingCreateCardInput = Privy::Models::CardIssuingCreateCardInput
+
+  CardIssuingCustomerBankTermsRequiredResponse =
+    Privy::Models::CardIssuingCustomerBankTermsRequiredResponse
+
+  CardIssuingCustomerBridgeTermsRequiredResponse =
+    Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse
+
+  CardIssuingCustomerConsentsRequestBody =
+    Privy::Models::CardIssuingCustomerConsentsRequestBody
+
+  CardIssuingCustomerElectronicDisclosureRequiredResponse =
+    Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse
 
   CardIssuingCustomerErrorResponse =
     Privy::Models::CardIssuingCustomerErrorResponse
@@ -242,9 +258,6 @@ module Privy
     Privy::Models::CardIssuingCustomerRejectedResponse
 
   CardIssuingCustomerResponse = Privy::Models::CardIssuingCustomerResponse
-
-  CardIssuingCustomerTermsRequiredResponse =
-    Privy::Models::CardIssuingCustomerTermsRequiredResponse
 
   CardIssuingDispute = Privy::Models::CardIssuingDispute
 

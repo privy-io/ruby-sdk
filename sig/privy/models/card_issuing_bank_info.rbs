@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type card_issuing_bank_info =
+      { agreements: ::Array[Privy::CardIssuingBankAgreement], name: String }
+
+    class CardIssuingBankInfo < Privy::Internal::Type::BaseModel
+      attr_accessor agreements: ::Array[Privy::CardIssuingBankAgreement]
+
+      attr_accessor name: String
+
+      def initialize: (
+        agreements: ::Array[Privy::CardIssuingBankAgreement],
+        name: String
+      ) -> void
+
+      def to_hash: -> {
+        agreements: ::Array[Privy::CardIssuingBankAgreement],
+        name: String
+      }
+    end
+  end
+end

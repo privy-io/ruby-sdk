@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type card_issuing_customer_electronic_disclosure_required_response =
+      {
+        disclosure_url: String,
+        status: Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse::status
+      }
+
+    class CardIssuingCustomerElectronicDisclosureRequiredResponse < Privy::Internal::Type::BaseModel
+      attr_accessor disclosure_url: String
+
+      attr_accessor status: Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse::status
+
+      def initialize: (
+        disclosure_url: String,
+        status: Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        disclosure_url: String,
+        status: Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse::status
+      }
+
+      type status = :electronic_disclosure_required
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        ELECTRONIC_DISCLOSURE_REQUIRED: :electronic_disclosure_required
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse::status]
+      end
+    end
+  end
+end

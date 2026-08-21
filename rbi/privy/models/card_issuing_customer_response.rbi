@@ -13,7 +13,9 @@ module Privy
         returns(
           T.any(
             Privy::CardIssuingCustomerNotCreatedResponse,
-            Privy::CardIssuingCustomerTermsRequiredResponse,
+            Privy::CardIssuingCustomerElectronicDisclosureRequiredResponse,
+            Privy::CardIssuingCustomerBankTermsRequiredResponse,
+            Privy::CardIssuingCustomerBridgeTermsRequiredResponse,
             Privy::CardIssuingCustomerKYCRequiredResponse,
             Privy::CardIssuingCustomerPendingResponse,
             Privy::CardIssuingCustomerRejectedResponse,
@@ -30,7 +32,9 @@ module Privy
           data:
             T.any(
               Privy::CardIssuingCustomerNotCreatedResponse::OrHash,
-              Privy::CardIssuingCustomerTermsRequiredResponse::OrHash,
+              Privy::CardIssuingCustomerElectronicDisclosureRequiredResponse::OrHash,
+              Privy::CardIssuingCustomerBankTermsRequiredResponse::OrHash,
+              Privy::CardIssuingCustomerBridgeTermsRequiredResponse::OrHash,
               Privy::CardIssuingCustomerKYCRequiredResponse::OrHash,
               Privy::CardIssuingCustomerPendingResponse::OrHash,
               Privy::CardIssuingCustomerRejectedResponse::OrHash,
@@ -51,7 +55,9 @@ module Privy
             data:
               T.any(
                 Privy::CardIssuingCustomerNotCreatedResponse,
-                Privy::CardIssuingCustomerTermsRequiredResponse,
+                Privy::CardIssuingCustomerElectronicDisclosureRequiredResponse,
+                Privy::CardIssuingCustomerBankTermsRequiredResponse,
+                Privy::CardIssuingCustomerBridgeTermsRequiredResponse,
                 Privy::CardIssuingCustomerKYCRequiredResponse,
                 Privy::CardIssuingCustomerPendingResponse,
                 Privy::CardIssuingCustomerRejectedResponse,
@@ -72,7 +78,9 @@ module Privy
           T.type_alias do
             T.any(
               Privy::CardIssuingCustomerNotCreatedResponse,
-              Privy::CardIssuingCustomerTermsRequiredResponse,
+              Privy::CardIssuingCustomerElectronicDisclosureRequiredResponse,
+              Privy::CardIssuingCustomerBankTermsRequiredResponse,
+              Privy::CardIssuingCustomerBridgeTermsRequiredResponse,
               Privy::CardIssuingCustomerKYCRequiredResponse,
               Privy::CardIssuingCustomerPendingResponse,
               Privy::CardIssuingCustomerRejectedResponse,

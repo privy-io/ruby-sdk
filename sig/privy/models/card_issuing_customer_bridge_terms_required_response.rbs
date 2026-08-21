@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type card_issuing_customer_bridge_terms_required_response =
+      {
+        status: Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse::status,
+        tos_url: String
+      }
+
+    class CardIssuingCustomerBridgeTermsRequiredResponse < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse::status
+
+      attr_accessor tos_url: String
+
+      def initialize: (
+        status: Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse::status,
+        tos_url: String
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse::status,
+        tos_url: String
+      }
+
+      type status = :bridge_terms_required
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE_TERMS_REQUIRED: :bridge_terms_required
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse::status]
+      end
+    end
+  end
+end

@@ -2,18 +2,18 @@
 
 module Privy
   module Models
-    class CardIssuingCustomerTermsRequiredResponse < Privy::Internal::Type::BaseModel
+    class CardIssuingCustomerBridgeTermsRequiredResponse < Privy::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Privy::CardIssuingCustomerTermsRequiredResponse,
+            Privy::CardIssuingCustomerBridgeTermsRequiredResponse,
             Privy::Internal::AnyHash
           )
         end
 
       sig do
         returns(
-          Privy::CardIssuingCustomerTermsRequiredResponse::Status::OrSymbol
+          Privy::CardIssuingCustomerBridgeTermsRequiredResponse::Status::OrSymbol
         )
       end
       attr_accessor :status
@@ -21,11 +21,12 @@ module Privy
       sig { returns(String) }
       attr_accessor :tos_url
 
-      # A Bridge cards customer exists and must accept terms before KYC.
+      # A cards customer exists and must accept the provider terms hosted at `tos_url`
+      # before KYC. Reached only once the bank agreements are recorded.
       sig do
         params(
           status:
-            Privy::CardIssuingCustomerTermsRequiredResponse::Status::OrSymbol,
+            Privy::CardIssuingCustomerBridgeTermsRequiredResponse::Status::OrSymbol,
           tos_url: String
         ).returns(T.attached_class)
       end
@@ -36,7 +37,7 @@ module Privy
         override.returns(
           {
             status:
-              Privy::CardIssuingCustomerTermsRequiredResponse::Status::OrSymbol,
+              Privy::CardIssuingCustomerBridgeTermsRequiredResponse::Status::OrSymbol,
             tos_url: String
           }
         )
@@ -51,21 +52,21 @@ module Privy
           T.type_alias do
             T.all(
               Symbol,
-              Privy::CardIssuingCustomerTermsRequiredResponse::Status
+              Privy::CardIssuingCustomerBridgeTermsRequiredResponse::Status
             )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        TERMS_REQUIRED =
+        BRIDGE_TERMS_REQUIRED =
           T.let(
-            :terms_required,
-            Privy::CardIssuingCustomerTermsRequiredResponse::Status::TaggedSymbol
+            :bridge_terms_required,
+            Privy::CardIssuingCustomerBridgeTermsRequiredResponse::Status::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Privy::CardIssuingCustomerTermsRequiredResponse::Status::TaggedSymbol
+              Privy::CardIssuingCustomerBridgeTermsRequiredResponse::Status::TaggedSymbol
             ]
           )
         end

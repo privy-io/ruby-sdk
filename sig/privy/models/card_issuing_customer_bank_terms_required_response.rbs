@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type card_issuing_customer_bank_terms_required_response =
+      {
+        bank_info: Privy::CardIssuingBankInfo,
+        status: Privy::Models::CardIssuingCustomerBankTermsRequiredResponse::status
+      }
+
+    class CardIssuingCustomerBankTermsRequiredResponse < Privy::Internal::Type::BaseModel
+      attr_accessor bank_info: Privy::CardIssuingBankInfo
+
+      attr_accessor status: Privy::Models::CardIssuingCustomerBankTermsRequiredResponse::status
+
+      def initialize: (
+        bank_info: Privy::CardIssuingBankInfo,
+        status: Privy::Models::CardIssuingCustomerBankTermsRequiredResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        bank_info: Privy::CardIssuingBankInfo,
+        status: Privy::Models::CardIssuingCustomerBankTermsRequiredResponse::status
+      }
+
+      type status = :bank_terms_required
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        BANK_TERMS_REQUIRED: :bank_terms_required
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerBankTermsRequiredResponse::status]
+      end
+    end
+  end
+end

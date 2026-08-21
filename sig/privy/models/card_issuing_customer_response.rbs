@@ -14,7 +14,9 @@ module Privy
 
       type data =
         Privy::CardIssuingCustomerNotCreatedResponse
-        | Privy::CardIssuingCustomerTermsRequiredResponse
+        | Privy::CardIssuingCustomerElectronicDisclosureRequiredResponse
+        | Privy::CardIssuingCustomerBankTermsRequiredResponse
+        | Privy::CardIssuingCustomerBridgeTermsRequiredResponse
         | Privy::CardIssuingCustomerKYCRequiredResponse
         | Privy::CardIssuingCustomerPendingResponse
         | Privy::CardIssuingCustomerRejectedResponse
