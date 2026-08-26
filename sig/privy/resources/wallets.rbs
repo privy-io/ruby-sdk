@@ -11,6 +11,8 @@ module Privy
 
       attr_reader swap: Privy::Resources::Wallets::Swap
 
+      attr_reader deposit_accounts: Privy::Resources::Wallets::DepositAccounts
+
       def create: (
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: Privy::Models::additional_signer_input,

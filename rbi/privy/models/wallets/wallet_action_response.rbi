@@ -17,7 +17,8 @@ module Privy
               Privy::Wallets::EarnDepositActionResponse,
               Privy::Wallets::EarnWithdrawActionResponse,
               Privy::Wallets::EarnIncentiveClaimActionResponse,
-              Privy::Wallets::EarnFeeCollectActionResponse
+              Privy::Wallets::EarnFeeCollectActionResponse,
+              Privy::Wallets::PayoutResponse
             )
           end
 

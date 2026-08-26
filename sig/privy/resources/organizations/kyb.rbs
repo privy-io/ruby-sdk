@@ -1,0 +1,35 @@
+module Privy
+  module Resources
+    class Organizations
+      class KYB
+        def list: (
+          String organization_id,
+          ?request_options: Privy::request_opts
+        ) -> Privy::KYBStatusListResponse
+
+        def initiate_links: (
+          String organization_id,
+          email: String,
+          provider: Privy::Models::kyx_provider,
+          ?business_name: String,
+          ?client_agreement_id: String,
+          ?endorsements: ::Array[String],
+          ?environment: Privy::Models::kyx_environment,
+          ?redirect_uri: String,
+          ?request_options: Privy::request_opts
+        ) -> Privy::KYBStatusResponse
+
+        def initiate_tos: (
+          String organization_id,
+          email: String,
+          provider: Privy::Models::kyx_provider,
+          ?business_name: String,
+          ?environment: Privy::Models::kyx_environment,
+          ?request_options: Privy::request_opts
+        ) -> Privy::KyxTosResponse
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

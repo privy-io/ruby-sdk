@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type organization_external_fiat_account_response =
+      { external_fiat_account: Privy::OrganizationExternalFiatAccount }
+
+    class OrganizationExternalFiatAccountResponse < Privy::Internal::Type::BaseModel
+      attr_accessor external_fiat_account: Privy::OrganizationExternalFiatAccount
+
+      def initialize: (
+        external_fiat_account: Privy::OrganizationExternalFiatAccount
+      ) -> void
+
+      def to_hash: -> {
+        external_fiat_account: Privy::OrganizationExternalFiatAccount
+      }
+    end
+  end
+end

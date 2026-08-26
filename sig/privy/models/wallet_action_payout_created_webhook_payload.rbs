@@ -1,0 +1,105 @@
+module Privy
+  module Models
+    type wallet_action_payout_created_webhook_payload =
+      {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        created_at: String,
+        destination_currency: String,
+        destination_fiat_account_id: String,
+        destination_payment_rail: String,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        source_amount: String,
+        source_asset: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+    class WalletActionPayoutCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
+
+      attr_accessor created_at: String
+
+      attr_accessor destination_currency: String
+
+      attr_accessor destination_fiat_account_id: String
+
+      attr_accessor destination_payment_rail: String
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor provider: Privy::Models::orchestration_provider
+
+      attr_accessor source_amount: String
+
+      attr_accessor source_asset: String
+
+      attr_accessor source_chain: String
+
+      attr_accessor status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status
+
+      attr_accessor type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        created_at: String,
+        destination_currency: String,
+        destination_fiat_account_id: String,
+        destination_payment_rail: String,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        source_amount: String,
+        source_asset: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        created_at: String,
+        destination_currency: String,
+        destination_fiat_account_id: String,
+        destination_payment_rail: String,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        source_amount: String,
+        source_asset: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status,
+        type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+      type status = :pending
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        PENDING: :pending
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionPayoutCreatedWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.payout.created"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_PAYOUT_CREATED: :"wallet_action.payout.created"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_]
+      end
+    end
+  end
+end

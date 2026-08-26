@@ -1,0 +1,47 @@
+module Privy
+  module Models
+    type external_fiat_account_us_data =
+      {
+        account_number: String,
+        routing_number: String,
+        type: Privy::Models::ExternalFiatAccountUsData::type_,
+        checking_or_savings: String
+      }
+
+    class ExternalFiatAccountUsData < Privy::Internal::Type::BaseModel
+      attr_accessor account_number: String
+
+      attr_accessor routing_number: String
+
+      attr_accessor type: Privy::Models::ExternalFiatAccountUsData::type_
+
+      attr_reader checking_or_savings: String?
+
+      def checking_or_savings=: (String) -> String
+
+      def initialize: (
+        account_number: String,
+        routing_number: String,
+        type: Privy::Models::ExternalFiatAccountUsData::type_,
+        ?checking_or_savings: String
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String,
+        routing_number: String,
+        type: Privy::Models::ExternalFiatAccountUsData::type_,
+        checking_or_savings: String
+      }
+
+      type type_ = :us
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        US: :us
+
+        def self?.values: -> ::Array[Privy::Models::ExternalFiatAccountUsData::type_]
+      end
+    end
+  end
+end

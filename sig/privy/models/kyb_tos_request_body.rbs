@@ -1,0 +1,41 @@
+module Privy
+  module Models
+    type kyb_tos_request_body =
+      {
+        email: String,
+        provider: Privy::Models::kyx_provider,
+        business_name: String,
+        environment: Privy::Models::kyx_environment
+      }
+
+    class KYBTosRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor email: String
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_reader business_name: String?
+
+      def business_name=: (String) -> String
+
+      attr_reader environment: Privy::Models::kyx_environment?
+
+      def environment=: (
+        Privy::Models::kyx_environment
+      ) -> Privy::Models::kyx_environment
+
+      def initialize: (
+        email: String,
+        provider: Privy::Models::kyx_provider,
+        ?business_name: String,
+        ?environment: Privy::Models::kyx_environment
+      ) -> void
+
+      def to_hash: -> {
+        email: String,
+        provider: Privy::Models::kyx_provider,
+        business_name: String,
+        environment: Privy::Models::kyx_environment
+      }
+    end
+  end
+end

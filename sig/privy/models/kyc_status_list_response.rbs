@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type kyc_status_list_response =
+      { kyc_statuses: ::Array[Privy::KYCStatusResponse], next_cursor: String? }
+
+    class KYCStatusListResponse < Privy::Internal::Type::BaseModel
+      attr_accessor kyc_statuses: ::Array[Privy::KYCStatusResponse]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        kyc_statuses: ::Array[Privy::KYCStatusResponse],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        kyc_statuses: ::Array[Privy::KYCStatusResponse],
+        next_cursor: String?
+      }
+    end
+  end
+end

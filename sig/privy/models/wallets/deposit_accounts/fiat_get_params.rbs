@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    module Wallets
+      module DepositAccounts
+        type fiat_get_params =
+          { wallet_id: String, deposit_account_id: String }
+          & Privy::Internal::Type::request_parameters
+
+        class FiatGetParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor wallet_id: String
+
+          attr_accessor deposit_account_id: String
+
+          def initialize: (
+            wallet_id: String,
+            deposit_account_id: String,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            wallet_id: String,
+            deposit_account_id: String,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

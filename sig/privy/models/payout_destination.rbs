@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type payout_destination = { fiat_account_id: String }
+
+    class PayoutDestination < Privy::Internal::Type::BaseModel
+      attr_accessor fiat_account_id: String
+
+      def initialize: (fiat_account_id: String) -> void
+
+      def to_hash: -> { fiat_account_id: String }
+    end
+  end
+end

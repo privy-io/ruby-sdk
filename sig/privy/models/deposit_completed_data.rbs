@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type deposit_completed_data =
+      {
+        created_at: String,
+        destination: Privy::DepositCompletedDestination,
+        source: Privy::DepositStartedSource
+      }
+
+    class DepositCompletedData < Privy::Internal::Type::BaseModel
+      attr_accessor created_at: String
+
+      attr_accessor destination: Privy::DepositCompletedDestination
+
+      attr_accessor source: Privy::DepositStartedSource
+
+      def initialize: (
+        created_at: String,
+        destination: Privy::DepositCompletedDestination,
+        source: Privy::DepositStartedSource
+      ) -> void
+
+      def to_hash: -> {
+        created_at: String,
+        destination: Privy::DepositCompletedDestination,
+        source: Privy::DepositStartedSource
+      }
+    end
+  end
+end

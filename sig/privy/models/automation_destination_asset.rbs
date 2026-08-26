@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type automation_destination_asset =
+      { asset_address: String, :caip2 => String }
+
+    class AutomationDestinationAsset < Privy::Internal::Type::BaseModel
+      attr_accessor asset_address: String
+
+      attr_accessor caip2: String
+
+      def initialize: (asset_address: String, caip2: String) -> void
+
+      def to_hash: -> { asset_address: String, :caip2 => String }
+    end
+  end
+end

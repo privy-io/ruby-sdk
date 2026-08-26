@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type wallet_automation_success_response =
+      { success: Privy::Models::WalletAutomationSuccessResponse::success }
+
+    class WalletAutomationSuccessResponse < Privy::Internal::Type::BaseModel
+      attr_accessor success: Privy::Models::WalletAutomationSuccessResponse::success
+
+      def initialize: (
+        success: Privy::Models::WalletAutomationSuccessResponse::success
+      ) -> void
+
+      def to_hash: -> {
+        success: Privy::Models::WalletAutomationSuccessResponse::success
+      }
+
+      type success = true
+
+      module Success
+        extend Privy::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Privy::Models::WalletAutomationSuccessResponse::success]
+      end
+    end
+  end
+end

@@ -92,6 +92,9 @@ module Privy
 
   AssetAccountWithBalance = Privy::Models::AssetAccountWithBalance
 
+  AttachWalletAutomationRequestBody =
+    Privy::Models::AttachWalletAutomationRequestBody
+
   AuthenticatedUser = Privy::Models::AuthenticatedUser
 
   AuthenticateJwtInput = Privy::Models::AuthenticateJwtInput
@@ -113,6 +116,53 @@ module Privy
 
   AuthorizationKeyRole = Privy::Models::AuthorizationKeyRole
 
+  AutomationActionConfig = Privy::Models::AutomationActionConfig
+
+  AutomationActionConfigInput = Privy::Models::AutomationActionConfigInput
+
+  AutomationAssetFilter = Privy::Models::AutomationAssetFilter
+
+  AutomationAssetFilterAll = Privy::Models::AutomationAssetFilterAll
+
+  AutomationAssetFilterExclude = Privy::Models::AutomationAssetFilterExclude
+
+  AutomationAssetFilterInclude = Privy::Models::AutomationAssetFilterInclude
+
+  AutomationAssetFilterInput = Privy::Models::AutomationAssetFilterInput
+
+  AutomationAssetFilterInputExclude =
+    Privy::Models::AutomationAssetFilterInputExclude
+
+  AutomationAssetFilterInputInclude =
+    Privy::Models::AutomationAssetFilterInputInclude
+
+  AutomationAssetSpec = Privy::Models::AutomationAssetSpec
+
+  AutomationAssetSpecInput = Privy::Models::AutomationAssetSpecInput
+
+  AutomationConfig = Privy::Models::AutomationConfig
+
+  AutomationConfigInput = Privy::Models::AutomationConfigInput
+
+  AutomationDepositTriggerConfig = Privy::Models::AutomationDepositTriggerConfig
+
+  AutomationDepositTriggerConfigInput =
+    Privy::Models::AutomationDepositTriggerConfigInput
+
+  AutomationDestinationAsset = Privy::Models::AutomationDestinationAsset
+
+  AutomationDestinationAssetInput =
+    Privy::Models::AutomationDestinationAssetInput
+
+  AutomationSwapActionConfig = Privy::Models::AutomationSwapActionConfig
+
+  AutomationSwapActionConfigInput =
+    Privy::Models::AutomationSwapActionConfigInput
+
+  AutomationTriggerConfig = Privy::Models::AutomationTriggerConfig
+
+  AutomationTriggerConfigInput = Privy::Models::AutomationTriggerConfigInput
+
   BalanceAsset = Privy::Models::BalanceAsset
 
   BalanceAssetByChain = Privy::Models::BalanceAssetByChain
@@ -132,6 +182,12 @@ module Privy
   BridgeBrlFiatVirtualAccountDepositInstructions =
     Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
 
+  BridgeCreateExternalFiatAccountRequestBody =
+    Privy::Models::BridgeCreateExternalFiatAccountRequestBody
+
+  BridgeCreateFiatDepositAccountRequestBody =
+    Privy::Models::BridgeCreateFiatDepositAccountRequestBody
+
   BridgeCryptoDepositMetadata = Privy::Models::BridgeCryptoDepositMetadata
 
   BridgeCryptoTransferMetadata = Privy::Models::BridgeCryptoTransferMetadata
@@ -141,7 +197,11 @@ module Privy
   BridgeEurFiatVirtualAccountDepositInstructions =
     Privy::Models::BridgeEurFiatVirtualAccountDepositInstructions
 
+  BridgeExternalFiatAccount = Privy::Models::BridgeExternalFiatAccount
+
   BridgeFiatCustomerResponse = Privy::Models::BridgeFiatCustomerResponse
+
+  BridgeFiatDepositAccount = Privy::Models::BridgeFiatDepositAccount
 
   BridgeFiatDepositMetadata = Privy::Models::BridgeFiatDepositMetadata
 
@@ -172,6 +232,9 @@ module Privy
     Privy::Models::BridgeMxnFiatVirtualAccountDepositInstructions
 
   BridgeOnrampProvider = Privy::Models::BridgeOnrampProvider
+
+  BridgeOrganizationExternalFiatAccount =
+    Privy::Models::BridgeOrganizationExternalFiatAccount
 
   BridgeRefundMetadata = Privy::Models::BridgeRefundMetadata
 
@@ -355,6 +418,28 @@ module Privy
 
   CreateAccountInput = Privy::Models::CreateAccountInput
 
+  CreateAutomationRequestBody = Privy::Models::CreateAutomationRequestBody
+
+  CreateCryptoDepositAccountRequestBody =
+    Privy::Models::CreateCryptoDepositAccountRequestBody
+
+  CreateCryptoDepositAccountResponse =
+    Privy::Models::CreateCryptoDepositAccountResponse
+
+  CreateCryptoDepositAccountWithConfigRequestBody =
+    Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody
+
+  CreateCryptoDepositAccountWithRouteRequestBody =
+    Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody
+
+  CreateExternalFiatAccountRequestBody =
+    Privy::Models::CreateExternalFiatAccountRequestBody
+
+  CreateFiatDepositAccountRequestBody =
+    Privy::Models::CreateFiatDepositAccountRequestBody
+
+  CreateFiatDepositAccountSource = Privy::Models::CreateFiatDepositAccountSource
+
   CreateLinkAuthIntentInput = Privy::Models::CreateLinkAuthIntentInput
 
   CreateLinkAuthIntentResponse = Privy::Models::CreateLinkAuthIntentResponse
@@ -364,6 +449,8 @@ module Privy
 
   CreateOrUpdateFiatCustomerRequestInput =
     Privy::Models::CreateOrUpdateFiatCustomerRequestInput
+
+  CreatePayoutRequestBody = Privy::Models::CreatePayoutRequestBody
 
   CreateStripeOnrampSessionInput = Privy::Models::CreateStripeOnrampSessionInput
 
@@ -377,6 +464,8 @@ module Privy
   CrossAppEmbeddedWallet = Privy::Models::CrossAppEmbeddedWallet
 
   CrossAppSmartWallet = Privy::Models::CrossAppSmartWallet
+
+  CryptoDepositAddressRoute = Privy::Models::CryptoDepositAddressRoute
 
   Currency = Privy::Models::Currency
 
@@ -409,6 +498,21 @@ module Privy
   CustomOAuthProviderID = Privy::Models::CustomOAuthProviderID
 
   CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
+
+  DepositCompletedData = Privy::Models::DepositCompletedData
+
+  DepositCompletedDestination = Privy::Models::DepositCompletedDestination
+
+  DepositFailedData = Privy::Models::DepositFailedData
+
+  DepositStartedData = Privy::Models::DepositStartedData
+
+  DepositStartedDestination = Privy::Models::DepositStartedDestination
+
+  DepositStartedSource = Privy::Models::DepositStartedSource
+
+  DetachWalletAutomationRequestBody =
+    Privy::Models::DetachWalletAutomationRequestBody
 
   DeveloperFee = Privy::Models::DeveloperFee
 
@@ -630,6 +734,30 @@ module Privy
 
   ExtendedChainType = Privy::Models::ExtendedChainType
 
+  ExternalFiatAccount = Privy::Models::ExternalFiatAccount
+
+  ExternalFiatAccountAddress = Privy::Models::ExternalFiatAccountAddress
+
+  ExternalFiatAccountData = Privy::Models::ExternalFiatAccountData
+
+  ExternalFiatAccountGBData = Privy::Models::ExternalFiatAccountGBData
+
+  ExternalFiatAccountIbanData = Privy::Models::ExternalFiatAccountIbanData
+
+  ExternalFiatAccountPixData = Privy::Models::ExternalFiatAccountPixData
+
+  ExternalFiatAccountResponse = Privy::Models::ExternalFiatAccountResponse
+
+  ExternalFiatAccountSwiftCategory =
+    Privy::Models::ExternalFiatAccountSwiftCategory
+
+  ExternalFiatAccountSwiftData = Privy::Models::ExternalFiatAccountSwiftData
+
+  ExternalFiatAccountSwiftPurposeOfFunds =
+    Privy::Models::ExternalFiatAccountSwiftPurposeOfFunds
+
+  ExternalFiatAccountUsData = Privy::Models::ExternalFiatAccountUsData
+
   ExternalOAuthProviderID = Privy::Models::ExternalOAuthProviderID
 
   FarcasterAuthenticateInput = Privy::Models::FarcasterAuthenticateInput
@@ -708,6 +836,18 @@ module Privy
   FiatCurrencyCode = Privy::Models::FiatCurrencyCode
 
   FiatCustomerResponse = Privy::Models::FiatCustomerResponse
+
+  FiatDepositAccount = Privy::Models::FiatDepositAccount
+
+  FiatDepositAccountDestination = Privy::Models::FiatDepositAccountDestination
+
+  FiatDepositAccountResponse = Privy::Models::FiatDepositAccountResponse
+
+  FiatDepositAccountSource = Privy::Models::FiatDepositAccountSource
+
+  FiatDepositAccountStatus = Privy::Models::FiatDepositAccountStatus
+
+  FiatDepositInstructions = Privy::Models::FiatDepositInstructions
 
   FiatOnrampDestination = Privy::Models::FiatOnrampDestination
 
@@ -1114,6 +1254,56 @@ module Privy
   KrakenEmbedUserVerifiedWebhookPayload =
     Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
 
+  KYBLinksRequestBody = Privy::Models::KYBLinksRequestBody
+
+  KYBStatusListResponse = Privy::Models::KYBStatusListResponse
+
+  KYBStatusResponse = Privy::Models::KYBStatusResponse
+
+  KYBTosRequestBody = Privy::Models::KYBTosRequestBody
+
+  KYCIdentifyingDocument = Privy::Models::KYCIdentifyingDocument
+
+  KYCLinksRequestBody = Privy::Models::KYCLinksRequestBody
+
+  KYCResidentialAddress = Privy::Models::KYCResidentialAddress
+
+  KYCStatusListResponse = Privy::Models::KYCStatusListResponse
+
+  KYCStatusResponse = Privy::Models::KYCStatusResponse
+
+  KYCSubmitData = Privy::Models::KYCSubmitData
+
+  KYCSubmitRequestBody = Privy::Models::KYCSubmitRequestBody
+
+  KyxCapabilities = Privy::Models::KyxCapabilities
+
+  KyxCapabilityStatus = Privy::Models::KyxCapabilityStatus
+
+  KyxEndorsement = Privy::Models::KyxEndorsement
+
+  KyxEndorsementName = Privy::Models::KyxEndorsementName
+
+  KyxEndorsementStatus = Privy::Models::KyxEndorsementStatus
+
+  KyxEnvironment = Privy::Models::KyxEnvironment
+
+  KyxProvider = Privy::Models::KyxProvider
+
+  KyxProviderStatus = Privy::Models::KyxProviderStatus
+
+  KyxTosRequestBody = Privy::Models::KyxTosRequestBody
+
+  KyxTosResponse = Privy::Models::KyxTosResponse
+
+  KyxTosStatus = Privy::Models::KyxTosStatus
+
+  KyxTosStatusDetail = Privy::Models::KyxTosStatusDetail
+
+  KyxVerificationStatus = Privy::Models::KyxVerificationStatus
+
+  KyxVerificationStatusDetail = Privy::Models::KyxVerificationStatusDetail
+
   LinkAuthIntentCreated = Privy::Models::LinkAuthIntentCreated
 
   LinkAuthIntentNoAccount = Privy::Models::LinkAuthIntentNoAccount
@@ -1236,6 +1426,15 @@ module Privy
   LinkedMfaMethod = Privy::Models::LinkedMfaMethod
 
   LinkJwtInput = Privy::Models::LinkJwtInput
+
+  ListExternalFiatAccountsResponse =
+    Privy::Models::ListExternalFiatAccountsResponse
+
+  ListFiatDepositAccountsResponse =
+    Privy::Models::ListFiatDepositAccountsResponse
+
+  ListOrganizationExternalFiatAccountsResponse =
+    Privy::Models::ListOrganizationExternalFiatAccountsResponse
 
   ListStripeConsumerWalletsResponse =
     Privy::Models::ListStripeConsumerWalletsResponse
@@ -1419,9 +1618,26 @@ module Privy
 
   OrganizationDeleteParams = Privy::Models::OrganizationDeleteParams
 
+  OrganizationExternalFiatAccount =
+    Privy::Models::OrganizationExternalFiatAccount
+
+  OrganizationExternalFiatAccountResponse =
+    Privy::Models::OrganizationExternalFiatAccountResponse
+
   OrganizationGetParams = Privy::Models::OrganizationGetParams
 
+  OrganizationKYBUpdatedData = Privy::Models::OrganizationKYBUpdatedData
+
+  OrganizationKYBUpdatedKYBData = Privy::Models::OrganizationKYBUpdatedKYBData
+
+  OrganizationKYBUpdatedTosData = Privy::Models::OrganizationKYBUpdatedTosData
+
+  OrganizationKYBUpdatedWebhookEvent =
+    Privy::Models::OrganizationKYBUpdatedWebhookEvent
+
   OrganizationListParams = Privy::Models::OrganizationListParams
+
+  Organizations = Privy::Models::Organizations
 
   OrganizationSecretIDInput = Privy::Models::OrganizationSecretIDInput
 
@@ -1524,6 +1740,10 @@ module Privy
   PasswordlessUpdateRequestBody = Privy::Models::PasswordlessUpdateRequestBody
 
   PatchUsersCustomMetadata = Privy::Models::PatchUsersCustomMetadata
+
+  PayoutDestination = Privy::Models::PayoutDestination
+
+  PayoutSource = Privy::Models::PayoutSource
 
   PhoneInviteInput = Privy::Models::PhoneInviteInput
 
@@ -1959,6 +2179,8 @@ module Privy
 
   SuiTransferObjectsCommandField = Privy::Models::SuiTransferObjectsCommandField
 
+  SwapAttachmentParams = Privy::Models::SwapAttachmentParams
+
   SwapDestination = Privy::Models::SwapDestination
 
   SwapQuoteDestination = Privy::Models::SwapQuoteDestination
@@ -2192,6 +2414,8 @@ module Privy
 
   UpdateAccountInput = Privy::Models::UpdateAccountInput
 
+  UpdateAutomationRequestBody = Privy::Models::UpdateAutomationRequestBody
+
   UpdateConditionSetRequestBody = Privy::Models::UpdateConditionSetRequestBody
 
   UpdateOrganizationSecretSigningKeyInput =
@@ -2250,6 +2474,14 @@ module Privy
 
   UserInviteInput = Privy::Models::UserInviteInput
 
+  UserKYCUpdatedData = Privy::Models::UserKYCUpdatedData
+
+  UserKYCUpdatedKYCData = Privy::Models::UserKYCUpdatedKYCData
+
+  UserKYCUpdatedTosData = Privy::Models::UserKYCUpdatedTosData
+
+  UserKYCUpdatedWebhookEvent = Privy::Models::UserKYCUpdatedWebhookEvent
+
   UserLinkedAccountWebhookPayload =
     Privy::Models::UserLinkedAccountWebhookPayload
 
@@ -2265,6 +2497,8 @@ module Privy
   UserPregenerateWalletsParams = Privy::Models::UserPregenerateWalletsParams
 
   UserReference = Privy::Models::UserReference
+
+  Users = Privy::Models::Users
 
   UserSearchParams = Privy::Models::UserSearchParams
 
@@ -2342,6 +2576,18 @@ module Privy
 
   WalletActionNonce = Privy::Models::WalletActionNonce
 
+  WalletActionPayoutCreatedWebhookPayload =
+    Privy::Models::WalletActionPayoutCreatedWebhookPayload
+
+  WalletActionPayoutFailedWebhookPayload =
+    Privy::Models::WalletActionPayoutFailedWebhookPayload
+
+  WalletActionPayoutRejectedWebhookPayload =
+    Privy::Models::WalletActionPayoutRejectedWebhookPayload
+
+  WalletActionPayoutSucceededWebhookPayload =
+    Privy::Models::WalletActionPayoutSucceededWebhookPayload
+
   WalletActionSwapCreatedWebhookPayload =
     Privy::Models::WalletActionSwapCreatedWebhookPayload
 
@@ -2412,6 +2658,33 @@ module Privy
 
   WalletAuthorizationHeaders = Privy::Models::WalletAuthorizationHeaders
 
+  WalletAutomationAttachmentListResponse =
+    Privy::Models::WalletAutomationAttachmentListResponse
+
+  WalletAutomationAttachmentResponse =
+    Privy::Models::WalletAutomationAttachmentResponse
+
+  WalletAutomationExecutionListResponse =
+    Privy::Models::WalletAutomationExecutionListResponse
+
+  WalletAutomationExecutionResponse =
+    Privy::Models::WalletAutomationExecutionResponse
+
+  WalletAutomationExecutionStatus =
+    Privy::Models::WalletAutomationExecutionStatus
+
+  WalletAutomationListResponse = Privy::Models::WalletAutomationListResponse
+
+  WalletAutomationResponse = Privy::Models::WalletAutomationResponse
+
+  WalletAutomationStatus = Privy::Models::WalletAutomationStatus
+
+  WalletAutomationSubmittedWebhookPayload =
+    Privy::Models::WalletAutomationSubmittedWebhookPayload
+
+  WalletAutomationSuccessResponse =
+    Privy::Models::WalletAutomationSuccessResponse
+
   WalletBatchCreateInput = Privy::Models::WalletBatchCreateInput
 
   WalletBatchCreateResponse = Privy::Models::WalletBatchCreateResponse
@@ -2438,6 +2711,15 @@ module Privy
   WalletCreationInput = Privy::Models::WalletCreationInput
 
   WalletCustodian = Privy::Models::WalletCustodian
+
+  WalletDepositAccountDepositCompletedWebhookEvent =
+    Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent
+
+  WalletDepositAccountDepositFailedWebhookEvent =
+    Privy::Models::WalletDepositAccountDepositFailedWebhookEvent
+
+  WalletDepositAccountDepositStartedWebhookEvent =
+    Privy::Models::WalletDepositAccountDepositStartedWebhookEvent
 
   WalletEntity = Privy::Models::WalletEntity
 

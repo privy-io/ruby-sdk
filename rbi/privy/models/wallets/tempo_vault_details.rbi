@@ -1,0 +1,159 @@
+# typed: strong
+
+module Privy
+  module Models
+    module Wallets
+      class TempoVaultDetails < Privy::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Privy::Wallets::TempoVaultDetails, Privy::Internal::AnyHash)
+          end
+
+        # Vault identifier.
+        sig { returns(String) }
+        attr_accessor :id
+
+        # EVM address of the vault admin wallet.
+        sig { returns(String) }
+        attr_accessor :admin_wallet_address
+
+        # Privy wallet ID of the vault admin.
+        sig { returns(String) }
+        attr_accessor :admin_wallet_id
+
+        # Annual percentage yield earned by the app from fee wrapper fees, in basis
+        # points.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :app_apy
+
+        # Asset metadata for an earn vault position.
+        sig { returns(Privy::Wallets::EarnAsset) }
+        attr_reader :asset
+
+        sig { params(asset: Privy::Wallets::EarnAsset::OrHash).void }
+        attr_writer :asset
+
+        # Available liquidity in USD.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :available_liquidity_usd
+
+        # CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:8453" for Base).
+        sig { returns(String) }
+        attr_accessor :caip2
+
+        # Human-readable vault name from the yield provider.
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(Privy::Wallets::TempoVaultDetails::Provider::OrSymbol) }
+        attr_accessor :provider
+
+        # Total value locked in USD.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :tvl_usd
+
+        # Annual percentage yield available to the user, after fees and excluding rewards,
+        # in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :user_apy
+
+        # Onchain vault contract address.
+        sig { returns(String) }
+        attr_accessor :vault_address
+
+        # Vault details for a Tempo earn vault.
+        sig do
+          params(
+            id: String,
+            admin_wallet_address: String,
+            admin_wallet_id: String,
+            app_apy: T.nilable(Float),
+            asset: Privy::Wallets::EarnAsset::OrHash,
+            available_liquidity_usd: T.nilable(Float),
+            caip2: String,
+            name: String,
+            provider: Privy::Wallets::TempoVaultDetails::Provider::OrSymbol,
+            tvl_usd: T.nilable(Float),
+            user_apy: T.nilable(Float),
+            vault_address: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Vault identifier.
+          id:,
+          # EVM address of the vault admin wallet.
+          admin_wallet_address:,
+          # Privy wallet ID of the vault admin.
+          admin_wallet_id:,
+          # Annual percentage yield earned by the app from fee wrapper fees, in basis
+          # points.
+          app_apy:,
+          # Asset metadata for an earn vault position.
+          asset:,
+          # Available liquidity in USD.
+          available_liquidity_usd:,
+          # CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:8453" for Base).
+          caip2:,
+          # Human-readable vault name from the yield provider.
+          name:,
+          provider:,
+          # Total value locked in USD.
+          tvl_usd:,
+          # Annual percentage yield available to the user, after fees and excluding rewards,
+          # in basis points (e.g. 500 for 5%). 1 basis point = 0.01%.
+          user_apy:,
+          # Onchain vault contract address.
+          vault_address:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              admin_wallet_address: String,
+              admin_wallet_id: String,
+              app_apy: T.nilable(Float),
+              asset: Privy::Wallets::EarnAsset,
+              available_liquidity_usd: T.nilable(Float),
+              caip2: String,
+              name: String,
+              provider: Privy::Wallets::TempoVaultDetails::Provider::OrSymbol,
+              tvl_usd: T.nilable(Float),
+              user_apy: T.nilable(Float),
+              vault_address: String
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module Provider
+          extend Privy::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Privy::Wallets::TempoVaultDetails::Provider)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          TEMPO =
+            T.let(
+              :tempo,
+              Privy::Wallets::TempoVaultDetails::Provider::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Privy::Wallets::TempoVaultDetails::Provider::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+    end
+  end
+end

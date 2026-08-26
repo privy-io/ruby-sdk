@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type kyx_verification_status_detail =
+      { status: String, link: String, rejection_reasons: ::Array[String] }
+
+    class KyxVerificationStatusDetail < Privy::Internal::Type::BaseModel
+      attr_accessor status: String
+
+      attr_reader link: String?
+
+      def link=: (String) -> String
+
+      attr_reader rejection_reasons: ::Array[String]?
+
+      def rejection_reasons=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        status: String,
+        ?link: String,
+        ?rejection_reasons: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        status: String,
+        link: String,
+        rejection_reasons: ::Array[String]
+      }
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type automation_asset_filter =
+      Privy::AutomationAssetFilterAll
+      | Privy::AutomationAssetFilterInclude
+      | Privy::AutomationAssetFilterExclude
+
+    module AutomationAssetFilter
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::automation_asset_filter]
+    end
+  end
+end

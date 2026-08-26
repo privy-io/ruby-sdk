@@ -1,0 +1,90 @@
+module Privy
+  module Models
+    module Wallets
+      type payout_response =
+        {
+          id: String,
+          created_at: Time,
+          destination: Privy::PayoutDestination,
+          environment: Privy::Models::environment,
+          provider: Privy::Models::orchestration_provider,
+          source: Privy::PayoutSource,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::PayoutResponse::type_,
+          wallet_id: String,
+          failure_reason: Privy::Wallets::FailureReason,
+          steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        }
+
+      class PayoutResponse < Privy::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor destination: Privy::PayoutDestination
+
+        attr_accessor environment: Privy::Models::environment
+
+        attr_accessor provider: Privy::Models::orchestration_provider
+
+        attr_accessor source: Privy::PayoutSource
+
+        attr_accessor status: Privy::Models::Wallets::wallet_action_status
+
+        attr_accessor type: Privy::Models::Wallets::PayoutResponse::type_
+
+        attr_accessor wallet_id: String
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        attr_reader steps: ::Array[Privy::Models::Wallets::wallet_action_step]?
+
+        def steps=: (
+          ::Array[Privy::Models::Wallets::wallet_action_step]
+        ) -> ::Array[Privy::Models::Wallets::wallet_action_step]
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          destination: Privy::PayoutDestination,
+          environment: Privy::Models::environment,
+          provider: Privy::Models::orchestration_provider,
+          source: Privy::PayoutSource,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::PayoutResponse::type_,
+          wallet_id: String,
+          ?failure_reason: Privy::Wallets::FailureReason,
+          ?steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          destination: Privy::PayoutDestination,
+          environment: Privy::Models::environment,
+          provider: Privy::Models::orchestration_provider,
+          source: Privy::PayoutSource,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::PayoutResponse::type_,
+          wallet_id: String,
+          failure_reason: Privy::Wallets::FailureReason,
+          steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        }
+
+        type type_ = :payout
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          PAYOUT: :payout
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::PayoutResponse::type_]
+        end
+      end
+    end
+  end
+end

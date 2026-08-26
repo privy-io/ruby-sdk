@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type organization_kyb_updated_tos_data = { status: String }
+
+    class OrganizationKYBUpdatedTosData < Privy::Internal::Type::BaseModel
+      attr_accessor status: String
+
+      def initialize: (status: String) -> void
+
+      def to_hash: -> { status: String }
+    end
+  end
+end

@@ -80,8 +80,14 @@ module Privy
     # @return [Privy::Resources::ClientAuth]
     attr_reader :client_auth
 
+    # @return [Privy::Resources::WalletAutomations]
+    attr_reader :wallet_automations
+
     # @return [Privy::Resources::Shared]
     attr_reader :shared
+
+    # @return [Privy::Resources::Fiat]
+    attr_reader :fiat
 
     # @return [Privy::Resources::Onramps]
     attr_reader :onramps
@@ -97,9 +103,6 @@ module Privy
 
     # @return [Privy::Resources::Yield]
     attr_reader :yield_
-
-    # @return [Privy::Resources::Fiat]
-    attr_reader :fiat
 
     # @return [Privy::Resources::KrakenEmbed]
     attr_reader :kraken_embed
@@ -203,13 +206,14 @@ module Privy
       @embedded_wallets = Privy::Resources::EmbeddedWallets.new(client: self)
       @analytics = Privy::Resources::Analytics.new(client: self)
       @client_auth = Privy::Resources::ClientAuth.new(client: self)
+      @wallet_automations = Privy::Resources::WalletAutomations.new(client: self)
       @shared = Privy::Resources::Shared.new(client: self)
+      @fiat = Privy::Resources::Fiat.new(client: self)
       @onramps = Privy::Resources::Onramps.new(client: self)
       @funding = Privy::Resources::Funding.new(client: self)
       @cross_app = Privy::Resources::CrossApp.new(client: self)
       @oauth = Privy::Resources::OAuth.new(client: self)
       @yield_ = Privy::Resources::Yield.new(client: self)
-      @fiat = Privy::Resources::Fiat.new(client: self)
       @kraken_embed = Privy::Resources::KrakenEmbed.new(client: self)
       @swaps = Privy::Resources::Swaps.new(client: self)
     end

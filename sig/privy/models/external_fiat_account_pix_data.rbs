@@ -1,0 +1,51 @@
+module Privy
+  module Models
+    type external_fiat_account_pix_data =
+      {
+        type: Privy::Models::ExternalFiatAccountPixData::type_,
+        br_code: String,
+        document_number: String,
+        pix_key: String
+      }
+
+    class ExternalFiatAccountPixData < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::ExternalFiatAccountPixData::type_
+
+      attr_reader br_code: String?
+
+      def br_code=: (String) -> String
+
+      attr_reader document_number: String?
+
+      def document_number=: (String) -> String
+
+      attr_reader pix_key: String?
+
+      def pix_key=: (String) -> String
+
+      def initialize: (
+        type: Privy::Models::ExternalFiatAccountPixData::type_,
+        ?br_code: String,
+        ?document_number: String,
+        ?pix_key: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::ExternalFiatAccountPixData::type_,
+        br_code: String,
+        document_number: String,
+        pix_key: String
+      }
+
+      type type_ = :pix
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PIX: :pix
+
+        def self?.values: -> ::Array[Privy::Models::ExternalFiatAccountPixData::type_]
+      end
+    end
+  end
+end

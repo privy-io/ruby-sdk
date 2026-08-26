@@ -20,6 +20,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
       in Privy::Wallets::EarnWithdrawActionResponse
       in Privy::Wallets::EarnIncentiveClaimActionResponse
       in Privy::Wallets::EarnFeeCollectActionResponse
+      in Privy::Wallets::PayoutResponse
       end
     end
 
@@ -129,6 +130,19 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         amount: String | nil,
         asset: String | nil,
         decimals: Integer | nil,
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
+      }
+      in {
+        type: :payout,
+        id: String,
+        created_at: Time,
+        destination: Privy::PayoutDestination,
+        environment: Privy::Environment,
+        provider: Privy::OrchestrationProvider,
+        source: Privy::PayoutSource,
+        status: Privy::Wallets::WalletActionStatus,
+        wallet_id: String,
         failure_reason: Privy::Wallets::FailureReason | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }

@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type create_automation_request_body =
+      { config: Privy::AutomationConfigInput, owner_id: String?, name: String }
+
+    class CreateAutomationRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor config: Privy::AutomationConfigInput
+
+      attr_accessor owner_id: String?
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (
+        config: Privy::AutomationConfigInput,
+        owner_id: String?,
+        ?name: String
+      ) -> void
+
+      def to_hash: -> {
+        config: Privy::AutomationConfigInput,
+        owner_id: String?,
+        name: String
+      }
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    module Organizations
+      type external_fiat_account_delete_params =
+        { organization_id: String, account_id: String }
+        & Privy::Internal::Type::request_parameters
+
+      class ExternalFiatAccountDeleteParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor organization_id: String
+
+        attr_accessor account_id: String
+
+        def initialize: (
+          organization_id: String,
+          account_id: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          organization_id: String,
+          account_id: String,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

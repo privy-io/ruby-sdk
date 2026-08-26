@@ -1,0 +1,79 @@
+module Privy
+  module Models
+    type bridge_organization_external_fiat_account =
+      {
+        id: String,
+        account_owner_name: String,
+        account_type: String,
+        created_at: String,
+        currency: String,
+        environment: Privy::Models::environment,
+        organization_id: String,
+        provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider,
+        bank_name: String,
+        :last_4 => String
+      }
+
+    class BridgeOrganizationExternalFiatAccount < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor account_owner_name: String
+
+      attr_accessor account_type: String
+
+      attr_accessor created_at: String
+
+      attr_accessor currency: String
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor organization_id: String
+
+      attr_accessor provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider
+
+      attr_reader bank_name: String?
+
+      def bank_name=: (String) -> String
+
+      attr_reader last_4: String?
+
+      def last_4=: (String) -> String
+
+      def initialize: (
+        id: String,
+        account_owner_name: String,
+        account_type: String,
+        created_at: String,
+        currency: String,
+        environment: Privy::Models::environment,
+        organization_id: String,
+        provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider,
+        ?bank_name: String,
+        ?last_4: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        account_owner_name: String,
+        account_type: String,
+        created_at: String,
+        currency: String,
+        environment: Privy::Models::environment,
+        organization_id: String,
+        provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider,
+        bank_name: String,
+        :last_4 => String
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::BridgeOrganizationExternalFiatAccount::provider]
+      end
+    end
+  end
+end

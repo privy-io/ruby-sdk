@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type kyc_residential_address =
+      {
+        city: String,
+        country: String,
+        :street_line_1 => String,
+        subdivision: String,
+        postal_code: String,
+        :street_line_2 => String
+      }
+
+    class KYCResidentialAddress < Privy::Internal::Type::BaseModel
+      attr_accessor city: String
+
+      attr_accessor country: String
+
+      attr_accessor street_line_1: String
+
+      attr_accessor subdivision: String
+
+      attr_reader postal_code: String?
+
+      def postal_code=: (String) -> String
+
+      attr_reader street_line_2: String?
+
+      def street_line_2=: (String) -> String
+
+      def initialize: (
+        city: String,
+        country: String,
+        street_line_1: String,
+        subdivision: String,
+        ?postal_code: String,
+        ?street_line_2: String
+      ) -> void
+
+      def to_hash: -> {
+        city: String,
+        country: String,
+        :street_line_1 => String,
+        subdivision: String,
+        postal_code: String,
+        :street_line_2 => String
+      }
+    end
+  end
+end

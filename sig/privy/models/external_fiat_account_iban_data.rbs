@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type external_fiat_account_iban_data =
+      {
+        account_number: String,
+        bic: String,
+        country: String,
+        type: Privy::Models::ExternalFiatAccountIbanData::type_
+      }
+
+    class ExternalFiatAccountIbanData < Privy::Internal::Type::BaseModel
+      attr_accessor account_number: String
+
+      attr_accessor bic: String
+
+      attr_accessor country: String
+
+      attr_accessor type: Privy::Models::ExternalFiatAccountIbanData::type_
+
+      def initialize: (
+        account_number: String,
+        bic: String,
+        country: String,
+        type: Privy::Models::ExternalFiatAccountIbanData::type_
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String,
+        bic: String,
+        country: String,
+        type: Privy::Models::ExternalFiatAccountIbanData::type_
+      }
+
+      type type_ = :iban
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        IBAN: :iban
+
+        def self?.values: -> ::Array[Privy::Models::ExternalFiatAccountIbanData::type_]
+      end
+    end
+  end
+end

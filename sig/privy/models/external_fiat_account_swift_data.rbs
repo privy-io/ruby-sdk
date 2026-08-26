@@ -1,0 +1,62 @@
+module Privy
+  module Models
+    type external_fiat_account_swift_data =
+      {
+        account_number: String,
+        bic: String,
+        category: Privy::Models::external_fiat_account_swift_category,
+        purpose_of_funds: ::Array[Privy::Models::external_fiat_account_swift_purpose_of_funds],
+        short_business_description: String,
+        type: Privy::Models::ExternalFiatAccountSwiftData::type_,
+        country: String
+      }
+
+    class ExternalFiatAccountSwiftData < Privy::Internal::Type::BaseModel
+      attr_accessor account_number: String
+
+      attr_accessor bic: String
+
+      attr_accessor category: Privy::Models::external_fiat_account_swift_category
+
+      attr_accessor purpose_of_funds: ::Array[Privy::Models::external_fiat_account_swift_purpose_of_funds]
+
+      attr_accessor short_business_description: String
+
+      attr_accessor type: Privy::Models::ExternalFiatAccountSwiftData::type_
+
+      attr_reader country: String?
+
+      def country=: (String) -> String
+
+      def initialize: (
+        account_number: String,
+        bic: String,
+        category: Privy::Models::external_fiat_account_swift_category,
+        purpose_of_funds: ::Array[Privy::Models::external_fiat_account_swift_purpose_of_funds],
+        short_business_description: String,
+        type: Privy::Models::ExternalFiatAccountSwiftData::type_,
+        ?country: String
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String,
+        bic: String,
+        category: Privy::Models::external_fiat_account_swift_category,
+        purpose_of_funds: ::Array[Privy::Models::external_fiat_account_swift_purpose_of_funds],
+        short_business_description: String,
+        type: Privy::Models::ExternalFiatAccountSwiftData::type_,
+        country: String
+      }
+
+      type type_ = :swift
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SWIFT: :swift
+
+        def self?.values: -> ::Array[Privy::Models::ExternalFiatAccountSwiftData::type_]
+      end
+    end
+  end
+end

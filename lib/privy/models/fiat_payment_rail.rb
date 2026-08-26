@@ -9,6 +9,8 @@ module Privy
       SEPA = :sepa
       ACH_PUSH = :ach_push
       WIRE = :wire
+      FEDNOW = :fednow
+      FASTER_PAYMENTS = :faster_payments
 
       # @!method self.values
       #   @return [Array<Symbol>]

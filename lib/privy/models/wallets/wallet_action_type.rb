@@ -13,6 +13,7 @@ module Privy
         EARN_WITHDRAW = :earn_withdraw
         EARN_INCENTIVE_CLAIM = :earn_incentive_claim
         EARN_FEE_COLLECT = :earn_fee_collect
+        PAYOUT = :payout
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type wallet_automation_status = :enabled | :disabled
+
+    module WalletAutomationStatus
+      extend Privy::Internal::Type::Enum
+
+      ENABLED: :enabled
+      DISABLED: :disabled
+
+      def self?.values: -> ::Array[Privy::Models::wallet_automation_status]
+    end
+  end
+end

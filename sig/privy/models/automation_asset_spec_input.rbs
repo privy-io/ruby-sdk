@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type automation_asset_spec_input = { asset: String, chain: String }
+
+    class AutomationAssetSpecInput < Privy::Models::AutomationAssetSpec
+      def asset: -> String?
+
+      def asset=: (String _) -> String
+
+      def chain: -> String?
+
+      def chain=: (String _) -> String
+
+      def initialize: (?asset: String, ?chain: String) -> void
+
+      def to_hash: -> { asset: String, chain: String }
+    end
+  end
+end

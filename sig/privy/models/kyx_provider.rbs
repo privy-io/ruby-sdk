@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type kyx_provider = :bridge
+
+    module KyxProvider
+      extend Privy::Internal::Type::Enum
+
+      BRIDGE: :bridge
+
+      def self?.values: -> ::Array[Privy::Models::kyx_provider]
+    end
+  end
+end

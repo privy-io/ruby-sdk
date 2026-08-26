@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type detach_wallet_automation_request_body =
+      { automation_ids: ::Array[String] }
+
+    class DetachWalletAutomationRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor automation_ids: ::Array[String]
+
+      def initialize: (automation_ids: ::Array[String]) -> void
+
+      def to_hash: -> { automation_ids: ::Array[String] }
+    end
+  end
+end

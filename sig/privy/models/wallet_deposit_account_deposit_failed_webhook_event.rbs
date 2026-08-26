@@ -1,0 +1,77 @@
+module Privy
+  module Models
+    type wallet_deposit_account_deposit_failed_webhook_event =
+      {
+        data: Privy::DepositFailedData,
+        deposit_account_id: String,
+        deposit_type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::deposit_type,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::type_,
+        wallet_id: String,
+        provider_deposit_id: String
+      }
+
+    class WalletDepositAccountDepositFailedWebhookEvent < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::DepositFailedData
+
+      attr_accessor deposit_account_id: String
+
+      attr_accessor deposit_type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::deposit_type
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor provider: Privy::Models::orchestration_provider
+
+      attr_accessor type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::type_
+
+      attr_accessor wallet_id: String
+
+      attr_reader provider_deposit_id: String?
+
+      def provider_deposit_id=: (String) -> String
+
+      def initialize: (
+        data: Privy::DepositFailedData,
+        deposit_account_id: String,
+        deposit_type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::deposit_type,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::type_,
+        wallet_id: String,
+        ?provider_deposit_id: String
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::DepositFailedData,
+        deposit_account_id: String,
+        deposit_type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::deposit_type,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        type: Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::type_,
+        wallet_id: String,
+        provider_deposit_id: String
+      }
+
+      type deposit_type = :fiat
+
+      module DepositType
+        extend Privy::Internal::Type::Enum
+
+        FIAT: :fiat
+
+        def self?.values: -> ::Array[Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::deposit_type]
+      end
+
+      type type_ = :"wallet.deposit_account.deposit_failed"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_DEPOSIT_ACCOUNT_DEPOSIT_FAILED: :"wallet.deposit_account.deposit_failed"
+
+        def self?.values: -> ::Array[Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::type_]
+      end
+    end
+  end
+end

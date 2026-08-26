@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type create_payout_request_body =
+      { destination: Privy::PayoutDestination, source: Privy::PayoutSource }
+
+    class CreatePayoutRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::PayoutDestination
+
+      attr_accessor source: Privy::PayoutSource
+
+      def initialize: (
+        destination: Privy::PayoutDestination,
+        source: Privy::PayoutSource
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::PayoutDestination,
+        source: Privy::PayoutSource
+      }
+    end
+  end
+end

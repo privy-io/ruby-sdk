@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type external_fiat_account_swift_purpose_of_funds =
+      :intra_group_transfer | :invoice_for_goods_and_services
+
+    module ExternalFiatAccountSwiftPurposeOfFunds
+      extend Privy::Internal::Type::Enum
+
+      INTRA_GROUP_TRANSFER: :intra_group_transfer
+      INVOICE_FOR_GOODS_AND_SERVICES: :invoice_for_goods_and_services
+
+      def self?.values: -> ::Array[Privy::Models::external_fiat_account_swift_purpose_of_funds]
+    end
+  end
+end

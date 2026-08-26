@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type wallet_automation_list_response =
+      { data: ::Array[Privy::WalletAutomationResponse], next_cursor: String? }
+
+    class WalletAutomationListResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::WalletAutomationResponse]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        data: ::Array[Privy::WalletAutomationResponse],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Privy::WalletAutomationResponse],
+        next_cursor: String?
+      }
+    end
+  end
+end

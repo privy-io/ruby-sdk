@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type wallet_automation_execution_status =
+      :pending | :triggered | :completed | :failed | :skipped
+
+    module WalletAutomationExecutionStatus
+      extend Privy::Internal::Type::Enum
+
+      PENDING: :pending
+      TRIGGERED: :triggered
+      COMPLETED: :completed
+      FAILED: :failed
+      SKIPPED: :skipped
+
+      def self?.values: -> ::Array[Privy::Models::wallet_automation_execution_status]
+    end
+  end
+end

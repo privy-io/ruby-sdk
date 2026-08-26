@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type fiat_deposit_account_response =
+      { fiat_deposit_account: Privy::FiatDepositAccount }
+
+    class FiatDepositAccountResponse < Privy::Internal::Type::BaseModel
+      attr_accessor fiat_deposit_account: Privy::FiatDepositAccount
+
+      def initialize: (fiat_deposit_account: Privy::FiatDepositAccount) -> void
+
+      def to_hash: -> { fiat_deposit_account: Privy::FiatDepositAccount }
+    end
+  end
+end

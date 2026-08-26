@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type organization_kyb_updated_webhook_event =
+      {
+        changes: ::Hash[Symbol, ::Array[top]],
+        data: Privy::OrganizationKYBUpdatedData,
+        environment: Privy::Models::kyx_environment,
+        organization_id: String,
+        provider: Privy::Models::kyx_provider,
+        type: Privy::Models::OrganizationKYBUpdatedWebhookEvent::type_
+      }
+
+    class OrganizationKYBUpdatedWebhookEvent < Privy::Internal::Type::BaseModel
+      attr_accessor changes: ::Hash[Symbol, ::Array[top]]
+
+      attr_accessor data: Privy::OrganizationKYBUpdatedData
+
+      attr_accessor environment: Privy::Models::kyx_environment
+
+      attr_accessor organization_id: String
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_accessor type: Privy::Models::OrganizationKYBUpdatedWebhookEvent::type_
+
+      def initialize: (
+        changes: ::Hash[Symbol, ::Array[top]],
+        data: Privy::OrganizationKYBUpdatedData,
+        environment: Privy::Models::kyx_environment,
+        organization_id: String,
+        provider: Privy::Models::kyx_provider,
+        type: Privy::Models::OrganizationKYBUpdatedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        changes: ::Hash[Symbol, ::Array[top]],
+        data: Privy::OrganizationKYBUpdatedData,
+        environment: Privy::Models::kyx_environment,
+        organization_id: String,
+        provider: Privy::Models::kyx_provider,
+        type: Privy::Models::OrganizationKYBUpdatedWebhookEvent::type_
+      }
+
+      type type_ = :"organization.kyb.updated"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        ORGANIZATION_KYB_UPDATED: :"organization.kyb.updated"
+
+        def self?.values: -> ::Array[Privy::Models::OrganizationKYBUpdatedWebhookEvent::type_]
+      end
+    end
+  end
+end

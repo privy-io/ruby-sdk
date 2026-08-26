@@ -16,11 +16,14 @@ module Privy
         # Vault details for a Morpho earn vault.
         variant :morpho, -> { Privy::Wallets::MorphoVaultDetails }
 
+        # Vault details for a Tempo earn vault.
+        variant :tempo, -> { Privy::Wallets::TempoVaultDetails }
+
         # Vault details for a Veda (BoringVault) earn vault.
         variant :veda, -> { Privy::Wallets::VedaVaultDetails }
 
         # @!method self.variants
-        #   @return [Array(Privy::Models::Wallets::AaveVaultDetails, Privy::Models::Wallets::MorphoVaultDetails, Privy::Models::Wallets::VedaVaultDetails)]
+        #   @return [Array(Privy::Models::Wallets::AaveVaultDetails, Privy::Models::Wallets::MorphoVaultDetails, Privy::Models::Wallets::TempoVaultDetails, Privy::Models::Wallets::VedaVaultDetails)]
       end
     end
   end

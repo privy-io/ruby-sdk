@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    module Users
+      type external_fiat_account_list_params =
+        {
+          user_id: String,
+          provider: Privy::Models::orchestration_provider,
+          environment: Privy::Models::environment
+        }
+        & Privy::Internal::Type::request_parameters
+
+      class ExternalFiatAccountListParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor user_id: String
+
+        attr_accessor provider: Privy::Models::orchestration_provider
+
+        attr_reader environment: Privy::Models::environment?
+
+        def environment=: (
+          Privy::Models::environment
+        ) -> Privy::Models::environment
+
+        def initialize: (
+          user_id: String,
+          provider: Privy::Models::orchestration_provider,
+          ?environment: Privy::Models::environment,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          user_id: String,
+          provider: Privy::Models::orchestration_provider,
+          environment: Privy::Models::environment,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

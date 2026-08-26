@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type external_fiat_account_data =
+      Privy::ExternalFiatAccountUsData
+      | Privy::ExternalFiatAccountGBData
+      | Privy::ExternalFiatAccountPixData
+      | Privy::ExternalFiatAccountIbanData
+      | Privy::ExternalFiatAccountSwiftData
+
+    module ExternalFiatAccountData
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::external_fiat_account_data]
+    end
+  end
+end

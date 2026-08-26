@@ -79,8 +79,14 @@ module Privy
     sig { returns(Privy::Resources::ClientAuth) }
     attr_reader :client_auth
 
+    sig { returns(Privy::Resources::WalletAutomations) }
+    attr_reader :wallet_automations
+
     sig { returns(Privy::Resources::Shared) }
     attr_reader :shared
+
+    sig { returns(Privy::Resources::Fiat) }
+    attr_reader :fiat
 
     sig { returns(Privy::Resources::Onramps) }
     attr_reader :onramps
@@ -96,9 +102,6 @@ module Privy
 
     sig { returns(Privy::Resources::Yield) }
     attr_reader :yield_
-
-    sig { returns(Privy::Resources::Fiat) }
-    attr_reader :fiat
 
     sig { returns(Privy::Resources::KrakenEmbed) }
     attr_reader :kraken_embed

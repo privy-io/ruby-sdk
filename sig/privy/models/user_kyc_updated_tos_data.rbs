@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type user_kyc_updated_tos_data = { status: String }
+
+    class UserKYCUpdatedTosData < Privy::Internal::Type::BaseModel
+      attr_accessor status: String
+
+      def initialize: (status: String) -> void
+
+      def to_hash: -> { status: String }
+    end
+  end
+end

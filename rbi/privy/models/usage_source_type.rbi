@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    # The type of wallet action that incurred a usage charge.
+    # The type of operation that incurred a usage charge.
     module UsageSourceType
       extend Privy::Internal::Type::Enum
 
@@ -13,6 +13,7 @@ module Privy
         T.let(:"wallet-action-transfer", Privy::UsageSourceType::TaggedSymbol)
       WALLET_ACTION_SWAP =
         T.let(:"wallet-action-swap", Privy::UsageSourceType::TaggedSymbol)
+      RPC = T.let(:rpc, Privy::UsageSourceType::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::UsageSourceType::TaggedSymbol]) }
       def self.values

@@ -1,6 +1,10 @@
 module Privy
   module Resources
     class Organizations
+      attr_reader kyb: Privy::Resources::Organizations::KYB
+
+      attr_reader external_fiat_accounts: Privy::Resources::Organizations::ExternalFiatAccounts
+
       def create: (
         default_key_quorum_id: String,
         display_name: String,

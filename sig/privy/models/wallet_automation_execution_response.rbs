@@ -1,0 +1,90 @@
+module Privy
+  module Models
+    type wallet_automation_execution_response =
+      {
+        id: String,
+        automation_attachment_id: String?,
+        completed_at: String?,
+        created_at: String,
+        failed_at: String?,
+        failure_reason: String?,
+        status: Privy::Models::wallet_automation_execution_status,
+        trigger_asset_address: String,
+        trigger_block_number: String,
+        :trigger_caip2 => String,
+        trigger_tx_hash: String,
+        triggered_at: String?,
+        updated_at: String,
+        wallet_action_id: String?,
+        wallet_id: String
+      }
+
+    class WalletAutomationExecutionResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor automation_attachment_id: String?
+
+      attr_accessor completed_at: String?
+
+      attr_accessor created_at: String
+
+      attr_accessor failed_at: String?
+
+      attr_accessor failure_reason: String?
+
+      attr_accessor status: Privy::Models::wallet_automation_execution_status
+
+      attr_accessor trigger_asset_address: String
+
+      attr_accessor trigger_block_number: String
+
+      attr_accessor trigger_caip2: String
+
+      attr_accessor trigger_tx_hash: String
+
+      attr_accessor triggered_at: String?
+
+      attr_accessor updated_at: String
+
+      attr_accessor wallet_action_id: String?
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        id: String,
+        automation_attachment_id: String?,
+        completed_at: String?,
+        created_at: String,
+        failed_at: String?,
+        failure_reason: String?,
+        status: Privy::Models::wallet_automation_execution_status,
+        trigger_asset_address: String,
+        trigger_block_number: String,
+        trigger_caip2: String,
+        trigger_tx_hash: String,
+        triggered_at: String?,
+        updated_at: String,
+        wallet_action_id: String?,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        automation_attachment_id: String?,
+        completed_at: String?,
+        created_at: String,
+        failed_at: String?,
+        failure_reason: String?,
+        status: Privy::Models::wallet_automation_execution_status,
+        trigger_asset_address: String,
+        trigger_block_number: String,
+        :trigger_caip2 => String,
+        trigger_tx_hash: String,
+        triggered_at: String?,
+        updated_at: String,
+        wallet_action_id: String?,
+        wallet_id: String
+      }
+    end
+  end
+end

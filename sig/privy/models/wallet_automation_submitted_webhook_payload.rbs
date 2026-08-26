@@ -1,0 +1,65 @@
+module Privy
+  module Models
+    type wallet_automation_submitted_webhook_payload =
+      {
+        action_id: String,
+        automation_id: String,
+        created_at: String,
+        trigger_asset_address: String,
+        :trigger_caip2 => String,
+        trigger_id: String,
+        type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_,
+        wallet_id: String
+      }
+
+    class WalletAutomationSubmittedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_id: String
+
+      attr_accessor automation_id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor trigger_asset_address: String
+
+      attr_accessor trigger_caip2: String
+
+      attr_accessor trigger_id: String
+
+      attr_accessor type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_id: String,
+        automation_id: String,
+        created_at: String,
+        trigger_asset_address: String,
+        trigger_caip2: String,
+        trigger_id: String,
+        type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_id: String,
+        automation_id: String,
+        created_at: String,
+        trigger_asset_address: String,
+        :trigger_caip2 => String,
+        trigger_id: String,
+        type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_,
+        wallet_id: String
+      }
+
+      type type_ = :"wallet_automation.submitted"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_AUTOMATION_SUBMITTED: :"wallet_automation.submitted"
+
+        def self?.values: -> ::Array[Privy::Models::WalletAutomationSubmittedWebhookPayload::type_]
+      end
+    end
+  end
+end

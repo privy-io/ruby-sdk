@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type create_crypto_deposit_account_with_route_request_body =
+      {
+        destination: Privy::AutomationDestinationAssetInput,
+        source: Privy::Models::automation_asset_filter_input
+      }
+
+    class CreateCryptoDepositAccountWithRouteRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::AutomationDestinationAssetInput
+
+      attr_accessor source: Privy::Models::automation_asset_filter_input
+
+      def initialize: (
+        destination: Privy::AutomationDestinationAssetInput,
+        source: Privy::Models::automation_asset_filter_input
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::AutomationDestinationAssetInput,
+        source: Privy::Models::automation_asset_filter_input
+      }
+    end
+  end
+end

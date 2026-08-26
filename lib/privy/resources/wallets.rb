@@ -22,6 +22,9 @@ module Privy
       # @return [Privy::Resources::Wallets::Swap]
       attr_reader :swap
 
+      # @return [Privy::Resources::Wallets::DepositAccounts]
+      attr_reader :deposit_accounts
+
       # Some parameter documentations has been truncated, see
       # {Privy::Models::WalletCreateParams} for more details.
       #
@@ -574,6 +577,7 @@ module Privy
         @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
         @balance = Privy::Resources::Wallets::Balance.new(client: client)
         @swap = Privy::Resources::Wallets::Swap.new(client: client)
+        @deposit_accounts = Privy::Resources::Wallets::DepositAccounts.new(client: client)
       end
     end
   end

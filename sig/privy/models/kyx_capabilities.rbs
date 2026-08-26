@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type kyx_capabilities =
+      {
+        payin_crypto: String,
+        payin_fiat: String,
+        payout_crypto: String,
+        payout_fiat: String
+      }
+
+    class KyxCapabilities < Privy::Internal::Type::BaseModel
+      attr_accessor payin_crypto: String
+
+      attr_accessor payin_fiat: String
+
+      attr_accessor payout_crypto: String
+
+      attr_accessor payout_fiat: String
+
+      def initialize: (
+        payin_crypto: String,
+        payin_fiat: String,
+        payout_crypto: String,
+        payout_fiat: String
+      ) -> void
+
+      def to_hash: -> {
+        payin_crypto: String,
+        payin_fiat: String,
+        payout_crypto: String,
+        payout_fiat: String
+      }
+    end
+  end
+end

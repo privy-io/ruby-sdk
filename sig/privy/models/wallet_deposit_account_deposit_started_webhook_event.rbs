@@ -1,0 +1,75 @@
+module Privy
+  module Models
+    type wallet_deposit_account_deposit_started_webhook_event =
+      {
+        data: Privy::DepositStartedData,
+        deposit_account_id: String,
+        deposit_type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::deposit_type,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        provider_deposit_id: String,
+        type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::type_,
+        wallet_id: String
+      }
+
+    class WalletDepositAccountDepositStartedWebhookEvent < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::DepositStartedData
+
+      attr_accessor deposit_account_id: String
+
+      attr_accessor deposit_type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::deposit_type
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor provider: Privy::Models::orchestration_provider
+
+      attr_accessor provider_deposit_id: String
+
+      attr_accessor type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::type_
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        data: Privy::DepositStartedData,
+        deposit_account_id: String,
+        deposit_type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::deposit_type,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        provider_deposit_id: String,
+        type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::type_,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::DepositStartedData,
+        deposit_account_id: String,
+        deposit_type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::deposit_type,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        provider_deposit_id: String,
+        type: Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::type_,
+        wallet_id: String
+      }
+
+      type deposit_type = :fiat
+
+      module DepositType
+        extend Privy::Internal::Type::Enum
+
+        FIAT: :fiat
+
+        def self?.values: -> ::Array[Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::deposit_type]
+      end
+
+      type type_ = :"wallet.deposit_account.deposit_started"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_DEPOSIT_ACCOUNT_DEPOSIT_STARTED: :"wallet.deposit_account.deposit_started"
+
+        def self?.values: -> ::Array[Privy::Models::WalletDepositAccountDepositStartedWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -1,12 +1,14 @@
 module Privy
   module Models
-    type usage_source_type = :"wallet-action-transfer" | :"wallet-action-swap"
+    type usage_source_type =
+      :"wallet-action-transfer" | :"wallet-action-swap" | :rpc
 
     module UsageSourceType
       extend Privy::Internal::Type::Enum
 
       WALLET_ACTION_TRANSFER: :"wallet-action-transfer"
       WALLET_ACTION_SWAP: :"wallet-action-swap"
+      RPC: :rpc
 
       def self?.values: -> ::Array[Privy::Models::usage_source_type]
     end

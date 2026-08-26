@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type create_crypto_deposit_account_response =
+      { deposit_addresses: ::Array[Privy::CryptoDepositAddressRoute] }
+
+    class CreateCryptoDepositAccountResponse < Privy::Internal::Type::BaseModel
+      attr_accessor deposit_addresses: ::Array[Privy::CryptoDepositAddressRoute]
+
+      def initialize: (
+        deposit_addresses: ::Array[Privy::CryptoDepositAddressRoute]
+      ) -> void
+
+      def to_hash: -> {
+        deposit_addresses: ::Array[Privy::CryptoDepositAddressRoute]
+      }
+    end
+  end
+end

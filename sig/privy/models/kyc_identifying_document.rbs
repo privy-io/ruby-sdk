@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type kyc_identifying_document =
+      {
+        issuing_country: String,
+        type: String,
+        description: String,
+        expiration: String,
+        image_back: String,
+        image_front: String,
+        number: String
+      }
+
+    class KYCIdentifyingDocument < Privy::Internal::Type::BaseModel
+      attr_accessor issuing_country: String
+
+      attr_accessor type: String
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader expiration: String?
+
+      def expiration=: (String) -> String
+
+      attr_reader image_back: String?
+
+      def image_back=: (String) -> String
+
+      attr_reader image_front: String?
+
+      def image_front=: (String) -> String
+
+      attr_reader number: String?
+
+      def number=: (String) -> String
+
+      def initialize: (
+        issuing_country: String,
+        type: String,
+        ?description: String,
+        ?expiration: String,
+        ?image_back: String,
+        ?image_front: String,
+        ?number: String
+      ) -> void
+
+      def to_hash: -> {
+        issuing_country: String,
+        type: String,
+        description: String,
+        expiration: String,
+        image_back: String,
+        image_front: String,
+        number: String
+      }
+    end
+  end
+end

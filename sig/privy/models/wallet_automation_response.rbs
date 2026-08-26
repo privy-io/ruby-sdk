@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type wallet_automation_response =
+      {
+        id: String,
+        app_id: String,
+        config: Privy::AutomationConfig,
+        created_at: String,
+        name: String?,
+        owner_id: String?,
+        status: Privy::Models::wallet_automation_status,
+        updated_at: String
+      }
+
+    class WalletAutomationResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor app_id: String
+
+      attr_accessor config: Privy::AutomationConfig
+
+      attr_accessor created_at: String
+
+      attr_accessor name: String?
+
+      attr_accessor owner_id: String?
+
+      attr_accessor status: Privy::Models::wallet_automation_status
+
+      attr_accessor updated_at: String
+
+      def initialize: (
+        id: String,
+        app_id: String,
+        config: Privy::AutomationConfig,
+        created_at: String,
+        name: String?,
+        owner_id: String?,
+        status: Privy::Models::wallet_automation_status,
+        updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        app_id: String,
+        config: Privy::AutomationConfig,
+        created_at: String,
+        name: String?,
+        owner_id: String?,
+        status: Privy::Models::wallet_automation_status,
+        updated_at: String
+      }
+    end
+  end
+end

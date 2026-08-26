@@ -1,0 +1,45 @@
+module Privy
+  module Models
+    type deposit_failed_data =
+      {
+        created_at: String,
+        destination: Privy::DepositStartedDestination,
+        reason: String,
+        reason_code: String,
+        refunded_at: String,
+        source: Privy::DepositStartedSource
+      }
+
+    class DepositFailedData < Privy::Internal::Type::BaseModel
+      attr_accessor created_at: String
+
+      attr_accessor destination: Privy::DepositStartedDestination
+
+      attr_accessor reason: String
+
+      attr_accessor reason_code: String
+
+      attr_accessor refunded_at: String
+
+      attr_accessor source: Privy::DepositStartedSource
+
+      def initialize: (
+        created_at: String,
+        destination: Privy::DepositStartedDestination,
+        reason: String,
+        reason_code: String,
+        refunded_at: String,
+        source: Privy::DepositStartedSource
+      ) -> void
+
+      def to_hash: -> {
+        created_at: String,
+        destination: Privy::DepositStartedDestination,
+        reason: String,
+        reason_code: String,
+        refunded_at: String,
+        source: Privy::DepositStartedSource
+      }
+    end
+  end
+end

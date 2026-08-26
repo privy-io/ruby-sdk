@@ -1,0 +1,49 @@
+module Privy
+  module Models
+    type create_fiat_deposit_account_request_body =
+      {
+        destination: Privy::FiatDepositAccountDestination,
+        provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
+        source: Privy::CreateFiatDepositAccountSource,
+        environment: Privy::Models::environment
+      }
+
+    class CreateFiatDepositAccountRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::FiatDepositAccountDestination
+
+      attr_accessor provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider
+
+      attr_accessor source: Privy::CreateFiatDepositAccountSource
+
+      attr_reader environment: Privy::Models::environment?
+
+      def environment=: (
+        Privy::Models::environment
+      ) -> Privy::Models::environment
+
+      def initialize: (
+        destination: Privy::FiatDepositAccountDestination,
+        provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
+        source: Privy::CreateFiatDepositAccountSource,
+        ?environment: Privy::Models::environment
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::FiatDepositAccountDestination,
+        provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
+        source: Privy::CreateFiatDepositAccountSource,
+        environment: Privy::Models::environment
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::CreateFiatDepositAccountRequestBody::provider]
+      end
+    end
+  end
+end

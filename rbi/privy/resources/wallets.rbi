@@ -22,6 +22,9 @@ module Privy
       sig { returns(Privy::Resources::Wallets::Swap) }
       attr_reader :swap
 
+      sig { returns(Privy::Resources::Wallets::DepositAccounts) }
+      attr_reader :deposit_accounts
+
       # Creates a new wallet on the requested chain and for the requested owner.
       sig do
         params(

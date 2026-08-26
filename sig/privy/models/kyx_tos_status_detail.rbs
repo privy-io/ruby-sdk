@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type kyx_tos_status_detail = { status: String, link: String }
+
+    class KyxTosStatusDetail < Privy::Internal::Type::BaseModel
+      attr_accessor status: String
+
+      attr_reader link: String?
+
+      def link=: (String) -> String
+
+      def initialize: (status: String, ?link: String) -> void
+
+      def to_hash: -> { status: String, link: String }
+    end
+  end
+end

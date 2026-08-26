@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type wallet_automation_attachment_response =
+      {
+        id: String,
+        automation_id: String,
+        created_at: String,
+        params: Privy::SwapAttachmentParams?,
+        status: Privy::Models::wallet_automation_status,
+        updated_at: String,
+        wallet_id: String
+      }
+
+    class WalletAutomationAttachmentResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor automation_id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor params: Privy::SwapAttachmentParams?
+
+      attr_accessor status: Privy::Models::wallet_automation_status
+
+      attr_accessor updated_at: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        id: String,
+        automation_id: String,
+        created_at: String,
+        params: Privy::SwapAttachmentParams?,
+        status: Privy::Models::wallet_automation_status,
+        updated_at: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        automation_id: String,
+        created_at: String,
+        params: Privy::SwapAttachmentParams?,
+        status: Privy::Models::wallet_automation_status,
+        updated_at: String,
+        wallet_id: String
+      }
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type kyb_status_list_response =
+      { kyb_statuses: ::Array[Privy::KYBStatusResponse], next_cursor: String? }
+
+    class KYBStatusListResponse < Privy::Internal::Type::BaseModel
+      attr_accessor kyb_statuses: ::Array[Privy::KYBStatusResponse]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        kyb_statuses: ::Array[Privy::KYBStatusResponse],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        kyb_statuses: ::Array[Privy::KYBStatusResponse],
+        next_cursor: String?
+      }
+    end
+  end
+end

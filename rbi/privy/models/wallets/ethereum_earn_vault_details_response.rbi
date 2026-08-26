@@ -13,6 +13,7 @@ module Privy
             T.any(
               Privy::Wallets::AaveVaultDetails,
               Privy::Wallets::MorphoVaultDetails,
+              Privy::Wallets::TempoVaultDetails,
               Privy::Wallets::VedaVaultDetails
             )
           end

@@ -4,6 +4,14 @@ module Privy
   module Resources
     # Operations related to organizations
     class Organizations
+      # Operations related to fiat onramping and offramping
+      # @return [Privy::Resources::Organizations::KYB]
+      attr_reader :kyb
+
+      # Operations related to fiat onramping and offramping
+      # @return [Privy::Resources::Organizations::ExternalFiatAccounts]
+      attr_reader :external_fiat_accounts
+
       # Create an organization in an app.
       #
       # @overload create(default_key_quorum_id:, display_name:, request_options: {})
@@ -123,6 +131,8 @@ module Privy
       # @param client [Privy::Client]
       def initialize(client:)
         @client = client
+        @kyb = Privy::Resources::Organizations::KYB.new(client: client)
+        @external_fiat_accounts = Privy::Resources::Organizations::ExternalFiatAccounts.new(client: client)
       end
     end
   end

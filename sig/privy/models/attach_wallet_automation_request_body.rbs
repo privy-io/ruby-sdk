@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type attach_wallet_automation_request_body =
+      { automation_ids: ::Array[String], params: Privy::SwapAttachmentParams }
+
+    class AttachWalletAutomationRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor automation_ids: ::Array[String]
+
+      attr_accessor params: Privy::SwapAttachmentParams
+
+      def initialize: (
+        automation_ids: ::Array[String],
+        params: Privy::SwapAttachmentParams
+      ) -> void
+
+      def to_hash: -> {
+        automation_ids: ::Array[String],
+        params: Privy::SwapAttachmentParams
+      }
+    end
+  end
+end

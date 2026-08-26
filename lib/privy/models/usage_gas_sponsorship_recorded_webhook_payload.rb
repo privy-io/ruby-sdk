@@ -8,6 +8,13 @@ module Privy
       #   @return [String]
       required :amount_usd, String
 
+      # @!attribute event_id
+      #   An opaque, stable identifier for this charge. Use it to deduplicate webhook
+      #   deliveries.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute recorded_at
       #
       #   @return [Integer]
@@ -19,7 +26,7 @@ module Privy
       required :source_id, String
 
       # @!attribute source_type
-      #   The type of wallet action that incurred a usage charge.
+      #   The type of operation that incurred a usage charge.
       #
       #   @return [Symbol, Privy::Models::UsageSourceType]
       required :source_type, enum: -> { Privy::UsageSourceType }
@@ -30,17 +37,22 @@ module Privy
       #   @return [Symbol, Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::Type]
       required :type, enum: -> { Privy::UsageGasSponsorshipRecordedWebhookPayload::Type }
 
-      # @!method initialize(amount_usd:, recorded_at:, source_id:, source_type:, type:)
+      # @!method initialize(amount_usd:, event_id:, recorded_at:, source_id:, source_type:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::UsageGasSponsorshipRecordedWebhookPayload} for more details.
+      #
       #   Payload for the usage.gas_sponsorship.recorded webhook event (sponsored network
       #   gas).
       #
       #   @param amount_usd [String]
       #
+      #   @param event_id [String] An opaque, stable identifier for this charge. Use it to deduplicate webhook deli
+      #
       #   @param recorded_at [Integer]
       #
       #   @param source_id [String]
       #
-      #   @param source_type [Symbol, Privy::Models::UsageSourceType] The type of wallet action that incurred a usage charge.
+      #   @param source_type [Symbol, Privy::Models::UsageSourceType] The type of operation that incurred a usage charge.
       #
       #   @param type [Symbol, Privy::Models::UsageGasSponsorshipRecordedWebhookPayload::Type] The type of webhook event.
 

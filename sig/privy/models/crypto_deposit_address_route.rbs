@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type crypto_deposit_address_route =
+      {
+        deposit_address: String,
+        destination: Privy::AutomationDestinationAsset,
+        source: Privy::Models::automation_asset_filter,
+        wallet_id: String
+      }
+
+    class CryptoDepositAddressRoute < Privy::Internal::Type::BaseModel
+      attr_accessor deposit_address: String
+
+      attr_accessor destination: Privy::AutomationDestinationAsset
+
+      attr_accessor source: Privy::Models::automation_asset_filter
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        deposit_address: String,
+        destination: Privy::AutomationDestinationAsset,
+        source: Privy::Models::automation_asset_filter,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        deposit_address: String,
+        destination: Privy::AutomationDestinationAsset,
+        source: Privy::Models::automation_asset_filter,
+        wallet_id: String
+      }
+    end
+  end
+end

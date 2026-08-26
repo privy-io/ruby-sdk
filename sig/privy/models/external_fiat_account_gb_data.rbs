@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type external_fiat_account_gb_data =
+      {
+        account_number: String,
+        sort_code: String,
+        type: Privy::Models::ExternalFiatAccountGBData::type_
+      }
+
+    class ExternalFiatAccountGBData < Privy::Internal::Type::BaseModel
+      attr_accessor account_number: String
+
+      attr_accessor sort_code: String
+
+      attr_accessor type: Privy::Models::ExternalFiatAccountGBData::type_
+
+      def initialize: (
+        account_number: String,
+        sort_code: String,
+        type: Privy::Models::ExternalFiatAccountGBData::type_
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String,
+        sort_code: String,
+        type: Privy::Models::ExternalFiatAccountGBData::type_
+      }
+
+      type type_ = :gb
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        GB: :gb
+
+        def self?.values: -> ::Array[Privy::Models::ExternalFiatAccountGBData::type_]
+      end
+    end
+  end
+end

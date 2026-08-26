@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type user_kyc_updated_webhook_event =
+      {
+        changes: ::Hash[Symbol, ::Array[top]],
+        data: Privy::UserKYCUpdatedData,
+        environment: Privy::Models::kyx_environment,
+        provider: Privy::Models::kyx_provider,
+        type: Privy::Models::UserKYCUpdatedWebhookEvent::type_,
+        user_id: String
+      }
+
+    class UserKYCUpdatedWebhookEvent < Privy::Internal::Type::BaseModel
+      attr_accessor changes: ::Hash[Symbol, ::Array[top]]
+
+      attr_accessor data: Privy::UserKYCUpdatedData
+
+      attr_accessor environment: Privy::Models::kyx_environment
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_accessor type: Privy::Models::UserKYCUpdatedWebhookEvent::type_
+
+      attr_accessor user_id: String
+
+      def initialize: (
+        changes: ::Hash[Symbol, ::Array[top]],
+        data: Privy::UserKYCUpdatedData,
+        environment: Privy::Models::kyx_environment,
+        provider: Privy::Models::kyx_provider,
+        type: Privy::Models::UserKYCUpdatedWebhookEvent::type_,
+        user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        changes: ::Hash[Symbol, ::Array[top]],
+        data: Privy::UserKYCUpdatedData,
+        environment: Privy::Models::kyx_environment,
+        provider: Privy::Models::kyx_provider,
+        type: Privy::Models::UserKYCUpdatedWebhookEvent::type_,
+        user_id: String
+      }
+
+      type type_ = :"user.kyc.updated"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        USER_KYC_UPDATED: :"user.kyc.updated"
+
+        def self?.values: -> ::Array[Privy::Models::UserKYCUpdatedWebhookEvent::type_]
+      end
+    end
+  end
+end

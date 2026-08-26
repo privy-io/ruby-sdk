@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type fiat_deposit_account_status = :activated | :deactivated
+
+    module FiatDepositAccountStatus
+      extend Privy::Internal::Type::Enum
+
+      ACTIVATED: :activated
+      DEACTIVATED: :deactivated
+
+      def self?.values: -> ::Array[Privy::Models::fiat_deposit_account_status]
+    end
+  end
+end

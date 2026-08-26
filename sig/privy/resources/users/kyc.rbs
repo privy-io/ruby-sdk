@@ -1,0 +1,33 @@
+module Privy
+  module Resources
+    class Users
+      class KYC
+        def list: (
+          String user_id,
+          ?request_options: Privy::request_opts
+        ) -> Privy::KYCStatusListResponse
+
+        def initiate_links: (
+          String user_id,
+          provider: Privy::Models::kyx_provider,
+          ?client_agreement_id: String,
+          ?email: String,
+          ?endorsements: ::Array[String],
+          ?environment: Privy::Models::kyx_environment,
+          ?redirect_uri: String,
+          ?request_options: Privy::request_opts
+        ) -> Privy::KYCStatusResponse
+
+        def initiate_tos: (
+          String user_id,
+          provider: Privy::Models::kyx_provider,
+          ?email: String,
+          ?environment: Privy::Models::kyx_environment,
+          ?request_options: Privy::request_opts
+        ) -> Privy::KyxTosResponse
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

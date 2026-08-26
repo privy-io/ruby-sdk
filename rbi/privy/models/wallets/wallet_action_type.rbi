@@ -30,6 +30,7 @@ module Privy
             :earn_fee_collect,
             Privy::Wallets::WalletActionType::TaggedSymbol
           )
+        PAYOUT = T.let(:payout, Privy::Wallets::WalletActionType::TaggedSymbol)
 
         sig do
           override.returns(

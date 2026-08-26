@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type list_fiat_deposit_accounts_response =
+      {
+        deposit_accounts: ::Array[Privy::FiatDepositAccount],
+        next_cursor: String?
+      }
+
+    class ListFiatDepositAccountsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor deposit_accounts: ::Array[Privy::FiatDepositAccount]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        deposit_accounts: ::Array[Privy::FiatDepositAccount],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        deposit_accounts: ::Array[Privy::FiatDepositAccount],
+        next_cursor: String?
+      }
+    end
+  end
+end

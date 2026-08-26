@@ -14,13 +14,18 @@ module Privy
       sig { returns(String) }
       attr_accessor :amount_usd
 
+      # An opaque, stable identifier for this charge. Use it to deduplicate webhook
+      # deliveries.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       sig { returns(Integer) }
       attr_accessor :recorded_at
 
       sig { returns(String) }
       attr_accessor :source_id
 
-      # The type of wallet action that incurred a usage charge.
+      # The type of operation that incurred a usage charge.
       sig { returns(Privy::UsageSourceType::TaggedSymbol) }
       attr_accessor :source_type
 
@@ -37,6 +42,7 @@ module Privy
       sig do
         params(
           amount_usd: String,
+          event_id: String,
           recorded_at: Integer,
           source_id: String,
           source_type: Privy::UsageSourceType::OrSymbol,
@@ -45,9 +51,12 @@ module Privy
       end
       def self.new(
         amount_usd:,
+        # An opaque, stable identifier for this charge. Use it to deduplicate webhook
+        # deliveries.
+        event_id:,
         recorded_at:,
         source_id:,
-        # The type of wallet action that incurred a usage charge.
+        # The type of operation that incurred a usage charge.
         source_type:,
         # The type of webhook event.
         type:
@@ -58,6 +67,7 @@ module Privy
         override.returns(
           {
             amount_usd: String,
+            event_id: String,
             recorded_at: Integer,
             source_id: String,
             source_type: Privy::UsageSourceType::TaggedSymbol,

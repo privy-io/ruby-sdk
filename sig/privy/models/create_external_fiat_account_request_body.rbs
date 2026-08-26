@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type create_external_fiat_account_request_body =
+      {
+        account: Privy::Models::external_fiat_account_data,
+        account_owner_name: String,
+        currency: String,
+        provider: Privy::Models::CreateExternalFiatAccountRequestBody::provider,
+        address: Privy::ExternalFiatAccountAddress,
+        bank_name: String,
+        environment: Privy::Models::environment
+      }
+
+    class CreateExternalFiatAccountRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor account: Privy::Models::external_fiat_account_data
+
+      attr_accessor account_owner_name: String
+
+      attr_accessor currency: String
+
+      attr_accessor provider: Privy::Models::CreateExternalFiatAccountRequestBody::provider
+
+      attr_reader address: Privy::ExternalFiatAccountAddress?
+
+      def address=: (
+        Privy::ExternalFiatAccountAddress
+      ) -> Privy::ExternalFiatAccountAddress
+
+      attr_reader bank_name: String?
+
+      def bank_name=: (String) -> String
+
+      attr_reader environment: Privy::Models::environment?
+
+      def environment=: (
+        Privy::Models::environment
+      ) -> Privy::Models::environment
+
+      def initialize: (
+        account: Privy::Models::external_fiat_account_data,
+        account_owner_name: String,
+        currency: String,
+        provider: Privy::Models::CreateExternalFiatAccountRequestBody::provider,
+        ?address: Privy::ExternalFiatAccountAddress,
+        ?bank_name: String,
+        ?environment: Privy::Models::environment
+      ) -> void
+
+      def to_hash: -> {
+        account: Privy::Models::external_fiat_account_data,
+        account_owner_name: String,
+        currency: String,
+        provider: Privy::Models::CreateExternalFiatAccountRequestBody::provider,
+        address: Privy::ExternalFiatAccountAddress,
+        bank_name: String,
+        environment: Privy::Models::environment
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::CreateExternalFiatAccountRequestBody::provider]
+      end
+    end
+  end
+end

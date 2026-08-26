@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    type kyb_status_response =
+      {
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ::Array[Privy::KyxEndorsement],
+        environment: Privy::Models::kyx_environment,
+        future_requirements_due: ::Array[String],
+        kyb: Privy::KyxVerificationStatusDetail,
+        provider: Privy::Models::kyx_provider,
+        requirements_due: ::Array[String],
+        status: String,
+        tos: Privy::KyxTosStatusDetail
+      }
+
+    class KYBStatusResponse < Privy::Internal::Type::BaseModel
+      attr_accessor capabilities: Privy::KyxCapabilities
+
+      attr_accessor endorsements: ::Array[Privy::KyxEndorsement]
+
+      attr_accessor environment: Privy::Models::kyx_environment
+
+      attr_accessor future_requirements_due: ::Array[String]
+
+      attr_accessor kyb: Privy::KyxVerificationStatusDetail
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_accessor requirements_due: ::Array[String]
+
+      attr_accessor status: String
+
+      attr_accessor tos: Privy::KyxTosStatusDetail
+
+      def initialize: (
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ::Array[Privy::KyxEndorsement],
+        environment: Privy::Models::kyx_environment,
+        future_requirements_due: ::Array[String],
+        kyb: Privy::KyxVerificationStatusDetail,
+        provider: Privy::Models::kyx_provider,
+        requirements_due: ::Array[String],
+        status: String,
+        tos: Privy::KyxTosStatusDetail
+      ) -> void
+
+      def to_hash: -> {
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ::Array[Privy::KyxEndorsement],
+        environment: Privy::Models::kyx_environment,
+        future_requirements_due: ::Array[String],
+        kyb: Privy::KyxVerificationStatusDetail,
+        provider: Privy::Models::kyx_provider,
+        requirements_due: ::Array[String],
+        status: String,
+        tos: Privy::KyxTosStatusDetail
+      }
+    end
+  end
+end

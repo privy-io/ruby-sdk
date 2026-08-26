@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type bridge_fiat_deposit_account =
+      {
+        id: String,
+        created_at: String,
+        deposit_instructions: Privy::FiatDepositInstructions?,
+        destination: Privy::FiatDepositAccountDestination,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::BridgeFiatDepositAccount::provider,
+        source: Privy::FiatDepositAccountSource,
+        status: Privy::Models::fiat_deposit_account_status,
+        wallet_id: String
+      }
+
+    class BridgeFiatDepositAccount < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: String
+
+      attr_accessor deposit_instructions: Privy::FiatDepositInstructions?
+
+      attr_accessor destination: Privy::FiatDepositAccountDestination
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor provider: Privy::Models::BridgeFiatDepositAccount::provider
+
+      attr_accessor source: Privy::FiatDepositAccountSource
+
+      attr_accessor status: Privy::Models::fiat_deposit_account_status
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        id: String,
+        created_at: String,
+        deposit_instructions: Privy::FiatDepositInstructions?,
+        destination: Privy::FiatDepositAccountDestination,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::BridgeFiatDepositAccount::provider,
+        source: Privy::FiatDepositAccountSource,
+        status: Privy::Models::fiat_deposit_account_status,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        deposit_instructions: Privy::FiatDepositInstructions?,
+        destination: Privy::FiatDepositAccountDestination,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::BridgeFiatDepositAccount::provider,
+        source: Privy::FiatDepositAccountSource,
+        status: Privy::Models::fiat_deposit_account_status,
+        wallet_id: String
+      }
+
+      type provider = :bridge
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        BRIDGE: :bridge
+
+        def self?.values: -> ::Array[Privy::Models::BridgeFiatDepositAccount::provider]
+      end
+    end
+  end
+end

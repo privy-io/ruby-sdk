@@ -1,0 +1,62 @@
+module Privy
+  module Models
+    type kyb_links_request_body =
+      {
+        email: String,
+        provider: Privy::Models::kyx_provider,
+        business_name: String,
+        client_agreement_id: String,
+        endorsements: ::Array[String],
+        environment: Privy::Models::kyx_environment,
+        redirect_uri: String
+      }
+
+    class KYBLinksRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor email: String
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_reader business_name: String?
+
+      def business_name=: (String) -> String
+
+      attr_reader client_agreement_id: String?
+
+      def client_agreement_id=: (String) -> String
+
+      attr_reader endorsements: ::Array[String]?
+
+      def endorsements=: (::Array[String]) -> ::Array[String]
+
+      attr_reader environment: Privy::Models::kyx_environment?
+
+      def environment=: (
+        Privy::Models::kyx_environment
+      ) -> Privy::Models::kyx_environment
+
+      attr_reader redirect_uri: String?
+
+      def redirect_uri=: (String) -> String
+
+      def initialize: (
+        email: String,
+        provider: Privy::Models::kyx_provider,
+        ?business_name: String,
+        ?client_agreement_id: String,
+        ?endorsements: ::Array[String],
+        ?environment: Privy::Models::kyx_environment,
+        ?redirect_uri: String
+      ) -> void
+
+      def to_hash: -> {
+        email: String,
+        provider: Privy::Models::kyx_provider,
+        business_name: String,
+        client_agreement_id: String,
+        endorsements: ::Array[String],
+        environment: Privy::Models::kyx_environment,
+        redirect_uri: String
+      }
+    end
+  end
+end

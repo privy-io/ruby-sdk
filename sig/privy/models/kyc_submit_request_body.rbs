@@ -1,0 +1,48 @@
+module Privy
+  module Models
+    type kyc_submit_request_body =
+      {
+        data: Privy::KYCSubmitData,
+        provider: Privy::Models::kyx_provider,
+        client_agreement_id: String,
+        endorsements: ::Array[String],
+        environment: Privy::Models::kyx_environment
+      }
+
+    class KYCSubmitRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::KYCSubmitData
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_reader client_agreement_id: String?
+
+      def client_agreement_id=: (String) -> String
+
+      attr_reader endorsements: ::Array[String]?
+
+      def endorsements=: (::Array[String]) -> ::Array[String]
+
+      attr_reader environment: Privy::Models::kyx_environment?
+
+      def environment=: (
+        Privy::Models::kyx_environment
+      ) -> Privy::Models::kyx_environment
+
+      def initialize: (
+        data: Privy::KYCSubmitData,
+        provider: Privy::Models::kyx_provider,
+        ?client_agreement_id: String,
+        ?endorsements: ::Array[String],
+        ?environment: Privy::Models::kyx_environment
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::KYCSubmitData,
+        provider: Privy::Models::kyx_provider,
+        client_agreement_id: String,
+        endorsements: ::Array[String],
+        environment: Privy::Models::kyx_environment
+      }
+    end
+  end
+end

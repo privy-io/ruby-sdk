@@ -4,6 +4,7 @@ module Privy
       type ethereum_earn_vault_details_response =
         Privy::Wallets::AaveVaultDetails
         | Privy::Wallets::MorphoVaultDetails
+        | Privy::Wallets::TempoVaultDetails
         | Privy::Wallets::VedaVaultDetails
 
       module EthereumEarnVaultDetailsResponse

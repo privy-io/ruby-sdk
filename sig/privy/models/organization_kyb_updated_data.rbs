@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type organization_kyb_updated_data =
+      {
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ::Array[Privy::KyxEndorsement],
+        kyb: Privy::OrganizationKYBUpdatedKYBData,
+        status: String,
+        tos: Privy::OrganizationKYBUpdatedTosData
+      }
+
+    class OrganizationKYBUpdatedData < Privy::Internal::Type::BaseModel
+      attr_accessor capabilities: Privy::KyxCapabilities
+
+      attr_accessor endorsements: ::Array[Privy::KyxEndorsement]
+
+      attr_accessor kyb: Privy::OrganizationKYBUpdatedKYBData
+
+      attr_accessor status: String
+
+      attr_accessor tos: Privy::OrganizationKYBUpdatedTosData
+
+      def initialize: (
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ::Array[Privy::KyxEndorsement],
+        kyb: Privy::OrganizationKYBUpdatedKYBData,
+        status: String,
+        tos: Privy::OrganizationKYBUpdatedTosData
+      ) -> void
+
+      def to_hash: -> {
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ::Array[Privy::KyxEndorsement],
+        kyb: Privy::OrganizationKYBUpdatedKYBData,
+        status: String,
+        tos: Privy::OrganizationKYBUpdatedTosData
+      }
+    end
+  end
+end

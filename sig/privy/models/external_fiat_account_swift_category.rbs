@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type external_fiat_account_swift_category =
+      :client | :parent_company | :subsidiary | :supplier
+
+    module ExternalFiatAccountSwiftCategory
+      extend Privy::Internal::Type::Enum
+
+      CLIENT: :client
+      PARENT_COMPANY: :parent_company
+      SUBSIDIARY: :subsidiary
+      SUPPLIER: :supplier
+
+      def self?.values: -> ::Array[Privy::Models::external_fiat_account_swift_category]
+    end
+  end
+end

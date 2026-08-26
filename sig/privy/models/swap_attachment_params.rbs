@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type swap_attachment_params = { destination_address: String }
+
+    class SwapAttachmentParams < Privy::Internal::Type::BaseModel
+      attr_accessor destination_address: String
+
+      def initialize: (destination_address: String) -> void
+
+      def to_hash: -> { destination_address: String }
+    end
+  end
+end

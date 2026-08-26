@@ -10,6 +10,7 @@ module Privy
       | Privy::IntentRejectedWebhookPayload
       | Privy::MfaDisabledWebhookPayload
       | Privy::MfaEnabledWebhookPayload
+      | Privy::OrganizationKYBUpdatedWebhookEvent
       | Privy::TransactionBroadcastedWebhookPayload
       | Privy::TransactionConfirmedWebhookPayload
       | Privy::TransactionExecutionRevertedWebhookPayload
@@ -22,6 +23,7 @@ module Privy
       | Privy::UserAuthenticatedWebhookPayload
       | Privy::UserCreatedWebhookPayload
       | Privy::UserDeletedWebhookPayload
+      | Privy::UserKYCUpdatedWebhookEvent
       | Privy::UserLinkedAccountWebhookPayload
       | Privy::UserTransferredAccountWebhookPayload
       | Privy::UserUnlinkedAccountWebhookPayload
@@ -29,6 +31,9 @@ module Privy
       | Privy::UserWalletCreatedWebhookPayload
       | Privy::UserOperationCompletedWebhookPayload
       | Privy::WalletArchivedWebhookPayload
+      | Privy::WalletDepositAccountDepositCompletedWebhookEvent
+      | Privy::WalletDepositAccountDepositFailedWebhookEvent
+      | Privy::WalletDepositAccountDepositStartedWebhookEvent
       | Privy::FundsDepositedWebhookPayload
       | Privy::FundsWithdrawnWebhookPayload
       | Privy::PrivateKeyExportWebhookPayload
@@ -51,6 +56,10 @@ module Privy
       | Privy::WalletActionEarnWithdrawFailedWebhookPayload
       | Privy::WalletActionEarnWithdrawRejectedWebhookPayload
       | Privy::WalletActionEarnWithdrawSucceededWebhookPayload
+      | Privy::WalletActionPayoutCreatedWebhookPayload
+      | Privy::WalletActionPayoutFailedWebhookPayload
+      | Privy::WalletActionPayoutRejectedWebhookPayload
+      | Privy::WalletActionPayoutSucceededWebhookPayload
       | Privy::WalletActionSwapCreatedWebhookPayload
       | Privy::WalletActionSwapFailedWebhookPayload
       | Privy::WalletActionSwapRejectedWebhookPayload
@@ -59,6 +68,7 @@ module Privy
       | Privy::WalletActionTransferFailedWebhookPayload
       | Privy::WalletActionTransferRejectedWebhookPayload
       | Privy::WalletActionTransferSucceededWebhookPayload
+      | Privy::WalletAutomationSubmittedWebhookPayload
       | Privy::YieldClaimConfirmedWebhookPayload
       | Privy::YieldDepositConfirmedWebhookPayload
       | Privy::YieldWithdrawConfirmedWebhookPayload)

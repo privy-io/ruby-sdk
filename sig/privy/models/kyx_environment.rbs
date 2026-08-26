@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kyx_environment = :production | :sandbox
+
+    module KyxEnvironment
+      extend Privy::Internal::Type::Enum
+
+      PRODUCTION: :production
+      SANDBOX: :sandbox
+
+      def self?.values: -> ::Array[Privy::Models::kyx_environment]
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Privy
+  module Resources
+    class Wallets
+      class DepositAccounts
+        attr_reader crypto: Privy::Resources::Wallets::DepositAccounts::Crypto
+
+        attr_reader fiat: Privy::Resources::Wallets::DepositAccounts::Fiat
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

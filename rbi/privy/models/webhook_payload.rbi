@@ -68,7 +68,12 @@ module Privy
             Privy::WalletActionEarnFeeCollectCreatedWebhookPayload,
             Privy::WalletActionEarnFeeCollectSucceededWebhookPayload,
             Privy::WalletActionEarnFeeCollectRejectedWebhookPayload,
-            Privy::WalletActionEarnFeeCollectFailedWebhookPayload
+            Privy::WalletActionEarnFeeCollectFailedWebhookPayload,
+            Privy::WalletActionPayoutCreatedWebhookPayload,
+            Privy::WalletActionPayoutSucceededWebhookPayload,
+            Privy::WalletActionPayoutRejectedWebhookPayload,
+            Privy::WalletActionPayoutFailedWebhookPayload,
+            Privy::WalletAutomationSubmittedWebhookPayload
           )
         end
 

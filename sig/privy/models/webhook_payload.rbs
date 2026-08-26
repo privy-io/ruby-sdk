@@ -61,6 +61,11 @@ module Privy
       | Privy::WalletActionEarnFeeCollectSucceededWebhookPayload
       | Privy::WalletActionEarnFeeCollectRejectedWebhookPayload
       | Privy::WalletActionEarnFeeCollectFailedWebhookPayload
+      | Privy::WalletActionPayoutCreatedWebhookPayload
+      | Privy::WalletActionPayoutSucceededWebhookPayload
+      | Privy::WalletActionPayoutRejectedWebhookPayload
+      | Privy::WalletActionPayoutFailedWebhookPayload
+      | Privy::WalletAutomationSubmittedWebhookPayload
 
     module WebhookPayload
       extend Privy::Internal::Type::Union

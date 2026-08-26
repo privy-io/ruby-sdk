@@ -1,0 +1,27 @@
+module Privy
+  module Models
+    module Users
+      type external_fiat_account_create_params =
+        { user_id: String } & Privy::Internal::Type::request_parameters
+
+      class ExternalFiatAccountCreateParams < Privy::Models::CreateExternalFiatAccountRequestBody
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        def user_id: -> String
+
+        def user_id=: (String _) -> String
+
+        def initialize: (
+          user_id: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          user_id: String,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

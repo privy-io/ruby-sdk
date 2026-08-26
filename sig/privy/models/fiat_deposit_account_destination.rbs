@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type fiat_deposit_account_destination = { asset: String, chain: String }
+
+    class FiatDepositAccountDestination < Privy::Internal::Type::BaseModel
+      attr_accessor asset: String
+
+      attr_accessor chain: String
+
+      def initialize: (asset: String, chain: String) -> void
+
+      def to_hash: -> { asset: String, chain: String }
+    end
+  end
+end

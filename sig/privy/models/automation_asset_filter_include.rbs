@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type automation_asset_filter_include =
+      {
+        mode: Privy::Models::AutomationAssetFilterInclude::mode,
+        values: ::Array[Privy::AutomationAssetSpec]
+      }
+
+    class AutomationAssetFilterInclude < Privy::Internal::Type::BaseModel
+      attr_accessor mode: Privy::Models::AutomationAssetFilterInclude::mode
+
+      attr_accessor values: ::Array[Privy::AutomationAssetSpec]
+
+      def initialize: (
+        mode: Privy::Models::AutomationAssetFilterInclude::mode,
+        values: ::Array[Privy::AutomationAssetSpec]
+      ) -> void
+
+      def to_hash: -> {
+        mode: Privy::Models::AutomationAssetFilterInclude::mode,
+        values: ::Array[Privy::AutomationAssetSpec]
+      }
+
+      type mode = :include
+
+      module Mode
+        extend Privy::Internal::Type::Enum
+
+        INCLUDE: :include
+
+        def self?.values: -> ::Array[Privy::Models::AutomationAssetFilterInclude::mode]
+      end
+    end
+  end
+end

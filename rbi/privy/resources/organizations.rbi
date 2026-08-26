@@ -4,6 +4,14 @@ module Privy
   module Resources
     # Operations related to organizations
     class Organizations
+      # Operations related to fiat onramping and offramping
+      sig { returns(Privy::Resources::Organizations::KYB) }
+      attr_reader :kyb
+
+      # Operations related to fiat onramping and offramping
+      sig { returns(Privy::Resources::Organizations::ExternalFiatAccounts) }
+      attr_reader :external_fiat_accounts
+
       # Create an organization in an app.
       sig do
         params(

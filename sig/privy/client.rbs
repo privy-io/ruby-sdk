@@ -47,7 +47,11 @@ module Privy
 
     attr_reader client_auth: Privy::Resources::ClientAuth
 
+    attr_reader wallet_automations: Privy::Resources::WalletAutomations
+
     attr_reader shared: Privy::Resources::Shared
+
+    attr_reader fiat: Privy::Resources::Fiat
 
     attr_reader onramps: Privy::Resources::Onramps
 
@@ -58,8 +62,6 @@ module Privy
     attr_reader oauth: Privy::Resources::OAuth
 
     attr_reader yield_: Privy::Resources::Yield
-
-    attr_reader fiat: Privy::Resources::Fiat
 
     attr_reader kraken_embed: Privy::Resources::KrakenEmbed
 

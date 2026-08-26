@@ -1,0 +1,20 @@
+module Privy
+  module Resources
+    class Wallets
+      class DepositAccounts
+        class Crypto
+          def create: (
+            String wallet_id,
+            create_crypto_deposit_account_request_body: Privy::Models::create_crypto_deposit_account_request_body,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::CreateCryptoDepositAccountResponse
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

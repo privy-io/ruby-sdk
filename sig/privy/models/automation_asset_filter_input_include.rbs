@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type automation_asset_filter_input_include =
+      {
+        mode: Privy::Models::AutomationAssetFilterInputInclude::mode,
+        values: ::Array[Privy::AutomationAssetSpecInput]
+      }
+
+    class AutomationAssetFilterInputInclude < Privy::Internal::Type::BaseModel
+      attr_accessor mode: Privy::Models::AutomationAssetFilterInputInclude::mode
+
+      attr_accessor values: ::Array[Privy::AutomationAssetSpecInput]
+
+      def initialize: (
+        mode: Privy::Models::AutomationAssetFilterInputInclude::mode,
+        values: ::Array[Privy::AutomationAssetSpecInput]
+      ) -> void
+
+      def to_hash: -> {
+        mode: Privy::Models::AutomationAssetFilterInputInclude::mode,
+        values: ::Array[Privy::AutomationAssetSpecInput]
+      }
+
+      type mode = :include
+
+      module Mode
+        extend Privy::Internal::Type::Enum
+
+        INCLUDE: :include
+
+        def self?.values: -> ::Array[Privy::Models::AutomationAssetFilterInputInclude::mode]
+      end
+    end
+  end
+end

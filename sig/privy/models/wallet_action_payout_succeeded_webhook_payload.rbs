@@ -1,0 +1,115 @@
+module Privy
+  module Models
+    type wallet_action_payout_succeeded_webhook_payload =
+      {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        completed_at: String,
+        created_at: String,
+        destination_currency: String,
+        destination_fiat_account_id: String,
+        destination_payment_rail: String,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        source_amount: String,
+        source_asset: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionPayoutSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
+        type: Privy::Models::WalletActionPayoutSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+    class WalletActionPayoutSucceededWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
+
+      attr_accessor completed_at: String
+
+      attr_accessor created_at: String
+
+      attr_accessor destination_currency: String
+
+      attr_accessor destination_fiat_account_id: String
+
+      attr_accessor destination_payment_rail: String
+
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor provider: Privy::Models::orchestration_provider
+
+      attr_accessor source_amount: String
+
+      attr_accessor source_asset: String
+
+      attr_accessor source_chain: String
+
+      attr_accessor status: Privy::Models::WalletActionPayoutSucceededWebhookPayload::status
+
+      attr_accessor steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+
+      attr_accessor type: Privy::Models::WalletActionPayoutSucceededWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        completed_at: String,
+        created_at: String,
+        destination_currency: String,
+        destination_fiat_account_id: String,
+        destination_payment_rail: String,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        source_amount: String,
+        source_asset: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionPayoutSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
+        type: Privy::Models::WalletActionPayoutSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        completed_at: String,
+        created_at: String,
+        destination_currency: String,
+        destination_fiat_account_id: String,
+        destination_payment_rail: String,
+        environment: Privy::Models::environment,
+        provider: Privy::Models::orchestration_provider,
+        source_amount: String,
+        source_asset: String,
+        source_chain: String,
+        status: Privy::Models::WalletActionPayoutSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
+        type: Privy::Models::WalletActionPayoutSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String
+      }
+
+      type status = :succeeded
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        SUCCEEDED: :succeeded
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionPayoutSucceededWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.payout.succeeded"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_PAYOUT_SUCCEEDED: :"wallet_action.payout.succeeded"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionPayoutSucceededWebhookPayload::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type deposit_completed_destination =
+      { amount: String, asset: String, chain: String, transaction_hash: String }
+
+    class DepositCompletedDestination < Privy::Internal::Type::BaseModel
+      attr_accessor amount: String
+
+      attr_accessor asset: String
+
+      attr_accessor chain: String
+
+      attr_accessor transaction_hash: String
+
+      def initialize: (
+        amount: String,
+        asset: String,
+        chain: String,
+        transaction_hash: String
+      ) -> void
+
+      def to_hash: -> {
+        amount: String,
+        asset: String,
+        chain: String,
+        transaction_hash: String
+      }
+    end
+  end
+end

@@ -6,6 +6,9 @@ module Privy
       module Apps
       end
 
+      module DepositAccounts
+      end
+
       module Earn
         module Ethereum
         end
@@ -14,7 +17,16 @@ module Privy
       module Ethereum
       end
 
+      module Organizations
+      end
+
+      module Users
+      end
+
       module Wallets
+        module DepositAccounts
+        end
+
         module Earn
           module Ethereum
           end

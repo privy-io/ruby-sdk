@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type fiat_deposit_account_source =
+      { currency: String, payment_rails: ::Array[String] }
+
+    class FiatDepositAccountSource < Privy::Internal::Type::BaseModel
+      attr_accessor currency: String
+
+      attr_accessor payment_rails: ::Array[String]
+
+      def initialize: (currency: String, payment_rails: ::Array[String]) -> void
+
+      def to_hash: -> { currency: String, payment_rails: ::Array[String] }
+    end
+  end
+end

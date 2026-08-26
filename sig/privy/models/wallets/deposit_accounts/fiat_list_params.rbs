@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    module Wallets
+      module DepositAccounts
+        type fiat_list_params =
+          {
+            wallet_id: String,
+            provider: Privy::Models::orchestration_provider,
+            environment: Privy::Models::environment
+          }
+          & Privy::Internal::Type::request_parameters
+
+        class FiatListParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor wallet_id: String
+
+          attr_accessor provider: Privy::Models::orchestration_provider
+
+          attr_reader environment: Privy::Models::environment?
+
+          def environment=: (
+            Privy::Models::environment
+          ) -> Privy::Models::environment
+
+          def initialize: (
+            wallet_id: String,
+            provider: Privy::Models::orchestration_provider,
+            ?environment: Privy::Models::environment,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            wallet_id: String,
+            provider: Privy::Models::orchestration_provider,
+            environment: Privy::Models::environment,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

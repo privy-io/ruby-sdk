@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type kyx_tos_response =
+      {
+        environment: Privy::Models::kyx_environment,
+        link: String,
+        provider: Privy::Models::kyx_provider,
+        status: String
+      }
+
+    class KyxTosResponse < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::kyx_environment
+
+      attr_accessor link: String
+
+      attr_accessor provider: Privy::Models::kyx_provider
+
+      attr_accessor status: String
+
+      def initialize: (
+        environment: Privy::Models::kyx_environment,
+        link: String,
+        provider: Privy::Models::kyx_provider,
+        status: String
+      ) -> void
+
+      def to_hash: -> {
+        environment: Privy::Models::kyx_environment,
+        link: String,
+        provider: Privy::Models::kyx_provider,
+        status: String
+      }
+    end
+  end
+end

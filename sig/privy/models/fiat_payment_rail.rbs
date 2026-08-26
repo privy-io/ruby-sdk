@@ -1,6 +1,7 @@
 module Privy
   module Models
-    type fiat_payment_rail = :sepa | :ach_push | :wire
+    type fiat_payment_rail =
+      :sepa | :ach_push | :wire | :fednow | :faster_payments
 
     module FiatPaymentRail
       extend Privy::Internal::Type::Enum
@@ -8,6 +9,8 @@ module Privy
       SEPA: :sepa
       ACH_PUSH: :ach_push
       WIRE: :wire
+      FEDNOW: :fednow
+      FASTER_PAYMENTS: :faster_payments
 
       def self?.values: -> ::Array[Privy::Models::fiat_payment_rail]
     end

@@ -1,0 +1,33 @@
+module Privy
+  module Resources
+    class Wallets
+      class DepositAccounts
+        class Fiat
+          def create: (
+            String wallet_id,
+            destination: Privy::FiatDepositAccountDestination,
+            provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
+            source: Privy::CreateFiatDepositAccountSource,
+            ?environment: Privy::Models::environment,
+            ?request_options: Privy::request_opts
+          ) -> Privy::FiatDepositAccountResponse
+
+          def list: (
+            String wallet_id,
+            provider: Privy::Models::orchestration_provider,
+            ?environment: Privy::Models::environment,
+            ?request_options: Privy::request_opts
+          ) -> Privy::ListFiatDepositAccountsResponse
+
+          def get: (
+            String deposit_account_id,
+            wallet_id: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::FiatDepositAccountResponse
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

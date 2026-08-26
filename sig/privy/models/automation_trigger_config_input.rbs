@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type automation_trigger_config_input =
+      {
+        assets: Privy::Models::automation_asset_filter_input,
+        type: Privy::Models::AutomationTriggerConfigInput::type_
+      }
+
+    class AutomationTriggerConfigInput < Privy::Internal::Type::BaseModel
+      attr_accessor assets: Privy::Models::automation_asset_filter_input
+
+      attr_accessor type: Privy::Models::AutomationTriggerConfigInput::type_
+
+      def initialize: (
+        assets: Privy::Models::automation_asset_filter_input,
+        type: Privy::Models::AutomationTriggerConfigInput::type_
+      ) -> void
+
+      def to_hash: -> {
+        assets: Privy::Models::automation_asset_filter_input,
+        type: Privy::Models::AutomationTriggerConfigInput::type_
+      }
+
+      type type_ = :deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        DEPOSIT: :deposit
+
+        def self?.values: -> ::Array[Privy::Models::AutomationTriggerConfigInput::type_]
+      end
+    end
+  end
+end

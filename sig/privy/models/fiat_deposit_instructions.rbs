@@ -1,0 +1,127 @@
+module Privy
+  module Models
+    type fiat_deposit_instructions =
+      {
+        account_holder_name: String,
+        account_number: String,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        bic: String,
+        br_code: String,
+        bre_b_key: String,
+        clabe: String,
+        deposit_message: String,
+        iban: String,
+        payment_rails: ::Array[String],
+        sort_code: String
+      }
+
+    class FiatDepositInstructions < Privy::Internal::Type::BaseModel
+      attr_reader account_holder_name: String?
+
+      def account_holder_name=: (String) -> String
+
+      attr_reader account_number: String?
+
+      def account_number=: (String) -> String
+
+      attr_reader bank_account_number: String?
+
+      def bank_account_number=: (String) -> String
+
+      attr_reader bank_address: String?
+
+      def bank_address=: (String) -> String
+
+      attr_reader bank_beneficiary_address: String?
+
+      def bank_beneficiary_address=: (String) -> String
+
+      attr_reader bank_beneficiary_name: String?
+
+      def bank_beneficiary_name=: (String) -> String
+
+      attr_reader bank_name: String?
+
+      def bank_name=: (String) -> String
+
+      attr_reader bank_routing_number: String?
+
+      def bank_routing_number=: (String) -> String
+
+      attr_reader bic: String?
+
+      def bic=: (String) -> String
+
+      attr_reader br_code: String?
+
+      def br_code=: (String) -> String
+
+      attr_reader bre_b_key: String?
+
+      def bre_b_key=: (String) -> String
+
+      attr_reader clabe: String?
+
+      def clabe=: (String) -> String
+
+      attr_reader deposit_message: String?
+
+      def deposit_message=: (String) -> String
+
+      attr_reader iban: String?
+
+      def iban=: (String) -> String
+
+      attr_reader payment_rails: ::Array[String]?
+
+      def payment_rails=: (::Array[String]) -> ::Array[String]
+
+      attr_reader sort_code: String?
+
+      def sort_code=: (String) -> String
+
+      def initialize: (
+        ?account_holder_name: String,
+        ?account_number: String,
+        ?bank_account_number: String,
+        ?bank_address: String,
+        ?bank_beneficiary_address: String,
+        ?bank_beneficiary_name: String,
+        ?bank_name: String,
+        ?bank_routing_number: String,
+        ?bic: String,
+        ?br_code: String,
+        ?bre_b_key: String,
+        ?clabe: String,
+        ?deposit_message: String,
+        ?iban: String,
+        ?payment_rails: ::Array[String],
+        ?sort_code: String
+      ) -> void
+
+      def to_hash: -> {
+        account_holder_name: String,
+        account_number: String,
+        bank_account_number: String,
+        bank_address: String,
+        bank_beneficiary_address: String,
+        bank_beneficiary_name: String,
+        bank_name: String,
+        bank_routing_number: String,
+        bic: String,
+        br_code: String,
+        bre_b_key: String,
+        clabe: String,
+        deposit_message: String,
+        iban: String,
+        payment_rails: ::Array[String],
+        sort_code: String
+      }
+    end
+  end
+end

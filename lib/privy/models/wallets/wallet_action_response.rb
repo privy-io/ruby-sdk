@@ -29,8 +29,11 @@ module Privy
         # Response for an earn fee collect action.
         variant :earn_fee_collect, -> { Privy::Wallets::EarnFeeCollectActionResponse }
 
+        # A payout wallet action. Crypto is sent on-chain to a liquidation address that offramps to the destination bank account.
+        variant :payout, -> { Privy::Wallets::PayoutResponse }
+
         # @!method self.variants
-        #   @return [Array(Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse)]
+        #   @return [Array(Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse, Privy::Models::Wallets::PayoutResponse)]
       end
     end
 
