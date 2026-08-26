@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type crypto_deposit_asset = { asset: String, chain: String }
+
+    class CryptoDepositAsset < Privy::Internal::Type::BaseModel
+      attr_accessor asset: String
+
+      attr_accessor chain: String
+
+      def initialize: (asset: String, chain: String) -> void
+
+      def to_hash: -> { asset: String, chain: String }
+    end
+  end
+end

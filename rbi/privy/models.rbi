@@ -341,6 +341,11 @@ module Privy
 
   CardIssuingMerchant = Privy::Models::CardIssuingMerchant
 
+  CardIssuingReplaceCardRequestBody =
+    Privy::Models::CardIssuingReplaceCardRequestBody
+
+  CardIssuingReplacementReason = Privy::Models::CardIssuingReplacementReason
+
   CardIssuingStatementQueryParams =
     Privy::Models::CardIssuingStatementQueryParams
 
@@ -466,6 +471,18 @@ module Privy
   CrossAppSmartWallet = Privy::Models::CrossAppSmartWallet
 
   CryptoDepositAddressRoute = Privy::Models::CryptoDepositAddressRoute
+
+  CryptoDepositAsset = Privy::Models::CryptoDepositAsset
+
+  CryptoDepositAssetFilter = Privy::Models::CryptoDepositAssetFilter
+
+  CryptoDepositAssetFilterAll = Privy::Models::CryptoDepositAssetFilterAll
+
+  CryptoDepositAssetFilterExclude =
+    Privy::Models::CryptoDepositAssetFilterExclude
+
+  CryptoDepositAssetFilterInclude =
+    Privy::Models::CryptoDepositAssetFilterInclude
 
   Currency = Privy::Models::Currency
 

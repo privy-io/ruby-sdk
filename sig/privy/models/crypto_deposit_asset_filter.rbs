@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type crypto_deposit_asset_filter =
+      Privy::CryptoDepositAssetFilterAll
+      | Privy::CryptoDepositAssetFilterInclude
+      | Privy::CryptoDepositAssetFilterExclude
+
+    module CryptoDepositAssetFilter
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::crypto_deposit_asset_filter]
+    end
+  end
+end

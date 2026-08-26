@@ -350,6 +350,11 @@ module Privy
               :zksync_era,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
+          ROBINHOOD =
+            T.let(
+              :robinhood,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
           HOODI =
             T.let(:hoodi, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
           SEPOLIA =
@@ -400,6 +405,11 @@ module Privy
           TRON_NILE =
             T.let(
               :tron_nile,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          ROBINHOOD_TESTNET =
+            T.let(
+              :robinhood_testnet,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
 

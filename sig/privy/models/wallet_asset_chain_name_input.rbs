@@ -13,6 +13,7 @@ module Privy
       | :solana
       | :tron
       | :zksync_era
+      | :robinhood
       | :hoodi
       | :sepolia
       | :arbitrum_sepolia
@@ -24,6 +25,7 @@ module Privy
       | :solana_devnet
       | :solana_testnet
       | :tron_nile
+      | :robinhood_testnet
       | String
 
     module WalletAssetChainNameInput
@@ -43,6 +45,7 @@ module Privy
       SOLANA: :solana
       TRON: :tron
       ZKSYNC_ERA: :zksync_era
+      ROBINHOOD: :robinhood
       HOODI: :hoodi
       SEPOLIA: :sepolia
       ARBITRUM_SEPOLIA: :arbitrum_sepolia
@@ -54,6 +57,7 @@ module Privy
       SOLANA_DEVNET: :solana_devnet
       SOLANA_TESTNET: :solana_testnet
       TRON_NILE: :tron_nile
+      ROBINHOOD_TESTNET: :robinhood_testnet
     end
   end
 end

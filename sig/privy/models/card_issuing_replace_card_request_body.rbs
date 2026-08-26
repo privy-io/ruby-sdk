@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type card_issuing_replace_card_request_body =
+      {
+        environment: Privy::Models::environment,
+        replacement_reason: Privy::Models::card_issuing_replacement_reason
+      }
+
+    class CardIssuingReplaceCardRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor environment: Privy::Models::environment
+
+      attr_accessor replacement_reason: Privy::Models::card_issuing_replacement_reason
+
+      def initialize: (
+        environment: Privy::Models::environment,
+        replacement_reason: Privy::Models::card_issuing_replacement_reason
+      ) -> void
+
+      def to_hash: -> {
+        environment: Privy::Models::environment,
+        replacement_reason: Privy::Models::card_issuing_replacement_reason
+      }
+    end
+  end
+end

@@ -11,17 +11,17 @@ module Privy
       sig { returns(String) }
       attr_accessor :deposit_address
 
-      # Destination asset identified by contract address on a specific chain (CAIP-2).
-      sig { returns(Privy::AutomationDestinationAsset) }
+      # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+      # file, otherwise the raw asset address and CAIP-2.
+      sig { returns(Privy::CryptoDepositAsset) }
       attr_reader :destination
 
-      sig do
-        params(destination: Privy::AutomationDestinationAsset::OrHash).void
-      end
+      sig { params(destination: Privy::CryptoDepositAsset::OrHash).void }
       attr_writer :destination
 
-      # Which assets to include/exclude for an automation trigger.
-      sig { returns(Privy::AutomationAssetFilter::Variants) }
+      # Which assets a deposit address accepts. Asset and chain use human-readable
+      # aliases when known.
+      sig { returns(Privy::CryptoDepositAssetFilter::Variants) }
       attr_accessor :source
 
       sig { returns(String) }
@@ -31,21 +31,23 @@ module Privy
       sig do
         params(
           deposit_address: String,
-          destination: Privy::AutomationDestinationAsset::OrHash,
+          destination: Privy::CryptoDepositAsset::OrHash,
           source:
             T.any(
-              Privy::AutomationAssetFilterAll::OrHash,
-              Privy::AutomationAssetFilterInclude::OrHash,
-              Privy::AutomationAssetFilterExclude::OrHash
+              Privy::CryptoDepositAssetFilterAll::OrHash,
+              Privy::CryptoDepositAssetFilterInclude::OrHash,
+              Privy::CryptoDepositAssetFilterExclude::OrHash
             ),
           wallet_id: String
         ).returns(T.attached_class)
       end
       def self.new(
         deposit_address:,
-        # Destination asset identified by contract address on a specific chain (CAIP-2).
+        # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+        # file, otherwise the raw asset address and CAIP-2.
         destination:,
-        # Which assets to include/exclude for an automation trigger.
+        # Which assets a deposit address accepts. Asset and chain use human-readable
+        # aliases when known.
         source:,
         wallet_id:
       )
@@ -55,8 +57,8 @@ module Privy
         override.returns(
           {
             deposit_address: String,
-            destination: Privy::AutomationDestinationAsset,
-            source: Privy::AutomationAssetFilter::Variants,
+            destination: Privy::CryptoDepositAsset,
+            source: Privy::CryptoDepositAssetFilter::Variants,
             wallet_id: String
           }
         )

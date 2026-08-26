@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type card_issuing_replacement_reason = :lost | :stolen | :expired
+
+    module CardIssuingReplacementReason
+      extend Privy::Internal::Type::Enum
+
+      LOST: :lost
+      STOLEN: :stolen
+      EXPIRED: :expired
+
+      def self?.values: -> ::Array[Privy::Models::card_issuing_replacement_reason]
+    end
+  end
+end

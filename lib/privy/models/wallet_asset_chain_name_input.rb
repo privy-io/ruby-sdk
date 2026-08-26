@@ -30,6 +30,8 @@ module Privy
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::ZKSYNC_ERA }
 
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::ROBINHOOD }
+
       variant const: -> { Privy::Models::WalletAssetChainNameInput::HOODI }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::SEPOLIA }
@@ -51,6 +53,8 @@ module Privy
       variant const: -> { Privy::Models::WalletAssetChainNameInput::SOLANA_TESTNET }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::TRON_NILE }
+
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::ROBINHOOD_TESTNET }
 
       variant String
 
@@ -75,6 +79,7 @@ module Privy
       SOLANA = :solana
       TRON = :tron
       ZKSYNC_ERA = :zksync_era
+      ROBINHOOD = :robinhood
       HOODI = :hoodi
       SEPOLIA = :sepolia
       ARBITRUM_SEPOLIA = :arbitrum_sepolia
@@ -86,6 +91,7 @@ module Privy
       SOLANA_DEVNET = :solana_devnet
       SOLANA_TESTNET = :solana_testnet
       TRON_NILE = :tron_nile
+      ROBINHOOD_TESTNET = :robinhood_testnet
 
       # @!endgroup
     end

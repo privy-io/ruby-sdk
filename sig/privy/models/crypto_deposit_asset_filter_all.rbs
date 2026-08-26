@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type crypto_deposit_asset_filter_all =
+      { mode: Privy::Models::CryptoDepositAssetFilterAll::mode }
+
+    class CryptoDepositAssetFilterAll < Privy::Internal::Type::BaseModel
+      attr_accessor mode: Privy::Models::CryptoDepositAssetFilterAll::mode
+
+      def initialize: (
+        mode: Privy::Models::CryptoDepositAssetFilterAll::mode
+      ) -> void
+
+      def to_hash: -> { mode: Privy::Models::CryptoDepositAssetFilterAll::mode }
+
+      type mode = :all
+
+      module Mode
+        extend Privy::Internal::Type::Enum
+
+        ALL: :all
+
+        def self?.values: -> ::Array[Privy::Models::CryptoDepositAssetFilterAll::mode]
+      end
+    end
+  end
+end

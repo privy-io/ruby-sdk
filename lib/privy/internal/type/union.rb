@@ -6,28 +6,28 @@ module Privy
       # @api private
       #
       # @example
-      #   # `ethereum_rpc_input` is a `Privy::EthereumRpcInput`
-      #   case ethereum_rpc_input
-      #   when Privy::EthereumSignTransactionRpcInput
-      #     puts(ethereum_rpc_input.method_)
-      #   when Privy::EthereumSendTransactionRpcInput
-      #     puts(ethereum_rpc_input.caip2)
-      #   when Privy::EthereumPersonalSignRpcInput
-      #     puts(ethereum_rpc_input.params)
+      #   # `crypto_deposit_asset_filter` is a `Privy::CryptoDepositAssetFilter`
+      #   case crypto_deposit_asset_filter
+      #   when Privy::CryptoDepositAssetFilterAll
+      #     puts(crypto_deposit_asset_filter.mode)
+      #   when Privy::CryptoDepositAssetFilterInclude
+      #     puts(crypto_deposit_asset_filter.values)
+      #   when Privy::CryptoDepositAssetFilterExclude
+      #     puts(crypto_deposit_asset_filter.mode)
       #   else
-      #     puts(ethereum_rpc_input)
+      #     puts(crypto_deposit_asset_filter)
       #   end
       #
       # @example
-      #   case ethereum_rpc_input
-      #   in {method_: :eth_signTransaction, params: params, address: address, chain_type: chain_type}
-      #     puts(params)
-      #   in {method_: :eth_sendTransaction, caip2: caip2, params: params, address: address}
-      #     puts(caip2)
-      #   in {method_: :personal_sign, params: params, address: address, caip2: caip2}
-      #     puts(address)
+      #   case crypto_deposit_asset_filter
+      #   in {mode: :all}
+      #     # ...
+      #   in {mode: :include, values: values}
+      #     puts(values)
+      #   in {mode: :exclude, values: values}
+      #     puts(values)
       #   else
-      #     puts(ethereum_rpc_input)
+      #     puts(crypto_deposit_asset_filter)
       #   end
       module Union
         include Privy::Internal::Type::Converter

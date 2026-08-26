@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type crypto_deposit_asset_filter_include =
+      {
+        mode: Privy::Models::CryptoDepositAssetFilterInclude::mode,
+        values: ::Array[Privy::CryptoDepositAsset]
+      }
+
+    class CryptoDepositAssetFilterInclude < Privy::Internal::Type::BaseModel
+      attr_accessor mode: Privy::Models::CryptoDepositAssetFilterInclude::mode
+
+      attr_accessor values: ::Array[Privy::CryptoDepositAsset]
+
+      def initialize: (
+        mode: Privy::Models::CryptoDepositAssetFilterInclude::mode,
+        values: ::Array[Privy::CryptoDepositAsset]
+      ) -> void
+
+      def to_hash: -> {
+        mode: Privy::Models::CryptoDepositAssetFilterInclude::mode,
+        values: ::Array[Privy::CryptoDepositAsset]
+      }
+
+      type mode = :include
+
+      module Mode
+        extend Privy::Internal::Type::Enum
+
+        INCLUDE: :include
+
+        def self?.values: -> ::Array[Privy::Models::CryptoDepositAssetFilterInclude::mode]
+      end
+    end
+  end
+end
