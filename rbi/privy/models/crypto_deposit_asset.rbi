@@ -12,9 +12,13 @@ module Privy
       sig { returns(String) }
       attr_accessor :asset
 
-      # Known alias (base) or CAIP-2.
-      sig { returns(String) }
-      attr_accessor :chain
+      # Known alias (base) or CAIP-2. Omit on a source value to match every supported
+      # chain for that asset.
+      sig { returns(T.nilable(String)) }
+      attr_reader :chain
+
+      sig { params(chain: String).void }
+      attr_writer :chain
 
       # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
       # file, otherwise the raw asset address and CAIP-2.
@@ -22,8 +26,9 @@ module Privy
       def self.new(
         # Known alias (usdc) or raw asset address.
         asset:,
-        # Known alias (base) or CAIP-2.
-        chain:
+        # Known alias (base) or CAIP-2. Omit on a source value to match every supported
+        # chain for that asset.
+        chain: nil
       )
       end
 

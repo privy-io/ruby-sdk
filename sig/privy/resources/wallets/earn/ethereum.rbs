@@ -17,6 +17,18 @@ module Privy
             ?request_options: Privy::request_opts
           ) -> Privy::Wallets::EarnDepositActionResponse
 
+          def vault_details: (
+            String vault_id,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Models::Wallets::ethereum_earn_vault_details_response
+
+          def vault_position: (
+            String wallet_id,
+            vault_id: String,
+            ?include_archived: bool,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::EthereumEarnPositionResponse
+
           def withdraw: (
             String wallet_id,
             vault_id: String,

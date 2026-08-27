@@ -11,9 +11,7 @@ module Privy
           )
         end
 
-      sig do
-        returns(Privy::CryptoDepositAssetFilterInclude::Mode::TaggedSymbol)
-      end
+      sig { returns(Privy::CryptoDepositAssetFilterInclude::Mode::OrSymbol) }
       attr_accessor :mode
 
       sig { returns(T::Array[Privy::CryptoDepositAsset]) }
@@ -32,7 +30,7 @@ module Privy
       sig do
         override.returns(
           {
-            mode: Privy::CryptoDepositAssetFilterInclude::Mode::TaggedSymbol,
+            mode: Privy::CryptoDepositAssetFilterInclude::Mode::OrSymbol,
             values: T::Array[Privy::CryptoDepositAsset]
           }
         )

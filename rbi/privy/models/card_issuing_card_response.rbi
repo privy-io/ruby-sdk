@@ -30,6 +30,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :chain_id
 
+      # Unix timestamp, in seconds, of when the card was created.
+      sig { returns(Integer) }
+      attr_accessor :created_at
+
       # Card expiration month from 1 to 12, or null when unavailable.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :exp_month
@@ -58,6 +62,7 @@ module Privy
           brand: T.nilable(String),
           cardholder: Privy::CardIssuingCardholder::OrHash,
           chain_id: String,
+          created_at: Integer,
           exp_month: T.nilable(Integer),
           exp_year: T.nilable(Integer),
           last4: T.nilable(String),
@@ -76,6 +81,8 @@ module Privy
         cardholder:,
         # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         chain_id:,
+        # Unix timestamp, in seconds, of when the card was created.
+        created_at:,
         # Card expiration month from 1 to 12, or null when unavailable.
         exp_month:,
         # Four-digit card expiration year, or null when unavailable.
@@ -95,6 +102,7 @@ module Privy
             brand: T.nilable(String),
             cardholder: Privy::CardIssuingCardholder,
             chain_id: String,
+            created_at: Integer,
             exp_month: T.nilable(Integer),
             exp_year: T.nilable(Integer),
             last4: T.nilable(String),

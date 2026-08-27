@@ -11,25 +11,22 @@ module Privy
           )
         end
 
-      # A destination asset spec accepting either raw identifiers (asset_address, caip2)
-      # or human-readable aliases (asset, chain). Exactly one of asset_address or asset
-      # must be provided; exactly one of caip2 or chain must be provided.
-      sig { returns(Privy::AutomationDestinationAssetInput) }
+      # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+      # file, otherwise the raw asset address and CAIP-2.
+      sig { returns(Privy::CryptoDepositAsset) }
       attr_reader :destination
 
-      sig do
-        params(destination: Privy::AutomationDestinationAssetInput::OrHash).void
-      end
+      sig { params(destination: Privy::CryptoDepositAsset::OrHash).void }
       attr_writer :destination
 
-      # Which assets to include/exclude for an automation trigger (input form with alias
-      # support).
+      # Which assets a deposit address accepts. Asset and chain use human-readable
+      # aliases when known.
       sig do
         returns(
           T.any(
-            Privy::AutomationAssetFilterAll,
-            Privy::AutomationAssetFilterInputInclude,
-            Privy::AutomationAssetFilterInputExclude
+            Privy::CryptoDepositAssetFilterAll,
+            Privy::CryptoDepositAssetFilterInclude,
+            Privy::CryptoDepositAssetFilterExclude
           )
         )
       end
@@ -38,22 +35,21 @@ module Privy
       # Creates a crypto deposit account from an inline source and destination.
       sig do
         params(
-          destination: Privy::AutomationDestinationAssetInput::OrHash,
+          destination: Privy::CryptoDepositAsset::OrHash,
           source:
             T.any(
-              Privy::AutomationAssetFilterAll::OrHash,
-              Privy::AutomationAssetFilterInputInclude::OrHash,
-              Privy::AutomationAssetFilterInputExclude::OrHash
+              Privy::CryptoDepositAssetFilterAll::OrHash,
+              Privy::CryptoDepositAssetFilterInclude::OrHash,
+              Privy::CryptoDepositAssetFilterExclude::OrHash
             )
         ).returns(T.attached_class)
       end
       def self.new(
-        # A destination asset spec accepting either raw identifiers (asset_address, caip2)
-        # or human-readable aliases (asset, chain). Exactly one of asset_address or asset
-        # must be provided; exactly one of caip2 or chain must be provided.
+        # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+        # file, otherwise the raw asset address and CAIP-2.
         destination:,
-        # Which assets to include/exclude for an automation trigger (input form with alias
-        # support).
+        # Which assets a deposit address accepts. Asset and chain use human-readable
+        # aliases when known.
         source:
       )
       end
@@ -61,12 +57,12 @@ module Privy
       sig do
         override.returns(
           {
-            destination: Privy::AutomationDestinationAssetInput,
+            destination: Privy::CryptoDepositAsset,
             source:
               T.any(
-                Privy::AutomationAssetFilterAll,
-                Privy::AutomationAssetFilterInputInclude,
-                Privy::AutomationAssetFilterInputExclude
+                Privy::CryptoDepositAssetFilterAll,
+                Privy::CryptoDepositAssetFilterInclude,
+                Privy::CryptoDepositAssetFilterExclude
               )
           }
         )

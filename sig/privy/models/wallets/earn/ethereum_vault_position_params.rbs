@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    module Wallets
+      module Earn
+        type ethereum_vault_position_params =
+          { wallet_id: String, vault_id: String, include_archived: bool }
+          & Privy::Internal::Type::request_parameters
+
+        class EthereumVaultPositionParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor wallet_id: String
+
+          attr_accessor vault_id: String
+
+          attr_reader include_archived: bool?
+
+          def include_archived=: (bool) -> bool
+
+          def initialize: (
+            wallet_id: String,
+            vault_id: String,
+            ?include_archived: bool,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            wallet_id: String,
+            vault_id: String,
+            include_archived: bool,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

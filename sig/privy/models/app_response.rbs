@@ -31,6 +31,7 @@ module Privy
         icon_url: String?,
         instagram_oauth: bool,
         legacy_wallet_ui_config: bool,
+        legal_name: String?,
         line_oauth: bool,
         linkedin_oauth: bool,
         logo_url: String?,
@@ -123,6 +124,8 @@ module Privy
       attr_accessor instagram_oauth: bool
 
       attr_accessor legacy_wallet_ui_config: bool
+
+      attr_accessor legal_name: String?
 
       attr_accessor line_oauth: bool
 
@@ -230,6 +233,7 @@ module Privy
         icon_url: String?,
         instagram_oauth: bool,
         legacy_wallet_ui_config: bool,
+        legal_name: String?,
         line_oauth: bool,
         linkedin_oauth: bool,
         logo_url: String?,
@@ -294,6 +298,7 @@ module Privy
         icon_url: String?,
         instagram_oauth: bool,
         legacy_wallet_ui_config: bool,
+        legal_name: String?,
         line_oauth: bool,
         linkedin_oauth: bool,
         logo_url: String?,

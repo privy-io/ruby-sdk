@@ -51,6 +51,44 @@ module Privy
           )
           end
 
+          # Retrieve detailed information about an earn vault, including current APY and
+          # liquidity.
+          sig do
+            params(
+              vault_id: String,
+              request_options: Privy::RequestOptions::OrHash
+            ).returns(
+              Privy::Wallets::EthereumEarnVaultDetailsResponse::Variants
+            )
+          end
+          def vault_details(
+            # The Privy vault ID.
+            vault_id,
+            request_options: {}
+          )
+          end
+
+          # Retrieve a wallet's current position in a specific earn vault, including
+          # deposit/withdraw totals and current onchain vault shares.
+          sig do
+            params(
+              wallet_id: String,
+              vault_id: String,
+              include_archived: T::Boolean,
+              request_options: Privy::RequestOptions::OrHash
+            ).returns(Privy::Wallets::EthereumEarnPositionResponse)
+          end
+          def vault_position(
+            # ID of the wallet.
+            wallet_id,
+            # The vault ID to get position for.
+            vault_id:,
+            # Include archived wallets in lookup. Defaults to false.
+            include_archived: nil,
+            request_options: {}
+          )
+          end
+
           # Withdraw assets from an ERC-4626 vault.
           sig do
             params(

@@ -4,19 +4,18 @@ module Privy
   module Models
     class CreateCryptoDepositAccountWithRouteRequestBody < Privy::Internal::Type::BaseModel
       # @!attribute destination
-      #   A destination asset spec accepting either raw identifiers (asset_address, caip2)
-      #   or human-readable aliases (asset, chain). Exactly one of asset_address or asset
-      #   must be provided; exactly one of caip2 or chain must be provided.
+      #   An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+      #   file, otherwise the raw asset address and CAIP-2.
       #
-      #   @return [Privy::Models::AutomationDestinationAssetInput]
-      required :destination, -> { Privy::AutomationDestinationAssetInput }
+      #   @return [Privy::Models::CryptoDepositAsset]
+      required :destination, -> { Privy::CryptoDepositAsset }
 
       # @!attribute source
-      #   Which assets to include/exclude for an automation trigger (input form with alias
-      #   support).
+      #   Which assets a deposit address accepts. Asset and chain use human-readable
+      #   aliases when known.
       #
-      #   @return [Privy::Models::AutomationAssetFilterAll, Privy::Models::AutomationAssetFilterInputInclude, Privy::Models::AutomationAssetFilterInputExclude]
-      required :source, union: -> { Privy::AutomationAssetFilterInput }
+      #   @return [Privy::Models::CryptoDepositAssetFilterAll, Privy::Models::CryptoDepositAssetFilterInclude, Privy::Models::CryptoDepositAssetFilterExclude]
+      required :source, union: -> { Privy::CryptoDepositAssetFilter }
 
       # @!method initialize(destination:, source:)
       #   Some parameter documentations has been truncated, see
@@ -25,9 +24,9 @@ module Privy
       #
       #   Creates a crypto deposit account from an inline source and destination.
       #
-      #   @param destination [Privy::Models::AutomationDestinationAssetInput] A destination asset spec accepting either raw identifiers (asset_address, caip2)
+      #   @param destination [Privy::Models::CryptoDepositAsset] An asset on a chain. Uses a human-readable alias (usdc, base) when one is on fil
       #
-      #   @param source [Privy::Models::AutomationAssetFilterAll, Privy::Models::AutomationAssetFilterInputInclude, Privy::Models::AutomationAssetFilterInputExclude] Which assets to include/exclude for an automation trigger (input form with alias
+      #   @param source [Privy::Models::CryptoDepositAssetFilterAll, Privy::Models::CryptoDepositAssetFilterInclude, Privy::Models::CryptoDepositAssetFilterExclude] Which assets a deposit address accepts. Asset and chain use human-readable alias
     end
   end
 end

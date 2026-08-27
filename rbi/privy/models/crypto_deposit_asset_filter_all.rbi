@@ -8,7 +8,7 @@ module Privy
           T.any(Privy::CryptoDepositAssetFilterAll, Privy::Internal::AnyHash)
         end
 
-      sig { returns(Privy::CryptoDepositAssetFilterAll::Mode::TaggedSymbol) }
+      sig { returns(Privy::CryptoDepositAssetFilterAll::Mode::OrSymbol) }
       attr_accessor :mode
 
       # Match all assets.
@@ -22,7 +22,7 @@ module Privy
 
       sig do
         override.returns(
-          { mode: Privy::CryptoDepositAssetFilterAll::Mode::TaggedSymbol }
+          { mode: Privy::CryptoDepositAssetFilterAll::Mode::OrSymbol }
         )
       end
       def to_hash

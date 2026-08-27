@@ -56,6 +56,55 @@ module Privy
             )
           end
 
+          # Retrieve detailed information about an earn vault, including current APY and
+          # liquidity.
+          #
+          # @overload vault_details(vault_id, request_options: {})
+          #
+          # @param vault_id [String] The Privy vault ID.
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Models::Wallets::AaveVaultDetails, Privy::Models::Wallets::MorphoVaultDetails, Privy::Models::Wallets::TempoVaultDetails, Privy::Models::Wallets::VedaVaultDetails]
+          #
+          # @see Privy::Models::Wallets::Earn::EthereumVaultDetailsParams
+          def vault_details(vault_id, params = {})
+            @client.request(
+              method: :get,
+              path: ["v1/earn/ethereum/vaults/%1$s", vault_id],
+              model: Privy::Wallets::EthereumEarnVaultDetailsResponse,
+              options: params[:request_options]
+            )
+          end
+
+          # Retrieve a wallet's current position in a specific earn vault, including
+          # deposit/withdraw totals and current onchain vault shares.
+          #
+          # @overload vault_position(wallet_id, vault_id:, include_archived: nil, request_options: {})
+          #
+          # @param wallet_id [String] ID of the wallet.
+          #
+          # @param vault_id [String] The vault ID to get position for.
+          #
+          # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Models::Wallets::EthereumEarnPositionResponse]
+          #
+          # @see Privy::Models::Wallets::Earn::EthereumVaultPositionParams
+          def vault_position(wallet_id, params)
+            parsed, options = Privy::Wallets::Earn::EthereumVaultPositionParams.dump_request(params)
+            query = Privy::Internal::Util.encode_query_params(parsed)
+            @client.request(
+              method: :get,
+              path: ["v1/wallets/%1$s/earn/ethereum/vaults", wallet_id],
+              query: query,
+              model: Privy::Wallets::EthereumEarnPositionResponse,
+              options: options
+            )
+          end
+
           # Some parameter documentations has been truncated, see
           # {Privy::Models::Wallets::Earn::EthereumWithdrawParams} for more details.
           #

@@ -34,6 +34,108 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
     end
   end
 
+  def test_vault_details
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.earn.ethereum.vault_details("vault_id")
+
+    assert_pattern do
+      response => Privy::Wallets::EthereumEarnVaultDetailsResponse
+    end
+
+    assert_pattern do
+      case response
+      in Privy::Wallets::AaveVaultDetails
+      in Privy::Wallets::MorphoVaultDetails
+      in Privy::Wallets::TempoVaultDetails
+      in Privy::Wallets::VedaVaultDetails
+      end
+    end
+
+    assert_pattern do
+      case response
+      in {
+        provider: :aave,
+        id: String,
+        admin_wallet_address: String,
+        admin_wallet_id: String,
+        app_apy: Float | nil,
+        asset: Privy::Wallets::EarnAsset,
+        available_fees: String,
+        available_liquidity_usd: Float | nil,
+        caip2: String,
+        name: String,
+        tvl_usd: Float | nil,
+        user_apy: Float | nil,
+        vault_address: String
+      }
+      in {
+        provider: :morpho,
+        id: String,
+        admin_wallet_address: String,
+        admin_wallet_id: String,
+        app_apy: Float | nil,
+        asset: Privy::Wallets::EarnAsset,
+        available_liquidity_usd: Float | nil,
+        caip2: String,
+        name: String,
+        total_rewards_apr: Float,
+        tvl_usd: Float | nil,
+        user_apy: Float | nil,
+        vault_address: String
+      }
+      in {
+        provider: :tempo,
+        id: String,
+        admin_wallet_address: String,
+        admin_wallet_id: String,
+        app_apy: Float | nil,
+        asset: Privy::Wallets::EarnAsset,
+        available_liquidity_usd: Float | nil,
+        caip2: String,
+        name: String,
+        tvl_usd: Float | nil,
+        user_apy: Float | nil,
+        vault_address: String
+      }
+      in {
+        provider: :veda,
+        id: String,
+        admin_wallet_address: String,
+        admin_wallet_id: String,
+        app_apy: Float | nil,
+        asset: Privy::Wallets::EarnAsset,
+        available_liquidity_usd: Float | nil,
+        caip2: String,
+        name: String,
+        tvl_usd: Float | nil,
+        user_apy: Float | nil,
+        vault_address: String
+      }
+      end
+    end
+  end
+
+  def test_vault_position_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.earn.ethereum.vault_position("wallet_id", vault_id: "vault_id")
+
+    assert_pattern do
+      response => Privy::Wallets::EthereumEarnPositionResponse
+    end
+
+    assert_pattern do
+      response => {
+        asset: Privy::Wallets::EarnAsset,
+        assets_in_vault: String,
+        shares_in_vault: String,
+        total_deposited: String,
+        total_withdrawn: String
+      }
+    end
+  end
+
   def test_withdraw_required_params
     skip("Mock server tests are disabled")
 

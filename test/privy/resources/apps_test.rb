@@ -43,6 +43,7 @@ class Privy::Test::Resources::AppsTest < Privy::Test::ResourceTest
         icon_url: String | nil,
         instagram_oauth: Privy::Internal::Type::Boolean,
         legacy_wallet_ui_config: Privy::Internal::Type::Boolean,
+        legal_name: String | nil,
         line_oauth: Privy::Internal::Type::Boolean,
         linkedin_oauth: Privy::Internal::Type::Boolean,
         logo_url: String | nil,

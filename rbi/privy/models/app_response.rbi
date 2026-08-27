@@ -108,6 +108,10 @@ module Privy
       sig { returns(T::Boolean) }
       attr_accessor :legacy_wallet_ui_config
 
+      # The legal name of the company that operates the app.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :legal_name
+
       sig { returns(T::Boolean) }
       attr_accessor :line_oauth
 
@@ -258,6 +262,7 @@ module Privy
           icon_url: T.nilable(String),
           instagram_oauth: T::Boolean,
           legacy_wallet_ui_config: T::Boolean,
+          legal_name: T.nilable(String),
           line_oauth: T::Boolean,
           linkedin_oauth: T::Boolean,
           logo_url: T.nilable(String),
@@ -331,6 +336,8 @@ module Privy
         icon_url:,
         instagram_oauth:,
         legacy_wallet_ui_config:,
+        # The legal name of the company that operates the app.
+        legal_name:,
         line_oauth:,
         linkedin_oauth:,
         logo_url:,
@@ -403,6 +410,7 @@ module Privy
             icon_url: T.nilable(String),
             instagram_oauth: T::Boolean,
             legacy_wallet_ui_config: T::Boolean,
+            legal_name: T.nilable(String),
             line_oauth: T::Boolean,
             linkedin_oauth: T::Boolean,
             logo_url: T.nilable(String),

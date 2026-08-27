@@ -45,7 +45,9 @@ module Privy
         sig { returns(String) }
         attr_accessor :name
 
-        sig { returns(Privy::Wallets::MorphoVaultDetails::Provider::OrSymbol) }
+        sig do
+          returns(Privy::Wallets::MorphoVaultDetails::Provider::TaggedSymbol)
+        end
         attr_accessor :provider
 
         # Total rewards annual percentage rate in basis points.
@@ -125,7 +127,8 @@ module Privy
               available_liquidity_usd: T.nilable(Float),
               caip2: String,
               name: String,
-              provider: Privy::Wallets::MorphoVaultDetails::Provider::OrSymbol,
+              provider:
+                Privy::Wallets::MorphoVaultDetails::Provider::TaggedSymbol,
               total_rewards_apr: Float,
               tvl_usd: T.nilable(Float),
               user_apy: T.nilable(Float),

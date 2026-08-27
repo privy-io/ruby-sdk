@@ -32,6 +32,12 @@ module Privy
       #   @return [String]
       required :chain_id, String
 
+      # @!attribute created_at
+      #   Unix timestamp, in seconds, of when the card was created.
+      #
+      #   @return [Integer]
+      required :created_at, Integer
+
       # @!attribute exp_month
       #   Card expiration month from 1 to 12, or null when unavailable.
       #
@@ -64,7 +70,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, balance_formatted:, brand:, cardholder:, chain_id:, exp_month:, exp_year:, last4:, provider_id:, status:, wallet_id:)
+      # @!method initialize(id:, balance_formatted:, brand:, cardholder:, chain_id:, created_at:, exp_month:, exp_year:, last4:, provider_id:, status:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CardIssuingCardResponse} for more details.
       #
@@ -79,6 +85,8 @@ module Privy
       #   @param cardholder [Privy::Models::CardIssuingCardholder] Cardholder metadata for a card.
       #
       #   @param chain_id [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
+      #
+      #   @param created_at [Integer] Unix timestamp, in seconds, of when the card was created.
       #
       #   @param exp_month [Integer, nil] Card expiration month from 1 to 12, or null when unavailable.
       #

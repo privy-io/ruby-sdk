@@ -5,9 +5,11 @@ module Privy
     class CryptoDepositAsset < Privy::Internal::Type::BaseModel
       attr_accessor asset: String
 
-      attr_accessor chain: String
+      attr_reader chain: String?
 
-      def initialize: (asset: String, chain: String) -> void
+      def chain=: (String) -> String
+
+      def initialize: (asset: String, ?chain: String) -> void
 
       def to_hash: -> { asset: String, chain: String }
     end

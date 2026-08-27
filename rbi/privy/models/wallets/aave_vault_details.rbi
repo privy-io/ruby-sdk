@@ -49,7 +49,9 @@ module Privy
         sig { returns(String) }
         attr_accessor :name
 
-        sig { returns(Privy::Wallets::AaveVaultDetails::Provider::OrSymbol) }
+        sig do
+          returns(Privy::Wallets::AaveVaultDetails::Provider::TaggedSymbol)
+        end
         attr_accessor :provider
 
         # Total value locked in USD.
@@ -126,7 +128,8 @@ module Privy
               available_liquidity_usd: T.nilable(Float),
               caip2: String,
               name: String,
-              provider: Privy::Wallets::AaveVaultDetails::Provider::OrSymbol,
+              provider:
+                Privy::Wallets::AaveVaultDetails::Provider::TaggedSymbol,
               tvl_usd: T.nilable(Float),
               user_apy: T.nilable(Float),
               vault_address: String
