@@ -301,7 +301,7 @@ module Privy
         )
         combined_params = wallet_transfer_params.merge(request_options: request_options)
         Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
-        _transfer(wallet_id, combined_params)
+        super(wallet_id, combined_params)
       end
 
       # Export a wallet's private key or seed phrase via HPKE.
