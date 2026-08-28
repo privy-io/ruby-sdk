@@ -2,34 +2,20 @@
 
 module Privy
   module Models
-    class AutomationActionConfig < Privy::Internal::Type::BaseModel
-      # @!attribute destination_chain_asset
-      #   Destination asset identified by contract address on a specific chain (CAIP-2).
-      #
-      #   @return [Privy::Models::AutomationDestinationAsset]
-      required :destination_chain_asset, -> { Privy::AutomationDestinationAsset }
+    # Configuration for an automation action.
+    module AutomationActionConfig
+      extend Privy::Internal::Type::Union
 
-      # @!attribute type
-      #
-      #   @return [Symbol, Privy::Models::AutomationActionConfig::Type]
-      required :type, enum: -> { Privy::AutomationActionConfig::Type }
+      discriminator :type
 
-      # @!method initialize(destination_chain_asset:, type:)
-      #   Action configuration for swap operations.
-      #
-      #   @param destination_chain_asset [Privy::Models::AutomationDestinationAsset] Destination asset identified by contract address on a specific chain (CAIP-2).
-      #
-      #   @param type [Symbol, Privy::Models::AutomationActionConfig::Type]
+      # Action configuration for swap operations.
+      variant :swap, -> { Privy::AutomationSwapActionConfig }
 
-      # @see Privy::Models::AutomationActionConfig#type
-      module Type
-        extend Privy::Internal::Type::Enum
+      # Action configuration for depositing into an Earn vault.
+      variant :earn_deposit, -> { Privy::AutomationEarnDepositActionConfig }
 
-        SWAP = :swap
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+      # @!method self.variants
+      #   @return [Array(Privy::Models::AutomationSwapActionConfig, Privy::Models::AutomationEarnDepositActionConfig)]
     end
   end
 end

@@ -154,6 +154,12 @@ module Privy
   AutomationDestinationAssetInput =
     Privy::Models::AutomationDestinationAssetInput
 
+  AutomationEarnDepositActionConfig =
+    Privy::Models::AutomationEarnDepositActionConfig
+
+  AutomationEarnDepositActionConfigInput =
+    Privy::Models::AutomationEarnDepositActionConfigInput
+
   AutomationSwapActionConfig = Privy::Models::AutomationSwapActionConfig
 
   AutomationSwapActionConfigInput =
@@ -291,9 +297,6 @@ module Privy
   CardIssuingCustomerBankTermsRequiredResponse =
     Privy::Models::CardIssuingCustomerBankTermsRequiredResponse
 
-  CardIssuingCustomerBridgeTermsRequiredResponse =
-    Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse
-
   CardIssuingCustomerConsentsRequestBody =
     Privy::Models::CardIssuingCustomerConsentsRequestBody
 
@@ -314,13 +317,22 @@ module Privy
   CardIssuingCustomerPendingResponse =
     Privy::Models::CardIssuingCustomerPendingResponse
 
+  CardIssuingCustomerProviderTermsRequiredResponse =
+    Privy::Models::CardIssuingCustomerProviderTermsRequiredResponse
+
   CardIssuingCustomerReadyResponse =
     Privy::Models::CardIssuingCustomerReadyResponse
 
   CardIssuingCustomerRejectedResponse =
     Privy::Models::CardIssuingCustomerRejectedResponse
 
+  CardIssuingCustomerRejectionReason =
+    Privy::Models::CardIssuingCustomerRejectionReason
+
   CardIssuingCustomerResponse = Privy::Models::CardIssuingCustomerResponse
+
+  CardIssuingCustomerUnderReviewResponse =
+    Privy::Models::CardIssuingCustomerUnderReviewResponse
 
   CardIssuingDispute = Privy::Models::CardIssuingDispute
 
@@ -1586,11 +1598,16 @@ module Privy
 
   OAuthTokenSuccessResponse = Privy::Models::OAuthTokenSuccessResponse
 
+  OAuthTransferNativeSDKRequestBody =
+    Privy::Models::OAuthTransferNativeSDKRequestBody
+
   OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
 
   OAuthTransferUserInfo = Privy::Models::OAuthTransferUserInfo
 
   OAuthTransferUserInfoMeta = Privy::Models::OAuthTransferUserInfoMeta
+
+  OAuthTransferWebSDKRequestBody = Privy::Models::OAuthTransferWebSDKRequestBody
 
   OAuthUnlinkRequestBody = Privy::Models::OAuthUnlinkRequestBody
 

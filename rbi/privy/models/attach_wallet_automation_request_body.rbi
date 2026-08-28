@@ -15,7 +15,7 @@ module Privy
       attr_accessor :automation_ids
 
       # Per-attachment parameters for swap automations.
-      sig { returns(Privy::SwapAttachmentParams) }
+      sig { returns(T.nilable(Privy::SwapAttachmentParams)) }
       attr_reader :params
 
       sig { params(params: Privy::SwapAttachmentParams::OrHash).void }
@@ -32,7 +32,7 @@ module Privy
       def self.new(
         automation_ids:,
         # Per-attachment parameters for swap automations.
-        params:
+        params: nil
       )
       end
 

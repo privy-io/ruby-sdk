@@ -8,12 +8,16 @@ module Privy
           T.any(Privy::AutomationConfig, Privy::Internal::AnyHash)
         end
 
-      # Action configuration for swap operations.
-      sig { returns(Privy::AutomationActionConfig) }
-      attr_reader :action
-
-      sig { params(action: Privy::AutomationActionConfig::OrHash).void }
-      attr_writer :action
+      # Configuration for an automation action.
+      sig do
+        returns(
+          T.any(
+            Privy::AutomationSwapActionConfig,
+            Privy::AutomationEarnDepositActionConfig
+          )
+        )
+      end
+      attr_accessor :action
 
       # Trigger configuration for deposit events.
       sig { returns(Privy::AutomationTriggerConfig) }
@@ -25,12 +29,16 @@ module Privy
       # Full configuration for a wallet automation (trigger + action).
       sig do
         params(
-          action: Privy::AutomationActionConfig::OrHash,
+          action:
+            T.any(
+              Privy::AutomationSwapActionConfig::OrHash,
+              Privy::AutomationEarnDepositActionConfig::OrHash
+            ),
           trigger: Privy::AutomationTriggerConfig::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # Action configuration for swap operations.
+        # Configuration for an automation action.
         action:,
         # Trigger configuration for deposit events.
         trigger:
@@ -40,7 +48,11 @@ module Privy
       sig do
         override.returns(
           {
-            action: Privy::AutomationActionConfig,
+            action:
+              T.any(
+                Privy::AutomationSwapActionConfig,
+                Privy::AutomationEarnDepositActionConfig
+              ),
             trigger: Privy::AutomationTriggerConfig
           }
         )

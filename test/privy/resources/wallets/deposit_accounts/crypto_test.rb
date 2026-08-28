@@ -18,7 +18,7 @@ class Privy::Test::Resources::Wallets::DepositAccounts::CryptoTest < Privy::Test
 
     assert_pattern do
       response => {
-        deposit_addresses: ^(Privy::Internal::Type::ArrayOf[Privy::CryptoDepositAddressRoute])
+        deposit_accounts: ^(Privy::Internal::Type::ArrayOf[Privy::CryptoDepositAddressRoute])
       }
     end
   end

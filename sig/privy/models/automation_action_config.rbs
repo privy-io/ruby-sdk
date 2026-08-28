@@ -1,35 +1,13 @@
 module Privy
   module Models
     type automation_action_config =
-      {
-        destination_chain_asset: Privy::AutomationDestinationAsset,
-        type: Privy::Models::AutomationActionConfig::type_
-      }
+      Privy::AutomationSwapActionConfig
+      | Privy::AutomationEarnDepositActionConfig
 
-    class AutomationActionConfig < Privy::Internal::Type::BaseModel
-      attr_accessor destination_chain_asset: Privy::AutomationDestinationAsset
+    module AutomationActionConfig
+      extend Privy::Internal::Type::Union
 
-      attr_accessor type: Privy::Models::AutomationActionConfig::type_
-
-      def initialize: (
-        destination_chain_asset: Privy::AutomationDestinationAsset,
-        type: Privy::Models::AutomationActionConfig::type_
-      ) -> void
-
-      def to_hash: -> {
-        destination_chain_asset: Privy::AutomationDestinationAsset,
-        type: Privy::Models::AutomationActionConfig::type_
-      }
-
-      type type_ = :swap
-
-      module Type
-        extend Privy::Internal::Type::Enum
-
-        SWAP: :swap
-
-        def self?.values: -> ::Array[Privy::Models::AutomationActionConfig::type_]
-      end
+      def self?.variants: -> ::Array[Privy::Models::automation_action_config]
     end
   end
 end

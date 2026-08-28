@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type automation_earn_deposit_action_config_input =
+      {
+        type: Privy::Models::AutomationEarnDepositActionConfigInput::type_,
+        vault_id: String
+      }
+
+    class AutomationEarnDepositActionConfigInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::AutomationEarnDepositActionConfigInput::type_
+
+      attr_accessor vault_id: String
+
+      def initialize: (
+        type: Privy::Models::AutomationEarnDepositActionConfigInput::type_,
+        vault_id: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::AutomationEarnDepositActionConfigInput::type_,
+        vault_id: String
+      }
+
+      type type_ = :earn_deposit
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        EARN_DEPOSIT: :earn_deposit
+
+        def self?.values: -> ::Array[Privy::Models::AutomationEarnDepositActionConfigInput::type_]
+      end
+    end
+  end
+end

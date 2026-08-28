@@ -11,10 +11,10 @@ module Privy
       # @!attribute params
       #   Per-attachment parameters for swap automations.
       #
-      #   @return [Privy::Models::SwapAttachmentParams]
-      required :params, -> { Privy::SwapAttachmentParams }
+      #   @return [Privy::Models::SwapAttachmentParams, nil]
+      optional :params, -> { Privy::SwapAttachmentParams }
 
-      # @!method initialize(automation_ids:, params:)
+      # @!method initialize(automation_ids:, params: nil)
       #   Request body for attaching automations to a wallet (wallet ID comes from the
       #   URL).
       #

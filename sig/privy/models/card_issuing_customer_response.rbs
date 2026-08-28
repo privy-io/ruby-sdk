@@ -16,9 +16,10 @@ module Privy
         Privy::CardIssuingCustomerNotCreatedResponse
         | Privy::CardIssuingCustomerElectronicDisclosureRequiredResponse
         | Privy::CardIssuingCustomerBankTermsRequiredResponse
-        | Privy::CardIssuingCustomerBridgeTermsRequiredResponse
+        | Privy::CardIssuingCustomerProviderTermsRequiredResponse
         | Privy::CardIssuingCustomerKYCRequiredResponse
         | Privy::CardIssuingCustomerPendingResponse
+        | Privy::CardIssuingCustomerUnderReviewResponse
         | Privy::CardIssuingCustomerRejectedResponse
         | Privy::CardIssuingCustomerErrorResponse
         | Privy::CardIssuingCustomerReadyResponse

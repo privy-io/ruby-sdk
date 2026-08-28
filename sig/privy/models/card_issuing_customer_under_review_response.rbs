@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type card_issuing_customer_under_review_response =
+      { status: Privy::Models::CardIssuingCustomerUnderReviewResponse::status }
+
+    class CardIssuingCustomerUnderReviewResponse < Privy::Internal::Type::BaseModel
+      attr_accessor status: Privy::Models::CardIssuingCustomerUnderReviewResponse::status
+
+      def initialize: (
+        status: Privy::Models::CardIssuingCustomerUnderReviewResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        status: Privy::Models::CardIssuingCustomerUnderReviewResponse::status
+      }
+
+      type status = :under_review
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        UNDER_REVIEW: :under_review
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingCustomerUnderReviewResponse::status]
+      end
+    end
+  end
+end

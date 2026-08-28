@@ -2,22 +2,22 @@ module Privy
   module Models
     type automation_config_input =
       {
-        action: Privy::AutomationActionConfigInput,
+        action: Privy::Models::automation_action_config_input,
         trigger: Privy::AutomationTriggerConfigInput
       }
 
     class AutomationConfigInput < Privy::Internal::Type::BaseModel
-      attr_accessor action: Privy::AutomationActionConfigInput
+      attr_accessor action: Privy::Models::automation_action_config_input
 
       attr_accessor trigger: Privy::AutomationTriggerConfigInput
 
       def initialize: (
-        action: Privy::AutomationActionConfigInput,
+        action: Privy::Models::automation_action_config_input,
         trigger: Privy::AutomationTriggerConfigInput
       ) -> void
 
       def to_hash: -> {
-        action: Privy::AutomationActionConfigInput,
+        action: Privy::Models::automation_action_config_input,
         trigger: Privy::AutomationTriggerConfigInput
       }
     end

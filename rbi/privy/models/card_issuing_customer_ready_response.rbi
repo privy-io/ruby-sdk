@@ -11,28 +11,21 @@ module Privy
           )
         end
 
-      sig { returns(String) }
-      attr_accessor :external_id
-
       sig { returns(Privy::CardIssuingCustomerReadyResponse::Status::OrSymbol) }
       attr_accessor :status
 
-      # A cards customer that has a Stripe cardholder external ID and can issue cards.
+      # A cards customer that has completed onboarding and can issue cards.
       sig do
         params(
-          external_id: String,
           status: Privy::CardIssuingCustomerReadyResponse::Status::OrSymbol
         ).returns(T.attached_class)
       end
-      def self.new(external_id:, status:)
+      def self.new(status:)
       end
 
       sig do
         override.returns(
-          {
-            external_id: String,
-            status: Privy::CardIssuingCustomerReadyResponse::Status::OrSymbol
-          }
+          { status: Privy::CardIssuingCustomerReadyResponse::Status::OrSymbol }
         )
       end
       def to_hash

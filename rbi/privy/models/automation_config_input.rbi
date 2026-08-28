@@ -8,12 +8,16 @@ module Privy
           T.any(Privy::AutomationConfigInput, Privy::Internal::AnyHash)
         end
 
-      # Action configuration for swap operations (input form with alias support).
-      sig { returns(Privy::AutomationActionConfigInput) }
-      attr_reader :action
-
-      sig { params(action: Privy::AutomationActionConfigInput::OrHash).void }
-      attr_writer :action
+      # Configuration for an automation action (input form with alias support).
+      sig do
+        returns(
+          T.any(
+            Privy::AutomationSwapActionConfigInput,
+            Privy::AutomationEarnDepositActionConfigInput
+          )
+        )
+      end
+      attr_accessor :action
 
       # Trigger configuration for deposit events (input form with alias support).
       sig { returns(Privy::AutomationTriggerConfigInput) }
@@ -26,12 +30,16 @@ module Privy
       # human-readable aliases.
       sig do
         params(
-          action: Privy::AutomationActionConfigInput::OrHash,
+          action:
+            T.any(
+              Privy::AutomationSwapActionConfigInput::OrHash,
+              Privy::AutomationEarnDepositActionConfigInput::OrHash
+            ),
           trigger: Privy::AutomationTriggerConfigInput::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # Action configuration for swap operations (input form with alias support).
+        # Configuration for an automation action (input form with alias support).
         action:,
         # Trigger configuration for deposit events (input form with alias support).
         trigger:
@@ -41,7 +49,11 @@ module Privy
       sig do
         override.returns(
           {
-            action: Privy::AutomationActionConfigInput,
+            action:
+              T.any(
+                Privy::AutomationSwapActionConfigInput,
+                Privy::AutomationEarnDepositActionConfigInput
+              ),
             trigger: Privy::AutomationTriggerConfigInput
           }
         )

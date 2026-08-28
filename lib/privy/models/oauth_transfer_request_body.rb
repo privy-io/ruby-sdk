@@ -2,24 +2,18 @@
 
 module Privy
   module Models
-    class OAuthTransferRequestBody < Privy::Internal::Type::BaseModel
-      # @!attribute nonce
-      #
-      #   @return [String]
-      required :nonce, String
+    # The request body for transferring an OAuth account.
+    module OAuthTransferRequestBody
+      extend Privy::Internal::Type::Union
 
-      # @!attribute user_info
-      #   User info for an OAuth transfer.
-      #
-      #   @return [Privy::Models::OAuthTransferUserInfo]
-      required :user_info, -> { Privy::OAuthTransferUserInfo }, api_name: :userInfo
+      # OAuth transfer request body for native SDKs using PKCE.
+      variant -> { Privy::OAuthTransferNativeSDKRequestBody }
 
-      # @!method initialize(nonce:, user_info:)
-      #   The request body for transferring an OAuth account.
-      #
-      #   @param nonce [String]
-      #
-      #   @param user_info [Privy::Models::OAuthTransferUserInfo] User info for an OAuth transfer.
+      # OAuth transfer request body for the web SDK.
+      variant -> { Privy::OAuthTransferWebSDKRequestBody }
+
+      # @!method self.variants
+      #   @return [Array(Privy::Models::OAuthTransferNativeSDKRequestBody, Privy::Models::OAuthTransferWebSDKRequestBody)]
     end
   end
 end

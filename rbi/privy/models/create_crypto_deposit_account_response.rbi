@@ -12,20 +12,20 @@ module Privy
         end
 
       sig { returns(T::Array[Privy::CryptoDepositAddressRoute]) }
-      attr_accessor :deposit_addresses
+      attr_accessor :deposit_accounts
 
       # Response returned after creating a crypto deposit account.
       sig do
         params(
-          deposit_addresses: T::Array[Privy::CryptoDepositAddressRoute::OrHash]
+          deposit_accounts: T::Array[Privy::CryptoDepositAddressRoute::OrHash]
         ).returns(T.attached_class)
       end
-      def self.new(deposit_addresses:)
+      def self.new(deposit_accounts:)
       end
 
       sig do
         override.returns(
-          { deposit_addresses: T::Array[Privy::CryptoDepositAddressRoute] }
+          { deposit_accounts: T::Array[Privy::CryptoDepositAddressRoute] }
         )
       end
       def to_hash

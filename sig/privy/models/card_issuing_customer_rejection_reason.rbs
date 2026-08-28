@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type card_issuing_customer_rejection_reason = { reason: String }
+
+    class CardIssuingCustomerRejectionReason < Privy::Internal::Type::BaseModel
+      attr_accessor reason: String
+
+      def initialize: (reason: String) -> void
+
+      def to_hash: -> { reason: String }
+    end
+  end
+end

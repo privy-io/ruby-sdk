@@ -103,9 +103,9 @@ module Privy
 
   module AuthorizationKeyRole = Privy::Models::AuthorizationKeyRole
 
-  class AutomationActionConfig = Privy::Models::AutomationActionConfig
+  module AutomationActionConfig = Privy::Models::AutomationActionConfig
 
-  class AutomationActionConfigInput = Privy::Models::AutomationActionConfigInput
+  module AutomationActionConfigInput = Privy::Models::AutomationActionConfigInput
 
   module AutomationAssetFilter = Privy::Models::AutomationAssetFilter
 
@@ -136,6 +136,10 @@ module Privy
   class AutomationDestinationAsset = Privy::Models::AutomationDestinationAsset
 
   class AutomationDestinationAssetInput = Privy::Models::AutomationDestinationAssetInput
+
+  class AutomationEarnDepositActionConfig = Privy::Models::AutomationEarnDepositActionConfig
+
+  class AutomationEarnDepositActionConfigInput = Privy::Models::AutomationEarnDepositActionConfigInput
 
   class AutomationSwapActionConfig = Privy::Models::AutomationSwapActionConfig
 
@@ -255,8 +259,6 @@ module Privy
 
   class CardIssuingCustomerBankTermsRequiredResponse = Privy::Models::CardIssuingCustomerBankTermsRequiredResponse
 
-  class CardIssuingCustomerBridgeTermsRequiredResponse = Privy::Models::CardIssuingCustomerBridgeTermsRequiredResponse
-
   class CardIssuingCustomerConsentsRequestBody = Privy::Models::CardIssuingCustomerConsentsRequestBody
 
   class CardIssuingCustomerElectronicDisclosureRequiredResponse = Privy::Models::CardIssuingCustomerElectronicDisclosureRequiredResponse
@@ -271,11 +273,17 @@ module Privy
 
   class CardIssuingCustomerPendingResponse = Privy::Models::CardIssuingCustomerPendingResponse
 
+  class CardIssuingCustomerProviderTermsRequiredResponse = Privy::Models::CardIssuingCustomerProviderTermsRequiredResponse
+
   class CardIssuingCustomerReadyResponse = Privy::Models::CardIssuingCustomerReadyResponse
 
   class CardIssuingCustomerRejectedResponse = Privy::Models::CardIssuingCustomerRejectedResponse
 
+  class CardIssuingCustomerRejectionReason = Privy::Models::CardIssuingCustomerRejectionReason
+
   class CardIssuingCustomerResponse = Privy::Models::CardIssuingCustomerResponse
+
+  class CardIssuingCustomerUnderReviewResponse = Privy::Models::CardIssuingCustomerUnderReviewResponse
 
   class CardIssuingDispute = Privy::Models::CardIssuingDispute
 
@@ -1373,11 +1381,15 @@ module Privy
 
   class OAuthTokenSuccessResponse = Privy::Models::OAuthTokenSuccessResponse
 
-  class OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
+  class OAuthTransferNativeSDKRequestBody = Privy::Models::OAuthTransferNativeSDKRequestBody
+
+  module OAuthTransferRequestBody = Privy::Models::OAuthTransferRequestBody
 
   class OAuthTransferUserInfo = Privy::Models::OAuthTransferUserInfo
 
   class OAuthTransferUserInfoMeta = Privy::Models::OAuthTransferUserInfoMeta
+
+  class OAuthTransferWebSDKRequestBody = Privy::Models::OAuthTransferWebSDKRequestBody
 
   class OAuthUnlinkRequestBody = Privy::Models::OAuthUnlinkRequestBody
 

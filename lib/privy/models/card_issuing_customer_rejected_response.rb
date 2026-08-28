@@ -8,10 +8,17 @@ module Privy
       #   @return [Symbol, Privy::Models::CardIssuingCustomerRejectedResponse::Status]
       required :status, enum: -> { Privy::CardIssuingCustomerRejectedResponse::Status }
 
-      # @!method initialize(status:)
-      #   Bridge rejected the cards customer during verification.
+      # @!attribute rejection_reasons
+      #
+      #   @return [Array<Privy::Models::CardIssuingCustomerRejectionReason>, nil]
+      optional :rejection_reasons,
+               -> { Privy::Internal::Type::ArrayOf[Privy::CardIssuingCustomerRejectionReason] }
+
+      # @!method initialize(status:, rejection_reasons: nil)
+      #   The cards customer was rejected during verification.
       #
       #   @param status [Symbol, Privy::Models::CardIssuingCustomerRejectedResponse::Status]
+      #   @param rejection_reasons [Array<Privy::Models::CardIssuingCustomerRejectionReason>]
 
       # @see Privy::Models::CardIssuingCustomerRejectedResponse#status
       module Status

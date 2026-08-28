@@ -1,17 +1,28 @@
 module Privy
   module Models
     type card_issuing_customer_rejected_response =
-      { status: Privy::Models::CardIssuingCustomerRejectedResponse::status }
+      {
+        status: Privy::Models::CardIssuingCustomerRejectedResponse::status,
+        rejection_reasons: ::Array[Privy::CardIssuingCustomerRejectionReason]
+      }
 
     class CardIssuingCustomerRejectedResponse < Privy::Internal::Type::BaseModel
       attr_accessor status: Privy::Models::CardIssuingCustomerRejectedResponse::status
 
+      attr_reader rejection_reasons: ::Array[Privy::CardIssuingCustomerRejectionReason]?
+
+      def rejection_reasons=: (
+        ::Array[Privy::CardIssuingCustomerRejectionReason]
+      ) -> ::Array[Privy::CardIssuingCustomerRejectionReason]
+
       def initialize: (
-        status: Privy::Models::CardIssuingCustomerRejectedResponse::status
+        status: Privy::Models::CardIssuingCustomerRejectedResponse::status,
+        ?rejection_reasons: ::Array[Privy::CardIssuingCustomerRejectionReason]
       ) -> void
 
       def to_hash: -> {
-        status: Privy::Models::CardIssuingCustomerRejectedResponse::status
+        status: Privy::Models::CardIssuingCustomerRejectedResponse::status,
+        rejection_reasons: ::Array[Privy::CardIssuingCustomerRejectionReason]
       }
 
       type status = :rejected

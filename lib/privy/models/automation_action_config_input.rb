@@ -2,39 +2,20 @@
 
 module Privy
   module Models
-    class AutomationActionConfigInput < Privy::Internal::Type::BaseModel
-      # @!attribute destination_chain_asset
-      #   A destination asset spec accepting either raw identifiers (asset_address, caip2)
-      #   or human-readable aliases (asset, chain). Exactly one of asset_address or asset
-      #   must be provided; exactly one of caip2 or chain must be provided.
-      #
-      #   @return [Privy::Models::AutomationDestinationAssetInput]
-      required :destination_chain_asset, -> { Privy::AutomationDestinationAssetInput }
+    # Configuration for an automation action (input form with alias support).
+    module AutomationActionConfigInput
+      extend Privy::Internal::Type::Union
 
-      # @!attribute type
-      #
-      #   @return [Symbol, Privy::Models::AutomationActionConfigInput::Type]
-      required :type, enum: -> { Privy::AutomationActionConfigInput::Type }
+      discriminator :type
 
-      # @!method initialize(destination_chain_asset:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Privy::Models::AutomationActionConfigInput} for more details.
-      #
-      #   Action configuration for swap operations (input form with alias support).
-      #
-      #   @param destination_chain_asset [Privy::Models::AutomationDestinationAssetInput] A destination asset spec accepting either raw identifiers (asset_address, caip2)
-      #
-      #   @param type [Symbol, Privy::Models::AutomationActionConfigInput::Type]
+      # Action configuration for swap operations (input form with alias support).
+      variant :swap, -> { Privy::AutomationSwapActionConfigInput }
 
-      # @see Privy::Models::AutomationActionConfigInput#type
-      module Type
-        extend Privy::Internal::Type::Enum
+      # Action configuration for depositing into an Earn vault (input form).
+      variant :earn_deposit, -> { Privy::AutomationEarnDepositActionConfigInput }
 
-        SWAP = :swap
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+      # @!method self.variants
+      #   @return [Array(Privy::Models::AutomationSwapActionConfigInput, Privy::Models::AutomationEarnDepositActionConfigInput)]
     end
   end
 end

@@ -4,10 +4,10 @@ module Privy
   module Models
     class AutomationConfigInput < Privy::Internal::Type::BaseModel
       # @!attribute action
-      #   Action configuration for swap operations (input form with alias support).
+      #   Configuration for an automation action (input form with alias support).
       #
-      #   @return [Privy::Models::AutomationActionConfigInput]
-      required :action, -> { Privy::AutomationActionConfigInput }
+      #   @return [Privy::Models::AutomationSwapActionConfigInput, Privy::Models::AutomationEarnDepositActionConfigInput]
+      required :action, union: -> { Privy::AutomationActionConfigInput }
 
       # @!attribute trigger
       #   Trigger configuration for deposit events (input form with alias support).
@@ -19,7 +19,7 @@ module Privy
       #   Full configuration for a wallet automation (trigger + action) accepting
       #   human-readable aliases.
       #
-      #   @param action [Privy::Models::AutomationActionConfigInput] Action configuration for swap operations (input form with alias support).
+      #   @param action [Privy::Models::AutomationSwapActionConfigInput, Privy::Models::AutomationEarnDepositActionConfigInput] Configuration for an automation action (input form with alias support).
       #
       #   @param trigger [Privy::Models::AutomationTriggerConfigInput] Trigger configuration for deposit events (input form with alias support).
     end
