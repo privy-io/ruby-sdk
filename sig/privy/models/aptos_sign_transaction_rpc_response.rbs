@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type aptos_sign_transaction_rpc_response =
+      {
+        data: Privy::AptosSignTransactionRpcResponseData,
+        method_: Privy::Models::AptosSignTransactionRpcResponse::method_
+      }
+
+    class AptosSignTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::AptosSignTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::AptosSignTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::AptosSignTransactionRpcResponseData,
+        method_: Privy::Models::AptosSignTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::AptosSignTransactionRpcResponseData,
+        method_: Privy::Models::AptosSignTransactionRpcResponse::method_
+      }
+
+      type method_ = :aptos_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        APTOS_SIGN_TRANSACTION: :aptos_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::AptosSignTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

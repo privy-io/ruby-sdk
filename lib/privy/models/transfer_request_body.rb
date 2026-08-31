@@ -44,6 +44,12 @@ module Privy
       #   @return [String, nil]
       optional :nonce, String
 
+      # @!attribute reference_id
+      #   Developer-provided identifier for this request. Must be unique per app.
+      #
+      #   @return [String, nil]
+      optional :reference_id, String
+
       # @!attribute slippage_bps
       #   Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
       #   cross-chain or cross-asset transfers; omit to use the provider default.
@@ -51,7 +57,7 @@ module Privy
       #   @return [Integer, nil]
       optional :slippage_bps, Integer
 
-      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, nonce: nil, slippage_bps: nil)
+      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferRequestBody} for more details.
       #
@@ -68,6 +74,8 @@ module Privy
       #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
       #
       #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
+      #
+      #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       #
       #   @param slippage_bps [Integer] Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for cr
     end

@@ -40,6 +40,13 @@ module Privy
         sig { params(raw_amount: String).void }
         attr_writer :raw_amount
 
+        # Developer-provided identifier for this request. Must be unique per app.
+        sig { returns(T.nilable(String)) }
+        attr_reader :reference_id
+
+        sig { params(reference_id: String).void }
+        attr_writer :reference_id
+
         # Input for depositing assets into an ERC-4626 vault. Exactly one of `amount` or
         # `raw_amount` must be provided.
         sig do
@@ -47,7 +54,8 @@ module Privy
             vault_id: String,
             amount: String,
             nonce: String,
-            raw_amount: String
+            raw_amount: String,
+            reference_id: String
           ).returns(T.attached_class)
         end
         def self.new(
@@ -61,7 +69,9 @@ module Privy
           nonce: nil,
           # Amount in smallest unit to deposit (e.g. "1500000" for 1.5 USDC with 6
           # decimals). Exactly one of `amount` or `raw_amount` must be provided.
-          raw_amount: nil
+          raw_amount: nil,
+          # Developer-provided identifier for this request. Must be unique per app.
+          reference_id: nil
         )
         end
 
@@ -71,7 +81,8 @@ module Privy
               vault_id: String,
               amount: String,
               nonce: String,
-              raw_amount: String
+              raw_amount: String,
+              reference_id: String
             }
           )
         end

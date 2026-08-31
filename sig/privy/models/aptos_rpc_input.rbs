@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type aptos_rpc_input =
+      {
+        method_: Privy::Models::AptosRpcInput::method_,
+        params: Privy::AptosSignTransactionRpcInputParams
+      }
+
+    class AptosRpcInput < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::AptosRpcInput::method_
+
+      attr_accessor params: Privy::AptosSignTransactionRpcInputParams
+
+      def initialize: (
+        method_: Privy::Models::AptosRpcInput::method_,
+        params: Privy::AptosSignTransactionRpcInputParams
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::AptosRpcInput::method_,
+        params: Privy::AptosSignTransactionRpcInputParams
+      }
+
+      type method_ = :aptos_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        APTOS_SIGN_TRANSACTION: :aptos_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::AptosRpcInput::method_]
+      end
+    end
+  end
+end

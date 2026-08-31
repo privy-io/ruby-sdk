@@ -70,6 +70,12 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
+      # @!attribute reference_id
+      #   Developer-provided reference ID, if one was included in the request.
+      #
+      #   @return [String, nil]
+      optional :reference_id, String, nil?: true
+
       # @!attribute source_amount
       #   Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
       #   cross-chain transfers until the source amount is determined.
@@ -98,7 +104,7 @@ module Privy
       #   @return [Integer, nil]
       optional :source_asset_decimals, Integer
 
-      # @!method initialize(action_type:, created_at:, destination_address:, failed_at:, failure_reason:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
+      # @!method initialize(action_type:, created_at:, destination_address:, failed_at:, failure_reason:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionTransferFailedWebhookPayload} for more details.
       #
@@ -125,6 +131,8 @@ module Privy
       #   @param wallet_action_id [String] The ID of the wallet action.
       #
       #   @param wallet_id [String] The ID of the wallet involved in the action.
+      #
+      #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
       #
       #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output c
       #

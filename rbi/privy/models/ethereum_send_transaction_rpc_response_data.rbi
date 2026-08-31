@@ -18,6 +18,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :hash_
 
+      # Developer-provided reference ID, if one was included in the request.
       sig { returns(T.nilable(String)) }
       attr_accessor :reference_id
 
@@ -68,6 +69,7 @@ module Privy
         # A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
         caip2:,
         hash_:,
+        # Developer-provided reference ID, if one was included in the request.
         reference_id: nil,
         transaction_id: nil,
         # An unsigned Ethereum transaction object. Supports standard EVM transaction types

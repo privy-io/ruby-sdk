@@ -109,7 +109,13 @@ module Privy
       #   @return [Integer, nil]
       optional :decimals, Integer
 
-      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, failed_at:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil)
+      # @!attribute reference_id
+      #   Developer-provided reference ID, if one was included in the request.
+      #
+      #   @return [String, nil]
+      optional :reference_id, String, nil?: true
+
+      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, failed_at:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnDepositFailedWebhookPayload} for more details.
       #
@@ -148,6 +154,8 @@ module Privy
       #   @param asset [String] Asset identifier (e.g. "usdc", "eth"). Only present when the token is known in t
       #
       #   @param decimals [Integer] Number of decimals for the underlying asset (e.g. 6 for USDC, 18 for ETH). Only
+      #
+      #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
 
       # The status of the wallet action.
       #

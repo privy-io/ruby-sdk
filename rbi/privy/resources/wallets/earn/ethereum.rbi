@@ -18,6 +18,7 @@ module Privy
               amount: String,
               nonce: String,
               raw_amount: String,
+              reference_id: String,
               privy_authorization_signature: String,
               privy_idempotency_key: String,
               privy_request_expiry: String,
@@ -38,6 +39,9 @@ module Privy
             # Body param: Amount in smallest unit to deposit (e.g. "1500000" for 1.5 USDC with
             # 6 decimals). Exactly one of `amount` or `raw_amount` must be provided.
             raw_amount: nil,
+            # Body param: Developer-provided identifier for this request. Must be unique per
+            # app.
+            reference_id: nil,
             # Header param: Request authorization signature. If multiple signatures are
             # required, they should be comma separated.
             privy_authorization_signature: nil,
@@ -97,6 +101,7 @@ module Privy
               amount: String,
               nonce: String,
               raw_amount: String,
+              reference_id: String,
               privy_authorization_signature: String,
               privy_idempotency_key: String,
               privy_request_expiry: String,
@@ -117,6 +122,9 @@ module Privy
             # Body param: Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC
             # with 6 decimals). Exactly one of `amount` or `raw_amount` must be provided.
             raw_amount: nil,
+            # Body param: Developer-provided identifier for this request. Must be unique per
+            # app.
+            reference_id: nil,
             # Header param: Request authorization signature. If multiple signatures are
             # required, they should be comma separated.
             privy_authorization_signature: nil,

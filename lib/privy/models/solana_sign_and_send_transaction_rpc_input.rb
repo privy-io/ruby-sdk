@@ -36,6 +36,7 @@ module Privy
       optional :optimistic_broadcast, Privy::Internal::Type::Boolean
 
       # @!attribute reference_id
+      #   Developer-provided identifier for this request. Must be unique per app.
       #
       #   @return [String, nil]
       optional :reference_id, String
@@ -76,7 +77,7 @@ module Privy
       #
       #   @param optimistic_broadcast [Boolean]
       #
-      #   @param reference_id [String]
+      #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       #
       #   @param sponsor [Boolean]
       #

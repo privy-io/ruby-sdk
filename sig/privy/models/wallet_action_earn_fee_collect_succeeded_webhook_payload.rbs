@@ -17,7 +17,8 @@ module Privy
         wallet_id: String,
         amount: String,
         asset: String,
-        decimals: Integer
+        decimals: Integer,
+        reference_id: String?
       }
 
     class WalletActionEarnFeeCollectSucceededWebhookPayload < Privy::Internal::Type::BaseModel
@@ -59,6 +60,8 @@ module Privy
 
       def decimals=: (Integer) -> Integer
 
+      attr_accessor reference_id: String?
+
       def initialize: (
         action_type: Privy::Models::Wallets::wallet_action_type,
         asset_address: String,
@@ -75,7 +78,8 @@ module Privy
         wallet_id: String,
         ?amount: String,
         ?asset: String,
-        ?decimals: Integer
+        ?decimals: Integer,
+        ?reference_id: String?
       ) -> void
 
       def to_hash: -> {
@@ -94,7 +98,8 @@ module Privy
         wallet_id: String,
         amount: String,
         asset: String,
-        decimals: Integer
+        decimals: Integer,
+        reference_id: String?
       }
 
       type status = :succeeded

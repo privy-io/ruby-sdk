@@ -1,7 +1,8 @@
 module Privy
   module Models
     module Wallets
-      type earn_fee_collect_request_body = { vault_id: String, nonce: String }
+      type earn_fee_collect_request_body =
+        { vault_id: String, nonce: String, reference_id: String }
 
       class EarnFeeCollectRequestBody < Privy::Internal::Type::BaseModel
         attr_accessor vault_id: String
@@ -10,9 +11,21 @@ module Privy
 
         def nonce=: (String) -> String
 
-        def initialize: (vault_id: String, ?nonce: String) -> void
+        attr_reader reference_id: String?
 
-        def to_hash: -> { vault_id: String, nonce: String }
+        def reference_id=: (String) -> String
+
+        def initialize: (
+          vault_id: String,
+          ?nonce: String,
+          ?reference_id: String
+        ) -> void
+
+        def to_hash: -> {
+          vault_id: String,
+          nonce: String,
+          reference_id: String
+        }
       end
     end
   end

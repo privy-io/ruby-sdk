@@ -103,6 +103,10 @@ module Privy
         sig { params(gas: T.nilable(Privy::Gas::OrHash)).void }
         attr_writer :gas
 
+        # Developer-provided reference ID, if one was included in the request.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :reference_id
+
         # Decimal amount sent on the source chain (e.g. "1.5"). For exact_output
         # cross-chain transfers, null until fill confirmation.
         sig { returns(T.nilable(String)) }
@@ -197,6 +201,7 @@ module Privy
                 ]
               ),
             gas: T.nilable(Privy::Gas::OrHash),
+            reference_id: T.nilable(String),
             source_amount: String,
             source_asset: String,
             source_asset_address: String,
@@ -252,6 +257,8 @@ module Privy
           # Gas cost for a blockchain action. Includes both raw base-unit amount and a
           # human-readable decimal string, plus the gas token symbol.
           gas: nil,
+          # Developer-provided reference ID, if one was included in the request.
+          reference_id: nil,
           # Decimal amount sent on the source chain (e.g. "1.5"). For exact_output
           # cross-chain transfers, null until fill confirmation.
           source_amount: nil,
@@ -288,6 +295,7 @@ module Privy
               failure_reason: Privy::Wallets::FailureReason,
               fees: T.nilable(T::Array[Privy::FeeLineItem::Variants]),
               gas: T.nilable(Privy::Gas),
+              reference_id: T.nilable(String),
               source_amount: String,
               source_asset: String,
               source_asset_address: String,

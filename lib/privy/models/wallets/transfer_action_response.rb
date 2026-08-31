@@ -105,6 +105,12 @@ module Privy
         #   @return [Privy::Models::Gas, nil]
         optional :gas, -> { Privy::Gas }, nil?: true
 
+        # @!attribute reference_id
+        #   Developer-provided reference ID, if one was included in the request.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String, nil?: true
+
         # @!attribute source_amount
         #   Decimal amount sent on the source chain (e.g. "1.5"). For exact_output
         #   cross-chain transfers, null until fill confirmation.
@@ -139,7 +145,7 @@ module Privy
         #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>, nil]
         optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
-        # @!method initialize(id:, created_at:, destination_address:, destination_amount:, source_chain:, status:, type:, wallet_id:, amount_type: nil, destination_asset: nil, destination_chain: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
+        # @!method initialize(id:, created_at:, destination_address:, destination_amount:, source_chain:, status:, type:, wallet_id:, amount_type: nil, destination_asset: nil, destination_chain: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, reference_id: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil, steps: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::TransferActionResponse} for more details.
         #
@@ -176,6 +182,8 @@ module Privy
         #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil] Actual fees paid for the transfer. Populated after on-chain confirmation. Only p
         #
         #   @param gas [Privy::Models::Gas, nil] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
+        #
+        #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
         #
         #   @param source_amount [String] Decimal amount sent on the source chain (e.g. "1.5"). For exact_output cross-cha
         #

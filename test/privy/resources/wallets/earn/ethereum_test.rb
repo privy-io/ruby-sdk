@@ -29,6 +29,7 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
         asset: String | nil,
         decimals: Integer | nil,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end
@@ -162,6 +163,7 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
         asset: String | nil,
         decimals: Integer | nil,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end

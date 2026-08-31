@@ -15,7 +15,7 @@ module Privy
           #
           # Deposit assets into an ERC-4626 vault.
           #
-          # @overload deposit(wallet_id, vault_id:, amount: nil, nonce: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload deposit(wallet_id, vault_id:, amount: nil, nonce: nil, raw_amount: nil, reference_id: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: ID of the wallet.
           #
@@ -26,6 +26,8 @@ module Privy
           # @param nonce [String] Body param: Unique caller-generated nonce used to prevent replaying a signed wal
           #
           # @param raw_amount [String] Body param: Amount in smallest unit to deposit (e.g. "1500000" for 1.5 USDC with
+          #
+          # @param reference_id [String] Body param: Developer-provided identifier for this request. Must be unique per a
           #
           # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
           #
@@ -110,7 +112,7 @@ module Privy
           #
           # Withdraw assets from an ERC-4626 vault.
           #
-          # @overload withdraw(wallet_id, vault_id:, amount: nil, nonce: nil, raw_amount: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload withdraw(wallet_id, vault_id:, amount: nil, nonce: nil, raw_amount: nil, reference_id: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: ID of the wallet.
           #
@@ -121,6 +123,8 @@ module Privy
           # @param nonce [String] Body param: Unique caller-generated nonce used to prevent replaying a signed wal
           #
           # @param raw_amount [String] Body param: Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC wit
+          #
+          # @param reference_id [String] Body param: Developer-provided identifier for this request. Must be unique per a
           #
           # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
           #

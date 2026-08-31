@@ -2,7 +2,13 @@ module Privy
   module Models
     module Wallets
       type earn_withdraw_request_body =
-        { vault_id: String, amount: String, nonce: String, raw_amount: String }
+        {
+          vault_id: String,
+          amount: String,
+          nonce: String,
+          raw_amount: String,
+          reference_id: String
+        }
 
       class EarnWithdrawRequestBody < Privy::Internal::Type::BaseModel
         attr_accessor vault_id: String
@@ -19,18 +25,24 @@ module Privy
 
         def raw_amount=: (String) -> String
 
+        attr_reader reference_id: String?
+
+        def reference_id=: (String) -> String
+
         def initialize: (
           vault_id: String,
           ?amount: String,
           ?nonce: String,
-          ?raw_amount: String
+          ?raw_amount: String,
+          ?reference_id: String
         ) -> void
 
         def to_hash: -> {
           vault_id: String,
           amount: String,
           nonce: String,
-          raw_amount: String
+          raw_amount: String,
+          reference_id: String
         }
       end
     end

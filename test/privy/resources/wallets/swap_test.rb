@@ -37,6 +37,7 @@ class Privy::Test::Resources::Wallets::SwapTest < Privy::Test::ResourceTest
         failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end

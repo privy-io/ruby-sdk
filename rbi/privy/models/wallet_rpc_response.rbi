@@ -17,6 +17,7 @@ module Privy
             Privy::EthereumSign7702AuthorizationRpcResponse,
             Privy::EthereumSecp256k1SignRpcResponse,
             Privy::EthereumSendCallsRpcResponse,
+            Privy::AptosSignTransactionRpcResponse,
             Privy::SolanaSignMessageRpcResponse,
             Privy::SolanaSignTransactionRpcResponse,
             Privy::SolanaSignAndSendTransactionRpcResponse,

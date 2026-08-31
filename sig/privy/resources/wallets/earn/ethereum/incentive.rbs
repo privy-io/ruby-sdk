@@ -8,6 +8,7 @@ module Privy
               String wallet_id,
               chain: String,
               ?nonce: String,
+              ?reference_id: String,
               ?privy_authorization_signature: String,
               ?privy_idempotency_key: String,
               ?privy_request_expiry: String,

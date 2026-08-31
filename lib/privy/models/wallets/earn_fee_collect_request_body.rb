@@ -17,7 +17,13 @@ module Privy
         #   @return [String, nil]
         optional :nonce, String
 
-        # @!method initialize(vault_id:, nonce: nil)
+        # @!attribute reference_id
+        #   Developer-provided identifier for this request. Must be unique per app.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String
+
+        # @!method initialize(vault_id:, nonce: nil, reference_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EarnFeeCollectRequestBody} for more details.
         #
@@ -26,6 +32,8 @@ module Privy
         #   @param vault_id [String] The ID of the vault to collect fees from.
         #
         #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
+        #
+        #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       end
     end
   end

@@ -13,6 +13,7 @@ module Privy
           type: Privy::Models::Wallets::PayoutResponse::type_,
           wallet_id: String,
           failure_reason: Privy::Wallets::FailureReason,
+          reference_id: String?,
           steps: ::Array[Privy::Models::Wallets::wallet_action_step]
         }
 
@@ -41,6 +42,8 @@ module Privy
           Privy::Wallets::FailureReason
         ) -> Privy::Wallets::FailureReason
 
+        attr_accessor reference_id: String?
+
         attr_reader steps: ::Array[Privy::Models::Wallets::wallet_action_step]?
 
         def steps=: (
@@ -58,6 +61,7 @@ module Privy
           type: Privy::Models::Wallets::PayoutResponse::type_,
           wallet_id: String,
           ?failure_reason: Privy::Wallets::FailureReason,
+          ?reference_id: String?,
           ?steps: ::Array[Privy::Models::Wallets::wallet_action_step]
         ) -> void
 
@@ -72,6 +76,7 @@ module Privy
           type: Privy::Models::Wallets::PayoutResponse::type_,
           wallet_id: String,
           failure_reason: Privy::Wallets::FailureReason,
+          reference_id: String?,
           steps: ::Array[Privy::Models::Wallets::wallet_action_step]
         }
 

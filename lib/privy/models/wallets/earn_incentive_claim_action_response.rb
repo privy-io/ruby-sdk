@@ -53,13 +53,19 @@ module Privy
         #   @return [Privy::Models::Wallets::FailureReason, nil]
         optional :failure_reason, -> { Privy::Wallets::FailureReason }
 
+        # @!attribute reference_id
+        #   Developer-provided reference ID, if one was included in the request.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String, nil?: true
+
         # @!attribute steps
         #   The steps of the wallet action. Only returned if `?include=steps` is provided.
         #
         #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>, nil]
         optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
-        # @!method initialize(id:, chain:, created_at:, rewards:, status:, type:, wallet_id:, failure_reason: nil, steps: nil)
+        # @!method initialize(id:, chain:, created_at:, rewards:, status:, type:, wallet_id:, failure_reason: nil, reference_id: nil, steps: nil)
         #   Response for an earn incentive claim action.
         #
         #   @param id [String] The ID of the wallet action.
@@ -77,6 +83,8 @@ module Privy
         #   @param wallet_id [String] The ID of the wallet involved in the action.
         #
         #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+        #
+        #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
         #
         #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
 

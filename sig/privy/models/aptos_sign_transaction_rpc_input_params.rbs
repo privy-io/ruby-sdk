@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type aptos_sign_transaction_rpc_input_params = { transaction: String }
+
+    class AptosSignTransactionRpcInputParams < Privy::Internal::Type::BaseModel
+      attr_accessor transaction: String
+
+      def initialize: (transaction: String) -> void
+
+      def to_hash: -> { transaction: String }
+    end
+  end
+end

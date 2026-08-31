@@ -15,6 +15,7 @@ module Privy
       required :hash_, String, api_name: :hash
 
       # @!attribute reference_id
+      #   Developer-provided reference ID, if one was included in the request.
       #
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
@@ -39,7 +40,7 @@ module Privy
       #
       #   @param hash_ [String]
       #
-      #   @param reference_id [String, nil]
+      #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
       #
       #   @param signed_transaction [String]
       #

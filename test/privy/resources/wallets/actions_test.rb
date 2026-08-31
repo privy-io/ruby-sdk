@@ -44,6 +44,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
@@ -63,6 +64,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
+        reference_id: String | nil,
         source_amount: String | nil,
         source_asset: String | nil,
         source_asset_address: String | nil,
@@ -85,6 +87,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         asset: String | nil,
         decimals: Integer | nil,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
@@ -103,6 +106,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         asset: String | nil,
         decimals: Integer | nil,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
@@ -114,6 +118,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
@@ -131,6 +136,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         asset: String | nil,
         decimals: Integer | nil,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       in {
@@ -144,6 +150,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
       end

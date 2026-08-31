@@ -12,13 +12,15 @@ module Privy
             #
             # Claim incentive rewards for a wallet.
             #
-            # @overload claim(wallet_id, chain:, nonce: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+            # @overload claim(wallet_id, chain:, nonce: nil, reference_id: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
             #
             # @param wallet_id [String] Path param: ID of the wallet.
             #
             # @param chain [String] Body param: The blockchain network on which to perform the incentive claim. Supp
             #
             # @param nonce [String] Body param: Unique caller-generated nonce used to prevent replaying a signed wal
+            #
+            # @param reference_id [String] Body param: Developer-provided identifier for this request. Must be unique per a
             #
             # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
             #

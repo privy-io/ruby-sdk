@@ -10,6 +10,7 @@ module Privy
           ?amount_type: Privy::Models::amount_type,
           ?fee_configuration: Privy::FeeConfiguration,
           ?nonce: String,
+          ?reference_id: String,
           ?slippage_bps: Integer,
           ?privy_authorization_signature: String,
           ?privy_idempotency_key: String,

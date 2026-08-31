@@ -59,6 +59,10 @@ module Privy
         end
         attr_writer :failure_reason
 
+        # Developer-provided reference ID, if one was included in the request.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :reference_id
+
         # The steps of the wallet action. Only returned if `?include=steps` is provided.
         sig do
           returns(
@@ -98,6 +102,7 @@ module Privy
             type: Privy::Wallets::PayoutResponse::Type::OrSymbol,
             wallet_id: String,
             failure_reason: Privy::Wallets::FailureReason::OrHash,
+            reference_id: T.nilable(String),
             steps:
               T::Array[
                 T.any(
@@ -131,6 +136,8 @@ module Privy
           wallet_id:,
           # A description of why a wallet action (or a step within a wallet action) failed.
           failure_reason: nil,
+          # Developer-provided reference ID, if one was included in the request.
+          reference_id: nil,
           # The steps of the wallet action. Only returned if `?include=steps` is provided.
           steps: nil
         )
@@ -149,6 +156,7 @@ module Privy
               type: Privy::Wallets::PayoutResponse::Type::TaggedSymbol,
               wallet_id: String,
               failure_reason: Privy::Wallets::FailureReason,
+              reference_id: T.nilable(String),
               steps: T::Array[Privy::Wallets::WalletActionStep::Variants]
             }
           )

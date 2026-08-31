@@ -111,13 +111,19 @@ module Privy
         #   @return [Privy::Models::Gas, nil]
         optional :gas, -> { Privy::Gas }, nil?: true
 
+        # @!attribute reference_id
+        #   Developer-provided reference ID, if one was included in the request.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String, nil?: true
+
         # @!attribute steps
         #   The steps of the wallet action. Only returned if `?include=steps` is provided.
         #
         #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>, nil]
         optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
-        # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_address: nil, destination_caip2: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, steps: nil)
+        # @!method initialize(id:, caip2:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, type:, wallet_id:, destination_address: nil, destination_caip2: nil, estimated_fees: nil, estimated_gas: nil, failure_reason: nil, fees: nil, gas: nil, reference_id: nil, steps: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::SwapActionResponse} for more details.
         #
@@ -156,6 +162,8 @@ module Privy
         #   @param fees [Array<Privy::Models::RelayerFee, Privy::Models::PrivyFee, Privy::Models::DeveloperFee>, nil] Actual fees paid for the swap. Populated after on-chain confirmation. Only prese
         #
         #   @param gas [Privy::Models::Gas, nil] Gas cost for a blockchain action. Includes both raw base-unit amount and a human
+        #
+        #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
         #
         #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
 

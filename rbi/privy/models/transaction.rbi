@@ -25,6 +25,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # Developer-provided reference ID, if one was included in the request.
       sig { returns(T.nilable(String)) }
       attr_accessor :reference_id
 
@@ -62,6 +63,7 @@ module Privy
         status:,
         transaction_hash:,
         wallet_id:,
+        # Developer-provided reference ID, if one was included in the request.
         reference_id: nil,
         sponsored: nil,
         user_operation_hash: nil

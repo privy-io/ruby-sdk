@@ -36,6 +36,7 @@ module Privy
       required :wallet_id, String
 
       # @!attribute reference_id
+      #   Developer-provided reference ID, if one was included in the request.
       #
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
@@ -65,7 +66,7 @@ module Privy
       #
       #   @param wallet_id [String]
       #
-      #   @param reference_id [String, nil]
+      #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
       #
       #   @param sponsored [Boolean]
       #

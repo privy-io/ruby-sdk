@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type aptos_sign_transaction_rpc_response_data =
+      {
+        encoding: Privy::Models::AptosSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      }
+
+    class AptosSignTransactionRpcResponseData < Privy::Internal::Type::BaseModel
+      attr_accessor encoding: Privy::Models::AptosSignTransactionRpcResponseData::encoding
+
+      attr_accessor signed_transaction: String
+
+      def initialize: (
+        encoding: Privy::Models::AptosSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      ) -> void
+
+      def to_hash: -> {
+        encoding: Privy::Models::AptosSignTransactionRpcResponseData::encoding,
+        signed_transaction: String
+      }
+
+      type encoding = :hex
+
+      module Encoding
+        extend Privy::Internal::Type::Enum
+
+        HEX: :hex
+
+        def self?.values: -> ::Array[Privy::Models::AptosSignTransactionRpcResponseData::encoding]
+      end
+    end
+  end
+end

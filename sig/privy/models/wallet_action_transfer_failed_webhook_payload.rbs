@@ -13,6 +13,7 @@ module Privy
         type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
+        reference_id: String?,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,
@@ -42,6 +43,8 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_accessor reference_id: String?
+
       attr_reader source_amount: String?
 
       def source_amount=: (String) -> String
@@ -70,6 +73,7 @@ module Privy
         type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
+        ?reference_id: String?,
         ?source_amount: String,
         ?source_asset: String,
         ?source_asset_address: String,
@@ -88,6 +92,7 @@ module Privy
         type: Privy::Models::WalletActionTransferFailedWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
+        reference_id: String?,
         source_amount: String,
         source_asset: String,
         source_asset_address: String,

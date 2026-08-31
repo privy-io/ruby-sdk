@@ -12,7 +12,8 @@ module Privy
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnIncentiveClaimRejectedWebhookPayload::type_,
         wallet_action_id: String,
-        wallet_id: String
+        wallet_id: String,
+        reference_id: String?
       }
 
     class WalletActionEarnIncentiveClaimRejectedWebhookPayload < Privy::Internal::Type::BaseModel
@@ -38,6 +39,8 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_accessor reference_id: String?
+
       def initialize: (
         action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
@@ -49,7 +52,8 @@ module Privy
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnIncentiveClaimRejectedWebhookPayload::type_,
         wallet_action_id: String,
-        wallet_id: String
+        wallet_id: String,
+        ?reference_id: String?
       ) -> void
 
       def to_hash: -> {
@@ -63,7 +67,8 @@ module Privy
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
         type: Privy::Models::WalletActionEarnIncentiveClaimRejectedWebhookPayload::type_,
         wallet_action_id: String,
-        wallet_id: String
+        wallet_id: String,
+        reference_id: String?
       }
 
       type status = :rejected

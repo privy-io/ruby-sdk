@@ -22,6 +22,7 @@ class Privy::Test::Resources::Wallets::Earn::Ethereum::IncentiveTest < Privy::Te
         type: Privy::Wallets::EarnIncentiveClaimActionResponse::Type,
         wallet_id: String,
         failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
         steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
       }
     end

@@ -37,7 +37,7 @@ class Privy::Test::Resources::Users::ExternalFiatAccountsTest < Privy::Test::Res
 
     assert_pattern do
       response => {
-        accounts: ^(Privy::Internal::Type::ArrayOf[Privy::ExternalFiatAccount]),
+        external_fiat_accounts: ^(Privy::Internal::Type::ArrayOf[Privy::ExternalFiatAccount]),
         next_cursor: String | nil
       }
     end

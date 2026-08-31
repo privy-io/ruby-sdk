@@ -90,6 +90,25 @@ module Privy
 
   Apps = Privy::Models::Apps
 
+  AptosBcsHex = Privy::Models::AptosBcsHex
+
+  AptosRpcInput = Privy::Models::AptosRpcInput
+
+  AptosRpcResponse = Privy::Models::AptosRpcResponse
+
+  AptosSignedTransactionBcsHex = Privy::Models::AptosSignedTransactionBcsHex
+
+  AptosSignTransactionRpcInput = Privy::Models::AptosSignTransactionRpcInput
+
+  AptosSignTransactionRpcInputParams =
+    Privy::Models::AptosSignTransactionRpcInputParams
+
+  AptosSignTransactionRpcResponse =
+    Privy::Models::AptosSignTransactionRpcResponse
+
+  AptosSignTransactionRpcResponseData =
+    Privy::Models::AptosSignTransactionRpcResponseData
+
   AssetAccountWithBalance = Privy::Models::AssetAccountWithBalance
 
   AttachWalletAutomationRequestBody =

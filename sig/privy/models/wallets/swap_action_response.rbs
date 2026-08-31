@@ -20,6 +20,7 @@ module Privy
           failure_reason: Privy::Wallets::FailureReason,
           fees: ::Array[Privy::Models::fee_line_item]?,
           gas: Privy::Gas?,
+          reference_id: String?,
           steps: ::Array[Privy::Models::Wallets::wallet_action_step]
         }
 
@@ -66,6 +67,8 @@ module Privy
 
         attr_accessor gas: Privy::Gas?
 
+        attr_accessor reference_id: String?
+
         attr_reader steps: ::Array[Privy::Models::Wallets::wallet_action_step]?
 
         def steps=: (
@@ -90,6 +93,7 @@ module Privy
           ?failure_reason: Privy::Wallets::FailureReason,
           ?fees: ::Array[Privy::Models::fee_line_item]?,
           ?gas: Privy::Gas?,
+          ?reference_id: String?,
           ?steps: ::Array[Privy::Models::Wallets::wallet_action_step]
         ) -> void
 
@@ -111,6 +115,7 @@ module Privy
           failure_reason: Privy::Wallets::FailureReason,
           fees: ::Array[Privy::Models::fee_line_item]?,
           gas: Privy::Gas?,
+          reference_id: String?,
           steps: ::Array[Privy::Models::Wallets::wallet_action_step]
         }
 

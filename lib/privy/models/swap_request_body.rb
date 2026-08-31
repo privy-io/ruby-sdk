@@ -40,13 +40,19 @@ module Privy
       #   @return [String, nil]
       optional :nonce, String
 
+      # @!attribute reference_id
+      #   Developer-provided identifier for this request. Must be unique per app.
+      #
+      #   @return [String, nil]
+      optional :reference_id, String
+
       # @!attribute slippage_bps
       #   Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
       #
       #   @return [Integer, nil]
       optional :slippage_bps, Integer
 
-      # @!method initialize(base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, nonce: nil, slippage_bps: nil)
+      # @!method initialize(base_amount:, destination:, source:, amount_type: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::SwapRequestBody} for more details.
       #
@@ -63,6 +69,8 @@ module Privy
       #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
       #
       #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
+      #
+      #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       #
       #   @param slippage_bps [Integer] Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
     end

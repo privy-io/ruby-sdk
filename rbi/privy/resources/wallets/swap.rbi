@@ -15,6 +15,7 @@ module Privy
             amount_type: Privy::AmountType::OrSymbol,
             fee_configuration: Privy::FeeConfiguration::OrHash,
             nonce: String,
+            reference_id: String,
             slippage_bps: Integer,
             privy_authorization_signature: String,
             privy_idempotency_key: String,
@@ -39,6 +40,9 @@ module Privy
           # Body param: Unique caller-generated nonce used to prevent replaying a signed
           # wallet action request. Must be at least 24 characters (e.g. a cuid2 or UUID).
           nonce: nil,
+          # Body param: Developer-provided identifier for this request. Must be unique per
+          # app.
+          reference_id: nil,
           # Body param: Maximum slippage tolerance in basis points (e.g., 50 for 0.5%).
           slippage_bps: nil,
           # Header param: Request authorization signature. If multiple signatures are

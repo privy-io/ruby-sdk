@@ -99,6 +99,10 @@ module Privy
         sig { params(gas: T.nilable(Privy::Gas::OrHash)).void }
         attr_writer :gas
 
+        # Developer-provided reference ID, if one was included in the request.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :reference_id
+
         # The steps of the wallet action. Only returned if `?include=steps` is provided.
         sig do
           returns(
@@ -162,6 +166,7 @@ module Privy
                 ]
               ),
             gas: T.nilable(Privy::Gas::OrHash),
+            reference_id: T.nilable(String),
             steps:
               T::Array[
                 T.any(
@@ -215,6 +220,8 @@ module Privy
           # Gas cost for a blockchain action. Includes both raw base-unit amount and a
           # human-readable decimal string, plus the gas token symbol.
           gas: nil,
+          # Developer-provided reference ID, if one was included in the request.
+          reference_id: nil,
           # The steps of the wallet action. Only returned if `?include=steps` is provided.
           steps: nil
         )
@@ -240,6 +247,7 @@ module Privy
               failure_reason: Privy::Wallets::FailureReason,
               fees: T.nilable(T::Array[Privy::FeeLineItem::Variants]),
               gas: T.nilable(Privy::Gas),
+              reference_id: T.nilable(String),
               steps: T::Array[Privy::Wallets::WalletActionStep::Variants]
             }
           )

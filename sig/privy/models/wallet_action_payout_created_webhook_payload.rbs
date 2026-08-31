@@ -15,7 +15,8 @@ module Privy
         status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_,
         wallet_action_id: String,
-        wallet_id: String
+        wallet_id: String,
+        reference_id: String?
       }
 
     class WalletActionPayoutCreatedWebhookPayload < Privy::Internal::Type::BaseModel
@@ -47,6 +48,8 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_accessor reference_id: String?
+
       def initialize: (
         action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
@@ -61,7 +64,8 @@ module Privy
         status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_,
         wallet_action_id: String,
-        wallet_id: String
+        wallet_id: String,
+        ?reference_id: String?
       ) -> void
 
       def to_hash: -> {
@@ -78,7 +82,8 @@ module Privy
         status: Privy::Models::WalletActionPayoutCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionPayoutCreatedWebhookPayload::type_,
         wallet_action_id: String,
-        wallet_id: String
+        wallet_id: String,
+        reference_id: String?
       }
 
       type status = :pending

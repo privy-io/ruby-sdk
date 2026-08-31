@@ -60,6 +60,7 @@ module Privy
       sig { params(optimistic_broadcast: T::Boolean).void }
       attr_writer :optimistic_broadcast
 
+      # Developer-provided identifier for this request. Must be unique per app.
       sig { returns(T.nilable(String)) }
       attr_reader :reference_id
 
@@ -113,6 +114,7 @@ module Privy
         address: nil,
         chain_type: nil,
         optimistic_broadcast: nil,
+        # Developer-provided identifier for this request. Must be unique per app.
         reference_id: nil,
         sponsor: nil,
         # Options for user-pays gas sponsorship on the RPC endpoint. When provided

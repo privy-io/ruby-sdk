@@ -103,6 +103,10 @@ module Privy
       sig { params(decimals: Integer).void }
       attr_writer :decimals
 
+      # Developer-provided reference ID, if one was included in the request.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :reference_id
+
       # Payload for the wallet_action.earn_withdraw.failed webhook event.
       sig do
         params(
@@ -134,7 +138,8 @@ module Privy
           wallet_id: String,
           amount: String,
           asset: String,
-          decimals: Integer
+          decimals: Integer,
+          reference_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -175,7 +180,9 @@ module Privy
         asset: nil,
         # Number of decimals for the underlying asset (e.g. 6 for USDC, 18 for ETH). Only
         # present when the token is known in the asset registry.
-        decimals: nil
+        decimals: nil,
+        # Developer-provided reference ID, if one was included in the request.
+        reference_id: nil
       )
       end
 
@@ -200,7 +207,8 @@ module Privy
             wallet_id: String,
             amount: String,
             asset: String,
-            decimals: Integer
+            decimals: Integer,
+            reference_id: T.nilable(String)
           }
         )
       end

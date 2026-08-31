@@ -157,6 +157,7 @@ module Privy
               Privy::EthereumSign7702AuthorizationRpcInput::OrHash,
               Privy::EthereumSignUserOperationRpcInput::OrHash,
               Privy::EthereumSendCallsRpcInput::OrHash,
+              Privy::AptosSignTransactionRpcInput::OrHash,
               Privy::SolanaSignTransactionRpcInput::OrHash,
               Privy::SolanaSignAndSendTransactionRpcInput::OrHash,
               Privy::SolanaSignMessageRpcInput::OrHash,
@@ -208,6 +209,7 @@ module Privy
           amount_type: Privy::AmountType::OrSymbol,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           nonce: String,
+          reference_id: String,
           slippage_bps: Integer,
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
@@ -233,6 +235,9 @@ module Privy
         # Body param: Unique caller-generated nonce used to prevent replaying a signed
         # wallet action request. Must be at least 24 characters (e.g. a cuid2 or UUID).
         nonce: nil,
+        # Body param: Developer-provided identifier for this request. Must be unique per
+        # app.
+        reference_id: nil,
         # Body param: Maximum allowed slippage in basis points (1 bps = 0.01%). Only
         # applicable for cross-chain or cross-asset transfers; omit to use the provider
         # default.

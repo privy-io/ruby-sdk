@@ -31,7 +31,13 @@ module Privy
         #   @return [String, nil]
         optional :raw_amount, String
 
-        # @!method initialize(vault_id:, amount: nil, nonce: nil, raw_amount: nil)
+        # @!attribute reference_id
+        #   Developer-provided identifier for this request. Must be unique per app.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String
+
+        # @!method initialize(vault_id:, amount: nil, nonce: nil, raw_amount: nil, reference_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EarnWithdrawRequestBody} for more details.
         #
@@ -45,6 +51,8 @@ module Privy
         #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
         #
         #   @param raw_amount [String] Amount in smallest unit to withdraw (e.g. "1500000" for 1.5 USDC with 6 decimals
+        #
+        #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       end
     end
   end

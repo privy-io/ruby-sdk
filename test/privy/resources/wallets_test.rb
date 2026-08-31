@@ -418,6 +418,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in Privy::EthereumSign7702AuthorizationRpcResponse
       in Privy::EthereumSecp256k1SignRpcResponse
       in Privy::EthereumSendCallsRpcResponse
+      in Privy::AptosSignTransactionRpcResponse
       in Privy::SolanaSignMessageRpcResponse
       in Privy::SolanaSignTransactionRpcResponse
       in Privy::SolanaSignAndSendTransactionRpcResponse
@@ -450,6 +451,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in {method_: :eth_sign7702Authorization, data: Privy::EthereumSign7702AuthorizationRpcResponseData}
       in {method_: :secp256k1_sign, data: Privy::EthereumSecp256k1SignRpcResponseData}
       in {method_: :wallet_sendCalls, data: Privy::EthereumSendCallsRpcResponseData}
+      in {method_: :aptos_signTransaction, data: Privy::AptosSignTransactionRpcResponseData}
       in {method_: :signMessage, data: Privy::SolanaSignMessageRpcResponseData}
       in {method_: :signTransaction, data: Privy::SolanaSignTransactionRpcResponseData}
       in {method_: :signAndSendTransaction, data: Privy::SolanaSignAndSendTransactionRpcResponseData}
@@ -505,6 +507,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         failure_reason: Privy::Wallets::FailureReason | nil,
         fees: ^(Privy::Internal::Type::ArrayOf[union: Privy::FeeLineItem]) | nil,
         gas: Privy::Gas | nil,
+        reference_id: String | nil,
         source_amount: String | nil,
         source_asset: String | nil,
         source_asset_address: String | nil,

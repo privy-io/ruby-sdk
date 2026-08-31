@@ -123,6 +123,7 @@ module Privy
                 Privy::EthereumSign7702AuthorizationRpcInput::OrHash,
                 Privy::EthereumSignUserOperationRpcInput::OrHash,
                 Privy::EthereumSendCallsRpcInput::OrHash,
+                Privy::AptosSignTransactionRpcInput::OrHash,
                 Privy::SolanaSignTransactionRpcInput::OrHash,
                 Privy::SolanaSignAndSendTransactionRpcInput::OrHash,
                 Privy::SolanaSignMessageRpcInput::OrHash,

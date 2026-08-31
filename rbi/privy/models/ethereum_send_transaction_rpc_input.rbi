@@ -58,6 +58,7 @@ module Privy
       sig { params(experimental_data_suffix: String).void }
       attr_writer :experimental_data_suffix
 
+      # Developer-provided identifier for this request. Must be unique per app.
       sig { returns(T.nilable(String)) }
       attr_reader :reference_id
 
@@ -111,6 +112,7 @@ module Privy
         # A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000
         # bytes).
         experimental_data_suffix: nil,
+        # Developer-provided identifier for this request. Must be unique per app.
         reference_id: nil,
         sponsor: nil,
         # Options for user-pays gas sponsorship on the RPC endpoint. When provided

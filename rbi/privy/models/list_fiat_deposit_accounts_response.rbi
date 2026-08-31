@@ -12,7 +12,7 @@ module Privy
         end
 
       sig { returns(T::Array[Privy::FiatDepositAccount]) }
-      attr_accessor :deposit_accounts
+      attr_accessor :fiat_deposit_accounts
 
       sig { returns(T.nilable(String)) }
       attr_accessor :next_cursor
@@ -20,17 +20,17 @@ module Privy
       # A list of fiat deposit accounts linked to a wallet.
       sig do
         params(
-          deposit_accounts: T::Array[Privy::FiatDepositAccount::OrHash],
+          fiat_deposit_accounts: T::Array[Privy::FiatDepositAccount::OrHash],
           next_cursor: T.nilable(String)
         ).returns(T.attached_class)
       end
-      def self.new(deposit_accounts:, next_cursor:)
+      def self.new(fiat_deposit_accounts:, next_cursor:)
       end
 
       sig do
         override.returns(
           {
-            deposit_accounts: T::Array[Privy::FiatDepositAccount],
+            fiat_deposit_accounts: T::Array[Privy::FiatDepositAccount],
             next_cursor: T.nilable(String)
           }
         )

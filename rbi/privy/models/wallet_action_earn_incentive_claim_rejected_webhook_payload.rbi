@@ -70,6 +70,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # Developer-provided reference ID, if one was included in the request.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :reference_id
+
       # Payload for the wallet_action.earn_incentive_claim.rejected webhook event.
       sig do
         params(
@@ -98,7 +102,8 @@ module Privy
           type:
             Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload::Type::OrSymbol,
           wallet_action_id: String,
-          wallet_id: String
+          wallet_id: String,
+          reference_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -123,7 +128,9 @@ module Privy
         # The ID of the wallet action.
         wallet_action_id:,
         # The ID of the wallet involved in the action.
-        wallet_id:
+        wallet_id:,
+        # Developer-provided reference ID, if one was included in the request.
+        reference_id: nil
       )
       end
 
@@ -143,7 +150,8 @@ module Privy
             type:
               Privy::WalletActionEarnIncentiveClaimRejectedWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,
-            wallet_id: String
+            wallet_id: String,
+            reference_id: T.nilable(String)
           }
         )
       end

@@ -19,6 +19,7 @@ module Privy
           failure_reason: Privy::Wallets::FailureReason,
           fees: ::Array[Privy::Models::fee_line_item]?,
           gas: Privy::Gas?,
+          reference_id: String?,
           source_amount: String,
           source_asset: String,
           source_asset_address: String,
@@ -71,6 +72,8 @@ module Privy
 
         attr_accessor gas: Privy::Gas?
 
+        attr_accessor reference_id: String?
+
         attr_reader source_amount: String?
 
         def source_amount=: (String) -> String
@@ -110,6 +113,7 @@ module Privy
           ?failure_reason: Privy::Wallets::FailureReason,
           ?fees: ::Array[Privy::Models::fee_line_item]?,
           ?gas: Privy::Gas?,
+          ?reference_id: String?,
           ?source_amount: String,
           ?source_asset: String,
           ?source_asset_address: String,
@@ -134,6 +138,7 @@ module Privy
           failure_reason: Privy::Wallets::FailureReason,
           fees: ::Array[Privy::Models::fee_line_item]?,
           gas: Privy::Gas?,
+          reference_id: String?,
           source_amount: String,
           source_asset: String,
           source_asset_address: String,

@@ -71,7 +71,13 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_type:, chain:, created_at:, failure_reason:, rejected_at:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:)
+      # @!attribute reference_id
+      #   Developer-provided reference ID, if one was included in the request.
+      #
+      #   @return [String, nil]
+      optional :reference_id, String, nil?: true
+
+      # @!method initialize(action_type:, chain:, created_at:, failure_reason:, rejected_at:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
       #   Payload for the wallet_action.earn_incentive_claim.rejected webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
@@ -95,6 +101,8 @@ module Privy
       #   @param wallet_action_id [String] The ID of the wallet action.
       #
       #   @param wallet_id [String] The ID of the wallet involved in the action.
+      #
+      #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
 
       # The status of the wallet action.
       #

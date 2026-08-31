@@ -66,6 +66,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # Developer-provided reference ID, if one was included in the request.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :reference_id
+
       # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
       # cross-chain transfers until the source amount is determined.
       sig { returns(T.nilable(String)) }
@@ -124,6 +128,7 @@ module Privy
             Privy::WalletActionTransferRejectedWebhookPayload::Type::OrSymbol,
           wallet_action_id: String,
           wallet_id: String,
+          reference_id: T.nilable(String),
           source_amount: String,
           source_asset: String,
           source_asset_address: String,
@@ -153,6 +158,8 @@ module Privy
         wallet_action_id:,
         # The ID of the wallet involved in the action.
         wallet_id:,
+        # Developer-provided reference ID, if one was included in the request.
+        reference_id: nil,
         # Decimal amount sent on the source chain (e.g. "1.5"). Omitted for exact_output
         # cross-chain transfers until the source amount is determined.
         source_amount: nil,
@@ -184,6 +191,7 @@ module Privy
               Privy::WalletActionTransferRejectedWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,
             wallet_id: String,
+            reference_id: T.nilable(String),
             source_amount: String,
             source_asset: String,
             source_asset_address: String,

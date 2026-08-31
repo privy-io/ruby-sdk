@@ -52,6 +52,13 @@ module Privy
       sig { params(nonce: String).void }
       attr_writer :nonce
 
+      # Developer-provided identifier for this request. Must be unique per app.
+      sig { returns(T.nilable(String)) }
+      attr_reader :reference_id
+
+      sig { params(reference_id: String).void }
+      attr_writer :reference_id
+
       # Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
       # cross-chain or cross-asset transfers; omit to use the provider default.
       sig { returns(T.nilable(Integer)) }
@@ -73,6 +80,7 @@ module Privy
           amount_type: Privy::AmountType::OrSymbol,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           nonce: String,
+          reference_id: String,
           slippage_bps: Integer
         ).returns(T.attached_class)
       end
@@ -94,6 +102,8 @@ module Privy
         # Unique caller-generated nonce used to prevent replaying a signed wallet action
         # request. Must be at least 24 characters (e.g. a cuid2 or UUID).
         nonce: nil,
+        # Developer-provided identifier for this request. Must be unique per app.
+        reference_id: nil,
         # Maximum allowed slippage in basis points (1 bps = 0.01%). Only applicable for
         # cross-chain or cross-asset transfers; omit to use the provider default.
         slippage_bps: nil
@@ -109,6 +119,7 @@ module Privy
             amount_type: Privy::AmountType::TaggedSymbol,
             fee_configuration: Privy::FeeConfiguration,
             nonce: String,
+            reference_id: String,
             slippage_bps: Integer
           }
         )

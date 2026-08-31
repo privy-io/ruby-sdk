@@ -34,6 +34,9 @@ module Privy
       # Response to the `wallet_sendCalls` RPC.
       variant :wallet_sendCalls, -> { Privy::EthereumSendCallsRpcResponse }
 
+      # Response to the Aptos `aptos_signTransaction` RPC.
+      variant :aptos_signTransaction, -> { Privy::AptosSignTransactionRpcResponse }
+
       # Response to the SVM `signMessage` RPC.
       variant :signMessage, -> { Privy::SolanaSignMessageRpcResponse }
 
@@ -92,7 +95,7 @@ module Privy
       variant :exportSeedPhrase, -> { Privy::ExportSeedPhraseRpcResponse }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EthereumPersonalSignRpcResponse, Privy::Models::EthereumSignTypedDataRpcResponse, Privy::Models::EthereumSignTransactionRpcResponse, Privy::Models::EthereumSendTransactionRpcResponse, Privy::Models::EthereumSignUserOperationRpcResponse, Privy::Models::EthereumSign7702AuthorizationRpcResponse, Privy::Models::EthereumSecp256k1SignRpcResponse, Privy::Models::EthereumSendCallsRpcResponse, Privy::Models::SolanaSignMessageRpcResponse, Privy::Models::SolanaSignTransactionRpcResponse, Privy::Models::SolanaSignAndSendTransactionRpcResponse, Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::SparkWithdrawRpcResponse, Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse, Privy::Models::TronSignTransactionRpcResponse, Privy::Models::TronSendTransactionRpcResponse, Privy::Models::XrplSignTransactionRpcResponse, Privy::Models::ExportPrivateKeyRpcResponse, Privy::Models::ExportSeedPhraseRpcResponse)]
+      #   @return [Array(Privy::Models::EthereumPersonalSignRpcResponse, Privy::Models::EthereumSignTypedDataRpcResponse, Privy::Models::EthereumSignTransactionRpcResponse, Privy::Models::EthereumSendTransactionRpcResponse, Privy::Models::EthereumSignUserOperationRpcResponse, Privy::Models::EthereumSign7702AuthorizationRpcResponse, Privy::Models::EthereumSecp256k1SignRpcResponse, Privy::Models::EthereumSendCallsRpcResponse, Privy::Models::AptosSignTransactionRpcResponse, Privy::Models::SolanaSignMessageRpcResponse, Privy::Models::SolanaSignTransactionRpcResponse, Privy::Models::SolanaSignAndSendTransactionRpcResponse, Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::SparkWithdrawRpcResponse, Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse, Privy::Models::TronSignTransactionRpcResponse, Privy::Models::TronSendTransactionRpcResponse, Privy::Models::XrplSignTransactionRpcResponse, Privy::Models::ExportPrivateKeyRpcResponse, Privy::Models::ExportSeedPhraseRpcResponse)]
     end
   end
 end

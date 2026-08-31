@@ -96,13 +96,19 @@ module Privy
         #   @return [Privy::Models::Wallets::FailureReason, nil]
         optional :failure_reason, -> { Privy::Wallets::FailureReason }
 
+        # @!attribute reference_id
+        #   Developer-provided reference ID, if one was included in the request.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String, nil?: true
+
         # @!attribute steps
         #   The steps of the wallet action. Only returned if `?include=steps` is provided.
         #
         #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>, nil]
         optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
-        # @!method initialize(id:, asset_address:, caip2:, created_at:, raw_amount:, share_amount:, status:, type:, vault_address:, vault_id:, wallet_id:, amount: nil, asset: nil, decimals: nil, failure_reason: nil, steps: nil)
+        # @!method initialize(id:, asset_address:, caip2:, created_at:, raw_amount:, share_amount:, status:, type:, vault_address:, vault_id:, wallet_id:, amount: nil, asset: nil, decimals: nil, failure_reason: nil, reference_id: nil, steps: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EarnWithdrawActionResponse} for more details.
         #
@@ -137,6 +143,8 @@ module Privy
         #   @param decimals [Integer] Number of decimals for the underlying asset (e.g. 6 for USDC, 18 for ETH). Only
         #
         #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+        #
+        #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
         #
         #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep>] The steps of the wallet action. Only returned if `?include=steps` is provided.
 

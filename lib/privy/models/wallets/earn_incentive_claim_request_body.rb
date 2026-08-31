@@ -19,7 +19,13 @@ module Privy
         #   @return [String, nil]
         optional :nonce, String
 
-        # @!method initialize(chain:, nonce: nil)
+        # @!attribute reference_id
+        #   Developer-provided identifier for this request. Must be unique per app.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String
+
+        # @!method initialize(chain:, nonce: nil, reference_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EarnIncentiveClaimRequestBody} for more details.
         #
@@ -28,6 +34,8 @@ module Privy
         #   @param chain [String] The blockchain network on which to perform the incentive claim. Supported chains
         #
         #   @param nonce [String] Unique caller-generated nonce used to prevent replaying a signed wallet action r
+        #
+        #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       end
     end
   end

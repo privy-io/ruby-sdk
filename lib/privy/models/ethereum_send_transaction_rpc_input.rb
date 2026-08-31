@@ -38,6 +38,7 @@ module Privy
       optional :experimental_data_suffix, String
 
       # @!attribute reference_id
+      #   Developer-provided identifier for this request. Must be unique per app.
       #
       #   @return [String, nil]
       optional :reference_id, String
@@ -77,7 +78,7 @@ module Privy
       #
       #   @param experimental_data_suffix [String] A hex-encoded string prefixed with '0x', capped at 300002 characters (150,000 by
       #
-      #   @param reference_id [String]
+      #   @param reference_id [String] Developer-provided identifier for this request. Must be unique per app.
       #
       #   @param sponsor [Boolean]
       #

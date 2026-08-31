@@ -17,6 +17,7 @@ module Privy
             Privy::EthereumSign7702AuthorizationRpcInput,
             Privy::EthereumSignUserOperationRpcInput,
             Privy::EthereumSendCallsRpcInput,
+            Privy::AptosSignTransactionRpcInput,
             Privy::SolanaSignTransactionRpcInput,
             Privy::SolanaSignAndSendTransactionRpcInput,
             Privy::SolanaSignMessageRpcInput,
