@@ -3,15 +3,15 @@ module Privy
     class Wallets
       attr_reader actions: Privy::Resources::Wallets::Actions
 
-      attr_reader earn: Privy::Resources::Wallets::Earn
-
-      attr_reader transactions: Privy::Resources::Wallets::Transactions
-
       attr_reader balance: Privy::Resources::Wallets::Balance
+
+      attr_reader deposit_accounts: Privy::Resources::Wallets::DepositAccounts
+
+      attr_reader earn: Privy::Resources::Wallets::Earn
 
       attr_reader swap: Privy::Resources::Wallets::Swap
 
-      attr_reader deposit_accounts: Privy::Resources::Wallets::DepositAccounts
+      attr_reader transactions: Privy::Resources::Wallets::Transactions
 
       def create: (
         chain_type: Privy::Models::wallet_chain_type,

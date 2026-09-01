@@ -7,23 +7,23 @@ module Privy
       # @return [Privy::Resources::Wallets::Actions]
       attr_reader :actions
 
-      # @return [Privy::Resources::Wallets::Earn]
-      attr_reader :earn
-
-      # Operations related to wallets
-      # @return [Privy::Resources::Wallets::Transactions]
-      attr_reader :transactions
-
       # Operations related to wallets
       # @return [Privy::Resources::Wallets::Balance]
       attr_reader :balance
+
+      # @return [Privy::Resources::Wallets::DepositAccounts]
+      attr_reader :deposit_accounts
+
+      # @return [Privy::Resources::Wallets::Earn]
+      attr_reader :earn
 
       # Operations for swapping tokens within wallets
       # @return [Privy::Resources::Wallets::Swap]
       attr_reader :swap
 
-      # @return [Privy::Resources::Wallets::DepositAccounts]
-      attr_reader :deposit_accounts
+      # Operations related to wallets
+      # @return [Privy::Resources::Wallets::Transactions]
+      attr_reader :transactions
 
       # Some parameter documentations has been truncated, see
       # {Privy::Models::WalletCreateParams} for more details.
@@ -486,7 +486,7 @@ module Privy
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
-      # @param wallet_rpc_request_body [Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::AptosSignTransactionRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::SparkWithdrawRpcInput, Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::XrplSignTransactionRpcInput, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput] Body param: Request body for wallet RPC operations, discriminated by method.
+      # @param wallet_rpc_request_body [Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::AptosSignTransactionRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::SparkWithdrawRpcInput, Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::XrplSignTransactionRpcInput, Privy::Models::NearSignTransactionRpcRequestBody, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput] Body param: Request body for wallet RPC operations, discriminated by method.
       #
       # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
       #
@@ -496,7 +496,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::EthereumPersonalSignRpcResponse, Privy::Models::EthereumSignTypedDataRpcResponse, Privy::Models::EthereumSignTransactionRpcResponse, Privy::Models::EthereumSendTransactionRpcResponse, Privy::Models::EthereumSignUserOperationRpcResponse, Privy::Models::EthereumSign7702AuthorizationRpcResponse, Privy::Models::EthereumSecp256k1SignRpcResponse, Privy::Models::EthereumSendCallsRpcResponse, Privy::Models::AptosSignTransactionRpcResponse, Privy::Models::SolanaSignMessageRpcResponse, Privy::Models::SolanaSignTransactionRpcResponse, Privy::Models::SolanaSignAndSendTransactionRpcResponse, Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::SparkWithdrawRpcResponse, Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse, Privy::Models::TronSignTransactionRpcResponse, Privy::Models::TronSendTransactionRpcResponse, Privy::Models::XrplSignTransactionRpcResponse, Privy::Models::ExportPrivateKeyRpcResponse, Privy::Models::ExportSeedPhraseRpcResponse]
+      # @return [Privy::Models::EthereumPersonalSignRpcResponse, Privy::Models::EthereumSignTypedDataRpcResponse, Privy::Models::EthereumSignTransactionRpcResponse, Privy::Models::EthereumSendTransactionRpcResponse, Privy::Models::EthereumSignUserOperationRpcResponse, Privy::Models::EthereumSign7702AuthorizationRpcResponse, Privy::Models::EthereumSecp256k1SignRpcResponse, Privy::Models::EthereumSendCallsRpcResponse, Privy::Models::AptosSignTransactionRpcResponse, Privy::Models::SolanaSignMessageRpcResponse, Privy::Models::SolanaSignTransactionRpcResponse, Privy::Models::SolanaSignAndSendTransactionRpcResponse, Privy::Models::SparkTransferRpcResponse, Privy::Models::SparkGetBalanceRpcResponse, Privy::Models::SparkTransferTokensRpcResponse, Privy::Models::SparkGetStaticDepositAddressRpcResponse, Privy::Models::SparkGetClaimStaticDepositQuoteRpcResponse, Privy::Models::SparkClaimStaticDepositRpcResponse, Privy::Models::SparkCreateLightningInvoiceRpcResponse, Privy::Models::SparkPayLightningInvoiceRpcResponse, Privy::Models::SparkSignMessageWithIdentityKeyRpcResponse, Privy::Models::SparkWithdrawRpcResponse, Privy::Models::SparkGetWithdrawalFeeQuoteRpcResponse, Privy::Models::TronSignTransactionRpcResponse, Privy::Models::TronSendTransactionRpcResponse, Privy::Models::XrplSignTransactionRpcResponse, Privy::Models::NearSignTransactionRpcResponse, Privy::Models::ExportPrivateKeyRpcResponse, Privy::Models::ExportSeedPhraseRpcResponse]
       #
       # @see Privy::Models::WalletRpcParams
       def rpc(wallet_id, params)
@@ -575,11 +575,11 @@ module Privy
       def initialize(client:)
         @client = client
         @actions = Privy::Resources::Wallets::Actions.new(client: client)
-        @earn = Privy::Resources::Wallets::Earn.new(client: client)
-        @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
         @balance = Privy::Resources::Wallets::Balance.new(client: client)
-        @swap = Privy::Resources::Wallets::Swap.new(client: client)
         @deposit_accounts = Privy::Resources::Wallets::DepositAccounts.new(client: client)
+        @earn = Privy::Resources::Wallets::Earn.new(client: client)
+        @swap = Privy::Resources::Wallets::Swap.new(client: client)
+        @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
       end
     end
   end

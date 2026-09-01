@@ -17,7 +17,12 @@ module Privy
       #   @return [Privy::Models::CryptoDepositAssetFilterAll, Privy::Models::CryptoDepositAssetFilterInclude, Privy::Models::CryptoDepositAssetFilterExclude]
       required :source, union: -> { Privy::CryptoDepositAssetFilter }
 
-      # @!method initialize(destination:, source:)
+      # @!attribute type
+      #
+      #   @return [Symbol, Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::Type]
+      required :type, enum: -> { Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type }
+
+      # @!method initialize(destination:, source:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody} for more
       #   details.
@@ -27,6 +32,18 @@ module Privy
       #   @param destination [Privy::Models::CryptoDepositAsset] An asset on a chain. Uses a human-readable alias (usdc, base) when one is on fil
       #
       #   @param source [Privy::Models::CryptoDepositAssetFilterAll, Privy::Models::CryptoDepositAssetFilterInclude, Privy::Models::CryptoDepositAssetFilterExclude] Which assets a deposit address accepts. Asset and chain use human-readable alias
+      #
+      #   @param type [Symbol, Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::Type]
+
+      # @see Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody#type
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INLINE_ROUTE = :inline_route
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
     end
   end
 end

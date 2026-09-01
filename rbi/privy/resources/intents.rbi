@@ -175,6 +175,7 @@ module Privy
               Privy::TronSignTransactionRpcInput::OrHash,
               Privy::TronSendTransactionRpcInput::OrHash,
               Privy::XrplSignTransactionRpcInput::OrHash,
+              Privy::NearSignTransactionRpcRequestBody::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),

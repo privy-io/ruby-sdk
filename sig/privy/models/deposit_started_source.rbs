@@ -3,21 +3,19 @@ module Privy
     type deposit_started_source =
       {
         amount: String,
-        currency: Privy::Models::fiat_currency,
-        payment_rail: Privy::Models::fiat_payment_rail,
+        currency: Privy::Models::fiat_deposit_currency,
+        payment_rail: String,
         sender_name: String
       }
 
     class DepositStartedSource < Privy::Internal::Type::BaseModel
       attr_accessor amount: String
 
-      attr_accessor currency: Privy::Models::fiat_currency
+      attr_accessor currency: Privy::Models::fiat_deposit_currency
 
-      attr_reader payment_rail: Privy::Models::fiat_payment_rail?
+      attr_reader payment_rail: String?
 
-      def payment_rail=: (
-        Privy::Models::fiat_payment_rail
-      ) -> Privy::Models::fiat_payment_rail
+      def payment_rail=: (String) -> String
 
       attr_reader sender_name: String?
 
@@ -25,15 +23,15 @@ module Privy
 
       def initialize: (
         amount: String,
-        currency: Privy::Models::fiat_currency,
-        ?payment_rail: Privy::Models::fiat_payment_rail,
+        currency: Privy::Models::fiat_deposit_currency,
+        ?payment_rail: String,
         ?sender_name: String
       ) -> void
 
       def to_hash: -> {
         amount: String,
-        currency: Privy::Models::fiat_currency,
-        payment_rail: Privy::Models::fiat_payment_rail,
+        currency: Privy::Models::fiat_deposit_currency,
+        payment_rail: String,
         sender_name: String
       }
     end

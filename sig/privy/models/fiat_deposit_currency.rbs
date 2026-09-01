@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    type fiat_deposit_currency = :usd | :eur | :gbp | :brl | :mxn | :cop
+
+    module FiatDepositCurrency
+      extend Privy::Internal::Type::Enum
+
+      USD: :usd
+      EUR: :eur
+      GBP: :gbp
+      BRL: :brl
+      MXN: :mxn
+      COP: :cop
+
+      def self?.values: -> ::Array[Privy::Models::fiat_deposit_currency]
+    end
+  end
+end

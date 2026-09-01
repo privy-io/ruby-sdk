@@ -5,12 +5,12 @@ module Privy
     # Operations related to users
     class Users
       # Operations related to fiat onramping and offramping
-      sig { returns(Privy::Resources::Users::KYC) }
-      attr_reader :kyc
-
-      # Operations related to fiat onramping and offramping
       sig { returns(Privy::Resources::Users::ExternalFiatAccounts) }
       attr_reader :external_fiat_accounts
+
+      # Operations related to fiat onramping and offramping
+      sig { returns(Privy::Resources::Users::KYC) }
+      attr_reader :kyc
 
       # Create a new user with linked accounts. Optionally pre-generate embedded wallets
       # for the user.

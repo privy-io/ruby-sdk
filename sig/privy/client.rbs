@@ -17,11 +17,13 @@ module Privy
 
     attr_reader app_secret: String
 
-    attr_reader wallets: Privy::Resources::Wallets
+    attr_reader apps: Privy::Resources::Apps
 
     attr_reader cards: Privy::Resources::Cards
 
-    attr_reader users: Privy::Resources::Users
+    attr_reader intents: Privy::Resources::Intents
+
+    attr_reader key_quorums: Privy::Resources::KeyQuorums
 
     attr_reader organizations: Privy::Resources::Organizations
 
@@ -29,11 +31,9 @@ module Privy
 
     attr_reader transactions: Privy::Resources::Transactions
 
-    attr_reader key_quorums: Privy::Resources::KeyQuorums
+    attr_reader users: Privy::Resources::Users
 
-    attr_reader intents: Privy::Resources::Intents
-
-    attr_reader apps: Privy::Resources::Apps
+    attr_reader wallets: Privy::Resources::Wallets
 
     attr_reader webhooks: Privy::Resources::Webhooks
 
@@ -64,6 +64,8 @@ module Privy
     attr_reader yield_: Privy::Resources::Yield
 
     attr_reader kraken_embed: Privy::Resources::KrakenEmbed
+
+    attr_reader actions: Privy::Resources::Actions
 
     attr_reader swaps: Privy::Resources::Swaps
 

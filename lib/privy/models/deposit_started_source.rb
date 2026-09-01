@@ -10,16 +10,18 @@ module Privy
       required :amount, String
 
       # @!attribute currency
-      #   Supported fiat currencies.
+      #   Fiat currencies a deposit account can receive deposits in.
       #
-      #   @return [Symbol, Privy::Models::FiatCurrency]
-      required :currency, enum: -> { Privy::FiatCurrency }
+      #   @return [Symbol, Privy::Models::FiatDepositCurrency]
+      required :currency, enum: -> { Privy::FiatDepositCurrency }
 
       # @!attribute payment_rail
-      #   Supported fiat payment rails.
+      #   The payment rail the deposit arrived on. Known values include "sepa",
+      #   "ach_push", "wire", "fednow", "faster_payments", "pix", "spei", but the provider
+      #   may return others.
       #
-      #   @return [Symbol, Privy::Models::FiatPaymentRail, nil]
-      optional :payment_rail, enum: -> { Privy::FiatPaymentRail }
+      #   @return [String, nil]
+      optional :payment_rail, String
 
       # @!attribute sender_name
       #
@@ -27,13 +29,16 @@ module Privy
       optional :sender_name, String
 
       # @!method initialize(amount:, currency:, payment_rail: nil, sender_name: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::DepositStartedSource} for more details.
+      #
       #   The fiat deposit that was received, including amount, currency, and originator.
       #
       #   @param amount [String] The fiat amount deposited.
       #
-      #   @param currency [Symbol, Privy::Models::FiatCurrency] Supported fiat currencies.
+      #   @param currency [Symbol, Privy::Models::FiatDepositCurrency] Fiat currencies a deposit account can receive deposits in.
       #
-      #   @param payment_rail [Symbol, Privy::Models::FiatPaymentRail] Supported fiat payment rails.
+      #   @param payment_rail [String] The payment rail the deposit arrived on. Known values include "sepa", "ach_push"
       #
       #   @param sender_name [String]
     end

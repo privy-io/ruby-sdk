@@ -6,11 +6,13 @@ module Privy
     module CreateCryptoDepositAccountRequestBody
       extend Privy::Internal::Type::Union
 
+      discriminator :type
+
       # Creates a crypto deposit account from an existing deposit configuration.
-      variant -> { Privy::CreateCryptoDepositAccountWithConfigRequestBody }
+      variant :deposit_config, -> { Privy::CreateCryptoDepositAccountWithConfigRequestBody }
 
       # Creates a crypto deposit account from an inline source and destination.
-      variant -> { Privy::CreateCryptoDepositAccountWithRouteRequestBody }
+      variant :inline_route, -> { Privy::CreateCryptoDepositAccountWithRouteRequestBody }
 
       # @!method self.variants
       #   @return [Array(Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody, Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody)]

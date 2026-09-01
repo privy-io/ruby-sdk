@@ -9,7 +9,10 @@ class Privy::Test::Resources::Wallets::DepositAccounts::CryptoTest < Privy::Test
     response =
       @privy_api.wallets.deposit_accounts.crypto.create(
         "wallet_id",
-        create_crypto_deposit_account_request_body: {deposit_config_id: "clg2rvssg025ny5fmul5m95fn"}
+        create_crypto_deposit_account_request_body: {
+          deposit_config_id: "clg2rvssg025ny5fmul5m95fn",
+          type: :deposit_config
+        }
       )
 
     assert_pattern do

@@ -1,14 +1,35 @@
 module Privy
   module Models
     type create_crypto_deposit_account_with_config_request_body =
-      { deposit_config_id: String }
+      {
+        deposit_config_id: String,
+        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
+      }
 
     class CreateCryptoDepositAccountWithConfigRequestBody < Privy::Internal::Type::BaseModel
       attr_accessor deposit_config_id: String
 
-      def initialize: (deposit_config_id: String) -> void
+      attr_accessor type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
 
-      def to_hash: -> { deposit_config_id: String }
+      def initialize: (
+        deposit_config_id: String,
+        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
+      ) -> void
+
+      def to_hash: -> {
+        deposit_config_id: String,
+        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
+      }
+
+      type type_ = :deposit_config
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        DEPOSIT_CONFIG: :deposit_config
+
+        def self?.values: -> ::Array[Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_]
+      end
     end
   end
 end

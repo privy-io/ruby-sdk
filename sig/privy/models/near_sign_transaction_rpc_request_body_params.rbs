@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type near_sign_transaction_rpc_request_body_params = { transaction: String }
+
+    class NearSignTransactionRpcRequestBodyParams < Privy::Internal::Type::BaseModel
+      attr_accessor transaction: String
+
+      def initialize: (transaction: String) -> void
+
+      def to_hash: -> { transaction: String }
+    end
+  end
+end

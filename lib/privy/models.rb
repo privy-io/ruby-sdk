@@ -826,6 +826,8 @@ module Privy
 
   FiatDepositAccountStatus = Privy::Models::FiatDepositAccountStatus
 
+  FiatDepositCurrency = Privy::Models::FiatDepositCurrency
+
   FiatDepositInstructions = Privy::Models::FiatDepositInstructions
 
   FiatOnrampDestination = Privy::Models::FiatOnrampDestination
@@ -1337,6 +1339,8 @@ module Privy
 
   LinkJwtInput = Privy::Models::LinkJwtInput
 
+  ListActions = Privy::Models::ListActions
+
   ListExternalFiatAccountsResponse = Privy::Models::ListExternalFiatAccountsResponse
 
   ListFiatDepositAccountsResponse = Privy::Models::ListFiatDepositAccountsResponse
@@ -1417,6 +1421,22 @@ module Privy
   MoonpayUiTheme = Privy::Models::MoonpayUiTheme
 
   NamedTokenTransferSource = Privy::Models::NamedTokenTransferSource
+
+  NearRpcRequestBody = Privy::Models::NearRpcRequestBody
+
+  NearRpcResponse = Privy::Models::NearRpcResponse
+
+  NearSignedTransactionBorshBase64 = Privy::Models::NearSignedTransactionBorshBase64
+
+  NearSignTransactionRpcRequestBody = Privy::Models::NearSignTransactionRpcRequestBody
+
+  NearSignTransactionRpcRequestBodyParams = Privy::Models::NearSignTransactionRpcRequestBodyParams
+
+  NearSignTransactionRpcResponse = Privy::Models::NearSignTransactionRpcResponse
+
+  NearSignTransactionRpcResponseData = Privy::Models::NearSignTransactionRpcResponseData
+
+  NearUnsignedTransactionBorshBase64 = Privy::Models::NearUnsignedTransactionBorshBase64
 
   OAuthAuthenticateRecoveryResponse = Privy::Models::OAuthAuthenticateRecoveryResponse
 

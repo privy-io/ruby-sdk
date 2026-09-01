@@ -438,10 +438,9 @@ module Privy
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `access_list_entry` is a `Privy::AccessListEntry`
-        #   access_list_entry => {
-        #     address: address,
-        #     storage_keys: storage_keys
+        #   # `allowlist_deletion_response` is a `Privy::AllowlistDeletionResponse`
+        #   allowlist_deletion_response => {
+        #     message: message
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

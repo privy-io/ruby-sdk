@@ -436,6 +436,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in Privy::TronSignTransactionRpcResponse
       in Privy::TronSendTransactionRpcResponse
       in Privy::XrplSignTransactionRpcResponse
+      in Privy::NearSignTransactionRpcResponse
       in Privy::ExportPrivateKeyRpcResponse
       in Privy::ExportSeedPhraseRpcResponse
       end
@@ -469,6 +470,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       in {method_: :tron_signTransaction, data: Privy::TronSignTransactionRpcResponseData}
       in {method_: :tron_sendTransaction, data: Privy::TronSendTransactionRpcResponseData}
       in {method_: :xrpl_signTransaction, data: Privy::XrplSignTransactionRpcResponseData}
+      in {method_: :near_signTransaction, data: Privy::NearSignTransactionRpcResponseData}
       in {method_: :exportPrivateKey, data: Privy::PrivateKeyExportInput}
       in {method_: :exportSeedPhrase, data: Privy::SeedPhraseExportResponse}
       end

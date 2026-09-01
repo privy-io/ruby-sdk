@@ -1,9 +1,9 @@
 module Privy
   module Resources
     class Users
-      attr_reader kyc: Privy::Resources::Users::KYC
-
       attr_reader external_fiat_accounts: Privy::Resources::Users::ExternalFiatAccounts
+
+      attr_reader kyc: Privy::Resources::Users::KYC
 
       def create: (
         linked_accounts: ::Array[Privy::Models::linked_account_input],

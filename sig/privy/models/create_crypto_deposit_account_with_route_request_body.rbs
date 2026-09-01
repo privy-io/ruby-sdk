@@ -3,7 +3,8 @@ module Privy
     type create_crypto_deposit_account_with_route_request_body =
       {
         destination: Privy::CryptoDepositAsset,
-        source: Privy::Models::crypto_deposit_asset_filter
+        source: Privy::Models::crypto_deposit_asset_filter,
+        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
       }
 
     class CreateCryptoDepositAccountWithRouteRequestBody < Privy::Internal::Type::BaseModel
@@ -11,15 +12,29 @@ module Privy
 
       attr_accessor source: Privy::Models::crypto_deposit_asset_filter
 
+      attr_accessor type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
+
       def initialize: (
         destination: Privy::CryptoDepositAsset,
-        source: Privy::Models::crypto_deposit_asset_filter
+        source: Privy::Models::crypto_deposit_asset_filter,
+        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
       ) -> void
 
       def to_hash: -> {
         destination: Privy::CryptoDepositAsset,
-        source: Privy::Models::crypto_deposit_asset_filter
+        source: Privy::Models::crypto_deposit_asset_filter,
+        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
       }
+
+      type type_ = :inline_route
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INLINE_ROUTE: :inline_route
+
+        def self?.values: -> ::Array[Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_]
+      end
     end
   end
 end

@@ -5,12 +5,12 @@ module Privy
     # Operations related to users
     class Users
       # Operations related to fiat onramping and offramping
-      # @return [Privy::Resources::Users::KYC]
-      attr_reader :kyc
-
-      # Operations related to fiat onramping and offramping
       # @return [Privy::Resources::Users::ExternalFiatAccounts]
       attr_reader :external_fiat_accounts
+
+      # Operations related to fiat onramping and offramping
+      # @return [Privy::Resources::Users::KYC]
+      attr_reader :kyc
 
       # Create a new user with linked accounts. Optionally pre-generate embedded wallets
       # for the user.
@@ -451,8 +451,8 @@ module Privy
       # @param client [Privy::Client]
       def initialize(client:)
         @client = client
-        @kyc = Privy::Resources::Users::KYC.new(client: client)
         @external_fiat_accounts = Privy::Resources::Users::ExternalFiatAccounts.new(client: client)
+        @kyc = Privy::Resources::Users::KYC.new(client: client)
       end
     end
   end

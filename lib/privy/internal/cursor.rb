@@ -10,8 +10,8 @@ module Privy
     #   end
     #
     # @example
-    #   cursor.auto_paging_each do |wallet|
-    #     puts(wallet)
+    #   cursor.auto_paging_each do |intent|
+    #     puts(intent)
     #   end
     class Cursor
       include Privy::Internal::Type::BasePage

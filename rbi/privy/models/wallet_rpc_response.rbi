@@ -35,6 +35,7 @@ module Privy
             Privy::TronSignTransactionRpcResponse,
             Privy::TronSendTransactionRpcResponse,
             Privy::XrplSignTransactionRpcResponse,
+            Privy::NearSignTransactionRpcResponse,
             Privy::ExportPrivateKeyRpcResponse,
             Privy::ExportSeedPhraseRpcResponse
           )

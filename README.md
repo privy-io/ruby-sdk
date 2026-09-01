@@ -46,15 +46,15 @@ List methods in the Privy API API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```ruby
-page = privy_api.wallets.list
+page = privy_api.intents.list
 
 # Fetch single item from page.
-wallet = page.data[0]
-puts(wallet.id)
+intent = page.data[0]
+puts(intent)
 
 # Automatically fetches more pages as needed.
-page.auto_paging_each do |wallet|
-  puts(wallet.id)
+page.auto_paging_each do |intent|
+  puts(intent)
 end
 ```
 
@@ -63,7 +63,7 @@ Alternatively, you can use the `#next_page?` and `#next_page` methods for more g
 ```ruby
 if page.next_page?
   new_page = page.next_page
-  puts(new_page.data[0].id)
+  puts(new_page.data[0])
 end
 ```
 
@@ -262,25 +262,25 @@ privy_api.wallets.get("wallet_id", **params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :ethereum
-puts(Privy::WalletChainType::ETHEREUM)
+# :true
+puts(Privy::IntentListParams::CurrentUserHasSigned::TRUE)
 
-# Revealed type: `T.all(Privy::WalletChainType, Symbol)`
-T.reveal_type(Privy::WalletChainType::ETHEREUM)
+# Revealed type: `T.all(Privy::IntentListParams::CurrentUserHasSigned, Symbol)`
+T.reveal_type(Privy::IntentListParams::CurrentUserHasSigned::TRUE)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-privy_api.wallets.create(
-  chain_type: Privy::WalletChainType::ETHEREUM,
+privy_api.intents.list(
+  current_user_has_signed: Privy::IntentListParams::CurrentUserHasSigned::TRUE,
   # …
 )
 
 # Literal values are also permissible:
-privy_api.wallets.create(
-  chain_type: :ethereum,
+privy_api.intents.list(
+  current_user_has_signed: :true,
   # …
 )
 ```

@@ -86,6 +86,9 @@ module Privy
       # Executes the XRPL `xrpl_signTransaction` RPC to sign a transaction. The caller is responsible for broadcasting.
       variant :xrpl_signTransaction, -> { Privy::XrplSignTransactionRpcInput }
 
+      # Executes the NEAR `near_signTransaction` RPC to sign a transaction. The caller is responsible for broadcasting.
+      variant :near_signTransaction, -> { Privy::NearSignTransactionRpcRequestBody }
+
       # Exports the private key of the wallet.
       variant :exportPrivateKey, -> { Privy::ExportPrivateKeyRpcInput }
 
@@ -93,7 +96,7 @@ module Privy
       variant :exportSeedPhrase, -> { Privy::ExportSeedPhraseRpcInput }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::AptosSignTransactionRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::SparkWithdrawRpcInput, Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::XrplSignTransactionRpcInput, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput)]
+      #   @return [Array(Privy::Models::EthereumSignTransactionRpcInput, Privy::Models::EthereumSendTransactionRpcInput, Privy::Models::EthereumPersonalSignRpcInput, Privy::Models::EthereumSignTypedDataRpcInput, Privy::Models::EthereumSecp256k1SignRpcInput, Privy::Models::EthereumSign7702AuthorizationRpcInput, Privy::Models::EthereumSignUserOperationRpcInput, Privy::Models::EthereumSendCallsRpcInput, Privy::Models::AptosSignTransactionRpcInput, Privy::Models::SolanaSignTransactionRpcInput, Privy::Models::SolanaSignAndSendTransactionRpcInput, Privy::Models::SolanaSignMessageRpcInput, Privy::Models::SparkTransferRpcInput, Privy::Models::SparkGetBalanceRpcInput, Privy::Models::SparkTransferTokensRpcInput, Privy::Models::SparkGetStaticDepositAddressRpcInput, Privy::Models::SparkGetClaimStaticDepositQuoteRpcInput, Privy::Models::SparkClaimStaticDepositRpcInput, Privy::Models::SparkCreateLightningInvoiceRpcInput, Privy::Models::SparkPayLightningInvoiceRpcInput, Privy::Models::SparkSignMessageWithIdentityKeyRpcInput, Privy::Models::SparkWithdrawRpcInput, Privy::Models::SparkGetWithdrawalFeeQuoteRpcInput, Privy::Models::TronSignTransactionRpcInput, Privy::Models::TronSendTransactionRpcInput, Privy::Models::XrplSignTransactionRpcInput, Privy::Models::NearSignTransactionRpcRequestBody, Privy::Models::ExportPrivateKeyRpcInput, Privy::Models::ExportSeedPhraseRpcInput)]
     end
   end
 end

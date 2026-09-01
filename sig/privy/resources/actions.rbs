@@ -1,0 +1,7 @@
+module Privy
+  module Resources
+    class Actions
+      def initialize: (client: Privy::Client) -> void
+    end
+  end
+end

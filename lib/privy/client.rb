@@ -28,15 +28,20 @@ module Privy
     # @return [String]
     attr_reader :app_secret
 
-    # @return [Privy::Resources::Wallets]
-    attr_reader :wallets
+    # Operations related to app settings and allowlist management
+    # @return [Privy::Resources::Apps]
+    attr_reader :apps
 
     # @return [Privy::Resources::Cards]
     attr_reader :cards
 
-    # Operations related to users
-    # @return [Privy::Resources::Users]
-    attr_reader :users
+    # Operations related to authorization intents for wallet actions
+    # @return [Privy::Resources::Intents]
+    attr_reader :intents
+
+    # Operations related to key quorums
+    # @return [Privy::Resources::KeyQuorums]
+    attr_reader :key_quorums
 
     # Operations related to organizations
     # @return [Privy::Resources::Organizations]
@@ -50,17 +55,12 @@ module Privy
     # @return [Privy::Resources::Transactions]
     attr_reader :transactions
 
-    # Operations related to key quorums
-    # @return [Privy::Resources::KeyQuorums]
-    attr_reader :key_quorums
+    # Operations related to users
+    # @return [Privy::Resources::Users]
+    attr_reader :users
 
-    # Operations related to authorization intents for wallet actions
-    # @return [Privy::Resources::Intents]
-    attr_reader :intents
-
-    # Operations related to app settings and allowlist management
-    # @return [Privy::Resources::Apps]
-    attr_reader :apps
+    # @return [Privy::Resources::Wallets]
+    attr_reader :wallets
 
     # @return [Privy::Resources::Webhooks]
     attr_reader :webhooks
@@ -106,6 +106,9 @@ module Privy
 
     # @return [Privy::Resources::KrakenEmbed]
     attr_reader :kraken_embed
+
+    # @return [Privy::Resources::Actions]
+    attr_reader :actions
 
     # @return [Privy::Resources::Swaps]
     attr_reader :swaps
@@ -191,15 +194,15 @@ module Privy
         headers: headers
       )
 
-      @wallets = Privy::Resources::Wallets.new(client: self)
+      @apps = Privy::Resources::Apps.new(client: self)
       @cards = Privy::Resources::Cards.new(client: self)
-      @users = Privy::Resources::Users.new(client: self)
+      @intents = Privy::Resources::Intents.new(client: self)
+      @key_quorums = Privy::Resources::KeyQuorums.new(client: self)
       @organizations = Privy::Resources::Organizations.new(client: self)
       @policies = Privy::Resources::Policies.new(client: self)
       @transactions = Privy::Resources::Transactions.new(client: self)
-      @key_quorums = Privy::Resources::KeyQuorums.new(client: self)
-      @intents = Privy::Resources::Intents.new(client: self)
-      @apps = Privy::Resources::Apps.new(client: self)
+      @users = Privy::Resources::Users.new(client: self)
+      @wallets = Privy::Resources::Wallets.new(client: self)
       @webhooks = Privy::Resources::Webhooks.new(client: self)
       @accounts = Privy::Resources::Accounts.new(client: self)
       @aggregations = Privy::Resources::Aggregations.new(client: self)
@@ -215,6 +218,7 @@ module Privy
       @oauth = Privy::Resources::OAuth.new(client: self)
       @yield_ = Privy::Resources::Yield.new(client: self)
       @kraken_embed = Privy::Resources::KrakenEmbed.new(client: self)
+      @actions = Privy::Resources::Actions.new(client: self)
       @swaps = Privy::Resources::Swaps.new(client: self)
     end
   end

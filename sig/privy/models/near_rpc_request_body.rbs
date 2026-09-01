@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type near_rpc_request_body =
+      {
+        method_: Privy::Models::NearRpcRequestBody::method_,
+        params: Privy::NearSignTransactionRpcRequestBodyParams
+      }
+
+    class NearRpcRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::NearRpcRequestBody::method_
+
+      attr_accessor params: Privy::NearSignTransactionRpcRequestBodyParams
+
+      def initialize: (
+        method_: Privy::Models::NearRpcRequestBody::method_,
+        params: Privy::NearSignTransactionRpcRequestBodyParams
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::NearRpcRequestBody::method_,
+        params: Privy::NearSignTransactionRpcRequestBodyParams
+      }
+
+      type method_ = :near_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        NEAR_SIGN_TRANSACTION: :near_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::NearRpcRequestBody::method_]
+      end
+    end
+  end
+end

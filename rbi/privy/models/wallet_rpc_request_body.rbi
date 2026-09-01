@@ -35,6 +35,7 @@ module Privy
             Privy::TronSignTransactionRpcInput,
             Privy::TronSendTransactionRpcInput,
             Privy::XrplSignTransactionRpcInput,
+            Privy::NearSignTransactionRpcRequestBody,
             Privy::ExportPrivateKeyRpcInput,
             Privy::ExportSeedPhraseRpcInput
           )

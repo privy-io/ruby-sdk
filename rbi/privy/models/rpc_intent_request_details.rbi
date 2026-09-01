@@ -38,6 +38,7 @@ module Privy
             Privy::TronSignTransactionRpcInput,
             Privy::TronSendTransactionRpcInput,
             Privy::XrplSignTransactionRpcInput,
+            Privy::NearSignTransactionRpcRequestBody,
             Privy::ExportPrivateKeyRpcInput,
             Privy::ExportSeedPhraseRpcInput
           )
@@ -82,6 +83,7 @@ module Privy
               Privy::TronSignTransactionRpcInput::OrHash,
               Privy::TronSendTransactionRpcInput::OrHash,
               Privy::XrplSignTransactionRpcInput::OrHash,
+              Privy::NearSignTransactionRpcRequestBody::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),
@@ -128,6 +130,7 @@ module Privy
                 Privy::TronSignTransactionRpcInput,
                 Privy::TronSendTransactionRpcInput,
                 Privy::XrplSignTransactionRpcInput,
+                Privy::NearSignTransactionRpcRequestBody,
                 Privy::ExportPrivateKeyRpcInput,
                 Privy::ExportSeedPhraseRpcInput
               ),

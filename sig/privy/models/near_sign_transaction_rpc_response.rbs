@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type near_sign_transaction_rpc_response =
+      {
+        data: Privy::NearSignTransactionRpcResponseData,
+        method_: Privy::Models::NearSignTransactionRpcResponse::method_
+      }
+
+    class NearSignTransactionRpcResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: Privy::NearSignTransactionRpcResponseData
+
+      attr_accessor method_: Privy::Models::NearSignTransactionRpcResponse::method_
+
+      def initialize: (
+        data: Privy::NearSignTransactionRpcResponseData,
+        method_: Privy::Models::NearSignTransactionRpcResponse::method_
+      ) -> void
+
+      def to_hash: -> {
+        data: Privy::NearSignTransactionRpcResponseData,
+        method_: Privy::Models::NearSignTransactionRpcResponse::method_
+      }
+
+      type method_ = :near_signTransaction
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        NEAR_SIGN_TRANSACTION: :near_signTransaction
+
+        def self?.values: -> ::Array[Privy::Models::NearSignTransactionRpcResponse::method_]
+      end
+    end
+  end
+end

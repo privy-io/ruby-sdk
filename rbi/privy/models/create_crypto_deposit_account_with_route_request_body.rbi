@@ -32,6 +32,13 @@ module Privy
       end
       attr_accessor :source
 
+      sig do
+        returns(
+          Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type::OrSymbol
+        )
+      end
+      attr_accessor :type
+
       # Creates a crypto deposit account from an inline source and destination.
       sig do
         params(
@@ -41,7 +48,9 @@ module Privy
               Privy::CryptoDepositAssetFilterAll::OrHash,
               Privy::CryptoDepositAssetFilterInclude::OrHash,
               Privy::CryptoDepositAssetFilterExclude::OrHash
-            )
+            ),
+          type:
+            Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -50,7 +59,8 @@ module Privy
         destination:,
         # Which assets a deposit address accepts. Asset and chain use human-readable
         # aliases when known.
-        source:
+        source:,
+        type:
       )
       end
 
@@ -63,11 +73,42 @@ module Privy
                 Privy::CryptoDepositAssetFilterAll,
                 Privy::CryptoDepositAssetFilterInclude,
                 Privy::CryptoDepositAssetFilterExclude
-              )
+              ),
+            type:
+              Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type::OrSymbol
           }
         )
       end
       def to_hash
+      end
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        INLINE_ROUTE =
+          T.let(
+            :inline_route,
+            Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Privy::CreateCryptoDepositAccountWithRouteRequestBody::Type::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

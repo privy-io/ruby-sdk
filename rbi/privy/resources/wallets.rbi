@@ -7,23 +7,23 @@ module Privy
       sig { returns(Privy::Resources::Wallets::Actions) }
       attr_reader :actions
 
-      sig { returns(Privy::Resources::Wallets::Earn) }
-      attr_reader :earn
-
-      # Operations related to wallets
-      sig { returns(Privy::Resources::Wallets::Transactions) }
-      attr_reader :transactions
-
       # Operations related to wallets
       sig { returns(Privy::Resources::Wallets::Balance) }
       attr_reader :balance
+
+      sig { returns(Privy::Resources::Wallets::DepositAccounts) }
+      attr_reader :deposit_accounts
+
+      sig { returns(Privy::Resources::Wallets::Earn) }
+      attr_reader :earn
 
       # Operations for swapping tokens within wallets
       sig { returns(Privy::Resources::Wallets::Swap) }
       attr_reader :swap
 
-      sig { returns(Privy::Resources::Wallets::DepositAccounts) }
-      attr_reader :deposit_accounts
+      # Operations related to wallets
+      sig { returns(Privy::Resources::Wallets::Transactions) }
+      attr_reader :transactions
 
       # Creates a new wallet on the requested chain and for the requested owner.
       sig do
@@ -462,6 +462,7 @@ module Privy
               Privy::TronSignTransactionRpcInput::OrHash,
               Privy::TronSendTransactionRpcInput::OrHash,
               Privy::XrplSignTransactionRpcInput::OrHash,
+              Privy::NearSignTransactionRpcRequestBody::OrHash,
               Privy::ExportPrivateKeyRpcInput::OrHash,
               Privy::ExportSeedPhraseRpcInput::OrHash
             ),

@@ -12,15 +12,17 @@ module Privy
       sig { returns(String) }
       attr_accessor :amount
 
-      # Supported fiat currencies.
-      sig { returns(Privy::FiatCurrency::TaggedSymbol) }
+      # Fiat currencies a deposit account can receive deposits in.
+      sig { returns(Privy::FiatDepositCurrency::TaggedSymbol) }
       attr_accessor :currency
 
-      # Supported fiat payment rails.
-      sig { returns(T.nilable(Privy::FiatPaymentRail::TaggedSymbol)) }
+      # The payment rail the deposit arrived on. Known values include "sepa",
+      # "ach_push", "wire", "fednow", "faster_payments", "pix", "spei", but the provider
+      # may return others.
+      sig { returns(T.nilable(String)) }
       attr_reader :payment_rail
 
-      sig { params(payment_rail: Privy::FiatPaymentRail::OrSymbol).void }
+      sig { params(payment_rail: String).void }
       attr_writer :payment_rail
 
       sig { returns(T.nilable(String)) }
@@ -33,17 +35,19 @@ module Privy
       sig do
         params(
           amount: String,
-          currency: Privy::FiatCurrency::OrSymbol,
-          payment_rail: Privy::FiatPaymentRail::OrSymbol,
+          currency: Privy::FiatDepositCurrency::OrSymbol,
+          payment_rail: String,
           sender_name: String
         ).returns(T.attached_class)
       end
       def self.new(
         # The fiat amount deposited.
         amount:,
-        # Supported fiat currencies.
+        # Fiat currencies a deposit account can receive deposits in.
         currency:,
-        # Supported fiat payment rails.
+        # The payment rail the deposit arrived on. Known values include "sepa",
+        # "ach_push", "wire", "fednow", "faster_payments", "pix", "spei", but the provider
+        # may return others.
         payment_rail: nil,
         sender_name: nil
       )
@@ -53,8 +57,8 @@ module Privy
         override.returns(
           {
             amount: String,
-            currency: Privy::FiatCurrency::TaggedSymbol,
-            payment_rail: Privy::FiatPaymentRail::TaggedSymbol,
+            currency: Privy::FiatDepositCurrency::TaggedSymbol,
+            payment_rail: String,
             sender_name: String
           }
         )

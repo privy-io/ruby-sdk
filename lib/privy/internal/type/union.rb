@@ -6,28 +6,28 @@ module Privy
       # @api private
       #
       # @example
-      #   # `crypto_deposit_asset_filter` is a `Privy::CryptoDepositAssetFilter`
-      #   case crypto_deposit_asset_filter
-      #   when Privy::CryptoDepositAssetFilterAll
-      #     puts(crypto_deposit_asset_filter.mode)
-      #   when Privy::CryptoDepositAssetFilterInclude
-      #     puts(crypto_deposit_asset_filter.values)
-      #   when Privy::CryptoDepositAssetFilterExclude
-      #     puts(crypto_deposit_asset_filter.mode)
+      #   # `user_invite_input` is a `Privy::UserInviteInput`
+      #   case user_invite_input
+      #   when Privy::EmailInviteInput
+      #     puts(user_invite_input.type)
+      #   when Privy::EmailDomainInviteInput
+      #     puts(user_invite_input.value)
+      #   when Privy::WalletInviteInput
+      #     puts(user_invite_input.type)
       #   else
-      #     puts(crypto_deposit_asset_filter)
+      #     puts(user_invite_input)
       #   end
       #
       # @example
-      #   case crypto_deposit_asset_filter
-      #   in {mode: :all}
-      #     # ...
-      #   in {mode: :include, values: values}
-      #     puts(values)
-      #   in {mode: :exclude, values: values}
-      #     puts(values)
+      #   case user_invite_input
+      #   in {type: :email, value: value}
+      #     puts(value)
+      #   in {type: :emailDomain, value: value}
+      #     puts(value)
+      #   in {type: :wallet, value: value}
+      #     puts(value)
       #   else
-      #     puts(crypto_deposit_asset_filter)
+      #     puts(user_invite_input)
       #   end
       module Union
         include Privy::Internal::Type::Converter

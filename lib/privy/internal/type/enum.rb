@@ -17,24 +17,24 @@ module Privy
       # values safely.
       #
       # @example
-      #   # `amount_type` is a `Privy::AmountType`
-      #   case amount_type
-      #   when Privy::AmountType::EXACT_INPUT
+      #   # `captcha_provider` is a `Privy::CaptchaProvider`
+      #   case captcha_provider
+      #   when Privy::CaptchaProvider::TURNSTILE
       #     # ...
-      #   when Privy::AmountType::EXACT_OUTPUT
+      #   when Privy::CaptchaProvider::HCAPTCHA
       #     # ...
       #   else
-      #     puts(amount_type)
+      #     puts(captcha_provider)
       #   end
       #
       # @example
-      #   case amount_type
-      #   in :exact_input
+      #   case captcha_provider
+      #   in :turnstile
       #     # ...
-      #   in :exact_output
+      #   in :hcaptcha
       #     # ...
       #   else
-      #     puts(amount_type)
+      #     puts(captcha_provider)
       #   end
       module Enum
         include Privy::Internal::Type::Converter

@@ -27,15 +27,20 @@ module Privy
     sig { returns(String) }
     attr_reader :app_secret
 
-    sig { returns(Privy::Resources::Wallets) }
-    attr_reader :wallets
+    # Operations related to app settings and allowlist management
+    sig { returns(Privy::Resources::Apps) }
+    attr_reader :apps
 
     sig { returns(Privy::Resources::Cards) }
     attr_reader :cards
 
-    # Operations related to users
-    sig { returns(Privy::Resources::Users) }
-    attr_reader :users
+    # Operations related to authorization intents for wallet actions
+    sig { returns(Privy::Resources::Intents) }
+    attr_reader :intents
+
+    # Operations related to key quorums
+    sig { returns(Privy::Resources::KeyQuorums) }
+    attr_reader :key_quorums
 
     # Operations related to organizations
     sig { returns(Privy::Resources::Organizations) }
@@ -49,17 +54,12 @@ module Privy
     sig { returns(Privy::Resources::Transactions) }
     attr_reader :transactions
 
-    # Operations related to key quorums
-    sig { returns(Privy::Resources::KeyQuorums) }
-    attr_reader :key_quorums
+    # Operations related to users
+    sig { returns(Privy::Resources::Users) }
+    attr_reader :users
 
-    # Operations related to authorization intents for wallet actions
-    sig { returns(Privy::Resources::Intents) }
-    attr_reader :intents
-
-    # Operations related to app settings and allowlist management
-    sig { returns(Privy::Resources::Apps) }
-    attr_reader :apps
+    sig { returns(Privy::Resources::Wallets) }
+    attr_reader :wallets
 
     sig { returns(Privy::Resources::Webhooks) }
     attr_reader :webhooks
@@ -105,6 +105,9 @@ module Privy
 
     sig { returns(Privy::Resources::KrakenEmbed) }
     attr_reader :kraken_embed
+
+    sig { returns(Privy::Resources::Actions) }
+    attr_reader :actions
 
     sig { returns(Privy::Resources::Swaps) }
     attr_reader :swaps
