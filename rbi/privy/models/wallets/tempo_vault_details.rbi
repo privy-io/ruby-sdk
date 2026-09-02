@@ -17,8 +17,9 @@ module Privy
         sig { returns(String) }
         attr_accessor :admin_wallet_address
 
-        # Privy wallet ID of the vault admin.
-        sig { returns(String) }
+        # Privy wallet ID of the vault admin, or null when the Tempo vault admin is not
+        # Privy-managed.
+        sig { returns(T.nilable(String)) }
         attr_accessor :admin_wallet_id
 
         # Annual percentage yield earned by the app from fee wrapper fees, in basis
@@ -68,7 +69,7 @@ module Privy
           params(
             id: String,
             admin_wallet_address: String,
-            admin_wallet_id: String,
+            admin_wallet_id: T.nilable(String),
             app_apy: T.nilable(Float),
             asset: Privy::Wallets::EarnAsset::OrHash,
             available_liquidity_usd: T.nilable(Float),
@@ -85,7 +86,8 @@ module Privy
           id:,
           # EVM address of the vault admin wallet.
           admin_wallet_address:,
-          # Privy wallet ID of the vault admin.
+          # Privy wallet ID of the vault admin, or null when the Tempo vault admin is not
+          # Privy-managed.
           admin_wallet_id:,
           # Annual percentage yield earned by the app from fee wrapper fees, in basis
           # points.
@@ -114,7 +116,7 @@ module Privy
             {
               id: String,
               admin_wallet_address: String,
-              admin_wallet_id: String,
+              admin_wallet_id: T.nilable(String),
               app_apy: T.nilable(Float),
               asset: Privy::Wallets::EarnAsset,
               available_liquidity_usd: T.nilable(Float),

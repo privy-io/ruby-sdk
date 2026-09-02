@@ -89,7 +89,7 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
         provider: :tempo,
         id: String,
         admin_wallet_address: String,
-        admin_wallet_id: String,
+        admin_wallet_id: String | nil,
         app_apy: Float | nil,
         asset: Privy::Wallets::EarnAsset,
         available_liquidity_usd: Float | nil,

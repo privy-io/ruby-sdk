@@ -5,7 +5,7 @@ module Privy
         {
           id: String,
           admin_wallet_address: String,
-          admin_wallet_id: String,
+          admin_wallet_id: String?,
           app_apy: Float?,
           asset: Privy::Wallets::EarnAsset,
           available_liquidity_usd: Float?,
@@ -22,7 +22,7 @@ module Privy
 
         attr_accessor admin_wallet_address: String
 
-        attr_accessor admin_wallet_id: String
+        attr_accessor admin_wallet_id: String?
 
         attr_accessor app_apy: Float?
 
@@ -45,7 +45,7 @@ module Privy
         def initialize: (
           id: String,
           admin_wallet_address: String,
-          admin_wallet_id: String,
+          admin_wallet_id: String?,
           app_apy: Float?,
           asset: Privy::Wallets::EarnAsset,
           available_liquidity_usd: Float?,
@@ -60,7 +60,7 @@ module Privy
         def to_hash: -> {
           id: String,
           admin_wallet_address: String,
-          admin_wallet_id: String,
+          admin_wallet_id: String?,
           app_apy: Float?,
           asset: Privy::Wallets::EarnAsset,
           available_liquidity_usd: Float?,

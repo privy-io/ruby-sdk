@@ -17,10 +17,11 @@ module Privy
         required :admin_wallet_address, String
 
         # @!attribute admin_wallet_id
-        #   Privy wallet ID of the vault admin.
+        #   Privy wallet ID of the vault admin, or null when the Tempo vault admin is not
+        #   Privy-managed.
         #
-        #   @return [String]
-        required :admin_wallet_id, String
+        #   @return [String, nil]
+        required :admin_wallet_id, String, nil?: true
 
         # @!attribute app_apy
         #   Annual percentage yield earned by the app from fee wrapper fees, in basis
@@ -87,7 +88,7 @@ module Privy
         #
         #   @param admin_wallet_address [String] EVM address of the vault admin wallet.
         #
-        #   @param admin_wallet_id [String] Privy wallet ID of the vault admin.
+        #   @param admin_wallet_id [String, nil] Privy wallet ID of the vault admin, or null when the Tempo vault admin is not Pr
         #
         #   @param app_apy [Float, nil] Annual percentage yield earned by the app from fee wrapper fees, in basis points
         #
