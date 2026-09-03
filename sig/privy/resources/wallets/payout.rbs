@@ -1,0 +1,11 @@
+module Privy
+  module Resources
+    class Wallets
+      class Payout
+        attr_reader fiat: Privy::Resources::Wallets::Payout::Fiat
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

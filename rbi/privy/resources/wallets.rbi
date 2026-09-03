@@ -17,6 +17,9 @@ module Privy
       sig { returns(Privy::Resources::Wallets::Earn) }
       attr_reader :earn
 
+      sig { returns(Privy::Resources::Wallets::Payout) }
+      attr_reader :payout
+
       # Operations for swapping tokens within wallets
       sig { returns(Privy::Resources::Wallets::Swap) }
       attr_reader :swap
@@ -191,6 +194,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: String,
+          entity: Privy::WalletEntityAssignmentRequestBody::OrHash,
           external_id: String,
           owner:
             T.nilable(
@@ -211,6 +215,8 @@ module Privy
         additional_signers: nil,
         # A human-readable label for the wallet.
         display_name: nil,
+        # Request body for assigning an entity to a wallet.
+        entity: nil,
         # A customer-provided identifier for mapping to external systems. URL-safe
         # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
         # after creation.

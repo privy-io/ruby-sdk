@@ -8,6 +8,12 @@ module Privy
       #   @return [String]
       required :id, String
 
+      # @!attribute asset
+      #   The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+      #
+      #   @return [String]
+      required :asset, String
+
       # @!attribute balance_formatted
       #   USD balance of the card funding wallet on the configured chain, or null when
       #   unavailable.
@@ -70,13 +76,15 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, balance_formatted:, brand:, cardholder:, chain_id:, created_at:, exp_month:, exp_year:, last4:, provider_id:, status:, wallet_id:)
+      # @!method initialize(id:, asset:, balance_formatted:, brand:, cardholder:, chain_id:, created_at:, exp_month:, exp_year:, last4:, provider_id:, status:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CardIssuingCardResponse} for more details.
       #
       #   Stripe Issuing card state bound to a Privy user and wallet.
       #
       #   @param id [String]
+      #
+      #   @param asset [String] The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
       #
       #   @param balance_formatted [String, nil] USD balance of the card funding wallet on the configured chain, or null when una
       #

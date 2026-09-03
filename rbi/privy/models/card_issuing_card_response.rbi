@@ -11,6 +11,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
+      # The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+      sig { returns(String) }
+      attr_accessor :asset
+
       # USD balance of the card funding wallet on the configured chain, or null when
       # unavailable.
       sig { returns(T.nilable(String)) }
@@ -58,6 +62,7 @@ module Privy
       sig do
         params(
           id: String,
+          asset: String,
           balance_formatted: T.nilable(String),
           brand: T.nilable(String),
           cardholder: Privy::CardIssuingCardholder::OrHash,
@@ -73,6 +78,8 @@ module Privy
       end
       def self.new(
         id:,
+        # The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+        asset:,
         # USD balance of the card funding wallet on the configured chain, or null when
         # unavailable.
         balance_formatted:,
@@ -98,6 +105,7 @@ module Privy
         override.returns(
           {
             id: String,
+            asset: String,
             balance_formatted: T.nilable(String),
             brand: T.nilable(String),
             cardholder: Privy::CardIssuingCardholder,

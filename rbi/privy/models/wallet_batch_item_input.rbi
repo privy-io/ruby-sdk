@@ -30,6 +30,15 @@ module Privy
       sig { params(display_name: String).void }
       attr_writer :display_name
 
+      # Request body for assigning an entity to a wallet.
+      sig { returns(T.nilable(Privy::WalletEntityAssignmentRequestBody)) }
+      attr_reader :entity
+
+      sig do
+        params(entity: Privy::WalletEntityAssignmentRequestBody::OrHash).void
+      end
+      attr_writer :entity
+
       # A customer-provided identifier for mapping to external systems. URL-safe
       # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
       # after creation.
@@ -68,6 +77,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: String,
+          entity: Privy::WalletEntityAssignmentRequestBody::OrHash,
           external_id: String,
           owner:
             T.nilable(
@@ -87,6 +97,8 @@ module Privy
         additional_signers: nil,
         # A human-readable label for the wallet.
         display_name: nil,
+        # Request body for assigning an entity to a wallet.
+        entity: nil,
         # A customer-provided identifier for mapping to external systems. URL-safe
         # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
         # after creation.
@@ -109,6 +121,7 @@ module Privy
             chain_type: Privy::WalletChainType::OrSymbol,
             additional_signers: T::Array[Privy::AdditionalSignerItemInput],
             display_name: String,
+            entity: Privy::WalletEntityAssignmentRequestBody,
             external_id: String,
             owner:
               T.nilable(

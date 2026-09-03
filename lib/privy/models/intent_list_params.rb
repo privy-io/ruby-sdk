@@ -8,6 +8,8 @@ module Privy
       include Privy::Internal::Type::RequestParameters
 
       # @!attribute created_by_id
+      #   Filter by creator user ID. For user-token requests, Privy uses the authenticated
+      #   user ID to scope intent visibility. This filter only narrows that scoped result.
       #
       #   @return [String, nil]
       optional :created_by_id, String
@@ -34,6 +36,9 @@ module Privy
       optional :limit, Float, nil?: true
 
       # @!attribute pending_member_id
+      #   Filter by a user whose approval is still pending. For user-token requests, Privy
+      #   uses the authenticated user ID to scope intent visibility. This filter only
+      #   narrows that scoped result.
       #
       #   @return [String, nil]
       optional :pending_member_id, String
@@ -55,7 +60,10 @@ module Privy
       optional :status, enum: -> { Privy::IntentStatus }
 
       # @!method initialize(created_by_id: nil, current_user_has_signed: nil, cursor: nil, intent_type: nil, limit: nil, pending_member_id: nil, resource_id: nil, sort_by: nil, status: nil, request_options: {})
-      #   @param created_by_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::IntentListParams} for more details.
+      #
+      #   @param created_by_id [String] Filter by creator user ID. For user-token requests, Privy uses the authenticated
       #
       #   @param current_user_has_signed [Symbol, Privy::Models::IntentListParams::CurrentUserHasSigned]
       #
@@ -65,7 +73,7 @@ module Privy
       #
       #   @param limit [Float, nil]
       #
-      #   @param pending_member_id [String]
+      #   @param pending_member_id [String] Filter by a user whose approval is still pending. For user-token requests, Privy
       #
       #   @param resource_id [String]
       #

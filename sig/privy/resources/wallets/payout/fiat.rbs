@@ -1,0 +1,21 @@
+module Privy
+  module Resources
+    class Wallets
+      class Payout
+        class Fiat
+          def create: (
+            String wallet_id,
+            destination: Privy::PayoutDestination,
+            source: Privy::PayoutSource,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::PayoutResponse
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

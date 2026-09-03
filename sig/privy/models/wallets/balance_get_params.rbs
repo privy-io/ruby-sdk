@@ -128,6 +128,7 @@ module Privy
           | :tron
           | :zksync_era
           | :robinhood
+          | :tempo_testnet
           | :hoodi
           | :sepolia
           | :arbitrum_sepolia
@@ -136,6 +137,7 @@ module Privy
           | :linea_testnet
           | :optimism_sepolia
           | :polygon_amoy
+          | :bsc_testnet
           | :solana_devnet
           | :solana_testnet
           | :tron_nile
@@ -161,6 +163,7 @@ module Privy
           TRON: :tron
           ZKSYNC_ERA: :zksync_era
           ROBINHOOD: :robinhood
+          TEMPO_TESTNET: :tempo_testnet
           HOODI: :hoodi
           SEPOLIA: :sepolia
           ARBITRUM_SEPOLIA: :arbitrum_sepolia
@@ -169,6 +172,7 @@ module Privy
           LINEA_TESTNET: :linea_testnet
           OPTIMISM_SEPOLIA: :optimism_sepolia
           POLYGON_AMOY: :polygon_amoy
+          BSC_TESTNET: :bsc_testnet
           SOLANA_DEVNET: :solana_devnet
           SOLANA_TESTNET: :solana_testnet
           TRON_NILE: :tron_nile

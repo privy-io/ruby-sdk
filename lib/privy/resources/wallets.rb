@@ -17,6 +17,9 @@ module Privy
       # @return [Privy::Resources::Wallets::Earn]
       attr_reader :earn
 
+      # @return [Privy::Resources::Wallets::Payout]
+      attr_reader :payout
+
       # Operations for swapping tokens within wallets
       # @return [Privy::Resources::Wallets::Swap]
       attr_reader :swap
@@ -183,13 +186,15 @@ module Privy
       #
       # Submit a wallet import request.
       #
-      # @overload _submit_import(wallet:, additional_signers: nil, display_name: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, request_options: {})
+      # @overload _submit_import(wallet:, additional_signers: nil, display_name: nil, entity: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, request_options: {})
       #
       # @param wallet [Privy::Models::HDSubmitInput, Privy::Models::PrivateKeySubmitInput] The submission input for importing an HD wallet.
       #
       # @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Additional signers for the wallet.
       #
       # @param display_name [String] A human-readable label for the wallet.
+      #
+      # @param entity [Privy::Models::WalletEntityAssignmentRequestBody] Request body for assigning an entity to a wallet.
       #
       # @param external_id [String] A customer-provided identifier for mapping to external systems. URL-safe charact
       #
@@ -578,6 +583,7 @@ module Privy
         @balance = Privy::Resources::Wallets::Balance.new(client: client)
         @deposit_accounts = Privy::Resources::Wallets::DepositAccounts.new(client: client)
         @earn = Privy::Resources::Wallets::Earn.new(client: client)
+        @payout = Privy::Resources::Wallets::Payout.new(client: client)
         @swap = Privy::Resources::Wallets::Swap.new(client: client)
         @transactions = Privy::Resources::Wallets::Transactions.new(client: client)
       end

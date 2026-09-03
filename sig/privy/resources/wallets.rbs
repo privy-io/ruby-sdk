@@ -9,6 +9,8 @@ module Privy
 
       attr_reader earn: Privy::Resources::Wallets::Earn
 
+      attr_reader payout: Privy::Resources::Wallets::Payout
+
       attr_reader swap: Privy::Resources::Wallets::Swap
 
       attr_reader transactions: Privy::Resources::Wallets::Transactions
@@ -60,6 +62,7 @@ module Privy
         wallet: Privy::Models::WalletSubmitImportParams::wallet,
         ?additional_signers: Privy::Models::additional_signer_input,
         ?display_name: String,
+        ?entity: Privy::WalletEntityAssignmentRequestBody,
         ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,

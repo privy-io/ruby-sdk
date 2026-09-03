@@ -40,6 +40,8 @@ module Privy
         T.let(:zksync_era, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ROBINHOOD =
         T.let(:robinhood, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      TEMPO_TESTNET =
+        T.let(:tempo_testnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       HOODI = T.let(:hoodi, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SEPOLIA = T.let(:sepolia, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ARBITRUM_SEPOLIA =
@@ -54,6 +56,8 @@ module Privy
         T.let(:optimism_sepolia, Privy::WalletAssetChainNameInput::TaggedSymbol)
       POLYGON_AMOY =
         T.let(:polygon_amoy, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      BSC_TESTNET =
+        T.let(:bsc_testnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SOLANA_DEVNET =
         T.let(:solana_devnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       SOLANA_TESTNET =

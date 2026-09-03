@@ -20,6 +20,9 @@ module Privy
       module Organizations
       end
 
+      module Payout
+      end
+
       module Users
       end
 
@@ -30,6 +33,9 @@ module Privy
         module Earn
           module Ethereum
           end
+        end
+
+        module Payout
         end
       end
     end

@@ -11,6 +11,8 @@ module Privy
           T.any(Privy::IntentListParams, Privy::Internal::AnyHash)
         end
 
+      # Filter by creator user ID. For user-token requests, Privy uses the authenticated
+      # user ID to scope intent visibility. This filter only narrows that scoped result.
       sig { returns(T.nilable(String)) }
       attr_reader :created_by_id
 
@@ -48,6 +50,9 @@ module Privy
       sig { returns(T.nilable(Float)) }
       attr_accessor :limit
 
+      # Filter by a user whose approval is still pending. For user-token requests, Privy
+      # uses the authenticated user ID to scope intent visibility. This filter only
+      # narrows that scoped result.
       sig { returns(T.nilable(String)) }
       attr_reader :pending_member_id
 
@@ -89,12 +94,17 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # Filter by creator user ID. For user-token requests, Privy uses the authenticated
+        # user ID to scope intent visibility. This filter only narrows that scoped result.
         created_by_id: nil,
         current_user_has_signed: nil,
         cursor: nil,
         # Type of intent.
         intent_type: nil,
         limit: nil,
+        # Filter by a user whose approval is still pending. For user-token requests, Privy
+        # uses the authenticated user ID to scope intent visibility. This filter only
+        # narrows that scoped result.
         pending_member_id: nil,
         resource_id: nil,
         sort_by: nil,

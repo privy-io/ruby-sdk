@@ -5,6 +5,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         additional_signers: Privy::Models::additional_signer_input,
         display_name: String,
+        entity: Privy::WalletEntityAssignmentRequestBody,
         external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
@@ -24,6 +25,12 @@ module Privy
 
       def display_name=: (String) -> String
 
+      attr_reader entity: Privy::WalletEntityAssignmentRequestBody?
+
+      def entity=: (
+        Privy::WalletEntityAssignmentRequestBody
+      ) -> Privy::WalletEntityAssignmentRequestBody
+
       attr_reader external_id: String?
 
       def external_id=: (String) -> String
@@ -40,6 +47,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: Privy::Models::additional_signer_input,
         ?display_name: String,
+        ?entity: Privy::WalletEntityAssignmentRequestBody,
         ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,
@@ -50,6 +58,7 @@ module Privy
         chain_type: Privy::Models::wallet_chain_type,
         additional_signers: Privy::Models::additional_signer_input,
         display_name: String,
+        entity: Privy::WalletEntityAssignmentRequestBody,
         external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,

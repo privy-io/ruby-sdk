@@ -4,12 +4,18 @@ module Privy
   module Resources
     # Operations related to authorization intents for wallet actions
     class Intents
-      # List intents for an app. Returns a paginated list of intents with their current
-      # status and details.
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::IntentListParams} for more details.
+      #
+      # List intents for an app. Returns a paginated list with each intent's current
+      # status and details. Requests authenticated with an app secret can retrieve all
+      # intents for the app. Requests authenticated with a user token return only
+      # intents that the authenticated user created, must approve, or has signed. Query
+      # parameters only narrow this scoped result set.
       #
       # @overload list(created_by_id: nil, current_user_has_signed: nil, cursor: nil, intent_type: nil, limit: nil, pending_member_id: nil, resource_id: nil, sort_by: nil, status: nil, request_options: {})
       #
-      # @param created_by_id [String]
+      # @param created_by_id [String] Filter by creator user ID. For user-token requests, Privy uses the authenticated
       #
       # @param current_user_has_signed [Symbol, Privy::Models::IntentListParams::CurrentUserHasSigned]
       #
@@ -19,7 +25,7 @@ module Privy
       #
       # @param limit [Float, nil]
       #
-      # @param pending_member_id [String]
+      # @param pending_member_id [String] Filter by a user whose approval is still pending. For user-token requests, Privy
       #
       # @param resource_id [String]
       #
@@ -117,8 +123,11 @@ module Privy
         )
       end
 
-      # Retrieve an intent by ID. Returns the intent details including its current
-      # status, authorization details, and execution result if applicable.
+      # Retrieve an intent by ID. Returns its current status, authorization details, and
+      # execution result when applicable. Requests authenticated with an app secret can
+      # retrieve any intent for the app. Requests authenticated with a user token can
+      # retrieve only intents that the authenticated user created, must approve, or has
+      # signed. Unrelated intents return a 404 response.
       #
       # @overload get(intent_id, request_options: {})
       #

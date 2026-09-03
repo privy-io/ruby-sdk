@@ -355,6 +355,11 @@ module Privy
               :robinhood,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
+          TEMPO_TESTNET =
+            T.let(
+              :tempo_testnet,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
           HOODI =
             T.let(:hoodi, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
           SEPOLIA =
@@ -390,6 +395,11 @@ module Privy
           POLYGON_AMOY =
             T.let(
               :polygon_amoy,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          BSC_TESTNET =
+            T.let(
+              :bsc_testnet,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
           SOLANA_DEVNET =

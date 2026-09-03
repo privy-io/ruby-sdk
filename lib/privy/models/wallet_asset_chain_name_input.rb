@@ -32,6 +32,8 @@ module Privy
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::ROBINHOOD }
 
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::TEMPO_TESTNET }
+
       variant const: -> { Privy::Models::WalletAssetChainNameInput::HOODI }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::SEPOLIA }
@@ -47,6 +49,8 @@ module Privy
       variant const: -> { Privy::Models::WalletAssetChainNameInput::OPTIMISM_SEPOLIA }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::POLYGON_AMOY }
+
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::BSC_TESTNET }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::SOLANA_DEVNET }
 
@@ -80,6 +84,7 @@ module Privy
       TRON = :tron
       ZKSYNC_ERA = :zksync_era
       ROBINHOOD = :robinhood
+      TEMPO_TESTNET = :tempo_testnet
       HOODI = :hoodi
       SEPOLIA = :sepolia
       ARBITRUM_SEPOLIA = :arbitrum_sepolia
@@ -88,6 +93,7 @@ module Privy
       LINEA_TESTNET = :linea_testnet
       OPTIMISM_SEPOLIA = :optimism_sepolia
       POLYGON_AMOY = :polygon_amoy
+      BSC_TESTNET = :bsc_testnet
       SOLANA_DEVNET = :solana_devnet
       SOLANA_TESTNET = :solana_testnet
       TRON_NILE = :tron_nile
