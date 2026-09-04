@@ -85,6 +85,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: T.nilable(String),
+          external_id: String,
           owner:
             T.nilable(
               T.any(
@@ -106,6 +107,10 @@ module Privy
         additional_signers: nil,
         # Body param: A human-readable label for the wallet. Set to null to clear.
         display_name: nil,
+        # Body param: A customer-provided identifier for mapping to external systems.
+        # URL-safe characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be
+        # changed once set.
+        external_id: nil,
         # Body param: The owner of the resource, specified as a Privy user ID, a P-256
         # public key, or null to remove the current owner.
         owner: nil,

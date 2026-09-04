@@ -182,6 +182,12 @@ module Privy
           sig { returns(T.nilable(String)) }
           attr_accessor :display_name
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :external_id
+
+          sig { params(external_id: String).void }
+          attr_writer :external_id
+
           # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
           # null to remove the current owner.
           sig { returns(T.nilable(Privy::OwnerInput::Variants)) }
@@ -206,6 +212,7 @@ module Privy
               authorization_key_ids: T::Array[String],
               authorization_threshold: Float,
               display_name: T.nilable(String),
+              external_id: String,
               owner:
                 T.nilable(
                   T.any(
@@ -223,6 +230,7 @@ module Privy
             authorization_key_ids: nil,
             authorization_threshold: nil,
             display_name: nil,
+            external_id: nil,
             # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
             # null to remove the current owner.
             owner: nil,
@@ -241,6 +249,7 @@ module Privy
                 authorization_key_ids: T::Array[String],
                 authorization_threshold: Float,
                 display_name: T.nilable(String),
+                external_id: String,
                 owner: T.nilable(Privy::OwnerInput::Variants),
                 owner_id: T.nilable(String),
                 policy_ids: T::Array[String]

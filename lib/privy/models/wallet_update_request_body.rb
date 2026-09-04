@@ -15,6 +15,14 @@ module Privy
       #   @return [String, nil]
       optional :display_name, String, nil?: true
 
+      # @!attribute external_id
+      #   A customer-provided identifier for mapping to external systems. URL-safe
+      #   characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
+      #   once set.
+      #
+      #   @return [String, nil]
+      optional :external_id, String
+
       # @!attribute owner
       #   The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       #   null to remove the current owner.
@@ -36,7 +44,7 @@ module Privy
       #   @return [Array<String>, nil]
       optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(additional_signers: nil, display_name: nil, owner: nil, owner_id: nil, policy_ids: nil)
+      # @!method initialize(additional_signers: nil, display_name: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletUpdateRequestBody} for more details.
       #
@@ -46,6 +54,8 @@ module Privy
       #   @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Additional signers for the wallet.
       #
       #   @param display_name [String, nil] A human-readable label for the wallet. Set to null to clear.
+      #
+      #   @param external_id [String] A customer-provided identifier for mapping to external systems. URL-safe charact
       #
       #   @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       #

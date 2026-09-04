@@ -32,6 +32,7 @@ module Privy
         String wallet_id,
         ?additional_signers: Privy::Models::additional_signer_input,
         ?display_name: String?,
+        ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,
         ?policy_ids: ::Array[String],

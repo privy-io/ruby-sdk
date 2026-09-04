@@ -4,6 +4,7 @@ module Privy
       {
         additional_signers: Privy::Models::additional_signer_input,
         display_name: String?,
+        external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
         policy_ids: ::Array[String]
@@ -18,6 +19,10 @@ module Privy
 
       attr_accessor display_name: String?
 
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
       attr_accessor owner: Privy::Models::owner_input?
 
       attr_accessor owner_id: String?
@@ -29,6 +34,7 @@ module Privy
       def initialize: (
         ?additional_signers: Privy::Models::additional_signer_input,
         ?display_name: String?,
+        ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,
         ?policy_ids: ::Array[String]
@@ -37,6 +43,7 @@ module Privy
       def to_hash: -> {
         additional_signers: Privy::Models::additional_signer_input,
         display_name: String?,
+        external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
         policy_ids: ::Array[String]

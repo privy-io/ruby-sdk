@@ -85,6 +85,7 @@ module Privy
             authorization_key_ids: ::Array[String],
             authorization_threshold: Float,
             display_name: String?,
+            external_id: String,
             owner: Privy::Models::owner_input?,
             owner_id: String?,
             policy_ids: Privy::Models::policy_input
@@ -107,6 +108,10 @@ module Privy
 
           attr_accessor display_name: String?
 
+          attr_reader external_id: String?
+
+          def external_id=: (String) -> String
+
           attr_accessor owner: Privy::Models::owner_input?
 
           attr_accessor owner_id: String?
@@ -122,6 +127,7 @@ module Privy
             ?authorization_key_ids: ::Array[String],
             ?authorization_threshold: Float,
             ?display_name: String?,
+            ?external_id: String,
             ?owner: Privy::Models::owner_input?,
             ?owner_id: String?,
             ?policy_ids: Privy::Models::policy_input
@@ -132,6 +138,7 @@ module Privy
             authorization_key_ids: ::Array[String],
             authorization_threshold: Float,
             display_name: String?,
+            external_id: String,
             owner: Privy::Models::owner_input?,
             owner_id: String?,
             policy_ids: Privy::Models::policy_input

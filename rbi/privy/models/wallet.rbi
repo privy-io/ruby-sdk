@@ -77,8 +77,9 @@ module Privy
       sig { params(entity: T.nilable(Privy::WalletEntity::OrHash)).void }
       attr_writer :entity
 
-      # A customer-provided identifier for mapping to external systems. Write-once, set
-      # only at creation.
+      # A customer-provided identifier for mapping to external systems. URL-safe
+      # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
+      # once set.
       sig { returns(T.nilable(String)) }
       attr_reader :external_id
 
@@ -148,8 +149,9 @@ module Privy
         display_name: nil,
         # The entity a wallet is attributed to.
         entity: nil,
-        # A customer-provided identifier for mapping to external systems. Write-once, set
-        # only at creation.
+        # A customer-provided identifier for mapping to external systems. URL-safe
+        # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
+        # once set.
         external_id: nil,
         # The compressed, raw public key for the wallet along the chain cryptographic
         # curve.

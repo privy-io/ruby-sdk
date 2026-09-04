@@ -373,13 +373,15 @@ module Privy
       # Create an intent to update a wallet. The intent must be authorized by the wallet
       # owner before it can be executed.
       #
-      # @overload update_wallet(wallet_id, additional_signers: nil, display_name: nil, owner: nil, owner_id: nil, policy_ids: nil, privy_request_expiry: nil, request_options: {})
+      # @overload update_wallet(wallet_id, additional_signers: nil, display_name: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, privy_request_expiry: nil, request_options: {})
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
       # @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Body param: Additional signers for the wallet.
       #
       # @param display_name [String, nil] Body param: A human-readable label for the wallet. Set to null to clear.
+      #
+      # @param external_id [String] Body param: A customer-provided identifier for mapping to external systems. URL-
       #
       # @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] Body param: The owner of the resource, specified as a Privy user ID, a P-256 pub
       #

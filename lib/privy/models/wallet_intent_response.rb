@@ -97,6 +97,11 @@ module Privy
           #   @return [String, nil]
           optional :display_name, String, nil?: true
 
+          # @!attribute external_id
+          #
+          #   @return [String, nil]
+          optional :external_id, String
+
           # @!attribute owner
           #   The owner of the resource, specified as a Privy user ID, a P-256 public key, or
           #   null to remove the current owner.
@@ -117,7 +122,7 @@ module Privy
           #   @return [Array<String>, nil]
           optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(additional_signers: nil, authorization_key_ids: nil, authorization_threshold: nil, display_name: nil, owner: nil, owner_id: nil, policy_ids: nil)
+          # @!method initialize(additional_signers: nil, authorization_key_ids: nil, authorization_threshold: nil, display_name: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil)
           #   Some parameter documentations has been truncated, see
           #   {Privy::Models::WalletIntentResponse::RequestDetails::Body} for more details.
           #
@@ -128,6 +133,8 @@ module Privy
           #   @param authorization_threshold [Float]
           #
           #   @param display_name [String, nil]
+          #
+          #   @param external_id [String]
           #
           #   @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] The owner of the resource, specified as a Privy user ID, a P-256 public key, or
           #

@@ -93,8 +93,9 @@ module Privy
       optional :entity, -> { Privy::WalletEntity }, nil?: true
 
       # @!attribute external_id
-      #   A customer-provided identifier for mapping to external systems. Write-once, set
-      #   only at creation.
+      #   A customer-provided identifier for mapping to external systems. URL-safe
+      #   characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
+      #   once set.
       #
       #   @return [String, nil]
       optional :external_id, String
@@ -140,7 +141,7 @@ module Privy
       #
       #   @param entity [Privy::Models::WalletEntity, nil] The entity a wallet is attributed to.
       #
-      #   @param external_id [String] A customer-provided identifier for mapping to external systems. Write-once, set
+      #   @param external_id [String] A customer-provided identifier for mapping to external systems. URL-safe charact
       #
       #   @param public_key [String] The compressed, raw public key for the wallet along the chain cryptographic curv
     end

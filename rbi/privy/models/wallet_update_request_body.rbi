@@ -23,6 +23,15 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :display_name
 
+      # A customer-provided identifier for mapping to external systems. URL-safe
+      # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
+      # once set.
+      sig { returns(T.nilable(String)) }
+      attr_reader :external_id
+
+      sig { params(external_id: String).void }
+      attr_writer :external_id
+
       # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       # null to remove the current owner.
       sig do
@@ -52,6 +61,7 @@ module Privy
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
           display_name: T.nilable(String),
+          external_id: String,
           owner:
             T.nilable(
               T.any(
@@ -68,6 +78,10 @@ module Privy
         additional_signers: nil,
         # A human-readable label for the wallet. Set to null to clear.
         display_name: nil,
+        # A customer-provided identifier for mapping to external systems. URL-safe
+        # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
+        # once set.
+        external_id: nil,
         # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
         # null to remove the current owner.
         owner: nil,
@@ -85,6 +99,7 @@ module Privy
           {
             additional_signers: T::Array[Privy::AdditionalSignerItemInput],
             display_name: T.nilable(String),
+            external_id: String,
             owner:
               T.nilable(
                 T.any(Privy::OwnerInputUser, Privy::OwnerInputPublicKey)
