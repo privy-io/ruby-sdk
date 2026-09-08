@@ -23,8 +23,11 @@ module Privy
       # A Tron TRC-20 token asset.
       variant :trc20, -> { Privy::WalletFundsTrc20Asset }
 
+      # A token issued on Spark, identified by its BTKN identifier.
+      variant :btkn, -> { Privy::WalletFundsBtknAsset }
+
       # @!method self.variants
-      #   @return [Array(Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset, Privy::Models::WalletFundsTrc20Asset)]
+      #   @return [Array(Privy::Models::WalletFundsNativeTokenAsset, Privy::Models::WalletFundsErc20Asset, Privy::Models::WalletFundsSplAsset, Privy::Models::WalletFundsSacAsset, Privy::Models::WalletFundsTrc20Asset, Privy::Models::WalletFundsBtknAsset)]
     end
   end
 end

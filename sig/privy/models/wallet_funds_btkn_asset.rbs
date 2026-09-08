@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type wallet_funds_btkn_asset =
+      { identifier: String, type: Privy::Models::WalletFundsBtknAsset::type_ }
+
+    class WalletFundsBtknAsset < Privy::Internal::Type::BaseModel
+      attr_accessor identifier: String
+
+      attr_accessor type: Privy::Models::WalletFundsBtknAsset::type_
+
+      def initialize: (
+        identifier: String,
+        type: Privy::Models::WalletFundsBtknAsset::type_
+      ) -> void
+
+      def to_hash: -> {
+        identifier: String,
+        type: Privy::Models::WalletFundsBtknAsset::type_
+      }
+
+      type type_ = :btkn
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        BTKN: :btkn
+
+        def self?.values: -> ::Array[Privy::Models::WalletFundsBtknAsset::type_]
+      end
+    end
+  end
+end

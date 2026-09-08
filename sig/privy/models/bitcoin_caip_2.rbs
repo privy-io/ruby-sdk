@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type bitcoin_caip2 = :"bip122:mainnet" | String
+
+    module BitcoinCaip2
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::bitcoin_caip2]
+
+      BIP122_MAINNET: :"bip122:mainnet"
+    end
+  end
+end

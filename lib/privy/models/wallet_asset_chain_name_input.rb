@@ -32,6 +32,10 @@ module Privy
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::ROBINHOOD }
 
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::HYPEREVM }
+
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::HYPERCORE }
+
       variant const: -> { Privy::Models::WalletAssetChainNameInput::TEMPO_TESTNET }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::HOODI }
@@ -84,6 +88,8 @@ module Privy
       TRON = :tron
       ZKSYNC_ERA = :zksync_era
       ROBINHOOD = :robinhood
+      HYPEREVM = :hyperevm
+      HYPERCORE = :hypercore
       TEMPO_TESTNET = :tempo_testnet
       HOODI = :hoodi
       SEPOLIA = :sepolia

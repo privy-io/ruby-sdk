@@ -1,6 +1,15 @@
 module Privy
   module Resources
     class WalletAutomations
+      def reindex: (
+        asset_address: String,
+        ?caip2: String,
+        ?chain: String,
+        ?deposit_address: String,
+        ?wallet_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationReindexResponse
+
       def initialize: (client: Privy::Client) -> void
     end
   end

@@ -25,12 +25,17 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :name
 
+      # A unique identifier for a key quorum.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :owner_id
+
       # Request body for updating a wallet automation.
       sig do
         params(
           config: Privy::AutomationConfigInput::OrHash,
           enabled: T::Boolean,
-          name: T.nilable(String)
+          name: T.nilable(String),
+          owner_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -38,7 +43,9 @@ module Privy
         # human-readable aliases.
         config: nil,
         enabled: nil,
-        name: nil
+        name: nil,
+        # A unique identifier for a key quorum.
+        owner_id: nil
       )
       end
 
@@ -47,7 +54,8 @@ module Privy
           {
             config: Privy::AutomationConfigInput,
             enabled: T::Boolean,
-            name: T.nilable(String)
+            name: T.nilable(String),
+            owner_id: T.nilable(String)
           }
         )
       end

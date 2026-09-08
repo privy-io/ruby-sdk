@@ -200,6 +200,8 @@ module Privy
 
   BitcoinAddress = Privy::Models::BitcoinAddress
 
+  BitcoinCaip2 = Privy::Models::BitcoinCaip2
+
   BlockchainTransactionStatus = Privy::Models::BlockchainTransactionStatus
 
   BlockInfo = Privy::Models::BlockInfo
@@ -761,6 +763,8 @@ module Privy
   EthereumYieldWithdrawInput = Privy::Models::EthereumYieldWithdrawInput
 
   EvmAddress = Privy::Models::EvmAddress
+
+  EvmCaip2 = Privy::Models::EvmCaip2
 
   EvmCaip2ChainID = Privy::Models::EvmCaip2ChainID
 
@@ -2032,6 +2036,8 @@ module Privy
 
   SolanaAddress = Privy::Models::SolanaAddress
 
+  SolanaCaip2 = Privy::Models::SolanaCaip2
+
   SolanaProgramInstructionCondition =
     Privy::Models::SolanaProgramInstructionCondition
 
@@ -2415,6 +2421,8 @@ module Privy
 
   TronAddress = Privy::Models::TronAddress
 
+  TronCaip2 = Privy::Models::TronCaip2
+
   TronCalldataCondition = Privy::Models::TronCalldataCondition
 
   TronContract = Privy::Models::TronContract
@@ -2753,6 +2761,22 @@ module Privy
 
   WalletAutomationListResponse = Privy::Models::WalletAutomationListResponse
 
+  WalletAutomationReindexAssetResult =
+    Privy::Models::WalletAutomationReindexAssetResult
+
+  WalletAutomationReindexAssetStatus =
+    Privy::Models::WalletAutomationReindexAssetStatus
+
+  WalletAutomationReindexCaip2 = Privy::Models::WalletAutomationReindexCaip2
+
+  WalletAutomationReindexParams = Privy::Models::WalletAutomationReindexParams
+
+  WalletAutomationReindexRequestBody =
+    Privy::Models::WalletAutomationReindexRequestBody
+
+  WalletAutomationReindexResponse =
+    Privy::Models::WalletAutomationReindexResponse
+
   WalletAutomationResponse = Privy::Models::WalletAutomationResponse
 
   WalletAutomationStatus = Privy::Models::WalletAutomationStatus
@@ -2819,6 +2843,8 @@ module Privy
   WalletExportResponseBody = Privy::Models::WalletExportResponseBody
 
   WalletFundsAsset = Privy::Models::WalletFundsAsset
+
+  WalletFundsBtknAsset = Privy::Models::WalletFundsBtknAsset
 
   WalletFundsErc20Asset = Privy::Models::WalletFundsErc20Asset
 

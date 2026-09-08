@@ -177,6 +177,8 @@ module Privy
 
   class BitcoinAddress = Privy::Models::BitcoinAddress
 
+  module BitcoinCaip2 = Privy::Models::BitcoinCaip2
+
   module BlockchainTransactionStatus = Privy::Models::BlockchainTransactionStatus
 
   class BlockInfo = Privy::Models::BlockInfo
@@ -646,6 +648,8 @@ module Privy
   class EthereumYieldWithdrawInput = Privy::Models::EthereumYieldWithdrawInput
 
   class EvmAddress = Privy::Models::EvmAddress
+
+  class EvmCaip2 = Privy::Models::EvmCaip2
 
   class EvmCaip2ChainID = Privy::Models::EvmCaip2ChainID
 
@@ -1781,6 +1785,8 @@ module Privy
 
   class SolanaAddress = Privy::Models::SolanaAddress
 
+  class SolanaCaip2 = Privy::Models::SolanaCaip2
+
   class SolanaProgramInstructionCondition = Privy::Models::SolanaProgramInstructionCondition
 
   module SolanaRpcInput = Privy::Models::SolanaRpcInput
@@ -2107,6 +2113,8 @@ module Privy
 
   class TronAddress = Privy::Models::TronAddress
 
+  module TronCaip2 = Privy::Models::TronCaip2
+
   class TronCalldataCondition = Privy::Models::TronCalldataCondition
 
   module TronContract = Privy::Models::TronContract
@@ -2373,6 +2381,18 @@ module Privy
 
   class WalletAutomationListResponse = Privy::Models::WalletAutomationListResponse
 
+  class WalletAutomationReindexAssetResult = Privy::Models::WalletAutomationReindexAssetResult
+
+  class WalletAutomationReindexAssetStatus = Privy::Models::WalletAutomationReindexAssetStatus
+
+  class WalletAutomationReindexCaip2 = Privy::Models::WalletAutomationReindexCaip2
+
+  class WalletAutomationReindexParams = Privy::Models::WalletAutomationReindexParams
+
+  class WalletAutomationReindexRequestBody = Privy::Models::WalletAutomationReindexRequestBody
+
+  class WalletAutomationReindexResponse = Privy::Models::WalletAutomationReindexResponse
+
   class WalletAutomationResponse = Privy::Models::WalletAutomationResponse
 
   module WalletAutomationStatus = Privy::Models::WalletAutomationStatus
@@ -2430,6 +2450,8 @@ module Privy
   class WalletExportResponseBody = Privy::Models::WalletExportResponseBody
 
   module WalletFundsAsset = Privy::Models::WalletFundsAsset
+
+  class WalletFundsBtknAsset = Privy::Models::WalletFundsBtknAsset
 
   class WalletFundsErc20Asset = Privy::Models::WalletFundsErc20Asset
 

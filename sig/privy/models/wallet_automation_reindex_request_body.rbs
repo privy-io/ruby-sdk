@@ -1,0 +1,48 @@
+module Privy
+  module Models
+    type wallet_automation_reindex_request_body =
+      {
+        asset_address: String,
+        :caip2 => String,
+        chain: String,
+        deposit_address: String,
+        wallet_id: String
+      }
+
+    class WalletAutomationReindexRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor asset_address: String
+
+      attr_reader caip2: String?
+
+      def caip2=: (String) -> String
+
+      attr_reader chain: String?
+
+      def chain=: (String) -> String
+
+      attr_reader deposit_address: String?
+
+      def deposit_address=: (String) -> String
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        asset_address: String,
+        ?caip2: String,
+        ?chain: String,
+        ?deposit_address: String,
+        ?wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        asset_address: String,
+        :caip2 => String,
+        chain: String,
+        deposit_address: String,
+        wallet_id: String
+      }
+    end
+  end
+end

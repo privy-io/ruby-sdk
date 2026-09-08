@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type tron_caip2 = :"tron:mainnet" | :"tron:nile"
+
+    module TronCaip2
+      extend Privy::Internal::Type::Enum
+
+      TRON_MAINNET: :"tron:mainnet"
+      TRON_NILE: :"tron:nile"
+
+      def self?.values: -> ::Array[Privy::Models::tron_caip2]
+    end
+  end
+end

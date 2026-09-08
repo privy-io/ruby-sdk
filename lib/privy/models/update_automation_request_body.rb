@@ -20,7 +20,13 @@ module Privy
       #   @return [String, nil]
       optional :name, String, nil?: true
 
-      # @!method initialize(config: nil, enabled: nil, name: nil)
+      # @!attribute owner_id
+      #   A unique identifier for a key quorum.
+      #
+      #   @return [String, nil]
+      optional :owner_id, String, nil?: true
+
+      # @!method initialize(config: nil, enabled: nil, name: nil, owner_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::UpdateAutomationRequestBody} for more details.
       #
@@ -31,6 +37,8 @@ module Privy
       #   @param enabled [Boolean]
       #
       #   @param name [String, nil]
+      #
+      #   @param owner_id [String, nil] A unique identifier for a key quorum.
     end
   end
 end

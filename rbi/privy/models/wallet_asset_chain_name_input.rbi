@@ -40,6 +40,10 @@ module Privy
         T.let(:zksync_era, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ROBINHOOD =
         T.let(:robinhood, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      HYPEREVM =
+        T.let(:hyperevm, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      HYPERCORE =
+        T.let(:hypercore, Privy::WalletAssetChainNameInput::TaggedSymbol)
       TEMPO_TESTNET =
         T.let(:tempo_testnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       HOODI = T.let(:hoodi, Privy::WalletAssetChainNameInput::TaggedSymbol)

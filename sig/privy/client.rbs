@@ -33,6 +33,8 @@ module Privy
 
     attr_reader users: Privy::Resources::Users
 
+    attr_reader wallet_automations: Privy::Resources::WalletAutomations
+
     attr_reader wallets: Privy::Resources::Wallets
 
     attr_reader webhooks: Privy::Resources::Webhooks
@@ -46,8 +48,6 @@ module Privy
     attr_reader analytics: Privy::Resources::Analytics
 
     attr_reader client_auth: Privy::Resources::ClientAuth
-
-    attr_reader wallet_automations: Privy::Resources::WalletAutomations
 
     attr_reader shared: Privy::Resources::Shared
 

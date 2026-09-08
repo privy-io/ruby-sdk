@@ -355,6 +355,16 @@ module Privy
               :robinhood,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
+          HYPEREVM =
+            T.let(
+              :hyperevm,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          HYPERCORE =
+            T.let(
+              :hypercore,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
           TEMPO_TESTNET =
             T.let(
               :tempo_testnet,

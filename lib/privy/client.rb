@@ -59,6 +59,10 @@ module Privy
     # @return [Privy::Resources::Users]
     attr_reader :users
 
+    # Operations related to wallet automations
+    # @return [Privy::Resources::WalletAutomations]
+    attr_reader :wallet_automations
+
     # @return [Privy::Resources::Wallets]
     attr_reader :wallets
 
@@ -79,9 +83,6 @@ module Privy
 
     # @return [Privy::Resources::ClientAuth]
     attr_reader :client_auth
-
-    # @return [Privy::Resources::WalletAutomations]
-    attr_reader :wallet_automations
 
     # @return [Privy::Resources::Shared]
     attr_reader :shared
@@ -202,6 +203,7 @@ module Privy
       @policies = Privy::Resources::Policies.new(client: self)
       @transactions = Privy::Resources::Transactions.new(client: self)
       @users = Privy::Resources::Users.new(client: self)
+      @wallet_automations = Privy::Resources::WalletAutomations.new(client: self)
       @wallets = Privy::Resources::Wallets.new(client: self)
       @webhooks = Privy::Resources::Webhooks.new(client: self)
       @accounts = Privy::Resources::Accounts.new(client: self)
@@ -209,7 +211,6 @@ module Privy
       @embedded_wallets = Privy::Resources::EmbeddedWallets.new(client: self)
       @analytics = Privy::Resources::Analytics.new(client: self)
       @client_auth = Privy::Resources::ClientAuth.new(client: self)
-      @wallet_automations = Privy::Resources::WalletAutomations.new(client: self)
       @shared = Privy::Resources::Shared.new(client: self)
       @fiat = Privy::Resources::Fiat.new(client: self)
       @onramps = Privy::Resources::Onramps.new(client: self)

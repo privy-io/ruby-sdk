@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type wallet_automation_reindex_response =
+      {
+        results: ::Array[Privy::WalletAutomationReindexAssetResult],
+        wallet_id: String
+      }
+
+    class WalletAutomationReindexResponse < Privy::Internal::Type::BaseModel
+      attr_accessor results: ::Array[Privy::WalletAutomationReindexAssetResult]
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        results: ::Array[Privy::WalletAutomationReindexAssetResult],
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        results: ::Array[Privy::WalletAutomationReindexAssetResult],
+        wallet_id: String
+      }
+    end
+  end
+end

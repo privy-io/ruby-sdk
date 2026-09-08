@@ -58,6 +58,10 @@ module Privy
     sig { returns(Privy::Resources::Users) }
     attr_reader :users
 
+    # Operations related to wallet automations
+    sig { returns(Privy::Resources::WalletAutomations) }
+    attr_reader :wallet_automations
+
     sig { returns(Privy::Resources::Wallets) }
     attr_reader :wallets
 
@@ -78,9 +82,6 @@ module Privy
 
     sig { returns(Privy::Resources::ClientAuth) }
     attr_reader :client_auth
-
-    sig { returns(Privy::Resources::WalletAutomations) }
-    attr_reader :wallet_automations
 
     sig { returns(Privy::Resources::Shared) }
     attr_reader :shared

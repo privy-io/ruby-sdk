@@ -6,6 +6,7 @@ module Privy
       | Privy::WalletFundsSplAsset
       | Privy::WalletFundsSacAsset
       | Privy::WalletFundsTrc20Asset
+      | Privy::WalletFundsBtknAsset
 
     module WalletFundsAsset
       extend Privy::Internal::Type::Union

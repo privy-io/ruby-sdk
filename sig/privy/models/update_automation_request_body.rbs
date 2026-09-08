@@ -1,7 +1,12 @@
 module Privy
   module Models
     type update_automation_request_body =
-      { config: Privy::AutomationConfigInput, enabled: bool, name: String? }
+      {
+        config: Privy::AutomationConfigInput,
+        enabled: bool,
+        name: String?,
+        owner_id: String?
+      }
 
     class UpdateAutomationRequestBody < Privy::Internal::Type::BaseModel
       attr_reader config: Privy::AutomationConfigInput?
@@ -16,16 +21,20 @@ module Privy
 
       attr_accessor name: String?
 
+      attr_accessor owner_id: String?
+
       def initialize: (
         ?config: Privy::AutomationConfigInput,
         ?enabled: bool,
-        ?name: String?
+        ?name: String?,
+        ?owner_id: String?
       ) -> void
 
       def to_hash: -> {
         config: Privy::AutomationConfigInput,
         enabled: bool,
-        name: String?
+        name: String?,
+        owner_id: String?
       }
     end
   end
