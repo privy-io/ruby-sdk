@@ -54,7 +54,7 @@ jobs:
           PACKAGE_NAME: privy
         run: ./scripts/utils/upload-artifact.sh
   lint:
-    timeout-minutes: 10
+    timeout-minutes: 15
     name: lint
     runs-on: ${{ startsWith(github.repository, 'stainless-sdks/') && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork

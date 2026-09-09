@@ -26,6 +26,7 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         ]
       }
     )
+    register_integration_cleanup { client.policies.delete(policy.id) }
 
     refute_nil(policy.id)
     assert_equal("Native token transfer maximums", policy.name)
@@ -33,8 +34,6 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
     assert_equal(1, policy.rules.length)
     assert_equal("Restrict ETH transfers to a maximum value", policy.rules[0].name)
     assert_equal(:eth_sendTransaction, policy.rules[0].method_)
-
-    client.policies.delete(policy.id)
   end
 
   def test_create_idempotency_same_key_same_body_succeeds
@@ -49,6 +48,7 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
       },
       idempotency_key: idempotency_key
     )
+    register_integration_cleanup { client.policies.delete(response1.id) }
     refute_nil(response1.id)
     assert_equal("RubySDK Idempotency Test", response1.name)
     assert_equal(:ethereum, response1.chain_type)
@@ -67,8 +67,6 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
       idempotency_key: idempotency_key
     )
     assert_equal(response1.id, response2.id)
-
-    client.policies.delete(response1.id)
   end
 
   def test_create_idempotency_same_key_different_body_fails
@@ -83,6 +81,7 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
       },
       idempotency_key: idempotency_key
     )
+    register_integration_cleanup { client.policies.delete(response.id) }
 
     assert_raises(Privy::Errors::APIStatusError) do
       client.policies.create(
@@ -95,8 +94,6 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         idempotency_key: idempotency_key
       )
     end
-
-    client.policies.delete(response.id)
   end
 
   def test_update_policy_owner
@@ -111,6 +108,12 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         rules: []
       }
     )
+    cleanup_ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+    register_integration_cleanup do
+      client.policies.delete(policy.id, authorization_context: cleanup_ctx)
+    end
     refute_nil(policy.id)
     assert_nil(policy.owner_id)
 
@@ -131,8 +134,6 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
       authorization_context: ctx
     )
     assert_nil(policy3.owner_id)
-
-    client.policies.delete(policy.id)
   end
 
   def test_delete_owned_policy
@@ -147,6 +148,15 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         owner: {public_key: kp.public_key}
       }
     )
+    deleted = false
+    cleanup_ctx = Privy::Authorization::AuthorizationContext.build(
+      authorization_private_keys: [kp.private_key]
+    )
+    register_integration_cleanup do
+      client.policies.delete(policy.id, authorization_context: cleanup_ctx) unless deleted
+    rescue Privy::Errors::NotFoundError
+      nil
+    end
     refute_nil(policy.id)
 
     # Verify it exists
@@ -158,6 +168,7 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
       authorization_private_keys: [kp.private_key]
     )
     result = client.policies.delete(policy.id, authorization_context: ctx)
+    deleted = result.success
     assert_equal(true, result.success)
 
     # Verify it no longer exists
@@ -195,6 +206,9 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         owner: {public_key: kp.public_key}
       }
     )
+    register_integration_cleanup do
+      client.policies.delete(policy.id, authorization_context: ctx)
+    end
     original_rule_id = policy.rules[0].id
 
     response = client.policies.create_rule(
@@ -221,8 +235,6 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
     assert_equal(original_rule_id, fetched.rules[0].id)
     assert_equal(response.id, fetched.rules[1].id)
     assert_equal("Allow transfers to known address", fetched.rules[1].name)
-
-    client.policies.delete(policy.id, authorization_context: ctx)
   end
 
   def test_update_rule
@@ -254,6 +266,9 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         owner: {public_key: kp.public_key}
       }
     )
+    register_integration_cleanup do
+      client.policies.delete(policy.id, authorization_context: ctx)
+    end
     rule_id = policy.rules[0].id
 
     response = client.policies.update_rule(
@@ -281,8 +296,6 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
     assert_equal(rule_id, fetched.rules[0].id)
     assert_equal("Updated rule name", fetched.rules[0].name)
     assert_equal(:DENY, fetched.rules[0].action)
-
-    client.policies.delete(policy.id, authorization_context: ctx)
   end
 
   def test_delete_rule
@@ -314,6 +327,9 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
         owner: {public_key: kp.public_key}
       }
     )
+    register_integration_cleanup do
+      client.policies.delete(policy.id, authorization_context: ctx)
+    end
     rule_id = policy.rules[0].id
 
     result = client.policies.delete_rule(
@@ -325,7 +341,5 @@ class Privy::Test::Integration::PoliciesTest < Privy::Test::IntegrationTest
 
     fetched = client.policies.get(policy.id)
     assert_equal(0, fetched.rules.length)
-
-    client.policies.delete(policy.id, authorization_context: ctx)
   end
 end

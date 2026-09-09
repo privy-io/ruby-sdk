@@ -49,7 +49,19 @@ module Privy
       end
 
       def teardown
+        cleanup_error = nil
+        @integration_cleanups&.reverse_each do |cleanup|
+          cleanup.call
+        rescue StandardError => e
+          cleanup_error ||= e
+        end
+        raise cleanup_error if cleanup_error
+      ensure
         WebMock.disable_net_connect! if defined?(WebMock)
+      end
+
+      def register_integration_cleanup(&cleanup)
+        (@integration_cleanups ||= []) << cleanup
       end
 
       def client

@@ -14,6 +14,9 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
         authorization_threshold: 2
       }
     )
+    register_integration_cleanup do
+      cleanup_key_quorum(key_quorum.id, [kp1.private_key, kp2.private_key])
+    end
 
     refute_nil(key_quorum.id)
     assert_equal("2 of 2 Test Key Quorum", key_quorum.display_name)
@@ -23,8 +26,6 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
     public_keys = key_quorum.authorization_keys.map(&:public_key)
     assert_includes(public_keys, kp1.public_key)
     assert_includes(public_keys, kp2.public_key)
-
-    cleanup_key_quorum(key_quorum.id, [kp1.private_key, kp2.private_key])
   end
 
   def test_update_key_quorum_threshold
@@ -38,6 +39,9 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
         authorization_threshold: 2
       }
     )
+    register_integration_cleanup do
+      cleanup_key_quorum(key_quorum.id, [kp1.private_key, kp2.private_key])
+    end
 
     # Update from 2-of-2 to 1-of-2 (requires both keys since threshold is 2)
     ctx_both = Privy::Authorization::AuthorizationContext.build(
@@ -60,8 +64,6 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
       authorization_context: ctx_single
     )
     assert_equal(2, restored.authorization_threshold)
-
-    cleanup_key_quorum(key_quorum.id, [kp1.private_key, kp2.private_key])
   end
 
   def test_delete_key_quorum
@@ -75,6 +77,12 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
         authorization_threshold: 2
       }
     )
+    deleted = false
+    register_integration_cleanup do
+      cleanup_key_quorum(key_quorum.id, [kp1.private_key, kp2.private_key]) unless deleted
+    rescue Privy::Errors::NotFoundError
+      nil
+    end
     refute_nil(key_quorum.id)
 
     # Verify it exists
@@ -86,6 +94,7 @@ class Privy::Test::Integration::KeyQuorumsTest < Privy::Test::IntegrationTest
       authorization_private_keys: [kp1.private_key, kp2.private_key]
     )
     result = client.key_quorums.delete(key_quorum.id, authorization_context: ctx)
+    deleted = result.success
     assert_equal(true, result.success)
 
     # Verify it no longer exists

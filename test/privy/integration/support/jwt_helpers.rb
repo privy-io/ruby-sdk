@@ -32,11 +32,15 @@ module Privy
         # Lazily creates a Privy user backed by a fresh custom-auth subject and
         # returns it. Subsequent calls within the same test return the same user.
         def jwt_auth_user
-          @jwt_auth_user ||= client.users.create(
-            user_create_params: {
-              linked_accounts: [{type: :custom_auth, custom_user_id: jwt_auth_subject}]
-            }
-          )
+          @jwt_auth_user ||= begin
+            user = client.users.create(
+              user_create_params: {
+                linked_accounts: [{type: :custom_auth, custom_user_id: jwt_auth_subject}]
+              }
+            )
+            register_integration_cleanup { client.users.delete(user.id) }
+            user
+          end
         end
 
         def create_user_owned_wallet(chain_type: :ethereum)
