@@ -7,7 +7,9 @@ module Privy
           assets_in_vault: String,
           shares_in_vault: String,
           total_deposited: String,
-          total_withdrawn: String
+          total_withdrawn: String,
+          apy_allocation: ::Array[Privy::Wallets::EarnPositionApyAllocation],
+          apy_bps: Integer
         }
 
       class EthereumEarnPositionResponse < Privy::Internal::Type::BaseModel
@@ -21,12 +23,24 @@ module Privy
 
         attr_accessor total_withdrawn: String
 
+        attr_reader apy_allocation: ::Array[Privy::Wallets::EarnPositionApyAllocation]?
+
+        def apy_allocation=: (
+          ::Array[Privy::Wallets::EarnPositionApyAllocation]
+        ) -> ::Array[Privy::Wallets::EarnPositionApyAllocation]
+
+        attr_reader apy_bps: Integer?
+
+        def apy_bps=: (Integer) -> Integer
+
         def initialize: (
           asset: Privy::Wallets::EarnAsset,
           assets_in_vault: String,
           shares_in_vault: String,
           total_deposited: String,
-          total_withdrawn: String
+          total_withdrawn: String,
+          ?apy_allocation: ::Array[Privy::Wallets::EarnPositionApyAllocation],
+          ?apy_bps: Integer
         ) -> void
 
         def to_hash: -> {
@@ -34,7 +48,9 @@ module Privy
           assets_in_vault: String,
           shares_in_vault: String,
           total_deposited: String,
-          total_withdrawn: String
+          total_withdrawn: String,
+          apy_allocation: ::Array[Privy::Wallets::EarnPositionApyAllocation],
+          apy_bps: Integer
         }
       end
     end

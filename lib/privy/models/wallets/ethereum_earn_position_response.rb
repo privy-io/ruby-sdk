@@ -34,7 +34,23 @@ module Privy
         #   @return [String]
         required :total_withdrawn, String
 
-        # @!method initialize(asset:, assets_in_vault:, shares_in_vault:, total_deposited:, total_withdrawn:)
+        # @!attribute apy_allocation
+        #   Vault APY allocations by origin, returned together with apy_bps when available.
+        #
+        #   @return [Array<Privy::Models::Wallets::EarnPositionApyAllocation>, nil]
+        optional :apy_allocation, -> { Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnPositionApyAllocation] }
+
+        # @!attribute apy_bps
+        #   Wallet-specific net APY in basis points, rounded to the nearest integer.
+        #   Returned together with apy_allocation when available.
+        #
+        #   @return [Integer, nil]
+        optional :apy_bps, Integer
+
+        # @!method initialize(asset:, assets_in_vault:, shares_in_vault:, total_deposited:, total_withdrawn:, apy_allocation: nil, apy_bps: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Privy::Models::Wallets::EthereumEarnPositionResponse} for more details.
+        #
         #   A wallet's position in an earn vault.
         #
         #   @param asset [Privy::Models::Wallets::EarnAsset] Asset metadata for an earn vault position.
@@ -46,6 +62,10 @@ module Privy
         #   @param total_deposited [String] Total amount deposited into the vault, in smallest unit.
         #
         #   @param total_withdrawn [String] Total amount withdrawn from the vault, in smallest unit.
+        #
+        #   @param apy_allocation [Array<Privy::Models::Wallets::EarnPositionApyAllocation>] Vault APY allocations by origin, returned together with apy_bps when available.
+        #
+        #   @param apy_bps [Integer] Wallet-specific net APY in basis points, rounded to the nearest integer. Returne
       end
     end
   end

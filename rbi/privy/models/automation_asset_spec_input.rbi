@@ -22,7 +22,10 @@ module Privy
 
       # An asset spec accepting either raw identifiers (asset_address, caip2) or
       # human-readable aliases (asset, chain). Exactly one of asset_address or asset
-      # must be provided; at most one of caip2 or chain may be provided.
+      # must be provided; at most one of caip2 or chain may be provided. Use "_" for
+      # asset_address or asset to match any asset on a given chain (chain is then
+      # required). Omitting chain/caip2 (or passing "_" for either) matches the
+      # specified asset on any chain.
       sig { params(asset: String, chain: String).returns(T.attached_class) }
       def self.new(asset: nil, chain: nil)
       end

@@ -179,6 +179,16 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ROBINHOOD }
 
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::UNICHAIN }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::WORLDCHAIN }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::INK }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::SONEIUM }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::MEGAETH }
+
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::HYPEREVM }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::HYPERCORE }
@@ -210,6 +220,8 @@ module Privy
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TRON_NILE }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ROBINHOOD_TESTNET }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::INK_SEPOLIA }
 
           variant String
 
@@ -243,6 +255,11 @@ module Privy
           TRON = :tron
           ZKSYNC_ERA = :zksync_era
           ROBINHOOD = :robinhood
+          UNICHAIN = :unichain
+          WORLDCHAIN = :worldchain
+          INK = :ink
+          SONEIUM = :soneium
+          MEGAETH = :megaeth
           HYPEREVM = :hyperevm
           HYPERCORE = :hypercore
           TEMPO_TESTNET = :tempo_testnet
@@ -259,6 +276,7 @@ module Privy
           SOLANA_TESTNET = :solana_testnet
           TRON_NILE = :tron_nile
           ROBINHOOD_TESTNET = :robinhood_testnet
+          INK_SEPOLIA = :ink_sepolia
 
           # @!endgroup
 

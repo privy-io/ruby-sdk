@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_position_apy_allocation =
+        {
+          apy_bps: Integer,
+          assets_in_vault: String,
+          type: Privy::Models::Wallets::earn_position_apy_type
+        }
+
+      class EarnPositionApyAllocation < Privy::Internal::Type::BaseModel
+        attr_accessor apy_bps: Integer
+
+        attr_accessor assets_in_vault: String
+
+        attr_accessor type: Privy::Models::Wallets::earn_position_apy_type
+
+        def initialize: (
+          apy_bps: Integer,
+          assets_in_vault: String,
+          type: Privy::Models::Wallets::earn_position_apy_type
+        ) -> void
+
+        def to_hash: -> {
+          apy_bps: Integer,
+          assets_in_vault: String,
+          type: Privy::Models::Wallets::earn_position_apy_type
+        }
+      end
+    end
+  end
+end

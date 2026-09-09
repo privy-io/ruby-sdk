@@ -14,7 +14,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
-      # An asset identified by contract address, scoped to a chain via CAIP-2.
+      # An asset identified by contract address on a specific chain (CAIP-2). Either
+      # field may be "_": asset_address: "_" matches any asset on the chain; caip2: "\*"
+      # matches the asset on any chain (in this case asset_address holds the asset
+      # symbol id, e.g. "usdc" or "eth", not a contract address).
       sig do
         params(asset_address: String, caip2: String).returns(T.attached_class)
       end

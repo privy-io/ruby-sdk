@@ -355,6 +355,28 @@ module Privy
               :robinhood,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
+          UNICHAIN =
+            T.let(
+              :unichain,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          WORLDCHAIN =
+            T.let(
+              :worldchain,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          INK =
+            T.let(:ink, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          SONEIUM =
+            T.let(
+              :soneium,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          MEGAETH =
+            T.let(
+              :megaeth,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
           HYPEREVM =
             T.let(
               :hyperevm,
@@ -430,6 +452,11 @@ module Privy
           ROBINHOOD_TESTNET =
             T.let(
               :robinhood_testnet,
+              Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
+            )
+          INK_SEPOLIA =
+            T.let(
+              :ink_sepolia,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
 

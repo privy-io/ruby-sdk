@@ -132,7 +132,9 @@ class Privy::Test::Resources::Wallets::Earn::EthereumTest < Privy::Test::Resourc
         assets_in_vault: String,
         shares_in_vault: String,
         total_deposited: String,
-        total_withdrawn: String
+        total_withdrawn: String,
+        apy_allocation: ^(Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnPositionApyAllocation]) | nil,
+        apy_bps: Integer | nil
       }
     end
   end

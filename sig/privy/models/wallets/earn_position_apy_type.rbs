@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    module Wallets
+      type earn_position_apy_type = :boost | :base
+
+      module EarnPositionApyType
+        extend Privy::Internal::Type::Enum
+
+        BOOST: :boost
+        BASE: :base
+
+        def self?.values: -> ::Array[Privy::Models::Wallets::earn_position_apy_type]
+      end
+    end
+  end
+end

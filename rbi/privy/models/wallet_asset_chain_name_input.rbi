@@ -40,6 +40,13 @@ module Privy
         T.let(:zksync_era, Privy::WalletAssetChainNameInput::TaggedSymbol)
       ROBINHOOD =
         T.let(:robinhood, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      UNICHAIN =
+        T.let(:unichain, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      WORLDCHAIN =
+        T.let(:worldchain, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      INK = T.let(:ink, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      SONEIUM = T.let(:soneium, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      MEGAETH = T.let(:megaeth, Privy::WalletAssetChainNameInput::TaggedSymbol)
       HYPEREVM =
         T.let(:hyperevm, Privy::WalletAssetChainNameInput::TaggedSymbol)
       HYPERCORE =
@@ -73,6 +80,8 @@ module Privy
           :robinhood_testnet,
           Privy::WalletAssetChainNameInput::TaggedSymbol
         )
+      INK_SEPOLIA =
+        T.let(:ink_sepolia, Privy::WalletAssetChainNameInput::TaggedSymbol)
     end
   end
 end

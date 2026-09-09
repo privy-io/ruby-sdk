@@ -128,6 +128,11 @@ module Privy
           | :tron
           | :zksync_era
           | :robinhood
+          | :unichain
+          | :worldchain
+          | :ink
+          | :soneium
+          | :megaeth
           | :hyperevm
           | :hypercore
           | :tempo_testnet
@@ -144,6 +149,7 @@ module Privy
           | :solana_testnet
           | :tron_nile
           | :robinhood_testnet
+          | :ink_sepolia
           | String
           | ::Array[Privy::Models::wallet_asset_chain_name_input]
 
@@ -165,6 +171,11 @@ module Privy
           TRON: :tron
           ZKSYNC_ERA: :zksync_era
           ROBINHOOD: :robinhood
+          UNICHAIN: :unichain
+          WORLDCHAIN: :worldchain
+          INK: :ink
+          SONEIUM: :soneium
+          MEGAETH: :megaeth
           HYPEREVM: :hyperevm
           HYPERCORE: :hypercore
           TEMPO_TESTNET: :tempo_testnet
@@ -181,6 +192,7 @@ module Privy
           SOLANA_TESTNET: :solana_testnet
           TRON_NILE: :tron_nile
           ROBINHOOD_TESTNET: :robinhood_testnet
+          INK_SEPOLIA: :ink_sepolia
 
           WalletAssetChainNameInputArray: Privy::Internal::Type::Converter
         end
