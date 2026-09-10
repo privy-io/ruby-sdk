@@ -8,7 +8,8 @@ module Privy
           transaction_hash: String?,
           type: Privy::Models::Wallets::EvmTransactionWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason,
-          finalized: bool
+          finalized: bool,
+          gas_credits_charged_usd: String
         }
 
       class EvmTransactionWalletActionStep < Privy::Internal::Type::BaseModel
@@ -30,13 +31,18 @@ module Privy
 
         def finalized=: (bool) -> bool
 
+        attr_reader gas_credits_charged_usd: String?
+
+        def gas_credits_charged_usd=: (String) -> String
+
         def initialize: (
           caip2: String,
           status: Privy::Models::Wallets::evm_wallet_action_step_status,
           transaction_hash: String?,
           type: Privy::Models::Wallets::EvmTransactionWalletActionStep::type_,
           ?failure_reason: Privy::Wallets::FailureReason,
-          ?finalized: bool
+          ?finalized: bool,
+          ?gas_credits_charged_usd: String
         ) -> void
 
         def to_hash: -> {
@@ -45,7 +51,8 @@ module Privy
           transaction_hash: String?,
           type: Privy::Models::Wallets::EvmTransactionWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason,
-          finalized: bool
+          finalized: bool,
+          gas_credits_charged_usd: String
         }
 
         type type_ = :evm_transaction

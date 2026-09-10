@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type card_issuing_pin_update = { encrypted_number: String }
+
+    class CardIssuingPinUpdate < Privy::Internal::Type::BaseModel
+      attr_accessor encrypted_number: String
+
+      def initialize: (encrypted_number: String) -> void
+
+      def to_hash: -> { encrypted_number: String }
+    end
+  end
+end

@@ -6,6 +6,12 @@ module Privy
       class DepositAccounts
         # Operations related to wallets
         class Crypto
+          # Operations related to wallets
+          sig do
+            returns(Privy::Resources::Wallets::DepositAccounts::Crypto::Orders)
+          end
+          attr_reader :orders
+
           # Creates deposit source wallets and attaches them to a sweep into the path
           # wallet. Requires a dest-owner privy-authorization-signature. Accepts a
           # dest-owner user JWT or an app secret (app-secret callers use the dest owner).

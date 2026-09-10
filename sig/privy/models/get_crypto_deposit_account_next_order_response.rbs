@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type get_crypto_deposit_account_next_order_response =
+      { order: Privy::GetCryptoDepositAccountOrderResponse? }
+
+    class GetCryptoDepositAccountNextOrderResponse < Privy::Internal::Type::BaseModel
+      attr_accessor order: Privy::GetCryptoDepositAccountOrderResponse?
+
+      def initialize: (
+        order: Privy::GetCryptoDepositAccountOrderResponse?
+      ) -> void
+
+      def to_hash: -> { order: Privy::GetCryptoDepositAccountOrderResponse? }
+    end
+  end
+end

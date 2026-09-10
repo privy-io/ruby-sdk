@@ -3,14 +3,13 @@ module Privy
     type card_issuing_update_card_input =
       {
         environment: Privy::Models::environment,
-        status: Privy::Models::card_issuing_card_status,
-        cancellation_reason: Privy::Models::card_issuing_cancellation_reason
+        cancellation_reason: Privy::Models::card_issuing_cancellation_reason,
+        pin: Privy::CardIssuingPinUpdate,
+        status: Privy::Models::card_issuing_card_status
       }
 
     class CardIssuingUpdateCardInput < Privy::Internal::Type::BaseModel
       attr_accessor environment: Privy::Models::environment
-
-      attr_accessor status: Privy::Models::card_issuing_card_status
 
       attr_reader cancellation_reason: Privy::Models::card_issuing_cancellation_reason?
 
@@ -18,16 +17,28 @@ module Privy
         Privy::Models::card_issuing_cancellation_reason
       ) -> Privy::Models::card_issuing_cancellation_reason
 
+      attr_reader pin: Privy::CardIssuingPinUpdate?
+
+      def pin=: (Privy::CardIssuingPinUpdate) -> Privy::CardIssuingPinUpdate
+
+      attr_reader status: Privy::Models::card_issuing_card_status?
+
+      def status=: (
+        Privy::Models::card_issuing_card_status
+      ) -> Privy::Models::card_issuing_card_status
+
       def initialize: (
         environment: Privy::Models::environment,
-        status: Privy::Models::card_issuing_card_status,
-        ?cancellation_reason: Privy::Models::card_issuing_cancellation_reason
+        ?cancellation_reason: Privy::Models::card_issuing_cancellation_reason,
+        ?pin: Privy::CardIssuingPinUpdate,
+        ?status: Privy::Models::card_issuing_card_status
       ) -> void
 
       def to_hash: -> {
         environment: Privy::Models::environment,
-        status: Privy::Models::card_issuing_card_status,
-        cancellation_reason: Privy::Models::card_issuing_cancellation_reason
+        cancellation_reason: Privy::Models::card_issuing_cancellation_reason,
+        pin: Privy::CardIssuingPinUpdate,
+        status: Privy::Models::card_issuing_card_status
       }
     end
   end

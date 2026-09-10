@@ -6,6 +6,10 @@ module Privy
       class DepositAccounts
         # Operations related to wallets
         class Crypto
+          # Operations related to wallets
+          # @return [Privy::Resources::Wallets::DepositAccounts::Crypto::Orders]
+          attr_reader :orders
+
           # Some parameter documentations has been truncated, see
           # {Privy::Models::Wallets::DepositAccounts::CryptoCreateParams} for more details.
           #
@@ -52,6 +56,7 @@ module Privy
           # @param client [Privy::Client]
           def initialize(client:)
             @client = client
+            @orders = Privy::Resources::Wallets::DepositAccounts::Crypto::Orders.new(client: client)
           end
         end
       end

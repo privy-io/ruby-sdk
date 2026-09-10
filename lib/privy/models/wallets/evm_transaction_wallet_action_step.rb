@@ -41,7 +41,13 @@ module Privy
         #   @return [Boolean, nil]
         optional :finalized, Privy::Internal::Type::Boolean
 
-        # @!method initialize(caip2:, status:, transaction_hash:, type:, failure_reason: nil, finalized: nil)
+        # @!attribute gas_credits_charged_usd
+        #   Amount charged in USD for gas sponsorship on this step.
+        #
+        #   @return [String, nil]
+        optional :gas_credits_charged_usd, String
+
+        # @!method initialize(caip2:, status:, transaction_hash:, type:, failure_reason: nil, finalized: nil, gas_credits_charged_usd: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EvmTransactionWalletActionStep} for more details.
         #
@@ -58,6 +64,8 @@ module Privy
         #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
         #
         #   @param finalized [Boolean] Whether this step has reached on-chain finality. Absent until finality is confir
+        #
+        #   @param gas_credits_charged_usd [String] Amount charged in USD for gas sponsorship on this step.
 
         # @see Privy::Models::Wallets::EvmTransactionWalletActionStep#type
         module Type

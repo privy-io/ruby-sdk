@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type get_crypto_deposit_account_order_response =
+      { id: String, status: Privy::Models::Wallets::wallet_action_status }
+
+    class GetCryptoDepositAccountOrderResponse < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor status: Privy::Models::Wallets::wallet_action_status
+
+      def initialize: (
+        id: String,
+        status: Privy::Models::Wallets::wallet_action_status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        status: Privy::Models::Wallets::wallet_action_status
+      }
+    end
+  end
+end

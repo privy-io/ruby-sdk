@@ -12,11 +12,6 @@ module Privy
       sig { returns(Privy::Environment::OrSymbol) }
       attr_accessor :environment
 
-      # Lifecycle status of a card. Active unfreezes the card, inactive freezes it, and
-      # canceled closes it.
-      sig { returns(Privy::CardIssuingCardStatus::OrSymbol) }
-      attr_accessor :status
-
       # Why a lost or stolen card is being canceled.
       sig { returns(T.nilable(Privy::CardIssuingCancellationReason::OrSymbol)) }
       attr_reader :cancellation_reason
@@ -28,22 +23,40 @@ module Privy
       end
       attr_writer :cancellation_reason
 
-      # Input for updating the status of a card.
+      # Encrypted PIN to set on the card.
+      sig { returns(T.nilable(Privy::CardIssuingPinUpdate)) }
+      attr_reader :pin
+
+      sig { params(pin: Privy::CardIssuingPinUpdate::OrHash).void }
+      attr_writer :pin
+
+      # Lifecycle status of a card. Active unfreezes the card, inactive freezes it, and
+      # canceled closes it.
+      sig { returns(T.nilable(Privy::CardIssuingCardStatus::OrSymbol)) }
+      attr_reader :status
+
+      sig { params(status: Privy::CardIssuingCardStatus::OrSymbol).void }
+      attr_writer :status
+
+      # Input for updating a card.
       sig do
         params(
           environment: Privy::Environment::OrSymbol,
-          status: Privy::CardIssuingCardStatus::OrSymbol,
-          cancellation_reason: Privy::CardIssuingCancellationReason::OrSymbol
+          cancellation_reason: Privy::CardIssuingCancellationReason::OrSymbol,
+          pin: Privy::CardIssuingPinUpdate::OrHash,
+          status: Privy::CardIssuingCardStatus::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
         # The Privy API environment.
         environment:,
+        # Why a lost or stolen card is being canceled.
+        cancellation_reason: nil,
+        # Encrypted PIN to set on the card.
+        pin: nil,
         # Lifecycle status of a card. Active unfreezes the card, inactive freezes it, and
         # canceled closes it.
-        status:,
-        # Why a lost or stolen card is being canceled.
-        cancellation_reason: nil
+        status: nil
       )
       end
 
@@ -51,8 +64,9 @@ module Privy
         override.returns(
           {
             environment: Privy::Environment::OrSymbol,
-            status: Privy::CardIssuingCardStatus::OrSymbol,
-            cancellation_reason: Privy::CardIssuingCancellationReason::OrSymbol
+            cancellation_reason: Privy::CardIssuingCancellationReason::OrSymbol,
+            pin: Privy::CardIssuingPinUpdate,
+            status: Privy::CardIssuingCardStatus::OrSymbol
           }
         )
       end

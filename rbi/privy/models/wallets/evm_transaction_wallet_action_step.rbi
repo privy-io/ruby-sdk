@@ -49,6 +49,13 @@ module Privy
         sig { params(finalized: T::Boolean).void }
         attr_writer :finalized
 
+        # Amount charged in USD for gas sponsorship on this step.
+        sig { returns(T.nilable(String)) }
+        attr_reader :gas_credits_charged_usd
+
+        sig { params(gas_credits_charged_usd: String).void }
+        attr_writer :gas_credits_charged_usd
+
         # A wallet action step consisting of an EVM transaction.
         sig do
           params(
@@ -58,7 +65,8 @@ module Privy
             type:
               Privy::Wallets::EvmTransactionWalletActionStep::Type::OrSymbol,
             failure_reason: Privy::Wallets::FailureReason::OrHash,
-            finalized: T::Boolean
+            finalized: T::Boolean,
+            gas_credits_charged_usd: String
           ).returns(T.attached_class)
         end
         def self.new(
@@ -74,7 +82,9 @@ module Privy
           failure_reason: nil,
           # Whether this step has reached on-chain finality. Absent until finality is
           # confirmed.
-          finalized: nil
+          finalized: nil,
+          # Amount charged in USD for gas sponsorship on this step.
+          gas_credits_charged_usd: nil
         )
         end
 
@@ -87,7 +97,8 @@ module Privy
               type:
                 Privy::Wallets::EvmTransactionWalletActionStep::Type::TaggedSymbol,
               failure_reason: Privy::Wallets::FailureReason,
-              finalized: T::Boolean
+              finalized: T::Boolean,
+              gas_credits_charged_usd: String
             }
           )
         end

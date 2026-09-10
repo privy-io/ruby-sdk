@@ -3,6 +3,8 @@ module Privy
     class Wallets
       class DepositAccounts
         class Crypto
+          attr_reader orders: Privy::Resources::Wallets::DepositAccounts::Crypto::Orders
+
           def create: (
             String wallet_id,
             create_crypto_deposit_account_request_body: Privy::Models::create_crypto_deposit_account_request_body,

@@ -1,0 +1,19 @@
+module Privy
+  module Resources
+    class Wallets
+      class DepositAccounts
+        class Crypto
+          class Orders
+            def get: (
+              String order_id,
+              wallet_id: String,
+              ?request_options: Privy::request_opts
+            ) -> Privy::GetCryptoDepositAccountOrderResponse
+
+            def initialize: (client: Privy::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

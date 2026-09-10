@@ -6,7 +6,12 @@ module Privy
       module Apps
       end
 
+      module Crypto
+      end
+
       module DepositAccounts
+        module Crypto
+        end
       end
 
       module Earn
@@ -28,6 +33,8 @@ module Privy
 
       module Wallets
         module DepositAccounts
+          module Crypto
+          end
         end
 
         module Earn

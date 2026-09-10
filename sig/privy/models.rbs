@@ -319,6 +319,8 @@ module Privy
 
   class CardIssuingMerchant = Privy::Models::CardIssuingMerchant
 
+  class CardIssuingPinUpdate = Privy::Models::CardIssuingPinUpdate
+
   class CardIssuingReplaceCardRequestBody = Privy::Models::CardIssuingReplaceCardRequestBody
 
   module CardIssuingReplacementReason = Privy::Models::CardIssuingReplacementReason
@@ -820,6 +822,10 @@ module Privy
   class GasSpendResponseBody = Privy::Models::GasSpendResponseBody
 
   class GetByWalletAddressRequestBody = Privy::Models::GetByWalletAddressRequestBody
+
+  class GetCryptoDepositAccountNextOrderResponse = Privy::Models::GetCryptoDepositAccountNextOrderResponse
+
+  class GetCryptoDepositAccountOrderResponse = Privy::Models::GetCryptoDepositAccountOrderResponse
 
   class GetFiatCustomerRequestInput = Privy::Models::GetFiatCustomerRequestInput
 
