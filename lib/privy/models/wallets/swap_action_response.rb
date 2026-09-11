@@ -64,7 +64,8 @@ module Privy
         required :wallet_id, String
 
         # @!attribute destination_address
-        #   Recipient address for the swap.
+        #   Recipient address for the swap. Present for newly created swaps; may be absent
+        #   for older swap actions.
         #
         #   @return [String, nil]
         optional :destination_address, String
@@ -147,7 +148,7 @@ module Privy
         #
         #   @param wallet_id [String] The ID of the wallet involved in the action.
         #
-        #   @param destination_address [String] Recipient address for the swap.
+        #   @param destination_address [String] Recipient address for the swap. Present for newly created swaps; may be absent f
         #
         #   @param destination_caip2 [String] Destination chain CAIP-2 identifier. Present for cross-chain swaps.
         #

@@ -17,8 +17,9 @@ module Privy
       optional :caip2, String
 
       # @!attribute destination_address
-      #   Address to receive the output tokens. Required for swaps between different
-      #   address types and for same-asset transfers.
+      #   Address to receive the output tokens. Defaults to the swapping wallet address.
+      #   Required when swapping between chains with different address types (e.g. EVM to
+      #   Solana) and for same-asset transfers.
       #
       #   @return [String, nil]
       optional :destination_address, String
@@ -33,7 +34,7 @@ module Privy
       #
       #   @param caip2 [String] CAIP-2 chain identifier for the destination. Defaults to source chain if omitted
       #
-      #   @param destination_address [String] Address to receive the output tokens. Required for swaps between different addre
+      #   @param destination_address [String] Address to receive the output tokens. Defaults to the swapping wallet address. R
     end
   end
 end

@@ -48,7 +48,8 @@ module Privy
         sig { returns(String) }
         attr_accessor :wallet_id
 
-        # Recipient address for the swap.
+        # Recipient address for the swap. Present for newly created swaps; may be absent
+        # for older swap actions.
         sig { returns(T.nilable(String)) }
         attr_reader :destination_address
 
@@ -198,7 +199,8 @@ module Privy
           type:,
           # The ID of the wallet involved in the action.
           wallet_id:,
-          # Recipient address for the swap.
+          # Recipient address for the swap. Present for newly created swaps; may be absent
+          # for older swap actions.
           destination_address: nil,
           # Destination chain CAIP-2 identifier. Present for cross-chain swaps.
           destination_caip2: nil,

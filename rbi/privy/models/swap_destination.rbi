@@ -18,8 +18,9 @@ module Privy
       sig { params(caip2: String).void }
       attr_writer :caip2
 
-      # Address to receive the output tokens. Required for swaps between different
-      # address types and for same-asset transfers.
+      # Address to receive the output tokens. Defaults to the swapping wallet address.
+      # Required when swapping between chains with different address types (e.g. EVM to
+      # Solana) and for same-asset transfers.
       sig { returns(T.nilable(String)) }
       attr_reader :destination_address
 
@@ -40,8 +41,9 @@ module Privy
         # CAIP-2 chain identifier for the destination. Defaults to source chain if
         # omitted. Specify a different chain for cross-chain swaps.
         caip2: nil,
-        # Address to receive the output tokens. Required for swaps between different
-        # address types and for same-asset transfers.
+        # Address to receive the output tokens. Defaults to the swapping wallet address.
+        # Required when swapping between chains with different address types (e.g. EVM to
+        # Solana) and for same-asset transfers.
         destination_address: nil
       )
       end
