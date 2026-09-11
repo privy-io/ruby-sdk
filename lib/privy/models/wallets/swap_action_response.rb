@@ -64,9 +64,7 @@ module Privy
         required :wallet_id, String
 
         # @!attribute destination_address
-        #   Recipient address on the destination chain. Present for cross-chain swaps. May
-        #   differ from the source wallet address when swapping between chain types (e.g.
-        #   EVM to Solana).
+        #   Recipient address for the swap.
         #
         #   @return [String, nil]
         optional :destination_address, String
@@ -149,7 +147,7 @@ module Privy
         #
         #   @param wallet_id [String] The ID of the wallet involved in the action.
         #
-        #   @param destination_address [String] Recipient address on the destination chain. Present for cross-chain swaps. May d
+        #   @param destination_address [String] Recipient address for the swap.
         #
         #   @param destination_caip2 [String] Destination chain CAIP-2 identifier. Present for cross-chain swaps.
         #

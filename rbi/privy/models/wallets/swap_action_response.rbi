@@ -48,9 +48,7 @@ module Privy
         sig { returns(String) }
         attr_accessor :wallet_id
 
-        # Recipient address on the destination chain. Present for cross-chain swaps. May
-        # differ from the source wallet address when swapping between chain types (e.g.
-        # EVM to Solana).
+        # Recipient address for the swap.
         sig { returns(T.nilable(String)) }
         attr_reader :destination_address
 
@@ -200,9 +198,7 @@ module Privy
           type:,
           # The ID of the wallet involved in the action.
           wallet_id:,
-          # Recipient address on the destination chain. Present for cross-chain swaps. May
-          # differ from the source wallet address when swapping between chain types (e.g.
-          # EVM to Solana).
+          # Recipient address for the swap.
           destination_address: nil,
           # Destination chain CAIP-2 identifier. Present for cross-chain swaps.
           destination_caip2: nil,
