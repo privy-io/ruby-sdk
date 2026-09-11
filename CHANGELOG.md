@@ -1,5 +1,68 @@
 # Changelog
 
+## [0.8.0](https://github.com/privy-io/ruby-sdk/compare/v0.7.0...v0.8.0) (2026-09-11)
+
+
+### Features
+
+* **api:** api update ([4c9ae3c](https://github.com/privy-io/ruby-sdk/commit/4c9ae3c0b558e1c85bcb8d510f9ea6d54a3d7e0f))
+* **api:** api update ([bab7f19](https://github.com/privy-io/ruby-sdk/commit/bab7f1993b0fbed5870e35ac86c7ba66137baa98))
+* **api:** api update ([6bff8c3](https://github.com/privy-io/ruby-sdk/commit/6bff8c3bb03dee31fb8b0ad17fa31f1827f6da9c))
+* **api:** api update ([294650d](https://github.com/privy-io/ruby-sdk/commit/294650d43bf668aa95357d1411f12d70aba8db7c))
+* **api:** api update ([6d50c39](https://github.com/privy-io/ruby-sdk/commit/6d50c390bba46787d3cbc6c5399b3fa8b26a5b97))
+* **api:** api update ([7e9d18f](https://github.com/privy-io/ruby-sdk/commit/7e9d18f3d47f87b34589dd089489fa249d06864a))
+* **api:** api update ([10af91c](https://github.com/privy-io/ruby-sdk/commit/10af91cb258e2720dfbcb26dde99d9bea1898406))
+* **api:** api update ([a338bc6](https://github.com/privy-io/ruby-sdk/commit/a338bc6ab4eb399298e0ff54afd78c2cb3f9632d))
+* **api:** api update ([06f0ac9](https://github.com/privy-io/ruby-sdk/commit/06f0ac9c5b553daeb3b7b2c6c15bc34148243375))
+* **api:** api update ([68ea49a](https://github.com/privy-io/ruby-sdk/commit/68ea49a58147368d5f6a2d66d550128bae21b1e0))
+* **api:** api update ([6070efe](https://github.com/privy-io/ruby-sdk/commit/6070efe52bc63c6df72efc87db1cdc0cd067deb6))
+* **api:** api update ([b4f7cc6](https://github.com/privy-io/ruby-sdk/commit/b4f7cc62228274732b45d521d78b541a1557884b))
+* **api:** api update ([02bce54](https://github.com/privy-io/ruby-sdk/commit/02bce548f795e8f1a3f338b5558f48dbb6a5e7d6))
+* **api:** api update ([76ffd13](https://github.com/privy-io/ruby-sdk/commit/76ffd138ac9621b650ccf7084eb3893b474a92b5))
+* **api:** api update ([e459928](https://github.com/privy-io/ruby-sdk/commit/e459928fb6b53941c089c54ed5716ee44850dbee))
+* **api:** api update ([0e08e76](https://github.com/privy-io/ruby-sdk/commit/0e08e765661a673924ae084d06be5e2b390d5619))
+* **api:** api update ([d7a74f6](https://github.com/privy-io/ruby-sdk/commit/d7a74f6bd928e7ecd01e073936236f5b432e7ccb))
+* **api:** api update ([2810469](https://github.com/privy-io/ruby-sdk/commit/28104699e1a39ec90f66cd2b10833986377a9418))
+* **api:** api update ([c9722f9](https://github.com/privy-io/ruby-sdk/commit/c9722f996c7ac521bd237cb3f1a83fca576d2aaf))
+* **api:** api update ([d72fe14](https://github.com/privy-io/ruby-sdk/commit/d72fe14574b600a766db9dd35b9852c2a1437b20))
+* **api:** api update ([3240ac8](https://github.com/privy-io/ruby-sdk/commit/3240ac82384f806ab60bf8da01c300c17ce7c607))
+* **api:** api update ([67db7f0](https://github.com/privy-io/ruby-sdk/commit/67db7f0841d822f65e9985e80a1aee8ce9b5eea0))
+* **api:** api update ([31e78e0](https://github.com/privy-io/ruby-sdk/commit/31e78e083787da7b65c976e699a76f6ac111162d))
+* **api:** api update ([e004d49](https://github.com/privy-io/ruby-sdk/commit/e004d490c0972971fcf6f1e593468fbfac0f2ca7))
+* **api:** api update ([7a93ee1](https://github.com/privy-io/ruby-sdk/commit/7a93ee107916fccc0624b7bd6fbf5900e061d664))
+* **api:** api update ([866b108](https://github.com/privy-io/ruby-sdk/commit/866b10834e73cfc059f141399b395ac4c1e6d12c))
+* **api:** api update ([273ce94](https://github.com/privy-io/ruby-sdk/commit/273ce944a058f43540dcd3a02169560bc2845d50))
+* **api:** api update ([716735e](https://github.com/privy-io/ruby-sdk/commit/716735e1f045ba60085b587d886ff19766074c02))
+* **api:** api update ([16960a0](https://github.com/privy-io/ruby-sdk/commit/16960a0e571d99cf451105db2e18b0e2c8244d40))
+* **api:** api update ([0a73150](https://github.com/privy-io/ruby-sdk/commit/0a73150e94f34e937ba124bd27da21702b7be2d7))
+* **api:** api update ([47d511d](https://github.com/privy-io/ruby-sdk/commit/47d511d6ddab9332e97ad13fd6731d016f8fcfe8))
+* **api:** api update ([3267fd7](https://github.com/privy-io/ruby-sdk/commit/3267fd79fca7f398457c117a876112a4eb646505))
+* **api:** api update ([0cb359b](https://github.com/privy-io/ruby-sdk/commit/0cb359b0af7cd1a68144f8890a60f106f2a30340))
+* **api:** api update ([61cf706](https://github.com/privy-io/ruby-sdk/commit/61cf70687aa013b78aa3ad5a510bd37f9c674a4d))
+* **api:** api update ([2fca9f5](https://github.com/privy-io/ruby-sdk/commit/2fca9f5192d4592921507a909d1dbeaf7674f69b))
+* **api:** api update ([13eca29](https://github.com/privy-io/ruby-sdk/commit/13eca2969f3cdbda87ffeb2f88a6056649012a02))
+* **api:** api update ([ec59927](https://github.com/privy-io/ruby-sdk/commit/ec599274d71a3645615cb4fc21ae86f3ba22fc26))
+* **api:** api update ([84dee3b](https://github.com/privy-io/ruby-sdk/commit/84dee3b4747cfd0a151b9a45f1e6978430164446))
+* **api:** api update ([ae0c6aa](https://github.com/privy-io/ruby-sdk/commit/ae0c6aa87f5df712d25e6e6f311018a1332d8293))
+* initial stlc build ([fa0bc14](https://github.com/privy-io/ruby-sdk/commit/fa0bc148abaecc041c58cb0bde0af2648e5d6ce9))
+
+
+### Bug Fixes
+
+* call parent wallet transfer implementation ([#4](https://github.com/privy-io/ruby-sdk/issues/4)) ([ea2256b](https://github.com/privy-io/ruby-sdk/commit/ea2256b2d29428834159bf1b5e5a1e3d7aaef25b))
+* **ci:** allow back-sync to update workflows ([#8](https://github.com/privy-io/ruby-sdk/issues/8)) ([de25aa5](https://github.com/privy-io/ruby-sdk/commit/de25aa57ce70e2ec6f8c3bf96bc644e84c83fd10))
+* **ci:** authenticate staging back-sync with builder blobby ([8915c50](https://github.com/privy-io/ruby-sdk/commit/8915c50e5fe2b1d7d8b8be0d4ba5936b89af79f1))
+
+
+### Chores
+
+* publish stable GitHub releases ([#5](https://github.com/privy-io/ruby-sdk/issues/5)) ([5c931fb](https://github.com/privy-io/ruby-sdk/commit/5c931fb8f36fed103b6256c61b8aafba39c8bf63))
+
+
+### Documentation
+
+* add agent guidance ([#7](https://github.com/privy-io/ruby-sdk/issues/7)) ([4ad822e](https://github.com/privy-io/ruby-sdk/commit/4ad822e27ec5bd252ac1ccb1d7cae5ea1d9523bc))
+
 ## 0.7.0 (2026-07-24)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/privy-io/ruby-sdk/compare/v0.6.0...v0.7.0)
