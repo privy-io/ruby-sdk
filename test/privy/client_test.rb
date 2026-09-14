@@ -341,6 +341,7 @@ class PrivyTest < Minitest::Test
       headers = req.headers.transform_keys(&:downcase)
       expected = req.body.nil? ? ["accept"] : %w[accept content-type]
       headers.fetch_values(*expected).each { refute_empty(_1) }
+      assert_equal("ruby:#{Privy::VERSION}", headers.fetch("privy-client"))
     end
   end
 end

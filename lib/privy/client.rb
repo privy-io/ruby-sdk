@@ -170,7 +170,8 @@ module Privy
       end
 
       headers = {
-        "privy-app-id" => (@app_id = app_id.to_s)
+        "privy-app-id" => (@app_id = app_id.to_s),
+        "privy-client" => "ruby:#{Privy::VERSION}"
       }
       custom_headers_env = ENV["PRIVY_API_CUSTOM_HEADERS"]
       unless custom_headers_env.nil?
