@@ -51,6 +51,7 @@ module Privy
         T.let(:hyperevm, Privy::WalletAssetChainNameInput::TaggedSymbol)
       HYPERCORE =
         T.let(:hypercore, Privy::WalletAssetChainNameInput::TaggedSymbol)
+      ARC = T.let(:arc, Privy::WalletAssetChainNameInput::TaggedSymbol)
       TEMPO_TESTNET =
         T.let(:tempo_testnet, Privy::WalletAssetChainNameInput::TaggedSymbol)
       HOODI = T.let(:hoodi, Privy::WalletAssetChainNameInput::TaggedSymbol)

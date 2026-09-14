@@ -8,10 +8,6 @@ module Privy
           T.any(Privy::CustodialWalletCreateInput, Privy::Internal::AnyHash)
         end
 
-      # The chain type of the custodial wallet.
-      sig { returns(Privy::CustodialWalletChainType::OrSymbol) }
-      attr_accessor :chain_type
-
       # The provider of the custodial wallet.
       sig { returns(Privy::CustodialWalletProvider::OrSymbol) }
       attr_accessor :provider
@@ -32,6 +28,20 @@ module Privy
       end
       attr_writer :additional_signers
 
+      # The chain of the custodial wallet.
+      sig { returns(T.nilable(Privy::CustodialWalletChain::OrSymbol)) }
+      attr_reader :chain
+
+      sig { params(chain: Privy::CustodialWalletChain::OrSymbol).void }
+      attr_writer :chain
+
+      # The chain type of the custodial wallet (deprecated).
+      sig { returns(T.nilable(Privy::CustodialWalletChainType::OrSymbol)) }
+      attr_reader :chain_type
+
+      sig { params(chain_type: Privy::CustodialWalletChainType::OrSymbol).void }
+      attr_writer :chain_type
+
       # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       # null to remove the current owner.
       sig do
@@ -51,11 +61,12 @@ module Privy
       # The input for creating a custodial wallet.
       sig do
         params(
-          chain_type: Privy::CustodialWalletChainType::OrSymbol,
           provider: Privy::CustodialWalletProvider::OrSymbol,
           provider_user_id: String,
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
+          chain: Privy::CustodialWalletChain::OrSymbol,
+          chain_type: Privy::CustodialWalletChainType::OrSymbol,
           owner:
             T.nilable(
               T.any(
@@ -67,8 +78,6 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # The chain type of the custodial wallet.
-        chain_type:,
         # The provider of the custodial wallet.
         provider:,
         # The resource ID of the beneficiary of the custodial wallet, given by the
@@ -76,6 +85,10 @@ module Privy
         provider_user_id:,
         # Additional signers for the wallet.
         additional_signers: nil,
+        # The chain of the custodial wallet.
+        chain: nil,
+        # The chain type of the custodial wallet (deprecated).
+        chain_type: nil,
         # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
         # null to remove the current owner.
         owner: nil,
@@ -87,10 +100,11 @@ module Privy
       sig do
         override.returns(
           {
-            chain_type: Privy::CustodialWalletChainType::OrSymbol,
             provider: Privy::CustodialWalletProvider::OrSymbol,
             provider_user_id: String,
             additional_signers: T::Array[Privy::AdditionalSignerItemInput],
+            chain: Privy::CustodialWalletChain::OrSymbol,
+            chain_type: Privy::CustodialWalletChainType::OrSymbol,
             owner:
               T.nilable(
                 T.any(Privy::OwnerInputUser, Privy::OwnerInputPublicKey)

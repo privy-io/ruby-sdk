@@ -56,6 +56,13 @@ module Privy
       sig { params(authorization_threshold: Float).void }
       attr_writer :authorization_threshold
 
+      # The chain of the custodial wallet.
+      sig { returns(T.nilable(Privy::CustodialWalletChain::TaggedSymbol)) }
+      attr_reader :chain
+
+      sig { params(chain: Privy::CustodialWalletChain::OrSymbol).void }
+      attr_writer :chain
+
       # Information about the custodian managing this wallet.
       sig { returns(T.nilable(Privy::WalletCustodian)) }
       attr_reader :custody
@@ -109,6 +116,7 @@ module Privy
           policy_ids: T::Array[String],
           archived_at: T.nilable(Float),
           authorization_threshold: Float,
+          chain: Privy::CustodialWalletChain::OrSymbol,
           custody: Privy::WalletCustodian::OrHash,
           display_name: String,
           entity: T.nilable(Privy::WalletEntity::OrHash),
@@ -143,6 +151,8 @@ module Privy
         archived_at: nil,
         # The number of keys that must sign for an action to be valid.
         authorization_threshold: nil,
+        # The chain of the custodial wallet.
+        chain: nil,
         # Information about the custodian managing this wallet.
         custody: nil,
         # A human-readable label for the wallet.
@@ -173,6 +183,7 @@ module Privy
             policy_ids: T::Array[String],
             archived_at: T.nilable(Float),
             authorization_threshold: Float,
+            chain: Privy::CustodialWalletChain::TaggedSymbol,
             custody: Privy::WalletCustodian,
             display_name: String,
             entity: T.nilable(Privy::WalletEntity),

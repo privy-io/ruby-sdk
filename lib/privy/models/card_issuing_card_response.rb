@@ -9,7 +9,7 @@ module Privy
       required :id, String
 
       # @!attribute asset
-      #   The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+      #   The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
       #
       #   @return [String]
       required :asset, String
@@ -84,7 +84,7 @@ module Privy
       #
       #   @param id [String]
       #
-      #   @param asset [String] The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+      #   @param asset [String] The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
       #
       #   @param balance_formatted [String, nil] USD balance of the card funding wallet on the configured chain, or null when una
       #

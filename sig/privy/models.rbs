@@ -2393,7 +2393,7 @@ module Privy
 
   class WalletAutomationReindexAssetStatus = Privy::Models::WalletAutomationReindexAssetStatus
 
-  class WalletAutomationReindexCaip2 = Privy::Models::WalletAutomationReindexCaip2
+  module WalletAutomationReindexCaip2 = Privy::Models::WalletAutomationReindexCaip2
 
   class WalletAutomationReindexParams = Privy::Models::WalletAutomationReindexParams
 

@@ -3,7 +3,7 @@ module Privy
     class WalletAutomations
       def reindex: (
         asset_address: String,
-        ?caip2: String,
+        ?caip2: Privy::Models::wallet_automation_reindex_caip2,
         ?chain: String,
         ?deposit_address: String,
         ?wallet_id: String,

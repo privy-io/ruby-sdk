@@ -10,11 +10,11 @@ module Privy
       required :asset_address, String
 
       # @!attribute caip2
-      #   EVM CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:1" for
-      #   Ethereum).
+      #   An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation
+      #   reindex.
       #
-      #   @return [String]
-      required :caip2, String
+      #   @return [String, Symbol, Privy::Models::TronCaip2]
+      required :caip2, union: -> { Privy::WalletAutomationReindexCaip2 }
 
       # @!attribute existing_execution_id
       #   ID of the in-flight execution blocking a re-trigger. Populated only when
@@ -46,7 +46,7 @@ module Privy
       #
       #   @param asset_address [String] Asset contract address; the native asset uses `native`.
       #
-      #   @param caip2 [String] EVM CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:1" for Ethere
+      #   @param caip2 [String, Symbol, Privy::Models::TronCaip2] An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation r
       #
       #   @param existing_execution_id [String, nil] ID of the in-flight execution blocking a re-trigger. Populated only when `status
       #

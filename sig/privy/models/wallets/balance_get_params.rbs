@@ -135,6 +135,7 @@ module Privy
           | :megaeth
           | :hyperevm
           | :hypercore
+          | :arc
           | :tempo_testnet
           | :hoodi
           | :sepolia
@@ -178,6 +179,7 @@ module Privy
           MEGAETH: :megaeth
           HYPEREVM: :hyperevm
           HYPERCORE: :hypercore
+          ARC: :arc
           TEMPO_TESTNET: :tempo_testnet
           HOODI: :hoodi
           SEPOLIA: :sepolia

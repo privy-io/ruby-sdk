@@ -4,10 +4,11 @@ module Privy
       {
         id: String,
         address: String,
-        chain_type: Privy::Models::custodial_wallet_chain_type,
+        chain: Privy::Models::custodial_wallet_chain,
         custody: Privy::WalletCustodian,
         owner_id: String?,
         additional_signers: Privy::Models::wallet_additional_signer,
+        chain_type: Privy::Models::custodial_wallet_chain_type,
         policy_ids: ::Array[String]
       }
 
@@ -16,7 +17,7 @@ module Privy
 
       attr_accessor address: String
 
-      attr_accessor chain_type: Privy::Models::custodial_wallet_chain_type
+      attr_accessor chain: Privy::Models::custodial_wallet_chain
 
       attr_accessor custody: Privy::WalletCustodian
 
@@ -28,6 +29,12 @@ module Privy
         Privy::Models::wallet_additional_signer
       ) -> Privy::Models::wallet_additional_signer
 
+      attr_reader chain_type: Privy::Models::custodial_wallet_chain_type?
+
+      def chain_type=: (
+        Privy::Models::custodial_wallet_chain_type
+      ) -> Privy::Models::custodial_wallet_chain_type
+
       attr_reader policy_ids: ::Array[String]?
 
       def policy_ids=: (::Array[String]) -> ::Array[String]
@@ -35,20 +42,22 @@ module Privy
       def initialize: (
         id: String,
         address: String,
-        chain_type: Privy::Models::custodial_wallet_chain_type,
+        chain: Privy::Models::custodial_wallet_chain,
         custody: Privy::WalletCustodian,
         owner_id: String?,
         ?additional_signers: Privy::Models::wallet_additional_signer,
+        ?chain_type: Privy::Models::custodial_wallet_chain_type,
         ?policy_ids: ::Array[String]
       ) -> void
 
       def to_hash: -> {
         id: String,
         address: String,
-        chain_type: Privy::Models::custodial_wallet_chain_type,
+        chain: Privy::Models::custodial_wallet_chain,
         custody: Privy::WalletCustodian,
         owner_id: String?,
         additional_signers: Privy::Models::wallet_additional_signer,
+        chain_type: Privy::Models::custodial_wallet_chain_type,
         policy_ids: ::Array[String]
       }
     end

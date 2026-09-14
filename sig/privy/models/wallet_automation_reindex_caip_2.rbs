@@ -1,5 +1,11 @@
 module Privy
   module Models
-    class WalletAutomationReindexCaip2 = String
+    type wallet_automation_reindex_caip2 = String | Privy::Models::tron_caip2
+
+    module WalletAutomationReindexCaip2
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::wallet_automation_reindex_caip2]
+    end
   end
 end

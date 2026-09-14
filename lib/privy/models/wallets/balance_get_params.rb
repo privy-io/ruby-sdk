@@ -193,6 +193,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::HYPERCORE }
 
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARC }
+
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TEMPO_TESTNET }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::HOODI }
@@ -262,6 +264,7 @@ module Privy
           MEGAETH = :megaeth
           HYPEREVM = :hyperevm
           HYPERCORE = :hypercore
+          ARC = :arc
           TEMPO_TESTNET = :tempo_testnet
           HOODI = :hoodi
           SEPOLIA = :sepolia

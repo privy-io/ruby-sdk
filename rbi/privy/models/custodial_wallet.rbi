@@ -12,9 +12,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :address
 
-      # The chain type of the custodial wallet.
-      sig { returns(Privy::CustodialWalletChainType::OrSymbol) }
-      attr_accessor :chain_type
+      # The chain of the custodial wallet.
+      sig { returns(Privy::CustodialWalletChain::OrSymbol) }
+      attr_accessor :chain
 
       # Information about the custodian managing this wallet.
       sig { returns(Privy::WalletCustodian) }
@@ -39,6 +39,13 @@ module Privy
       end
       attr_writer :additional_signers
 
+      # The chain type of the custodial wallet (deprecated).
+      sig { returns(T.nilable(Privy::CustodialWalletChainType::OrSymbol)) }
+      attr_reader :chain_type
+
+      sig { params(chain_type: Privy::CustodialWalletChainType::OrSymbol).void }
+      attr_writer :chain_type
+
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :policy_ids
 
@@ -50,25 +57,28 @@ module Privy
         params(
           id: String,
           address: String,
-          chain_type: Privy::CustodialWalletChainType::OrSymbol,
+          chain: Privy::CustodialWalletChain::OrSymbol,
           custody: Privy::WalletCustodian::OrHash,
           owner_id: T.nilable(String),
           additional_signers:
             T::Array[Privy::WalletAdditionalSignerItem::OrHash],
+          chain_type: Privy::CustodialWalletChainType::OrSymbol,
           policy_ids: T::Array[String]
         ).returns(T.attached_class)
       end
       def self.new(
         id:,
         address:,
-        # The chain type of the custodial wallet.
-        chain_type:,
+        # The chain of the custodial wallet.
+        chain:,
         # Information about the custodian managing this wallet.
         custody:,
         # A unique identifier for a key quorum.
         owner_id:,
         # Additional signers for the wallet.
         additional_signers: nil,
+        # The chain type of the custodial wallet (deprecated).
+        chain_type: nil,
         policy_ids: nil
       )
       end
@@ -78,10 +88,11 @@ module Privy
           {
             id: String,
             address: String,
-            chain_type: Privy::CustodialWalletChainType::OrSymbol,
+            chain: Privy::CustodialWalletChain::OrSymbol,
             custody: Privy::WalletCustodian,
             owner_id: T.nilable(String),
             additional_signers: T::Array[Privy::WalletAdditionalSignerItem],
+            chain_type: Privy::CustodialWalletChainType::OrSymbol,
             policy_ids: T::Array[String]
           }
         )

@@ -74,6 +74,12 @@ module Privy
       #   @return [Float, nil]
       optional :authorization_threshold, Float
 
+      # @!attribute chain
+      #   The chain of the custodial wallet.
+      #
+      #   @return [Symbol, Privy::Models::CustodialWalletChain, nil]
+      optional :chain, enum: -> { Privy::CustodialWalletChain }
+
       # @!attribute custody
       #   Information about the custodian managing this wallet.
       #
@@ -107,7 +113,7 @@ module Privy
       #   @return [String, nil]
       optional :public_key, String
 
-      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, public_key: nil)
+      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, chain: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, public_key: nil)
       #   Some parameter documentations has been truncated, see {Privy::Models::Wallet}
       #   for more details.
       #
@@ -134,6 +140,8 @@ module Privy
       #   @param archived_at [Float, nil] Unix timestamp of when the wallet was archived in milliseconds, or null if the w
       #
       #   @param authorization_threshold [Float] The number of keys that must sign for an action to be valid.
+      #
+      #   @param chain [Symbol, Privy::Models::CustodialWalletChain] The chain of the custodial wallet.
       #
       #   @param custody [Privy::Models::WalletCustodian] Information about the custodian managing this wallet.
       #

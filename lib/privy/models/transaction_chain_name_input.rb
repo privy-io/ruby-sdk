@@ -30,6 +30,8 @@ module Privy
 
       variant const: -> { Privy::Models::TransactionChainNameInput::SEPOLIA }
 
+      variant const: -> { Privy::Models::TransactionChainNameInput::ARC }
+
       variant String
 
       # @!method self.variants
@@ -53,6 +55,7 @@ module Privy
       POLYGON = :polygon
       SOLANA = :solana
       SEPOLIA = :sepolia
+      ARC = :arc
 
       # @!endgroup
     end

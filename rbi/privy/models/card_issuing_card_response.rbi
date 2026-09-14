@@ -11,7 +11,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
-      # The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+      # The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
       sig { returns(String) }
       attr_accessor :asset
 
@@ -78,7 +78,7 @@ module Privy
       end
       def self.new(
         id:,
-        # The asset the card funds from. 'usdc' on EVM and Solana, 'path_usd' on Tempo.
+        # The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
         asset:,
         # USD balance of the card funding wallet on the configured chain, or null when
         # unavailable.

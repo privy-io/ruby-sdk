@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    # The chain type of the custodial wallet.
+    # The chain type of the custodial wallet (deprecated).
     module CustodialWalletChainType
       extend Privy::Internal::Type::Enum
 

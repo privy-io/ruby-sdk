@@ -387,6 +387,8 @@ module Privy
               :hypercore,
               Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol
             )
+          ARC =
+            T.let(:arc, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
           TEMPO_TESTNET =
             T.let(
               :tempo_testnet,

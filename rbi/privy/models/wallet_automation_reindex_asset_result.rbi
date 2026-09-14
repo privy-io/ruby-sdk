@@ -15,9 +15,9 @@ module Privy
       sig { returns(String) }
       attr_accessor :asset_address
 
-      # EVM CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:1" for
-      # Ethereum).
-      sig { returns(String) }
+      # An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation
+      # reindex.
+      sig { returns(Privy::WalletAutomationReindexCaip2::Variants) }
       attr_accessor :caip2
 
       # ID of the in-flight execution blocking a re-trigger. Populated only when
@@ -40,7 +40,7 @@ module Privy
       sig do
         params(
           asset_address: String,
-          caip2: String,
+          caip2: T.any(String, Privy::TronCaip2::OrSymbol),
           existing_execution_id: T.nilable(String),
           raw_balance: T.nilable(String),
           status: String
@@ -49,8 +49,8 @@ module Privy
       def self.new(
         # Asset contract address; the native asset uses `native`.
         asset_address:,
-        # EVM CAIP-2 chain identifier (e.g. "eip155:4217" for Tempo, "eip155:1" for
-        # Ethereum).
+        # An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation
+        # reindex.
         caip2:,
         # ID of the in-flight execution blocking a re-trigger. Populated only when
         # `status` is `skipped_existing_execution`; `null` otherwise.
@@ -69,7 +69,7 @@ module Privy
         override.returns(
           {
             asset_address: String,
-            caip2: String,
+            caip2: Privy::WalletAutomationReindexCaip2::Variants,
             existing_execution_id: T.nilable(String),
             raw_balance: T.nilable(String),
             status: String

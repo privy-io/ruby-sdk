@@ -46,6 +46,8 @@ module Privy
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::HYPERCORE }
 
+      variant const: -> { Privy::Models::WalletAssetChainNameInput::ARC }
+
       variant const: -> { Privy::Models::WalletAssetChainNameInput::TEMPO_TESTNET }
 
       variant const: -> { Privy::Models::WalletAssetChainNameInput::HOODI }
@@ -107,6 +109,7 @@ module Privy
       MEGAETH = :megaeth
       HYPEREVM = :hyperevm
       HYPERCORE = :hypercore
+      ARC = :arc
       TEMPO_TESTNET = :tempo_testnet
       HOODI = :hoodi
       SEPOLIA = :sepolia

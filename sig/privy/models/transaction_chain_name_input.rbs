@@ -13,6 +13,7 @@ module Privy
       | :polygon
       | :solana
       | :sepolia
+      | :arc
       | String
 
     module TransactionChainNameInput
@@ -32,6 +33,7 @@ module Privy
       POLYGON: :polygon
       SOLANA: :solana
       SEPOLIA: :sepolia
+      ARC: :arc
     end
   end
 end
