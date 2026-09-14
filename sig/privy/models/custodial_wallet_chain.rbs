@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type custodial_wallet_chain = :base | :solana | :tempo
+
+    module CustodialWalletChain
+      extend Privy::Internal::Type::Enum
+
+      BASE: :base
+      SOLANA: :solana
+      TEMPO: :tempo
+
+      def self?.values: -> ::Array[Privy::Models::custodial_wallet_chain]
+    end
+  end
+end

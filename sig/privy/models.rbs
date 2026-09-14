@@ -453,6 +453,8 @@ module Privy
 
   class CustodialWallet = Privy::Models::CustodialWallet
 
+  module CustodialWalletChain = Privy::Models::CustodialWalletChain
+
   module CustodialWalletChainType = Privy::Models::CustodialWalletChainType
 
   class CustodialWalletCreateInput = Privy::Models::CustodialWalletCreateInput
