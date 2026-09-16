@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type crypto_deposit_account_chain =
+      {
+        :caip2 => String,
+        chain_id: Integer,
+        display_name: String,
+        icon_url: String,
+        vm_type: String
+      }
+
+    class CryptoDepositAccountChain < Privy::Internal::Type::BaseModel
+      attr_accessor caip2: String
+
+      attr_accessor chain_id: Integer
+
+      attr_accessor display_name: String
+
+      attr_accessor icon_url: String
+
+      attr_accessor vm_type: String
+
+      def initialize: (
+        caip2: String,
+        chain_id: Integer,
+        display_name: String,
+        icon_url: String,
+        vm_type: String
+      ) -> void
+
+      def to_hash: -> {
+        :caip2 => String,
+        chain_id: Integer,
+        display_name: String,
+        icon_url: String,
+        vm_type: String
+      }
+    end
+  end
+end

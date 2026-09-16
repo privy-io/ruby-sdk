@@ -74,6 +74,12 @@ module Privy
       #   @return [Float, nil]
       optional :authorization_threshold, Float
 
+      # @!attribute automations
+      #   Automations attached to the wallet, including disabled ones.
+      #
+      #   @return [Array<Privy::Models::AttachedWalletAutomation>, nil]
+      optional :automations, -> { Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation] }
+
       # @!attribute chain
       #   The chain of the custodial wallet.
       #
@@ -113,7 +119,7 @@ module Privy
       #   @return [String, nil]
       optional :public_key, String
 
-      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, chain: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, public_key: nil)
+      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, automations: nil, chain: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, public_key: nil)
       #   Some parameter documentations has been truncated, see {Privy::Models::Wallet}
       #   for more details.
       #
@@ -140,6 +146,8 @@ module Privy
       #   @param archived_at [Float, nil] Unix timestamp of when the wallet was archived in milliseconds, or null if the w
       #
       #   @param authorization_threshold [Float] The number of keys that must sign for an action to be valid.
+      #
+      #   @param automations [Array<Privy::Models::AttachedWalletAutomation>] Automations attached to the wallet, including disabled ones.
       #
       #   @param chain [Symbol, Privy::Models::CustodialWalletChain] The chain of the custodial wallet.
       #

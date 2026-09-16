@@ -9,7 +9,7 @@ module Privy
       required :deposit_address, String
 
       # @!attribute destination
-      #   An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+      #   An asset on a chain. Uses a human-readable alias (usdc, tempo) when one is on
       #   file, otherwise the raw asset address and CAIP-2.
       #
       #   @return [Privy::Models::CryptoDepositAsset]
@@ -35,7 +35,7 @@ module Privy
       #
       #   @param deposit_address [String]
       #
-      #   @param destination [Privy::Models::CryptoDepositAsset] An asset on a chain. Uses a human-readable alias (usdc, base) when one is on fil
+      #   @param destination [Privy::Models::CryptoDepositAsset] An asset on a chain. Uses a human-readable alias (usdc, tempo) when one is on fi
       #
       #   @param source [Privy::Models::CryptoDepositAssetFilterAll, Privy::Models::CryptoDepositAssetFilterInclude, Privy::Models::CryptoDepositAssetFilterExclude] Which assets a deposit address accepts. Asset and chain use human-readable alias
       #

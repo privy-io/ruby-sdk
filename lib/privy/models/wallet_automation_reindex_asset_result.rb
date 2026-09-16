@@ -25,7 +25,7 @@ module Privy
 
       # @!attribute raw_balance
       #   On-chain balance in base units. Populated when `status` is `triggered` or
-      #   `skipped_zero_balance`; `null` otherwise. For example, 1 USDC is `1000000`.
+      #   `skipped_zero_balance`; `null` otherwise. For example, 1 OUSD is `1000000`.
       #
       #   @return [String, nil]
       required :raw_balance, String, nil?: true

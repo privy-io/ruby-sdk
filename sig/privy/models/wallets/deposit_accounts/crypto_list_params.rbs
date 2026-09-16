@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    module Wallets
+      module DepositAccounts
+        type crypto_list_params =
+          { wallet_id: String, cursor: String, limit: Integer }
+          & Privy::Internal::Type::request_parameters
+
+        class CryptoListParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor wallet_id: String
+
+          attr_reader cursor: String?
+
+          def cursor=: (String) -> String
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          def initialize: (
+            wallet_id: String,
+            ?cursor: String,
+            ?limit: Integer,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            wallet_id: String,
+            cursor: String,
+            limit: Integer,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

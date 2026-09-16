@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type attached_wallet_automation = { id: String, enabled: bool }
+
+    class AttachedWalletAutomation < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor enabled: bool
+
+      def initialize: (id: String, enabled: bool) -> void
+
+      def to_hash: -> { id: String, enabled: bool }
+    end
+  end
+end

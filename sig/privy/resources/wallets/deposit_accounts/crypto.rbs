@@ -14,6 +14,17 @@ module Privy
             ?request_options: Privy::request_opts
           ) -> Privy::CreateCryptoDepositAccountResponse
 
+          def list: (
+            String wallet_id,
+            ?cursor: String,
+            ?limit: Integer,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Internal::Cursor[Privy::CryptoDepositAddressRoute]
+
+          def get_config: (
+            ?request_options: Privy::request_opts
+          ) -> Privy::CryptoDepositAccountConfigResponse
+
           def initialize: (client: Privy::Client) -> void
         end
       end

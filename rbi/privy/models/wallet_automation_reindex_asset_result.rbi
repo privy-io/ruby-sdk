@@ -26,7 +26,7 @@ module Privy
       attr_accessor :existing_execution_id
 
       # On-chain balance in base units. Populated when `status` is `triggered` or
-      # `skipped_zero_balance`; `null` otherwise. For example, 1 USDC is `1000000`.
+      # `skipped_zero_balance`; `null` otherwise. For example, 1 OUSD is `1000000`.
       sig { returns(T.nilable(String)) }
       attr_accessor :raw_balance
 
@@ -56,7 +56,7 @@ module Privy
         # `status` is `skipped_existing_execution`; `null` otherwise.
         existing_execution_id:,
         # On-chain balance in base units. Populated when `status` is `triggered` or
-        # `skipped_zero_balance`; `null` otherwise. For example, 1 USDC is `1000000`.
+        # `skipped_zero_balance`; `null` otherwise. For example, 1 OUSD is `1000000`.
         raw_balance:,
         # Outcome of checking a single asset during a wallet automation reindex. One of
         # `triggered`, `skipped_zero_balance`, `skipped_no_match`,

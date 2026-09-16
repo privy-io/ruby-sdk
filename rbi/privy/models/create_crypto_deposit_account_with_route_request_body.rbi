@@ -11,7 +11,7 @@ module Privy
           )
         end
 
-      # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+      # An asset on a chain. Uses a human-readable alias (usdc, tempo) when one is on
       # file, otherwise the raw asset address and CAIP-2.
       sig { returns(Privy::CryptoDepositAsset) }
       attr_reader :destination
@@ -54,7 +54,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # An asset on a chain. Uses a human-readable alias (usdc, base) when one is on
+        # An asset on a chain. Uses a human-readable alias (usdc, tempo) when one is on
         # file, otherwise the raw asset address and CAIP-2.
         destination:,
         # Which assets a deposit address accepts. Asset and chain use human-readable

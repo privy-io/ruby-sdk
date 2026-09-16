@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type list_crypto_deposit_accounts_response =
+      { data: ::Array[Privy::CryptoDepositAddressRoute], next_cursor: String? }
+
+    class ListCryptoDepositAccountsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::CryptoDepositAddressRoute]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        data: ::Array[Privy::CryptoDepositAddressRoute],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Privy::CryptoDepositAddressRoute],
+        next_cursor: String?
+      }
+    end
+  end
+end

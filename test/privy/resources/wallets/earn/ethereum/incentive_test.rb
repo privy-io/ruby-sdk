@@ -6,7 +6,7 @@ class Privy::Test::Resources::Wallets::Earn::Ethereum::IncentiveTest < Privy::Te
   def test_claim_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.wallets.earn.ethereum.incentive.claim("wallet_id", chain: "base")
+    response = @privy_api.wallets.earn.ethereum.incentive.claim("wallet_id", chain: "tempo")
 
     assert_pattern do
       response => Privy::Wallets::EarnIncentiveClaimActionResponse

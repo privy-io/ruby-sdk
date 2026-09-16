@@ -1,0 +1,22 @@
+module Privy
+  module Models
+    type crypto_deposit_account_source_chain =
+      { address: String, :caip2 => String, decimals: Integer }
+
+    class CryptoDepositAccountSourceChain < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor caip2: String
+
+      attr_accessor decimals: Integer
+
+      def initialize: (
+        address: String,
+        caip2: String,
+        decimals: Integer
+      ) -> void
+
+      def to_hash: -> { address: String, :caip2 => String, decimals: Integer }
+    end
+  end
+end

@@ -25,6 +25,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -57,6 +58,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -96,6 +98,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -163,6 +166,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -195,6 +199,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -330,6 +335,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -363,6 +369,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         policy_ids: ^(Privy::Internal::Type::ArrayOf[String]),
         archived_at: Float | nil,
         authorization_threshold: Float | nil,
+        automations: ^(Privy::Internal::Type::ArrayOf[Privy::AttachedWalletAutomation]) | nil,
         chain: Privy::CustodialWalletChain | nil,
         custody: Privy::WalletCustodian | nil,
         display_name: String | nil,
@@ -491,7 +498,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       @privy_api.wallets.transfer(
         "wallet_id",
         destination: {address: "0xB00F0759DbeeF5E543Cc3E3B07A6442F5f3928a2"},
-        source: {asset: "usdc", chain: "base"}
+        source: {asset: "usdc", chain: "tempo"}
       )
 
     assert_pattern do

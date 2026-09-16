@@ -48,6 +48,35 @@ module Privy
           )
           end
 
+          # Returns active crypto deposit accounts that sweep into the path wallet. Requires
+          # an app secret or a JWT for a wallet signer, plus `privy-app-id`.
+          sig do
+            params(
+              wallet_id: String,
+              cursor: String,
+              limit: Integer,
+              request_options: Privy::RequestOptions::OrHash
+            ).returns(Privy::Internal::Cursor[Privy::CryptoDepositAddressRoute])
+          end
+          def list(
+            # ID of the wallet.
+            wallet_id,
+            cursor: nil,
+            limit: nil,
+            request_options: {}
+          )
+          end
+
+          # Returns the tokens and chains a user can send from when creating a crypto
+          # deposit account.
+          sig do
+            params(request_options: Privy::RequestOptions::OrHash).returns(
+              Privy::CryptoDepositAccountConfigResponse
+            )
+          end
+          def get_config(request_options: {})
+          end
+
           # @api private
           sig { params(client: Privy::Client).returns(T.attached_class) }
           def self.new(client:)

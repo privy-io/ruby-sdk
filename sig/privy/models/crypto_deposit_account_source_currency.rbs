@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type crypto_deposit_account_source_currency =
+      {
+        chains: ::Array[Privy::CryptoDepositAccountSourceChain],
+        logo_uri: String,
+        name: String,
+        symbol: String
+      }
+
+    class CryptoDepositAccountSourceCurrency < Privy::Internal::Type::BaseModel
+      attr_accessor chains: ::Array[Privy::CryptoDepositAccountSourceChain]
+
+      attr_accessor logo_uri: String
+
+      attr_accessor name: String
+
+      attr_accessor symbol: String
+
+      def initialize: (
+        chains: ::Array[Privy::CryptoDepositAccountSourceChain],
+        logo_uri: String,
+        name: String,
+        symbol: String
+      ) -> void
+
+      def to_hash: -> {
+        chains: ::Array[Privy::CryptoDepositAccountSourceChain],
+        logo_uri: String,
+        name: String,
+        symbol: String
+      }
+    end
+  end
+end

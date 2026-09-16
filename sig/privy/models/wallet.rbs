@@ -13,6 +13,7 @@ module Privy
         policy_ids: ::Array[String],
         archived_at: Float?,
         authorization_threshold: Float,
+        automations: ::Array[Privy::AttachedWalletAutomation],
         chain: Privy::Models::custodial_wallet_chain,
         custody: Privy::WalletCustodian,
         display_name: String,
@@ -45,6 +46,12 @@ module Privy
       attr_reader authorization_threshold: Float?
 
       def authorization_threshold=: (Float) -> Float
+
+      attr_reader automations: ::Array[Privy::AttachedWalletAutomation]?
+
+      def automations=: (
+        ::Array[Privy::AttachedWalletAutomation]
+      ) -> ::Array[Privy::AttachedWalletAutomation]
 
       attr_reader chain: Privy::Models::custodial_wallet_chain?
 
@@ -82,6 +89,7 @@ module Privy
         policy_ids: ::Array[String],
         ?archived_at: Float?,
         ?authorization_threshold: Float,
+        ?automations: ::Array[Privy::AttachedWalletAutomation],
         ?chain: Privy::Models::custodial_wallet_chain,
         ?custody: Privy::WalletCustodian,
         ?display_name: String,
@@ -102,6 +110,7 @@ module Privy
         policy_ids: ::Array[String],
         archived_at: Float?,
         authorization_threshold: Float,
+        automations: ::Array[Privy::AttachedWalletAutomation],
         chain: Privy::Models::custodial_wallet_chain,
         custody: Privy::WalletCustodian,
         display_name: String,

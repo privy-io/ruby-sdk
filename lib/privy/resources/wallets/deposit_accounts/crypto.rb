@@ -51,6 +51,54 @@ module Privy
             )
           end
 
+          # Returns active crypto deposit accounts that sweep into the path wallet. Requires
+          # an app secret or a JWT for a wallet signer, plus `privy-app-id`.
+          #
+          # @overload list(wallet_id, cursor: nil, limit: nil, request_options: {})
+          #
+          # @param wallet_id [String] ID of the wallet.
+          #
+          # @param cursor [String]
+          #
+          # @param limit [Integer]
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Internal::Cursor<Privy::Models::CryptoDepositAddressRoute>]
+          #
+          # @see Privy::Models::Wallets::DepositAccounts::CryptoListParams
+          def list(wallet_id, params = {})
+            parsed, options = Privy::Wallets::DepositAccounts::CryptoListParams.dump_request(params)
+            query = Privy::Internal::Util.encode_query_params(parsed)
+            @client.request(
+              method: :get,
+              path: ["v1/wallets/%1$s/deposit_accounts/crypto", wallet_id],
+              query: query,
+              page: Privy::Internal::Cursor,
+              model: Privy::CryptoDepositAddressRoute,
+              options: options
+            )
+          end
+
+          # Returns the tokens and chains a user can send from when creating a crypto
+          # deposit account.
+          #
+          # @overload get_config(request_options: {})
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Models::CryptoDepositAccountConfigResponse]
+          #
+          # @see Privy::Models::Wallets::DepositAccounts::CryptoGetConfigParams
+          def get_config(params = {})
+            @client.request(
+              method: :get,
+              path: "v1/deposit_accounts/crypto/config",
+              model: Privy::CryptoDepositAccountConfigResponse,
+              options: params[:request_options]
+            )
+          end
+
           # @api private
           #
           # @param client [Privy::Client]

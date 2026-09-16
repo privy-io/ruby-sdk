@@ -25,4 +25,47 @@ class Privy::Test::Resources::Wallets::DepositAccounts::CryptoTest < Privy::Test
       }
     end
   end
+
+  def test_list
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.deposit_accounts.crypto.list("wallet_id")
+
+    assert_pattern do
+      response => Privy::Internal::Cursor
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Privy::CryptoDepositAddressRoute
+    end
+
+    assert_pattern do
+      row => {
+        deposit_address: String,
+        destination: Privy::CryptoDepositAsset,
+        source: Privy::CryptoDepositAssetFilter,
+        wallet_id: String
+      }
+    end
+  end
+
+  def test_get_config
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.deposit_accounts.crypto.get_config
+
+    assert_pattern do
+      response => Privy::CryptoDepositAccountConfigResponse
+    end
+
+    assert_pattern do
+      response => {
+        chains: ^(Privy::Internal::Type::HashOf[Privy::CryptoDepositAccountChain]),
+        currencies: ^(Privy::Internal::Type::ArrayOf[Privy::CryptoDepositAccountSourceCurrency])
+      }
+    end
+  end
 end

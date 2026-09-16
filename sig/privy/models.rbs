@@ -97,6 +97,8 @@ module Privy
 
   class AssetAccountWithBalance = Privy::Models::AssetAccountWithBalance
 
+  class AttachedWalletAutomation = Privy::Models::AttachedWalletAutomation
+
   class AttachWalletAutomationRequestBody = Privy::Models::AttachWalletAutomationRequestBody
 
   class AuthenticatedUser = Privy::Models::AuthenticatedUser
@@ -182,6 +184,8 @@ module Privy
   module BlockchainTransactionStatus = Privy::Models::BlockchainTransactionStatus
 
   class BlockInfo = Privy::Models::BlockInfo
+
+  class Bps = Privy::Models::Bps
 
   class BridgeBrlFiatVirtualAccountDepositInstructions = Privy::Models::BridgeBrlFiatVirtualAccountDepositInstructions
 
@@ -428,6 +432,16 @@ module Privy
   class CrossAppEmbeddedWallet = Privy::Models::CrossAppEmbeddedWallet
 
   class CrossAppSmartWallet = Privy::Models::CrossAppSmartWallet
+
+  class CryptoDepositAccountCaip2 = Privy::Models::CryptoDepositAccountCaip2
+
+  class CryptoDepositAccountChain = Privy::Models::CryptoDepositAccountChain
+
+  class CryptoDepositAccountConfigResponse = Privy::Models::CryptoDepositAccountConfigResponse
+
+  class CryptoDepositAccountSourceChain = Privy::Models::CryptoDepositAccountSourceChain
+
+  class CryptoDepositAccountSourceCurrency = Privy::Models::CryptoDepositAccountSourceCurrency
 
   class CryptoDepositAddressRoute = Privy::Models::CryptoDepositAddressRoute
 
@@ -1284,6 +1298,8 @@ module Privy
   class LinkJwtInput = Privy::Models::LinkJwtInput
 
   class ListActions = Privy::Models::ListActions
+
+  class ListCryptoDepositAccountsResponse = Privy::Models::ListCryptoDepositAccountsResponse
 
   class ListExternalFiatAccountsResponse = Privy::Models::ListExternalFiatAccountsResponse
 

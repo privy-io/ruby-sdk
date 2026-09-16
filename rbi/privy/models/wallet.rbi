@@ -56,6 +56,17 @@ module Privy
       sig { params(authorization_threshold: Float).void }
       attr_writer :authorization_threshold
 
+      # Automations attached to the wallet, including disabled ones.
+      sig { returns(T.nilable(T::Array[Privy::AttachedWalletAutomation])) }
+      attr_reader :automations
+
+      sig do
+        params(
+          automations: T::Array[Privy::AttachedWalletAutomation::OrHash]
+        ).void
+      end
+      attr_writer :automations
+
       # The chain of the custodial wallet.
       sig { returns(T.nilable(Privy::CustodialWalletChain::TaggedSymbol)) }
       attr_reader :chain
@@ -116,6 +127,7 @@ module Privy
           policy_ids: T::Array[String],
           archived_at: T.nilable(Float),
           authorization_threshold: Float,
+          automations: T::Array[Privy::AttachedWalletAutomation::OrHash],
           chain: Privy::CustodialWalletChain::OrSymbol,
           custody: Privy::WalletCustodian::OrHash,
           display_name: String,
@@ -151,6 +163,8 @@ module Privy
         archived_at: nil,
         # The number of keys that must sign for an action to be valid.
         authorization_threshold: nil,
+        # Automations attached to the wallet, including disabled ones.
+        automations: nil,
         # The chain of the custodial wallet.
         chain: nil,
         # Information about the custodian managing this wallet.
@@ -183,6 +197,7 @@ module Privy
             policy_ids: T::Array[String],
             archived_at: T.nilable(Float),
             authorization_threshold: Float,
+            automations: T::Array[Privy::AttachedWalletAutomation],
             chain: Privy::CustodialWalletChain::TaggedSymbol,
             custody: Privy::WalletCustodian,
             display_name: String,
