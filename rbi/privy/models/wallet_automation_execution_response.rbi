@@ -33,6 +33,9 @@ module Privy
       sig { returns(Privy::WalletAutomationExecutionStatus::OrSymbol) }
       attr_accessor :status
 
+      sig { returns(T.nilable(String)) }
+      attr_accessor :submitted_at
+
       sig { returns(String) }
       attr_accessor :trigger_asset_address
 
@@ -45,9 +48,6 @@ module Privy
       sig { returns(String) }
       attr_accessor :trigger_tx_hash
 
-      sig { returns(T.nilable(String)) }
-      attr_accessor :triggered_at
-
       sig { returns(String) }
       attr_accessor :updated_at
 
@@ -57,7 +57,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
-      # A record of a single automation execution triggered by a deposit.
+      # A record of a single automation execution created by a deposit.
       sig do
         params(
           id: String,
@@ -67,11 +67,11 @@ module Privy
           failed_at: T.nilable(String),
           failure_reason: T.nilable(String),
           status: Privy::WalletAutomationExecutionStatus::OrSymbol,
+          submitted_at: T.nilable(String),
           trigger_asset_address: String,
           trigger_block_number: String,
           trigger_caip2: String,
           trigger_tx_hash: String,
-          triggered_at: T.nilable(String),
           updated_at: String,
           wallet_action_id: T.nilable(String),
           wallet_id: String
@@ -86,11 +86,11 @@ module Privy
         failure_reason:,
         # Execution lifecycle status.
         status:,
+        submitted_at:,
         trigger_asset_address:,
         trigger_block_number:,
         trigger_caip2:,
         trigger_tx_hash:,
-        triggered_at:,
         updated_at:,
         wallet_action_id:,
         wallet_id:
@@ -107,11 +107,11 @@ module Privy
             failed_at: T.nilable(String),
             failure_reason: T.nilable(String),
             status: Privy::WalletAutomationExecutionStatus::OrSymbol,
+            submitted_at: T.nilable(String),
             trigger_asset_address: String,
             trigger_block_number: String,
             trigger_caip2: String,
             trigger_tx_hash: String,
-            triggered_at: T.nilable(String),
             updated_at: String,
             wallet_action_id: T.nilable(String),
             wallet_id: String

@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    type kyb_individual_document =
+      { file: String, purposes: ::Array[String], description: String }
+
+    class KYBIndividualDocument < Privy::Internal::Type::BaseModel
+      attr_accessor file: String
+
+      attr_accessor purposes: ::Array[String]
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      def initialize: (
+        file: String,
+        purposes: ::Array[String],
+        ?description: String
+      ) -> void
+
+      def to_hash: -> {
+        file: String,
+        purposes: ::Array[String],
+        description: String
+      }
+    end
+  end
+end

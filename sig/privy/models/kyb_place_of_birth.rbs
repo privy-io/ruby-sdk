@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    type kyb_place_of_birth = { country: String, city: String }
+
+    class KYBPlaceOfBirth < Privy::Internal::Type::BaseModel
+      attr_accessor country: String
+
+      attr_reader city: String?
+
+      def city=: (String) -> String
+
+      def initialize: (country: String, ?city: String) -> void
+
+      def to_hash: -> { country: String, city: String }
+    end
+  end
+end

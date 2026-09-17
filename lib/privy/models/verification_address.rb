@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    class KYCResidentialAddress < Privy::Internal::Type::BaseModel
+    class VerificationAddress < Privy::Internal::Type::BaseModel
       # @!attribute city
       #   City.
       #
@@ -21,14 +21,8 @@ module Privy
       #   @return [String]
       required :street_line_1, String
 
-      # @!attribute subdivision
-      #   State or province code.
-      #
-      #   @return [String]
-      required :subdivision, String
-
       # @!attribute postal_code
-      #   Postal code.
+      #   Postal code. Required for countries that use them.
       #
       #   @return [String, nil]
       optional :postal_code, String
@@ -39,8 +33,14 @@ module Privy
       #   @return [String, nil]
       optional :street_line_2, String
 
-      # @!method initialize(city:, country:, street_line_1:, subdivision:, postal_code: nil, street_line_2: nil)
-      #   Residential address for KYC data submission.
+      # @!attribute subdivision
+      #   ISO 3166-2 state or province code. Required for US addresses.
+      #
+      #   @return [String, nil]
+      optional :subdivision, String
+
+      # @!method initialize(city:, country:, street_line_1:, postal_code: nil, street_line_2: nil, subdivision: nil)
+      #   A postal address used in KYC and KYB data submission.
       #
       #   @param city [String] City.
       #
@@ -48,11 +48,11 @@ module Privy
       #
       #   @param street_line_1 [String] Street address line 1.
       #
-      #   @param subdivision [String] State or province code.
-      #
-      #   @param postal_code [String] Postal code.
+      #   @param postal_code [String] Postal code. Required for countries that use them.
       #
       #   @param street_line_2 [String] Street address line 2.
+      #
+      #   @param subdivision [String] ISO 3166-2 state or province code. Required for US addresses.
     end
   end
 end

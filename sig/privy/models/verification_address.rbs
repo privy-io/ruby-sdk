@@ -1,23 +1,21 @@
 module Privy
   module Models
-    type kyc_residential_address =
+    type verification_address =
       {
         city: String,
         country: String,
         :street_line_1 => String,
-        subdivision: String,
         postal_code: String,
-        :street_line_2 => String
+        :street_line_2 => String,
+        subdivision: String
       }
 
-    class KYCResidentialAddress < Privy::Internal::Type::BaseModel
+    class VerificationAddress < Privy::Internal::Type::BaseModel
       attr_accessor city: String
 
       attr_accessor country: String
 
       attr_accessor street_line_1: String
-
-      attr_accessor subdivision: String
 
       attr_reader postal_code: String?
 
@@ -27,22 +25,26 @@ module Privy
 
       def street_line_2=: (String) -> String
 
+      attr_reader subdivision: String?
+
+      def subdivision=: (String) -> String
+
       def initialize: (
         city: String,
         country: String,
         street_line_1: String,
-        subdivision: String,
         ?postal_code: String,
-        ?street_line_2: String
+        ?street_line_2: String,
+        ?subdivision: String
       ) -> void
 
       def to_hash: -> {
         city: String,
         country: String,
         :street_line_1 => String,
-        subdivision: String,
         postal_code: String,
-        :street_line_2 => String
+        :street_line_2 => String,
+        subdivision: String
       }
     end
   end

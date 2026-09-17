@@ -39,6 +39,11 @@ module Privy
       #   @return [Symbol, Privy::Models::WalletAutomationExecutionStatus]
       required :status, enum: -> { Privy::WalletAutomationExecutionStatus }
 
+      # @!attribute submitted_at
+      #
+      #   @return [String, nil]
+      required :submitted_at, String, nil?: true
+
       # @!attribute trigger_asset_address
       #
       #   @return [String]
@@ -59,11 +64,6 @@ module Privy
       #   @return [String]
       required :trigger_tx_hash, String
 
-      # @!attribute triggered_at
-      #
-      #   @return [String, nil]
-      required :triggered_at, String, nil?: true
-
       # @!attribute updated_at
       #
       #   @return [String]
@@ -79,8 +79,8 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, automation_attachment_id:, completed_at:, created_at:, failed_at:, failure_reason:, status:, trigger_asset_address:, trigger_block_number:, trigger_caip2:, trigger_tx_hash:, triggered_at:, updated_at:, wallet_action_id:, wallet_id:)
-      #   A record of a single automation execution triggered by a deposit.
+      # @!method initialize(id:, automation_attachment_id:, completed_at:, created_at:, failed_at:, failure_reason:, status:, submitted_at:, trigger_asset_address:, trigger_block_number:, trigger_caip2:, trigger_tx_hash:, updated_at:, wallet_action_id:, wallet_id:)
+      #   A record of a single automation execution created by a deposit.
       #
       #   @param id [String]
       #
@@ -96,6 +96,8 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletAutomationExecutionStatus] Execution lifecycle status.
       #
+      #   @param submitted_at [String, nil]
+      #
       #   @param trigger_asset_address [String]
       #
       #   @param trigger_block_number [String]
@@ -103,8 +105,6 @@ module Privy
       #   @param trigger_caip2 [String]
       #
       #   @param trigger_tx_hash [String]
-      #
-      #   @param triggered_at [String, nil]
       #
       #   @param updated_at [String]
       #

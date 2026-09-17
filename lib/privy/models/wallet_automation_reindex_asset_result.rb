@@ -24,7 +24,7 @@ module Privy
       required :existing_execution_id, String, nil?: true
 
       # @!attribute raw_balance
-      #   On-chain balance in base units. Populated when `status` is `triggered` or
+      #   On-chain balance in base units. Populated when `status` is `submitted` or
       #   `skipped_zero_balance`; `null` otherwise. For example, 1 OUSD is `1000000`.
       #
       #   @return [String, nil]
@@ -32,8 +32,9 @@ module Privy
 
       # @!attribute status
       #   Outcome of checking a single asset during a wallet automation reindex. One of
-      #   `triggered`, `skipped_zero_balance`, `skipped_no_match`,
-      #   `skipped_existing_execution`, or `failed`.
+      #   `submitted`, `skipped_zero_balance`, `skipped_no_match`,
+      #   `skipped_existing_execution`, or `failed`. `submitted` confirms that an
+      #   execution was enqueued.
       #
       #   @return [String]
       required :status, String
@@ -50,9 +51,9 @@ module Privy
       #
       #   @param existing_execution_id [String, nil] ID of the in-flight execution blocking a re-trigger. Populated only when `status
       #
-      #   @param raw_balance [String, nil] On-chain balance in base units. Populated when `status` is `triggered` or `skipp
+      #   @param raw_balance [String, nil] On-chain balance in base units. Populated when `status` is `submitted` or `skipp
       #
-      #   @param status [String] Outcome of checking a single asset during a wallet automation reindex. One of `t
+      #   @param status [String] Outcome of checking a single asset during a wallet automation reindex. One of `s
     end
   end
 end

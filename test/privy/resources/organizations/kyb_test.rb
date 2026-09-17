@@ -72,4 +72,28 @@ class Privy::Test::Resources::Organizations::KYBTest < Privy::Test::ResourceTest
       }
     end
   end
+
+  def test_submit_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.organizations.kyb.submit("organization_id", data: {}, provider: :bridge)
+
+    assert_pattern do
+      response => Privy::KYBStatusResponse
+    end
+
+    assert_pattern do
+      response => {
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ^(Privy::Internal::Type::ArrayOf[Privy::KyxEndorsement]),
+        environment: Privy::KyxEnvironment,
+        future_requirements_due: ^(Privy::Internal::Type::ArrayOf[String]),
+        kyb: Privy::KyxVerificationStatusDetail,
+        provider: Privy::KyxProvider,
+        requirements_due: ^(Privy::Internal::Type::ArrayOf[String]),
+        status: String,
+        tos: Privy::KyxTosStatusDetail
+      }
+    end
+  end
 end

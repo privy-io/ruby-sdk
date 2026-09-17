@@ -7,7 +7,7 @@ module Privy
       extend Privy::Internal::Type::Enum
 
       PENDING = :pending
-      TRIGGERED = :triggered
+      SUBMITTED = :submitted
       COMPLETED = :completed
       FAILED = :failed
       SKIPPED = :skipped

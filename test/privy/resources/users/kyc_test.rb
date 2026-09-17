@@ -62,4 +62,28 @@ class Privy::Test::Resources::Users::KYCTest < Privy::Test::ResourceTest
       }
     end
   end
+
+  def test_submit_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.users.kyc.submit("user_id", data: {}, provider: :bridge)
+
+    assert_pattern do
+      response => Privy::KYCStatusResponse
+    end
+
+    assert_pattern do
+      response => {
+        capabilities: Privy::KyxCapabilities,
+        endorsements: ^(Privy::Internal::Type::ArrayOf[Privy::KyxEndorsement]),
+        environment: Privy::KyxEnvironment,
+        future_requirements_due: ^(Privy::Internal::Type::ArrayOf[String]),
+        kyc: Privy::KyxVerificationStatusDetail,
+        provider: Privy::KyxProvider,
+        requirements_due: ^(Privy::Internal::Type::ArrayOf[String]),
+        status: String,
+        tos: Privy::KyxTosStatusDetail
+      }
+    end
+  end
 end

@@ -92,6 +92,43 @@ module Privy
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Privy::Models::Organizations::KYBSubmitParams} for more details.
+        #
+        # Submits KYB verification data for the organization. Safe to call more than once:
+        # the first call creates the provider customer and later calls update it, so a
+        # partial submission can be completed incrementally.
+        #
+        # @overload submit(organization_id, data:, provider:, client_agreement_id: nil, endorsements: nil, environment: nil, request_options: {})
+        #
+        # @param organization_id [String] The ID of the organization.
+        #
+        # @param data [Privy::Models::KYBSubmitData] KYB verification data for headless submission. Fields are individually optional
+        #
+        # @param provider [Symbol, Privy::Models::KyxProvider] KYC/KYB provider identifier.
+        #
+        # @param client_agreement_id [String] Client-side agreement ID for ToS acceptance.
+        #
+        # @param endorsements [Array<String>] Endorsements to request during KYB.
+        #
+        # @param environment [Symbol, Privy::Models::KyxEnvironment] Provider environment (production or sandbox).
+        #
+        # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Privy::Models::KYBStatusResponse]
+        #
+        # @see Privy::Models::Organizations::KYBSubmitParams
+        def submit(organization_id, params)
+          parsed, options = Privy::Organizations::KYBSubmitParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["v1/organizations/%1$s/kyb/submit", organization_id],
+            body: parsed,
+            model: Privy::KYBStatusResponse,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Privy::Client]

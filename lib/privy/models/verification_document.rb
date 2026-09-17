@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    class KYCIdentifyingDocument < Privy::Internal::Type::BaseModel
+    class VerificationDocument < Privy::Internal::Type::BaseModel
       # @!attribute issuing_country
       #   ISO 3166-1 alpha-3 issuing country code.
       #
@@ -46,7 +46,9 @@ module Privy
       optional :number, String
 
       # @!method initialize(issuing_country:, type:, description: nil, expiration: nil, image_back: nil, image_front: nil, number: nil)
-      #   An identity document for KYC verification.
+      #   An identifying document for KYC or KYB verification. Also used for business
+      #   identifiers such as tax and registration numbers, for which the image and
+      #   expiration fields do not apply.
       #
       #   @param issuing_country [String] ISO 3166-1 alpha-3 issuing country code.
       #

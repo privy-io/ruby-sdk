@@ -1335,19 +1335,45 @@ module Privy
   KrakenEmbedUserVerifiedWebhookPayload =
     Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
 
+  KYBAccountPurpose = Privy::Models::KYBAccountPurpose
+
+  KYBAssociatedPerson = Privy::Models::KYBAssociatedPerson
+
+  KYBBusinessDocument = Privy::Models::KYBBusinessDocument
+
+  KYBBusinessType = Privy::Models::KYBBusinessType
+
+  KYBDocumentPurpose = Privy::Models::KYBDocumentPurpose
+
+  KYBEstimatedAnnualRevenue = Privy::Models::KYBEstimatedAnnualRevenue
+
+  KYBHighRiskActivity = Privy::Models::KYBHighRiskActivity
+
+  KYBIndividualDocument = Privy::Models::KYBIndividualDocument
+
+  KYBIndividualDocumentPurpose = Privy::Models::KYBIndividualDocumentPurpose
+
   KYBLinksRequestBody = Privy::Models::KYBLinksRequestBody
+
+  KYBPlaceOfBirth = Privy::Models::KYBPlaceOfBirth
+
+  KYBPubliclyTradedListing = Privy::Models::KYBPubliclyTradedListing
+
+  KYBRegulatedActivity = Privy::Models::KYBRegulatedActivity
+
+  KYBSourceOfFunds = Privy::Models::KYBSourceOfFunds
 
   KYBStatusListResponse = Privy::Models::KYBStatusListResponse
 
   KYBStatusResponse = Privy::Models::KYBStatusResponse
 
+  KYBSubmitData = Privy::Models::KYBSubmitData
+
+  KYBSubmitRequestBody = Privy::Models::KYBSubmitRequestBody
+
   KYBTosRequestBody = Privy::Models::KYBTosRequestBody
 
-  KYCIdentifyingDocument = Privy::Models::KYCIdentifyingDocument
-
   KYCLinksRequestBody = Privy::Models::KYCLinksRequestBody
-
-  KYCResidentialAddress = Privy::Models::KYCResidentialAddress
 
   KYCStatusListResponse = Privy::Models::KYCStatusListResponse
 
@@ -2639,6 +2665,10 @@ module Privy
   UserWithIdentityToken = Privy::Models::UserWithIdentityToken
 
   VaultAsset = Privy::Models::VaultAsset
+
+  VerificationAddress = Privy::Models::VerificationAddress
+
+  VerificationDocument = Privy::Models::VerificationDocument
 
   Wallet = Privy::Models::Wallet
 

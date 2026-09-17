@@ -1,0 +1,306 @@
+module Privy
+  module Models
+    type kyb_submit_data =
+      {
+        account_purpose: String,
+        account_purpose_other: String,
+        acting_as_intermediary: bool,
+        associated_persons: ::Array[Privy::KYBAssociatedPerson],
+        business_description: String,
+        business_industry: ::Array[String],
+        business_legal_name: String,
+        business_trade_name: String,
+        business_type: String,
+        compliance_screening_explanation: String,
+        conducts_money_services: bool,
+        conducts_money_services_description: String,
+        conducts_money_services_using_bridge: bool,
+        documents: ::Array[Privy::KYBBusinessDocument],
+        email: String,
+        estimated_annual_revenue_usd: String,
+        expected_monthly_payments_usd: Integer,
+        has_foreign_tax_registration: bool,
+        has_material_intermediary_ownership: bool,
+        high_risk_activities: ::Array[String],
+        high_risk_activities_explanation: String,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        incorporation_date: String,
+        is_dao: bool,
+        operates_in_prohibited_countries: bool,
+        other_websites: ::Array[String],
+        ownership_threshold: Integer,
+        phone: String,
+        physical_address: Privy::VerificationAddress,
+        primary_website: String,
+        publicly_traded_listings: ::Array[Privy::KYBPubliclyTradedListing],
+        registered_address: Privy::VerificationAddress,
+        regulated_activity: Privy::KYBRegulatedActivity,
+        source_of_funds: String,
+        source_of_funds_description: String,
+        transliterated_business_legal_name: String,
+        transliterated_business_trade_name: String,
+        transliterated_physical_address: Privy::VerificationAddress,
+        transliterated_registered_address: Privy::VerificationAddress
+      }
+
+    class KYBSubmitData < Privy::Internal::Type::BaseModel
+      attr_reader account_purpose: String?
+
+      def account_purpose=: (String) -> String
+
+      attr_reader account_purpose_other: String?
+
+      def account_purpose_other=: (String) -> String
+
+      attr_reader acting_as_intermediary: bool?
+
+      def acting_as_intermediary=: (bool) -> bool
+
+      attr_reader associated_persons: ::Array[Privy::KYBAssociatedPerson]?
+
+      def associated_persons=: (
+        ::Array[Privy::KYBAssociatedPerson]
+      ) -> ::Array[Privy::KYBAssociatedPerson]
+
+      attr_reader business_description: String?
+
+      def business_description=: (String) -> String
+
+      attr_reader business_industry: ::Array[String]?
+
+      def business_industry=: (::Array[String]) -> ::Array[String]
+
+      attr_reader business_legal_name: String?
+
+      def business_legal_name=: (String) -> String
+
+      attr_reader business_trade_name: String?
+
+      def business_trade_name=: (String) -> String
+
+      attr_reader business_type: String?
+
+      def business_type=: (String) -> String
+
+      attr_reader compliance_screening_explanation: String?
+
+      def compliance_screening_explanation=: (String) -> String
+
+      attr_reader conducts_money_services: bool?
+
+      def conducts_money_services=: (bool) -> bool
+
+      attr_reader conducts_money_services_description: String?
+
+      def conducts_money_services_description=: (String) -> String
+
+      attr_reader conducts_money_services_using_bridge: bool?
+
+      def conducts_money_services_using_bridge=: (bool) -> bool
+
+      attr_reader documents: ::Array[Privy::KYBBusinessDocument]?
+
+      def documents=: (
+        ::Array[Privy::KYBBusinessDocument]
+      ) -> ::Array[Privy::KYBBusinessDocument]
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader estimated_annual_revenue_usd: String?
+
+      def estimated_annual_revenue_usd=: (String) -> String
+
+      attr_reader expected_monthly_payments_usd: Integer?
+
+      def expected_monthly_payments_usd=: (Integer) -> Integer
+
+      attr_reader has_foreign_tax_registration: bool?
+
+      def has_foreign_tax_registration=: (bool) -> bool
+
+      attr_reader has_material_intermediary_ownership: bool?
+
+      def has_material_intermediary_ownership=: (bool) -> bool
+
+      attr_reader high_risk_activities: ::Array[String]?
+
+      def high_risk_activities=: (::Array[String]) -> ::Array[String]
+
+      attr_reader high_risk_activities_explanation: String?
+
+      def high_risk_activities_explanation=: (String) -> String
+
+      attr_reader identifying_information: ::Array[Privy::VerificationDocument]?
+
+      def identifying_information=: (
+        ::Array[Privy::VerificationDocument]
+      ) -> ::Array[Privy::VerificationDocument]
+
+      attr_reader incorporation_date: String?
+
+      def incorporation_date=: (String) -> String
+
+      attr_reader is_dao: bool?
+
+      def is_dao=: (bool) -> bool
+
+      attr_reader operates_in_prohibited_countries: bool?
+
+      def operates_in_prohibited_countries=: (bool) -> bool
+
+      attr_reader other_websites: ::Array[String]?
+
+      def other_websites=: (::Array[String]) -> ::Array[String]
+
+      attr_reader ownership_threshold: Integer?
+
+      def ownership_threshold=: (Integer) -> Integer
+
+      attr_reader phone: String?
+
+      def phone=: (String) -> String
+
+      attr_reader physical_address: Privy::VerificationAddress?
+
+      def physical_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
+      attr_reader primary_website: String?
+
+      def primary_website=: (String) -> String
+
+      attr_reader publicly_traded_listings: ::Array[Privy::KYBPubliclyTradedListing]?
+
+      def publicly_traded_listings=: (
+        ::Array[Privy::KYBPubliclyTradedListing]
+      ) -> ::Array[Privy::KYBPubliclyTradedListing]
+
+      attr_reader registered_address: Privy::VerificationAddress?
+
+      def registered_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
+      attr_reader regulated_activity: Privy::KYBRegulatedActivity?
+
+      def regulated_activity=: (
+        Privy::KYBRegulatedActivity
+      ) -> Privy::KYBRegulatedActivity
+
+      attr_reader source_of_funds: String?
+
+      def source_of_funds=: (String) -> String
+
+      attr_reader source_of_funds_description: String?
+
+      def source_of_funds_description=: (String) -> String
+
+      attr_reader transliterated_business_legal_name: String?
+
+      def transliterated_business_legal_name=: (String) -> String
+
+      attr_reader transliterated_business_trade_name: String?
+
+      def transliterated_business_trade_name=: (String) -> String
+
+      attr_reader transliterated_physical_address: Privy::VerificationAddress?
+
+      def transliterated_physical_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
+      attr_reader transliterated_registered_address: Privy::VerificationAddress?
+
+      def transliterated_registered_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
+      def initialize: (
+        ?account_purpose: String,
+        ?account_purpose_other: String,
+        ?acting_as_intermediary: bool,
+        ?associated_persons: ::Array[Privy::KYBAssociatedPerson],
+        ?business_description: String,
+        ?business_industry: ::Array[String],
+        ?business_legal_name: String,
+        ?business_trade_name: String,
+        ?business_type: String,
+        ?compliance_screening_explanation: String,
+        ?conducts_money_services: bool,
+        ?conducts_money_services_description: String,
+        ?conducts_money_services_using_bridge: bool,
+        ?documents: ::Array[Privy::KYBBusinessDocument],
+        ?email: String,
+        ?estimated_annual_revenue_usd: String,
+        ?expected_monthly_payments_usd: Integer,
+        ?has_foreign_tax_registration: bool,
+        ?has_material_intermediary_ownership: bool,
+        ?high_risk_activities: ::Array[String],
+        ?high_risk_activities_explanation: String,
+        ?identifying_information: ::Array[Privy::VerificationDocument],
+        ?incorporation_date: String,
+        ?is_dao: bool,
+        ?operates_in_prohibited_countries: bool,
+        ?other_websites: ::Array[String],
+        ?ownership_threshold: Integer,
+        ?phone: String,
+        ?physical_address: Privy::VerificationAddress,
+        ?primary_website: String,
+        ?publicly_traded_listings: ::Array[Privy::KYBPubliclyTradedListing],
+        ?registered_address: Privy::VerificationAddress,
+        ?regulated_activity: Privy::KYBRegulatedActivity,
+        ?source_of_funds: String,
+        ?source_of_funds_description: String,
+        ?transliterated_business_legal_name: String,
+        ?transliterated_business_trade_name: String,
+        ?transliterated_physical_address: Privy::VerificationAddress,
+        ?transliterated_registered_address: Privy::VerificationAddress
+      ) -> void
+
+      def to_hash: -> {
+        account_purpose: String,
+        account_purpose_other: String,
+        acting_as_intermediary: bool,
+        associated_persons: ::Array[Privy::KYBAssociatedPerson],
+        business_description: String,
+        business_industry: ::Array[String],
+        business_legal_name: String,
+        business_trade_name: String,
+        business_type: String,
+        compliance_screening_explanation: String,
+        conducts_money_services: bool,
+        conducts_money_services_description: String,
+        conducts_money_services_using_bridge: bool,
+        documents: ::Array[Privy::KYBBusinessDocument],
+        email: String,
+        estimated_annual_revenue_usd: String,
+        expected_monthly_payments_usd: Integer,
+        has_foreign_tax_registration: bool,
+        has_material_intermediary_ownership: bool,
+        high_risk_activities: ::Array[String],
+        high_risk_activities_explanation: String,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        incorporation_date: String,
+        is_dao: bool,
+        operates_in_prohibited_countries: bool,
+        other_websites: ::Array[String],
+        ownership_threshold: Integer,
+        phone: String,
+        physical_address: Privy::VerificationAddress,
+        primary_website: String,
+        publicly_traded_listings: ::Array[Privy::KYBPubliclyTradedListing],
+        registered_address: Privy::VerificationAddress,
+        regulated_activity: Privy::KYBRegulatedActivity,
+        source_of_funds: String,
+        source_of_funds_description: String,
+        transliterated_business_legal_name: String,
+        transliterated_business_trade_name: String,
+        transliterated_physical_address: Privy::VerificationAddress,
+        transliterated_registered_address: Privy::VerificationAddress
+      }
+    end
+  end
+end

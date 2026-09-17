@@ -2,10 +2,10 @@
 
 module Privy
   module Models
-    class KYCResidentialAddress < Privy::Internal::Type::BaseModel
+    class VerificationAddress < Privy::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(Privy::KYCResidentialAddress, Privy::Internal::AnyHash)
+          T.any(Privy::VerificationAddress, Privy::Internal::AnyHash)
         end
 
       # City.
@@ -20,11 +20,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :street_line_1
 
-      # State or province code.
-      sig { returns(String) }
-      attr_accessor :subdivision
-
-      # Postal code.
+      # Postal code. Required for countries that use them.
       sig { returns(T.nilable(String)) }
       attr_reader :postal_code
 
@@ -38,15 +34,22 @@ module Privy
       sig { params(street_line_2: String).void }
       attr_writer :street_line_2
 
-      # Residential address for KYC data submission.
+      # ISO 3166-2 state or province code. Required for US addresses.
+      sig { returns(T.nilable(String)) }
+      attr_reader :subdivision
+
+      sig { params(subdivision: String).void }
+      attr_writer :subdivision
+
+      # A postal address used in KYC and KYB data submission.
       sig do
         params(
           city: String,
           country: String,
           street_line_1: String,
-          subdivision: String,
           postal_code: String,
-          street_line_2: String
+          street_line_2: String,
+          subdivision: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -56,12 +59,12 @@ module Privy
         country:,
         # Street address line 1.
         street_line_1:,
-        # State or province code.
-        subdivision:,
-        # Postal code.
+        # Postal code. Required for countries that use them.
         postal_code: nil,
         # Street address line 2.
-        street_line_2: nil
+        street_line_2: nil,
+        # ISO 3166-2 state or province code. Required for US addresses.
+        subdivision: nil
       )
       end
 
@@ -71,9 +74,9 @@ module Privy
             city: String,
             country: String,
             street_line_1: String,
-            subdivision: String,
             postal_code: String,
-            street_line_2: String
+            street_line_2: String,
+            subdivision: String
           }
         )
       end

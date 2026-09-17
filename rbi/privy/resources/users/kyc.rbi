@@ -75,6 +75,40 @@ module Privy
         )
         end
 
+        # Submits KYC verification data for the user. Safe to call more than once: the
+        # first call creates the provider customer and later calls update it, so a partial
+        # submission can be completed incrementally. The first submission must carry
+        # enough to begin verification — name, date of birth, residential address and at
+        # least one identifying document; later calls may send only the fields that
+        # change.
+        sig do
+          params(
+            user_id: String,
+            data: Privy::KYCSubmitData::OrHash,
+            provider: Privy::KyxProvider::OrSymbol,
+            client_agreement_id: String,
+            endorsements: T::Array[String],
+            environment: Privy::KyxEnvironment::OrSymbol,
+            request_options: Privy::RequestOptions::OrHash
+          ).returns(Privy::KYCStatusResponse)
+        end
+        def submit(
+          # The ID of the user.
+          user_id,
+          # KYC verification data for headless submission.
+          data:,
+          # KYC/KYB provider identifier.
+          provider:,
+          # Client-side agreement ID for ToS acceptance.
+          client_agreement_id: nil,
+          # Endorsements to request during KYC.
+          endorsements: nil,
+          # Provider environment (production or sandbox).
+          environment: nil,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: Privy::Client).returns(T.attached_class) }
         def self.new(client:)

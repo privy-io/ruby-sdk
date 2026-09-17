@@ -12,8 +12,8 @@ module Privy
 
       PENDING =
         T.let(:pending, Privy::WalletAutomationExecutionStatus::TaggedSymbol)
-      TRIGGERED =
-        T.let(:triggered, Privy::WalletAutomationExecutionStatus::TaggedSymbol)
+      SUBMITTED =
+        T.let(:submitted, Privy::WalletAutomationExecutionStatus::TaggedSymbol)
       COMPLETED =
         T.let(:completed, Privy::WalletAutomationExecutionStatus::TaggedSymbol)
       FAILED =

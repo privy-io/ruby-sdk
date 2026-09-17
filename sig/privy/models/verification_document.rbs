@@ -1,6 +1,6 @@
 module Privy
   module Models
-    type kyc_identifying_document =
+    type verification_document =
       {
         issuing_country: String,
         type: String,
@@ -11,7 +11,7 @@ module Privy
         number: String
       }
 
-    class KYCIdentifyingDocument < Privy::Internal::Type::BaseModel
+    class VerificationDocument < Privy::Internal::Type::BaseModel
       attr_accessor issuing_country: String
 
       attr_accessor type: String

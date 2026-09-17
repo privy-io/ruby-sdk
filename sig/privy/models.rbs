@@ -1131,19 +1131,45 @@ module Privy
 
   class KrakenEmbedUserVerifiedWebhookPayload = Privy::Models::KrakenEmbedUserVerifiedWebhookPayload
 
+  class KYBAccountPurpose = Privy::Models::KYBAccountPurpose
+
+  class KYBAssociatedPerson = Privy::Models::KYBAssociatedPerson
+
+  class KYBBusinessDocument = Privy::Models::KYBBusinessDocument
+
+  class KYBBusinessType = Privy::Models::KYBBusinessType
+
+  class KYBDocumentPurpose = Privy::Models::KYBDocumentPurpose
+
+  class KYBEstimatedAnnualRevenue = Privy::Models::KYBEstimatedAnnualRevenue
+
+  class KYBHighRiskActivity = Privy::Models::KYBHighRiskActivity
+
+  class KYBIndividualDocument = Privy::Models::KYBIndividualDocument
+
+  class KYBIndividualDocumentPurpose = Privy::Models::KYBIndividualDocumentPurpose
+
   class KYBLinksRequestBody = Privy::Models::KYBLinksRequestBody
+
+  class KYBPlaceOfBirth = Privy::Models::KYBPlaceOfBirth
+
+  class KYBPubliclyTradedListing = Privy::Models::KYBPubliclyTradedListing
+
+  class KYBRegulatedActivity = Privy::Models::KYBRegulatedActivity
+
+  class KYBSourceOfFunds = Privy::Models::KYBSourceOfFunds
 
   class KYBStatusListResponse = Privy::Models::KYBStatusListResponse
 
   class KYBStatusResponse = Privy::Models::KYBStatusResponse
 
+  class KYBSubmitData = Privy::Models::KYBSubmitData
+
+  class KYBSubmitRequestBody = Privy::Models::KYBSubmitRequestBody
+
   class KYBTosRequestBody = Privy::Models::KYBTosRequestBody
 
-  class KYCIdentifyingDocument = Privy::Models::KYCIdentifyingDocument
-
   class KYCLinksRequestBody = Privy::Models::KYCLinksRequestBody
-
-  class KYCResidentialAddress = Privy::Models::KYCResidentialAddress
 
   class KYCStatusListResponse = Privy::Models::KYCStatusListResponse
 
@@ -2298,6 +2324,10 @@ module Privy
   class UserWithIdentityToken = Privy::Models::UserWithIdentityToken
 
   class VaultAsset = Privy::Models::VaultAsset
+
+  class VerificationAddress = Privy::Models::VerificationAddress
+
+  class VerificationDocument = Privy::Models::VerificationDocument
 
   class Wallet = Privy::Models::Wallet
 

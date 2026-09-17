@@ -3,51 +3,65 @@ module Privy
     type kyc_submit_data =
       {
         date_of_birth: String,
-        first_name: String,
-        identifying_information: ::Array[Privy::KYCIdentifyingDocument],
-        last_name: String,
-        residential_address: Privy::KYCResidentialAddress,
         email: String,
-        phone: String
+        first_name: String,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        last_name: String,
+        phone: String,
+        residential_address: Privy::VerificationAddress
       }
 
     class KYCSubmitData < Privy::Internal::Type::BaseModel
-      attr_accessor date_of_birth: String
+      attr_reader date_of_birth: String?
 
-      attr_accessor first_name: String
-
-      attr_accessor identifying_information: ::Array[Privy::KYCIdentifyingDocument]
-
-      attr_accessor last_name: String
-
-      attr_accessor residential_address: Privy::KYCResidentialAddress
+      def date_of_birth=: (String) -> String
 
       attr_reader email: String?
 
       def email=: (String) -> String
 
+      attr_reader first_name: String?
+
+      def first_name=: (String) -> String
+
+      attr_reader identifying_information: ::Array[Privy::VerificationDocument]?
+
+      def identifying_information=: (
+        ::Array[Privy::VerificationDocument]
+      ) -> ::Array[Privy::VerificationDocument]
+
+      attr_reader last_name: String?
+
+      def last_name=: (String) -> String
+
       attr_reader phone: String?
 
       def phone=: (String) -> String
 
+      attr_reader residential_address: Privy::VerificationAddress?
+
+      def residential_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
       def initialize: (
-        date_of_birth: String,
-        first_name: String,
-        identifying_information: ::Array[Privy::KYCIdentifyingDocument],
-        last_name: String,
-        residential_address: Privy::KYCResidentialAddress,
+        ?date_of_birth: String,
         ?email: String,
-        ?phone: String
+        ?first_name: String,
+        ?identifying_information: ::Array[Privy::VerificationDocument],
+        ?last_name: String,
+        ?phone: String,
+        ?residential_address: Privy::VerificationAddress
       ) -> void
 
       def to_hash: -> {
         date_of_birth: String,
-        first_name: String,
-        identifying_information: ::Array[Privy::KYCIdentifyingDocument],
-        last_name: String,
-        residential_address: Privy::KYCResidentialAddress,
         email: String,
-        phone: String
+        first_name: String,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        last_name: String,
+        phone: String,
+        residential_address: Privy::VerificationAddress
       }
     end
   end

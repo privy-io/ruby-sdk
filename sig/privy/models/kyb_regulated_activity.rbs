@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type kyb_regulated_activity =
+      {
+        license_number: String,
+        primary_regulatory_authority_country: String,
+        primary_regulatory_authority_name: String,
+        regulated_activities_description: String
+      }
+
+    class KYBRegulatedActivity < Privy::Internal::Type::BaseModel
+      attr_accessor license_number: String
+
+      attr_accessor primary_regulatory_authority_country: String
+
+      attr_accessor primary_regulatory_authority_name: String
+
+      attr_accessor regulated_activities_description: String
+
+      def initialize: (
+        license_number: String,
+        primary_regulatory_authority_country: String,
+        primary_regulatory_authority_name: String,
+        regulated_activities_description: String
+      ) -> void
+
+      def to_hash: -> {
+        license_number: String,
+        primary_regulatory_authority_country: String,
+        primary_regulatory_authority_name: String,
+        regulated_activities_description: String
+      }
+    end
+  end
+end

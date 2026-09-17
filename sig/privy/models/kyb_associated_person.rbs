@@ -1,0 +1,155 @@
+module Privy
+  module Models
+    type kyb_associated_person =
+      {
+        date_of_birth: String,
+        email: String,
+        first_name: String,
+        has_control: bool,
+        has_ownership: bool,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        is_signer: bool,
+        last_name: String,
+        residential_address: Privy::VerificationAddress,
+        documents: ::Array[Privy::KYBIndividualDocument],
+        is_director: bool,
+        middle_name: String,
+        nationalities: ::Array[String],
+        ownership_percentage: Integer,
+        phone: String,
+        place_of_birth: Privy::KYBPlaceOfBirth,
+        relationship_established_at: String,
+        title: String,
+        transliterated_first_name: String,
+        transliterated_last_name: String,
+        transliterated_middle_name: String,
+        transliterated_residential_address: Privy::VerificationAddress
+      }
+
+    class KYBAssociatedPerson < Privy::Internal::Type::BaseModel
+      attr_accessor date_of_birth: String
+
+      attr_accessor email: String
+
+      attr_accessor first_name: String
+
+      attr_accessor has_control: bool
+
+      attr_accessor has_ownership: bool
+
+      attr_accessor identifying_information: ::Array[Privy::VerificationDocument]
+
+      attr_accessor is_signer: bool
+
+      attr_accessor last_name: String
+
+      attr_accessor residential_address: Privy::VerificationAddress
+
+      attr_reader documents: ::Array[Privy::KYBIndividualDocument]?
+
+      def documents=: (
+        ::Array[Privy::KYBIndividualDocument]
+      ) -> ::Array[Privy::KYBIndividualDocument]
+
+      attr_reader is_director: bool?
+
+      def is_director=: (bool) -> bool
+
+      attr_reader middle_name: String?
+
+      def middle_name=: (String) -> String
+
+      attr_reader nationalities: ::Array[String]?
+
+      def nationalities=: (::Array[String]) -> ::Array[String]
+
+      attr_reader ownership_percentage: Integer?
+
+      def ownership_percentage=: (Integer) -> Integer
+
+      attr_reader phone: String?
+
+      def phone=: (String) -> String
+
+      attr_reader place_of_birth: Privy::KYBPlaceOfBirth?
+
+      def place_of_birth=: (Privy::KYBPlaceOfBirth) -> Privy::KYBPlaceOfBirth
+
+      attr_reader relationship_established_at: String?
+
+      def relationship_established_at=: (String) -> String
+
+      attr_reader title: String?
+
+      def title=: (String) -> String
+
+      attr_reader transliterated_first_name: String?
+
+      def transliterated_first_name=: (String) -> String
+
+      attr_reader transliterated_last_name: String?
+
+      def transliterated_last_name=: (String) -> String
+
+      attr_reader transliterated_middle_name: String?
+
+      def transliterated_middle_name=: (String) -> String
+
+      attr_reader transliterated_residential_address: Privy::VerificationAddress?
+
+      def transliterated_residential_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
+      def initialize: (
+        date_of_birth: String,
+        email: String,
+        first_name: String,
+        has_control: bool,
+        has_ownership: bool,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        is_signer: bool,
+        last_name: String,
+        residential_address: Privy::VerificationAddress,
+        ?documents: ::Array[Privy::KYBIndividualDocument],
+        ?is_director: bool,
+        ?middle_name: String,
+        ?nationalities: ::Array[String],
+        ?ownership_percentage: Integer,
+        ?phone: String,
+        ?place_of_birth: Privy::KYBPlaceOfBirth,
+        ?relationship_established_at: String,
+        ?title: String,
+        ?transliterated_first_name: String,
+        ?transliterated_last_name: String,
+        ?transliterated_middle_name: String,
+        ?transliterated_residential_address: Privy::VerificationAddress
+      ) -> void
+
+      def to_hash: -> {
+        date_of_birth: String,
+        email: String,
+        first_name: String,
+        has_control: bool,
+        has_ownership: bool,
+        identifying_information: ::Array[Privy::VerificationDocument],
+        is_signer: bool,
+        last_name: String,
+        residential_address: Privy::VerificationAddress,
+        documents: ::Array[Privy::KYBIndividualDocument],
+        is_director: bool,
+        middle_name: String,
+        nationalities: ::Array[String],
+        ownership_percentage: Integer,
+        phone: String,
+        place_of_birth: Privy::KYBPlaceOfBirth,
+        relationship_established_at: String,
+        title: String,
+        transliterated_first_name: String,
+        transliterated_last_name: String,
+        transliterated_middle_name: String,
+        transliterated_residential_address: Privy::VerificationAddress
+      }
+    end
+  end
+end

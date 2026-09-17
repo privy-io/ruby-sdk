@@ -9,11 +9,11 @@ module Privy
         failed_at: String?,
         failure_reason: String?,
         status: Privy::Models::wallet_automation_execution_status,
+        submitted_at: String?,
         trigger_asset_address: String,
         trigger_block_number: String,
         :trigger_caip2 => String,
         trigger_tx_hash: String,
-        triggered_at: String?,
         updated_at: String,
         wallet_action_id: String?,
         wallet_id: String
@@ -34,6 +34,8 @@ module Privy
 
       attr_accessor status: Privy::Models::wallet_automation_execution_status
 
+      attr_accessor submitted_at: String?
+
       attr_accessor trigger_asset_address: String
 
       attr_accessor trigger_block_number: String
@@ -41,8 +43,6 @@ module Privy
       attr_accessor trigger_caip2: String
 
       attr_accessor trigger_tx_hash: String
-
-      attr_accessor triggered_at: String?
 
       attr_accessor updated_at: String
 
@@ -58,11 +58,11 @@ module Privy
         failed_at: String?,
         failure_reason: String?,
         status: Privy::Models::wallet_automation_execution_status,
+        submitted_at: String?,
         trigger_asset_address: String,
         trigger_block_number: String,
         trigger_caip2: String,
         trigger_tx_hash: String,
-        triggered_at: String?,
         updated_at: String,
         wallet_action_id: String?,
         wallet_id: String
@@ -76,11 +76,11 @@ module Privy
         failed_at: String?,
         failure_reason: String?,
         status: Privy::Models::wallet_automation_execution_status,
+        submitted_at: String?,
         trigger_asset_address: String,
         trigger_block_number: String,
         :trigger_caip2 => String,
         trigger_tx_hash: String,
-        triggered_at: String?,
         updated_at: String,
         wallet_action_id: String?,
         wallet_id: String

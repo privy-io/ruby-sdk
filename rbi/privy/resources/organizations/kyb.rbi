@@ -81,6 +81,40 @@ module Privy
         )
         end
 
+        # Submits KYB verification data for the organization. Safe to call more than once:
+        # the first call creates the provider customer and later calls update it, so a
+        # partial submission can be completed incrementally.
+        sig do
+          params(
+            organization_id: String,
+            data: Privy::KYBSubmitData::OrHash,
+            provider: Privy::KyxProvider::OrSymbol,
+            client_agreement_id: String,
+            endorsements: T::Array[String],
+            environment: Privy::KyxEnvironment::OrSymbol,
+            request_options: Privy::RequestOptions::OrHash
+          ).returns(Privy::KYBStatusResponse)
+        end
+        def submit(
+          # The ID of the organization.
+          organization_id,
+          # KYB verification data for headless submission. Fields are individually optional
+          # because the provider accepts partial submissions and grants endorsements once
+          # enough data has arrived; a partial submission can be completed by calling the
+          # endpoint again.
+          data:,
+          # KYC/KYB provider identifier.
+          provider:,
+          # Client-side agreement ID for ToS acceptance.
+          client_agreement_id: nil,
+          # Endorsements to request during KYB.
+          endorsements: nil,
+          # Provider environment (production or sandbox).
+          environment: nil,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: Privy::Client).returns(T.attached_class) }
         def self.new(client:)

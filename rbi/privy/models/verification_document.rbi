@@ -2,10 +2,10 @@
 
 module Privy
   module Models
-    class KYCIdentifyingDocument < Privy::Internal::Type::BaseModel
+    class VerificationDocument < Privy::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(Privy::KYCIdentifyingDocument, Privy::Internal::AnyHash)
+          T.any(Privy::VerificationDocument, Privy::Internal::AnyHash)
         end
 
       # ISO 3166-1 alpha-3 issuing country code.
@@ -51,7 +51,9 @@ module Privy
       sig { params(number: String).void }
       attr_writer :number
 
-      # An identity document for KYC verification.
+      # An identifying document for KYC or KYB verification. Also used for business
+      # identifiers such as tax and registration numbers, for which the image and
+      # expiration fields do not apply.
       sig do
         params(
           issuing_country: String,
