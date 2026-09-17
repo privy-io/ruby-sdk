@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type crypto_deposit_address_strategy =
+      :dedicated | :prefer_destination | :require_destination
+
+    module CryptoDepositAddressStrategy
+      extend Privy::Internal::Type::Enum
+
+      DEDICATED: :dedicated
+      PREFER_DESTINATION: :prefer_destination
+      REQUIRE_DESTINATION: :require_destination
+
+      def self?.values: -> ::Array[Privy::Models::crypto_deposit_address_strategy]
+    end
+  end
+end

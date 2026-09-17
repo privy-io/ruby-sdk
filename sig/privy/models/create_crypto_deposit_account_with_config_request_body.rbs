@@ -3,7 +3,8 @@ module Privy
     type create_crypto_deposit_account_with_config_request_body =
       {
         deposit_config_id: String,
-        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
+        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_,
+        deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy
       }
 
     class CreateCryptoDepositAccountWithConfigRequestBody < Privy::Internal::Type::BaseModel
@@ -11,14 +12,22 @@ module Privy
 
       attr_accessor type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
 
+      attr_reader deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy?
+
+      def deposit_address_strategy=: (
+        Privy::Models::crypto_deposit_address_strategy
+      ) -> Privy::Models::crypto_deposit_address_strategy
+
       def initialize: (
         deposit_config_id: String,
-        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
+        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_,
+        ?deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy
       ) -> void
 
       def to_hash: -> {
         deposit_config_id: String,
-        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_
+        type: Privy::Models::CreateCryptoDepositAccountWithConfigRequestBody::type_,
+        deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy
       }
 
       type type_ = :deposit_config

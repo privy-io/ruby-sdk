@@ -4,7 +4,8 @@ module Privy
       {
         destination: Privy::CryptoDepositAsset,
         source: Privy::Models::crypto_deposit_asset_filter,
-        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
+        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_,
+        deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy
       }
 
     class CreateCryptoDepositAccountWithRouteRequestBody < Privy::Internal::Type::BaseModel
@@ -14,16 +15,24 @@ module Privy
 
       attr_accessor type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
 
+      attr_reader deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy?
+
+      def deposit_address_strategy=: (
+        Privy::Models::crypto_deposit_address_strategy
+      ) -> Privy::Models::crypto_deposit_address_strategy
+
       def initialize: (
         destination: Privy::CryptoDepositAsset,
         source: Privy::Models::crypto_deposit_asset_filter,
-        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
+        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_,
+        ?deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy
       ) -> void
 
       def to_hash: -> {
         destination: Privy::CryptoDepositAsset,
         source: Privy::Models::crypto_deposit_asset_filter,
-        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_
+        type: Privy::Models::CreateCryptoDepositAccountWithRouteRequestBody::type_,
+        deposit_address_strategy: Privy::Models::crypto_deposit_address_strategy
       }
 
       type type_ = :inline_route

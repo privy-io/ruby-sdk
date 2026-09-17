@@ -445,6 +445,8 @@ module Privy
 
   class CryptoDepositAddressRoute = Privy::Models::CryptoDepositAddressRoute
 
+  module CryptoDepositAddressStrategy = Privy::Models::CryptoDepositAddressStrategy
+
   class CryptoDepositAsset = Privy::Models::CryptoDepositAsset
 
   module CryptoDepositAssetFilter = Privy::Models::CryptoDepositAssetFilter
