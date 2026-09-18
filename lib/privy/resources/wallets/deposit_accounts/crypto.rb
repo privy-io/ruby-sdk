@@ -13,15 +13,7 @@ module Privy
           # Some parameter documentations has been truncated, see
           # {Privy::Models::Wallets::DepositAccounts::CryptoCreateParams} for more details.
           #
-          # Creates or reuses deposit source wallets and attaches them to a sweep into the
-          # path wallet. The optional top-level deposit_address_strategy defaults to
-          # dedicated, including for existing routes. Use prefer_destination to reuse the
-          # path wallet when eligible, or require_destination to require it for its own
-          # requested source chain family without fallback. Other requested families still
-          # use dedicated wallets. Include any explicit strategy in the signed request body.
-          # Requires a dest-owner privy-authorization-signature. Accepts a dest-owner user
-          # JWT or an app secret (app-secret callers use the dest owner). JWT-only requests
-          # 401 when the app requires an app secret for wallet actions.
+          # Creates deposit source wallets that sweep into the path wallet.
           #
           # @overload create(wallet_id, create_crypto_deposit_account_request_body:, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
