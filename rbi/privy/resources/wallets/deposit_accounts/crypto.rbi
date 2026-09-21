@@ -74,6 +74,51 @@ module Privy
           def get_config(request_options: {})
           end
 
+          # Fetch the earliest crypto deposit-account sweep into the path wallet after
+          # `after`. Returns `{order: {id, status} | null}` — the same order object as GET
+          # order. The path wallet is the destination (same as create). Accepts an app
+          # secret or a user / wallet-signer JWT (`privy-app-id`).
+          sig do
+            params(
+              wallet_id: String,
+              after: Time,
+              request_options: Privy::RequestOptions::OrHash
+            ).returns(Privy::GetCryptoDepositAccountNextOrderResponse)
+          end
+          def get_next_order(
+            # ID of the wallet.
+            wallet_id,
+            # Return the earliest sweep strictly after this timestamp.
+            after:,
+            request_options: {}
+          )
+          end
+
+          # Returns an indicative route quote without creating a wallet. Amounts use token
+          # standard units. Accepts an app secret or user token.
+          sig do
+            params(
+              destination: Privy::DepositAccountCryptoQuoteAsset::OrHash,
+              source: Privy::DepositAccountCryptoQuoteAsset::OrHash,
+              input_amount: String,
+              slippage_bps: Integer,
+              request_options: Privy::RequestOptions::OrHash
+            ).returns(Privy::DepositAccountCryptoQuoteResponse)
+          end
+          def quote(
+            # An asset and chain for an indicative crypto deposit-account quote.
+            destination:,
+            # An asset and chain for an indicative crypto deposit-account quote.
+            source:,
+            # A positive decimal amount in the source token’s standard unit, not its smallest
+            # on-chain unit.
+            input_amount: nil,
+            # Value in basis points: integer from 0 to 10000 (0% to 100%).
+            slippage_bps: nil,
+            request_options: {}
+          )
+          end
+
           # @api private
           sig { params(client: Privy::Client).returns(T.attached_class) }
           def self.new(client:)

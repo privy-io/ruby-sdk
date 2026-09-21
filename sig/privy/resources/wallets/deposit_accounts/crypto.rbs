@@ -25,6 +25,20 @@ module Privy
             ?request_options: Privy::request_opts
           ) -> Privy::CryptoDepositAccountConfigResponse
 
+          def get_next_order: (
+            String wallet_id,
+            after: Time,
+            ?request_options: Privy::request_opts
+          ) -> Privy::GetCryptoDepositAccountNextOrderResponse
+
+          def quote: (
+            destination: Privy::DepositAccountCryptoQuoteAsset,
+            source: Privy::DepositAccountCryptoQuoteAsset,
+            ?input_amount: String,
+            ?slippage_bps: Integer,
+            ?request_options: Privy::request_opts
+          ) -> Privy::DepositAccountCryptoQuoteResponse
+
           def initialize: (client: Privy::Client) -> void
         end
       end

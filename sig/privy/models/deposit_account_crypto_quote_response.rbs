@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type deposit_account_crypto_quote_response =
+      {
+        created_at: Time,
+        estimated_output_amount: String,
+        input_amount: String
+      }
+
+    class DepositAccountCryptoQuoteResponse < Privy::Internal::Type::BaseModel
+      attr_accessor created_at: Time
+
+      attr_accessor estimated_output_amount: String
+
+      attr_accessor input_amount: String
+
+      def initialize: (
+        created_at: Time,
+        estimated_output_amount: String,
+        input_amount: String
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Time,
+        estimated_output_amount: String,
+        input_amount: String
+      }
+    end
+  end
+end

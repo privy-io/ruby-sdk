@@ -3,6 +3,12 @@
 module Privy
   module Models
     class CustodialWalletCreateInput < Privy::Internal::Type::BaseModel
+      # @!attribute chain
+      #   The chain of the custodial wallet.
+      #
+      #   @return [Symbol, Privy::Models::CustodialWalletChain]
+      required :chain, enum: -> { Privy::CustodialWalletChain }
+
       # @!attribute provider
       #   The provider of the custodial wallet.
       #
@@ -22,20 +28,6 @@ module Privy
       #   @return [Array<Privy::Models::AdditionalSignerItemInput>, nil]
       optional :additional_signers, -> { Privy::Internal::Type::ArrayOf[Privy::AdditionalSignerItemInput] }
 
-      # @!attribute chain
-      #   The chain of the custodial wallet.
-      #
-      #   @return [Symbol, Privy::Models::CustodialWalletChain, nil]
-      optional :chain, enum: -> { Privy::CustodialWalletChain }
-
-      # @!attribute chain_type
-      #   @deprecated
-      #
-      #   The chain type of the custodial wallet (deprecated).
-      #
-      #   @return [Symbol, Privy::Models::CustodialWalletChainType, nil]
-      optional :chain_type, enum: -> { Privy::CustodialWalletChainType }
-
       # @!attribute owner
       #   The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       #   null to remove the current owner.
@@ -49,21 +41,19 @@ module Privy
       #   @return [Array<String>, nil]
       optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(provider:, provider_user_id:, additional_signers: nil, chain: nil, chain_type: nil, owner: nil, policy_ids: nil)
+      # @!method initialize(chain:, provider:, provider_user_id:, additional_signers: nil, owner: nil, policy_ids: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CustodialWalletCreateInput} for more details.
       #
       #   The input for creating a custodial wallet.
+      #
+      #   @param chain [Symbol, Privy::Models::CustodialWalletChain] The chain of the custodial wallet.
       #
       #   @param provider [Symbol, Privy::Models::CustodialWalletProvider] The provider of the custodial wallet.
       #
       #   @param provider_user_id [String] The resource ID of the beneficiary of the custodial wallet, given by the licensi
       #
       #   @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Additional signers for the wallet.
-      #
-      #   @param chain [Symbol, Privy::Models::CustodialWalletChain] The chain of the custodial wallet.
-      #
-      #   @param chain_type [Symbol, Privy::Models::CustodialWalletChainType] The chain type of the custodial wallet (deprecated).
       #
       #   @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       #

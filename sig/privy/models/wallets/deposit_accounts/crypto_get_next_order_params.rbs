@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    module Wallets
+      module DepositAccounts
+        type crypto_get_next_order_params =
+          { wallet_id: String, after: Time }
+          & Privy::Internal::Type::request_parameters
+
+        class CryptoGetNextOrderParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor wallet_id: String
+
+          attr_accessor after: Time
+
+          def initialize: (
+            wallet_id: String,
+            after: Time,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            wallet_id: String,
+            after: Time,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

@@ -96,6 +96,66 @@ module Privy
             )
           end
 
+          # Fetch the earliest crypto deposit-account sweep into the path wallet after
+          # `after`. Returns `{order: {id, status} | null}` — the same order object as GET
+          # order. The path wallet is the destination (same as create). Accepts an app
+          # secret or a user / wallet-signer JWT (`privy-app-id`).
+          #
+          # @overload get_next_order(wallet_id, after:, request_options: {})
+          #
+          # @param wallet_id [String] ID of the wallet.
+          #
+          # @param after [Time] Return the earliest sweep strictly after this timestamp.
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Models::GetCryptoDepositAccountNextOrderResponse]
+          #
+          # @see Privy::Models::Wallets::DepositAccounts::CryptoGetNextOrderParams
+          def get_next_order(wallet_id, params)
+            parsed, options = Privy::Wallets::DepositAccounts::CryptoGetNextOrderParams.dump_request(params)
+            query = Privy::Internal::Util.encode_query_params(parsed)
+            @client.request(
+              method: :get,
+              path: ["v1/wallets/%1$s/deposit_accounts/crypto/next_order", wallet_id],
+              query: query,
+              model: Privy::GetCryptoDepositAccountNextOrderResponse,
+              options: options
+            )
+          end
+
+          # Some parameter documentations has been truncated, see
+          # {Privy::Models::Wallets::DepositAccounts::CryptoQuoteParams} for more details.
+          #
+          # Returns an indicative route quote without creating a wallet. Amounts use token
+          # standard units. Accepts an app secret or user token.
+          #
+          # @overload quote(destination:, source:, input_amount: nil, slippage_bps: nil, request_options: {})
+          #
+          # @param destination [Privy::Models::DepositAccountCryptoQuoteAsset] An asset and chain for an indicative crypto deposit-account quote.
+          #
+          # @param source [Privy::Models::DepositAccountCryptoQuoteAsset] An asset and chain for an indicative crypto deposit-account quote.
+          #
+          # @param input_amount [String] A positive decimal amount in the source token’s standard unit, not its smallest
+          #
+          # @param slippage_bps [Integer] Value in basis points: integer from 0 to 10000 (0% to 100%).
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Models::DepositAccountCryptoQuoteResponse]
+          #
+          # @see Privy::Models::Wallets::DepositAccounts::CryptoQuoteParams
+          def quote(params)
+            parsed, options = Privy::Wallets::DepositAccounts::CryptoQuoteParams.dump_request(params)
+            @client.request(
+              method: :post,
+              path: "v1/deposit_accounts/crypto/quote",
+              body: parsed,
+              model: Privy::DepositAccountCryptoQuoteResponse,
+              options: options
+            )
+          end
+
           # @api private
           #
           # @param client [Privy::Client]

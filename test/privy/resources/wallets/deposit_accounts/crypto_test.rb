@@ -68,4 +68,46 @@ class Privy::Test::Resources::Wallets::DepositAccounts::CryptoTest < Privy::Test
       }
     end
   end
+
+  def test_get_next_order_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @privy_api.wallets.deposit_accounts.crypto.get_next_order(
+        "wallet_id",
+        after: "2019-12-27T18:11:19.117Z"
+      )
+
+    assert_pattern do
+      response => Privy::GetCryptoDepositAccountNextOrderResponse
+    end
+
+    assert_pattern do
+      response => {
+        order: Privy::GetCryptoDepositAccountOrderResponse | nil
+      }
+    end
+  end
+
+  def test_quote_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @privy_api.wallets.deposit_accounts.crypto.quote(
+        destination: {asset: "usdc", chain: "base"},
+        source: {asset: "eth", chain: "ethereum"}
+      )
+
+    assert_pattern do
+      response => Privy::DepositAccountCryptoQuoteResponse
+    end
+
+    assert_pattern do
+      response => {
+        created_at: Time,
+        estimated_output_amount: String,
+        input_amount: String
+      }
+    end
+  end
 end

@@ -1,0 +1,39 @@
+module Privy
+  module Models
+    type deposit_account_crypto_quote_request_body =
+      {
+        destination: Privy::DepositAccountCryptoQuoteAsset,
+        source: Privy::DepositAccountCryptoQuoteAsset,
+        input_amount: String,
+        slippage_bps: Integer
+      }
+
+    class DepositAccountCryptoQuoteRequestBody < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::DepositAccountCryptoQuoteAsset
+
+      attr_accessor source: Privy::DepositAccountCryptoQuoteAsset
+
+      attr_reader input_amount: String?
+
+      def input_amount=: (String) -> String
+
+      attr_reader slippage_bps: Integer?
+
+      def slippage_bps=: (Integer) -> Integer
+
+      def initialize: (
+        destination: Privy::DepositAccountCryptoQuoteAsset,
+        source: Privy::DepositAccountCryptoQuoteAsset,
+        ?input_amount: String,
+        ?slippage_bps: Integer
+      ) -> void
+
+      def to_hash: -> {
+        destination: Privy::DepositAccountCryptoQuoteAsset,
+        source: Privy::DepositAccountCryptoQuoteAsset,
+        input_amount: String,
+        slippage_bps: Integer
+      }
+    end
+  end
+end

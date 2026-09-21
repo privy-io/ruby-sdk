@@ -489,6 +489,14 @@ module Privy
 
   class CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
 
+  class DepositAccountCryptoQuoteAmount = Privy::Models::DepositAccountCryptoQuoteAmount
+
+  class DepositAccountCryptoQuoteAsset = Privy::Models::DepositAccountCryptoQuoteAsset
+
+  class DepositAccountCryptoQuoteRequestBody = Privy::Models::DepositAccountCryptoQuoteRequestBody
+
+  class DepositAccountCryptoQuoteResponse = Privy::Models::DepositAccountCryptoQuoteResponse
+
   class DepositCompletedData = Privy::Models::DepositCompletedData
 
   class DepositCompletedDestination = Privy::Models::DepositCompletedDestination

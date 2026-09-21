@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    module Wallets
+      module DepositAccounts
+        type crypto_quote_params =
+          {  } & Privy::Internal::Type::request_parameters
+
+        class CryptoQuoteParams < Privy::Models::DepositAccountCryptoQuoteRequestBody
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          def initialize: (?request_options: Privy::request_opts) -> void
+
+          def to_hash: -> { request_options: Privy::RequestOptions }
+        end
+      end
+    end
+  end
+end
