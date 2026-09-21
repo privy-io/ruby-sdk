@@ -230,6 +230,22 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_attach_automations_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.attach_automations("wallet_id", automation_ids: ["x"])
+
+    assert_pattern do
+      response => Privy::WalletAutomationAttachmentListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Privy::Internal::Type::ArrayOf[Privy::WalletAutomationAttachmentResponse])
+      }
+    end
+  end
+
   def test_authenticate_with_jwt_required_params
     skip("Mock server tests are disabled")
 
@@ -286,6 +302,22 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
       response => {
         recovery_user_id: String,
         wallets: ^(Privy::Internal::Type::ArrayOf[Privy::Wallet])
+      }
+    end
+  end
+
+  def test_detach_automations_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.detach_automations("wallet_id", automation_ids: ["x"])
+
+    assert_pattern do
+      response => Privy::WalletAutomationSuccessResponse
+    end
+
+    assert_pattern do
+      response => {
+        success: Privy::WalletAutomationSuccessResponse::Success
       }
     end
   end

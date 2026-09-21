@@ -2,11 +2,11 @@
 
 module Privy
   module Models
-    class UsageCrossChainFeeRecordedWebhookPayload < Privy::Internal::Type::BaseModel
+    class UsageSwapProviderFeeRecordedWebhookPayload < Privy::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Privy::UsageCrossChainFeeRecordedWebhookPayload,
+            Privy::UsageSwapProviderFeeRecordedWebhookPayload,
             Privy::Internal::AnyHash
           )
         end
@@ -32,13 +32,13 @@ module Privy
       # The type of webhook event.
       sig do
         returns(
-          Privy::UsageCrossChainFeeRecordedWebhookPayload::Type::TaggedSymbol
+          Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type::TaggedSymbol
         )
       end
       attr_accessor :type
 
-      # Payload for the usage.cross_chain_fee.recorded webhook event (Privy fee on a
-      # cross-chain transfer or swap).
+      # Payload for the usage.swap_provider_fee.recorded webhook event (swap provider
+      # fee on a cross-chain transfer or swap).
       sig do
         params(
           amount_usd: String,
@@ -46,7 +46,8 @@ module Privy
           recorded_at: Integer,
           source_id: String,
           source_type: Privy::UsageSourceType::OrSymbol,
-          type: Privy::UsageCrossChainFeeRecordedWebhookPayload::Type::OrSymbol
+          type:
+            Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -72,7 +73,7 @@ module Privy
             source_id: String,
             source_type: Privy::UsageSourceType::TaggedSymbol,
             type:
-              Privy::UsageCrossChainFeeRecordedWebhookPayload::Type::TaggedSymbol
+              Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type::TaggedSymbol
           }
         )
       end
@@ -85,20 +86,23 @@ module Privy
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Privy::UsageCrossChainFeeRecordedWebhookPayload::Type)
+            T.all(
+              Symbol,
+              Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        USAGE_CROSS_CHAIN_FEE_RECORDED =
+        USAGE_SWAP_PROVIDER_FEE_RECORDED =
           T.let(
-            :"usage.cross_chain_fee.recorded",
-            Privy::UsageCrossChainFeeRecordedWebhookPayload::Type::TaggedSymbol
+            :"usage.swap_provider_fee.recorded",
+            Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Privy::UsageCrossChainFeeRecordedWebhookPayload::Type::TaggedSymbol
+              Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type::TaggedSymbol
             ]
           )
         end

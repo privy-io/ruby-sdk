@@ -54,6 +54,7 @@ module Privy
         source: Privy::Models::token_transfer_source,
         ?amount: String,
         ?amount_type: Privy::Models::amount_type,
+        ?custody_options: Privy::TransferCustodyOptions,
         ?fee_configuration: Privy::FeeConfiguration,
         ?nonce: String,
         ?reference_id: String,

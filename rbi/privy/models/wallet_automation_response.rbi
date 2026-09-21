@@ -31,7 +31,7 @@ module Privy
       attr_accessor :owner_id
 
       # Automation lifecycle state: 'enabled' = running, 'disabled' = not running.
-      sig { returns(Privy::WalletAutomationStatus::OrSymbol) }
+      sig { returns(Privy::WalletAutomationStatus::TaggedSymbol) }
       attr_accessor :status
 
       sig { returns(String) }
@@ -73,7 +73,7 @@ module Privy
             created_at: String,
             name: T.nilable(String),
             owner_id: T.nilable(String),
-            status: Privy::WalletAutomationStatus::OrSymbol,
+            status: Privy::WalletAutomationStatus::TaggedSymbol,
             updated_at: String
           }
         )

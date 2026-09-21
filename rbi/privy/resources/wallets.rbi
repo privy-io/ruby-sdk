@@ -274,6 +274,34 @@ module Privy
       )
       end
 
+      # Attach one or more automations to a wallet.
+      sig do
+        params(
+          wallet_id: String,
+          automation_ids: T::Array[String],
+          params: Privy::SwapAttachmentParams::OrHash,
+          privy_authorization_signature: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::WalletAutomationAttachmentListResponse)
+      end
+      def attach_automations(
+        # Path param: ID of the wallet.
+        wallet_id,
+        # Body param
+        automation_ids:,
+        # Body param: Per-attachment parameters for swap automations.
+        params: nil,
+        # Header param: Request authorization signature. If multiple signatures are
+        # required, they should be comma separated.
+        privy_authorization_signature: nil,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
       # Exchange a user JWT for a session key authorized to act on the user's wallets.
       # Returns the encrypted authorization key and the list of wallets it can access.
       sig do
@@ -334,6 +362,31 @@ module Privy
         primary_signer:,
         recovery_user:,
         wallets:,
+        request_options: {}
+      )
+      end
+
+      # Detach one or more automations from a wallet.
+      sig do
+        params(
+          wallet_id: String,
+          automation_ids: T::Array[String],
+          privy_authorization_signature: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::WalletAutomationSuccessResponse)
+      end
+      def detach_automations(
+        # Path param: ID of the wallet.
+        wallet_id,
+        # Body param
+        automation_ids:,
+        # Header param: Request authorization signature. If multiple signatures are
+        # required, they should be comma separated.
+        privy_authorization_signature: nil,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
         request_options: {}
       )
       end
@@ -513,6 +566,7 @@ module Privy
             ),
           amount: String,
           amount_type: Privy::AmountType::OrSymbol,
+          custody_options: Privy::TransferCustodyOptions::OrHash,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           nonce: String,
           reference_id: String,
@@ -538,6 +592,8 @@ module Privy
         amount: nil,
         # Body param: Whether the amount refers to the input token or output token.
         amount_type: nil,
+        # Body param: Options for a transfer from a custodial wallet.
+        custody_options: nil,
         # Body param: Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
         # Body param: Unique caller-generated nonce used to prevent replaying a signed

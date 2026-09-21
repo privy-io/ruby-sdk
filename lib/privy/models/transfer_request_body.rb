@@ -31,6 +31,12 @@ module Privy
       #   @return [Symbol, Privy::Models::AmountType, nil]
       optional :amount_type, enum: -> { Privy::AmountType }
 
+      # @!attribute custody_options
+      #   Options for a transfer from a custodial wallet.
+      #
+      #   @return [Privy::Models::TransferCustodyOptions, nil]
+      optional :custody_options, -> { Privy::TransferCustodyOptions }
+
       # @!attribute fee_configuration
       #   Total fees assessed on a transfer, in BPS
       #
@@ -57,7 +63,7 @@ module Privy
       #   @return [Integer, nil]
       optional :slippage_bps, Integer
 
-      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil)
+      # @!method initialize(destination:, source:, amount: nil, amount_type: nil, custody_options: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransferRequestBody} for more details.
       #
@@ -70,6 +76,8 @@ module Privy
       #   @param amount [String] Amount as a decimal string in the token's standard unit (e.g. "1.5" for 1.5 USDC
       #
       #   @param amount_type [Symbol, Privy::Models::AmountType] Whether the amount refers to the input token or output token.
+      #
+      #   @param custody_options [Privy::Models::TransferCustodyOptions] Options for a transfer from a custodial wallet.
       #
       #   @param fee_configuration [Privy::Models::FeeConfiguration] Total fees assessed on a transfer, in BPS
       #

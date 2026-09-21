@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type transfer_custody_options = { initiation: Privy::TransferInitiation }
+
+    class TransferCustodyOptions < Privy::Internal::Type::BaseModel
+      attr_accessor initiation: Privy::TransferInitiation
+
+      def initialize: (initiation: Privy::TransferInitiation) -> void
+
+      def to_hash: -> { initiation: Privy::TransferInitiation }
+    end
+  end
+end

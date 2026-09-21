@@ -39,7 +39,7 @@ module Privy
             Privy::YieldClaimConfirmedWebhookPayload,
             Privy::UserOperationCompletedWebhookPayload,
             Privy::UsageGasSponsorshipRecordedWebhookPayload,
-            Privy::UsageCrossChainFeeRecordedWebhookPayload,
+            Privy::UsageSwapProviderFeeRecordedWebhookPayload,
             Privy::IntentCreatedWebhookPayload,
             Privy::IntentAuthorizedWebhookPayload,
             Privy::IntentRejectedWebhookPayload,

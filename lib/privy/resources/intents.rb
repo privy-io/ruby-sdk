@@ -205,7 +205,7 @@ module Privy
       # Create an intent to execute a token transfer via a wallet. The intent must be
       # authorized by either the wallet owner or signers before it can be executed.
       #
-      # @overload transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil, privy_request_expiry: nil, request_options: {})
+      # @overload transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, custody_options: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil, privy_request_expiry: nil, request_options: {})
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
@@ -216,6 +216,8 @@ module Privy
       # @param amount [String] Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
       #
       # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
+      #
+      # @param custody_options [Privy::Models::TransferCustodyOptions] Body param: Options for a transfer from a custodial wallet.
       #
       # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
       #

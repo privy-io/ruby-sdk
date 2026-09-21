@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type transfer_initiation_attestations =
+      { sca: Privy::TransferScaAttestation }
+
+    class TransferInitiationAttestations < Privy::Internal::Type::BaseModel
+      attr_accessor sca: Privy::TransferScaAttestation
+
+      def initialize: (sca: Privy::TransferScaAttestation) -> void
+
+      def to_hash: -> { sca: Privy::TransferScaAttestation }
+    end
+  end
+end

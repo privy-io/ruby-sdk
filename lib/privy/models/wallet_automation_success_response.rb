@@ -2,6 +2,7 @@
 
 module Privy
   module Models
+    # @see Privy::Resources::WalletAutomations#delete
     class WalletAutomationSuccessResponse < Privy::Internal::Type::BaseModel
       # @!attribute success
       #

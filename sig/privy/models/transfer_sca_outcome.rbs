@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    type transfer_sca_outcome =
+      :sca_used
+      | :payment_to_self
+      | :trusted_beneficiaries
+      | :recurring_transaction
+      | :contactless_low_value
+      | :unattended_terminal_for_transport
+      | :low_value
+      | :secure_corporate_payment
+      | :transaction_risk_analysis
+      | :merchant_initiated_transaction
+      | :not_applicable
+      | :other
+      | String
+
+    module TransferScaOutcome
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transfer_sca_outcome]
+
+      SCA_USED: :sca_used
+      PAYMENT_TO_SELF: :payment_to_self
+      TRUSTED_BENEFICIARIES: :trusted_beneficiaries
+      RECURRING_TRANSACTION: :recurring_transaction
+      CONTACTLESS_LOW_VALUE: :contactless_low_value
+      UNATTENDED_TERMINAL_FOR_TRANSPORT: :unattended_terminal_for_transport
+      LOW_VALUE: :low_value
+      SECURE_CORPORATE_PAYMENT: :secure_corporate_payment
+      TRANSACTION_RISK_ANALYSIS: :transaction_risk_analysis
+      MERCHANT_INITIATED_TRANSACTION: :merchant_initiated_transaction
+      NOT_APPLICABLE: :not_applicable
+      OTHER: :other
+    end
+  end
+end

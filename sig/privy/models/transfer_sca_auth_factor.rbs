@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type transfer_sca_auth_factor =
+      {
+        authenticated_at: Time,
+        category: Privy::Models::transfer_sca_auth_factor_category,
+        reference: String
+      }
+
+    class TransferScaAuthFactor < Privy::Internal::Type::BaseModel
+      attr_accessor authenticated_at: Time
+
+      attr_accessor category: Privy::Models::transfer_sca_auth_factor_category
+
+      attr_accessor reference: String
+
+      def initialize: (
+        authenticated_at: Time,
+        category: Privy::Models::transfer_sca_auth_factor_category,
+        reference: String
+      ) -> void
+
+      def to_hash: -> {
+        authenticated_at: Time,
+        category: Privy::Models::transfer_sca_auth_factor_category,
+        reference: String
+      }
+    end
+  end
+end

@@ -9,18 +9,10 @@ module Privy
         end
 
       # Which assets to include/exclude for an automation trigger.
-      sig do
-        returns(
-          T.any(
-            Privy::AutomationAssetFilterAll,
-            Privy::AutomationAssetFilterInclude,
-            Privy::AutomationAssetFilterExclude
-          )
-        )
-      end
+      sig { returns(Privy::AutomationAssetFilter::Variants) }
       attr_accessor :assets
 
-      sig { returns(Privy::AutomationTriggerConfig::Type::OrSymbol) }
+      sig { returns(Privy::AutomationTriggerConfig::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Trigger configuration for deposit events.
@@ -45,13 +37,8 @@ module Privy
       sig do
         override.returns(
           {
-            assets:
-              T.any(
-                Privy::AutomationAssetFilterAll,
-                Privy::AutomationAssetFilterInclude,
-                Privy::AutomationAssetFilterExclude
-              ),
-            type: Privy::AutomationTriggerConfig::Type::OrSymbol
+            assets: Privy::AutomationAssetFilter::Variants,
+            type: Privy::AutomationTriggerConfig::Type::TaggedSymbol
           }
         )
       end

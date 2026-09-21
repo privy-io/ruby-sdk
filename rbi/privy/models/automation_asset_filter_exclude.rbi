@@ -8,7 +8,7 @@ module Privy
           T.any(Privy::AutomationAssetFilterExclude, Privy::Internal::AnyHash)
         end
 
-      sig { returns(Privy::AutomationAssetFilterExclude::Mode::OrSymbol) }
+      sig { returns(Privy::AutomationAssetFilterExclude::Mode::TaggedSymbol) }
       attr_accessor :mode
 
       sig { returns(T::Array[Privy::AutomationAssetSpec]) }
@@ -27,7 +27,7 @@ module Privy
       sig do
         override.returns(
           {
-            mode: Privy::AutomationAssetFilterExclude::Mode::OrSymbol,
+            mode: Privy::AutomationAssetFilterExclude::Mode::TaggedSymbol,
             values: T::Array[Privy::AutomationAssetSpec]
           }
         )

@@ -83,6 +83,15 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::WalletEntityAssignmentResponse
 
+      def attach_automations: (
+        String wallet_id,
+        automation_ids: ::Array[String],
+        ?params: Privy::SwapAttachmentParams,
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationAttachmentListResponse
+
       def authenticate_with_jwt: (
         encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
         recipient_public_key: String,
@@ -101,6 +110,14 @@ module Privy
         wallets: ::Array[Privy::WalletCreateWalletsWithRecoveryParams::Wallet],
         ?request_options: Privy::request_opts
       ) -> Privy::WalletCreateWalletsWithRecoveryResponse
+
+      def detach_automations: (
+        String wallet_id,
+        automation_ids: ::Array[String],
+        ?privy_authorization_signature: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationSuccessResponse
 
       def export: (
         String wallet_id,
@@ -148,6 +165,7 @@ module Privy
         source: Privy::Models::token_transfer_source,
         ?amount: String,
         ?amount_type: Privy::Models::amount_type,
+        ?custody_options: Privy::TransferCustodyOptions,
         ?fee_configuration: Privy::FeeConfiguration,
         ?nonce: String,
         ?reference_id: String,

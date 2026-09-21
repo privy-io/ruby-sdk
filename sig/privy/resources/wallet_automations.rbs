@@ -1,6 +1,46 @@
 module Privy
   module Resources
     class WalletAutomations
+      def create: (
+        config: Privy::AutomationConfigInput,
+        owner_id: String?,
+        ?name: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationResponse
+
+      def update: (
+        String automation_id,
+        ?config: Privy::AutomationConfigInput,
+        ?enabled: bool,
+        ?name: String?,
+        ?owner_id: String?,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationResponse
+
+      def list: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?wallet_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::WalletAutomationResponse]
+
+      def delete: (
+        String automation_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationSuccessResponse
+
+      def get: (
+        String automation_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::WalletAutomationResponse
+
+      def list_executions: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?wallet_id: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::WalletAutomationExecutionResponse]
+
       def reindex: (
         asset_address: String,
         ?caip2: Privy::Models::wallet_automation_reindex_caip2,

@@ -1,0 +1,29 @@
+module Privy
+  module Models
+    type transfer_sca_attestation =
+      {
+        outcome: Privy::Models::transfer_sca_outcome,
+        auth_factors: ::Array[Privy::TransferScaAuthFactor]
+      }
+
+    class TransferScaAttestation < Privy::Internal::Type::BaseModel
+      attr_accessor outcome: Privy::Models::transfer_sca_outcome
+
+      attr_reader auth_factors: ::Array[Privy::TransferScaAuthFactor]?
+
+      def auth_factors=: (
+        ::Array[Privy::TransferScaAuthFactor]
+      ) -> ::Array[Privy::TransferScaAuthFactor]
+
+      def initialize: (
+        outcome: Privy::Models::transfer_sca_outcome,
+        ?auth_factors: ::Array[Privy::TransferScaAuthFactor]
+      ) -> void
+
+      def to_hash: -> {
+        outcome: Privy::Models::transfer_sca_outcome,
+        auth_factors: ::Array[Privy::TransferScaAuthFactor]
+      }
+    end
+  end
+end

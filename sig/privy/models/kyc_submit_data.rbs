@@ -7,8 +7,15 @@ module Privy
         first_name: String,
         identifying_information: ::Array[Privy::VerificationDocument],
         last_name: String,
+        middle_name: String,
+        nationalities: ::Array[String],
+        nonresident_alien_attestation: bool,
         phone: String,
-        residential_address: Privy::VerificationAddress
+        residential_address: Privy::VerificationAddress,
+        transliterated_first_name: String,
+        transliterated_last_name: String,
+        transliterated_middle_name: String,
+        transliterated_residential_address: Privy::VerificationAddress
       }
 
     class KYCSubmitData < Privy::Internal::Type::BaseModel
@@ -34,6 +41,18 @@ module Privy
 
       def last_name=: (String) -> String
 
+      attr_reader middle_name: String?
+
+      def middle_name=: (String) -> String
+
+      attr_reader nationalities: ::Array[String]?
+
+      def nationalities=: (::Array[String]) -> ::Array[String]
+
+      attr_reader nonresident_alien_attestation: bool?
+
+      def nonresident_alien_attestation=: (bool) -> bool
+
       attr_reader phone: String?
 
       def phone=: (String) -> String
@@ -44,14 +63,39 @@ module Privy
         Privy::VerificationAddress
       ) -> Privy::VerificationAddress
 
+      attr_reader transliterated_first_name: String?
+
+      def transliterated_first_name=: (String) -> String
+
+      attr_reader transliterated_last_name: String?
+
+      def transliterated_last_name=: (String) -> String
+
+      attr_reader transliterated_middle_name: String?
+
+      def transliterated_middle_name=: (String) -> String
+
+      attr_reader transliterated_residential_address: Privy::VerificationAddress?
+
+      def transliterated_residential_address=: (
+        Privy::VerificationAddress
+      ) -> Privy::VerificationAddress
+
       def initialize: (
         ?date_of_birth: String,
         ?email: String,
         ?first_name: String,
         ?identifying_information: ::Array[Privy::VerificationDocument],
         ?last_name: String,
+        ?middle_name: String,
+        ?nationalities: ::Array[String],
+        ?nonresident_alien_attestation: bool,
         ?phone: String,
-        ?residential_address: Privy::VerificationAddress
+        ?residential_address: Privy::VerificationAddress,
+        ?transliterated_first_name: String,
+        ?transliterated_last_name: String,
+        ?transliterated_middle_name: String,
+        ?transliterated_residential_address: Privy::VerificationAddress
       ) -> void
 
       def to_hash: -> {
@@ -60,8 +104,15 @@ module Privy
         first_name: String,
         identifying_information: ::Array[Privy::VerificationDocument],
         last_name: String,
+        middle_name: String,
+        nationalities: ::Array[String],
+        nonresident_alien_attestation: bool,
         phone: String,
-        residential_address: Privy::VerificationAddress
+        residential_address: Privy::VerificationAddress,
+        transliterated_first_name: String,
+        transliterated_last_name: String,
+        transliterated_middle_name: String,
+        transliterated_residential_address: Privy::VerificationAddress
       }
     end
   end

@@ -11,7 +11,9 @@ module Privy
           )
         end
 
-      sig { returns(Privy::AutomationEarnDepositActionConfig::Type::OrSymbol) }
+      sig do
+        returns(Privy::AutomationEarnDepositActionConfig::Type::TaggedSymbol)
+      end
       attr_accessor :type
 
       sig { returns(String) }
@@ -30,7 +32,7 @@ module Privy
       sig do
         override.returns(
           {
-            type: Privy::AutomationEarnDepositActionConfig::Type::OrSymbol,
+            type: Privy::AutomationEarnDepositActionConfig::Type::TaggedSymbol,
             vault_id: String
           }
         )

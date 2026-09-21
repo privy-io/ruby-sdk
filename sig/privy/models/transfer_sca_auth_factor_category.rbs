@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type transfer_sca_auth_factor_category =
+      :knowledge | :possession | :inherence | String
+
+    module TransferScaAuthFactorCategory
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transfer_sca_auth_factor_category]
+
+      KNOWLEDGE: :knowledge
+      POSSESSION: :possession
+      INHERENCE: :inherence
+    end
+  end
+end

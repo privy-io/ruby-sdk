@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type transfer_initiation =
+      {
+        attestations: Privy::TransferInitiationAttestations,
+        channel: Privy::Models::transfer_initiation_channel,
+        subchannel: Privy::Models::transfer_initiation_subchannel
+      }
+
+    class TransferInitiation < Privy::Internal::Type::BaseModel
+      attr_accessor attestations: Privy::TransferInitiationAttestations
+
+      attr_accessor channel: Privy::Models::transfer_initiation_channel
+
+      attr_accessor subchannel: Privy::Models::transfer_initiation_subchannel
+
+      def initialize: (
+        attestations: Privy::TransferInitiationAttestations,
+        channel: Privy::Models::transfer_initiation_channel,
+        subchannel: Privy::Models::transfer_initiation_subchannel
+      ) -> void
+
+      def to_hash: -> {
+        attestations: Privy::TransferInitiationAttestations,
+        channel: Privy::Models::transfer_initiation_channel,
+        subchannel: Privy::Models::transfer_initiation_subchannel
+      }
+    end
+  end
+end

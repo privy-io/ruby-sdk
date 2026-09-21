@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    type wallet_automation_list_executions_params =
+      { cursor: String, limit: Integer, wallet_id: String }
+      & Privy::Internal::Type::request_parameters
+
+    class WalletAutomationListExecutionsParams < Privy::Internal::Type::BaseModel
+      extend Privy::Internal::Type::RequestParameters::Converter
+      include Privy::Internal::Type::RequestParameters
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_reader wallet_id: String?
+
+      def wallet_id=: (String) -> String
+
+      def initialize: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?wallet_id: String,
+        ?request_options: Privy::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cursor: String,
+        limit: Integer,
+        wallet_id: String,
+        request_options: Privy::RequestOptions
+      }
+    end
+  end
+end

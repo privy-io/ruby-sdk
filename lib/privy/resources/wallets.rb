@@ -271,6 +271,45 @@ module Privy
       end
 
       # Some parameter documentations has been truncated, see
+      # {Privy::Models::WalletAttachAutomationsParams} for more details.
+      #
+      # Attach one or more automations to a wallet.
+      #
+      # @overload attach_automations(wallet_id, automation_ids:, params: nil, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
+      #
+      # @param wallet_id [String] Path param: ID of the wallet.
+      #
+      # @param automation_ids [Array<String>] Body param
+      #
+      # @param params [Privy::Models::SwapAttachmentParams] Body param: Per-attachment parameters for swap automations.
+      #
+      # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
+      #
+      # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::WalletAutomationAttachmentListResponse]
+      #
+      # @see Privy::Models::WalletAttachAutomationsParams
+      def attach_automations(wallet_id, params)
+        parsed, options = Privy::WalletAttachAutomationsParams.dump_request(params)
+        header_params =
+          {
+            privy_authorization_signature: "privy-authorization-signature",
+            privy_request_expiry: "privy-request-expiry"
+          }
+        @client.request(
+          method: :post,
+          path: ["v1/wallets/%1$s/automations/attach", wallet_id],
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
+          model: Privy::WalletAutomationAttachmentListResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Privy::Models::WalletAuthenticateWithJwtParams} for more details.
       #
       # Exchange a user JWT for a session key authorized to act on the user's wallets.
@@ -347,6 +386,43 @@ module Privy
           path: "v1/wallets_with_recovery",
           body: parsed,
           model: Privy::WalletCreateWalletsWithRecoveryResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::WalletDetachAutomationsParams} for more details.
+      #
+      # Detach one or more automations from a wallet.
+      #
+      # @overload detach_automations(wallet_id, automation_ids:, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
+      #
+      # @param wallet_id [String] Path param: ID of the wallet.
+      #
+      # @param automation_ids [Array<String>] Body param
+      #
+      # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
+      #
+      # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::WalletAutomationSuccessResponse]
+      #
+      # @see Privy::Models::WalletDetachAutomationsParams
+      def detach_automations(wallet_id, params)
+        parsed, options = Privy::WalletDetachAutomationsParams.dump_request(params)
+        header_params =
+          {
+            privy_authorization_signature: "privy-authorization-signature",
+            privy_request_expiry: "privy-request-expiry"
+          }
+        @client.request(
+          method: :post,
+          path: ["v1/wallets/%1$s/automations/detach", wallet_id],
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
+          model: Privy::WalletAutomationSuccessResponse,
           options: options
         )
       end
@@ -527,7 +603,7 @@ module Privy
       #
       # Transfer tokens from a wallet to a destination address.
       #
-      # @overload transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+      # @overload transfer(wallet_id, destination:, source:, amount: nil, amount_type: nil, custody_options: nil, fee_configuration: nil, nonce: nil, reference_id: nil, slippage_bps: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
       #
       # @param wallet_id [String] Path param: ID of the wallet.
       #
@@ -538,6 +614,8 @@ module Privy
       # @param amount [String] Body param: Amount as a decimal string in the token's standard unit (e.g. "1.5"
       #
       # @param amount_type [Symbol, Privy::Models::AmountType] Body param: Whether the amount refers to the input token or output token.
+      #
+      # @param custody_options [Privy::Models::TransferCustodyOptions] Body param: Options for a transfer from a custodial wallet.
       #
       # @param fee_configuration [Privy::Models::FeeConfiguration] Body param: Total fees assessed on a transfer, in BPS
       #

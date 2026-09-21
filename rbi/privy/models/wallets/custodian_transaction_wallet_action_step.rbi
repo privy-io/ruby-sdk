@@ -24,6 +24,13 @@ module Privy
         end
         attr_accessor :status
 
+        # Identifier of the transaction the custodian last reported on the destination
+        # chain. Set on a settled transfer, and also on a failed one when the custodian
+        # had already broadcast a payout that was later returned. Null until the custodian
+        # reports one.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :transaction_hash
+
         sig do
           returns(
             Privy::Wallets::CustodianTransactionWalletActionStep::Type::TaggedSymbol
@@ -47,6 +54,7 @@ module Privy
             custodian: String,
             status:
               Privy::Wallets::CustodianTransactionWalletActionStepStatus::OrSymbol,
+            transaction_hash: T.nilable(String),
             type:
               Privy::Wallets::CustodianTransactionWalletActionStep::Type::OrSymbol,
             failure_reason: Privy::Wallets::FailureReason::OrHash
@@ -57,6 +65,11 @@ module Privy
           custodian:,
           # Status of a custodian transaction step in a wallet action.
           status:,
+          # Identifier of the transaction the custodian last reported on the destination
+          # chain. Set on a settled transfer, and also on a failed one when the custodian
+          # had already broadcast a payout that was later returned. Null until the custodian
+          # reports one.
+          transaction_hash:,
           type:,
           # A description of why a wallet action (or a step within a wallet action) failed.
           failure_reason: nil
@@ -69,6 +82,7 @@ module Privy
               custodian: String,
               status:
                 Privy::Wallets::CustodianTransactionWalletActionStepStatus::TaggedSymbol,
+              transaction_hash: T.nilable(String),
               type:
                 Privy::Wallets::CustodianTransactionWalletActionStep::Type::TaggedSymbol,
               failure_reason: Privy::Wallets::FailureReason

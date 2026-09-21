@@ -2216,7 +2216,17 @@ module Privy
 
   TransactionTokenAddressInput = Privy::Models::TransactionTokenAddressInput
 
+  TransferCustodyOptions = Privy::Models::TransferCustodyOptions
+
   TransferFarcasterInput = Privy::Models::TransferFarcasterInput
+
+  TransferInitiation = Privy::Models::TransferInitiation
+
+  TransferInitiationAttestations = Privy::Models::TransferInitiationAttestations
+
+  TransferInitiationChannel = Privy::Models::TransferInitiationChannel
+
+  TransferInitiationSubchannel = Privy::Models::TransferInitiationSubchannel
 
   TransferIntentRequestDetails = Privy::Models::TransferIntentRequestDetails
 
@@ -2229,6 +2239,14 @@ module Privy
   TransferReceivedTransactionDetail = Privy::Models::TransferReceivedTransactionDetail
 
   TransferRequestBody = Privy::Models::TransferRequestBody
+
+  TransferScaAttestation = Privy::Models::TransferScaAttestation
+
+  TransferScaAuthFactor = Privy::Models::TransferScaAuthFactor
+
+  TransferScaAuthFactorCategory = Privy::Models::TransferScaAuthFactorCategory
+
+  TransferScaOutcome = Privy::Models::TransferScaOutcome
 
   TransferSentTransactionDetail = Privy::Models::TransferSentTransactionDetail
 
@@ -2312,11 +2330,11 @@ module Privy
 
   UpdateOrganizationSecretSigningKeyInput = Privy::Models::UpdateOrganizationSecretSigningKeyInput
 
-  UsageCrossChainFeeRecordedWebhookPayload = Privy::Models::UsageCrossChainFeeRecordedWebhookPayload
-
   UsageGasSponsorshipRecordedWebhookPayload = Privy::Models::UsageGasSponsorshipRecordedWebhookPayload
 
   UsageSourceType = Privy::Models::UsageSourceType
+
+  UsageSwapProviderFeeRecordedWebhookPayload = Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload
 
   User = Privy::Models::User
 
@@ -2502,6 +2520,8 @@ module Privy
 
   WalletAssignEntityParams = Privy::Models::WalletAssignEntityParams
 
+  WalletAttachAutomationsParams = Privy::Models::WalletAttachAutomationsParams
+
   WalletAuthenticateBoundEncryptedRequestBody = Privy::Models::WalletAuthenticateBoundEncryptedRequestBody
 
   WalletAuthenticateBoundRequestBody = Privy::Models::WalletAuthenticateBoundRequestBody
@@ -2523,11 +2543,21 @@ module Privy
 
   WalletAutomationAttachmentResponse = Privy::Models::WalletAutomationAttachmentResponse
 
+  WalletAutomationCreateParams = Privy::Models::WalletAutomationCreateParams
+
+  WalletAutomationDeleteParams = Privy::Models::WalletAutomationDeleteParams
+
   WalletAutomationExecutionListResponse = Privy::Models::WalletAutomationExecutionListResponse
 
   WalletAutomationExecutionResponse = Privy::Models::WalletAutomationExecutionResponse
 
   WalletAutomationExecutionStatus = Privy::Models::WalletAutomationExecutionStatus
+
+  WalletAutomationGetParams = Privy::Models::WalletAutomationGetParams
+
+  WalletAutomationListExecutionsParams = Privy::Models::WalletAutomationListExecutionsParams
+
+  WalletAutomationListParams = Privy::Models::WalletAutomationListParams
 
   WalletAutomationListResponse = Privy::Models::WalletAutomationListResponse
 
@@ -2550,6 +2580,8 @@ module Privy
   WalletAutomationSubmittedWebhookPayload = Privy::Models::WalletAutomationSubmittedWebhookPayload
 
   WalletAutomationSuccessResponse = Privy::Models::WalletAutomationSuccessResponse
+
+  WalletAutomationUpdateParams = Privy::Models::WalletAutomationUpdateParams
 
   WalletBatchCreateInput = Privy::Models::WalletBatchCreateInput
 
@@ -2583,6 +2615,8 @@ module Privy
 
   WalletDepositAccountDepositStartedWebhookEvent =
     Privy::Models::WalletDepositAccountDepositStartedWebhookEvent
+
+  WalletDetachAutomationsParams = Privy::Models::WalletDetachAutomationsParams
 
   WalletEntity = Privy::Models::WalletEntity
 

@@ -2,6 +2,7 @@
 
 module Privy
   module Models
+    # @see Privy::Resources::WalletAutomations#list_executions
     class WalletAutomationExecutionResponse < Privy::Internal::Type::BaseModel
       # @!attribute id
       #

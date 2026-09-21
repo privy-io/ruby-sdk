@@ -12,7 +12,7 @@ module Privy
         end
 
       sig do
-        returns(Privy::WalletAutomationSuccessResponse::Success::OrBoolean)
+        returns(Privy::WalletAutomationSuccessResponse::Success::TaggedBoolean)
       end
       attr_accessor :success
 
@@ -28,7 +28,8 @@ module Privy
       sig do
         override.returns(
           {
-            success: Privy::WalletAutomationSuccessResponse::Success::OrBoolean
+            success:
+              Privy::WalletAutomationSuccessResponse::Success::TaggedBoolean
           }
         )
       end

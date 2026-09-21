@@ -9,14 +9,7 @@ module Privy
         end
 
       # Configuration for an automation action.
-      sig do
-        returns(
-          T.any(
-            Privy::AutomationSwapActionConfig,
-            Privy::AutomationEarnDepositActionConfig
-          )
-        )
-      end
+      sig { returns(Privy::AutomationActionConfig::Variants) }
       attr_accessor :action
 
       # Trigger configuration for deposit events.
@@ -48,11 +41,7 @@ module Privy
       sig do
         override.returns(
           {
-            action:
-              T.any(
-                Privy::AutomationSwapActionConfig,
-                Privy::AutomationEarnDepositActionConfig
-              ),
+            action: Privy::AutomationActionConfig::Variants,
             trigger: Privy::AutomationTriggerConfig
           }
         )

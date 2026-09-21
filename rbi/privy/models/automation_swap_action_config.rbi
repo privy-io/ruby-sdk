@@ -19,7 +19,7 @@ module Privy
       end
       attr_writer :destination_chain_asset
 
-      sig { returns(Privy::AutomationSwapActionConfig::Type::OrSymbol) }
+      sig { returns(Privy::AutomationSwapActionConfig::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Action configuration for swap operations.
@@ -40,7 +40,7 @@ module Privy
         override.returns(
           {
             destination_chain_asset: Privy::AutomationDestinationAsset,
-            type: Privy::AutomationSwapActionConfig::Type::OrSymbol
+            type: Privy::AutomationSwapActionConfig::Type::TaggedSymbol
           }
         )
       end

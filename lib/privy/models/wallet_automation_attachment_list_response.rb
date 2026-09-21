@@ -2,6 +2,7 @@
 
 module Privy
   module Models
+    # @see Privy::Resources::Wallets#attach_automations
     class WalletAutomationAttachmentListResponse < Privy::Internal::Type::BaseModel
       # @!attribute data
       #

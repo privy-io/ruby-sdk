@@ -30,7 +30,7 @@ module Privy
       attr_accessor :failure_reason
 
       # Execution lifecycle status.
-      sig { returns(Privy::WalletAutomationExecutionStatus::OrSymbol) }
+      sig { returns(Privy::WalletAutomationExecutionStatus::TaggedSymbol) }
       attr_accessor :status
 
       sig { returns(T.nilable(String)) }
@@ -106,7 +106,7 @@ module Privy
             created_at: String,
             failed_at: T.nilable(String),
             failure_reason: T.nilable(String),
-            status: Privy::WalletAutomationExecutionStatus::OrSymbol,
+            status: Privy::WalletAutomationExecutionStatus::TaggedSymbol,
             submitted_at: T.nilable(String),
             trigger_asset_address: String,
             trigger_block_number: String,

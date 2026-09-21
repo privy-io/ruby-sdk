@@ -37,6 +37,15 @@ module Privy
       sig { params(amount_type: Privy::AmountType::OrSymbol).void }
       attr_writer :amount_type
 
+      # Options for a transfer from a custodial wallet.
+      sig { returns(T.nilable(Privy::TransferCustodyOptions)) }
+      attr_reader :custody_options
+
+      sig do
+        params(custody_options: Privy::TransferCustodyOptions::OrHash).void
+      end
+      attr_writer :custody_options
+
       # Total fees assessed on a transfer, in BPS
       sig { returns(T.nilable(Privy::FeeConfiguration)) }
       attr_reader :fee_configuration
@@ -78,6 +87,7 @@ module Privy
             ),
           amount: String,
           amount_type: Privy::AmountType::OrSymbol,
+          custody_options: Privy::TransferCustodyOptions::OrHash,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           nonce: String,
           reference_id: String,
@@ -97,6 +107,8 @@ module Privy
         amount: nil,
         # Whether the amount refers to the input token or output token.
         amount_type: nil,
+        # Options for a transfer from a custodial wallet.
+        custody_options: nil,
         # Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
         # Unique caller-generated nonce used to prevent replaying a signed wallet action
@@ -117,6 +129,7 @@ module Privy
             source: Privy::TokenTransferSource::Variants,
             amount: String,
             amount_type: Privy::AmountType::TaggedSymbol,
+            custody_options: Privy::TransferCustodyOptions,
             fee_configuration: Privy::FeeConfiguration,
             nonce: String,
             reference_id: String,

@@ -219,6 +219,7 @@ module Privy
             ),
           amount: String,
           amount_type: Privy::AmountType::OrSymbol,
+          custody_options: Privy::TransferCustodyOptions::OrHash,
           fee_configuration: Privy::FeeConfiguration::OrHash,
           nonce: String,
           reference_id: String,
@@ -242,6 +243,8 @@ module Privy
         amount: nil,
         # Body param: Whether the amount refers to the input token or output token.
         amount_type: nil,
+        # Body param: Options for a transfer from a custodial wallet.
+        custody_options: nil,
         # Body param: Total fees assessed on a transfer, in BPS
         fee_configuration: nil,
         # Body param: Unique caller-generated nonce used to prevent replaying a signed

@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type transfer_initiation_channel =
+      :p2p_mobile_payment | :other_mobile_payment | :other | String
+
+    module TransferInitiationChannel
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transfer_initiation_channel]
+
+      P2P_MOBILE_PAYMENT: :p2p_mobile_payment
+      OTHER_MOBILE_PAYMENT: :other_mobile_payment
+      OTHER: :other
+    end
+  end
+end

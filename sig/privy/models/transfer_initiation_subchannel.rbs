@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type transfer_initiation_subchannel = :remote | :non_remote | String
+
+    module TransferInitiationSubchannel
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transfer_initiation_subchannel]
+
+      REMOTE: :remote
+      NON_REMOTE: :non_remote
+    end
+  end
+end

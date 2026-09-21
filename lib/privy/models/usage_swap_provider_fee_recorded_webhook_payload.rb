@@ -2,7 +2,7 @@
 
 module Privy
   module Models
-    class UsageCrossChainFeeRecordedWebhookPayload < Privy::Internal::Type::BaseModel
+    class UsageSwapProviderFeeRecordedWebhookPayload < Privy::Internal::Type::BaseModel
       # @!attribute amount_usd
       #
       #   @return [String]
@@ -34,15 +34,15 @@ module Privy
       # @!attribute type
       #   The type of webhook event.
       #
-      #   @return [Symbol, Privy::Models::UsageCrossChainFeeRecordedWebhookPayload::Type]
-      required :type, enum: -> { Privy::UsageCrossChainFeeRecordedWebhookPayload::Type }
+      #   @return [Symbol, Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload::Type]
+      required :type, enum: -> { Privy::UsageSwapProviderFeeRecordedWebhookPayload::Type }
 
       # @!method initialize(amount_usd:, event_id:, recorded_at:, source_id:, source_type:, type:)
       #   Some parameter documentations has been truncated, see
-      #   {Privy::Models::UsageCrossChainFeeRecordedWebhookPayload} for more details.
+      #   {Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload} for more details.
       #
-      #   Payload for the usage.cross_chain_fee.recorded webhook event (Privy fee on a
-      #   cross-chain transfer or swap).
+      #   Payload for the usage.swap_provider_fee.recorded webhook event (swap provider
+      #   fee on a cross-chain transfer or swap).
       #
       #   @param amount_usd [String]
       #
@@ -54,15 +54,15 @@ module Privy
       #
       #   @param source_type [Symbol, Privy::Models::UsageSourceType] The type of operation that incurred a usage charge.
       #
-      #   @param type [Symbol, Privy::Models::UsageCrossChainFeeRecordedWebhookPayload::Type] The type of webhook event.
+      #   @param type [Symbol, Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload::Type] The type of webhook event.
 
       # The type of webhook event.
       #
-      # @see Privy::Models::UsageCrossChainFeeRecordedWebhookPayload#type
+      # @see Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload#type
       module Type
         extend Privy::Internal::Type::Enum
 
-        USAGE_CROSS_CHAIN_FEE_RECORDED = :"usage.cross_chain_fee.recorded"
+        USAGE_SWAP_PROVIDER_FEE_RECORDED = :"usage.swap_provider_fee.recorded"
 
         # @!method self.values
         #   @return [Array<Symbol>]
