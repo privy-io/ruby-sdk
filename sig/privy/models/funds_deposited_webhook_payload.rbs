@@ -13,6 +13,7 @@ module Privy
         type: Privy::Models::FundsDepositedWebhookPayload::type_,
         wallet_id: String,
         bridge_metadata: Privy::Models::bridge_metadata,
+        deposit_metadata: Privy::DepositMetadata,
         transaction_fee: String
       }
 
@@ -43,6 +44,10 @@ module Privy
         Privy::Models::bridge_metadata
       ) -> Privy::Models::bridge_metadata
 
+      attr_reader deposit_metadata: Privy::DepositMetadata?
+
+      def deposit_metadata=: (Privy::DepositMetadata) -> Privy::DepositMetadata
+
       attr_reader transaction_fee: String?
 
       def transaction_fee=: (String) -> String
@@ -59,6 +64,7 @@ module Privy
         type: Privy::Models::FundsDepositedWebhookPayload::type_,
         wallet_id: String,
         ?bridge_metadata: Privy::Models::bridge_metadata,
+        ?deposit_metadata: Privy::DepositMetadata,
         ?transaction_fee: String
       ) -> void
 
@@ -74,6 +80,7 @@ module Privy
         type: Privy::Models::FundsDepositedWebhookPayload::type_,
         wallet_id: String,
         bridge_metadata: Privy::Models::bridge_metadata,
+        deposit_metadata: Privy::DepositMetadata,
         transaction_fee: String
       }
 

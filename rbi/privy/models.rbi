@@ -589,6 +589,8 @@ module Privy
 
   DepositFailedData = Privy::Models::DepositFailedData
 
+  DepositMetadata = Privy::Models::DepositMetadata
+
   DepositStartedData = Privy::Models::DepositStartedData
 
   DepositStartedDestination = Privy::Models::DepositStartedDestination
@@ -1991,7 +1993,13 @@ module Privy
 
   RefreshStripeQuoteResponse = Privy::Models::RefreshStripeQuoteResponse
 
+  RefundDetails = Privy::Models::RefundDetails
+
+  RefundMetadata = Privy::Models::RefundMetadata
+
   RelayerFee = Privy::Models::RelayerFee
+
+  RelayRefundDetails = Privy::Models::RelayRefundDetails
 
   ResponsePasskeyInitAuthenticate =
     Privy::Models::ResponsePasskeyInitAuthenticate

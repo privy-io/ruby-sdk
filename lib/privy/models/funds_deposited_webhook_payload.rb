@@ -69,13 +69,19 @@ module Privy
       #   @return [Privy::Models::BridgeCryptoDepositMetadata, Privy::Models::BridgeRefundMetadata, Privy::Models::BridgeFiatDepositMetadata, Privy::Models::BridgeCryptoTransferMetadata, Privy::Models::BridgeFiatTransferMetadata, Privy::Models::BridgeTransferRefundMetadata, Privy::Models::BridgeStaticMemoDepositMetadata, nil]
       optional :bridge_metadata, union: -> { Privy::BridgeMetadata }
 
+      # @!attribute deposit_metadata
+      #   Metadata identifying a refunded wallet deposit.
+      #
+      #   @return [Privy::Models::DepositMetadata, nil]
+      optional :deposit_metadata, -> { Privy::DepositMetadata }
+
       # @!attribute transaction_fee
       #   The transaction fee paid, as a stringified bigint in the chain's native token.
       #
       #   @return [String, nil]
       optional :transaction_fee, String
 
-      # @!method initialize(amount:, asset:, block:, caip2:, idempotency_key:, recipient:, sender:, transaction_hash:, type:, wallet_id:, bridge_metadata: nil, transaction_fee: nil)
+      # @!method initialize(amount:, asset:, block:, caip2:, idempotency_key:, recipient:, sender:, transaction_hash:, type:, wallet_id:, bridge_metadata: nil, deposit_metadata: nil, transaction_fee: nil)
       #   Payload for the wallet.funds_deposited webhook event.
       #
       #   @param amount [String] The amount transferred, as a stringified bigint.
@@ -99,6 +105,8 @@ module Privy
       #   @param wallet_id [String] The ID of the wallet.
       #
       #   @param bridge_metadata [Privy::Models::BridgeCryptoDepositMetadata, Privy::Models::BridgeRefundMetadata, Privy::Models::BridgeFiatDepositMetadata, Privy::Models::BridgeCryptoTransferMetadata, Privy::Models::BridgeFiatTransferMetadata, Privy::Models::BridgeTransferRefundMetadata, Privy::Models::BridgeStaticMemoDepositMetadata] Metadata about a Bridge transaction associated with a wallet event.
+      #
+      #   @param deposit_metadata [Privy::Models::DepositMetadata] Metadata identifying a refunded wallet deposit.
       #
       #   @param transaction_fee [String] The transaction fee paid, as a stringified bigint in the chain's native token.
 

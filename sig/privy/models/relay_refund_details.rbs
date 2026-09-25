@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type relay_refund_details =
+      {
+        original_transaction_hash: String,
+        provider: Privy::Models::RelayRefundDetails::provider,
+        wallet_action_id: String
+      }
+
+    class RelayRefundDetails < Privy::Internal::Type::BaseModel
+      attr_accessor original_transaction_hash: String
+
+      attr_accessor provider: Privy::Models::RelayRefundDetails::provider
+
+      attr_accessor wallet_action_id: String
+
+      def initialize: (
+        original_transaction_hash: String,
+        provider: Privy::Models::RelayRefundDetails::provider,
+        wallet_action_id: String
+      ) -> void
+
+      def to_hash: -> {
+        original_transaction_hash: String,
+        provider: Privy::Models::RelayRefundDetails::provider,
+        wallet_action_id: String
+      }
+
+      type provider = :relay
+
+      module Provider
+        extend Privy::Internal::Type::Enum
+
+        RELAY: :relay
+
+        def self?.values: -> ::Array[Privy::Models::RelayRefundDetails::provider]
+      end
+    end
+  end
+end

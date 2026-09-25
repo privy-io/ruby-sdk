@@ -71,6 +71,13 @@ module Privy
       end
       attr_writer :bridge_metadata
 
+      # Metadata identifying a refunded wallet deposit.
+      sig { returns(T.nilable(Privy::DepositMetadata)) }
+      attr_reader :deposit_metadata
+
+      sig { params(deposit_metadata: Privy::DepositMetadata::OrHash).void }
+      attr_writer :deposit_metadata
+
       # The transaction fee paid, as a stringified bigint in the chain's native token.
       sig { returns(T.nilable(String)) }
       attr_reader :transaction_fee
@@ -109,6 +116,7 @@ module Privy
               Privy::BridgeTransferRefundMetadata::OrHash,
               Privy::BridgeStaticMemoDepositMetadata::OrHash
             ),
+          deposit_metadata: Privy::DepositMetadata::OrHash,
           transaction_fee: String
         ).returns(T.attached_class)
       end
@@ -135,6 +143,8 @@ module Privy
         wallet_id:,
         # Metadata about a Bridge transaction associated with a wallet event.
         bridge_metadata: nil,
+        # Metadata identifying a refunded wallet deposit.
+        deposit_metadata: nil,
         # The transaction fee paid, as a stringified bigint in the chain's native token.
         transaction_fee: nil
       )
@@ -154,6 +164,7 @@ module Privy
             type: Privy::FundsDepositedWebhookPayload::Type::TaggedSymbol,
             wallet_id: String,
             bridge_metadata: Privy::BridgeMetadata::Variants,
+            deposit_metadata: Privy::DepositMetadata,
             transaction_fee: String
           }
         )

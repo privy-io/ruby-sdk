@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type deposit_metadata =
+      {
+        details: Privy::RefundDetails,
+        type: Privy::Models::DepositMetadata::type_
+      }
+
+    class DepositMetadata < Privy::Internal::Type::BaseModel
+      attr_accessor details: Privy::RefundDetails
+
+      attr_accessor type: Privy::Models::DepositMetadata::type_
+
+      def initialize: (
+        details: Privy::RefundDetails,
+        type: Privy::Models::DepositMetadata::type_
+      ) -> void
+
+      def to_hash: -> {
+        details: Privy::RefundDetails,
+        type: Privy::Models::DepositMetadata::type_
+      }
+
+      type type_ = :refund
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        REFUND: :refund
+
+        def self?.values: -> ::Array[Privy::Models::DepositMetadata::type_]
+      end
+    end
+  end
+end
