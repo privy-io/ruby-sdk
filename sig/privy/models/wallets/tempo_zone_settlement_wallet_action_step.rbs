@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    module Wallets
+      type tempo_zone_settlement_wallet_action_step =
+        {
+          :caip2 => String?,
+          status: Privy::Models::Wallets::external_transaction_wallet_action_step_status,
+          transaction_hash: String?,
+          type: Privy::Models::Wallets::TempoZoneSettlementWalletActionStep::type_,
+          failure_reason: Privy::Wallets::FailureReason
+        }
+
+      class TempoZoneSettlementWalletActionStep < Privy::Internal::Type::BaseModel
+        attr_accessor caip2: String?
+
+        attr_accessor status: Privy::Models::Wallets::external_transaction_wallet_action_step_status
+
+        attr_accessor transaction_hash: String?
+
+        attr_accessor type: Privy::Models::Wallets::TempoZoneSettlementWalletActionStep::type_
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        def initialize: (
+          caip2: String?,
+          status: Privy::Models::Wallets::external_transaction_wallet_action_step_status,
+          transaction_hash: String?,
+          type: Privy::Models::Wallets::TempoZoneSettlementWalletActionStep::type_,
+          ?failure_reason: Privy::Wallets::FailureReason
+        ) -> void
+
+        def to_hash: -> {
+          :caip2 => String?,
+          status: Privy::Models::Wallets::external_transaction_wallet_action_step_status,
+          transaction_hash: String?,
+          type: Privy::Models::Wallets::TempoZoneSettlementWalletActionStep::type_,
+          failure_reason: Privy::Wallets::FailureReason
+        }
+
+        type type_ = :tempo_zone_settlement
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          TEMPO_ZONE_SETTLEMENT: :tempo_zone_settlement
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::TempoZoneSettlementWalletActionStep::type_]
+        end
+      end
+    end
+  end
+end

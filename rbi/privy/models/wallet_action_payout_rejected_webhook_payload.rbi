@@ -119,7 +119,8 @@ module Privy
                 Privy::Wallets::SvmTransactionWalletActionStep::OrHash,
                 Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
                 Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
-                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash
+                Privy::Wallets::CustodianTransactionWalletActionStep::OrHash,
+                Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash
               )
             ],
           type: Privy::WalletActionPayoutRejectedWebhookPayload::Type::OrSymbol,

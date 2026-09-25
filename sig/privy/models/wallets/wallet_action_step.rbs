@@ -10,6 +10,7 @@ module Privy
         | Privy::Wallets::TvmTransactionWalletActionStep
         | Privy::Wallets::ExternalTransactionWalletActionStep
         | Privy::Wallets::CustodianTransactionWalletActionStep
+        | Privy::Wallets::TempoZoneSettlementWalletActionStep
 
       module WalletActionStep
         extend Privy::Internal::Type::Union

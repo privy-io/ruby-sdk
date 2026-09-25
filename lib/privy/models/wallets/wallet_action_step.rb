@@ -27,8 +27,11 @@ module Privy
         # A wallet action step representing a transaction executed by a custodian (e.g. Bridge).
         variant :custodian_transaction, -> { Privy::Wallets::CustodianTransactionWalletActionStep }
 
+        # A wallet action step representing a Tempo Zone settlement on its parent chain.
+        variant :tempo_zone_settlement, -> { Privy::Wallets::TempoZoneSettlementWalletActionStep }
+
         # @!method self.variants
-        #   @return [Array(Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep)]
+        #   @return [Array(Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep)]
       end
     end
 

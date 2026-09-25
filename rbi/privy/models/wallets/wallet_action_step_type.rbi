@@ -43,6 +43,11 @@ module Privy
             :custodian_transaction,
             Privy::Wallets::WalletActionStepType::TaggedSymbol
           )
+        TEMPO_ZONE_SETTLEMENT =
+          T.let(
+            :tempo_zone_settlement,
+            Privy::Wallets::WalletActionStepType::TaggedSymbol
+          )
 
         sig do
           override.returns(

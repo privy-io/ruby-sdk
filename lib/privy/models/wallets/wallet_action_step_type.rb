@@ -13,6 +13,7 @@ module Privy
         TVM_TRANSACTION = :tvm_transaction
         EXTERNAL_TRANSACTION = :external_transaction
         CUSTODIAN_TRANSACTION = :custodian_transaction
+        TEMPO_ZONE_SETTLEMENT = :tempo_zone_settlement
 
         # @!method self.values
         #   @return [Array<Symbol>]
