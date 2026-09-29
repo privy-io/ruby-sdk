@@ -20,6 +20,11 @@ module Privy
 
       def delete: (String user_id, ?request_options: Privy::request_opts) -> nil
 
+      def freeze_: (
+        String user_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::SuccessResponse
+
       def get: (
         String user_id,
         ?request_options: Privy::request_opts
@@ -101,6 +106,11 @@ module Privy
         custom_metadata: Privy::Models::custom_metadata,
         ?request_options: Privy::request_opts
       ) -> Privy::User
+
+      def unfreeze: (
+        String user_id,
+        ?request_options: Privy::request_opts
+      ) -> Privy::SuccessResponse
 
       def unlink_linked_account: (
         String user_id,

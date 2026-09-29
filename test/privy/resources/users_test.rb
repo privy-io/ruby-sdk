@@ -64,6 +64,22 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_freeze_
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.users.freeze_("user_id")
+
+    assert_pattern do
+      response => Privy::SuccessResponse
+    end
+
+    assert_pattern do
+      response => {
+        success: Privy::Internal::Type::Boolean
+      }
+    end
+  end
+
   def test_get
     skip("Mock server tests are disabled")
 
@@ -412,6 +428,22 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
         custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+      }
+    end
+  end
+
+  def test_unfreeze
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.users.unfreeze("user_id")
+
+    assert_pattern do
+      response => Privy::SuccessResponse
+    end
+
+    assert_pattern do
+      response => {
+        success: Privy::Internal::Type::Boolean
       }
     end
   end

@@ -79,6 +79,20 @@ module Privy
       )
       end
 
+      # Freezes a user by user ID, blocking new logins and revoking active sessions.
+      sig do
+        params(
+          user_id: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::SuccessResponse)
+      end
+      def freeze_(
+        # ID of the user.
+        user_id,
+        request_options: {}
+      )
+      end
+
       # Get a user by user ID.
       sig do
         params(
@@ -256,6 +270,20 @@ module Privy
         user_id,
         # Custom metadata associated with the user.
         custom_metadata:,
+        request_options: {}
+      )
+      end
+
+      # Unfreezes a user by user ID, restoring their ability to log in.
+      sig do
+        params(
+          user_id: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::SuccessResponse)
+      end
+      def unfreeze(
+        # ID of the user.
+        user_id,
         request_options: {}
       )
       end

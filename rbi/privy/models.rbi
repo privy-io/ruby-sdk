@@ -2625,6 +2625,8 @@ module Privy
 
   UserDeleteParams = Privy::Models::UserDeleteParams
 
+  UserFreezeParams = Privy::Models::UserFreezeParams
+
   UserGetByCustomAuthIDParams = Privy::Models::UserGetByCustomAuthIDParams
 
   UserGetByDiscordUsernameParams = Privy::Models::UserGetByDiscordUsernameParams
@@ -2689,6 +2691,8 @@ module Privy
 
   UserTransferredAccountWebhookPayload =
     Privy::Models::UserTransferredAccountWebhookPayload
+
+  UserUnfreezeParams = Privy::Models::UserUnfreezeParams
 
   UserUnlinkedAccountWebhookPayload =
     Privy::Models::UserUnlinkedAccountWebhookPayload

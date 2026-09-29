@@ -77,6 +77,26 @@ module Privy
         )
       end
 
+      # Freezes a user by user ID, blocking new logins and revoking active sessions.
+      #
+      # @overload freeze_(user_id, request_options: {})
+      #
+      # @param user_id [String] ID of the user.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::SuccessResponse]
+      #
+      # @see Privy::Models::UserFreezeParams
+      def freeze_(user_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["v1/users/%1$s/freeze", user_id],
+          model: Privy::SuccessResponse,
+          options: params[:request_options]
+        )
+      end
+
       # Get a user by user ID.
       #
       # @overload get(user_id, request_options: {})
@@ -415,6 +435,26 @@ module Privy
           body: parsed,
           model: Privy::User,
           options: options
+        )
+      end
+
+      # Unfreezes a user by user ID, restoring their ability to log in.
+      #
+      # @overload unfreeze(user_id, request_options: {})
+      #
+      # @param user_id [String] ID of the user.
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::SuccessResponse]
+      #
+      # @see Privy::Models::UserUnfreezeParams
+      def unfreeze(user_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/users/%1$s/freeze", user_id],
+          model: Privy::SuccessResponse,
+          options: params[:request_options]
         )
       end
 
