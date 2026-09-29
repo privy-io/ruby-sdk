@@ -82,6 +82,32 @@ module Privy
         )
       end
 
+      # List key quorums in an app.
+      #
+      # @overload list(cursor: nil, limit: nil, request_options: {})
+      #
+      # @param cursor [String] Cursor returned by the previous page.
+      #
+      # @param limit [Float, nil]
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Internal::Cursor<Privy::Models::KeyQuorum>]
+      #
+      # @see Privy::Models::KeyQuorumListParams
+      def list(params = {})
+        parsed, options = Privy::KeyQuorumListParams.dump_request(params)
+        query = Privy::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: "v1/key_quorums",
+          query: query,
+          page: Privy::Internal::Cursor,
+          model: Privy::KeyQuorum,
+          options: options
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Privy::Models::KeyQuorumDeleteParams} for more details.
       #

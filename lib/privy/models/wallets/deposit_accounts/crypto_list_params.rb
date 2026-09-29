@@ -16,6 +16,7 @@ module Privy
           required :wallet_id, String
 
           # @!attribute cursor
+          #   Cursor returned by the previous page.
           #
           #   @return [String, nil]
           optional :cursor, String
@@ -28,7 +29,7 @@ module Privy
           # @!method initialize(wallet_id:, cursor: nil, limit: nil, request_options: {})
           #   @param wallet_id [String] ID of the wallet.
           #
-          #   @param cursor [String]
+          #   @param cursor [String] Cursor returned by the previous page.
           #
           #   @param limit [Integer]
           #

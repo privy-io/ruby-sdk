@@ -60,6 +60,34 @@ class Privy::Test::Resources::PoliciesTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_list
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.policies.list
+
+    assert_pattern do
+      response => Privy::Internal::Cursor
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Privy::PolicyListItem
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        chain_type: Privy::WalletChainType,
+        created_at: Float,
+        name: String,
+        owner_id: String | nil,
+        version: Privy::PolicyListItem::Version
+      }
+    end
+  end
+
   def test_delete
     skip("Mock server tests are disabled")
 

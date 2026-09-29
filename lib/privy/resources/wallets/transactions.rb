@@ -20,7 +20,7 @@ module Privy
         #
         # @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::TransactionGetParams::Asset] Exactly one of `asset` or `token` is required. Cannot be used together with `tok
         #
-        # @param cursor [String]
+        # @param cursor [String] Cursor returned by the previous page.
         #
         # @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #

@@ -58,6 +58,7 @@ module Privy
           def list(
             # ID of the wallet.
             wallet_id,
+            # Cursor returned by the previous page.
             cursor: nil,
             limit: nil,
             request_options: {}

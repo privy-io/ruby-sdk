@@ -45,6 +45,34 @@ class Privy::Test::Resources::KeyQuorumsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_list
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.key_quorums.list
+
+    assert_pattern do
+      response => Privy::Internal::Cursor
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Privy::KeyQuorum
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        authorization_keys: ^(Privy::Internal::Type::ArrayOf[Privy::AuthorizationKey]),
+        authorization_threshold: Float | nil,
+        display_name: String | nil,
+        user_ids: ^(Privy::Internal::Type::ArrayOf[String]) | nil,
+        key_quorum_ids: ^(Privy::Internal::Type::ArrayOf[String]) | nil
+      }
+    end
+  end
+
   def test_delete
     skip("Mock server tests are disabled")
 

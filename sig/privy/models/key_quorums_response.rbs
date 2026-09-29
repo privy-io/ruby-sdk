@@ -1,0 +1,19 @@
+module Privy
+  module Models
+    type key_quorums_response =
+      { data: ::Array[Privy::KeyQuorum], next_cursor: String? }
+
+    class KeyQuorumsResponse < Privy::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Privy::KeyQuorum]
+
+      attr_accessor next_cursor: String?
+
+      def initialize: (
+        data: ::Array[Privy::KeyQuorum],
+        next_cursor: String?
+      ) -> void
+
+      def to_hash: -> { data: ::Array[Privy::KeyQuorum], next_cursor: String? }
+    end
+  end
+end

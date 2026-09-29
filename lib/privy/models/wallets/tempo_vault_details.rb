@@ -24,8 +24,7 @@ module Privy
         required :admin_wallet_id, String, nil?: true
 
         # @!attribute app_apy
-        #   Annual percentage yield earned by the app from fee wrapper fees, in basis
-        #   points.
+        #   Annual percentage yield earned by the app from vault fees, in basis points.
         #
         #   @return [Float, nil]
         required :app_apy, Float, nil?: true
@@ -90,7 +89,7 @@ module Privy
         #
         #   @param admin_wallet_id [String, nil] Privy wallet ID of the vault admin, or null when the Tempo vault admin is not Pr
         #
-        #   @param app_apy [Float, nil] Annual percentage yield earned by the app from fee wrapper fees, in basis points
+        #   @param app_apy [Float, nil] Annual percentage yield earned by the app from vault fees, in basis points.
         #
         #   @param asset [Privy::Models::Wallets::EarnAsset] Asset metadata for an earn vault position.
         #

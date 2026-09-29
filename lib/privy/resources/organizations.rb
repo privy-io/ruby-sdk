@@ -66,8 +66,10 @@ module Privy
       #
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
-      # @param cursor [String]
+      # @param cursor [String] Cursor returned by the previous page.
+      #
       # @param limit [Float, nil]
+      #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Privy::Internal::Cursor<Privy::Models::Organization>]

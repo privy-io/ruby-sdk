@@ -5,6 +5,7 @@ module Privy
     module Wallets
       class ListWalletActionsQuery < Privy::Internal::Type::BaseModel
         # @!attribute cursor
+        #   Cursor returned by the previous page.
         #
         #   @return [String, nil]
         optional :cursor, String
@@ -23,7 +24,7 @@ module Privy
         # @!method initialize(cursor: nil, limit: nil, type: nil)
         #   Query parameters for listing wallet actions.
         #
-        #   @param cursor [String]
+        #   @param cursor [String] Cursor returned by the previous page.
         #
         #   @param limit [Float, nil]
         #

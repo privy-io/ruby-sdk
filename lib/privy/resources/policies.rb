@@ -4,6 +4,10 @@ module Privy
   module Resources
     # Operations related to policies
     class Policies
+      # Operations related to policies
+      # @return [Privy::Resources::Policies::ConditionSets]
+      attr_reader :condition_sets
+
       # Some parameter documentations has been truncated, see
       # {Privy::Models::PolicyCreateParams} for more details.
       #
@@ -82,6 +86,32 @@ module Privy
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
           model: Privy::Policy,
+          options: options
+        )
+      end
+
+      # List policies in an app, excluding rules.
+      #
+      # @overload list(cursor: nil, limit: nil, request_options: {})
+      #
+      # @param cursor [String] Cursor returned by the previous page.
+      #
+      # @param limit [Float, nil]
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Internal::Cursor<Privy::Models::PolicyListItem>]
+      #
+      # @see Privy::Models::PolicyListParams
+      def list(params = {})
+        parsed, options = Privy::PolicyListParams.dump_request(params)
+        query = Privy::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: "v1/policies",
+          query: query,
+          page: Privy::Internal::Cursor,
+          model: Privy::PolicyListItem,
           options: options
         )
       end
@@ -297,6 +327,7 @@ module Privy
       # @param client [Privy::Client]
       def initialize(client:)
         @client = client
+        @condition_sets = Privy::Resources::Policies::ConditionSets.new(client: client)
       end
     end
   end

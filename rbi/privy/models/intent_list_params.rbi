@@ -34,6 +34,7 @@ module Privy
       end
       attr_writer :current_user_has_signed
 
+      # Cursor returned by the previous page.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
@@ -98,6 +99,7 @@ module Privy
         # user ID to scope intent visibility. This filter only narrows that scoped result.
         created_by_id: nil,
         current_user_has_signed: nil,
+        # Cursor returned by the previous page.
         cursor: nil,
         # Type of intent.
         intent_type: nil,

@@ -1,0 +1,15 @@
+module Privy
+  module Resources
+    class Policies
+      class ConditionSets
+        def list: (
+          ?cursor: String,
+          ?limit: Float?,
+          ?request_options: Privy::request_opts
+        ) -> Privy::Internal::Cursor[Privy::ConditionSet]
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

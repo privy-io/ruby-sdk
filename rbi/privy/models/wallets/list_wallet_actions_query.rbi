@@ -12,6 +12,7 @@ module Privy
             )
           end
 
+        # Cursor returned by the previous page.
         sig { returns(T.nilable(String)) }
         attr_reader :cursor
 
@@ -37,6 +38,7 @@ module Privy
           ).returns(T.attached_class)
         end
         def self.new(
+          # Cursor returned by the previous page.
           cursor: nil,
           limit: nil,
           # Type of wallet action

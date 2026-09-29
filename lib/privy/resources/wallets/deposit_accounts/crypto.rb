@@ -55,7 +55,7 @@ module Privy
           #
           # @param wallet_id [String] ID of the wallet.
           #
-          # @param cursor [String]
+          # @param cursor [String] Cursor returned by the previous page.
           #
           # @param limit [Integer]
           #

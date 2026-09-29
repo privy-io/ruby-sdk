@@ -20,6 +20,7 @@ module Privy
           sig { returns(String) }
           attr_accessor :wallet_id
 
+          # Cursor returned by the previous page.
           sig { returns(T.nilable(String)) }
           attr_reader :cursor
 
@@ -43,6 +44,7 @@ module Privy
           def self.new(
             # ID of the wallet.
             wallet_id:,
+            # Cursor returned by the previous page.
             cursor: nil,
             limit: nil,
             request_options: {}

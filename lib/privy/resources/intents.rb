@@ -19,7 +19,7 @@ module Privy
       #
       # @param current_user_has_signed [Symbol, Privy::Models::IntentListParams::CurrentUserHasSigned]
       #
-      # @param cursor [String]
+      # @param cursor [String] Cursor returned by the previous page.
       #
       # @param intent_type [Symbol, Privy::Models::IntentType] Type of intent.
       #

@@ -4,6 +4,10 @@ module Privy
   module Resources
     # Operations related to policies
     class Policies
+      # Operations related to policies
+      sig { returns(Privy::Resources::Policies::ConditionSets) }
+      attr_reader :condition_sets
+
       # Create a new policy.
       sig do
         params(
@@ -83,6 +87,22 @@ module Privy
         # Header param: Request expiry. Value is a Unix timestamp in milliseconds
         # representing the deadline by which the request must be processed.
         privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # List policies in an app, excluding rules.
+      sig do
+        params(
+          cursor: String,
+          limit: T.nilable(Float),
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::Internal::Cursor[Privy::PolicyListItem])
+      end
+      def list(
+        # Cursor returned by the previous page.
+        cursor: nil,
+        limit: nil,
         request_options: {}
       )
       end

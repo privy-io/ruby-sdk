@@ -35,6 +35,7 @@ module Privy
         optional :asset, union: -> { Privy::Wallets::TransactionGetParams::Asset }
 
         # @!attribute cursor
+        #   Cursor returned by the previous page.
         #
         #   @return [String, nil]
         optional :cursor, String
@@ -67,7 +68,7 @@ module Privy
         #
         #   @param asset [Symbol, Array<Symbol, Privy::Models::WalletAsset>, Privy::Models::Wallets::TransactionGetParams::Asset] Exactly one of `asset` or `token` is required. Cannot be used together with `tok
         #
-        #   @param cursor [String]
+        #   @param cursor [String] Cursor returned by the previous page.
         #
         #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #

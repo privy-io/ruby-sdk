@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type policy_list_item =
+      {
+        id: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        created_at: Float,
+        name: String,
+        owner_id: String?,
+        version: Privy::Models::PolicyListItem::version
+      }
+
+    class PolicyListItem < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor chain_type: Privy::Models::wallet_chain_type
+
+      attr_accessor created_at: Float
+
+      attr_accessor name: String
+
+      attr_accessor owner_id: String?
+
+      attr_accessor version: Privy::Models::PolicyListItem::version
+
+      def initialize: (
+        id: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        created_at: Float,
+        name: String,
+        owner_id: String?,
+        version: Privy::Models::PolicyListItem::version
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        chain_type: Privy::Models::wallet_chain_type,
+        created_at: Float,
+        name: String,
+        owner_id: String?,
+        version: Privy::Models::PolicyListItem::version
+      }
+
+      type version = :"1.0"
+
+      module Version
+        extend Privy::Internal::Type::Enum
+
+        VERSION_1_0: :"1.0"
+
+        def self?.values: -> ::Array[Privy::Models::PolicyListItem::version]
+      end
+    end
+  end
+end

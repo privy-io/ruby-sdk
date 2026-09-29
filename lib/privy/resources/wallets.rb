@@ -131,7 +131,7 @@ module Privy
       #
       # @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
       #
-      # @param cursor [String]
+      # @param cursor [String] Cursor returned by the previous page.
       #
       # @param entity_id [String] Filter wallets by the entity ID the wallet is attributed to.
       #

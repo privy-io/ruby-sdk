@@ -28,6 +28,9 @@ module Privy
       module Payout
       end
 
+      module Policies
+      end
+
       module Users
       end
 

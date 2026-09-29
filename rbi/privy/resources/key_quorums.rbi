@@ -77,6 +77,22 @@ module Privy
       )
       end
 
+      # List key quorums in an app.
+      sig do
+        params(
+          cursor: String,
+          limit: T.nilable(Float),
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::Internal::Cursor[Privy::KeyQuorum])
+      end
+      def list(
+        # Cursor returned by the previous page.
+        cursor: nil,
+        limit: nil,
+        request_options: {}
+      )
+      end
+
       # Delete a key quorum by key quorum ID.
       sig do
         params(

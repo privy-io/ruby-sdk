@@ -156,6 +156,7 @@ module Privy
         authorization_key: nil,
         # The wallet chain types.
         chain_type: nil,
+        # Cursor returned by the previous page.
         cursor: nil,
         # Filter wallets by the entity ID the wallet is attributed to.
         entity_id: nil,

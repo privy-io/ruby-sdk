@@ -21,8 +21,7 @@ module Privy
         sig { returns(String) }
         attr_accessor :admin_wallet_id
 
-        # Annual percentage yield earned by the app from fee wrapper fees, in basis
-        # points.
+        # Annual percentage yield earned by the app from vault fees, in basis points.
         sig { returns(T.nilable(Float)) }
         attr_accessor :app_apy
 
@@ -92,8 +91,7 @@ module Privy
           admin_wallet_address:,
           # Privy wallet ID of the vault admin.
           admin_wallet_id:,
-          # Annual percentage yield earned by the app from fee wrapper fees, in basis
-          # points.
+          # Annual percentage yield earned by the app from vault fees, in basis points.
           app_apy:,
           # Asset metadata for an earn vault position.
           asset:,

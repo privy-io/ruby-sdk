@@ -11,6 +11,7 @@ module Privy
           T.any(Privy::OrganizationListParams, Privy::Internal::AnyHash)
         end
 
+      # Cursor returned by the previous page.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
@@ -27,7 +28,12 @@ module Privy
           request_options: Privy::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(cursor: nil, limit: nil, request_options: {})
+      def self.new(
+        # Cursor returned by the previous page.
+        cursor: nil,
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig do

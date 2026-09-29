@@ -1110,6 +1110,10 @@ module Privy
 
   KeyQuorumIntentResponse = Privy::Models::KeyQuorumIntentResponse
 
+  KeyQuorumListParams = Privy::Models::KeyQuorumListParams
+
+  KeyQuorumsResponse = Privy::Models::KeyQuorumsResponse
+
   KeyQuorumUpdateParams = Privy::Models::KeyQuorumUpdateParams
 
   KeyQuorumUpdateRequestBody = Privy::Models::KeyQuorumUpdateRequestBody
@@ -1900,6 +1904,10 @@ module Privy
 
   PhoneInviteInput = Privy::Models::PhoneInviteInput
 
+  Policies = Privy::Models::Policies
+
+  PoliciesResponse = Privy::Models::PoliciesResponse
+
   Policy = Privy::Models::Policy
 
   PolicyAction = Privy::Models::PolicyAction
@@ -1926,6 +1934,10 @@ module Privy
   PolicyIntentRequestDetails = Privy::Models::PolicyIntentRequestDetails
 
   PolicyIntentResponse = Privy::Models::PolicyIntentResponse
+
+  PolicyListItem = Privy::Models::PolicyListItem
+
+  PolicyListParams = Privy::Models::PolicyListParams
 
   PolicyMethod = Privy::Models::PolicyMethod
 

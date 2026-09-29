@@ -12,8 +12,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
-      # Annual percentage yield earned by the app from fee wrapper fees, in basis
-      # points. Null when APY data is unavailable.
+      # Annual percentage yield earned by the app from vault fees, in basis points. Null
+      # when APY data is unavailable.
       sig { returns(T.nilable(Float)) }
       attr_accessor :app_apy
 
@@ -68,8 +68,8 @@ module Privy
       def self.new(
         # Vault identifier.
         id:,
-        # Annual percentage yield earned by the app from fee wrapper fees, in basis
-        # points. Null when APY data is unavailable.
+        # Annual percentage yield earned by the app from vault fees, in basis points. Null
+        # when APY data is unavailable.
         app_apy:,
         # Underlying asset token address.
         asset_address:,

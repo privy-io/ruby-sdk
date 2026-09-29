@@ -10,8 +10,8 @@ module Privy
       required :id, String
 
       # @!attribute app_apy
-      #   Annual percentage yield earned by the app from fee wrapper fees, in basis
-      #   points. Null when APY data is unavailable.
+      #   Annual percentage yield earned by the app from vault fees, in basis points. Null
+      #   when APY data is unavailable.
       #
       #   @return [Float, nil]
       required :app_apy, Float, nil?: true
@@ -73,7 +73,7 @@ module Privy
       #
       #   @param id [String] Vault identifier.
       #
-      #   @param app_apy [Float, nil] Annual percentage yield earned by the app from fee wrapper fees, in basis points
+      #   @param app_apy [Float, nil] Annual percentage yield earned by the app from vault fees, in basis points. Null
       #
       #   @param asset_address [String] Underlying asset token address.
       #

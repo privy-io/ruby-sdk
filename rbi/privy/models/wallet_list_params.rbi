@@ -36,6 +36,7 @@ module Privy
       sig { params(chain_type: Privy::WalletChainType::OrSymbol).void }
       attr_writer :chain_type
 
+      # Cursor returned by the previous page.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
@@ -98,6 +99,7 @@ module Privy
         authorization_key: nil,
         # The wallet chain types.
         chain_type: nil,
+        # Cursor returned by the previous page.
         cursor: nil,
         # Filter wallets by the entity ID the wallet is attributed to.
         entity_id: nil,

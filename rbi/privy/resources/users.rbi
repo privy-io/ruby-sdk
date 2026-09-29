@@ -62,7 +62,12 @@ module Privy
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Internal::Cursor[Privy::User])
       end
-      def list(cursor: nil, limit: nil, request_options: {})
+      def list(
+        # Cursor returned by the previous page.
+        cursor: nil,
+        limit: nil,
+        request_options: {}
+      )
       end
 
       # Delete a user by user ID.

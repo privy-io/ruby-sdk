@@ -1,6 +1,8 @@
 module Privy
   module Resources
     class Policies
+      attr_reader condition_sets: Privy::Resources::Policies::ConditionSets
+
       def create: (
         chain_type: Privy::Models::wallet_chain_type,
         name: String,
@@ -22,6 +24,12 @@ module Privy
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
       ) -> Privy::Policy
+
+      def list: (
+        ?cursor: String,
+        ?limit: Float?,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::PolicyListItem]
 
       def delete: (
         String policy_id,

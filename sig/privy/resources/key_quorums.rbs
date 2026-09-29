@@ -22,6 +22,12 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::KeyQuorum
 
+      def list: (
+        ?cursor: String,
+        ?limit: Float?,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Internal::Cursor[Privy::KeyQuorum]
+
       def delete: (
         String key_quorum_id,
         ?privy_authorization_signature: String,

@@ -22,8 +22,7 @@ module Privy
         sig { returns(T.nilable(String)) }
         attr_accessor :admin_wallet_id
 
-        # Annual percentage yield earned by the app from fee wrapper fees, in basis
-        # points.
+        # Annual percentage yield earned by the app from vault fees, in basis points.
         sig { returns(T.nilable(Float)) }
         attr_accessor :app_apy
 
@@ -89,8 +88,7 @@ module Privy
           # Privy wallet ID of the vault admin, or null when the Tempo vault admin is not
           # Privy-managed.
           admin_wallet_id:,
-          # Annual percentage yield earned by the app from fee wrapper fees, in basis
-          # points.
+          # Annual percentage yield earned by the app from vault fees, in basis points.
           app_apy:,
           # Asset metadata for an earn vault position.
           asset:,

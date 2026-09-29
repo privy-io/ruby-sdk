@@ -34,6 +34,7 @@ module Privy
           # Exactly one of `asset` or `token` is required. Cannot be used together with
           # `token`.
           asset: nil,
+          # Cursor returned by the previous page.
           cursor: nil,
           # Include archived wallets in lookup. Defaults to false.
           include_archived: nil,

@@ -20,6 +20,7 @@ module Privy
       optional :current_user_has_signed, enum: -> { Privy::IntentListParams::CurrentUserHasSigned }
 
       # @!attribute cursor
+      #   Cursor returned by the previous page.
       #
       #   @return [String, nil]
       optional :cursor, String
@@ -67,7 +68,7 @@ module Privy
       #
       #   @param current_user_has_signed [Symbol, Privy::Models::IntentListParams::CurrentUserHasSigned]
       #
-      #   @param cursor [String]
+      #   @param cursor [String] Cursor returned by the previous page.
       #
       #   @param intent_type [Symbol, Privy::Models::IntentType] Type of intent.
       #
