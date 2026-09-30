@@ -16,6 +16,7 @@ module Privy
       DAI = T.let(:dai, Privy::BridgeDestinationAsset::TaggedSymbol)
       PYUSD = T.let(:pyusd, Privy::BridgeDestinationAsset::TaggedSymbol)
       EURC = T.let(:eurc, Privy::BridgeDestinationAsset::TaggedSymbol)
+      OUSD = T.let(:ousd, Privy::BridgeDestinationAsset::TaggedSymbol)
 
       sig do
         override.returns(T::Array[Privy::BridgeDestinationAsset::TaggedSymbol])

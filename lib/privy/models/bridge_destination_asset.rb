@@ -12,6 +12,7 @@ module Privy
       DAI = :dai
       PYUSD = :pyusd
       EURC = :eurc
+      OUSD = :ousd
 
       # @!method self.values
       #   @return [Array<Symbol>]
