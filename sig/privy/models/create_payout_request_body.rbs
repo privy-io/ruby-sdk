@@ -1,21 +1,31 @@
 module Privy
   module Models
     type create_payout_request_body =
-      { destination: Privy::PayoutDestination, source: Privy::PayoutSource }
+      {
+        destination: Privy::PayoutDestination,
+        source: Privy::PayoutSource,
+        developer_fee_percent: String
+      }
 
     class CreatePayoutRequestBody < Privy::Internal::Type::BaseModel
       attr_accessor destination: Privy::PayoutDestination
 
       attr_accessor source: Privy::PayoutSource
 
+      attr_reader developer_fee_percent: String?
+
+      def developer_fee_percent=: (String) -> String
+
       def initialize: (
         destination: Privy::PayoutDestination,
-        source: Privy::PayoutSource
+        source: Privy::PayoutSource,
+        ?developer_fee_percent: String
       ) -> void
 
       def to_hash: -> {
         destination: Privy::PayoutDestination,
-        source: Privy::PayoutSource
+        source: Privy::PayoutSource,
+        developer_fee_percent: String
       }
     end
   end

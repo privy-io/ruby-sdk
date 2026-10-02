@@ -24,6 +24,11 @@ module Privy
         sig { params(destination: Privy::PayoutDestination::OrHash).void }
         attr_writer :destination
 
+        # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+        # "1.5" for 1.5%.
+        sig { returns(String) }
+        attr_accessor :developer_fee_percent
+
         # The Privy API environment.
         sig { returns(Privy::Environment::TaggedSymbol) }
         attr_accessor :environment
@@ -96,6 +101,7 @@ module Privy
             id: String,
             created_at: Time,
             destination: Privy::PayoutDestination::OrHash,
+            developer_fee_percent: String,
             environment: Privy::Environment::OrSymbol,
             provider: Privy::OrchestrationProvider::OrSymbol,
             source: Privy::PayoutSource::OrHash,
@@ -125,6 +131,9 @@ module Privy
           created_at:,
           # The destination bank account for a payout.
           destination:,
+          # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+          # "1.5" for 1.5%.
+          developer_fee_percent:,
           # The Privy API environment.
           environment:,
           # Supported fiat orchestration providers.
@@ -151,6 +160,7 @@ module Privy
               id: String,
               created_at: Time,
               destination: Privy::PayoutDestination,
+              developer_fee_percent: String,
               environment: Privy::Environment::TaggedSymbol,
               provider: Privy::OrchestrationProvider::TaggedSymbol,
               source: Privy::PayoutSource,

@@ -20,7 +20,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -49,7 +50,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -97,7 +99,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -119,7 +122,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -141,7 +145,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -163,7 +168,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -185,7 +191,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -207,7 +214,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -229,7 +237,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -251,7 +260,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -273,7 +283,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -295,7 +306,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -317,7 +329,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -339,7 +352,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -361,7 +375,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -383,7 +398,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -405,7 +421,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -427,7 +444,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end
@@ -465,7 +483,8 @@ class Privy::Test::Resources::UsersTest < Privy::Test::ResourceTest
         is_guest: Privy::Internal::Type::Boolean,
         linked_accounts: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedAccount]),
         mfa_methods: ^(Privy::Internal::Type::ArrayOf[union: Privy::LinkedMfaMethod]),
-        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil
+        custom_metadata: ^(Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem]) | nil,
+        frozen_at: Integer | nil
       }
     end
   end

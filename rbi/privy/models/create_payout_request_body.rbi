@@ -22,24 +22,40 @@ module Privy
       sig { params(source: Privy::PayoutSource::OrHash).void }
       attr_writer :source
 
+      # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+      # "1.5" for 1.5%.
+      sig { returns(T.nilable(String)) }
+      attr_reader :developer_fee_percent
+
+      sig { params(developer_fee_percent: String).void }
+      attr_writer :developer_fee_percent
+
       # Request body for initiating a payout (crypto to fiat offramp) from a wallet.
       sig do
         params(
           destination: Privy::PayoutDestination::OrHash,
-          source: Privy::PayoutSource::OrHash
+          source: Privy::PayoutSource::OrHash,
+          developer_fee_percent: String
         ).returns(T.attached_class)
       end
       def self.new(
         # The destination bank account for a payout.
         destination:,
         # The source crypto asset, chain, and amount for a payout.
-        source:
+        source:,
+        # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+        # "1.5" for 1.5%.
+        developer_fee_percent: nil
       )
       end
 
       sig do
         override.returns(
-          { destination: Privy::PayoutDestination, source: Privy::PayoutSource }
+          {
+            destination: Privy::PayoutDestination,
+            source: Privy::PayoutSource,
+            developer_fee_percent: String
+          }
         )
       end
       def to_hash

@@ -33,6 +33,14 @@ module Privy
       sig { params(source: Privy::CreateFiatDepositAccountSource::OrHash).void }
       attr_writer :source
 
+      # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+      # "1.5" for 1.5%.
+      sig { returns(T.nilable(String)) }
+      attr_reader :developer_fee_percent
+
+      sig { params(developer_fee_percent: String).void }
+      attr_writer :developer_fee_percent
+
       # The Privy API environment.
       sig { returns(T.nilable(Privy::Environment::OrSymbol)) }
       attr_reader :environment
@@ -47,6 +55,7 @@ module Privy
           provider:
             Privy::CreateFiatDepositAccountRequestBody::Provider::OrSymbol,
           source: Privy::CreateFiatDepositAccountSource::OrHash,
+          developer_fee_percent: String,
           environment: Privy::Environment::OrSymbol
         ).returns(T.attached_class)
       end
@@ -57,6 +66,9 @@ module Privy
         provider:,
         # The source fiat currency for a fiat deposit account.
         source:,
+        # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+        # "1.5" for 1.5%.
+        developer_fee_percent: nil,
         # The Privy API environment.
         environment: nil
       )
@@ -69,6 +81,7 @@ module Privy
             provider:
               Privy::CreateFiatDepositAccountRequestBody::Provider::OrSymbol,
             source: Privy::CreateFiatDepositAccountSource,
+            developer_fee_percent: String,
             environment: Privy::Environment::OrSymbol
           }
         )

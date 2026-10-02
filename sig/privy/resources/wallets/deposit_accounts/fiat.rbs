@@ -8,6 +8,7 @@ module Privy
             destination: Privy::FiatDepositAccountDestination,
             provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
             source: Privy::CreateFiatDepositAccountSource,
+            ?developer_fee_percent: String,
             ?environment: Privy::Models::environment,
             ?request_options: Privy::request_opts
           ) -> Privy::FiatDepositAccountResponse

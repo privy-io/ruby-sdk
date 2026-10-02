@@ -41,6 +41,7 @@ module Privy
                 Privy::Ethereum7702AuthorizationCondition::OrHash,
                 Privy::TempoTransactionCondition::OrHash,
                 Privy::SolanaProgramInstructionCondition::OrHash,
+                Privy::SolanaInstructionDataCondition::OrHash,
                 Privy::SolanaSystemProgramInstructionCondition::OrHash,
                 Privy::SolanaTokenProgramInstructionCondition::OrHash,
                 Privy::SystemCondition::OrHash,

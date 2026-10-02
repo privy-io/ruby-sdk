@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type solana_instruction_data_condition =
+      {
+        field: String,
+        field_source: Privy::Models::SolanaInstructionDataCondition::field_source,
+        idl: Privy::Models::solana_idl,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+    class SolanaInstructionDataCondition < Privy::Internal::Type::BaseModel
+      attr_accessor field: String
+
+      attr_accessor field_source: Privy::Models::SolanaInstructionDataCondition::field_source
+
+      attr_accessor idl: Privy::Models::solana_idl
+
+      attr_accessor operator: Privy::Models::condition_operator
+
+      attr_accessor value: Privy::Models::condition_value
+
+      def initialize: (
+        field: String,
+        field_source: Privy::Models::SolanaInstructionDataCondition::field_source,
+        idl: Privy::Models::solana_idl,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      ) -> void
+
+      def to_hash: -> {
+        field: String,
+        field_source: Privy::Models::SolanaInstructionDataCondition::field_source,
+        idl: Privy::Models::solana_idl,
+        operator: Privy::Models::condition_operator,
+        value: Privy::Models::condition_value
+      }
+
+      type field_source = :solana_instruction_data
+
+      module FieldSource
+        extend Privy::Internal::Type::Enum
+
+        SOLANA_INSTRUCTION_DATA: :solana_instruction_data
+
+        def self?.values: -> ::Array[Privy::Models::SolanaInstructionDataCondition::field_source]
+      end
+    end
+  end
+end

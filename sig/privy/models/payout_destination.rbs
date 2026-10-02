@@ -1,13 +1,29 @@
 module Privy
   module Models
-    type payout_destination = { fiat_account_id: String }
+    type payout_destination =
+      {
+        fiat_account_id: String,
+        payment_rail: Privy::Models::payout_payment_rail
+      }
 
     class PayoutDestination < Privy::Internal::Type::BaseModel
       attr_accessor fiat_account_id: String
 
-      def initialize: (fiat_account_id: String) -> void
+      attr_reader payment_rail: Privy::Models::payout_payment_rail?
 
-      def to_hash: -> { fiat_account_id: String }
+      def payment_rail=: (
+        Privy::Models::payout_payment_rail
+      ) -> Privy::Models::payout_payment_rail
+
+      def initialize: (
+        fiat_account_id: String,
+        ?payment_rail: Privy::Models::payout_payment_rail
+      ) -> void
+
+      def to_hash: -> {
+        fiat_account_id: String,
+        payment_rail: Privy::Models::payout_payment_rail
+      }
     end
   end
 end

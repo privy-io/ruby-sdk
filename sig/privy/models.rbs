@@ -515,6 +515,8 @@ module Privy
 
   class DeveloperFee = Privy::Models::DeveloperFee
 
+  class DeveloperFeePercent = Privy::Models::DeveloperFeePercent
+
   class DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
 
   module DeviceVerifyAction = Privy::Models::DeviceVerifyAction
@@ -1649,6 +1651,8 @@ module Privy
 
   class PayoutDestination = Privy::Models::PayoutDestination
 
+  module PayoutPaymentRail = Privy::Models::PayoutPaymentRail
+
   class PayoutSource = Privy::Models::PayoutSource
 
   class PhoneInviteInput = Privy::Models::PhoneInviteInput
@@ -1866,6 +1870,10 @@ module Privy
   class SolanaAddress = Privy::Models::SolanaAddress
 
   class SolanaCaip2 = Privy::Models::SolanaCaip2
+
+  SolanaIdl: Privy::Internal::Type::Converter
+
+  class SolanaInstructionDataCondition = Privy::Models::SolanaInstructionDataCondition
 
   class SolanaProgramInstructionCondition = Privy::Models::SolanaProgramInstructionCondition
 

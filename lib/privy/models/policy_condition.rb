@@ -29,6 +29,9 @@ module Privy
       # Solana Program attributes, enables allowlisting Solana Programs.
       variant :solana_program_instruction, -> { Privy::SolanaProgramInstructionCondition }
 
+      # Solana instruction arguments and named accounts interpreted using an inline Anchor IDL.
+      variant :solana_instruction_data, -> { Privy::SolanaInstructionDataCondition }
+
       # Solana System Program attributes, including more granular Transfer instruction fields.
       variant :solana_system_program_instruction, -> { Privy::SolanaSystemProgramInstructionCondition }
 
@@ -63,7 +66,7 @@ module Privy
       variant :message, -> { Privy::MessageSigningCondition }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::XrplTransactionCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition, Privy::Models::MessageSigningCondition)]
+      #   @return [Array(Privy::Models::EthereumTransactionCondition, Privy::Models::EthereumCalldataCondition, Privy::Models::EthereumTypedDataDomainCondition, Privy::Models::EthereumTypedDataMessageCondition, Privy::Models::Ethereum7702AuthorizationCondition, Privy::Models::TempoTransactionCondition, Privy::Models::SolanaProgramInstructionCondition, Privy::Models::SolanaInstructionDataCondition, Privy::Models::SolanaSystemProgramInstructionCondition, Privy::Models::SolanaTokenProgramInstructionCondition, Privy::Models::SystemCondition, Privy::Models::TronTransactionCondition, Privy::Models::TronCalldataCondition, Privy::Models::XrplTransactionCondition, Privy::Models::SuiTransactionCommandCondition, Privy::Models::SuiTransferObjectsCommandCondition, Privy::Models::ActionRequestBodyCondition, Privy::Models::AggregationCondition, Privy::Models::MessageSigningCondition)]
     end
   end
 end

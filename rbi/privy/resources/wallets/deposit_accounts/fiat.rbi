@@ -16,6 +16,7 @@ module Privy
               provider:
                 Privy::CreateFiatDepositAccountRequestBody::Provider::OrSymbol,
               source: Privy::CreateFiatDepositAccountSource::OrHash,
+              developer_fee_percent: String,
               environment: Privy::Environment::OrSymbol,
               request_options: Privy::RequestOptions::OrHash
             ).returns(Privy::FiatDepositAccountResponse)
@@ -29,6 +30,9 @@ module Privy
             provider:,
             # The source fiat currency for a fiat deposit account.
             source:,
+            # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+            # "1.5" for 1.5%.
+            developer_fee_percent: nil,
             # The Privy API environment.
             environment: nil,
             request_options: {}

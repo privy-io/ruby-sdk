@@ -39,6 +39,11 @@ module Privy
       end
       attr_writer :custom_metadata
 
+      # Unix timestamp in seconds of when the user was frozen, or `null` if not frozen.
+      # Not included in every user response.
+      sig { returns(T.nilable(Integer)) }
+      attr_accessor :frozen_at
+
       # A Privy user object.
       sig do
         params(
@@ -88,7 +93,8 @@ module Privy
                 Privy::EmailMfaMethod::OrHash
               )
             ],
-          custom_metadata: T::Hash[Symbol, Privy::CustomMetadataItem::Variants]
+          custom_metadata: T::Hash[Symbol, Privy::CustomMetadataItem::Variants],
+          frozen_at: T.nilable(Integer)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -102,7 +108,10 @@ module Privy
         linked_accounts:,
         mfa_methods:,
         # Custom metadata associated with the user.
-        custom_metadata: nil
+        custom_metadata: nil,
+        # Unix timestamp in seconds of when the user was frozen, or `null` if not frozen.
+        # Not included in every user response.
+        frozen_at: nil
       )
       end
 
@@ -116,7 +125,8 @@ module Privy
             linked_accounts: T::Array[Privy::LinkedAccount::Variants],
             mfa_methods: T::Array[Privy::LinkedMfaMethod::Variants],
             custom_metadata:
-              T::Hash[Symbol, Privy::CustomMetadataItem::Variants]
+              T::Hash[Symbol, Privy::CustomMetadataItem::Variants],
+            frozen_at: T.nilable(Integer)
           }
         )
       end

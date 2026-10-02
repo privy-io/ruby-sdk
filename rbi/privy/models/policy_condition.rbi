@@ -16,6 +16,7 @@ module Privy
             Privy::Ethereum7702AuthorizationCondition,
             Privy::TempoTransactionCondition,
             Privy::SolanaProgramInstructionCondition,
+            Privy::SolanaInstructionDataCondition,
             Privy::SolanaSystemProgramInstructionCondition,
             Privy::SolanaTokenProgramInstructionCondition,
             Privy::SystemCondition,

@@ -43,7 +43,17 @@ module Privy
       #   @return [Hash{Symbol=>String, Float, Boolean}, nil]
       optional :custom_metadata, -> { Privy::Internal::Type::HashOf[union: Privy::CustomMetadataItem] }
 
-      # @!method initialize(id:, created_at:, has_accepted_terms:, is_guest:, linked_accounts:, mfa_methods:, custom_metadata: nil)
+      # @!attribute frozen_at
+      #   Unix timestamp in seconds of when the user was frozen, or `null` if not frozen.
+      #   Not included in every user response.
+      #
+      #   @return [Integer, nil]
+      optional :frozen_at, Integer, nil?: true
+
+      # @!method initialize(id:, created_at:, has_accepted_terms:, is_guest:, linked_accounts:, mfa_methods:, custom_metadata: nil, frozen_at: nil)
+      #   Some parameter documentations has been truncated, see {Privy::Models::User} for
+      #   more details.
+      #
       #   A Privy user object.
       #
       #   @param id [String]
@@ -59,6 +69,8 @@ module Privy
       #   @param mfa_methods [Array<Privy::Models::SMSMfaMethod, Privy::Models::TotpMfaMethod, Privy::Models::PasskeyMfaMethod, Privy::Models::EmailMfaMethod>]
       #
       #   @param custom_metadata [Hash{Symbol=>String, Float, Boolean}] Custom metadata associated with the user.
+      #
+      #   @param frozen_at [Integer, nil] Unix timestamp in seconds of when the user was frozen, or `null` if not frozen.
     end
   end
 end

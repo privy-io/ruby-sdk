@@ -22,6 +22,7 @@ class Privy::Test::Resources::Wallets::Payout::FiatTest < Privy::Test::ResourceT
         id: String,
         created_at: Time,
         destination: Privy::PayoutDestination,
+        developer_fee_percent: String,
         environment: Privy::Environment,
         provider: Privy::OrchestrationProvider,
         source: Privy::PayoutSource,

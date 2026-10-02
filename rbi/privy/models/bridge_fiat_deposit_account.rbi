@@ -36,6 +36,11 @@ module Privy
       end
       attr_writer :destination
 
+      # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+      # "1.5" for 1.5%.
+      sig { returns(String) }
+      attr_accessor :developer_fee_percent
+
       # The Privy API environment.
       sig { returns(Privy::Environment::OrSymbol) }
       attr_accessor :environment
@@ -66,6 +71,7 @@ module Privy
           deposit_instructions:
             T.nilable(Privy::FiatDepositInstructions::OrHash),
           destination: Privy::FiatDepositAccountDestination::OrHash,
+          developer_fee_percent: String,
           environment: Privy::Environment::OrSymbol,
           provider: Privy::BridgeFiatDepositAccount::Provider::OrSymbol,
           source: Privy::FiatDepositAccountSource::OrHash,
@@ -81,6 +87,9 @@ module Privy
         deposit_instructions:,
         # The destination crypto asset and chain for a fiat deposit account.
         destination:,
+        # A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+        # "1.5" for 1.5%.
+        developer_fee_percent:,
         # The Privy API environment.
         environment:,
         # Discriminator: the fiat deposit account is orchestrated via Bridge.
@@ -100,6 +109,7 @@ module Privy
             created_at: String,
             deposit_instructions: T.nilable(Privy::FiatDepositInstructions),
             destination: Privy::FiatDepositAccountDestination,
+            developer_fee_percent: String,
             environment: Privy::Environment::OrSymbol,
             provider: Privy::BridgeFiatDepositAccount::Provider::OrSymbol,
             source: Privy::FiatDepositAccountSource,

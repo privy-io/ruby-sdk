@@ -6,6 +6,7 @@ module Privy
           id: String,
           created_at: Time,
           destination: Privy::PayoutDestination,
+          developer_fee_percent: String,
           environment: Privy::Models::environment,
           provider: Privy::Models::orchestration_provider,
           source: Privy::PayoutSource,
@@ -23,6 +24,8 @@ module Privy
         attr_accessor created_at: Time
 
         attr_accessor destination: Privy::PayoutDestination
+
+        attr_accessor developer_fee_percent: String
 
         attr_accessor environment: Privy::Models::environment
 
@@ -54,6 +57,7 @@ module Privy
           id: String,
           created_at: Time,
           destination: Privy::PayoutDestination,
+          developer_fee_percent: String,
           environment: Privy::Models::environment,
           provider: Privy::Models::orchestration_provider,
           source: Privy::PayoutSource,
@@ -69,6 +73,7 @@ module Privy
           id: String,
           created_at: Time,
           destination: Privy::PayoutDestination,
+          developer_fee_percent: String,
           environment: Privy::Models::environment,
           provider: Privy::Models::orchestration_provider,
           source: Privy::PayoutSource,

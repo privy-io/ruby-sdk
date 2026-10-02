@@ -12,15 +12,38 @@ module Privy
       sig { returns(String) }
       attr_accessor :fiat_account_id
 
+      # A fiat payment rail a payout can settle over. `ach` is a standard ACH credit to
+      # the destination account.
+      sig { returns(T.nilable(Privy::PayoutPaymentRail::OrSymbol)) }
+      attr_reader :payment_rail
+
+      sig { params(payment_rail: Privy::PayoutPaymentRail::OrSymbol).void }
+      attr_writer :payment_rail
+
       # The destination bank account for a payout.
-      sig { params(fiat_account_id: String).returns(T.attached_class) }
+      sig do
+        params(
+          fiat_account_id: String,
+          payment_rail: Privy::PayoutPaymentRail::OrSymbol
+        ).returns(T.attached_class)
+      end
       def self.new(
         # The ID of a previously registered external fiat account to pay out to.
-        fiat_account_id:
+        fiat_account_id:,
+        # A fiat payment rail a payout can settle over. `ach` is a standard ACH credit to
+        # the destination account.
+        payment_rail: nil
       )
       end
 
-      sig { override.returns({ fiat_account_id: String }) }
+      sig do
+        override.returns(
+          {
+            fiat_account_id: String,
+            payment_rail: Privy::PayoutPaymentRail::OrSymbol
+          }
+        )
+      end
       def to_hash
       end
     end

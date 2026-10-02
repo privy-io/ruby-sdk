@@ -1,16 +1,32 @@
 module Privy
   module Models
     type card_issuing_config =
-      { card_logo_url: String?, publishable_key: String }
+      {
+        card_logo_url: String?,
+        publishable_key: String,
+        stripe_account: String
+      }
 
     class CardIssuingConfig < Privy::Internal::Type::BaseModel
       attr_accessor card_logo_url: String?
 
       attr_accessor publishable_key: String
 
-      def initialize: (card_logo_url: String?, publishable_key: String) -> void
+      attr_reader stripe_account: String?
 
-      def to_hash: -> { card_logo_url: String?, publishable_key: String }
+      def stripe_account=: (String) -> String
+
+      def initialize: (
+        card_logo_url: String?,
+        publishable_key: String,
+        ?stripe_account: String
+      ) -> void
+
+      def to_hash: -> {
+        card_logo_url: String?,
+        publishable_key: String,
+        stripe_account: String
+      }
     end
   end
 end

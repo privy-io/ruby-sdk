@@ -26,6 +26,13 @@ module Privy
       #   @return [Privy::Models::FiatDepositAccountDestination]
       required :destination, -> { Privy::FiatDepositAccountDestination }
 
+      # @!attribute developer_fee_percent
+      #   A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+      #   "1.5" for 1.5%.
+      #
+      #   @return [String]
+      required :developer_fee_percent, String
+
       # @!attribute environment
       #   The Privy API environment.
       #
@@ -55,7 +62,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, created_at:, deposit_instructions:, destination:, environment:, provider:, source:, status:, wallet_id:)
+      # @!method initialize(id:, created_at:, deposit_instructions:, destination:, developer_fee_percent:, environment:, provider:, source:, status:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::FiatDepositAccount} for more details.
       #
@@ -68,6 +75,8 @@ module Privy
       #   @param deposit_instructions [Privy::Models::FiatDepositInstructions, nil] Bank or payment deposit instructions for a fiat deposit account. Shape varies by
       #
       #   @param destination [Privy::Models::FiatDepositAccountDestination] The destination crypto asset and chain for a fiat deposit account.
+      #
+      #   @param developer_fee_percent [String] A developer fee as a percentage string from 0 up to (not including) 100, e.g. "1
       #
       #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
       #

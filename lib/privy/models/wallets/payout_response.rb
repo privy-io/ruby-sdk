@@ -22,6 +22,13 @@ module Privy
         #   @return [Privy::Models::PayoutDestination]
         required :destination, -> { Privy::PayoutDestination }
 
+        # @!attribute developer_fee_percent
+        #   A developer fee as a percentage string from 0 up to (not including) 100, e.g.
+        #   "1.5" for 1.5%.
+        #
+        #   @return [String]
+        required :developer_fee_percent, String
+
         # @!attribute environment
         #   The Privy API environment.
         #
@@ -75,7 +82,10 @@ module Privy
         #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>, nil]
         optional :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
-        # @!method initialize(id:, created_at:, destination:, environment:, provider:, source:, status:, type:, wallet_id:, failure_reason: nil, reference_id: nil, steps: nil)
+        # @!method initialize(id:, created_at:, destination:, developer_fee_percent:, environment:, provider:, source:, status:, type:, wallet_id:, failure_reason: nil, reference_id: nil, steps: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Privy::Models::Wallets::PayoutResponse} for more details.
+        #
         #   A payout wallet action. Crypto is sent on-chain to a liquidation address that
         #   offramps to the destination bank account.
         #
@@ -84,6 +94,8 @@ module Privy
         #   @param created_at [Time] ISO 8601 timestamp of when the wallet action was created.
         #
         #   @param destination [Privy::Models::PayoutDestination] The destination bank account for a payout.
+        #
+        #   @param developer_fee_percent [String] A developer fee as a percentage string from 0 up to (not including) 100, e.g. "1
         #
         #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
         #

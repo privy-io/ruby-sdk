@@ -144,6 +144,7 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         id: String,
         created_at: Time,
         destination: Privy::PayoutDestination,
+        developer_fee_percent: String,
         environment: Privy::Environment,
         provider: Privy::OrchestrationProvider,
         source: Privy::PayoutSource,

@@ -6,6 +6,7 @@ module Privy
         created_at: String,
         deposit_instructions: Privy::FiatDepositInstructions?,
         destination: Privy::FiatDepositAccountDestination,
+        developer_fee_percent: String,
         environment: Privy::Models::environment,
         provider: Privy::Models::FiatDepositAccount::provider,
         source: Privy::FiatDepositAccountSource,
@@ -22,6 +23,8 @@ module Privy
 
       attr_accessor destination: Privy::FiatDepositAccountDestination
 
+      attr_accessor developer_fee_percent: String
+
       attr_accessor environment: Privy::Models::environment
 
       attr_accessor provider: Privy::Models::FiatDepositAccount::provider
@@ -37,6 +40,7 @@ module Privy
         created_at: String,
         deposit_instructions: Privy::FiatDepositInstructions?,
         destination: Privy::FiatDepositAccountDestination,
+        developer_fee_percent: String,
         environment: Privy::Models::environment,
         provider: Privy::Models::FiatDepositAccount::provider,
         source: Privy::FiatDepositAccountSource,
@@ -49,6 +53,7 @@ module Privy
         created_at: String,
         deposit_instructions: Privy::FiatDepositInstructions?,
         destination: Privy::FiatDepositAccountDestination,
+        developer_fee_percent: String,
         environment: Privy::Models::environment,
         provider: Privy::Models::FiatDepositAccount::provider,
         source: Privy::FiatDepositAccountSource,

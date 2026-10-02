@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    type payout_payment_rail =
+      :ach | :ach_same_day | :wire | :fednow | :sepa | :faster_payments | :pix
+
+    module PayoutPaymentRail
+      extend Privy::Internal::Type::Enum
+
+      ACH: :ach
+      ACH_SAME_DAY: :ach_same_day
+      WIRE: :wire
+      FEDNOW: :fednow
+      SEPA: :sepa
+      FASTER_PAYMENTS: :faster_payments
+      PIX: :pix
+
+      def self?.values: -> ::Array[Privy::Models::payout_payment_rail]
+    end
+  end
+end

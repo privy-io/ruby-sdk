@@ -6,11 +6,14 @@ module Privy
       class DepositAccounts
         # Operations related to fiat onramping and offramping
         class Fiat
+          # Some parameter documentations has been truncated, see
+          # {Privy::Models::Wallets::DepositAccounts::FiatCreateParams} for more details.
+          #
           # Creates a Bridge Virtual Account linked to a wallet. Fiat sent to the returned
           # deposit instructions will be converted to the specified crypto asset and
           # delivered to the wallet.
           #
-          # @overload create(wallet_id, destination:, provider:, source:, environment: nil, request_options: {})
+          # @overload create(wallet_id, destination:, provider:, source:, developer_fee_percent: nil, environment: nil, request_options: {})
           #
           # @param wallet_id [String] The ID of the wallet.
           #
@@ -19,6 +22,8 @@ module Privy
           # @param provider [Symbol, Privy::Models::CreateFiatDepositAccountRequestBody::Provider] Discriminator: the fiat deposit account is orchestrated via Bridge.
           #
           # @param source [Privy::Models::CreateFiatDepositAccountSource] The source fiat currency for a fiat deposit account.
+          #
+          # @param developer_fee_percent [String] A developer fee as a percentage string from 0 up to (not including) 100, e.g. "1
           #
           # @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
           #

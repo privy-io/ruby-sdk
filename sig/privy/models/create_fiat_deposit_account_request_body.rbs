@@ -5,6 +5,7 @@ module Privy
         destination: Privy::FiatDepositAccountDestination,
         provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
         source: Privy::CreateFiatDepositAccountSource,
+        developer_fee_percent: String,
         environment: Privy::Models::environment
       }
 
@@ -14,6 +15,10 @@ module Privy
       attr_accessor provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider
 
       attr_accessor source: Privy::CreateFiatDepositAccountSource
+
+      attr_reader developer_fee_percent: String?
+
+      def developer_fee_percent=: (String) -> String
 
       attr_reader environment: Privy::Models::environment?
 
@@ -25,6 +30,7 @@ module Privy
         destination: Privy::FiatDepositAccountDestination,
         provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
         source: Privy::CreateFiatDepositAccountSource,
+        ?developer_fee_percent: String,
         ?environment: Privy::Models::environment
       ) -> void
 
@@ -32,6 +38,7 @@ module Privy
         destination: Privy::FiatDepositAccountDestination,
         provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
         source: Privy::CreateFiatDepositAccountSource,
+        developer_fee_percent: String,
         environment: Privy::Models::environment
       }
 

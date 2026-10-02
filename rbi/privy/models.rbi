@@ -602,6 +602,8 @@ module Privy
 
   DeveloperFee = Privy::Models::DeveloperFee
 
+  DeveloperFeePercent = Privy::Models::DeveloperFeePercent
+
   DeviceAuthorizationResponse = Privy::Models::DeviceAuthorizationResponse
 
   DeviceVerifyAction = Privy::Models::DeviceVerifyAction
@@ -1900,6 +1902,8 @@ module Privy
 
   PayoutDestination = Privy::Models::PayoutDestination
 
+  PayoutPaymentRail = Privy::Models::PayoutPaymentRail
+
   PayoutSource = Privy::Models::PayoutSource
 
   PhoneInviteInput = Privy::Models::PhoneInviteInput
@@ -2126,6 +2130,10 @@ module Privy
   SolanaAddress = Privy::Models::SolanaAddress
 
   SolanaCaip2 = Privy::Models::SolanaCaip2
+
+  SolanaIdl = T.let(Privy::Models::SolanaIdl, Privy::Internal::Type::Converter)
+
+  SolanaInstructionDataCondition = Privy::Models::SolanaInstructionDataCondition
 
   SolanaProgramInstructionCondition =
     Privy::Models::SolanaProgramInstructionCondition

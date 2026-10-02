@@ -13,13 +13,15 @@ module Privy
           # registered external fiat account. Returns a pending wallet action; the crypto
           # transfer and fiat settlement are processed asynchronously.
           #
-          # @overload create(wallet_id, destination:, source:, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
+          # @overload create(wallet_id, destination:, source:, developer_fee_percent: nil, privy_authorization_signature: nil, privy_idempotency_key: nil, privy_request_expiry: nil, request_options: {})
           #
           # @param wallet_id [String] Path param: The ID of the wallet.
           #
           # @param destination [Privy::Models::PayoutDestination] Body param: The destination bank account for a payout.
           #
           # @param source [Privy::Models::PayoutSource] Body param: The source crypto asset, chain, and amount for a payout.
+          #
+          # @param developer_fee_percent [String] Body param: A developer fee as a percentage string from 0 up to (not including)
           #
           # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
           #

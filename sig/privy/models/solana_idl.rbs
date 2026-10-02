@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    type solana_idl = ::Hash[Symbol, top]
+
+    SolanaIdl: Privy::Internal::Type::Converter
+  end
+end
