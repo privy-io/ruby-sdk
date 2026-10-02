@@ -36,6 +36,13 @@ module Privy
       sig { params(tos: Privy::UserKYCUpdatedTosData::OrHash).void }
       attr_writer :tos
 
+      # Stripe Issuing cardholder ID assigned by Bridge for this user.
+      sig { returns(T.nilable(String)) }
+      attr_reader :stripe_cardholder_id
+
+      sig { params(stripe_cardholder_id: String).void }
+      attr_writer :stripe_cardholder_id
+
       # Full KYC state snapshot in a KYC update event.
       sig do
         params(
@@ -43,7 +50,8 @@ module Privy
           endorsements: T::Array[Privy::KyxEndorsement::OrHash],
           kyc: Privy::UserKYCUpdatedKYCData::OrHash,
           status: String,
-          tos: Privy::UserKYCUpdatedTosData::OrHash
+          tos: Privy::UserKYCUpdatedTosData::OrHash,
+          stripe_cardholder_id: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -55,7 +63,9 @@ module Privy
         # KYC/KYB status for the user.
         status:,
         # Terms of service status in a KYC update event.
-        tos:
+        tos:,
+        # Stripe Issuing cardholder ID assigned by Bridge for this user.
+        stripe_cardholder_id: nil
       )
       end
 
@@ -66,7 +76,8 @@ module Privy
             endorsements: T::Array[Privy::KyxEndorsement],
             kyc: Privy::UserKYCUpdatedKYCData,
             status: String,
-            tos: Privy::UserKYCUpdatedTosData
+            tos: Privy::UserKYCUpdatedTosData,
+            stripe_cardholder_id: String
           }
         )
       end

@@ -39,7 +39,8 @@ class Privy::Test::Resources::Users::KYCTest < Privy::Test::ResourceTest
         provider: Privy::KyxProvider,
         requirements_due: ^(Privy::Internal::Type::ArrayOf[String]),
         status: String,
-        tos: Privy::KyxTosStatusDetail
+        tos: Privy::KyxTosStatusDetail,
+        stripe_cardholder_id: String | nil
       }
     end
   end
@@ -82,7 +83,8 @@ class Privy::Test::Resources::Users::KYCTest < Privy::Test::ResourceTest
         provider: Privy::KyxProvider,
         requirements_due: ^(Privy::Internal::Type::ArrayOf[String]),
         status: String,
-        tos: Privy::KyxTosStatusDetail
+        tos: Privy::KyxTosStatusDetail,
+        stripe_cardholder_id: String | nil
       }
     end
   end

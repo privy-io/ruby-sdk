@@ -6,7 +6,8 @@ module Privy
         endorsements: ::Array[Privy::KyxEndorsement],
         kyc: Privy::UserKYCUpdatedKYCData,
         status: String,
-        tos: Privy::UserKYCUpdatedTosData
+        tos: Privy::UserKYCUpdatedTosData,
+        stripe_cardholder_id: String
       }
 
     class UserKYCUpdatedData < Privy::Internal::Type::BaseModel
@@ -20,12 +21,17 @@ module Privy
 
       attr_accessor tos: Privy::UserKYCUpdatedTosData
 
+      attr_reader stripe_cardholder_id: String?
+
+      def stripe_cardholder_id=: (String) -> String
+
       def initialize: (
         capabilities: Privy::KyxCapabilities,
         endorsements: ::Array[Privy::KyxEndorsement],
         kyc: Privy::UserKYCUpdatedKYCData,
         status: String,
-        tos: Privy::UserKYCUpdatedTosData
+        tos: Privy::UserKYCUpdatedTosData,
+        ?stripe_cardholder_id: String
       ) -> void
 
       def to_hash: -> {
@@ -33,7 +39,8 @@ module Privy
         endorsements: ::Array[Privy::KyxEndorsement],
         kyc: Privy::UserKYCUpdatedKYCData,
         status: String,
-        tos: Privy::UserKYCUpdatedTosData
+        tos: Privy::UserKYCUpdatedTosData,
+        stripe_cardholder_id: String
       }
     end
   end

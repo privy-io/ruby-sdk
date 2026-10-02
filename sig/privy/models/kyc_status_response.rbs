@@ -10,7 +10,8 @@ module Privy
         provider: Privy::Models::kyx_provider,
         requirements_due: ::Array[String],
         status: String,
-        tos: Privy::KyxTosStatusDetail
+        tos: Privy::KyxTosStatusDetail,
+        stripe_cardholder_id: String
       }
 
     class KYCStatusResponse < Privy::Internal::Type::BaseModel
@@ -32,6 +33,10 @@ module Privy
 
       attr_accessor tos: Privy::KyxTosStatusDetail
 
+      attr_reader stripe_cardholder_id: String?
+
+      def stripe_cardholder_id=: (String) -> String
+
       def initialize: (
         capabilities: Privy::KyxCapabilities,
         endorsements: ::Array[Privy::KyxEndorsement],
@@ -41,7 +46,8 @@ module Privy
         provider: Privy::Models::kyx_provider,
         requirements_due: ::Array[String],
         status: String,
-        tos: Privy::KyxTosStatusDetail
+        tos: Privy::KyxTosStatusDetail,
+        ?stripe_cardholder_id: String
       ) -> void
 
       def to_hash: -> {
@@ -53,7 +59,8 @@ module Privy
         provider: Privy::Models::kyx_provider,
         requirements_due: ::Array[String],
         status: String,
-        tos: Privy::KyxTosStatusDetail
+        tos: Privy::KyxTosStatusDetail,
+        stripe_cardholder_id: String
       }
     end
   end

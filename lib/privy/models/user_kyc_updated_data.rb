@@ -32,7 +32,13 @@ module Privy
       #   @return [Privy::Models::UserKYCUpdatedTosData]
       required :tos, -> { Privy::UserKYCUpdatedTosData }
 
-      # @!method initialize(capabilities:, endorsements:, kyc:, status:, tos:)
+      # @!attribute stripe_cardholder_id
+      #   Stripe Issuing cardholder ID assigned by Bridge for this user.
+      #
+      #   @return [String, nil]
+      optional :stripe_cardholder_id, String
+
+      # @!method initialize(capabilities:, endorsements:, kyc:, status:, tos:, stripe_cardholder_id: nil)
       #   Full KYC state snapshot in a KYC update event.
       #
       #   @param capabilities [Privy::Models::KyxCapabilities] Capability statuses for the customer.
@@ -44,6 +50,8 @@ module Privy
       #   @param status [String] KYC/KYB status for the user.
       #
       #   @param tos [Privy::Models::UserKYCUpdatedTosData] Terms of service status in a KYC update event.
+      #
+      #   @param stripe_cardholder_id [String] Stripe Issuing cardholder ID assigned by Bridge for this user.
     end
   end
 end

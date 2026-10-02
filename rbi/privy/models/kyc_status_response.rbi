@@ -52,6 +52,13 @@ module Privy
       sig { params(tos: Privy::KyxTosStatusDetail::OrHash).void }
       attr_writer :tos
 
+      # Stripe Issuing cardholder ID assigned by Bridge for this user.
+      sig { returns(T.nilable(String)) }
+      attr_reader :stripe_cardholder_id
+
+      sig { params(stripe_cardholder_id: String).void }
+      attr_writer :stripe_cardholder_id
+
       # Full KYC status for a user with a given provider.
       sig do
         params(
@@ -63,7 +70,8 @@ module Privy
           provider: Privy::KyxProvider::OrSymbol,
           requirements_due: T::Array[String],
           status: String,
-          tos: Privy::KyxTosStatusDetail::OrHash
+          tos: Privy::KyxTosStatusDetail::OrHash,
+          stripe_cardholder_id: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -83,7 +91,9 @@ module Privy
         # KYC/KYB status for the user.
         status:,
         # Terms of Service acceptance status for a KYC or KYB flow.
-        tos:
+        tos:,
+        # Stripe Issuing cardholder ID assigned by Bridge for this user.
+        stripe_cardholder_id: nil
       )
       end
 
@@ -98,7 +108,8 @@ module Privy
             provider: Privy::KyxProvider::TaggedSymbol,
             requirements_due: T::Array[String],
             status: String,
-            tos: Privy::KyxTosStatusDetail
+            tos: Privy::KyxTosStatusDetail,
+            stripe_cardholder_id: String
           }
         )
       end
