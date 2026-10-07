@@ -4,6 +4,12 @@ module Privy
       class Earn
         class Ethereum
           class Incentive
+            def list: (
+              String wallet_id,
+              chain: String,
+              ?request_options: Privy::request_opts
+            ) -> Privy::Wallets::EarnIncentiveRewardsResponse
+
             def claim: (
               String wallet_id,
               chain: String,

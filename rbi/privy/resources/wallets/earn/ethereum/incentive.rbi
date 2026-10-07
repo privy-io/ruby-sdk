@@ -7,6 +7,24 @@ module Privy
         class Ethereum
           # Operations related to wallet actions
           class Incentive
+            # Retrieve all incentive rewards for a wallet on a given chain, with claimed and
+            # claimable amounts per token.
+            sig do
+              params(
+                wallet_id: String,
+                chain: String,
+                request_options: Privy::RequestOptions::OrHash
+              ).returns(Privy::Wallets::EarnIncentiveRewardsResponse)
+            end
+            def list(
+              # ID of the wallet.
+              wallet_id,
+              # Chain name to fetch rewards for (e.g. "tempo", "base").
+              chain:,
+              request_options: {}
+            )
+            end
+
             # Claim incentive rewards for a wallet.
             sig do
               params(

@@ -3,6 +3,22 @@
 require_relative "../../../../test_helper"
 
 class Privy::Test::Resources::Wallets::Earn::Ethereum::IncentiveTest < Privy::Test::ResourceTest
+  def test_list_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.earn.ethereum.incentive.list("wallet_id", chain: "chain")
+
+    assert_pattern do
+      response => Privy::Wallets::EarnIncentiveRewardsResponse
+    end
+
+    assert_pattern do
+      response => {
+        rewards: ^(Privy::Internal::Type::ArrayOf[Privy::Wallets::EarnIncentiveRewardEntry])
+      }
+    end
+  end
+
   def test_claim_required_params
     skip("Mock server tests are disabled")
 

@@ -7,6 +7,32 @@ module Privy
         class Ethereum
           # Operations related to wallet actions
           class Incentive
+            # Retrieve all incentive rewards for a wallet on a given chain, with claimed and
+            # claimable amounts per token.
+            #
+            # @overload list(wallet_id, chain:, request_options: {})
+            #
+            # @param wallet_id [String] ID of the wallet.
+            #
+            # @param chain [String] Chain name to fetch rewards for (e.g. "tempo", "base").
+            #
+            # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+            #
+            # @return [Privy::Models::Wallets::EarnIncentiveRewardsResponse]
+            #
+            # @see Privy::Models::Wallets::Earn::Ethereum::IncentiveListParams
+            def list(wallet_id, params)
+              parsed, options = Privy::Wallets::Earn::Ethereum::IncentiveListParams.dump_request(params)
+              query = Privy::Internal::Util.encode_query_params(parsed)
+              @client.request(
+                method: :get,
+                path: ["v1/wallets/%1$s/earn/ethereum/incentive/claim", wallet_id],
+                query: query,
+                model: Privy::Wallets::EarnIncentiveRewardsResponse,
+                options: options
+              )
+            end
+
             # Some parameter documentations has been truncated, see
             # {Privy::Models::Wallets::Earn::Ethereum::IncentiveClaimParams} for more details.
             #
