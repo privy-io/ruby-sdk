@@ -8,6 +8,7 @@ module Privy
           account_owner_name: String,
           currency: String,
           provider: Privy::Models::CreateExternalFiatAccountRequestBody::provider,
+          ?account_owner: Privy::Models::external_fiat_account_owner,
           ?address: Privy::ExternalFiatAccountAddress,
           ?bank_name: String,
           ?environment: Privy::Models::environment,

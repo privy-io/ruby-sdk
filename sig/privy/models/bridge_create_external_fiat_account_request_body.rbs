@@ -6,6 +6,7 @@ module Privy
         account_owner_name: String,
         currency: String,
         provider: Privy::Models::BridgeCreateExternalFiatAccountRequestBody::provider,
+        account_owner: Privy::Models::external_fiat_account_owner,
         address: Privy::ExternalFiatAccountAddress,
         bank_name: String,
         environment: Privy::Models::environment
@@ -19,6 +20,12 @@ module Privy
       attr_accessor currency: String
 
       attr_accessor provider: Privy::Models::BridgeCreateExternalFiatAccountRequestBody::provider
+
+      attr_reader account_owner: Privy::Models::external_fiat_account_owner?
+
+      def account_owner=: (
+        Privy::Models::external_fiat_account_owner
+      ) -> Privy::Models::external_fiat_account_owner
 
       attr_reader address: Privy::ExternalFiatAccountAddress?
 
@@ -41,6 +48,7 @@ module Privy
         account_owner_name: String,
         currency: String,
         provider: Privy::Models::BridgeCreateExternalFiatAccountRequestBody::provider,
+        ?account_owner: Privy::Models::external_fiat_account_owner,
         ?address: Privy::ExternalFiatAccountAddress,
         ?bank_name: String,
         ?environment: Privy::Models::environment
@@ -51,6 +59,7 @@ module Privy
         account_owner_name: String,
         currency: String,
         provider: Privy::Models::BridgeCreateExternalFiatAccountRequestBody::provider,
+        account_owner: Privy::Models::external_fiat_account_owner,
         address: Privy::ExternalFiatAccountAddress,
         bank_name: String,
         environment: Privy::Models::environment

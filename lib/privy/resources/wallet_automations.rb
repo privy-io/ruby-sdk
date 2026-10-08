@@ -164,9 +164,11 @@ module Privy
       # is found. Use this to recover a deposit whose automation trigger was missed or
       # failed.
       #
-      # @overload reindex(asset_address:, caip2: nil, chain: nil, deposit_address: nil, wallet_id: nil, request_options: {})
+      # @overload reindex(asset_address:, automation_id: nil, caip2: nil, chain: nil, deposit_address: nil, wallet_id: nil, request_options: {})
       #
       # @param asset_address [String] Asset contract address to check; the native asset uses `native`.
+      #
+      # @param automation_id [String] Automation to target when more than one active automation matches the asset.
       #
       # @param caip2 [String, Symbol, Privy::Models::TronCaip2] An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation r
       #

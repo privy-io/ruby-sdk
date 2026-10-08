@@ -114,6 +114,7 @@ module Privy
       sig do
         params(
           asset_address: String,
+          automation_id: String,
           caip2: T.any(String, Privy::TronCaip2::OrSymbol),
           chain: String,
           deposit_address: String,
@@ -124,6 +125,8 @@ module Privy
       def reindex(
         # Asset contract address to check; the native asset uses `native`.
         asset_address:,
+        # Automation to target when more than one active automation matches the asset.
+        automation_id: nil,
         # An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation
         # reindex.
         caip2: nil,

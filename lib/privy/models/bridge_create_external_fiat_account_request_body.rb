@@ -25,6 +25,13 @@ module Privy
       #   @return [Symbol, Privy::Models::BridgeCreateExternalFiatAccountRequestBody::Provider]
       required :provider, enum: -> { Privy::BridgeCreateExternalFiatAccountRequestBody::Provider }
 
+      # @!attribute account_owner
+      #   The individual or business that owns the account. Required for `iban`, `gb`, and
+      #   `swift` accounts.
+      #
+      #   @return [Privy::Models::ExternalFiatAccountIndividualOwner, Privy::Models::ExternalFiatAccountBusinessOwner, nil]
+      optional :account_owner, union: -> { Privy::ExternalFiatAccountOwner }
+
       # @!attribute address
       #   Physical address associated with an external fiat account.
       #
@@ -42,7 +49,10 @@ module Privy
       #   @return [Symbol, Privy::Models::Environment, nil]
       optional :environment, enum: -> { Privy::Environment }
 
-      # @!method initialize(account:, account_owner_name:, currency:, provider:, address: nil, bank_name: nil, environment: nil)
+      # @!method initialize(account:, account_owner_name:, currency:, provider:, account_owner: nil, address: nil, bank_name: nil, environment: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::BridgeCreateExternalFiatAccountRequestBody} for more details.
+      #
       #   Request body for creating a Bridge external fiat account.
       #
       #   @param account [Privy::Models::ExternalFiatAccountUsData, Privy::Models::ExternalFiatAccountGBData, Privy::Models::ExternalFiatAccountPixData, Privy::Models::ExternalFiatAccountIbanData, Privy::Models::ExternalFiatAccountSwiftData] Bank account details. The `type` field discriminates which shape applies.
@@ -52,6 +62,8 @@ module Privy
       #   @param currency [String]
       #
       #   @param provider [Symbol, Privy::Models::BridgeCreateExternalFiatAccountRequestBody::Provider] Discriminator: the external fiat account is orchestrated via Bridge.
+      #
+      #   @param account_owner [Privy::Models::ExternalFiatAccountIndividualOwner, Privy::Models::ExternalFiatAccountBusinessOwner] The individual or business that owns the account. Required for `iban`, `gb`, and
       #
       #   @param address [Privy::Models::ExternalFiatAccountAddress] Physical address associated with an external fiat account.
       #

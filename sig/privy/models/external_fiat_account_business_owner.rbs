@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type external_fiat_account_business_owner =
+      {
+        business_name: String,
+        type: Privy::Models::ExternalFiatAccountBusinessOwner::type_
+      }
+
+    class ExternalFiatAccountBusinessOwner < Privy::Internal::Type::BaseModel
+      attr_accessor business_name: String
+
+      attr_accessor type: Privy::Models::ExternalFiatAccountBusinessOwner::type_
+
+      def initialize: (
+        business_name: String,
+        type: Privy::Models::ExternalFiatAccountBusinessOwner::type_
+      ) -> void
+
+      def to_hash: -> {
+        business_name: String,
+        type: Privy::Models::ExternalFiatAccountBusinessOwner::type_
+      }
+
+      type type_ = :business
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        BUSINESS: :business
+
+        def self?.values: -> ::Array[Privy::Models::ExternalFiatAccountBusinessOwner::type_]
+      end
+    end
+  end
+end

@@ -717,11 +717,17 @@ module Privy
 
   class ExternalFiatAccountAddress = Privy::Models::ExternalFiatAccountAddress
 
+  class ExternalFiatAccountBusinessOwner = Privy::Models::ExternalFiatAccountBusinessOwner
+
   module ExternalFiatAccountData = Privy::Models::ExternalFiatAccountData
 
   class ExternalFiatAccountGBData = Privy::Models::ExternalFiatAccountGBData
 
   class ExternalFiatAccountIbanData = Privy::Models::ExternalFiatAccountIbanData
+
+  class ExternalFiatAccountIndividualOwner = Privy::Models::ExternalFiatAccountIndividualOwner
+
+  module ExternalFiatAccountOwner = Privy::Models::ExternalFiatAccountOwner
 
   class ExternalFiatAccountPixData = Privy::Models::ExternalFiatAccountPixData
 

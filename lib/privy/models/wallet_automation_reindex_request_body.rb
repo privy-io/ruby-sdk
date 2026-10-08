@@ -9,6 +9,12 @@ module Privy
       #   @return [String]
       required :asset_address, String
 
+      # @!attribute automation_id
+      #   Automation to target when more than one active automation matches the asset.
+      #
+      #   @return [String, nil]
+      optional :automation_id, String
+
       # @!attribute caip2
       #   An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation
       #   reindex.
@@ -36,7 +42,7 @@ module Privy
       #   @return [String, nil]
       optional :wallet_id, String
 
-      # @!method initialize(asset_address:, caip2: nil, chain: nil, deposit_address: nil, wallet_id: nil)
+      # @!method initialize(asset_address:, automation_id: nil, caip2: nil, chain: nil, deposit_address: nil, wallet_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletAutomationReindexRequestBody} for more details.
       #
@@ -48,6 +54,8 @@ module Privy
       #   its automation.
       #
       #   @param asset_address [String] Asset contract address to check; the native asset uses `native`.
+      #
+      #   @param automation_id [String] Automation to target when more than one active automation matches the asset.
       #
       #   @param caip2 [String, Symbol, Privy::Models::TronCaip2] An EVM, Solana, or Tron CAIP-2 chain identifier supported by wallet automation r
       #

@@ -841,11 +841,19 @@ module Privy
 
   ExternalFiatAccountAddress = Privy::Models::ExternalFiatAccountAddress
 
+  ExternalFiatAccountBusinessOwner =
+    Privy::Models::ExternalFiatAccountBusinessOwner
+
   ExternalFiatAccountData = Privy::Models::ExternalFiatAccountData
 
   ExternalFiatAccountGBData = Privy::Models::ExternalFiatAccountGBData
 
   ExternalFiatAccountIbanData = Privy::Models::ExternalFiatAccountIbanData
+
+  ExternalFiatAccountIndividualOwner =
+    Privy::Models::ExternalFiatAccountIndividualOwner
+
+  ExternalFiatAccountOwner = Privy::Models::ExternalFiatAccountOwner
 
   ExternalFiatAccountPixData = Privy::Models::ExternalFiatAccountPixData
 

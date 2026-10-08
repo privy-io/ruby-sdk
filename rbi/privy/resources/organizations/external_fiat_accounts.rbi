@@ -22,6 +22,11 @@ module Privy
             currency: String,
             provider:
               Privy::CreateExternalFiatAccountRequestBody::Provider::OrSymbol,
+            account_owner:
+              T.any(
+                Privy::ExternalFiatAccountIndividualOwner::OrHash,
+                Privy::ExternalFiatAccountBusinessOwner::OrHash
+              ),
             address: Privy::ExternalFiatAccountAddress::OrHash,
             bank_name: String,
             environment: Privy::Environment::OrSymbol,
@@ -37,6 +42,9 @@ module Privy
           currency:,
           # Discriminator: the external fiat account is orchestrated via Bridge.
           provider:,
+          # The individual or business that owns the account. Required for `iban`, `gb`, and
+          # `swift` accounts.
+          account_owner: nil,
           # Physical address associated with an external fiat account.
           address: nil,
           bank_name: nil,

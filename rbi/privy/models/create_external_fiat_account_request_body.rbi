@@ -37,6 +37,31 @@ module Privy
       end
       attr_accessor :provider
 
+      # The individual or business that owns the account. Required for `iban`, `gb`, and
+      # `swift` accounts.
+      sig do
+        returns(
+          T.nilable(
+            T.any(
+              Privy::ExternalFiatAccountIndividualOwner,
+              Privy::ExternalFiatAccountBusinessOwner
+            )
+          )
+        )
+      end
+      attr_reader :account_owner
+
+      sig do
+        params(
+          account_owner:
+            T.any(
+              Privy::ExternalFiatAccountIndividualOwner::OrHash,
+              Privy::ExternalFiatAccountBusinessOwner::OrHash
+            )
+        ).void
+      end
+      attr_writer :account_owner
+
       # Physical address associated with an external fiat account.
       sig { returns(T.nilable(Privy::ExternalFiatAccountAddress)) }
       attr_reader :address
@@ -72,6 +97,11 @@ module Privy
           currency: String,
           provider:
             Privy::CreateExternalFiatAccountRequestBody::Provider::OrSymbol,
+          account_owner:
+            T.any(
+              Privy::ExternalFiatAccountIndividualOwner::OrHash,
+              Privy::ExternalFiatAccountBusinessOwner::OrHash
+            ),
           address: Privy::ExternalFiatAccountAddress::OrHash,
           bank_name: String,
           environment: Privy::Environment::OrSymbol
@@ -84,6 +114,9 @@ module Privy
         currency:,
         # Discriminator: the external fiat account is orchestrated via Bridge.
         provider:,
+        # The individual or business that owns the account. Required for `iban`, `gb`, and
+        # `swift` accounts.
+        account_owner: nil,
         # Physical address associated with an external fiat account.
         address: nil,
         bank_name: nil,
@@ -107,6 +140,11 @@ module Privy
             currency: String,
             provider:
               Privy::CreateExternalFiatAccountRequestBody::Provider::OrSymbol,
+            account_owner:
+              T.any(
+                Privy::ExternalFiatAccountIndividualOwner,
+                Privy::ExternalFiatAccountBusinessOwner
+              ),
             address: Privy::ExternalFiatAccountAddress,
             bank_name: String,
             environment: Privy::Environment::OrSymbol

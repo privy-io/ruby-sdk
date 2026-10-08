@@ -5,9 +5,12 @@ module Privy
     class Users
       # Operations related to fiat onramping and offramping
       class ExternalFiatAccounts
+        # Some parameter documentations has been truncated, see
+        # {Privy::Models::Users::ExternalFiatAccountCreateParams} for more details.
+        #
         # Creates an external fiat account linked to a user for use in offramp transfers.
         #
-        # @overload create(user_id, account:, account_owner_name:, currency:, provider:, address: nil, bank_name: nil, environment: nil, request_options: {})
+        # @overload create(user_id, account:, account_owner_name:, currency:, provider:, account_owner: nil, address: nil, bank_name: nil, environment: nil, request_options: {})
         #
         # @param user_id [String] The DID of the user to create the external fiat account for.
         #
@@ -18,6 +21,8 @@ module Privy
         # @param currency [String]
         #
         # @param provider [Symbol, Privy::Models::CreateExternalFiatAccountRequestBody::Provider] Discriminator: the external fiat account is orchestrated via Bridge.
+        #
+        # @param account_owner [Privy::Models::ExternalFiatAccountIndividualOwner, Privy::Models::ExternalFiatAccountBusinessOwner] The individual or business that owns the account. Required for `iban`, `gb`, and
         #
         # @param address [Privy::Models::ExternalFiatAccountAddress] Physical address associated with an external fiat account.
         #

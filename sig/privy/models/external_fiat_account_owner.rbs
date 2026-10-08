@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type external_fiat_account_owner =
+      Privy::ExternalFiatAccountIndividualOwner
+      | Privy::ExternalFiatAccountBusinessOwner
+
+    module ExternalFiatAccountOwner
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::external_fiat_account_owner]
+    end
+  end
+end
