@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type card_issuing_wallet_funding_source =
+      {
+        selected: bool,
+        type: Privy::Models::CardIssuingWalletFundingSource::type_
+      }
+
+    class CardIssuingWalletFundingSource < Privy::Internal::Type::BaseModel
+      attr_accessor selected: bool
+
+      attr_accessor type: Privy::Models::CardIssuingWalletFundingSource::type_
+
+      def initialize: (
+        selected: bool,
+        type: Privy::Models::CardIssuingWalletFundingSource::type_
+      ) -> void
+
+      def to_hash: -> {
+        selected: bool,
+        type: Privy::Models::CardIssuingWalletFundingSource::type_
+      }
+
+      type type_ = :wallet
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET: :wallet
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingWalletFundingSource::type_]
+      end
+    end
+  end
+end

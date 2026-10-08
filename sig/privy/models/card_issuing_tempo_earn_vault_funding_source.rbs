@@ -1,0 +1,55 @@
+module Privy
+  module Models
+    type card_issuing_tempo_earn_vault_funding_source =
+      {
+        asset_address: String,
+        selected: bool,
+        share_token_address: String,
+        spender_address: String,
+        type: Privy::Models::CardIssuingTempoEarnVaultFundingSource::type_,
+        vault_address: String
+      }
+
+    class CardIssuingTempoEarnVaultFundingSource < Privy::Internal::Type::BaseModel
+      attr_accessor asset_address: String
+
+      attr_accessor selected: bool
+
+      attr_accessor share_token_address: String
+
+      attr_accessor spender_address: String
+
+      attr_accessor type: Privy::Models::CardIssuingTempoEarnVaultFundingSource::type_
+
+      attr_accessor vault_address: String
+
+      def initialize: (
+        asset_address: String,
+        selected: bool,
+        share_token_address: String,
+        spender_address: String,
+        type: Privy::Models::CardIssuingTempoEarnVaultFundingSource::type_,
+        vault_address: String
+      ) -> void
+
+      def to_hash: -> {
+        asset_address: String,
+        selected: bool,
+        share_token_address: String,
+        spender_address: String,
+        type: Privy::Models::CardIssuingTempoEarnVaultFundingSource::type_,
+        vault_address: String
+      }
+
+      type type_ = :tempo_earn_vault
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TEMPO_EARN_VAULT: :tempo_earn_vault
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingTempoEarnVaultFundingSource::type_]
+      end
+    end
+  end
+end

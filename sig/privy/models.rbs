@@ -317,6 +317,12 @@ module Privy
 
   class CardIssuingEphemeralKeyResponse = Privy::Models::CardIssuingEphemeralKeyResponse
 
+  class CardIssuingErc4626VaultFundingSource = Privy::Models::CardIssuingErc4626VaultFundingSource
+
+  module CardIssuingErc4626VaultProvider = Privy::Models::CardIssuingErc4626VaultProvider
+
+  module CardIssuingFundingSource = Privy::Models::CardIssuingFundingSource
+
   class CardIssuingListCardsInput = Privy::Models::CardIssuingListCardsInput
 
   class CardIssuingListTransactionsInput = Privy::Models::CardIssuingListTransactionsInput
@@ -331,6 +337,8 @@ module Privy
 
   class CardIssuingStatementQueryParams = Privy::Models::CardIssuingStatementQueryParams
 
+  class CardIssuingTempoEarnVaultFundingSource = Privy::Models::CardIssuingTempoEarnVaultFundingSource
+
   class CardIssuingTransactionResponse = Privy::Models::CardIssuingTransactionResponse
 
   class CardIssuingTransactionsResponse = Privy::Models::CardIssuingTransactionsResponse
@@ -338,6 +346,8 @@ module Privy
   module CardIssuingTransactionStatus = Privy::Models::CardIssuingTransactionStatus
 
   class CardIssuingUpdateCardInput = Privy::Models::CardIssuingUpdateCardInput
+
+  class CardIssuingWalletFundingSource = Privy::Models::CardIssuingWalletFundingSource
 
   module ChainTestnetMode = Privy::Models::ChainTestnetMode
 

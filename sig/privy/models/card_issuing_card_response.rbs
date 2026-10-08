@@ -11,6 +11,7 @@ module Privy
         created_at: Integer,
         exp_month: Integer?,
         exp_year: Integer?,
+        funding_sources: ::Array[Privy::Models::card_issuing_funding_source],
         :last4 => String?,
         provider_id: String,
         status: String,
@@ -36,6 +37,8 @@ module Privy
 
       attr_accessor exp_year: Integer?
 
+      attr_accessor funding_sources: ::Array[Privy::Models::card_issuing_funding_source]
+
       attr_accessor last4: String?
 
       attr_accessor provider_id: String
@@ -54,6 +57,7 @@ module Privy
         created_at: Integer,
         exp_month: Integer?,
         exp_year: Integer?,
+        funding_sources: ::Array[Privy::Models::card_issuing_funding_source],
         last4: String?,
         provider_id: String,
         status: String,
@@ -70,6 +74,7 @@ module Privy
         created_at: Integer,
         exp_month: Integer?,
         exp_year: Integer?,
+        funding_sources: ::Array[Privy::Models::card_issuing_funding_source],
         :last4 => String?,
         provider_id: String,
         status: String,

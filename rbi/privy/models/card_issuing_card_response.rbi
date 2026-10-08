@@ -11,12 +11,12 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
-      # The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
+      # The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on
+      # Tempo.
       sig { returns(String) }
       attr_accessor :asset
 
-      # USD balance of the card funding wallet on the configured chain, or null when
-      # unavailable.
+      # USD amount the card can spend right now, or null when unavailable.
       sig { returns(T.nilable(String)) }
       attr_accessor :balance_formatted
 
@@ -46,6 +46,20 @@ module Privy
       sig { returns(T.nilable(Integer)) }
       attr_accessor :exp_year
 
+      # The funding sources the card can spend from, with at most one `selected`.
+      sig do
+        returns(
+          T::Array[
+            T.any(
+              Privy::CardIssuingWalletFundingSource,
+              Privy::CardIssuingErc4626VaultFundingSource,
+              Privy::CardIssuingTempoEarnVaultFundingSource
+            )
+          ]
+        )
+      end
+      attr_accessor :funding_sources
+
       sig { returns(T.nilable(String)) }
       attr_accessor :last4
 
@@ -70,6 +84,14 @@ module Privy
           created_at: Integer,
           exp_month: T.nilable(Integer),
           exp_year: T.nilable(Integer),
+          funding_sources:
+            T::Array[
+              T.any(
+                Privy::CardIssuingWalletFundingSource::OrHash,
+                Privy::CardIssuingErc4626VaultFundingSource::OrHash,
+                Privy::CardIssuingTempoEarnVaultFundingSource::OrHash
+              )
+            ],
           last4: T.nilable(String),
           provider_id: String,
           status: String,
@@ -78,10 +100,10 @@ module Privy
       end
       def self.new(
         id:,
-        # The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
+        # The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on
+        # Tempo.
         asset:,
-        # USD balance of the card funding wallet on the configured chain, or null when
-        # unavailable.
+        # USD amount the card can spend right now, or null when unavailable.
         balance_formatted:,
         brand:,
         # Cardholder metadata for a card.
@@ -94,6 +116,8 @@ module Privy
         exp_month:,
         # Four-digit card expiration year, or null when unavailable.
         exp_year:,
+        # The funding sources the card can spend from, with at most one `selected`.
+        funding_sources:,
         last4:,
         provider_id:,
         status:,
@@ -113,6 +137,14 @@ module Privy
             created_at: Integer,
             exp_month: T.nilable(Integer),
             exp_year: T.nilable(Integer),
+            funding_sources:
+              T::Array[
+                T.any(
+                  Privy::CardIssuingWalletFundingSource,
+                  Privy::CardIssuingErc4626VaultFundingSource,
+                  Privy::CardIssuingTempoEarnVaultFundingSource
+                )
+              ],
             last4: T.nilable(String),
             provider_id: String,
             status: String,

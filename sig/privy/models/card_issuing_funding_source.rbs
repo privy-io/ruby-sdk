@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type card_issuing_funding_source =
+      Privy::CardIssuingWalletFundingSource
+      | Privy::CardIssuingErc4626VaultFundingSource
+      | Privy::CardIssuingTempoEarnVaultFundingSource
+
+    module CardIssuingFundingSource
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::card_issuing_funding_source]
+    end
+  end
+end

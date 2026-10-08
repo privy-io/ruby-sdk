@@ -1,0 +1,50 @@
+module Privy
+  module Models
+    type card_issuing_erc4626_vault_funding_source =
+      {
+        provider: Privy::Models::card_issuing_erc4626_vault_provider,
+        selected: bool,
+        share_token_address: String,
+        spender_address: String,
+        type: Privy::Models::CardIssuingErc4626VaultFundingSource::type_
+      }
+
+    class CardIssuingErc4626VaultFundingSource < Privy::Internal::Type::BaseModel
+      attr_accessor provider: Privy::Models::card_issuing_erc4626_vault_provider
+
+      attr_accessor selected: bool
+
+      attr_accessor share_token_address: String
+
+      attr_accessor spender_address: String
+
+      attr_accessor type: Privy::Models::CardIssuingErc4626VaultFundingSource::type_
+
+      def initialize: (
+        provider: Privy::Models::card_issuing_erc4626_vault_provider,
+        selected: bool,
+        share_token_address: String,
+        spender_address: String,
+        type: Privy::Models::CardIssuingErc4626VaultFundingSource::type_
+      ) -> void
+
+      def to_hash: -> {
+        provider: Privy::Models::card_issuing_erc4626_vault_provider,
+        selected: bool,
+        share_token_address: String,
+        spender_address: String,
+        type: Privy::Models::CardIssuingErc4626VaultFundingSource::type_
+      }
+
+      type type_ = :erc4626_vault
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        ERC4626_VAULT: :erc4626_vault
+
+        def self?.values: -> ::Array[Privy::Models::CardIssuingErc4626VaultFundingSource::type_]
+      end
+    end
+  end
+end

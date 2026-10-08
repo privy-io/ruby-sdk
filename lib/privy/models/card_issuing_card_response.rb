@@ -9,14 +9,14 @@ module Privy
       required :id, String
 
       # @!attribute asset
-      #   The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
+      #   The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on
+      #   Tempo.
       #
       #   @return [String]
       required :asset, String
 
       # @!attribute balance_formatted
-      #   USD balance of the card funding wallet on the configured chain, or null when
-      #   unavailable.
+      #   USD amount the card can spend right now, or null when unavailable.
       #
       #   @return [String, nil]
       required :balance_formatted, String, nil?: true
@@ -56,6 +56,12 @@ module Privy
       #   @return [Integer, nil]
       required :exp_year, Integer, nil?: true
 
+      # @!attribute funding_sources
+      #   The funding sources the card can spend from, with at most one `selected`.
+      #
+      #   @return [Array<Privy::Models::CardIssuingWalletFundingSource, Privy::Models::CardIssuingErc4626VaultFundingSource, Privy::Models::CardIssuingTempoEarnVaultFundingSource>]
+      required :funding_sources, -> { Privy::Internal::Type::ArrayOf[union: Privy::CardIssuingFundingSource] }
+
       # @!attribute last4
       #
       #   @return [String, nil]
@@ -76,7 +82,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(id:, asset:, balance_formatted:, brand:, cardholder:, chain_id:, created_at:, exp_month:, exp_year:, last4:, provider_id:, status:, wallet_id:)
+      # @!method initialize(id:, asset:, balance_formatted:, brand:, cardholder:, chain_id:, created_at:, exp_month:, exp_year:, funding_sources:, last4:, provider_id:, status:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CardIssuingCardResponse} for more details.
       #
@@ -84,9 +90,9 @@ module Privy
       #
       #   @param id [String]
       #
-      #   @param asset [String] The asset the card funds from. 'usdc' on EVM and Solana, 'pathusd' on Tempo.
+      #   @param asset [String] The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on Tempo
       #
-      #   @param balance_formatted [String, nil] USD balance of the card funding wallet on the configured chain, or null when una
+      #   @param balance_formatted [String, nil] USD amount the card can spend right now, or null when unavailable.
       #
       #   @param brand [String, nil]
       #
@@ -99,6 +105,8 @@ module Privy
       #   @param exp_month [Integer, nil] Card expiration month from 1 to 12, or null when unavailable.
       #
       #   @param exp_year [Integer, nil] Four-digit card expiration year, or null when unavailable.
+      #
+      #   @param funding_sources [Array<Privy::Models::CardIssuingWalletFundingSource, Privy::Models::CardIssuingErc4626VaultFundingSource, Privy::Models::CardIssuingTempoEarnVaultFundingSource>] The funding sources the card can spend from, with at most one `selected`.
       #
       #   @param last4 [String, nil]
       #

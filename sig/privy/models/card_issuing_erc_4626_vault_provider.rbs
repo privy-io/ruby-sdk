@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type card_issuing_erc4626_vault_provider = :morpho | :aave
+
+    module CardIssuingErc4626VaultProvider
+      extend Privy::Internal::Type::Enum
+
+      MORPHO: :morpho
+      AAVE: :aave
+
+      def self?.values: -> ::Array[Privy::Models::card_issuing_erc4626_vault_provider]
+    end
+  end
+end
