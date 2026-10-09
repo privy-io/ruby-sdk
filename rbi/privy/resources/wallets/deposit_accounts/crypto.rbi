@@ -120,6 +120,22 @@ module Privy
           )
           end
 
+          # Returns deposit-account source tokens matching a symbol, name, or contract
+          # address. Results are limited to supported EVM and Solana source chains and can
+          # include unverified tokens.
+          sig do
+            params(
+              q: String,
+              request_options: Privy::RequestOptions::OrHash
+            ).returns(Privy::CryptoDepositAccountConfigSearchResponse)
+          end
+          def search_config(
+            # Token symbol, name, or contract address in any chain format.
+            q:,
+            request_options: {}
+          )
+          end
+
           # @api private
           sig { params(client: Privy::Client).returns(T.attached_class) }
           def self.new(client:)

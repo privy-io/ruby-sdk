@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    module Wallets
+      module DepositAccounts
+        type crypto_search_config_params =
+          { q: String } & Privy::Internal::Type::request_parameters
+
+        class CryptoSearchConfigParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor q: String
+
+          def initialize: (
+            q: String,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> { q: String, request_options: Privy::RequestOptions }
+        end
+      end
+    end
+  end
+end

@@ -15,6 +15,13 @@ module Privy
       #   @return [Array<Privy::Models::AdditionalSignerItemInput>, nil]
       optional :additional_signers, -> { Privy::Internal::Type::ArrayOf[Privy::AdditionalSignerItemInput] }
 
+      # @!attribute derivation
+      #   Derives the new wallet from an existing HD root wallet so both share one seed
+      #   phrase.
+      #
+      #   @return [Privy::Models::DerivationInput, nil]
+      optional :derivation, -> { Privy::DerivationInput }
+
       # @!attribute display_name
       #   A human-readable label for the wallet.
       #
@@ -56,7 +63,7 @@ module Privy
       #   @return [Array<String>, nil]
       optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(chain_type:, additional_signers: nil, display_name: nil, entity: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil)
+      # @!method initialize(chain_type:, additional_signers: nil, derivation: nil, display_name: nil, entity: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletBatchItemInput} for more details.
       #
@@ -65,6 +72,8 @@ module Privy
       #   @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
       #
       #   @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Additional signers for the wallet.
+      #
+      #   @param derivation [Privy::Models::DerivationInput] Derives the new wallet from an existing HD root wallet so both share one seed ph
       #
       #   @param display_name [String] A human-readable label for the wallet.
       #

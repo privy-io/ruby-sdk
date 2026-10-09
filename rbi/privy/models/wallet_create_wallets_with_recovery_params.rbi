@@ -195,6 +195,14 @@ module Privy
         sig { returns(Privy::WalletChainType::OrSymbol) }
         attr_accessor :chain_type
 
+        # Derives the new wallet from an existing HD root wallet so both share one seed
+        # phrase.
+        sig { returns(T.nilable(Privy::DerivationInput)) }
+        attr_reader :derivation
+
+        sig { params(derivation: Privy::DerivationInput::OrHash).void }
+        attr_writer :derivation
+
         # A human-readable label for the wallet.
         sig { returns(T.nilable(String)) }
         attr_reader :display_name
@@ -221,6 +229,7 @@ module Privy
         sig do
           params(
             chain_type: Privy::WalletChainType::OrSymbol,
+            derivation: Privy::DerivationInput::OrHash,
             display_name: String,
             external_id: String,
             policy_ids: T::Array[String]
@@ -229,6 +238,9 @@ module Privy
         def self.new(
           # The wallet chain types.
           chain_type:,
+          # Derives the new wallet from an existing HD root wallet so both share one seed
+          # phrase.
+          derivation: nil,
           # A human-readable label for the wallet.
           display_name: nil,
           # A customer-provided identifier for mapping to external systems. URL-safe
@@ -244,6 +256,7 @@ module Privy
           override.returns(
             {
               chain_type: Privy::WalletChainType::OrSymbol,
+              derivation: Privy::DerivationInput,
               display_name: String,
               external_id: String,
               policy_ids: T::Array[String]

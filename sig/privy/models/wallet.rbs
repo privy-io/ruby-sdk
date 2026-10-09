@@ -19,6 +19,7 @@ module Privy
         display_name: String,
         entity: Privy::WalletEntity?,
         external_id: String,
+        parent_wallet_id: String?,
         public_key: String
       }
 
@@ -73,6 +74,8 @@ module Privy
 
       def external_id=: (String) -> String
 
+      attr_accessor parent_wallet_id: String?
+
       attr_reader public_key: String?
 
       def public_key=: (String) -> String
@@ -95,6 +98,7 @@ module Privy
         ?display_name: String,
         ?entity: Privy::WalletEntity?,
         ?external_id: String,
+        ?parent_wallet_id: String?,
         ?public_key: String
       ) -> void
 
@@ -116,6 +120,7 @@ module Privy
         display_name: String,
         entity: Privy::WalletEntity?,
         external_id: String,
+        parent_wallet_id: String?,
         public_key: String
       }
     end

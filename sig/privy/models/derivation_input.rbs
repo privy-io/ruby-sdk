@@ -1,0 +1,13 @@
+module Privy
+  module Models
+    type derivation_input = { wallet_id: String }
+
+    class DerivationInput < Privy::Internal::Type::BaseModel
+      attr_accessor wallet_id: String
+
+      def initialize: (wallet_id: String) -> void
+
+      def to_hash: -> { wallet_id: String }
+    end
+  end
+end

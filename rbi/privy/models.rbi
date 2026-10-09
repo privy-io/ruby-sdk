@@ -529,6 +529,12 @@ module Privy
   CryptoDepositAccountConfigResponse =
     Privy::Models::CryptoDepositAccountConfigResponse
 
+  CryptoDepositAccountConfigSearchResponse =
+    Privy::Models::CryptoDepositAccountConfigSearchResponse
+
+  CryptoDepositAccountSearchCurrency =
+    Privy::Models::CryptoDepositAccountSearchCurrency
+
   CryptoDepositAccountSourceChain =
     Privy::Models::CryptoDepositAccountSourceChain
 
@@ -609,6 +615,8 @@ module Privy
   DepositStartedDestination = Privy::Models::DepositStartedDestination
 
   DepositStartedSource = Privy::Models::DepositStartedSource
+
+  DerivationInput = Privy::Models::DerivationInput
 
   DetachWalletAutomationRequestBody =
     Privy::Models::DetachWalletAutomationRequestBody

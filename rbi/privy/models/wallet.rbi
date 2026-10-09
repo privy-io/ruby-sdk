@@ -104,6 +104,11 @@ module Privy
       sig { params(external_id: String).void }
       attr_writer :external_id
 
+      # ID of the HD root wallet this wallet was derived from, or null if it was not
+      # derived from another wallet.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :parent_wallet_id
+
       # The compressed, raw public key for the wallet along the chain cryptographic
       # curve.
       sig { returns(T.nilable(String)) }
@@ -133,6 +138,7 @@ module Privy
           display_name: String,
           entity: T.nilable(Privy::WalletEntity::OrHash),
           external_id: String,
+          parent_wallet_id: T.nilable(String),
           public_key: String
         ).returns(T.attached_class)
       end
@@ -177,6 +183,9 @@ module Privy
         # characters only ([a-zA-Z0-9_-]), max 64 chars. Write-once: cannot be changed
         # once set.
         external_id: nil,
+        # ID of the HD root wallet this wallet was derived from, or null if it was not
+        # derived from another wallet.
+        parent_wallet_id: nil,
         # The compressed, raw public key for the wallet along the chain cryptographic
         # curve.
         public_key: nil
@@ -203,6 +212,7 @@ module Privy
             display_name: String,
             entity: T.nilable(Privy::WalletEntity),
             external_id: String,
+            parent_wallet_id: T.nilable(String),
             public_key: String
           }
         )

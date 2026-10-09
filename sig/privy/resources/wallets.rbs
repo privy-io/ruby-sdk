@@ -18,6 +18,7 @@ module Privy
       def create: (
         chain_type: Privy::Models::wallet_chain_type,
         ?additional_signers: Privy::Models::additional_signer_input,
+        ?derivation: Privy::DerivationInput,
         ?display_name: String,
         ?entity: Privy::WalletEntityAssignmentRequestBody,
         ?external_id: String,

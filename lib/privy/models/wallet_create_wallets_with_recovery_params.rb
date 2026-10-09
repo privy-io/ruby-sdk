@@ -74,6 +74,13 @@ module Privy
         #   @return [Symbol, Privy::Models::WalletChainType]
         required :chain_type, enum: -> { Privy::WalletChainType }
 
+        # @!attribute derivation
+        #   Derives the new wallet from an existing HD root wallet so both share one seed
+        #   phrase.
+        #
+        #   @return [Privy::Models::DerivationInput, nil]
+        optional :derivation, -> { Privy::DerivationInput }
+
         # @!attribute display_name
         #   A human-readable label for the wallet.
         #
@@ -94,11 +101,13 @@ module Privy
         #   @return [Array<String>, nil]
         optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(chain_type:, display_name: nil, external_id: nil, policy_ids: nil)
+        # @!method initialize(chain_type:, derivation: nil, display_name: nil, external_id: nil, policy_ids: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::WalletCreateWalletsWithRecoveryParams::Wallet} for more details.
         #
         #   @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
+        #
+        #   @param derivation [Privy::Models::DerivationInput] Derives the new wallet from an existing HD root wallet so both share one seed ph
         #
         #   @param display_name [String] A human-readable label for the wallet.
         #

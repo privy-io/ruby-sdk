@@ -34,6 +34,7 @@ module Privy
           chain_type: Privy::WalletChainType::OrSymbol,
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
+          derivation: Privy::DerivationInput::OrHash,
           display_name: String,
           entity: Privy::WalletEntityAssignmentRequestBody::OrHash,
           external_id: String,
@@ -55,6 +56,9 @@ module Privy
         chain_type:,
         # Body param: Additional signers for the wallet.
         additional_signers: nil,
+        # Body param: Derives the new wallet from an existing HD root wallet so both share
+        # one seed phrase.
+        derivation: nil,
         # Body param: A human-readable label for the wallet.
         display_name: nil,
         # Body param: Request body for assigning an entity to a wallet.

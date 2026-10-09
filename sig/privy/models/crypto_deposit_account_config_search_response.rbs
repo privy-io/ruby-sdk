@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type crypto_deposit_account_config_search_response =
+      {
+        chains: ::Hash[Symbol, Privy::CryptoDepositAccountChain],
+        currencies: ::Array[Privy::CryptoDepositAccountSearchCurrency]
+      }
+
+    class CryptoDepositAccountConfigSearchResponse < Privy::Internal::Type::BaseModel
+      attr_accessor chains: ::Hash[Symbol, Privy::CryptoDepositAccountChain]
+
+      attr_accessor currencies: ::Array[Privy::CryptoDepositAccountSearchCurrency]
+
+      def initialize: (
+        chains: ::Hash[Symbol, Privy::CryptoDepositAccountChain],
+        currencies: ::Array[Privy::CryptoDepositAccountSearchCurrency]
+      ) -> void
+
+      def to_hash: -> {
+        chains: ::Hash[Symbol, Privy::CryptoDepositAccountChain],
+        currencies: ::Array[Privy::CryptoDepositAccountSearchCurrency]
+      }
+    end
+  end
+end

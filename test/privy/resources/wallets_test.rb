@@ -31,6 +31,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end
@@ -64,6 +65,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end
@@ -104,6 +106,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end
@@ -172,6 +175,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end
@@ -205,6 +209,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end
@@ -373,6 +378,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end
@@ -407,6 +413,7 @@ class Privy::Test::Resources::WalletsTest < Privy::Test::ResourceTest
         display_name: String | nil,
         entity: Privy::WalletEntity | nil,
         external_id: String | nil,
+        parent_wallet_id: String | nil,
         public_key: String | nil
       }
     end

@@ -26,6 +26,14 @@ module Privy
       end
       attr_writer :additional_signers
 
+      # Derives the new wallet from an existing HD root wallet so both share one seed
+      # phrase.
+      sig { returns(T.nilable(Privy::DerivationInput)) }
+      attr_reader :derivation
+
+      sig { params(derivation: Privy::DerivationInput::OrHash).void }
+      attr_writer :derivation
+
       # A human-readable label for the wallet.
       sig { returns(T.nilable(String)) }
       attr_reader :display_name
@@ -85,6 +93,7 @@ module Privy
           chain_type: Privy::WalletChainType::OrSymbol,
           additional_signers:
             T::Array[Privy::AdditionalSignerItemInput::OrHash],
+          derivation: Privy::DerivationInput::OrHash,
           display_name: String,
           entity: Privy::WalletEntityAssignmentRequestBody::OrHash,
           external_id: String,
@@ -106,6 +115,9 @@ module Privy
         chain_type:,
         # Additional signers for the wallet.
         additional_signers: nil,
+        # Derives the new wallet from an existing HD root wallet so both share one seed
+        # phrase.
+        derivation: nil,
         # A human-readable label for the wallet.
         display_name: nil,
         # Request body for assigning an entity to a wallet.
@@ -134,6 +146,7 @@ module Privy
           {
             chain_type: Privy::WalletChainType::OrSymbol,
             additional_signers: T::Array[Privy::AdditionalSignerItemInput],
+            derivation: Privy::DerivationInput,
             display_name: String,
             entity: Privy::WalletEntityAssignmentRequestBody,
             external_id: String,

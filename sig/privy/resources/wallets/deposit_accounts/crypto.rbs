@@ -39,6 +39,11 @@ module Privy
             ?request_options: Privy::request_opts
           ) -> Privy::DepositAccountCryptoQuoteResponse
 
+          def search_config: (
+            q: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::CryptoDepositAccountConfigSearchResponse
+
           def initialize: (client: Privy::Client) -> void
         end
       end

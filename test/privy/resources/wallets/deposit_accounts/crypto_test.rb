@@ -110,4 +110,21 @@ class Privy::Test::Resources::Wallets::DepositAccounts::CryptoTest < Privy::Test
       }
     end
   end
+
+  def test_search_config_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.wallets.deposit_accounts.crypto.search_config(q: "x")
+
+    assert_pattern do
+      response => Privy::CryptoDepositAccountConfigSearchResponse
+    end
+
+    assert_pattern do
+      response => {
+        chains: ^(Privy::Internal::Type::HashOf[Privy::CryptoDepositAccountChain]),
+        currencies: ^(Privy::Internal::Type::ArrayOf[Privy::CryptoDepositAccountSearchCurrency])
+      }
+    end
+  end
 end

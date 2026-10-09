@@ -33,11 +33,13 @@ module Privy
       #
       # Creates a new wallet on the requested chain and for the requested owner.
       #
-      # @overload create(chain_type:, additional_signers: nil, display_name: nil, entity: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, privy_idempotency_key: nil, request_options: {})
+      # @overload create(chain_type:, additional_signers: nil, derivation: nil, display_name: nil, entity: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil, privy_idempotency_key: nil, request_options: {})
       #
       # @param chain_type [Symbol, Privy::Models::WalletChainType] Body param: The wallet chain types.
       #
       # @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Body param: Additional signers for the wallet.
+      #
+      # @param derivation [Privy::Models::DerivationInput] Body param: Derives the new wallet from an existing HD root wallet so both share
       #
       # @param display_name [String] Body param: A human-readable label for the wallet.
       #

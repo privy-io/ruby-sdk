@@ -156,6 +156,31 @@ module Privy
             )
           end
 
+          # Returns deposit-account source tokens matching a symbol, name, or contract
+          # address. Results are limited to supported EVM and Solana source chains and can
+          # include unverified tokens.
+          #
+          # @overload search_config(q:, request_options: {})
+          #
+          # @param q [String] Token symbol, name, or contract address in any chain format.
+          #
+          # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Privy::Models::CryptoDepositAccountConfigSearchResponse]
+          #
+          # @see Privy::Models::Wallets::DepositAccounts::CryptoSearchConfigParams
+          def search_config(params)
+            parsed, options = Privy::Wallets::DepositAccounts::CryptoSearchConfigParams.dump_request(params)
+            query = Privy::Internal::Util.encode_query_params(parsed)
+            @client.request(
+              method: :get,
+              path: "v1/deposit_accounts/crypto/config/search",
+              query: query,
+              model: Privy::CryptoDepositAccountConfigSearchResponse,
+              options: options
+            )
+          end
+
           # @api private
           #
           # @param client [Privy::Client]

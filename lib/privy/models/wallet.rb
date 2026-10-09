@@ -112,6 +112,13 @@ module Privy
       #   @return [String, nil]
       optional :external_id, String
 
+      # @!attribute parent_wallet_id
+      #   ID of the HD root wallet this wallet was derived from, or null if it was not
+      #   derived from another wallet.
+      #
+      #   @return [String, nil]
+      optional :parent_wallet_id, String, nil?: true
+
       # @!attribute public_key
       #   The compressed, raw public key for the wallet along the chain cryptographic
       #   curve.
@@ -119,7 +126,7 @@ module Privy
       #   @return [String, nil]
       optional :public_key, String
 
-      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, automations: nil, chain: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, public_key: nil)
+      # @!method initialize(id:, additional_signers:, address:, chain_type:, created_at:, exported_at:, imported_at:, owner_id:, policy_ids:, archived_at: nil, authorization_threshold: nil, automations: nil, chain: nil, custody: nil, display_name: nil, entity: nil, external_id: nil, parent_wallet_id: nil, public_key: nil)
       #   Some parameter documentations has been truncated, see {Privy::Models::Wallet}
       #   for more details.
       #
@@ -158,6 +165,8 @@ module Privy
       #   @param entity [Privy::Models::WalletEntity, nil] The entity a wallet is attributed to.
       #
       #   @param external_id [String] A customer-provided identifier for mapping to external systems. URL-safe charact
+      #
+      #   @param parent_wallet_id [String, nil] ID of the HD root wallet this wallet was derived from, or null if it was not der
       #
       #   @param public_key [String] The compressed, raw public key for the wallet along the chain cryptographic curv
     end
