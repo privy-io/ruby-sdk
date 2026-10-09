@@ -38,6 +38,14 @@ module Privy
       end
       attr_writer :identifying_information
 
+      # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      # to accept, honoured only for developers enrolled in reliance.
+      sig { returns(T.nilable(Privy::KyxScreen)) }
+      attr_reader :kyc_screen
+
+      sig { params(kyc_screen: Privy::KyxScreen::OrHash).void }
+      attr_writer :kyc_screen
+
       # Legal last name.
       sig { returns(T.nilable(String)) }
       attr_reader :last_name
@@ -66,6 +74,14 @@ module Privy
 
       sig { params(nonresident_alien_attestation: T::Boolean).void }
       attr_writer :nonresident_alien_attestation
+
+      # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      # to accept, honoured only for developers enrolled in reliance.
+      sig { returns(T.nilable(Privy::KyxScreen)) }
+      attr_reader :ofac_screen
+
+      sig { params(ofac_screen: Privy::KyxScreen::OrHash).void }
+      attr_writer :ofac_screen
 
       # Phone number in E.164 format.
       sig { returns(T.nilable(String)) }
@@ -123,6 +139,52 @@ module Privy
       end
       attr_writer :transliterated_residential_address
 
+      # When you verified the user against a database source (ISO 8601), which loosens
+      # the identifying-document requirement under reliance.
+      sig do
+        returns(T.nilable(Privy::KYCSubmitData::VerifiedDatabaseAt::Variants))
+      end
+      attr_reader :verified_database_at
+
+      sig do
+        params(
+          verified_database_at:
+            Privy::KYCSubmitData::VerifiedDatabaseAt::Variants
+        ).void
+      end
+      attr_writer :verified_database_at
+
+      # When you verified the government ID (ISO 8601), which loosens the
+      # identifying-document requirement under reliance.
+      sig do
+        returns(T.nilable(Privy::KYCSubmitData::VerifiedGovidAt::Variants))
+      end
+      attr_reader :verified_govid_at
+
+      sig do
+        params(
+          verified_govid_at: Privy::KYCSubmitData::VerifiedGovidAt::Variants
+        ).void
+      end
+      attr_writer :verified_govid_at
+
+      # When you verified proof of address (ISO 8601), required for EEA customers and
+      # SEPA rails under reliance.
+      sig do
+        returns(
+          T.nilable(Privy::KYCSubmitData::VerifiedProofOfAddressAt::Variants)
+        )
+      end
+      attr_reader :verified_proof_of_address_at
+
+      sig do
+        params(
+          verified_proof_of_address_at:
+            Privy::KYCSubmitData::VerifiedProofOfAddressAt::Variants
+        ).void
+      end
+      attr_writer :verified_proof_of_address_at
+
       # KYC verification data for headless submission.
       sig do
         params(
@@ -131,17 +193,25 @@ module Privy
           first_name: String,
           identifying_information:
             T::Array[Privy::VerificationDocument::OrHash],
+          kyc_screen: Privy::KyxScreen::OrHash,
           last_name: String,
           middle_name: String,
           nationalities: T::Array[String],
           nonresident_alien_attestation: T::Boolean,
+          ofac_screen: Privy::KyxScreen::OrHash,
           phone: String,
           residential_address: Privy::VerificationAddress::OrHash,
           stripe_link_shared_data_id: String,
           transliterated_first_name: String,
           transliterated_last_name: String,
           transliterated_middle_name: String,
-          transliterated_residential_address: Privy::VerificationAddress::OrHash
+          transliterated_residential_address:
+            Privy::VerificationAddress::OrHash,
+          verified_database_at:
+            Privy::KYCSubmitData::VerifiedDatabaseAt::Variants,
+          verified_govid_at: Privy::KYCSubmitData::VerifiedGovidAt::Variants,
+          verified_proof_of_address_at:
+            Privy::KYCSubmitData::VerifiedProofOfAddressAt::Variants
         ).returns(T.attached_class)
       end
       def self.new(
@@ -153,6 +223,9 @@ module Privy
         first_name: nil,
         # Identifying documents.
         identifying_information: nil,
+        # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+        # to accept, honoured only for developers enrolled in reliance.
+        kyc_screen: nil,
         # Legal last name.
         last_name: nil,
         # Legal middle name.
@@ -162,6 +235,9 @@ module Privy
         # Attests the user is a nonresident alien to satisfy identification without a US
         # tax ID (must be enabled for you).
         nonresident_alien_attestation: nil,
+        # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+        # to accept, honoured only for developers enrolled in reliance.
+        ofac_screen: nil,
         # Phone number in E.164 format.
         phone: nil,
         # A postal address used in KYC and KYB data submission.
@@ -176,7 +252,16 @@ module Privy
         # Latin-1 transliteration of the middle name. Required for non-Latin-1 names.
         transliterated_middle_name: nil,
         # A postal address used in KYC and KYB data submission.
-        transliterated_residential_address: nil
+        transliterated_residential_address: nil,
+        # When you verified the user against a database source (ISO 8601), which loosens
+        # the identifying-document requirement under reliance.
+        verified_database_at: nil,
+        # When you verified the government ID (ISO 8601), which loosens the
+        # identifying-document requirement under reliance.
+        verified_govid_at: nil,
+        # When you verified proof of address (ISO 8601), required for EEA customers and
+        # SEPA rails under reliance.
+        verified_proof_of_address_at: nil
       )
       end
 
@@ -187,21 +272,76 @@ module Privy
             email: String,
             first_name: String,
             identifying_information: T::Array[Privy::VerificationDocument],
+            kyc_screen: Privy::KyxScreen,
             last_name: String,
             middle_name: String,
             nationalities: T::Array[String],
             nonresident_alien_attestation: T::Boolean,
+            ofac_screen: Privy::KyxScreen,
             phone: String,
             residential_address: Privy::VerificationAddress,
             stripe_link_shared_data_id: String,
             transliterated_first_name: String,
             transliterated_last_name: String,
             transliterated_middle_name: String,
-            transliterated_residential_address: Privy::VerificationAddress
+            transliterated_residential_address: Privy::VerificationAddress,
+            verified_database_at:
+              Privy::KYCSubmitData::VerifiedDatabaseAt::Variants,
+            verified_govid_at: Privy::KYCSubmitData::VerifiedGovidAt::Variants,
+            verified_proof_of_address_at:
+              Privy::KYCSubmitData::VerifiedProofOfAddressAt::Variants
           }
         )
       end
       def to_hash
+      end
+
+      # When you verified the user against a database source (ISO 8601), which loosens
+      # the identifying-document requirement under reliance.
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYCSubmitData::VerifiedDatabaseAt::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified the government ID (ISO 8601), which loosens the
+      # identifying-document requirement under reliance.
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYCSubmitData::VerifiedGovidAt::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified proof of address (ISO 8601), required for EEA customers and
+      # SEPA rails under reliance.
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYCSubmitData::VerifiedProofOfAddressAt::Variants]
+          )
+        end
+        def self.variants
+        end
       end
     end
   end

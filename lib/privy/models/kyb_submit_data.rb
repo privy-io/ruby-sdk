@@ -157,6 +157,20 @@ module Privy
       #   @return [Boolean, nil]
       optional :is_dao, Privy::Internal::Type::Boolean
 
+      # @!attribute kyb_screen
+      #   Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #   to accept, honoured only for developers enrolled in reliance.
+      #
+      #   @return [Privy::Models::KyxScreen, nil]
+      optional :kyb_screen, -> { Privy::KyxScreen }
+
+      # @!attribute ofac_screen
+      #   Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #   to accept, honoured only for developers enrolled in reliance.
+      #
+      #   @return [Privy::Models::KyxScreen, nil]
+      optional :ofac_screen, -> { Privy::KyxScreen }
+
       # @!attribute operates_in_prohibited_countries
       #   Whether the business operates in prohibited jurisdictions.
       #
@@ -250,7 +264,26 @@ module Privy
       #   @return [Privy::Models::VerificationAddress, nil]
       optional :transliterated_registered_address, -> { Privy::VerificationAddress }
 
-      # @!method initialize(account_purpose: nil, account_purpose_other: nil, acting_as_intermediary: nil, associated_persons: nil, business_description: nil, business_industry: nil, business_legal_name: nil, business_trade_name: nil, business_type: nil, compliance_screening_explanation: nil, conducts_money_services: nil, conducts_money_services_description: nil, conducts_money_services_using_bridge: nil, documents: nil, email: nil, estimated_annual_revenue_usd: nil, expected_monthly_payments_usd: nil, has_foreign_tax_registration: nil, has_material_intermediary_ownership: nil, high_risk_activities: nil, high_risk_activities_explanation: nil, identifying_information: nil, incorporation_date: nil, is_dao: nil, operates_in_prohibited_countries: nil, other_websites: nil, ownership_threshold: nil, phone: nil, physical_address: nil, primary_website: nil, publicly_traded_listings: nil, registered_address: nil, regulated_activity: nil, source_of_funds: nil, source_of_funds_description: nil, transliterated_business_legal_name: nil, transliterated_business_trade_name: nil, transliterated_physical_address: nil, transliterated_registered_address: nil)
+      # @!attribute verified_database_at
+      #   When you verified the business against a database source (ISO 8601).
+      #
+      #   @return [Time, Date, nil]
+      optional :verified_database_at, union: -> { Privy::KYBSubmitData::VerifiedDatabaseAt }
+
+      # @!attribute verified_govid_at
+      #   When you verified the business registration documents (ISO 8601).
+      #
+      #   @return [Time, Date, nil]
+      optional :verified_govid_at, union: -> { Privy::KYBSubmitData::VerifiedGovidAt }
+
+      # @!attribute verified_proof_of_address_at
+      #   When you verified the business proof of address (ISO 8601), required for EEA
+      #   customers and SEPA rails under reliance.
+      #
+      #   @return [Time, Date, nil]
+      optional :verified_proof_of_address_at, union: -> { Privy::KYBSubmitData::VerifiedProofOfAddressAt }
+
+      # @!method initialize(account_purpose: nil, account_purpose_other: nil, acting_as_intermediary: nil, associated_persons: nil, business_description: nil, business_industry: nil, business_legal_name: nil, business_trade_name: nil, business_type: nil, compliance_screening_explanation: nil, conducts_money_services: nil, conducts_money_services_description: nil, conducts_money_services_using_bridge: nil, documents: nil, email: nil, estimated_annual_revenue_usd: nil, expected_monthly_payments_usd: nil, has_foreign_tax_registration: nil, has_material_intermediary_ownership: nil, high_risk_activities: nil, high_risk_activities_explanation: nil, identifying_information: nil, incorporation_date: nil, is_dao: nil, kyb_screen: nil, ofac_screen: nil, operates_in_prohibited_countries: nil, other_websites: nil, ownership_threshold: nil, phone: nil, physical_address: nil, primary_website: nil, publicly_traded_listings: nil, registered_address: nil, regulated_activity: nil, source_of_funds: nil, source_of_funds_description: nil, transliterated_business_legal_name: nil, transliterated_business_trade_name: nil, transliterated_physical_address: nil, transliterated_registered_address: nil, verified_database_at: nil, verified_govid_at: nil, verified_proof_of_address_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KYBSubmitData} for more details.
       #
@@ -307,6 +340,10 @@ module Privy
       #
       #   @param is_dao [Boolean] Whether the business is a decentralized autonomous organization.
       #
+      #   @param kyb_screen [Privy::Models::KyxScreen] Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #
+      #   @param ofac_screen [Privy::Models::KyxScreen] Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #
       #   @param operates_in_prohibited_countries [Boolean] Whether the business operates in prohibited jurisdictions.
       #
       #   @param other_websites [Array<String>] Additional websites and social handles.
@@ -336,6 +373,55 @@ module Privy
       #   @param transliterated_physical_address [Privy::Models::VerificationAddress] A postal address used in KYC and KYB data submission.
       #
       #   @param transliterated_registered_address [Privy::Models::VerificationAddress] A postal address used in KYC and KYB data submission.
+      #
+      #   @param verified_database_at [Time, Date] When you verified the business against a database source (ISO 8601).
+      #
+      #   @param verified_govid_at [Time, Date] When you verified the business registration documents (ISO 8601).
+      #
+      #   @param verified_proof_of_address_at [Time, Date] When you verified the business proof of address (ISO 8601), required for EEA cus
+
+      # When you verified the business against a database source (ISO 8601).
+      #
+      # @see Privy::Models::KYBSubmitData#verified_database_at
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
+
+      # When you verified the business registration documents (ISO 8601).
+      #
+      # @see Privy::Models::KYBSubmitData#verified_govid_at
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
+
+      # When you verified the business proof of address (ISO 8601), required for EEA
+      # customers and SEPA rails under reliance.
+      #
+      # @see Privy::Models::KYBSubmitData#verified_proof_of_address_at
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
     end
   end
 end

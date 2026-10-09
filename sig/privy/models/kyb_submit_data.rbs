@@ -26,6 +26,8 @@ module Privy
         identifying_information: ::Array[Privy::VerificationDocument],
         incorporation_date: String,
         is_dao: bool,
+        kyb_screen: Privy::KyxScreen,
+        ofac_screen: Privy::KyxScreen,
         operates_in_prohibited_countries: bool,
         other_websites: ::Array[String],
         ownership_threshold: Integer,
@@ -40,7 +42,10 @@ module Privy
         transliterated_business_legal_name: String,
         transliterated_business_trade_name: String,
         transliterated_physical_address: Privy::VerificationAddress,
-        transliterated_registered_address: Privy::VerificationAddress
+        transliterated_registered_address: Privy::VerificationAddress,
+        verified_database_at: Privy::Models::KYBSubmitData::verified_database_at,
+        verified_govid_at: Privy::Models::KYBSubmitData::verified_govid_at,
+        verified_proof_of_address_at: Privy::Models::KYBSubmitData::verified_proof_of_address_at
       }
 
     class KYBSubmitData < Privy::Internal::Type::BaseModel
@@ -146,6 +151,14 @@ module Privy
 
       def is_dao=: (bool) -> bool
 
+      attr_reader kyb_screen: Privy::KyxScreen?
+
+      def kyb_screen=: (Privy::KyxScreen) -> Privy::KyxScreen
+
+      attr_reader ofac_screen: Privy::KyxScreen?
+
+      def ofac_screen=: (Privy::KyxScreen) -> Privy::KyxScreen
+
       attr_reader operates_in_prohibited_countries: bool?
 
       def operates_in_prohibited_countries=: (bool) -> bool
@@ -218,6 +231,24 @@ module Privy
         Privy::VerificationAddress
       ) -> Privy::VerificationAddress
 
+      attr_reader verified_database_at: Privy::Models::KYBSubmitData::verified_database_at?
+
+      def verified_database_at=: (
+        Privy::Models::KYBSubmitData::verified_database_at
+      ) -> Privy::Models::KYBSubmitData::verified_database_at
+
+      attr_reader verified_govid_at: Privy::Models::KYBSubmitData::verified_govid_at?
+
+      def verified_govid_at=: (
+        Privy::Models::KYBSubmitData::verified_govid_at
+      ) -> Privy::Models::KYBSubmitData::verified_govid_at
+
+      attr_reader verified_proof_of_address_at: Privy::Models::KYBSubmitData::verified_proof_of_address_at?
+
+      def verified_proof_of_address_at=: (
+        Privy::Models::KYBSubmitData::verified_proof_of_address_at
+      ) -> Privy::Models::KYBSubmitData::verified_proof_of_address_at
+
       def initialize: (
         ?account_purpose: String,
         ?account_purpose_other: String,
@@ -243,6 +274,8 @@ module Privy
         ?identifying_information: ::Array[Privy::VerificationDocument],
         ?incorporation_date: String,
         ?is_dao: bool,
+        ?kyb_screen: Privy::KyxScreen,
+        ?ofac_screen: Privy::KyxScreen,
         ?operates_in_prohibited_countries: bool,
         ?other_websites: ::Array[String],
         ?ownership_threshold: Integer,
@@ -257,7 +290,10 @@ module Privy
         ?transliterated_business_legal_name: String,
         ?transliterated_business_trade_name: String,
         ?transliterated_physical_address: Privy::VerificationAddress,
-        ?transliterated_registered_address: Privy::VerificationAddress
+        ?transliterated_registered_address: Privy::VerificationAddress,
+        ?verified_database_at: Privy::Models::KYBSubmitData::verified_database_at,
+        ?verified_govid_at: Privy::Models::KYBSubmitData::verified_govid_at,
+        ?verified_proof_of_address_at: Privy::Models::KYBSubmitData::verified_proof_of_address_at
       ) -> void
 
       def to_hash: -> {
@@ -285,6 +321,8 @@ module Privy
         identifying_information: ::Array[Privy::VerificationDocument],
         incorporation_date: String,
         is_dao: bool,
+        kyb_screen: Privy::KyxScreen,
+        ofac_screen: Privy::KyxScreen,
         operates_in_prohibited_countries: bool,
         other_websites: ::Array[String],
         ownership_threshold: Integer,
@@ -299,8 +337,35 @@ module Privy
         transliterated_business_legal_name: String,
         transliterated_business_trade_name: String,
         transliterated_physical_address: Privy::VerificationAddress,
-        transliterated_registered_address: Privy::VerificationAddress
+        transliterated_registered_address: Privy::VerificationAddress,
+        verified_database_at: Privy::Models::KYBSubmitData::verified_database_at,
+        verified_govid_at: Privy::Models::KYBSubmitData::verified_govid_at,
+        verified_proof_of_address_at: Privy::Models::KYBSubmitData::verified_proof_of_address_at
       }
+
+      type verified_database_at = Time | Date
+
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBSubmitData::verified_database_at]
+      end
+
+      type verified_govid_at = Time | Date
+
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBSubmitData::verified_govid_at]
+      end
+
+      type verified_proof_of_address_at = Time | Date
+
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBSubmitData::verified_proof_of_address_at]
+      end
     end
   end
 end

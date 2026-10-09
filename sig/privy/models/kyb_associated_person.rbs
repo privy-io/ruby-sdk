@@ -11,10 +11,13 @@ module Privy
         is_signer: bool,
         last_name: String,
         residential_address: Privy::VerificationAddress,
+        attested_ownership_structure_at: Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at,
         documents: ::Array[Privy::KYBIndividualDocument],
         is_director: bool,
+        kyc_screen: Privy::KyxScreen,
         middle_name: String,
         nationalities: ::Array[String],
+        ofac_screen: Privy::KyxScreen,
         ownership_percentage: Integer,
         phone: String,
         place_of_birth: Privy::KYBPlaceOfBirth,
@@ -23,7 +26,10 @@ module Privy
         transliterated_first_name: String,
         transliterated_last_name: String,
         transliterated_middle_name: String,
-        transliterated_residential_address: Privy::VerificationAddress
+        transliterated_residential_address: Privy::VerificationAddress,
+        verified_database_at: Privy::Models::KYBAssociatedPerson::verified_database_at,
+        verified_govid_at: Privy::Models::KYBAssociatedPerson::verified_govid_at,
+        verified_proof_of_address_at: Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at
       }
 
     class KYBAssociatedPerson < Privy::Internal::Type::BaseModel
@@ -45,6 +51,12 @@ module Privy
 
       attr_accessor residential_address: Privy::VerificationAddress
 
+      attr_reader attested_ownership_structure_at: Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at?
+
+      def attested_ownership_structure_at=: (
+        Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at
+      ) -> Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at
+
       attr_reader documents: ::Array[Privy::KYBIndividualDocument]?
 
       def documents=: (
@@ -55,6 +67,10 @@ module Privy
 
       def is_director=: (bool) -> bool
 
+      attr_reader kyc_screen: Privy::KyxScreen?
+
+      def kyc_screen=: (Privy::KyxScreen) -> Privy::KyxScreen
+
       attr_reader middle_name: String?
 
       def middle_name=: (String) -> String
@@ -62,6 +78,10 @@ module Privy
       attr_reader nationalities: ::Array[String]?
 
       def nationalities=: (::Array[String]) -> ::Array[String]
+
+      attr_reader ofac_screen: Privy::KyxScreen?
+
+      def ofac_screen=: (Privy::KyxScreen) -> Privy::KyxScreen
 
       attr_reader ownership_percentage: Integer?
 
@@ -101,6 +121,24 @@ module Privy
         Privy::VerificationAddress
       ) -> Privy::VerificationAddress
 
+      attr_reader verified_database_at: Privy::Models::KYBAssociatedPerson::verified_database_at?
+
+      def verified_database_at=: (
+        Privy::Models::KYBAssociatedPerson::verified_database_at
+      ) -> Privy::Models::KYBAssociatedPerson::verified_database_at
+
+      attr_reader verified_govid_at: Privy::Models::KYBAssociatedPerson::verified_govid_at?
+
+      def verified_govid_at=: (
+        Privy::Models::KYBAssociatedPerson::verified_govid_at
+      ) -> Privy::Models::KYBAssociatedPerson::verified_govid_at
+
+      attr_reader verified_proof_of_address_at: Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at?
+
+      def verified_proof_of_address_at=: (
+        Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at
+      ) -> Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at
+
       def initialize: (
         date_of_birth: String,
         email: String,
@@ -111,10 +149,13 @@ module Privy
         is_signer: bool,
         last_name: String,
         residential_address: Privy::VerificationAddress,
+        ?attested_ownership_structure_at: Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at,
         ?documents: ::Array[Privy::KYBIndividualDocument],
         ?is_director: bool,
+        ?kyc_screen: Privy::KyxScreen,
         ?middle_name: String,
         ?nationalities: ::Array[String],
+        ?ofac_screen: Privy::KyxScreen,
         ?ownership_percentage: Integer,
         ?phone: String,
         ?place_of_birth: Privy::KYBPlaceOfBirth,
@@ -123,7 +164,10 @@ module Privy
         ?transliterated_first_name: String,
         ?transliterated_last_name: String,
         ?transliterated_middle_name: String,
-        ?transliterated_residential_address: Privy::VerificationAddress
+        ?transliterated_residential_address: Privy::VerificationAddress,
+        ?verified_database_at: Privy::Models::KYBAssociatedPerson::verified_database_at,
+        ?verified_govid_at: Privy::Models::KYBAssociatedPerson::verified_govid_at,
+        ?verified_proof_of_address_at: Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at
       ) -> void
 
       def to_hash: -> {
@@ -136,10 +180,13 @@ module Privy
         is_signer: bool,
         last_name: String,
         residential_address: Privy::VerificationAddress,
+        attested_ownership_structure_at: Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at,
         documents: ::Array[Privy::KYBIndividualDocument],
         is_director: bool,
+        kyc_screen: Privy::KyxScreen,
         middle_name: String,
         nationalities: ::Array[String],
+        ofac_screen: Privy::KyxScreen,
         ownership_percentage: Integer,
         phone: String,
         place_of_birth: Privy::KYBPlaceOfBirth,
@@ -148,8 +195,43 @@ module Privy
         transliterated_first_name: String,
         transliterated_last_name: String,
         transliterated_middle_name: String,
-        transliterated_residential_address: Privy::VerificationAddress
+        transliterated_residential_address: Privy::VerificationAddress,
+        verified_database_at: Privy::Models::KYBAssociatedPerson::verified_database_at,
+        verified_govid_at: Privy::Models::KYBAssociatedPerson::verified_govid_at,
+        verified_proof_of_address_at: Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at
       }
+
+      type attested_ownership_structure_at = Time | Date
+
+      module AttestedOwnershipStructureAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBAssociatedPerson::attested_ownership_structure_at]
+      end
+
+      type verified_database_at = Time | Date
+
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBAssociatedPerson::verified_database_at]
+      end
+
+      type verified_govid_at = Time | Date
+
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBAssociatedPerson::verified_govid_at]
+      end
+
+      type verified_proof_of_address_at = Time | Date
+
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYBAssociatedPerson::verified_proof_of_address_at]
+      end
     end
   end
 end

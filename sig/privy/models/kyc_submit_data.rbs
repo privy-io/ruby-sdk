@@ -6,17 +6,22 @@ module Privy
         email: String,
         first_name: String,
         identifying_information: ::Array[Privy::VerificationDocument],
+        kyc_screen: Privy::KyxScreen,
         last_name: String,
         middle_name: String,
         nationalities: ::Array[String],
         nonresident_alien_attestation: bool,
+        ofac_screen: Privy::KyxScreen,
         phone: String,
         residential_address: Privy::VerificationAddress,
         stripe_link_shared_data_id: String,
         transliterated_first_name: String,
         transliterated_last_name: String,
         transliterated_middle_name: String,
-        transliterated_residential_address: Privy::VerificationAddress
+        transliterated_residential_address: Privy::VerificationAddress,
+        verified_database_at: Privy::Models::KYCSubmitData::verified_database_at,
+        verified_govid_at: Privy::Models::KYCSubmitData::verified_govid_at,
+        verified_proof_of_address_at: Privy::Models::KYCSubmitData::verified_proof_of_address_at
       }
 
     class KYCSubmitData < Privy::Internal::Type::BaseModel
@@ -38,6 +43,10 @@ module Privy
         ::Array[Privy::VerificationDocument]
       ) -> ::Array[Privy::VerificationDocument]
 
+      attr_reader kyc_screen: Privy::KyxScreen?
+
+      def kyc_screen=: (Privy::KyxScreen) -> Privy::KyxScreen
+
       attr_reader last_name: String?
 
       def last_name=: (String) -> String
@@ -53,6 +62,10 @@ module Privy
       attr_reader nonresident_alien_attestation: bool?
 
       def nonresident_alien_attestation=: (bool) -> bool
+
+      attr_reader ofac_screen: Privy::KyxScreen?
+
+      def ofac_screen=: (Privy::KyxScreen) -> Privy::KyxScreen
 
       attr_reader phone: String?
 
@@ -86,22 +99,45 @@ module Privy
         Privy::VerificationAddress
       ) -> Privy::VerificationAddress
 
+      attr_reader verified_database_at: Privy::Models::KYCSubmitData::verified_database_at?
+
+      def verified_database_at=: (
+        Privy::Models::KYCSubmitData::verified_database_at
+      ) -> Privy::Models::KYCSubmitData::verified_database_at
+
+      attr_reader verified_govid_at: Privy::Models::KYCSubmitData::verified_govid_at?
+
+      def verified_govid_at=: (
+        Privy::Models::KYCSubmitData::verified_govid_at
+      ) -> Privy::Models::KYCSubmitData::verified_govid_at
+
+      attr_reader verified_proof_of_address_at: Privy::Models::KYCSubmitData::verified_proof_of_address_at?
+
+      def verified_proof_of_address_at=: (
+        Privy::Models::KYCSubmitData::verified_proof_of_address_at
+      ) -> Privy::Models::KYCSubmitData::verified_proof_of_address_at
+
       def initialize: (
         ?date_of_birth: String,
         ?email: String,
         ?first_name: String,
         ?identifying_information: ::Array[Privy::VerificationDocument],
+        ?kyc_screen: Privy::KyxScreen,
         ?last_name: String,
         ?middle_name: String,
         ?nationalities: ::Array[String],
         ?nonresident_alien_attestation: bool,
+        ?ofac_screen: Privy::KyxScreen,
         ?phone: String,
         ?residential_address: Privy::VerificationAddress,
         ?stripe_link_shared_data_id: String,
         ?transliterated_first_name: String,
         ?transliterated_last_name: String,
         ?transliterated_middle_name: String,
-        ?transliterated_residential_address: Privy::VerificationAddress
+        ?transliterated_residential_address: Privy::VerificationAddress,
+        ?verified_database_at: Privy::Models::KYCSubmitData::verified_database_at,
+        ?verified_govid_at: Privy::Models::KYCSubmitData::verified_govid_at,
+        ?verified_proof_of_address_at: Privy::Models::KYCSubmitData::verified_proof_of_address_at
       ) -> void
 
       def to_hash: -> {
@@ -109,18 +145,47 @@ module Privy
         email: String,
         first_name: String,
         identifying_information: ::Array[Privy::VerificationDocument],
+        kyc_screen: Privy::KyxScreen,
         last_name: String,
         middle_name: String,
         nationalities: ::Array[String],
         nonresident_alien_attestation: bool,
+        ofac_screen: Privy::KyxScreen,
         phone: String,
         residential_address: Privy::VerificationAddress,
         stripe_link_shared_data_id: String,
         transliterated_first_name: String,
         transliterated_last_name: String,
         transliterated_middle_name: String,
-        transliterated_residential_address: Privy::VerificationAddress
+        transliterated_residential_address: Privy::VerificationAddress,
+        verified_database_at: Privy::Models::KYCSubmitData::verified_database_at,
+        verified_govid_at: Privy::Models::KYCSubmitData::verified_govid_at,
+        verified_proof_of_address_at: Privy::Models::KYCSubmitData::verified_proof_of_address_at
       }
+
+      type verified_database_at = Time | Date
+
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYCSubmitData::verified_database_at]
+      end
+
+      type verified_govid_at = Time | Date
+
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYCSubmitData::verified_govid_at]
+      end
+
+      type verified_proof_of_address_at = Time | Date
+
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KYCSubmitData::verified_proof_of_address_at]
+      end
     end
   end
 end

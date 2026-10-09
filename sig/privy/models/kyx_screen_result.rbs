@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type kyx_screen_result = :passed | :failed
+
+    module KyxScreenResult
+      extend Privy::Internal::Type::Enum
+
+      PASSED: :passed
+      FAILED: :failed
+
+      def self?.values: -> ::Array[Privy::Models::kyx_screen_result]
+    end
+  end
+end

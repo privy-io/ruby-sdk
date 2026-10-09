@@ -194,6 +194,22 @@ module Privy
       sig { params(is_dao: T::Boolean).void }
       attr_writer :is_dao
 
+      # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      # to accept, honoured only for developers enrolled in reliance.
+      sig { returns(T.nilable(Privy::KyxScreen)) }
+      attr_reader :kyb_screen
+
+      sig { params(kyb_screen: Privy::KyxScreen::OrHash).void }
+      attr_writer :kyb_screen
+
+      # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      # to accept, honoured only for developers enrolled in reliance.
+      sig { returns(T.nilable(Privy::KyxScreen)) }
+      attr_reader :ofac_screen
+
+      sig { params(ofac_screen: Privy::KyxScreen::OrHash).void }
+      attr_writer :ofac_screen
+
       # Whether the business operates in prohibited jurisdictions.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :operates_in_prohibited_countries
@@ -319,6 +335,50 @@ module Privy
       end
       attr_writer :transliterated_registered_address
 
+      # When you verified the business against a database source (ISO 8601).
+      sig do
+        returns(T.nilable(Privy::KYBSubmitData::VerifiedDatabaseAt::Variants))
+      end
+      attr_reader :verified_database_at
+
+      sig do
+        params(
+          verified_database_at:
+            Privy::KYBSubmitData::VerifiedDatabaseAt::Variants
+        ).void
+      end
+      attr_writer :verified_database_at
+
+      # When you verified the business registration documents (ISO 8601).
+      sig do
+        returns(T.nilable(Privy::KYBSubmitData::VerifiedGovidAt::Variants))
+      end
+      attr_reader :verified_govid_at
+
+      sig do
+        params(
+          verified_govid_at: Privy::KYBSubmitData::VerifiedGovidAt::Variants
+        ).void
+      end
+      attr_writer :verified_govid_at
+
+      # When you verified the business proof of address (ISO 8601), required for EEA
+      # customers and SEPA rails under reliance.
+      sig do
+        returns(
+          T.nilable(Privy::KYBSubmitData::VerifiedProofOfAddressAt::Variants)
+        )
+      end
+      attr_reader :verified_proof_of_address_at
+
+      sig do
+        params(
+          verified_proof_of_address_at:
+            Privy::KYBSubmitData::VerifiedProofOfAddressAt::Variants
+        ).void
+      end
+      attr_writer :verified_proof_of_address_at
+
       # KYB verification data for headless submission. Fields are individually optional
       # because the provider accepts partial submissions and grants endorsements once
       # enough data has arrived; a partial submission can be completed by calling the
@@ -350,6 +410,8 @@ module Privy
             T::Array[Privy::VerificationDocument::OrHash],
           incorporation_date: String,
           is_dao: T::Boolean,
+          kyb_screen: Privy::KyxScreen::OrHash,
+          ofac_screen: Privy::KyxScreen::OrHash,
           operates_in_prohibited_countries: T::Boolean,
           other_websites: T::Array[String],
           ownership_threshold: Integer,
@@ -365,7 +427,12 @@ module Privy
           transliterated_business_legal_name: String,
           transliterated_business_trade_name: String,
           transliterated_physical_address: Privy::VerificationAddress::OrHash,
-          transliterated_registered_address: Privy::VerificationAddress::OrHash
+          transliterated_registered_address: Privy::VerificationAddress::OrHash,
+          verified_database_at:
+            Privy::KYBSubmitData::VerifiedDatabaseAt::Variants,
+          verified_govid_at: Privy::KYBSubmitData::VerifiedGovidAt::Variants,
+          verified_proof_of_address_at:
+            Privy::KYBSubmitData::VerifiedProofOfAddressAt::Variants
         ).returns(T.attached_class)
       end
       def self.new(
@@ -427,6 +494,12 @@ module Privy
         incorporation_date: nil,
         # Whether the business is a decentralized autonomous organization.
         is_dao: nil,
+        # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+        # to accept, honoured only for developers enrolled in reliance.
+        kyb_screen: nil,
+        # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+        # to accept, honoured only for developers enrolled in reliance.
+        ofac_screen: nil,
         # Whether the business operates in prohibited jurisdictions.
         operates_in_prohibited_countries: nil,
         # Additional websites and social handles.
@@ -459,7 +532,14 @@ module Privy
         # A postal address used in KYC and KYB data submission.
         transliterated_physical_address: nil,
         # A postal address used in KYC and KYB data submission.
-        transliterated_registered_address: nil
+        transliterated_registered_address: nil,
+        # When you verified the business against a database source (ISO 8601).
+        verified_database_at: nil,
+        # When you verified the business registration documents (ISO 8601).
+        verified_govid_at: nil,
+        # When you verified the business proof of address (ISO 8601), required for EEA
+        # customers and SEPA rails under reliance.
+        verified_proof_of_address_at: nil
       )
       end
 
@@ -490,6 +570,8 @@ module Privy
             identifying_information: T::Array[Privy::VerificationDocument],
             incorporation_date: String,
             is_dao: T::Boolean,
+            kyb_screen: Privy::KyxScreen,
+            ofac_screen: Privy::KyxScreen,
             operates_in_prohibited_countries: T::Boolean,
             other_websites: T::Array[String],
             ownership_threshold: Integer,
@@ -504,11 +586,62 @@ module Privy
             transliterated_business_legal_name: String,
             transliterated_business_trade_name: String,
             transliterated_physical_address: Privy::VerificationAddress,
-            transliterated_registered_address: Privy::VerificationAddress
+            transliterated_registered_address: Privy::VerificationAddress,
+            verified_database_at:
+              Privy::KYBSubmitData::VerifiedDatabaseAt::Variants,
+            verified_govid_at: Privy::KYBSubmitData::VerifiedGovidAt::Variants,
+            verified_proof_of_address_at:
+              Privy::KYBSubmitData::VerifiedProofOfAddressAt::Variants
           }
         )
       end
       def to_hash
+      end
+
+      # When you verified the business against a database source (ISO 8601).
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYBSubmitData::VerifiedDatabaseAt::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified the business registration documents (ISO 8601).
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYBSubmitData::VerifiedGovidAt::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified the business proof of address (ISO 8601), required for EEA
+      # customers and SEPA rails under reliance.
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYBSubmitData::VerifiedProofOfAddressAt::Variants]
+          )
+        end
+        def self.variants
+        end
       end
     end
   end

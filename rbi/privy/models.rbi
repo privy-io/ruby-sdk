@@ -1449,6 +1449,10 @@ module Privy
 
   KyxProviderStatus = Privy::Models::KyxProviderStatus
 
+  KyxScreen = Privy::Models::KyxScreen
+
+  KyxScreenResult = Privy::Models::KyxScreenResult
+
   KyxTosRequestBody = Privy::Models::KyxTosRequestBody
 
   KyxTosResponse = Privy::Models::KyxTosResponse

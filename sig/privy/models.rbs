@@ -1235,6 +1235,10 @@ module Privy
 
   class KyxProviderStatus = Privy::Models::KyxProviderStatus
 
+  class KyxScreen = Privy::Models::KyxScreen
+
+  module KyxScreenResult = Privy::Models::KyxScreenResult
+
   class KyxTosRequestBody = Privy::Models::KyxTosRequestBody
 
   class KyxTosResponse = Privy::Models::KyxTosResponse

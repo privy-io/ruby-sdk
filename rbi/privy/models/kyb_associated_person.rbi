@@ -49,6 +49,25 @@ module Privy
       end
       attr_writer :residential_address
 
+      # When this person (a control person) attested to having verified the business
+      # ownership structure (ISO 8601).
+      sig do
+        returns(
+          T.nilable(
+            Privy::KYBAssociatedPerson::AttestedOwnershipStructureAt::Variants
+          )
+        )
+      end
+      attr_reader :attested_ownership_structure_at
+
+      sig do
+        params(
+          attested_ownership_structure_at:
+            Privy::KYBAssociatedPerson::AttestedOwnershipStructureAt::Variants
+        ).void
+      end
+      attr_writer :attested_ownership_structure_at
+
       # Supporting documents for this person, such as proof of address.
       sig { returns(T.nilable(T::Array[Privy::KYBIndividualDocument])) }
       attr_reader :documents
@@ -65,6 +84,14 @@ module Privy
       sig { params(is_director: T::Boolean).void }
       attr_writer :is_director
 
+      # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      # to accept, honoured only for developers enrolled in reliance.
+      sig { returns(T.nilable(Privy::KyxScreen)) }
+      attr_reader :kyc_screen
+
+      sig { params(kyc_screen: Privy::KyxScreen::OrHash).void }
+      attr_writer :kyc_screen
+
       # Legal middle name.
       sig { returns(T.nilable(String)) }
       attr_reader :middle_name
@@ -78,6 +105,14 @@ module Privy
 
       sig { params(nationalities: T::Array[String]).void }
       attr_writer :nationalities
+
+      # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      # to accept, honoured only for developers enrolled in reliance.
+      sig { returns(T.nilable(Privy::KyxScreen)) }
+      attr_reader :ofac_screen
+
+      sig { params(ofac_screen: Privy::KyxScreen::OrHash).void }
+      attr_writer :ofac_screen
 
       # Percentage of the business this person owns.
       sig { returns(T.nilable(Integer)) }
@@ -146,6 +181,56 @@ module Privy
       end
       attr_writer :transliterated_residential_address
 
+      # When you verified this person against a database source (ISO 8601).
+      sig do
+        returns(
+          T.nilable(Privy::KYBAssociatedPerson::VerifiedDatabaseAt::Variants)
+        )
+      end
+      attr_reader :verified_database_at
+
+      sig do
+        params(
+          verified_database_at:
+            Privy::KYBAssociatedPerson::VerifiedDatabaseAt::Variants
+        ).void
+      end
+      attr_writer :verified_database_at
+
+      # When you verified the government ID for this person (ISO 8601).
+      sig do
+        returns(
+          T.nilable(Privy::KYBAssociatedPerson::VerifiedGovidAt::Variants)
+        )
+      end
+      attr_reader :verified_govid_at
+
+      sig do
+        params(
+          verified_govid_at:
+            Privy::KYBAssociatedPerson::VerifiedGovidAt::Variants
+        ).void
+      end
+      attr_writer :verified_govid_at
+
+      # When you verified proof of address for this person (ISO 8601).
+      sig do
+        returns(
+          T.nilable(
+            Privy::KYBAssociatedPerson::VerifiedProofOfAddressAt::Variants
+          )
+        )
+      end
+      attr_reader :verified_proof_of_address_at
+
+      sig do
+        params(
+          verified_proof_of_address_at:
+            Privy::KYBAssociatedPerson::VerifiedProofOfAddressAt::Variants
+        ).void
+      end
+      attr_writer :verified_proof_of_address_at
+
       # A beneficial owner, control person, or signer associated with the business. At
       # least one of has_ownership, has_control, or is_signer must be true, and the
       # business must have at least one control person and one signer.
@@ -161,10 +246,14 @@ module Privy
           is_signer: T::Boolean,
           last_name: String,
           residential_address: Privy::VerificationAddress::OrHash,
+          attested_ownership_structure_at:
+            Privy::KYBAssociatedPerson::AttestedOwnershipStructureAt::Variants,
           documents: T::Array[Privy::KYBIndividualDocument::OrHash],
           is_director: T::Boolean,
+          kyc_screen: Privy::KyxScreen::OrHash,
           middle_name: String,
           nationalities: T::Array[String],
+          ofac_screen: Privy::KyxScreen::OrHash,
           ownership_percentage: Integer,
           phone: String,
           place_of_birth: Privy::KYBPlaceOfBirth::OrHash,
@@ -173,7 +262,14 @@ module Privy
           transliterated_first_name: String,
           transliterated_last_name: String,
           transliterated_middle_name: String,
-          transliterated_residential_address: Privy::VerificationAddress::OrHash
+          transliterated_residential_address:
+            Privy::VerificationAddress::OrHash,
+          verified_database_at:
+            Privy::KYBAssociatedPerson::VerifiedDatabaseAt::Variants,
+          verified_govid_at:
+            Privy::KYBAssociatedPerson::VerifiedGovidAt::Variants,
+          verified_proof_of_address_at:
+            Privy::KYBAssociatedPerson::VerifiedProofOfAddressAt::Variants
         ).returns(T.attached_class)
       end
       def self.new(
@@ -195,14 +291,23 @@ module Privy
         last_name:,
         # A postal address used in KYC and KYB data submission.
         residential_address:,
+        # When this person (a control person) attested to having verified the business
+        # ownership structure (ISO 8601).
+        attested_ownership_structure_at: nil,
         # Supporting documents for this person, such as proof of address.
         documents: nil,
         # Whether this person is a director.
         is_director: nil,
+        # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+        # to accept, honoured only for developers enrolled in reliance.
+        kyc_screen: nil,
         # Legal middle name.
         middle_name: nil,
         # ISO 3166-1 alpha-3 codes for all nationalities held.
         nationalities: nil,
+        # Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+        # to accept, honoured only for developers enrolled in reliance.
+        ofac_screen: nil,
         # Percentage of the business this person owns.
         ownership_percentage: nil,
         # Phone number in E.164 format.
@@ -220,7 +325,13 @@ module Privy
         # Latin-1 transliteration of the middle name. Required for non-Latin-1 names.
         transliterated_middle_name: nil,
         # A postal address used in KYC and KYB data submission.
-        transliterated_residential_address: nil
+        transliterated_residential_address: nil,
+        # When you verified this person against a database source (ISO 8601).
+        verified_database_at: nil,
+        # When you verified the government ID for this person (ISO 8601).
+        verified_govid_at: nil,
+        # When you verified proof of address for this person (ISO 8601).
+        verified_proof_of_address_at: nil
       )
       end
 
@@ -236,10 +347,14 @@ module Privy
             is_signer: T::Boolean,
             last_name: String,
             residential_address: Privy::VerificationAddress,
+            attested_ownership_structure_at:
+              Privy::KYBAssociatedPerson::AttestedOwnershipStructureAt::Variants,
             documents: T::Array[Privy::KYBIndividualDocument],
             is_director: T::Boolean,
+            kyc_screen: Privy::KyxScreen,
             middle_name: String,
             nationalities: T::Array[String],
+            ofac_screen: Privy::KyxScreen,
             ownership_percentage: Integer,
             phone: String,
             place_of_birth: Privy::KYBPlaceOfBirth,
@@ -248,11 +363,82 @@ module Privy
             transliterated_first_name: String,
             transliterated_last_name: String,
             transliterated_middle_name: String,
-            transliterated_residential_address: Privy::VerificationAddress
+            transliterated_residential_address: Privy::VerificationAddress,
+            verified_database_at:
+              Privy::KYBAssociatedPerson::VerifiedDatabaseAt::Variants,
+            verified_govid_at:
+              Privy::KYBAssociatedPerson::VerifiedGovidAt::Variants,
+            verified_proof_of_address_at:
+              Privy::KYBAssociatedPerson::VerifiedProofOfAddressAt::Variants
           }
         )
       end
       def to_hash
+      end
+
+      # When this person (a control person) attested to having verified the business
+      # ownership structure (ISO 8601).
+      module AttestedOwnershipStructureAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[
+              Privy::KYBAssociatedPerson::AttestedOwnershipStructureAt::Variants
+            ]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified this person against a database source (ISO 8601).
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYBAssociatedPerson::VerifiedDatabaseAt::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified the government ID for this person (ISO 8601).
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[Privy::KYBAssociatedPerson::VerifiedGovidAt::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # When you verified proof of address for this person (ISO 8601).
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Time, Date) }
+
+        sig do
+          override.returns(
+            T::Array[
+              Privy::KYBAssociatedPerson::VerifiedProofOfAddressAt::Variants
+            ]
+          )
+        end
+        def self.variants
+        end
       end
     end
   end

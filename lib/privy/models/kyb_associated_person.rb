@@ -57,6 +57,14 @@ module Privy
       #   @return [Privy::Models::VerificationAddress]
       required :residential_address, -> { Privy::VerificationAddress }
 
+      # @!attribute attested_ownership_structure_at
+      #   When this person (a control person) attested to having verified the business
+      #   ownership structure (ISO 8601).
+      #
+      #   @return [Time, Date, nil]
+      optional :attested_ownership_structure_at,
+               union: -> { Privy::KYBAssociatedPerson::AttestedOwnershipStructureAt }
+
       # @!attribute documents
       #   Supporting documents for this person, such as proof of address.
       #
@@ -69,6 +77,13 @@ module Privy
       #   @return [Boolean, nil]
       optional :is_director, Privy::Internal::Type::Boolean
 
+      # @!attribute kyc_screen
+      #   Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #   to accept, honoured only for developers enrolled in reliance.
+      #
+      #   @return [Privy::Models::KyxScreen, nil]
+      optional :kyc_screen, -> { Privy::KyxScreen }
+
       # @!attribute middle_name
       #   Legal middle name.
       #
@@ -80,6 +95,13 @@ module Privy
       #
       #   @return [Array<String>, nil]
       optional :nationalities, Privy::Internal::Type::ArrayOf[String]
+
+      # @!attribute ofac_screen
+      #   Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #   to accept, honoured only for developers enrolled in reliance.
+      #
+      #   @return [Privy::Models::KyxScreen, nil]
+      optional :ofac_screen, -> { Privy::KyxScreen }
 
       # @!attribute ownership_percentage
       #   Percentage of the business this person owns.
@@ -135,7 +157,28 @@ module Privy
       #   @return [Privy::Models::VerificationAddress, nil]
       optional :transliterated_residential_address, -> { Privy::VerificationAddress }
 
-      # @!method initialize(date_of_birth:, email:, first_name:, has_control:, has_ownership:, identifying_information:, is_signer:, last_name:, residential_address:, documents: nil, is_director: nil, middle_name: nil, nationalities: nil, ownership_percentage: nil, phone: nil, place_of_birth: nil, relationship_established_at: nil, title: nil, transliterated_first_name: nil, transliterated_last_name: nil, transliterated_middle_name: nil, transliterated_residential_address: nil)
+      # @!attribute verified_database_at
+      #   When you verified this person against a database source (ISO 8601).
+      #
+      #   @return [Time, Date, nil]
+      optional :verified_database_at, union: -> { Privy::KYBAssociatedPerson::VerifiedDatabaseAt }
+
+      # @!attribute verified_govid_at
+      #   When you verified the government ID for this person (ISO 8601).
+      #
+      #   @return [Time, Date, nil]
+      optional :verified_govid_at, union: -> { Privy::KYBAssociatedPerson::VerifiedGovidAt }
+
+      # @!attribute verified_proof_of_address_at
+      #   When you verified proof of address for this person (ISO 8601).
+      #
+      #   @return [Time, Date, nil]
+      optional :verified_proof_of_address_at, union: -> { Privy::KYBAssociatedPerson::VerifiedProofOfAddressAt }
+
+      # @!method initialize(date_of_birth:, email:, first_name:, has_control:, has_ownership:, identifying_information:, is_signer:, last_name:, residential_address:, attested_ownership_structure_at: nil, documents: nil, is_director: nil, kyc_screen: nil, middle_name: nil, nationalities: nil, ofac_screen: nil, ownership_percentage: nil, phone: nil, place_of_birth: nil, relationship_established_at: nil, title: nil, transliterated_first_name: nil, transliterated_last_name: nil, transliterated_middle_name: nil, transliterated_residential_address: nil, verified_database_at: nil, verified_govid_at: nil, verified_proof_of_address_at: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::KYBAssociatedPerson} for more details.
+      #
       #   A beneficial owner, control person, or signer associated with the business. At
       #   least one of has_ownership, has_control, or is_signer must be true, and the
       #   business must have at least one control person and one signer.
@@ -158,13 +201,19 @@ module Privy
       #
       #   @param residential_address [Privy::Models::VerificationAddress] A postal address used in KYC and KYB data submission.
       #
+      #   @param attested_ownership_structure_at [Time, Date] When this person (a control person) attested to having verified the business own
+      #
       #   @param documents [Array<Privy::Models::KYBIndividualDocument>] Supporting documents for this person, such as proof of address.
       #
       #   @param is_director [Boolean] Whether this person is a director.
       #
+      #   @param kyc_screen [Privy::Models::KyxScreen] Result of a KYC/AML or OFAC screen you performed and are relying on the provider
+      #
       #   @param middle_name [String] Legal middle name.
       #
       #   @param nationalities [Array<String>] ISO 3166-1 alpha-3 codes for all nationalities held.
+      #
+      #   @param ofac_screen [Privy::Models::KyxScreen] Result of a KYC/AML or OFAC screen you performed and are relying on the provider
       #
       #   @param ownership_percentage [Integer] Percentage of the business this person owns.
       #
@@ -183,6 +232,69 @@ module Privy
       #   @param transliterated_middle_name [String] Latin-1 transliteration of the middle name. Required for non-Latin-1 names.
       #
       #   @param transliterated_residential_address [Privy::Models::VerificationAddress] A postal address used in KYC and KYB data submission.
+      #
+      #   @param verified_database_at [Time, Date] When you verified this person against a database source (ISO 8601).
+      #
+      #   @param verified_govid_at [Time, Date] When you verified the government ID for this person (ISO 8601).
+      #
+      #   @param verified_proof_of_address_at [Time, Date] When you verified proof of address for this person (ISO 8601).
+
+      # When this person (a control person) attested to having verified the business
+      # ownership structure (ISO 8601).
+      #
+      # @see Privy::Models::KYBAssociatedPerson#attested_ownership_structure_at
+      module AttestedOwnershipStructureAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
+
+      # When you verified this person against a database source (ISO 8601).
+      #
+      # @see Privy::Models::KYBAssociatedPerson#verified_database_at
+      module VerifiedDatabaseAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
+
+      # When you verified the government ID for this person (ISO 8601).
+      #
+      # @see Privy::Models::KYBAssociatedPerson#verified_govid_at
+      module VerifiedGovidAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
+
+      # When you verified proof of address for this person (ISO 8601).
+      #
+      # @see Privy::Models::KYBAssociatedPerson#verified_proof_of_address_at
+      module VerifiedProofOfAddressAt
+        extend Privy::Internal::Type::Union
+
+        variant Time
+
+        variant Date
+
+        # @!method self.variants
+        #   @return [Array(Time, Date)]
+      end
     end
   end
 end

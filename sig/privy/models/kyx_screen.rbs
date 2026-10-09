@@ -1,0 +1,33 @@
+module Privy
+  module Models
+    type kyx_screen =
+      {
+        result: Privy::Models::kyx_screen_result,
+        screened_at: Privy::Models::KyxScreen::screened_at
+      }
+
+    class KyxScreen < Privy::Internal::Type::BaseModel
+      attr_accessor result: Privy::Models::kyx_screen_result
+
+      attr_accessor screened_at: Privy::Models::KyxScreen::screened_at
+
+      def initialize: (
+        result: Privy::Models::kyx_screen_result,
+        screened_at: Privy::Models::KyxScreen::screened_at
+      ) -> void
+
+      def to_hash: -> {
+        result: Privy::Models::kyx_screen_result,
+        screened_at: Privy::Models::KyxScreen::screened_at
+      }
+
+      type screened_at = Time | Date
+
+      module ScreenedAt
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::KyxScreen::screened_at]
+      end
+    end
+  end
+end
