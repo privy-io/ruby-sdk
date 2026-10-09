@@ -9,8 +9,7 @@ module Privy
       required :id, String
 
       # @!attribute asset
-      #   The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on
-      #   Tempo.
+      #   The stablecoin the card settles in.
       #
       #   @return [String]
       required :asset, String
@@ -90,7 +89,7 @@ module Privy
       #
       #   @param id [String]
       #
-      #   @param asset [String] The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on Tempo
+      #   @param asset [String] The stablecoin the card settles in.
       #
       #   @param balance_formatted [String, nil] USD amount the card can spend right now, or null when unavailable.
       #

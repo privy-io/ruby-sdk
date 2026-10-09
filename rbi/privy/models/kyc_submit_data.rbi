@@ -83,6 +83,14 @@ module Privy
       end
       attr_writer :residential_address
 
+      # Stripe Link shared data ID that supplies name, date of birth, address, and US
+      # SSN (omit those fields); retrieval errors surface in endorsements[].issues.
+      sig { returns(T.nilable(String)) }
+      attr_reader :stripe_link_shared_data_id
+
+      sig { params(stripe_link_shared_data_id: String).void }
+      attr_writer :stripe_link_shared_data_id
+
       # Latin-1 transliteration of the first name. Required for non-Latin-1 names.
       sig { returns(T.nilable(String)) }
       attr_reader :transliterated_first_name
@@ -129,6 +137,7 @@ module Privy
           nonresident_alien_attestation: T::Boolean,
           phone: String,
           residential_address: Privy::VerificationAddress::OrHash,
+          stripe_link_shared_data_id: String,
           transliterated_first_name: String,
           transliterated_last_name: String,
           transliterated_middle_name: String,
@@ -157,6 +166,9 @@ module Privy
         phone: nil,
         # A postal address used in KYC and KYB data submission.
         residential_address: nil,
+        # Stripe Link shared data ID that supplies name, date of birth, address, and US
+        # SSN (omit those fields); retrieval errors surface in endorsements[].issues.
+        stripe_link_shared_data_id: nil,
         # Latin-1 transliteration of the first name. Required for non-Latin-1 names.
         transliterated_first_name: nil,
         # Latin-1 transliteration of the last name. Required for non-Latin-1 names.
@@ -181,6 +193,7 @@ module Privy
             nonresident_alien_attestation: T::Boolean,
             phone: String,
             residential_address: Privy::VerificationAddress,
+            stripe_link_shared_data_id: String,
             transliterated_first_name: String,
             transliterated_last_name: String,
             transliterated_middle_name: String,

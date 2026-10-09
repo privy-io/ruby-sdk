@@ -64,6 +64,13 @@ module Privy
       #   @return [Privy::Models::VerificationAddress, nil]
       optional :residential_address, -> { Privy::VerificationAddress }
 
+      # @!attribute stripe_link_shared_data_id
+      #   Stripe Link shared data ID that supplies name, date of birth, address, and US
+      #   SSN (omit those fields); retrieval errors surface in endorsements[].issues.
+      #
+      #   @return [String, nil]
+      optional :stripe_link_shared_data_id, String
+
       # @!attribute transliterated_first_name
       #   Latin-1 transliteration of the first name. Required for non-Latin-1 names.
       #
@@ -88,7 +95,7 @@ module Privy
       #   @return [Privy::Models::VerificationAddress, nil]
       optional :transliterated_residential_address, -> { Privy::VerificationAddress }
 
-      # @!method initialize(date_of_birth: nil, email: nil, first_name: nil, identifying_information: nil, last_name: nil, middle_name: nil, nationalities: nil, nonresident_alien_attestation: nil, phone: nil, residential_address: nil, transliterated_first_name: nil, transliterated_last_name: nil, transliterated_middle_name: nil, transliterated_residential_address: nil)
+      # @!method initialize(date_of_birth: nil, email: nil, first_name: nil, identifying_information: nil, last_name: nil, middle_name: nil, nationalities: nil, nonresident_alien_attestation: nil, phone: nil, residential_address: nil, stripe_link_shared_data_id: nil, transliterated_first_name: nil, transliterated_last_name: nil, transliterated_middle_name: nil, transliterated_residential_address: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KYCSubmitData} for more details.
       #
@@ -113,6 +120,8 @@ module Privy
       #   @param phone [String] Phone number in E.164 format.
       #
       #   @param residential_address [Privy::Models::VerificationAddress] A postal address used in KYC and KYB data submission.
+      #
+      #   @param stripe_link_shared_data_id [String] Stripe Link shared data ID that supplies name, date of birth, address, and US SS
       #
       #   @param transliterated_first_name [String] Latin-1 transliteration of the first name. Required for non-Latin-1 names.
       #

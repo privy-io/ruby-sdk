@@ -12,6 +12,7 @@ module Privy
         nonresident_alien_attestation: bool,
         phone: String,
         residential_address: Privy::VerificationAddress,
+        stripe_link_shared_data_id: String,
         transliterated_first_name: String,
         transliterated_last_name: String,
         transliterated_middle_name: String,
@@ -63,6 +64,10 @@ module Privy
         Privy::VerificationAddress
       ) -> Privy::VerificationAddress
 
+      attr_reader stripe_link_shared_data_id: String?
+
+      def stripe_link_shared_data_id=: (String) -> String
+
       attr_reader transliterated_first_name: String?
 
       def transliterated_first_name=: (String) -> String
@@ -92,6 +97,7 @@ module Privy
         ?nonresident_alien_attestation: bool,
         ?phone: String,
         ?residential_address: Privy::VerificationAddress,
+        ?stripe_link_shared_data_id: String,
         ?transliterated_first_name: String,
         ?transliterated_last_name: String,
         ?transliterated_middle_name: String,
@@ -109,6 +115,7 @@ module Privy
         nonresident_alien_attestation: bool,
         phone: String,
         residential_address: Privy::VerificationAddress,
+        stripe_link_shared_data_id: String,
         transliterated_first_name: String,
         transliterated_last_name: String,
         transliterated_middle_name: String,

@@ -11,8 +11,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :id
 
-      # The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on
-      # Tempo.
+      # The stablecoin the card settles in.
       sig { returns(String) }
       attr_accessor :asset
 
@@ -100,8 +99,7 @@ module Privy
       end
       def self.new(
         id:,
-        # The stablecoin the card settles in: 'usdc' on EVM and Solana, 'pathusd' on
-        # Tempo.
+        # The stablecoin the card settles in.
         asset:,
         # USD amount the card can spend right now, or null when unavailable.
         balance_formatted:,

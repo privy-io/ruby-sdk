@@ -4,8 +4,7 @@ module Privy
   module Models
     class CardIssuingCreateCardInput < Privy::Internal::Type::BaseModel
       # @!attribute asset
-      #   The asset to fund the card. Must be 'usdc' on EVM and Solana, or 'pathusd' on
-      #   Tempo.
+      #   The asset that funds the card on `chain_id`.
       #
       #   @return [String]
       required :asset, String
@@ -33,7 +32,7 @@ module Privy
       #
       #   Input for creating a virtual Stripe Issuing card for a Privy wallet.
       #
-      #   @param asset [String] The asset to fund the card. Must be 'usdc' on EVM and Solana, or 'pathusd' on Te
+      #   @param asset [String] The asset that funds the card on `chain_id`.
       #
       #   @param chain_id [String] A valid CAIP-2 chain ID (e.g. 'eip155:4217' for Tempo, 'eip155:1' for Ethereum).
       #
