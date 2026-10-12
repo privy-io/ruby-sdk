@@ -83,6 +83,7 @@ module Privy
           | :avax
           | :pol
           | :bnb
+          | :mon
           | :usdt
           | :eurc
           | :usdb
@@ -103,6 +104,7 @@ module Privy
           AVAX: :avax
           POL: :pol
           BNB: :bnb
+          MON: :mon
           USDT: :usdt
           EURC: :eurc
           USDB: :usdb
@@ -136,6 +138,7 @@ module Privy
           | :hyperevm
           | :hypercore
           | :arc
+          | :monad
           | :tempo_testnet
           | :hoodi
           | :sepolia
@@ -180,6 +183,7 @@ module Privy
           HYPEREVM: :hyperevm
           HYPERCORE: :hypercore
           ARC: :arc
+          MONAD: :monad
           TEMPO_TESTNET: :tempo_testnet
           HOODI: :hoodi
           SEPOLIA: :sepolia

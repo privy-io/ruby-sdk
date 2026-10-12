@@ -252,6 +252,8 @@ module Privy
             T.let(:pol, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           BNB =
             T.let(:bnb, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
+          MON =
+            T.let(:mon, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           USDT =
             T.let(:usdt, Privy::Wallets::BalanceGetParams::Asset::TaggedSymbol)
           EURC =
@@ -389,6 +391,8 @@ module Privy
             )
           ARC =
             T.let(:arc, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
+          MONAD =
+            T.let(:monad, Privy::Wallets::BalanceGetParams::Chain::TaggedSymbol)
           TEMPO_TESTNET =
             T.let(
               :tempo_testnet,

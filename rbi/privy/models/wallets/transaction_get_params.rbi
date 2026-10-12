@@ -228,6 +228,11 @@ module Privy
               :bnb,
               Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
             )
+          MON =
+            T.let(
+              :mon,
+              Privy::Wallets::TransactionGetParams::Asset::TaggedSymbol
+            )
           USDT =
             T.let(
               :usdt,

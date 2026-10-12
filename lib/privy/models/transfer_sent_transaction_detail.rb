@@ -93,6 +93,8 @@ module Privy
 
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::BNB }
 
+        variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::MON }
+
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::USDT }
 
         variant const: -> { Privy::Models::TransferSentTransactionDetail::Asset::EURC }
@@ -124,6 +126,7 @@ module Privy
         AVAX = :avax
         POL = :pol
         BNB = :bnb
+        MON = :mon
         USDT = :usdt
         EURC = :eurc
         USDB = :usdb

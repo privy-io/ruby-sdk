@@ -15,6 +15,7 @@ module Privy
       AVAX = T.let(:avax, Privy::WalletAsset::TaggedSymbol)
       POL = T.let(:pol, Privy::WalletAsset::TaggedSymbol)
       BNB = T.let(:bnb, Privy::WalletAsset::TaggedSymbol)
+      MON = T.let(:mon, Privy::WalletAsset::TaggedSymbol)
       USDT = T.let(:usdt, Privy::WalletAsset::TaggedSymbol)
       EURC = T.let(:eurc, Privy::WalletAsset::TaggedSymbol)
       USDB = T.let(:usdb, Privy::WalletAsset::TaggedSymbol)

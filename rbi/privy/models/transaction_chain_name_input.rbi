@@ -39,6 +39,7 @@ module Privy
       SOLANA = T.let(:solana, Privy::TransactionChainNameInput::TaggedSymbol)
       SEPOLIA = T.let(:sepolia, Privy::TransactionChainNameInput::TaggedSymbol)
       ARC = T.let(:arc, Privy::TransactionChainNameInput::TaggedSymbol)
+      MONAD = T.let(:monad, Privy::TransactionChainNameInput::TaggedSymbol)
     end
   end
 end

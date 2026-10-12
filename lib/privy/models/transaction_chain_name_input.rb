@@ -32,6 +32,8 @@ module Privy
 
       variant const: -> { Privy::Models::TransactionChainNameInput::ARC }
 
+      variant const: -> { Privy::Models::TransactionChainNameInput::MONAD }
+
       variant String
 
       # @!method self.variants
@@ -56,6 +58,7 @@ module Privy
       SOLANA = :solana
       SEPOLIA = :sepolia
       ARC = :arc
+      MONAD = :monad
 
       # @!endgroup
     end

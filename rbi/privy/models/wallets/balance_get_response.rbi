@@ -166,6 +166,11 @@ module Privy
                 :bnb,
                 Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
               )
+            MON =
+              T.let(
+                :mon,
+                Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::TaggedSymbol
+              )
             USDT =
               T.let(
                 :usdt,

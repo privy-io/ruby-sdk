@@ -112,6 +112,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::BNB }
 
+          variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::MON }
+
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::USDT }
 
           variant const: -> { Privy::Models::Wallets::TransactionGetParams::Asset::EURC }
@@ -148,6 +150,7 @@ module Privy
           AVAX = :avax
           POL = :pol
           BNB = :bnb
+          MON = :mon
           USDT = :usdt
           EURC = :eurc
           USDB = :usdb

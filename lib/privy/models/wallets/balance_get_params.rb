@@ -103,6 +103,8 @@ module Privy
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::BNB }
 
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::MON }
+
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::USDT }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Asset::EURC }
@@ -134,6 +136,7 @@ module Privy
           AVAX = :avax
           POL = :pol
           BNB = :bnb
+          MON = :mon
           USDT = :usdt
           EURC = :eurc
           USDB = :usdb
@@ -194,6 +197,8 @@ module Privy
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::HYPERCORE }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::ARC }
+
+          variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::MONAD }
 
           variant const: -> { Privy::Models::Wallets::BalanceGetParams::Chain::TEMPO_TESTNET }
 
@@ -265,6 +270,7 @@ module Privy
           HYPEREVM = :hyperevm
           HYPERCORE = :hypercore
           ARC = :arc
+          MONAD = :monad
           TEMPO_TESTNET = :tempo_testnet
           HOODI = :hoodi
           SEPOLIA = :sepolia

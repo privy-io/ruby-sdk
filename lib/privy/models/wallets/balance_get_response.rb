@@ -68,6 +68,8 @@ module Privy
 
             variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::BNB }
 
+            variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::MON }
+
             variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::USDT }
 
             variant const: -> { Privy::Models::Wallets::BalanceGetResponse::Balance::Asset::EURC }
@@ -99,6 +101,7 @@ module Privy
             AVAX = :avax
             POL = :pol
             BNB = :bnb
+            MON = :mon
             USDT = :usdt
             EURC = :eurc
             USDB = :usdb
