@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type denylist_solana_address_input =
+      { type: Privy::Models::DenylistSolanaAddressInput::type_, value: String }
+
+    class DenylistSolanaAddressInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::DenylistSolanaAddressInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::DenylistSolanaAddressInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::DenylistSolanaAddressInput::type_,
+        value: String
+      }
+
+      type type_ = :solanaAddress
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SOLANA_ADDRESS: :solanaAddress
+
+        def self?.values: -> ::Array[Privy::Models::DenylistSolanaAddressInput::type_]
+      end
+    end
+  end
+end

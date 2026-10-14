@@ -8,6 +8,10 @@ module Privy
       # @return [Privy::Resources::Apps::Allowlist]
       attr_reader :allowlist
 
+      # Operations related to app settings and allowlist management
+      # @return [Privy::Resources::Apps::Denylist]
+      attr_reader :denylist
+
       # Get the settings and configuration for an app.
       #
       # @overload get(app_id, request_options: {})
@@ -79,6 +83,7 @@ module Privy
       def initialize(client:)
         @client = client
         @allowlist = Privy::Resources::Apps::Allowlist.new(client: client)
+        @denylist = Privy::Resources::Apps::Denylist.new(client: client)
       end
     end
   end

@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type denylist_email_input =
+      { type: Privy::Models::DenylistEmailInput::type_, value: String }
+
+    class DenylistEmailInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::DenylistEmailInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::DenylistEmailInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::DenylistEmailInput::type_,
+        value: String
+      }
+
+      type type_ = :email
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        EMAIL: :email
+
+        def self?.values: -> ::Array[Privy::Models::DenylistEmailInput::type_]
+      end
+    end
+  end
+end

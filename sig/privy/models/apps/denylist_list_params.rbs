@@ -1,0 +1,36 @@
+module Privy
+  module Models
+    module Apps
+      type denylist_list_params =
+        { app_id: String, cursor: String, limit: Float? }
+        & Privy::Internal::Type::request_parameters
+
+      class DenylistListParams < Privy::Internal::Type::BaseModel
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        attr_accessor app_id: String
+
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
+        attr_accessor limit: Float?
+
+        def initialize: (
+          app_id: String,
+          ?cursor: String,
+          ?limit: Float?,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          app_id: String,
+          cursor: String,
+          limit: Float?,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

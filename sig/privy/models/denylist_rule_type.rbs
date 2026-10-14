@@ -1,0 +1,23 @@
+module Privy
+  module Models
+    type denylist_rule_type =
+      :email
+      | :emailDomain
+      | :phone
+      | :ethereumAddress
+      | :solanaAddress
+      | String
+
+    module DenylistRuleType
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::denylist_rule_type]
+
+      EMAIL: :email
+      EMAIL_DOMAIN: :emailDomain
+      PHONE: :phone
+      ETHEREUM_ADDRESS: :ethereumAddress
+      SOLANA_ADDRESS: :solanaAddress
+    end
+  end
+end

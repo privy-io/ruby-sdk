@@ -1,0 +1,27 @@
+module Privy
+  module Models
+    module Apps
+      type denylist_delete_params =
+        { app_id: String } & Privy::Internal::Type::request_parameters
+
+      class DenylistDeleteParams < Privy::Models::DenylistEntryDeleteRequestBody
+        extend Privy::Internal::Type::RequestParameters::Converter
+        include Privy::Internal::Type::RequestParameters
+
+        def app_id: -> String
+
+        def app_id=: (String _) -> String
+
+        def initialize: (
+          app_id: String,
+          ?request_options: Privy::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          app_id: String,
+          request_options: Privy::RequestOptions
+        }
+      end
+    end
+  end
+end

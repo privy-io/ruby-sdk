@@ -46,15 +46,15 @@ List methods in the Privy API API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```ruby
-page = privy_api.intents.list
+page = privy_api.apps.denylist.list
 
 # Fetch single item from page.
-intent = page.data[0]
-puts(intent)
+denylist = page.data[0]
+puts(denylist.id)
 
 # Automatically fetches more pages as needed.
-page.auto_paging_each do |intent|
-  puts(intent)
+page.auto_paging_each do |denylist|
+  puts(denylist.id)
 end
 ```
 
@@ -63,7 +63,7 @@ Alternatively, you can use the `#next_page?` and `#next_page` methods for more g
 ```ruby
 if page.next_page?
   new_page = page.next_page
-  puts(new_page.data[0])
+  puts(new_page.data[0].id)
 end
 ```
 

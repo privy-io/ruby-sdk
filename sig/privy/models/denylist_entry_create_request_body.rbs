@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type denylist_entry_create_request_body =
+      Privy::DenylistEmailInput
+      | Privy::DenylistEmailDomainInput
+      | Privy::DenylistPhoneInput
+      | Privy::DenylistEthereumAddressInput
+      | Privy::DenylistSolanaAddressInput
+
+    module DenylistEntryCreateRequestBody
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::denylist_entry_create_request_body]
+    end
+  end
+end

@@ -64,6 +64,12 @@ module Privy
       #   @return [Symbol, Privy::Models::LinkedAccountSolanaEmbeddedWallet::Type]
       required :type, enum: -> { Privy::LinkedAccountSolanaEmbeddedWallet::Type }
 
+      # @!attribute user_can_sign
+      #   Whether the user can unilaterally sign with this wallet.
+      #
+      #   @return [Boolean]
+      required :user_can_sign, Privy::Internal::Type::Boolean
+
       # @!attribute verified_at
       #
       #   @return [Float]
@@ -84,13 +90,7 @@ module Privy
       #   @return [Float]
       required :wallet_index, Float
 
-      # @!attribute user_can_sign
-      #   Whether the user can unilaterally sign with this wallet.
-      #
-      #   @return [Boolean, nil]
-      optional :user_can_sign, Privy::Internal::Type::Boolean
-
-      # @!method initialize(id:, address:, chain_id:, chain_type:, connector_type:, delegated:, first_verified_at:, imported:, latest_verified_at:, public_key:, recovery_method:, type:, verified_at:, wallet_client:, wallet_client_type:, wallet_index:, user_can_sign: nil)
+      # @!method initialize(id:, address:, chain_id:, chain_type:, connector_type:, delegated:, first_verified_at:, imported:, latest_verified_at:, public_key:, recovery_method:, type:, user_can_sign:, verified_at:, wallet_client:, wallet_client_type:, wallet_index:)
       #   A Solana embedded wallet account linked to the user.
       #
       #   @param id [String, nil]
@@ -117,6 +117,8 @@ module Privy
       #
       #   @param type [Symbol, Privy::Models::LinkedAccountSolanaEmbeddedWallet::Type]
       #
+      #   @param user_can_sign [Boolean] Whether the user can unilaterally sign with this wallet.
+      #
       #   @param verified_at [Float]
       #
       #   @param wallet_client [Symbol, Privy::Models::LinkedAccountSolanaEmbeddedWallet::WalletClient]
@@ -124,8 +126,6 @@ module Privy
       #   @param wallet_client_type [Symbol, Privy::Models::LinkedAccountSolanaEmbeddedWallet::WalletClientType]
       #
       #   @param wallet_index [Float]
-      #
-      #   @param user_can_sign [Boolean] Whether the user can unilaterally sign with this wallet.
 
       # @see Privy::Models::LinkedAccountSolanaEmbeddedWallet#chain_type
       module ChainType

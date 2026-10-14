@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    type denylist_phone_input =
+      { type: Privy::Models::DenylistPhoneInput::type_, value: String }
+
+    class DenylistPhoneInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::DenylistPhoneInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::DenylistPhoneInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::DenylistPhoneInput::type_,
+        value: String
+      }
+
+      type type_ = :phone
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        PHONE: :phone
+
+        def self?.values: -> ::Array[Privy::Models::DenylistPhoneInput::type_]
+      end
+    end
+  end
+end

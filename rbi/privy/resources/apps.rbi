@@ -8,6 +8,10 @@ module Privy
       sig { returns(Privy::Resources::Apps::Allowlist) }
       attr_reader :allowlist
 
+      # Operations related to app settings and allowlist management
+      sig { returns(Privy::Resources::Apps::Denylist) }
+      attr_reader :denylist
+
       # Get the settings and configuration for an app.
       sig do
         params(

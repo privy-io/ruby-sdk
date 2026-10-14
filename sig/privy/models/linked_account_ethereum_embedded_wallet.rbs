@@ -13,11 +13,11 @@ module Privy
         latest_verified_at: Float?,
         recovery_method: Privy::Models::embedded_wallet_recovery_method,
         type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::type_,
+        user_can_sign: bool,
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client_type,
-        wallet_index: Float,
-        user_can_sign: bool
+        wallet_index: Float
       }
 
     class LinkedAccountEthereumEmbeddedWallet < Privy::Internal::Type::BaseModel
@@ -43,6 +43,8 @@ module Privy
 
       attr_accessor type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::type_
 
+      attr_accessor user_can_sign: bool
+
       attr_accessor verified_at: Float
 
       attr_accessor wallet_client: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client
@@ -50,10 +52,6 @@ module Privy
       attr_accessor wallet_client_type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client_type
 
       attr_accessor wallet_index: Float
-
-      attr_reader user_can_sign: bool?
-
-      def user_can_sign=: (bool) -> bool
 
       def initialize: (
         id: String?,
@@ -67,11 +65,11 @@ module Privy
         latest_verified_at: Float?,
         recovery_method: Privy::Models::embedded_wallet_recovery_method,
         type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::type_,
+        user_can_sign: bool,
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client_type,
-        wallet_index: Float,
-        ?user_can_sign: bool
+        wallet_index: Float
       ) -> void
 
       def to_hash: -> {
@@ -86,11 +84,11 @@ module Privy
         latest_verified_at: Float?,
         recovery_method: Privy::Models::embedded_wallet_recovery_method,
         type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::type_,
+        user_can_sign: bool,
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountEthereumEmbeddedWallet::wallet_client_type,
-        wallet_index: Float,
-        user_can_sign: bool
+        wallet_index: Float
       }
 
       type chain_type = :ethereum

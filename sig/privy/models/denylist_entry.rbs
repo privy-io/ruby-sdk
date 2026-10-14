@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type denylist_entry =
+      {
+        id: String,
+        rule_type: Privy::Models::denylist_rule_type,
+        value: String
+      }
+
+    class DenylistEntry < Privy::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor rule_type: Privy::Models::denylist_rule_type
+
+      attr_accessor value: String
+
+      def initialize: (
+        id: String,
+        rule_type: Privy::Models::denylist_rule_type,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        rule_type: Privy::Models::denylist_rule_type,
+        value: String
+      }
+    end
+  end
+end

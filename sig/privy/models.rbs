@@ -503,6 +503,26 @@ module Privy
 
   class CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
 
+  class DenylistEmailDomainInput = Privy::Models::DenylistEmailDomainInput
+
+  class DenylistEmailInput = Privy::Models::DenylistEmailInput
+
+  class DenylistEntry = Privy::Models::DenylistEntry
+
+  module DenylistEntryCreateRequestBody = Privy::Models::DenylistEntryCreateRequestBody
+
+  class DenylistEntryDeleteRequestBody = Privy::Models::DenylistEntryDeleteRequestBody
+
+  class DenylistEthereumAddressInput = Privy::Models::DenylistEthereumAddressInput
+
+  class DenylistListResponse = Privy::Models::DenylistListResponse
+
+  class DenylistPhoneInput = Privy::Models::DenylistPhoneInput
+
+  module DenylistRuleType = Privy::Models::DenylistRuleType
+
+  class DenylistSolanaAddressInput = Privy::Models::DenylistSolanaAddressInput
+
   class DepositAccountCryptoQuoteAmount = Privy::Models::DepositAccountCryptoQuoteAmount
 
   class DepositAccountCryptoQuoteAsset = Privy::Models::DepositAccountCryptoQuoteAsset

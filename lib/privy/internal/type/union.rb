@@ -6,28 +6,28 @@ module Privy
       # @api private
       #
       # @example
-      #   # `user_invite_input` is a `Privy::UserInviteInput`
-      #   case user_invite_input
-      #   when Privy::EmailInviteInput
-      #     puts(user_invite_input.type)
-      #   when Privy::EmailDomainInviteInput
-      #     puts(user_invite_input.value)
-      #   when Privy::WalletInviteInput
-      #     puts(user_invite_input.type)
+      #   # `denylist_entry_create_request_body` is a `Privy::DenylistEntryCreateRequestBody`
+      #   case denylist_entry_create_request_body
+      #   when Privy::DenylistEmailInput
+      #     puts(denylist_entry_create_request_body.type)
+      #   when Privy::DenylistEmailDomainInput
+      #     puts(denylist_entry_create_request_body.value)
+      #   when Privy::DenylistPhoneInput
+      #     puts(denylist_entry_create_request_body.type)
       #   else
-      #     puts(user_invite_input)
+      #     puts(denylist_entry_create_request_body)
       #   end
       #
       # @example
-      #   case user_invite_input
+      #   case denylist_entry_create_request_body
       #   in {type: :email, value: value}
       #     puts(value)
       #   in {type: :emailDomain, value: value}
       #     puts(value)
-      #   in {type: :wallet, value: value}
+      #   in {type: :phone, value: value}
       #     puts(value)
       #   else
-      #     puts(user_invite_input)
+      #     puts(denylist_entry_create_request_body)
       #   end
       module Union
         include Privy::Internal::Type::Converter

@@ -1,0 +1,28 @@
+module Privy
+  module Resources
+    class Apps
+      class Denylist
+        def create: (
+          String app_id,
+          denylist_entry_create_request_body: Privy::Models::denylist_entry_create_request_body,
+          ?request_options: Privy::request_opts
+        ) -> Privy::DenylistEntry
+
+        def list: (
+          String app_id,
+          ?cursor: String,
+          ?limit: Float?,
+          ?request_options: Privy::request_opts
+        ) -> Privy::Internal::Cursor[Privy::DenylistEntry]
+
+        def delete: (
+          String app_id,
+          id: String,
+          ?request_options: Privy::request_opts
+        ) -> nil
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

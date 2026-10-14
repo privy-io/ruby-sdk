@@ -591,6 +591,26 @@ module Privy
 
   CustomTokenTransferSource = Privy::Models::CustomTokenTransferSource
 
+  DenylistEmailDomainInput = Privy::Models::DenylistEmailDomainInput
+
+  DenylistEmailInput = Privy::Models::DenylistEmailInput
+
+  DenylistEntry = Privy::Models::DenylistEntry
+
+  DenylistEntryCreateRequestBody = Privy::Models::DenylistEntryCreateRequestBody
+
+  DenylistEntryDeleteRequestBody = Privy::Models::DenylistEntryDeleteRequestBody
+
+  DenylistEthereumAddressInput = Privy::Models::DenylistEthereumAddressInput
+
+  DenylistListResponse = Privy::Models::DenylistListResponse
+
+  DenylistPhoneInput = Privy::Models::DenylistPhoneInput
+
+  DenylistRuleType = Privy::Models::DenylistRuleType
+
+  DenylistSolanaAddressInput = Privy::Models::DenylistSolanaAddressInput
+
   DepositAccountCryptoQuoteAmount =
     Privy::Models::DepositAccountCryptoQuoteAmount
 

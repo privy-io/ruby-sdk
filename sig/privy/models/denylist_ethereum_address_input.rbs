@@ -1,0 +1,35 @@
+module Privy
+  module Models
+    type denylist_ethereum_address_input =
+      {
+        type: Privy::Models::DenylistEthereumAddressInput::type_,
+        value: String
+      }
+
+    class DenylistEthereumAddressInput < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::DenylistEthereumAddressInput::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: Privy::Models::DenylistEthereumAddressInput::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Privy::Models::DenylistEthereumAddressInput::type_,
+        value: String
+      }
+
+      type type_ = :ethereumAddress
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        ETHEREUM_ADDRESS: :ethereumAddress
+
+        def self?.values: -> ::Array[Privy::Models::DenylistEthereumAddressInput::type_]
+      end
+    end
+  end
+end

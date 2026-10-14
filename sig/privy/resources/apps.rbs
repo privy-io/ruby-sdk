@@ -3,6 +3,8 @@ module Privy
     class Apps
       attr_reader allowlist: Privy::Resources::Apps::Allowlist
 
+      attr_reader denylist: Privy::Resources::Apps::Denylist
+
       def get: (
         String app_id,
         ?request_options: Privy::request_opts

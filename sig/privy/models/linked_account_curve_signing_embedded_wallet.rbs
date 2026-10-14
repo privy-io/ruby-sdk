@@ -14,11 +14,11 @@ module Privy
         public_key: String,
         recovery_method: Privy::Models::embedded_wallet_recovery_method,
         type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::type_,
+        user_can_sign: bool,
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client_type,
-        wallet_index: Float,
-        user_can_sign: bool
+        wallet_index: Float
       }
 
     class LinkedAccountCurveSigningEmbeddedWallet < Privy::Internal::Type::BaseModel
@@ -46,6 +46,8 @@ module Privy
 
       attr_accessor type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::type_
 
+      attr_accessor user_can_sign: bool
+
       attr_accessor verified_at: Float
 
       attr_accessor wallet_client: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client
@@ -53,10 +55,6 @@ module Privy
       attr_accessor wallet_client_type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client_type
 
       attr_accessor wallet_index: Float
-
-      attr_reader user_can_sign: bool?
-
-      def user_can_sign=: (bool) -> bool
 
       def initialize: (
         id: String?,
@@ -71,11 +69,11 @@ module Privy
         public_key: String,
         recovery_method: Privy::Models::embedded_wallet_recovery_method,
         type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::type_,
+        user_can_sign: bool,
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client_type,
-        wallet_index: Float,
-        ?user_can_sign: bool
+        wallet_index: Float
       ) -> void
 
       def to_hash: -> {
@@ -91,11 +89,11 @@ module Privy
         public_key: String,
         recovery_method: Privy::Models::embedded_wallet_recovery_method,
         type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::type_,
+        user_can_sign: bool,
         verified_at: Float,
         wallet_client: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client,
         wallet_client_type: Privy::Models::LinkedAccountCurveSigningEmbeddedWallet::wallet_client_type,
-        wallet_index: Float,
-        user_can_sign: bool
+        wallet_index: Float
       }
 
       type connector_type = :embedded
