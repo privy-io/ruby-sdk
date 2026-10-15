@@ -11,10 +11,12 @@ module Privy
           T.any(
             Privy::RpcIntentResponse,
             Privy::TransferIntentResponse,
+            Privy::RawSignIntentResponse,
             Privy::WalletIntentResponse,
             Privy::PolicyIntentResponse,
             Privy::RuleIntentResponse,
-            Privy::KeyQuorumIntentResponse
+            Privy::KeyQuorumIntentResponse,
+            Privy::ConditionSetItemIntentResponse
           )
         end
 

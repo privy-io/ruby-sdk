@@ -21,7 +21,7 @@ module Privy
       #
       # @param cursor [String] Cursor returned by the previous page.
       #
-      # @param intent_type [Symbol, Privy::Models::IntentType] Type of intent.
+      # @param intent_type [Symbol, String, Privy::Models::IntentType] Type of intent.
       #
       # @param limit [Float, nil]
       #
@@ -35,7 +35,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Internal::Cursor<Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse>]
+      # @return [Privy::Internal::Cursor<Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetItemIntentResponse>]
       #
       # @see Privy::Models::IntentListParams
       def list(params = {})
@@ -47,6 +47,39 @@ module Privy
           query: query,
           page: Privy::Internal::Cursor,
           model: Privy::IntentResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::IntentCreateConditionSetItemsParams} for more details.
+      #
+      # Create an intent to add items to a condition set. The intent must be authorized
+      # by the condition set owner before it can be executed.
+      #
+      # @overload create_condition_set_items(condition_set_id, condition_set_items_request_body:, privy_request_expiry: nil, request_options: {})
+      #
+      # @param condition_set_id [String] Path param
+      #
+      # @param condition_set_items_request_body [Array<Privy::Models::ConditionSetItemValueInput>] Body param: Array of values to add to the condition set. Maximum 100 items per r
+      #
+      # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::ConditionSetItemIntentResponse]
+      #
+      # @see Privy::Models::IntentCreateConditionSetItemsParams
+      def create_condition_set_items(condition_set_id, params)
+        parsed, options = Privy::IntentCreateConditionSetItemsParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/intents/condition_sets/%1$s/condition_set_items", condition_set_id],
+          headers: parsed.except(:condition_set_items_request_body).transform_keys(
+            privy_request_expiry: "privy-request-expiry"
+          ),
+          body: parsed[:condition_set_items_request_body],
+          model: Privy::ConditionSetItemIntentResponse,
           options: options
         )
       end
@@ -135,7 +168,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse]
+      # @return [Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetItemIntentResponse]
       #
       # @see Privy::Models::IntentGetParams
       def get(intent_id, params = {})
@@ -144,6 +177,38 @@ module Privy
           path: ["v1/intents/%1$s", intent_id],
           model: Privy::IntentResponse,
           options: params[:request_options]
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::IntentRawSignParams} for more details.
+      #
+      # Create an intent to sign a raw hash or bytes with a wallet. The intent must be
+      # authorized by either the wallet owner or signers before it can be executed.
+      #
+      # @overload raw_sign(wallet_id, params:, privy_request_expiry: nil, request_options: {})
+      #
+      # @param wallet_id [String] Path param: ID of the wallet.
+      #
+      # @param params [Privy::Models::RawSignHashParams, Privy::Models::RawSignBytesParams] Body param: Parameters for the `raw_sign` RPC.
+      #
+      # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::RawSignIntentResponse]
+      #
+      # @see Privy::Models::IntentRawSignParams
+      def raw_sign(wallet_id, params)
+        parsed, options = Privy::IntentRawSignParams.dump_request(params)
+        header_params = {privy_request_expiry: "privy-request-expiry"}
+        @client.request(
+          method: :post,
+          path: ["v1/intents/wallets/%1$s/raw_sign", wallet_id],
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
+          model: Privy::RawSignIntentResponse,
+          options: options
         )
       end
 
@@ -156,7 +221,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse]
+      # @return [Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetItemIntentResponse]
       #
       # @see Privy::Models::IntentRejectParams
       def reject(intent_id, params = {})

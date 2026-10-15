@@ -14,6 +14,13 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::Internal::Cursor[Privy::Models::intent_response]
 
+      def create_condition_set_items: (
+        String condition_set_id,
+        condition_set_items_request_body: Privy::Models::condition_set_items_request_body,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::ConditionSetItemIntentResponse
+
       def create_policy_rule: (
         String policy_id,
         action: Privy::Models::policy_action,
@@ -35,6 +42,13 @@ module Privy
         String intent_id,
         ?request_options: Privy::request_opts
       ) -> Privy::Models::intent_response
+
+      def raw_sign: (
+        String wallet_id,
+        params: Privy::Models::raw_sign_input_params,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::RawSignIntentResponse
 
       def reject: (
         String intent_id,

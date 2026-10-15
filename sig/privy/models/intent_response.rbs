@@ -3,10 +3,12 @@ module Privy
     type intent_response =
       Privy::RpcIntentResponse
       | Privy::TransferIntentResponse
+      | Privy::RawSignIntentResponse
       | Privy::WalletIntentResponse
       | Privy::PolicyIntentResponse
       | Privy::RuleIntentResponse
       | Privy::KeyQuorumIntentResponse
+      | Privy::ConditionSetItemIntentResponse
 
     module IntentResponse
       extend Privy::Internal::Type::Union

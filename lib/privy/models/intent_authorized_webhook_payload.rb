@@ -30,8 +30,8 @@ module Privy
       # @!attribute intent_type
       #   Type of intent.
       #
-      #   @return [Symbol, Privy::Models::IntentType]
-      required :intent_type, enum: -> { Privy::IntentType }
+      #   @return [Symbol, String, Privy::Models::IntentType]
+      required :intent_type, union: -> { Privy::IntentType }
 
       # @!attribute member
       #   A leaf member (user or key) of a nested key quorum in an intent authorization.
@@ -74,7 +74,7 @@ module Privy
       #
       #   @param intent_id [String] The unique ID of the intent.
       #
-      #   @param intent_type [Symbol, Privy::Models::IntentType] Type of intent.
+      #   @param intent_type [Symbol, String, Privy::Models::IntentType] Type of intent.
       #
       #   @param member [Privy::Models::IntentAuthorizationUserMember, Privy::Models::IntentAuthorizationKeyMember] A leaf member (user or key) of a nested key quorum in an intent authorization.
       #

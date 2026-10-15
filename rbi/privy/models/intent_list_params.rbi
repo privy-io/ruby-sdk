@@ -42,10 +42,12 @@ module Privy
       attr_writer :cursor
 
       # Type of intent.
-      sig { returns(T.nilable(Privy::IntentType::OrSymbol)) }
+      sig { returns(T.nilable(T.any(Privy::IntentType::OrSymbol, String))) }
       attr_reader :intent_type
 
-      sig { params(intent_type: Privy::IntentType::OrSymbol).void }
+      sig do
+        params(intent_type: T.any(Privy::IntentType::OrSymbol, String)).void
+      end
       attr_writer :intent_type
 
       sig { returns(T.nilable(Float)) }
@@ -85,7 +87,7 @@ module Privy
           current_user_has_signed:
             Privy::IntentListParams::CurrentUserHasSigned::OrSymbol,
           cursor: String,
-          intent_type: Privy::IntentType::OrSymbol,
+          intent_type: T.any(Privy::IntentType::OrSymbol, String),
           limit: T.nilable(Float),
           pending_member_id: String,
           resource_id: String,
@@ -123,7 +125,7 @@ module Privy
             current_user_has_signed:
               Privy::IntentListParams::CurrentUserHasSigned::OrSymbol,
             cursor: String,
-            intent_type: Privy::IntentType::OrSymbol,
+            intent_type: T.any(Privy::IntentType::OrSymbol, String),
             limit: T.nilable(Float),
             pending_member_id: String,
             resource_id: String,

@@ -21,7 +21,7 @@ module Privy
       attr_accessor :intent_id
 
       # Type of intent.
-      sig { returns(Privy::IntentType::TaggedSymbol) }
+      sig { returns(Privy::IntentType::Variants) }
       attr_accessor :intent_type
 
       # Unix timestamp when the intent was rejected.
@@ -56,7 +56,7 @@ module Privy
           created_at: Float,
           expires_at: Float,
           intent_id: String,
-          intent_type: Privy::IntentType::OrSymbol,
+          intent_type: T.any(Privy::IntentType::OrSymbol, String),
           rejected_at: Float,
           status: String,
           type: Privy::IntentRejectedWebhookPayload::Type::OrSymbol,
@@ -92,7 +92,7 @@ module Privy
             created_at: Float,
             expires_at: Float,
             intent_id: String,
-            intent_type: Privy::IntentType::TaggedSymbol,
+            intent_type: Privy::IntentType::Variants,
             rejected_at: Float,
             status: String,
             type: Privy::IntentRejectedWebhookPayload::Type::TaggedSymbol,

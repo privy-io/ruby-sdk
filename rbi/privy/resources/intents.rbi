@@ -15,7 +15,7 @@ module Privy
           current_user_has_signed:
             Privy::IntentListParams::CurrentUserHasSigned::OrSymbol,
           cursor: String,
-          intent_type: Privy::IntentType::OrSymbol,
+          intent_type: T.any(Privy::IntentType::OrSymbol, String),
           limit: T.nilable(Float),
           pending_member_id: String,
           resource_id: String,
@@ -42,6 +42,30 @@ module Privy
         sort_by: nil,
         # Current status of an intent.
         status: nil,
+        request_options: {}
+      )
+      end
+
+      # Create an intent to add items to a condition set. The intent must be authorized
+      # by the condition set owner before it can be executed.
+      sig do
+        params(
+          condition_set_id: String,
+          condition_set_items_request_body:
+            T::Array[Privy::ConditionSetItemValueInput::OrHash],
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::ConditionSetItemIntentResponse)
+      end
+      def create_condition_set_items(
+        # Path param
+        condition_set_id,
+        # Body param: Array of values to add to the condition set. Maximum 100 items per
+        # request.
+        condition_set_items_request_body:,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
         request_options: {}
       )
       end
@@ -136,6 +160,32 @@ module Privy
       def get(
         # ID of the intent.
         intent_id,
+        request_options: {}
+      )
+      end
+
+      # Create an intent to sign a raw hash or bytes with a wallet. The intent must be
+      # authorized by either the wallet owner or signers before it can be executed.
+      sig do
+        params(
+          wallet_id: String,
+          params:
+            T.any(
+              Privy::RawSignHashParams::OrHash,
+              Privy::RawSignBytesParams::OrHash
+            ),
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::RawSignIntentResponse)
+      end
+      def raw_sign(
+        # Path param: ID of the wallet.
+        wallet_id,
+        # Body param: Parameters for the `raw_sign` RPC.
+        params:,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
         request_options: {}
       )
       end

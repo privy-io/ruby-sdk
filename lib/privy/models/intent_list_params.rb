@@ -28,8 +28,8 @@ module Privy
       # @!attribute intent_type
       #   Type of intent.
       #
-      #   @return [Symbol, Privy::Models::IntentType, nil]
-      optional :intent_type, enum: -> { Privy::IntentType }
+      #   @return [Symbol, String, Privy::Models::IntentType, nil]
+      optional :intent_type, union: -> { Privy::IntentType }
 
       # @!attribute limit
       #
@@ -70,7 +70,7 @@ module Privy
       #
       #   @param cursor [String] Cursor returned by the previous page.
       #
-      #   @param intent_type [Symbol, Privy::Models::IntentType] Type of intent.
+      #   @param intent_type [Symbol, String, Privy::Models::IntentType] Type of intent.
       #
       #   @param limit [Float, nil]
       #

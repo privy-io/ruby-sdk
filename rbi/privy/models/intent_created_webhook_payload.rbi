@@ -21,7 +21,7 @@ module Privy
       attr_accessor :intent_id
 
       # Type of intent.
-      sig { returns(Privy::IntentType::TaggedSymbol) }
+      sig { returns(Privy::IntentType::Variants) }
       attr_accessor :intent_type
 
       # The current status of the intent.
@@ -63,7 +63,7 @@ module Privy
           created_at: Float,
           expires_at: Float,
           intent_id: String,
-          intent_type: Privy::IntentType::OrSymbol,
+          intent_type: T.any(Privy::IntentType::OrSymbol, String),
           status: String,
           type: Privy::IntentCreatedWebhookPayload::Type::OrSymbol,
           authorization_details: T::Array[Privy::IntentAuthorization::OrHash],
@@ -99,7 +99,7 @@ module Privy
             created_at: Float,
             expires_at: Float,
             intent_id: String,
-            intent_type: Privy::IntentType::TaggedSymbol,
+            intent_type: Privy::IntentType::Variants,
             status: String,
             type: Privy::IntentCreatedWebhookPayload::Type::TaggedSymbol,
             authorization_details: T::Array[Privy::IntentAuthorization],

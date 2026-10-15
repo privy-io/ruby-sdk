@@ -1,0 +1,94 @@
+module Privy
+  module Models
+    type raw_sign_intent_response =
+      {
+        intent_type: Privy::Models::RawSignIntentResponse::intent_type,
+        request_details: Privy::RawSignIntentResponse::RequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Wallet
+      }
+
+    class RawSignIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::RawSignIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::RawSignIntentResponse::intent_type _
+      ) -> Privy::Models::RawSignIntentResponse::intent_type
+
+      def request_details: -> Privy::RawSignIntentResponse::RequestDetails
+
+      def request_details=: (
+        Privy::RawSignIntentResponse::RequestDetails _
+      ) -> Privy::RawSignIntentResponse::RequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::Wallet?
+
+      def current_resource_data=: (Privy::Wallet _) -> Privy::Wallet
+
+      def initialize: (
+        intent_type: Privy::Models::RawSignIntentResponse::intent_type,
+        request_details: Privy::RawSignIntentResponse::RequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::Wallet
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::RawSignIntentResponse::intent_type,
+        request_details: Privy::RawSignIntentResponse::RequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Wallet
+      }
+
+      type intent_type = :RAW_SIGN
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        RAW_SIGN: :RAW_SIGN
+
+        def self?.values: -> ::Array[Privy::Models::RawSignIntentResponse::intent_type]
+      end
+
+      type request_details =
+        {
+          body: Privy::RawSignInput,
+          method_: Privy::Models::RawSignIntentResponse::RequestDetails::method_,
+          url: String
+        }
+
+      class RequestDetails < Privy::Internal::Type::BaseModel
+        attr_accessor body: Privy::RawSignInput
+
+        attr_accessor method_: Privy::Models::RawSignIntentResponse::RequestDetails::method_
+
+        attr_accessor url: String
+
+        def initialize: (
+          body: Privy::RawSignInput,
+          method_: Privy::Models::RawSignIntentResponse::RequestDetails::method_,
+          url: String
+        ) -> void
+
+        def to_hash: -> {
+          body: Privy::RawSignInput,
+          method_: Privy::Models::RawSignIntentResponse::RequestDetails::method_,
+          url: String
+        }
+
+        type method_ = :POST
+
+        module Method
+          extend Privy::Internal::Type::Enum
+
+          POST: :POST
+
+          def self?.values: -> ::Array[Privy::Models::RawSignIntentResponse::RequestDetails::method_]
+        end
+      end
+    end
+  end
+end

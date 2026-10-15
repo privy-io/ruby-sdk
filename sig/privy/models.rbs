@@ -383,6 +383,10 @@ module Privy
 
   class ConditionSetItem = Privy::Models::ConditionSetItem
 
+  class ConditionSetItemIntentCreateRequestDetails = Privy::Models::ConditionSetItemIntentCreateRequestDetails
+
+  class ConditionSetItemIntentResponse = Privy::Models::ConditionSetItemIntentResponse
+
   class ConditionSetItemRequestParams = Privy::Models::ConditionSetItemRequestParams
 
   ConditionSetItems: Privy::Internal::Type::Converter
@@ -957,6 +961,8 @@ module Privy
 
   class IntentBinding = Privy::Models::IntentBinding
 
+  class IntentCreateConditionSetItemsParams = Privy::Models::IntentCreateConditionSetItemsParams
+
   class IntentCreatedWebhookPayload = Privy::Models::IntentCreatedWebhookPayload
 
   class IntentCreatePolicyRuleParams = Privy::Models::IntentCreatePolicyRuleParams
@@ -972,6 +978,8 @@ module Privy
   class IntentGetParams = Privy::Models::IntentGetParams
 
   class IntentListParams = Privy::Models::IntentListParams
+
+  class IntentRawSignParams = Privy::Models::IntentRawSignParams
 
   class IntentRejectedWebhookPayload = Privy::Models::IntentRejectedWebhookPayload
 
@@ -1780,6 +1788,10 @@ module Privy
   class RawSignInput = Privy::Models::RawSignInput
 
   module RawSignInputParams = Privy::Models::RawSignInputParams
+
+  class RawSignIntentRequestDetails = Privy::Models::RawSignIntentRequestDetails
+
+  class RawSignIntentResponse = Privy::Models::RawSignIntentResponse
 
   class RawSignResponse = Privy::Models::RawSignResponse
 

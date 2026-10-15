@@ -25,7 +25,7 @@ module Privy
       attr_accessor :intent_id
 
       # Type of intent.
-      sig { returns(Privy::IntentType::TaggedSymbol) }
+      sig { returns(Privy::IntentType::Variants) }
       attr_accessor :intent_type
 
       # A leaf member (user or key) of a nested key quorum in an intent authorization.
@@ -61,7 +61,7 @@ module Privy
           created_at: Float,
           expires_at: Float,
           intent_id: String,
-          intent_type: Privy::IntentType::OrSymbol,
+          intent_type: T.any(Privy::IntentType::OrSymbol, String),
           member:
             T.any(
               Privy::IntentAuthorizationUserMember::OrHash,
@@ -104,7 +104,7 @@ module Privy
             created_at: Float,
             expires_at: Float,
             intent_id: String,
-            intent_type: Privy::IntentType::TaggedSymbol,
+            intent_type: Privy::IntentType::Variants,
             member: Privy::IntentAuthorizationKeyQuorumMember::Variants,
             status: String,
             type: Privy::IntentAuthorizedWebhookPayload::Type::TaggedSymbol,

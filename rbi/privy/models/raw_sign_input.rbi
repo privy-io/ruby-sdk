@@ -7,9 +7,7 @@ module Privy
         T.type_alias { T.any(Privy::RawSignInput, Privy::Internal::AnyHash) }
 
       # Parameters for the `raw_sign` RPC.
-      sig do
-        returns(T.any(Privy::RawSignHashParams, Privy::RawSignBytesParams))
-      end
+      sig { returns(Privy::RawSignInputParams::Variants) }
       attr_accessor :params
 
       # Provide either `hash` (to sign a pre-computed hash) OR `bytes`, `encoding`, and
@@ -29,11 +27,7 @@ module Privy
       )
       end
 
-      sig do
-        override.returns(
-          { params: T.any(Privy::RawSignHashParams, Privy::RawSignBytesParams) }
-        )
-      end
+      sig { override.returns({ params: Privy::RawSignInputParams::Variants }) }
       def to_hash
       end
     end

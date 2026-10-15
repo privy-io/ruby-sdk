@@ -1,19 +1,29 @@
 module Privy
   module Models
     type intent_type =
-      :KEY_QUORUM | :POLICY | :RULE | :RPC | :TRANSFER | :WALLET
+      :CONDITION_SET_ITEM
+      | :KEY_QUORUM
+      | :POLICY
+      | :RAW_SIGN
+      | :RULE
+      | :RPC
+      | :TRANSFER
+      | :WALLET
+      | String
 
     module IntentType
-      extend Privy::Internal::Type::Enum
+      extend Privy::Internal::Type::Union
 
+      def self?.variants: -> ::Array[Privy::Models::intent_type]
+
+      CONDITION_SET_ITEM: :CONDITION_SET_ITEM
       KEY_QUORUM: :KEY_QUORUM
       POLICY: :POLICY
+      RAW_SIGN: :RAW_SIGN
       RULE: :RULE
       RPC: :RPC
       TRANSFER: :TRANSFER
       WALLET: :WALLET
-
-      def self?.values: -> ::Array[Privy::Models::intent_type]
     end
   end
 end

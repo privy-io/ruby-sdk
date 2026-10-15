@@ -16,6 +16,9 @@ module Privy
       # Response for a transfer intent
       variant :TRANSFER, -> { Privy::TransferIntentResponse }
 
+      # Response for a raw sign intent
+      variant :RAW_SIGN, -> { Privy::RawSignIntentResponse }
+
       # Response for a wallet intent
       variant :WALLET, -> { Privy::WalletIntentResponse }
 
@@ -28,8 +31,11 @@ module Privy
       # Response for a key quorum intent
       variant :KEY_QUORUM, -> { Privy::KeyQuorumIntentResponse }
 
+      # Response for a condition set item intent
+      variant :CONDITION_SET_ITEM, -> { Privy::ConditionSetItemIntentResponse }
+
       # @!method self.variants
-      #   @return [Array(Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse)]
+      #   @return [Array(Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetItemIntentResponse)]
     end
   end
 end

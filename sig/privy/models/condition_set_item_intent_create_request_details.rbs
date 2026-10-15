@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type condition_set_item_intent_create_request_details =
+      {
+        body: Privy::Models::condition_set_items_request_body,
+        method_: Privy::Models::ConditionSetItemIntentCreateRequestDetails::method_,
+        url: String
+      }
+
+    class ConditionSetItemIntentCreateRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor body: Privy::Models::condition_set_items_request_body
+
+      attr_accessor method_: Privy::Models::ConditionSetItemIntentCreateRequestDetails::method_
+
+      attr_accessor url: String
+
+      def initialize: (
+        body: Privy::Models::condition_set_items_request_body,
+        method_: Privy::Models::ConditionSetItemIntentCreateRequestDetails::method_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::Models::condition_set_items_request_body,
+        method_: Privy::Models::ConditionSetItemIntentCreateRequestDetails::method_,
+        url: String
+      }
+
+      type method_ = :POST
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        POST: :POST
+
+        def self?.values: -> ::Array[Privy::Models::ConditionSetItemIntentCreateRequestDetails::method_]
+      end
+    end
+  end
+end

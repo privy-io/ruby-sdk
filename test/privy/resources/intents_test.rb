@@ -23,11 +23,27 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       case row
       in Privy::RpcIntentResponse
       in Privy::TransferIntentResponse
+      in Privy::RawSignIntentResponse
       in Privy::WalletIntentResponse
       in Privy::PolicyIntentResponse
       in Privy::RuleIntentResponse
       in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetItemIntentResponse
       end
+    end
+  end
+
+  def test_create_condition_set_items_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @privy_api.intents.create_condition_set_items(
+        "xxxxxxxxxxxxxxxxxxxxxxxx",
+        condition_set_items_request_body: [{value: "x"}]
+      )
+
+    assert_pattern do
+      response => Privy::ConditionSetItemIntentResponse
     end
   end
 
@@ -71,11 +87,23 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       case response
       in Privy::RpcIntentResponse
       in Privy::TransferIntentResponse
+      in Privy::RawSignIntentResponse
       in Privy::WalletIntentResponse
       in Privy::PolicyIntentResponse
       in Privy::RuleIntentResponse
       in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetItemIntentResponse
       end
+    end
+  end
+
+  def test_raw_sign_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.intents.raw_sign("wallet_id", params: {hash: "string"})
+
+    assert_pattern do
+      response => Privy::RawSignIntentResponse
     end
   end
 
@@ -92,10 +120,12 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       case response
       in Privy::RpcIntentResponse
       in Privy::TransferIntentResponse
+      in Privy::RawSignIntentResponse
       in Privy::WalletIntentResponse
       in Privy::PolicyIntentResponse
       in Privy::RuleIntentResponse
       in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetItemIntentResponse
       end
     end
   end
