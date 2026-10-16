@@ -5,7 +5,32 @@ module Privy
     module Wallets
       # Type of a wallet action step.
       module WalletActionStepType
-        extend Privy::Internal::Type::Enum
+        extend Privy::Internal::Type::Union
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::EVM_TRANSACTION }
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::EVM_USER_OPERATION }
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::SVM_TRANSACTION }
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::TVM_TRANSACTION }
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::EXTERNAL_TRANSACTION }
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::CUSTODIAN_TRANSACTION }
+
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::TEMPO_ZONE_SETTLEMENT }
+
+        variant String
+
+        # @!method self.variants
+        #   @return [Array(Symbol, String)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(Privy::Wallets::WalletActionStepType::TaggedSymbol, String) }
+        end
+
+        # @!group
 
         EVM_TRANSACTION = :evm_transaction
         EVM_USER_OPERATION = :evm_user_operation
@@ -15,8 +40,7 @@ module Privy
         CUSTODIAN_TRANSACTION = :custodian_transaction
         TEMPO_ZONE_SETTLEMENT = :tempo_zone_settlement
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        # @!endgroup
       end
     end
 

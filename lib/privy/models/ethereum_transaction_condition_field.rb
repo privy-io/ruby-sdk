@@ -9,6 +9,7 @@ module Privy
       TO = :to
       VALUE = :value
       CHAIN_ID = :chain_id
+      DATA_BYTE_LENGTH = :data_byte_length
 
       # @!method self.values
       #   @return [Array<Symbol>]

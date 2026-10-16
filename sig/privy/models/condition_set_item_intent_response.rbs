@@ -3,7 +3,7 @@ module Privy
     type condition_set_item_intent_response =
       {
         intent_type: Privy::Models::ConditionSetItemIntentResponse::intent_type,
-        request_details: Privy::ConditionSetItemIntentCreateRequestDetails,
+        request_details: Privy::Models::condition_set_item_intent_request_details,
         action_result: Privy::BaseActionResult,
         condition_set: Privy::ConditionSet,
         current_resource_data: Privy::ConditionSetItem
@@ -16,11 +16,11 @@ module Privy
         Privy::Models::ConditionSetItemIntentResponse::intent_type _
       ) -> Privy::Models::ConditionSetItemIntentResponse::intent_type
 
-      def request_details: -> Privy::ConditionSetItemIntentCreateRequestDetails
+      def request_details: -> Privy::Models::condition_set_item_intent_request_details
 
       def request_details=: (
-        Privy::ConditionSetItemIntentCreateRequestDetails _
-      ) -> Privy::ConditionSetItemIntentCreateRequestDetails
+        Privy::Models::condition_set_item_intent_request_details _
+      ) -> Privy::Models::condition_set_item_intent_request_details
 
       def action_result: -> Privy::BaseActionResult?
 
@@ -38,7 +38,7 @@ module Privy
 
       def initialize: (
         intent_type: Privy::Models::ConditionSetItemIntentResponse::intent_type,
-        request_details: Privy::ConditionSetItemIntentCreateRequestDetails,
+        request_details: Privy::Models::condition_set_item_intent_request_details,
         ?action_result: Privy::BaseActionResult,
         ?condition_set: Privy::ConditionSet,
         ?current_resource_data: Privy::ConditionSetItem
@@ -46,7 +46,7 @@ module Privy
 
       def to_hash: -> {
         intent_type: Privy::Models::ConditionSetItemIntentResponse::intent_type,
-        request_details: Privy::ConditionSetItemIntentCreateRequestDetails,
+        request_details: Privy::Models::condition_set_item_intent_request_details,
         action_result: Privy::BaseActionResult,
         condition_set: Privy::ConditionSet,
         current_resource_data: Privy::ConditionSetItem

@@ -13,17 +13,10 @@ module Privy
       end
       attr_accessor :intent_type
 
-      # Request details for adding items to a condition set via intent.
-      sig { returns(Privy::ConditionSetItemIntentCreateRequestDetails) }
-      attr_reader :request_details
-
-      sig do
-        params(
-          request_details:
-            Privy::ConditionSetItemIntentCreateRequestDetails::OrHash
-        ).void
-      end
-      attr_writer :request_details
+      # The original condition set item request. Method is POST (add items), PUT
+      # (replace items), or DELETE (delete an item)
+      sig { returns(Privy::ConditionSetItemIntentRequestDetails::Variants) }
+      attr_accessor :request_details
 
       # Result of condition set item execution (only present if status is 'executed' or
       # 'failed')
@@ -55,7 +48,11 @@ module Privy
           intent_type:
             Privy::ConditionSetItemIntentResponse::IntentType::OrSymbol,
           request_details:
-            Privy::ConditionSetItemIntentCreateRequestDetails::OrHash,
+            T.any(
+              Privy::ConditionSetItemIntentCreateRequestDetails::OrHash,
+              Privy::ConditionSetItemIntentUpdateRequestDetails::OrHash,
+              Privy::ConditionSetItemIntentDeleteRequestDetails::OrHash
+            ),
           action_result: Privy::BaseActionResult::OrHash,
           condition_set: Privy::ConditionSet::OrHash,
           current_resource_data: Privy::ConditionSetItem::OrHash
@@ -63,7 +60,8 @@ module Privy
       end
       def self.new(
         intent_type:,
-        # Request details for adding items to a condition set via intent.
+        # The original condition set item request. Method is POST (add items), PUT
+        # (replace items), or DELETE (delete an item)
         request_details:,
         # Result of condition set item execution (only present if status is 'executed' or
         # 'failed')
@@ -80,7 +78,8 @@ module Privy
           {
             intent_type:
               Privy::ConditionSetItemIntentResponse::IntentType::TaggedSymbol,
-            request_details: Privy::ConditionSetItemIntentCreateRequestDetails,
+            request_details:
+              Privy::ConditionSetItemIntentRequestDetails::Variants,
             action_result: Privy::BaseActionResult,
             condition_set: Privy::ConditionSet,
             current_resource_data: Privy::ConditionSetItem

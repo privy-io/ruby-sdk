@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type condition_set_item_intent_request_details =
+      Privy::ConditionSetItemIntentCreateRequestDetails
+      | Privy::ConditionSetItemIntentUpdateRequestDetails
+      | Privy::ConditionSetItemIntentDeleteRequestDetails
+
+    module ConditionSetItemIntentRequestDetails
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::condition_set_item_intent_request_details]
+    end
+  end
+end

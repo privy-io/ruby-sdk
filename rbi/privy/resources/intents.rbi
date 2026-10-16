@@ -55,7 +55,7 @@ module Privy
             T::Array[Privy::ConditionSetItemValueInput::OrHash],
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::ConditionSetItemIntentResponse)
+        ).returns(Privy::ConditionSetItemMutateIntentResponse)
       end
       def create_condition_set_items(
         # Path param
@@ -117,6 +117,46 @@ module Privy
         method_:,
         # Body param
         name:,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # Create an intent to delete a condition set. The intent must be authorized by the
+      # condition set owner before it can be executed.
+      sig do
+        params(
+          condition_set_id: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::ConditionSetDeleteIntentResponse)
+      end
+      def delete_condition_set(
+        condition_set_id,
+        # Request expiry. Value is a Unix timestamp in milliseconds representing the
+        # deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # Create an intent to delete an item from a condition set. The intent must be
+      # authorized by the condition set owner before it can be executed.
+      sig do
+        params(
+          condition_set_item_id: String,
+          condition_set_id: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::ConditionSetItemDeleteIntentResponse)
+      end
+      def delete_condition_set_item(
+        # Path param
+        condition_set_item_id,
+        # Path param
+        condition_set_id:,
         # Header param: Request expiry. Value is a Unix timestamp in milliseconds
         # representing the deadline by which the request must be processed.
         privy_request_expiry: nil,
@@ -309,6 +349,30 @@ module Privy
         # applicable for cross-chain or cross-asset transfers; omit to use the provider
         # default.
         slippage_bps: nil,
+        # Header param: Request expiry. Value is a Unix timestamp in milliseconds
+        # representing the deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # Create an intent to replace all items in a condition set. The intent must be
+      # authorized by the condition set owner before it can be executed.
+      sig do
+        params(
+          condition_set_id: String,
+          condition_set_items_request_body:
+            T::Array[Privy::ConditionSetItemValueInput::OrHash],
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::ConditionSetItemMutateIntentResponse)
+      end
+      def update_condition_set_items(
+        # Path param
+        condition_set_id,
+        # Body param: Array of values to add to the condition set. Maximum 100 items per
+        # request.
+        condition_set_items_request_body:,
         # Header param: Request expiry. Value is a Unix timestamp in milliseconds
         # representing the deadline by which the request must be processed.
         privy_request_expiry: nil,

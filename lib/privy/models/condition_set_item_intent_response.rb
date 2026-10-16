@@ -2,7 +2,6 @@
 
 module Privy
   module Models
-    # @see Privy::Resources::Intents#create_condition_set_items
     class ConditionSetItemIntentResponse < Privy::Models::BaseIntentResponse
       # @!attribute intent_type
       #
@@ -10,10 +9,11 @@ module Privy
       required :intent_type, enum: -> { Privy::ConditionSetItemIntentResponse::IntentType }
 
       # @!attribute request_details
-      #   Request details for adding items to a condition set via intent.
+      #   The original condition set item request. Method is POST (add items), PUT
+      #   (replace items), or DELETE (delete an item)
       #
-      #   @return [Privy::Models::ConditionSetItemIntentCreateRequestDetails]
-      required :request_details, -> { Privy::ConditionSetItemIntentCreateRequestDetails }
+      #   @return [Privy::Models::ConditionSetItemIntentCreateRequestDetails, Privy::Models::ConditionSetItemIntentUpdateRequestDetails, Privy::Models::ConditionSetItemIntentDeleteRequestDetails]
+      required :request_details, union: -> { Privy::ConditionSetItemIntentRequestDetails }
 
       # @!attribute action_result
       #   Result of condition set item execution (only present if status is 'executed' or
@@ -42,7 +42,7 @@ module Privy
       #
       #   @param intent_type [Symbol, Privy::Models::ConditionSetItemIntentResponse::IntentType]
       #
-      #   @param request_details [Privy::Models::ConditionSetItemIntentCreateRequestDetails] Request details for adding items to a condition set via intent.
+      #   @param request_details [Privy::Models::ConditionSetItemIntentCreateRequestDetails, Privy::Models::ConditionSetItemIntentUpdateRequestDetails, Privy::Models::ConditionSetItemIntentDeleteRequestDetails] The original condition set item request. Method is POST (add items), PUT (replac
       #
       #   @param action_result [Privy::Models::BaseActionResult] Result of condition set item execution (only present if status is 'executed' or
       #

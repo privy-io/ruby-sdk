@@ -16,6 +16,7 @@ module Privy
             Privy::PolicyIntentResponse,
             Privy::RuleIntentResponse,
             Privy::KeyQuorumIntentResponse,
+            Privy::ConditionSetIntentResponse,
             Privy::ConditionSetItemIntentResponse
           )
         end

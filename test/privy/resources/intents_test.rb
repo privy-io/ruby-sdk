@@ -28,6 +28,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       in Privy::PolicyIntentResponse
       in Privy::RuleIntentResponse
       in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetIntentResponse
       in Privy::ConditionSetItemIntentResponse
       end
     end
@@ -43,7 +44,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Privy::ConditionSetItemIntentResponse
+      response => Privy::ConditionSetItemMutateIntentResponse
     end
   end
 
@@ -61,6 +62,30 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
 
     assert_pattern do
       response => Privy::RuleMutateIntentResponse
+    end
+  end
+
+  def test_delete_condition_set
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.intents.delete_condition_set("xxxxxxxxxxxxxxxxxxxxxxxx")
+
+    assert_pattern do
+      response => Privy::ConditionSetDeleteIntentResponse
+    end
+  end
+
+  def test_delete_condition_set_item_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @privy_api.intents.delete_condition_set_item(
+        "xxxxxxxxxxxxxxxxxxxxxxxx",
+        condition_set_id: "xxxxxxxxxxxxxxxxxxxxxxxx"
+      )
+
+    assert_pattern do
+      response => Privy::ConditionSetItemDeleteIntentResponse
     end
   end
 
@@ -92,6 +117,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       in Privy::PolicyIntentResponse
       in Privy::RuleIntentResponse
       in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetIntentResponse
       in Privy::ConditionSetItemIntentResponse
       end
     end
@@ -125,6 +151,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
       in Privy::PolicyIntentResponse
       in Privy::RuleIntentResponse
       in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetIntentResponse
       in Privy::ConditionSetItemIntentResponse
       end
     end
@@ -156,6 +183,20 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
 
     assert_pattern do
       response => Privy::TransferIntentResponse
+    end
+  end
+
+  def test_update_condition_set_items_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @privy_api.intents.update_condition_set_items(
+        "xxxxxxxxxxxxxxxxxxxxxxxx",
+        condition_set_items_request_body: [{value: "x"}]
+      )
+
+    assert_pattern do
+      response => Privy::ConditionSetItemMutateIntentResponse
     end
   end
 

@@ -19,7 +19,7 @@ module Privy
         condition_set_items_request_body: Privy::Models::condition_set_items_request_body,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
-      ) -> Privy::ConditionSetItemIntentResponse
+      ) -> Privy::ConditionSetItemMutateIntentResponse
 
       def create_policy_rule: (
         String policy_id,
@@ -30,6 +30,19 @@ module Privy
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
       ) -> Privy::RuleMutateIntentResponse
+
+      def delete_condition_set: (
+        String condition_set_id,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::ConditionSetDeleteIntentResponse
+
+      def delete_condition_set_item: (
+        String condition_set_item_id,
+        condition_set_id: String,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::ConditionSetItemDeleteIntentResponse
 
       def delete_policy_rule: (
         String rule_id,
@@ -76,6 +89,13 @@ module Privy
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts
       ) -> Privy::TransferIntentResponse
+
+      def update_condition_set_items: (
+        String condition_set_id,
+        condition_set_items_request_body: Privy::Models::condition_set_items_request_body,
+        ?privy_request_expiry: String,
+        ?request_options: Privy::request_opts
+      ) -> Privy::ConditionSetItemMutateIntentResponse
 
       def update_key_quorum: (
         String key_quorum_id,

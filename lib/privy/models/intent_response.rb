@@ -31,11 +31,14 @@ module Privy
       # Response for a key quorum intent
       variant :KEY_QUORUM, -> { Privy::KeyQuorumIntentResponse }
 
+      # Response for a condition set intent
+      variant :CONDITION_SET, -> { Privy::ConditionSetIntentResponse }
+
       # Response for a condition set item intent
       variant :CONDITION_SET_ITEM, -> { Privy::ConditionSetItemIntentResponse }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetItemIntentResponse)]
+      #   @return [Array(Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetIntentResponse, Privy::Models::ConditionSetItemIntentResponse)]
     end
   end
 end

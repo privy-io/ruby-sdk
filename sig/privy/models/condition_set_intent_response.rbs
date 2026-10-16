@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type condition_set_intent_response =
+      {
+        intent_type: Privy::Models::ConditionSetIntentResponse::intent_type,
+        request_details: Privy::ConditionSetIntentDeleteRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::ConditionSet
+      }
+
+    class ConditionSetIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::ConditionSetIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::ConditionSetIntentResponse::intent_type _
+      ) -> Privy::Models::ConditionSetIntentResponse::intent_type
+
+      def request_details: -> Privy::ConditionSetIntentDeleteRequestDetails
+
+      def request_details=: (
+        Privy::ConditionSetIntentDeleteRequestDetails _
+      ) -> Privy::ConditionSetIntentDeleteRequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::ConditionSet?
+
+      def current_resource_data=: (Privy::ConditionSet _) -> Privy::ConditionSet
+
+      def initialize: (
+        intent_type: Privy::Models::ConditionSetIntentResponse::intent_type,
+        request_details: Privy::ConditionSetIntentDeleteRequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::ConditionSet
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::ConditionSetIntentResponse::intent_type,
+        request_details: Privy::ConditionSetIntentDeleteRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::ConditionSet
+      }
+
+      type intent_type = :CONDITION_SET
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        CONDITION_SET: :CONDITION_SET
+
+        def self?.values: -> ::Array[Privy::Models::ConditionSetIntentResponse::intent_type]
+      end
+    end
+  end
+end

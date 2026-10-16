@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type condition_set_item_intent_delete_request_details =
+      {
+        method_: Privy::Models::ConditionSetItemIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::ConditionSetItemIntentDeleteRequestBody
+      }
+
+    class ConditionSetItemIntentDeleteRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::ConditionSetItemIntentDeleteRequestDetails::method_
+
+      attr_accessor url: String
+
+      attr_reader body: Privy::ConditionSetItemIntentDeleteRequestBody?
+
+      def body=: (
+        Privy::ConditionSetItemIntentDeleteRequestBody
+      ) -> Privy::ConditionSetItemIntentDeleteRequestBody
+
+      def initialize: (
+        method_: Privy::Models::ConditionSetItemIntentDeleteRequestDetails::method_,
+        url: String,
+        ?body: Privy::ConditionSetItemIntentDeleteRequestBody
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::ConditionSetItemIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::ConditionSetItemIntentDeleteRequestBody
+      }
+
+      type method_ = :DELETE
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        DELETE: :DELETE
+
+        def self?.values: -> ::Array[Privy::Models::ConditionSetItemIntentDeleteRequestDetails::method_]
+      end
+    end
+  end
+end

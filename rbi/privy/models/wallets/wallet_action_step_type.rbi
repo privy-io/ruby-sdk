@@ -7,7 +7,20 @@ module Privy
     module Wallets
       # Type of a wallet action step.
       module WalletActionStepType
-        extend Privy::Internal::Type::Enum
+        extend Privy::Internal::Type::Union
+
+        Variants =
+          T.type_alias do
+            T.any(Privy::Wallets::WalletActionStepType::TaggedSymbol, String)
+          end
+
+        sig do
+          override.returns(
+            T::Array[Privy::Wallets::WalletActionStepType::Variants]
+          )
+        end
+        def self.variants
+        end
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Privy::Wallets::WalletActionStepType) }
@@ -48,14 +61,6 @@ module Privy
             :tempo_zone_settlement,
             Privy::Wallets::WalletActionStepType::TaggedSymbol
           )
-
-        sig do
-          override.returns(
-            T::Array[Privy::Wallets::WalletActionStepType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

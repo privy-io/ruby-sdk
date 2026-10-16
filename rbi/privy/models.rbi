@@ -444,12 +444,41 @@ module Privy
   ConditionSetAuthorizationHeaders =
     Privy::Models::ConditionSetAuthorizationHeaders
 
+  ConditionSetDeleteIntentResponse =
+    Privy::Models::ConditionSetDeleteIntentResponse
+
+  ConditionSetIntentDeleteRequestBody =
+    Privy::Models::ConditionSetIntentDeleteRequestBody
+
+  ConditionSetIntentDeleteRequestDetails =
+    Privy::Models::ConditionSetIntentDeleteRequestDetails
+
+  ConditionSetIntentResponse = Privy::Models::ConditionSetIntentResponse
+
   ConditionSetItem = Privy::Models::ConditionSetItem
+
+  ConditionSetItemDeleteIntentResponse =
+    Privy::Models::ConditionSetItemDeleteIntentResponse
 
   ConditionSetItemIntentCreateRequestDetails =
     Privy::Models::ConditionSetItemIntentCreateRequestDetails
 
+  ConditionSetItemIntentDeleteRequestBody =
+    Privy::Models::ConditionSetItemIntentDeleteRequestBody
+
+  ConditionSetItemIntentDeleteRequestDetails =
+    Privy::Models::ConditionSetItemIntentDeleteRequestDetails
+
+  ConditionSetItemIntentRequestDetails =
+    Privy::Models::ConditionSetItemIntentRequestDetails
+
   ConditionSetItemIntentResponse = Privy::Models::ConditionSetItemIntentResponse
+
+  ConditionSetItemIntentUpdateRequestDetails =
+    Privy::Models::ConditionSetItemIntentUpdateRequestDetails
+
+  ConditionSetItemMutateIntentResponse =
+    Privy::Models::ConditionSetItemMutateIntentResponse
 
   ConditionSetItemRequestParams = Privy::Models::ConditionSetItemRequestParams
 
@@ -1121,6 +1150,11 @@ module Privy
 
   IntentCreationHeaders = Privy::Models::IntentCreationHeaders
 
+  IntentDeleteConditionSetItemParams =
+    Privy::Models::IntentDeleteConditionSetItemParams
+
+  IntentDeleteConditionSetParams = Privy::Models::IntentDeleteConditionSetParams
+
   IntentDeletePolicyRuleParams = Privy::Models::IntentDeletePolicyRuleParams
 
   IntentExecutedWebhookPayload = Privy::Models::IntentExecutedWebhookPayload
@@ -1146,6 +1180,9 @@ module Privy
   IntentTransferParams = Privy::Models::IntentTransferParams
 
   IntentType = Privy::Models::IntentType
+
+  IntentUpdateConditionSetItemsParams =
+    Privy::Models::IntentUpdateConditionSetItemsParams
 
   IntentUpdateKeyQuorumParams = Privy::Models::IntentUpdateKeyQuorumParams
 

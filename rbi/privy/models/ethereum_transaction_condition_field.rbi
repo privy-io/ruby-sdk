@@ -15,6 +15,11 @@ module Privy
         T.let(:value, Privy::EthereumTransactionConditionField::TaggedSymbol)
       CHAIN_ID =
         T.let(:chain_id, Privy::EthereumTransactionConditionField::TaggedSymbol)
+      DATA_BYTE_LENGTH =
+        T.let(
+          :data_byte_length,
+          Privy::EthereumTransactionConditionField::TaggedSymbol
+        )
 
       sig do
         override.returns(

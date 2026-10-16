@@ -6,6 +6,8 @@ module Privy
     module IntentType
       extend Privy::Internal::Type::Union
 
+      variant const: -> { Privy::Models::IntentType::CONDITION_SET }
+
       variant const: -> { Privy::Models::IntentType::CONDITION_SET_ITEM }
 
       variant const: -> { Privy::Models::IntentType::KEY_QUORUM }
@@ -33,6 +35,7 @@ module Privy
 
       # @!group
 
+      CONDITION_SET = :CONDITION_SET
       CONDITION_SET_ITEM = :CONDITION_SET_ITEM
       KEY_QUORUM = :KEY_QUORUM
       POLICY = :POLICY

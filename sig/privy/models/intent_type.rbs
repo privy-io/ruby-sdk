@@ -1,7 +1,8 @@
 module Privy
   module Models
     type intent_type =
-      :CONDITION_SET_ITEM
+      :CONDITION_SET
+      | :CONDITION_SET_ITEM
       | :KEY_QUORUM
       | :POLICY
       | :RAW_SIGN
@@ -16,6 +17,7 @@ module Privy
 
       def self?.variants: -> ::Array[Privy::Models::intent_type]
 
+      CONDITION_SET: :CONDITION_SET
       CONDITION_SET_ITEM: :CONDITION_SET_ITEM
       KEY_QUORUM: :KEY_QUORUM
       POLICY: :POLICY

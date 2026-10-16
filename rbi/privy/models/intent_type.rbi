@@ -15,6 +15,7 @@ module Privy
       TaggedSymbol = T.type_alias { T.all(Symbol, Privy::IntentType) }
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+      CONDITION_SET = T.let(:CONDITION_SET, Privy::IntentType::TaggedSymbol)
       CONDITION_SET_ITEM =
         T.let(:CONDITION_SET_ITEM, Privy::IntentType::TaggedSymbol)
       KEY_QUORUM = T.let(:KEY_QUORUM, Privy::IntentType::TaggedSymbol)

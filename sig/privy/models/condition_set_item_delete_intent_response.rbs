@@ -1,0 +1,66 @@
+module Privy
+  module Models
+    type condition_set_item_delete_intent_response =
+      {
+        intent_type: Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type,
+        request_details: Privy::ConditionSetItemIntentDeleteRequestDetails,
+        action_result: Privy::BaseActionResult,
+        condition_set: Privy::ConditionSet,
+        current_resource_data: Privy::ConditionSetItem
+      }
+
+    class ConditionSetItemDeleteIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type _
+      ) -> Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type
+
+      def request_details: -> Privy::ConditionSetItemIntentDeleteRequestDetails
+
+      def request_details=: (
+        Privy::ConditionSetItemIntentDeleteRequestDetails _
+      ) -> Privy::ConditionSetItemIntentDeleteRequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def condition_set: -> Privy::ConditionSet?
+
+      def condition_set=: (Privy::ConditionSet _) -> Privy::ConditionSet
+
+      def current_resource_data: -> Privy::ConditionSetItem?
+
+      def current_resource_data=: (
+        Privy::ConditionSetItem _
+      ) -> Privy::ConditionSetItem
+
+      def initialize: (
+        intent_type: Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type,
+        request_details: Privy::ConditionSetItemIntentDeleteRequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?condition_set: Privy::ConditionSet,
+        ?current_resource_data: Privy::ConditionSetItem
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type,
+        request_details: Privy::ConditionSetItemIntentDeleteRequestDetails,
+        action_result: Privy::BaseActionResult,
+        condition_set: Privy::ConditionSet,
+        current_resource_data: Privy::ConditionSetItem
+      }
+
+      type intent_type = :CONDITION_SET_ITEM
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        CONDITION_SET_ITEM: :CONDITION_SET_ITEM
+
+        def self?.values: -> ::Array[Privy::Models::ConditionSetItemDeleteIntentResponse::intent_type]
+      end
+    end
+  end
+end
