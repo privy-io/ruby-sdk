@@ -69,7 +69,7 @@ module Privy
           )
           combined_params = earn_deposit_params.merge(request_options: request_options)
           Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
-          _deposit(wallet_id, combined_params)
+          super(wallet_id, combined_params)
         end
 
         # Withdraw assets from an ERC-4626 vault.
@@ -123,7 +123,7 @@ module Privy
           )
           combined_params = earn_withdraw_params.merge(request_options: request_options)
           Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
-          _withdraw(wallet_id, combined_params)
+          super(wallet_id, combined_params)
         end
       end
     end

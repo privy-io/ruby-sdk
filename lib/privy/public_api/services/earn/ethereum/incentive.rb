@@ -52,7 +52,7 @@ module Privy
             )
             combined_params = earn_incentive_claim_params.merge(request_options: request_options)
             Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
-            _claim(wallet_id, combined_params)
+            super(wallet_id, combined_params)
           end
         end
       end
