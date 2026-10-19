@@ -40,6 +40,13 @@ module Privy
         end
         attr_writer :failure_reason
 
+        # Amount charged in USD for gas sponsorship on this step.
+        sig { returns(T.nilable(String)) }
+        attr_reader :gas_credits_charged_usd
+
+        sig { params(gas_credits_charged_usd: String).void }
+        attr_writer :gas_credits_charged_usd
+
         # A wallet action step consisting of a TVM (Tron) transaction.
         sig do
           params(
@@ -48,7 +55,8 @@ module Privy
             transaction_id: T.nilable(String),
             type:
               Privy::Wallets::TvmTransactionWalletActionStep::Type::OrSymbol,
-            failure_reason: Privy::Wallets::FailureReason::OrHash
+            failure_reason: Privy::Wallets::FailureReason::OrHash,
+            gas_credits_charged_usd: String
           ).returns(T.attached_class)
         end
         def self.new(
@@ -60,7 +68,9 @@ module Privy
           transaction_id:,
           type:,
           # A description of why a wallet action (or a step within a wallet action) failed.
-          failure_reason: nil
+          failure_reason: nil,
+          # Amount charged in USD for gas sponsorship on this step.
+          gas_credits_charged_usd: nil
         )
         end
 
@@ -72,7 +82,8 @@ module Privy
               transaction_id: T.nilable(String),
               type:
                 Privy::Wallets::TvmTransactionWalletActionStep::Type::TaggedSymbol,
-              failure_reason: Privy::Wallets::FailureReason
+              failure_reason: Privy::Wallets::FailureReason,
+              gas_credits_charged_usd: String
             }
           )
         end

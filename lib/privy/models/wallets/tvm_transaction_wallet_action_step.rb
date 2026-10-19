@@ -33,7 +33,13 @@ module Privy
         #   @return [Privy::Models::Wallets::FailureReason, nil]
         optional :failure_reason, -> { Privy::Wallets::FailureReason }
 
-        # @!method initialize(caip2:, status:, transaction_id:, type:, failure_reason: nil)
+        # @!attribute gas_credits_charged_usd
+        #   Amount charged in USD for gas sponsorship on this step.
+        #
+        #   @return [String, nil]
+        optional :gas_credits_charged_usd, String
+
+        # @!method initialize(caip2:, status:, transaction_id:, type:, failure_reason: nil, gas_credits_charged_usd: nil)
         #   A wallet action step consisting of a TVM (Tron) transaction.
         #
         #   @param caip2 [String] CAIP-2 chain identifier for the Tron network.
@@ -45,6 +51,8 @@ module Privy
         #   @param type [Symbol, Privy::Models::Wallets::TvmTransactionWalletActionStep::Type]
         #
         #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
+        #
+        #   @param gas_credits_charged_usd [String] Amount charged in USD for gas sponsorship on this step.
 
         # @see Privy::Models::Wallets::TvmTransactionWalletActionStep#type
         module Type
