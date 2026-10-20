@@ -42,7 +42,9 @@ module Privy
       required :status, enum: -> { Privy::WalletActionEarnIncentiveClaimSucceededWebhookPayload::Status }
 
       # @!attribute steps
-      #   The steps of the wallet action, including transaction hashes.
+      #   The steps of the wallet action, including transaction hashes;
+      #   `gas_credits_charged` on a step may still be `null` when this webhook fires, so
+      #   fetch the wallet action directly for up-to-date gas data.
       #
       #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>]
       required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
@@ -72,6 +74,10 @@ module Privy
       optional :reference_id, String, nil?: true
 
       # @!method initialize(action_type:, chain:, completed_at:, created_at:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload} for more
+      #   details.
+      #
       #   Payload for the wallet_action.earn_incentive_claim.succeeded webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
@@ -86,7 +92,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>] The steps of the wallet action, including transaction hashes.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>] The steps of the wallet action, including transaction hashes; `gas_credits_charg
       #
       #   @param type [Symbol, Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload::Type] The type of webhook event.
       #

@@ -46,7 +46,9 @@ module Privy
       end
       attr_accessor :status
 
-      # The steps of the wallet action at the time of rejection.
+      # The steps of the wallet action at the time of rejection; `gas_credits_charged`
+      # on a step may still be `null` when this webhook fires, so fetch the wallet
+      # action directly for up-to-date gas data.
       sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
@@ -151,7 +153,9 @@ module Privy
         source_chain:,
         # The status of the wallet action.
         status:,
-        # The steps of the wallet action at the time of rejection.
+        # The steps of the wallet action at the time of rejection; `gas_credits_charged`
+        # on a step may still be `null` when this webhook fires, so fetch the wallet
+        # action directly for up-to-date gas data.
         steps:,
         # The type of webhook event.
         type:,

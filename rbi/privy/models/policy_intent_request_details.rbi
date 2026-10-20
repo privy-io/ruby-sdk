@@ -14,7 +14,7 @@ module Privy
       sig { params(body: Privy::PolicyIntentRequestDetails::Body::OrHash).void }
       attr_writer :body
 
-      sig { returns(Privy::PolicyIntentRequestDetails::Method::OrSymbol) }
+      sig { returns(Privy::PolicyIntentRequestDetails::Method::TaggedSymbol) }
       attr_accessor :method_
 
       sig { returns(String) }
@@ -35,7 +35,7 @@ module Privy
         override.returns(
           {
             body: Privy::PolicyIntentRequestDetails::Body,
-            method_: Privy::PolicyIntentRequestDetails::Method::OrSymbol,
+            method_: Privy::PolicyIntentRequestDetails::Method::TaggedSymbol,
             url: String
           }
         )
@@ -61,11 +61,7 @@ module Privy
 
         # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
         # null to remove the current owner.
-        sig do
-          returns(
-            T.nilable(T.any(Privy::OwnerInputUser, Privy::OwnerInputPublicKey))
-          )
-        end
+        sig { returns(T.nilable(Privy::OwnerInput::Variants)) }
         attr_accessor :owner
 
         # The key quorum ID to set as the owner of the resource. If you provide this, do
@@ -112,10 +108,7 @@ module Privy
           override.returns(
             {
               name: String,
-              owner:
-                T.nilable(
-                  T.any(Privy::OwnerInputUser, Privy::OwnerInputPublicKey)
-                ),
+              owner: T.nilable(Privy::OwnerInput::Variants),
               owner_id: T.nilable(String),
               rules: T::Array[Privy::PolicyRuleRequestBody]
             }

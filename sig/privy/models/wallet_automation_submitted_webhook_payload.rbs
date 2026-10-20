@@ -8,6 +8,7 @@ module Privy
         trigger_asset_address: String,
         :trigger_caip2 => String,
         trigger_id: String,
+        trigger_tx_hash: String?,
         type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_,
         wallet_id: String
       }
@@ -25,6 +26,8 @@ module Privy
 
       attr_accessor trigger_id: String
 
+      attr_accessor trigger_tx_hash: String?
+
       attr_accessor type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_
 
       attr_accessor wallet_id: String
@@ -36,6 +39,7 @@ module Privy
         trigger_asset_address: String,
         trigger_caip2: String,
         trigger_id: String,
+        trigger_tx_hash: String?,
         type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_,
         wallet_id: String
       ) -> void
@@ -47,6 +51,7 @@ module Privy
         trigger_asset_address: String,
         :trigger_caip2 => String,
         trigger_id: String,
+        trigger_tx_hash: String?,
         type: Privy::Models::WalletAutomationSubmittedWebhookPayload::type_,
         wallet_id: String
       }

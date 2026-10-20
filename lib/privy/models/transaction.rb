@@ -35,6 +35,12 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
+      # @!attribute gas_credits_charged
+      #   A monetary value with its currency denomination.
+      #
+      #   @return [Privy::Models::CurrencyAmount, nil]
+      optional :gas_credits_charged, -> { Privy::CurrencyAmount }, nil?: true
+
       # @!attribute reference_id
       #   Developer-provided reference ID, if one was included in the request.
       #
@@ -51,7 +57,7 @@ module Privy
       #   @return [String, nil]
       optional :user_operation_hash, String
 
-      # @!method initialize(id:, caip2:, created_at:, status:, transaction_hash:, wallet_id:, reference_id: nil, sponsored: nil, user_operation_hash: nil)
+      # @!method initialize(id:, caip2:, created_at:, status:, transaction_hash:, wallet_id:, gas_credits_charged: nil, reference_id: nil, sponsored: nil, user_operation_hash: nil)
       #   A transaction from a Privy wallet.
       #
       #   @param id [String]
@@ -65,6 +71,8 @@ module Privy
       #   @param transaction_hash [String, nil]
       #
       #   @param wallet_id [String]
+      #
+      #   @param gas_credits_charged [Privy::Models::CurrencyAmount, nil] A monetary value with its currency denomination.
       #
       #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
       #

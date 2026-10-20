@@ -41,13 +41,22 @@ module Privy
         #   @return [Boolean, nil]
         optional :finalized, Privy::Internal::Type::Boolean
 
+        # @!attribute gas_credits_charged
+        #   A monetary value with its currency denomination.
+        #
+        #   @return [Privy::Models::CurrencyAmount, nil]
+        optional :gas_credits_charged, -> { Privy::CurrencyAmount }, nil?: true
+
         # @!attribute gas_credits_charged_usd
-        #   Amount charged in USD for gas sponsorship on this step.
+        #   @deprecated
+        #
+        #   Deprecated, use `gas_credits_charged` instead; gas credits charged in USD for
+        #   this step, if sponsored, as a decimal string.
         #
         #   @return [String, nil]
-        optional :gas_credits_charged_usd, String
+        optional :gas_credits_charged_usd, String, nil?: true
 
-        # @!method initialize(caip2:, status:, transaction_hash:, type:, failure_reason: nil, finalized: nil, gas_credits_charged_usd: nil)
+        # @!method initialize(caip2:, status:, transaction_hash:, type:, failure_reason: nil, finalized: nil, gas_credits_charged: nil, gas_credits_charged_usd: nil)
         #   Some parameter documentations has been truncated, see
         #   {Privy::Models::Wallets::EvmTransactionWalletActionStep} for more details.
         #
@@ -65,7 +74,9 @@ module Privy
         #
         #   @param finalized [Boolean] Whether this step has reached on-chain finality. Absent until finality is confir
         #
-        #   @param gas_credits_charged_usd [String] Amount charged in USD for gas sponsorship on this step.
+        #   @param gas_credits_charged [Privy::Models::CurrencyAmount, nil] A monetary value with its currency denomination.
+        #
+        #   @param gas_credits_charged_usd [String, nil] Deprecated, use `gas_credits_charged` instead; gas credits charged in USD for th
 
         # @see Privy::Models::Wallets::EvmTransactionWalletActionStep#type
         module Type

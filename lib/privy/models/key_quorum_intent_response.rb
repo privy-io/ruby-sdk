@@ -2,7 +2,6 @@
 
 module Privy
   module Models
-    # @see Privy::Resources::Intents#update_key_quorum
     class KeyQuorumIntentResponse < Privy::Models::BaseIntentResponse
       # @!attribute intent_type
       #
@@ -10,14 +9,13 @@ module Privy
       required :intent_type, enum: -> { Privy::KeyQuorumIntentResponse::IntentType }
 
       # @!attribute request_details
-      #   The original key quorum update request that would be sent to the key quorum
-      #   endpoint
+      #   The original key quorum request. Method is PATCH (update) or DELETE (delete).
       #
-      #   @return [Privy::Models::KeyQuorumIntentResponse::RequestDetails]
-      required :request_details, -> { Privy::KeyQuorumIntentResponse::RequestDetails }
+      #   @return [Privy::Models::KeyQuorumIntentRequestDetails, Privy::Models::KeyQuorumIntentDeleteRequestDetails]
+      required :request_details, union: -> { Privy::KeyQuorumIntentRequestDetailsUnion }
 
       # @!attribute action_result
-      #   Result of key quorum update execution (only present if status is 'executed' or
+      #   Result of key quorum execution (only present if status is 'executed' or
       #   'failed')
       #
       #   @return [Privy::Models::BaseActionResult, nil]
@@ -37,9 +35,9 @@ module Privy
       #
       #   @param intent_type [Symbol, Privy::Models::KeyQuorumIntentResponse::IntentType]
       #
-      #   @param request_details [Privy::Models::KeyQuorumIntentResponse::RequestDetails] The original key quorum update request that would be sent to the key quorum endp
+      #   @param request_details [Privy::Models::KeyQuorumIntentRequestDetails, Privy::Models::KeyQuorumIntentDeleteRequestDetails] The original key quorum request. Method is PATCH (update) or DELETE (delete).
       #
-      #   @param action_result [Privy::Models::BaseActionResult] Result of key quorum update execution (only present if status is 'executed' or '
+      #   @param action_result [Privy::Models::BaseActionResult] Result of key quorum execution (only present if status is 'executed' or 'failed'
       #
       #   @param current_resource_data [Privy::Models::KeyQuorum] A key quorum for authorizing wallet operations.
 
@@ -50,52 +48,6 @@ module Privy
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      class RequestDetails < Privy::Internal::Type::BaseModel
-        # @!attribute body
-        #   Request input for updating an existing key quorum. At least one field must be
-        #   provided.
-        #
-        #   @return [Privy::Models::KeyQuorumUpdateRequestBody]
-        required :body, -> { Privy::KeyQuorumUpdateRequestBody }
-
-        # @!attribute method_
-        #
-        #   @return [Symbol, Privy::Models::KeyQuorumIntentResponse::RequestDetails::Method]
-        required :method_,
-                 enum: -> {
-                   Privy::KeyQuorumIntentResponse::RequestDetails::Method
-                 },
-                 api_name: :method
-
-        # @!attribute url
-        #
-        #   @return [String]
-        required :url, String
-
-        # @!method initialize(body:, method_:, url:)
-        #   Some parameter documentations has been truncated, see
-        #   {Privy::Models::KeyQuorumIntentResponse::RequestDetails} for more details.
-        #
-        #   The original key quorum update request that would be sent to the key quorum
-        #   endpoint
-        #
-        #   @param body [Privy::Models::KeyQuorumUpdateRequestBody] Request input for updating an existing key quorum. At least one field must be pr
-        #
-        #   @param method_ [Symbol, Privy::Models::KeyQuorumIntentResponse::RequestDetails::Method]
-        #
-        #   @param url [String]
-
-        # @see Privy::Models::KeyQuorumIntentResponse::RequestDetails#method_
-        module Method
-          extend Privy::Internal::Type::Enum
-
-          PATCH = :PATCH
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

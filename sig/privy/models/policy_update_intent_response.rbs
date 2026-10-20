@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type policy_update_intent_response =
+      {
+        intent_type: Privy::Models::PolicyUpdateIntentResponse::intent_type,
+        request_details: Privy::PolicyIntentRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Policy
+      }
+
+    class PolicyUpdateIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::PolicyUpdateIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::PolicyUpdateIntentResponse::intent_type _
+      ) -> Privy::Models::PolicyUpdateIntentResponse::intent_type
+
+      def request_details: -> Privy::PolicyIntentRequestDetails
+
+      def request_details=: (
+        Privy::PolicyIntentRequestDetails _
+      ) -> Privy::PolicyIntentRequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::Policy?
+
+      def current_resource_data=: (Privy::Policy _) -> Privy::Policy
+
+      def initialize: (
+        intent_type: Privy::Models::PolicyUpdateIntentResponse::intent_type,
+        request_details: Privy::PolicyIntentRequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::Policy
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::PolicyUpdateIntentResponse::intent_type,
+        request_details: Privy::PolicyIntentRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::Policy
+      }
+
+      type intent_type = :POLICY
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        POLICY: :POLICY
+
+        def self?.values: -> ::Array[Privy::Models::PolicyUpdateIntentResponse::intent_type]
+      end
+    end
+  end
+end

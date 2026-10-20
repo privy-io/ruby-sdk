@@ -40,6 +40,12 @@ module Privy
       #   @return [String]
       required :trigger_id, String
 
+      # @!attribute trigger_tx_hash
+      #   Transaction hash of the triggering deposit, or null when triggered by a reindex.
+      #
+      #   @return [String, nil]
+      required :trigger_tx_hash, String, nil?: true
+
       # @!attribute type
       #   The type of webhook event.
       #
@@ -52,7 +58,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_id:, automation_id:, created_at:, trigger_asset_address:, trigger_caip2:, trigger_id:, type:, wallet_id:)
+      # @!method initialize(action_id:, automation_id:, created_at:, trigger_asset_address:, trigger_caip2:, trigger_id:, trigger_tx_hash:, type:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletAutomationSubmittedWebhookPayload} for more details.
       #
@@ -69,6 +75,8 @@ module Privy
       #   @param trigger_caip2 [String] CAIP-2 chain identifier of the triggering deposit (e.g., 'eip155:8453').
       #
       #   @param trigger_id [String] The ID of the automation execution that fired.
+      #
+      #   @param trigger_tx_hash [String, nil] Transaction hash of the triggering deposit, or null when triggered by a reindex.
       #
       #   @param type [Symbol, Privy::Models::WalletAutomationSubmittedWebhookPayload::Type] The type of webhook event.
       #

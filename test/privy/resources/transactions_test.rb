@@ -20,6 +20,7 @@ class Privy::Test::Resources::TransactionsTest < Privy::Test::ResourceTest
         status: Privy::BlockchainTransactionStatus,
         transaction_hash: String | nil,
         wallet_id: String,
+        gas_credits_charged: Privy::CurrencyAmount | nil,
         reference_id: String | nil,
         sponsored: Privy::Internal::Type::Boolean | nil,
         user_operation_hash: String | nil

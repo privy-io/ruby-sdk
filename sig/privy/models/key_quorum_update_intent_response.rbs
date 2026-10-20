@@ -1,0 +1,57 @@
+module Privy
+  module Models
+    type key_quorum_update_intent_response =
+      {
+        intent_type: Privy::Models::KeyQuorumUpdateIntentResponse::intent_type,
+        request_details: Privy::KeyQuorumIntentRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::KeyQuorum
+      }
+
+    class KeyQuorumUpdateIntentResponse < Privy::Models::BaseIntentResponse
+      def intent_type: -> Privy::Models::KeyQuorumUpdateIntentResponse::intent_type
+
+      def intent_type=: (
+        Privy::Models::KeyQuorumUpdateIntentResponse::intent_type _
+      ) -> Privy::Models::KeyQuorumUpdateIntentResponse::intent_type
+
+      def request_details: -> Privy::KeyQuorumIntentRequestDetails
+
+      def request_details=: (
+        Privy::KeyQuorumIntentRequestDetails _
+      ) -> Privy::KeyQuorumIntentRequestDetails
+
+      def action_result: -> Privy::BaseActionResult?
+
+      def action_result=: (Privy::BaseActionResult _) -> Privy::BaseActionResult
+
+      def current_resource_data: -> Privy::KeyQuorum?
+
+      def current_resource_data=: (Privy::KeyQuorum _) -> Privy::KeyQuorum
+
+      def initialize: (
+        intent_type: Privy::Models::KeyQuorumUpdateIntentResponse::intent_type,
+        request_details: Privy::KeyQuorumIntentRequestDetails,
+        ?action_result: Privy::BaseActionResult,
+        ?current_resource_data: Privy::KeyQuorum
+      ) -> void
+
+      def to_hash: -> {
+        intent_type: Privy::Models::KeyQuorumUpdateIntentResponse::intent_type,
+        request_details: Privy::KeyQuorumIntentRequestDetails,
+        action_result: Privy::BaseActionResult,
+        current_resource_data: Privy::KeyQuorum
+      }
+
+      type intent_type = :KEY_QUORUM
+
+      module IntentType
+        extend Privy::Internal::Type::Enum
+
+        KEY_QUORUM: :KEY_QUORUM
+
+        def self?.values: -> ::Array[Privy::Models::KeyQuorumUpdateIntentResponse::intent_type]
+      end
+    end
+  end
+end

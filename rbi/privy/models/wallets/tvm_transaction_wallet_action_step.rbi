@@ -40,12 +40,21 @@ module Privy
         end
         attr_writer :failure_reason
 
-        # Amount charged in USD for gas sponsorship on this step.
-        sig { returns(T.nilable(String)) }
-        attr_reader :gas_credits_charged_usd
+        # A monetary value with its currency denomination.
+        sig { returns(T.nilable(Privy::CurrencyAmount)) }
+        attr_reader :gas_credits_charged
 
-        sig { params(gas_credits_charged_usd: String).void }
-        attr_writer :gas_credits_charged_usd
+        sig do
+          params(
+            gas_credits_charged: T.nilable(Privy::CurrencyAmount::OrHash)
+          ).void
+        end
+        attr_writer :gas_credits_charged
+
+        # Deprecated, use `gas_credits_charged` instead; gas credits charged in USD for
+        # this step, if sponsored, as a decimal string.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :gas_credits_charged_usd
 
         # A wallet action step consisting of a TVM (Tron) transaction.
         sig do
@@ -56,7 +65,8 @@ module Privy
             type:
               Privy::Wallets::TvmTransactionWalletActionStep::Type::OrSymbol,
             failure_reason: Privy::Wallets::FailureReason::OrHash,
-            gas_credits_charged_usd: String
+            gas_credits_charged: T.nilable(Privy::CurrencyAmount::OrHash),
+            gas_credits_charged_usd: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -69,7 +79,10 @@ module Privy
           type:,
           # A description of why a wallet action (or a step within a wallet action) failed.
           failure_reason: nil,
-          # Amount charged in USD for gas sponsorship on this step.
+          # A monetary value with its currency denomination.
+          gas_credits_charged: nil,
+          # Deprecated, use `gas_credits_charged` instead; gas credits charged in USD for
+          # this step, if sponsored, as a decimal string.
           gas_credits_charged_usd: nil
         )
         end
@@ -83,7 +96,8 @@ module Privy
               type:
                 Privy::Wallets::TvmTransactionWalletActionStep::Type::TaggedSymbol,
               failure_reason: Privy::Wallets::FailureReason,
-              gas_credits_charged_usd: String
+              gas_credits_charged: T.nilable(Privy::CurrencyAmount),
+              gas_credits_charged_usd: T.nilable(String)
             }
           )
         end

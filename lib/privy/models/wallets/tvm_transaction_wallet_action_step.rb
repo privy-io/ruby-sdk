@@ -33,13 +33,25 @@ module Privy
         #   @return [Privy::Models::Wallets::FailureReason, nil]
         optional :failure_reason, -> { Privy::Wallets::FailureReason }
 
+        # @!attribute gas_credits_charged
+        #   A monetary value with its currency denomination.
+        #
+        #   @return [Privy::Models::CurrencyAmount, nil]
+        optional :gas_credits_charged, -> { Privy::CurrencyAmount }, nil?: true
+
         # @!attribute gas_credits_charged_usd
-        #   Amount charged in USD for gas sponsorship on this step.
+        #   @deprecated
+        #
+        #   Deprecated, use `gas_credits_charged` instead; gas credits charged in USD for
+        #   this step, if sponsored, as a decimal string.
         #
         #   @return [String, nil]
-        optional :gas_credits_charged_usd, String
+        optional :gas_credits_charged_usd, String, nil?: true
 
-        # @!method initialize(caip2:, status:, transaction_id:, type:, failure_reason: nil, gas_credits_charged_usd: nil)
+        # @!method initialize(caip2:, status:, transaction_id:, type:, failure_reason: nil, gas_credits_charged: nil, gas_credits_charged_usd: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Privy::Models::Wallets::TvmTransactionWalletActionStep} for more details.
+        #
         #   A wallet action step consisting of a TVM (Tron) transaction.
         #
         #   @param caip2 [String] CAIP-2 chain identifier for the Tron network.
@@ -52,7 +64,9 @@ module Privy
         #
         #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
         #
-        #   @param gas_credits_charged_usd [String] Amount charged in USD for gas sponsorship on this step.
+        #   @param gas_credits_charged [Privy::Models::CurrencyAmount, nil] A monetary value with its currency denomination.
+        #
+        #   @param gas_credits_charged_usd [String, nil] Deprecated, use `gas_credits_charged` instead; gas credits charged in USD for th
 
         # @see Privy::Models::Wallets::TvmTransactionWalletActionStep#type
         module Type

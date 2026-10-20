@@ -164,6 +164,44 @@ module Privy
       )
       end
 
+      # Create an intent to delete a key quorum. The intent must be authorized by the
+      # key quorum members before it can be executed.
+      sig do
+        params(
+          key_quorum_id: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::KeyQuorumDeleteIntentResponse)
+      end
+      def delete_key_quorum(
+        # ID of the key quorum.
+        key_quorum_id,
+        # Request expiry. Value is a Unix timestamp in milliseconds representing the
+        # deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
+      # Create an intent to delete a policy. The intent must be authorized by the policy
+      # owner before it can be executed.
+      sig do
+        params(
+          policy_id: String,
+          privy_request_expiry: String,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::PolicyDeleteIntentResponse)
+      end
+      def delete_policy(
+        # ID of the policy.
+        policy_id,
+        # Request expiry. Value is a Unix timestamp in milliseconds representing the
+        # deadline by which the request must be processed.
+        privy_request_expiry: nil,
+        request_options: {}
+      )
+      end
+
       # Create an intent to delete a rule from a policy. The intent must be authorized
       # by the policy owner before it can be executed.
       sig do
@@ -392,7 +430,7 @@ module Privy
           user_ids: T::Array[String],
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::KeyQuorumIntentResponse)
+        ).returns(Privy::KeyQuorumUpdateIntentResponse)
       end
       def update_key_quorum(
         # Path param: ID of the key quorum.
@@ -435,7 +473,7 @@ module Privy
           rules: T::Array[Privy::PolicyRuleRequestBody::OrHash],
           privy_request_expiry: String,
           request_options: Privy::RequestOptions::OrHash
-        ).returns(Privy::PolicyIntentResponse)
+        ).returns(Privy::PolicyUpdateIntentResponse)
       end
       def update_policy(
         # Path param: ID of the policy.

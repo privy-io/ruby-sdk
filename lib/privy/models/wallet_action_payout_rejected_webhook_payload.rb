@@ -82,7 +82,9 @@ module Privy
       required :status, enum: -> { Privy::WalletActionPayoutRejectedWebhookPayload::Status }
 
       # @!attribute steps
-      #   The steps of the wallet action at the time of rejection.
+      #   The steps of the wallet action at the time of rejection; `gas_credits_charged`
+      #   on a step may still be `null` when this webhook fires, so fetch the wallet
+      #   action directly for up-to-date gas data.
       #
       #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>]
       required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
@@ -112,6 +114,9 @@ module Privy
       optional :reference_id, String, nil?: true
 
       # @!method initialize(action_type:, created_at:, destination_currency:, destination_fiat_account_id:, destination_payment_rail:, environment:, failure_reason:, provider:, rejected_at:, source_amount:, source_asset:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::WalletActionPayoutRejectedWebhookPayload} for more details.
+      #
       #   Payload for the wallet_action.payout.rejected webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
@@ -140,7 +145,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionPayoutRejectedWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>] The steps of the wallet action at the time of rejection.
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>] The steps of the wallet action at the time of rejection; `gas_credits_charged` o
       #
       #   @param type [Symbol, Privy::Models::WalletActionPayoutRejectedWebhookPayload::Type] The type of webhook event.
       #

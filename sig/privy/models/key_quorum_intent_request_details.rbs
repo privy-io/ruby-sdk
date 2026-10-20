@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    type key_quorum_intent_request_details =
+      {
+        body: Privy::KeyQuorumUpdateRequestBody,
+        method_: Privy::Models::KeyQuorumIntentRequestDetails::method_,
+        url: String
+      }
+
+    class KeyQuorumIntentRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor body: Privy::KeyQuorumUpdateRequestBody
+
+      attr_accessor method_: Privy::Models::KeyQuorumIntentRequestDetails::method_
+
+      attr_accessor url: String
+
+      def initialize: (
+        body: Privy::KeyQuorumUpdateRequestBody,
+        method_: Privy::Models::KeyQuorumIntentRequestDetails::method_,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        body: Privy::KeyQuorumUpdateRequestBody,
+        method_: Privy::Models::KeyQuorumIntentRequestDetails::method_,
+        url: String
+      }
+
+      type method_ = :PATCH
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        PATCH: :PATCH
+
+        def self?.values: -> ::Array[Privy::Models::KeyQuorumIntentRequestDetails::method_]
+      end
+    end
+  end
+end

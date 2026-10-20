@@ -3,7 +3,7 @@ module Privy
     type policy_intent_response =
       {
         intent_type: Privy::Models::PolicyIntentResponse::intent_type,
-        request_details: Privy::PolicyIntentResponse::RequestDetails,
+        request_details: Privy::Models::policy_intent_request_details_union,
         action_result: Privy::BaseActionResult,
         current_resource_data: Privy::Policy
       }
@@ -15,11 +15,11 @@ module Privy
         Privy::Models::PolicyIntentResponse::intent_type _
       ) -> Privy::Models::PolicyIntentResponse::intent_type
 
-      def request_details: -> Privy::PolicyIntentResponse::RequestDetails
+      def request_details: -> Privy::Models::policy_intent_request_details_union
 
       def request_details=: (
-        Privy::PolicyIntentResponse::RequestDetails _
-      ) -> Privy::PolicyIntentResponse::RequestDetails
+        Privy::Models::policy_intent_request_details_union _
+      ) -> Privy::Models::policy_intent_request_details_union
 
       def action_result: -> Privy::BaseActionResult?
 
@@ -31,14 +31,14 @@ module Privy
 
       def initialize: (
         intent_type: Privy::Models::PolicyIntentResponse::intent_type,
-        request_details: Privy::PolicyIntentResponse::RequestDetails,
+        request_details: Privy::Models::policy_intent_request_details_union,
         ?action_result: Privy::BaseActionResult,
         ?current_resource_data: Privy::Policy
       ) -> void
 
       def to_hash: -> {
         intent_type: Privy::Models::PolicyIntentResponse::intent_type,
-        request_details: Privy::PolicyIntentResponse::RequestDetails,
+        request_details: Privy::Models::policy_intent_request_details_union,
         action_result: Privy::BaseActionResult,
         current_resource_data: Privy::Policy
       }
@@ -51,81 +51,6 @@ module Privy
         POLICY: :POLICY
 
         def self?.values: -> ::Array[Privy::Models::PolicyIntentResponse::intent_type]
-      end
-
-      type request_details =
-        {
-          body: Privy::PolicyIntentResponse::RequestDetails::Body,
-          method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_,
-          url: String
-        }
-
-      class RequestDetails < Privy::Internal::Type::BaseModel
-        attr_accessor body: Privy::PolicyIntentResponse::RequestDetails::Body
-
-        attr_accessor method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_
-
-        attr_accessor url: String
-
-        def initialize: (
-          body: Privy::PolicyIntentResponse::RequestDetails::Body,
-          method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_,
-          url: String
-        ) -> void
-
-        def to_hash: -> {
-          body: Privy::PolicyIntentResponse::RequestDetails::Body,
-          method_: Privy::Models::PolicyIntentResponse::RequestDetails::method_,
-          url: String
-        }
-
-        type body =
-          {
-            name: String,
-            owner: Privy::Models::owner_input?,
-            owner_id: String?,
-            rules: ::Array[Privy::PolicyRuleRequestBody]
-          }
-
-        class Body < Privy::Internal::Type::BaseModel
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_accessor owner: Privy::Models::owner_input?
-
-          attr_accessor owner_id: String?
-
-          attr_reader rules: ::Array[Privy::PolicyRuleRequestBody]?
-
-          def rules=: (
-            ::Array[Privy::PolicyRuleRequestBody]
-          ) -> ::Array[Privy::PolicyRuleRequestBody]
-
-          def initialize: (
-            ?name: String,
-            ?owner: Privy::Models::owner_input?,
-            ?owner_id: String?,
-            ?rules: ::Array[Privy::PolicyRuleRequestBody]
-          ) -> void
-
-          def to_hash: -> {
-            name: String,
-            owner: Privy::Models::owner_input?,
-            owner_id: String?,
-            rules: ::Array[Privy::PolicyRuleRequestBody]
-          }
-        end
-
-        type method_ = :PATCH
-
-        module Method
-          extend Privy::Internal::Type::Enum
-
-          PATCH: :PATCH
-
-          def self?.values: -> ::Array[Privy::Models::PolicyIntentResponse::RequestDetails::method_]
-        end
       end
     end
   end

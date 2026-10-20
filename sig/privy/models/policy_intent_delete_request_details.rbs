@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type policy_intent_delete_request_details =
+      {
+        method_: Privy::Models::PolicyIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::PolicyIntentDeleteRequestBody
+      }
+
+    class PolicyIntentDeleteRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::PolicyIntentDeleteRequestDetails::method_
+
+      attr_accessor url: String
+
+      attr_reader body: Privy::PolicyIntentDeleteRequestBody?
+
+      def body=: (
+        Privy::PolicyIntentDeleteRequestBody
+      ) -> Privy::PolicyIntentDeleteRequestBody
+
+      def initialize: (
+        method_: Privy::Models::PolicyIntentDeleteRequestDetails::method_,
+        url: String,
+        ?body: Privy::PolicyIntentDeleteRequestBody
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::PolicyIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::PolicyIntentDeleteRequestBody
+      }
+
+      type method_ = :DELETE
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        DELETE: :DELETE
+
+        def self?.values: -> ::Array[Privy::Models::PolicyIntentDeleteRequestDetails::method_]
+      end
+    end
+  end
+end

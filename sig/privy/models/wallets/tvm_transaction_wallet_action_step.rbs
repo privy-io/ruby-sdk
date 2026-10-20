@@ -8,7 +8,8 @@ module Privy
           transaction_id: String?,
           type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason,
-          gas_credits_charged_usd: String
+          gas_credits_charged: Privy::CurrencyAmount?,
+          gas_credits_charged_usd: String?
         }
 
       class TvmTransactionWalletActionStep < Privy::Internal::Type::BaseModel
@@ -26,9 +27,9 @@ module Privy
           Privy::Wallets::FailureReason
         ) -> Privy::Wallets::FailureReason
 
-        attr_reader gas_credits_charged_usd: String?
+        attr_accessor gas_credits_charged: Privy::CurrencyAmount?
 
-        def gas_credits_charged_usd=: (String) -> String
+        attr_accessor gas_credits_charged_usd: String?
 
         def initialize: (
           caip2: String,
@@ -36,7 +37,8 @@ module Privy
           transaction_id: String?,
           type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_,
           ?failure_reason: Privy::Wallets::FailureReason,
-          ?gas_credits_charged_usd: String
+          ?gas_credits_charged: Privy::CurrencyAmount?,
+          ?gas_credits_charged_usd: String?
         ) -> void
 
         def to_hash: -> {
@@ -45,7 +47,8 @@ module Privy
           transaction_id: String?,
           type: Privy::Models::Wallets::TvmTransactionWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason,
-          gas_credits_charged_usd: String
+          gas_credits_charged: Privy::CurrencyAmount?,
+          gas_credits_charged_usd: String?
         }
 
         type type_ = :tvm_transaction

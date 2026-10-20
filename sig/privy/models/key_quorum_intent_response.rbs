@@ -3,7 +3,7 @@ module Privy
     type key_quorum_intent_response =
       {
         intent_type: Privy::Models::KeyQuorumIntentResponse::intent_type,
-        request_details: Privy::KeyQuorumIntentResponse::RequestDetails,
+        request_details: Privy::Models::key_quorum_intent_request_details_union,
         action_result: Privy::BaseActionResult,
         current_resource_data: Privy::KeyQuorum
       }
@@ -15,11 +15,11 @@ module Privy
         Privy::Models::KeyQuorumIntentResponse::intent_type _
       ) -> Privy::Models::KeyQuorumIntentResponse::intent_type
 
-      def request_details: -> Privy::KeyQuorumIntentResponse::RequestDetails
+      def request_details: -> Privy::Models::key_quorum_intent_request_details_union
 
       def request_details=: (
-        Privy::KeyQuorumIntentResponse::RequestDetails _
-      ) -> Privy::KeyQuorumIntentResponse::RequestDetails
+        Privy::Models::key_quorum_intent_request_details_union _
+      ) -> Privy::Models::key_quorum_intent_request_details_union
 
       def action_result: -> Privy::BaseActionResult?
 
@@ -31,14 +31,14 @@ module Privy
 
       def initialize: (
         intent_type: Privy::Models::KeyQuorumIntentResponse::intent_type,
-        request_details: Privy::KeyQuorumIntentResponse::RequestDetails,
+        request_details: Privy::Models::key_quorum_intent_request_details_union,
         ?action_result: Privy::BaseActionResult,
         ?current_resource_data: Privy::KeyQuorum
       ) -> void
 
       def to_hash: -> {
         intent_type: Privy::Models::KeyQuorumIntentResponse::intent_type,
-        request_details: Privy::KeyQuorumIntentResponse::RequestDetails,
+        request_details: Privy::Models::key_quorum_intent_request_details_union,
         action_result: Privy::BaseActionResult,
         current_resource_data: Privy::KeyQuorum
       }
@@ -51,43 +51,6 @@ module Privy
         KEY_QUORUM: :KEY_QUORUM
 
         def self?.values: -> ::Array[Privy::Models::KeyQuorumIntentResponse::intent_type]
-      end
-
-      type request_details =
-        {
-          body: Privy::KeyQuorumUpdateRequestBody,
-          method_: Privy::Models::KeyQuorumIntentResponse::RequestDetails::method_,
-          url: String
-        }
-
-      class RequestDetails < Privy::Internal::Type::BaseModel
-        attr_accessor body: Privy::KeyQuorumUpdateRequestBody
-
-        attr_accessor method_: Privy::Models::KeyQuorumIntentResponse::RequestDetails::method_
-
-        attr_accessor url: String
-
-        def initialize: (
-          body: Privy::KeyQuorumUpdateRequestBody,
-          method_: Privy::Models::KeyQuorumIntentResponse::RequestDetails::method_,
-          url: String
-        ) -> void
-
-        def to_hash: -> {
-          body: Privy::KeyQuorumUpdateRequestBody,
-          method_: Privy::Models::KeyQuorumIntentResponse::RequestDetails::method_,
-          url: String
-        }
-
-        type method_ = :PATCH
-
-        module Method
-          extend Privy::Internal::Type::Enum
-
-          PATCH: :PATCH
-
-          def self?.values: -> ::Array[Privy::Models::KeyQuorumIntentResponse::RequestDetails::method_]
-        end
       end
     end
   end

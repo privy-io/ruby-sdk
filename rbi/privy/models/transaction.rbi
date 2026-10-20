@@ -25,6 +25,17 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # A monetary value with its currency denomination.
+      sig { returns(T.nilable(Privy::CurrencyAmount)) }
+      attr_reader :gas_credits_charged
+
+      sig do
+        params(
+          gas_credits_charged: T.nilable(Privy::CurrencyAmount::OrHash)
+        ).void
+      end
+      attr_writer :gas_credits_charged
+
       # Developer-provided reference ID, if one was included in the request.
       sig { returns(T.nilable(String)) }
       attr_accessor :reference_id
@@ -50,6 +61,7 @@ module Privy
           status: Privy::BlockchainTransactionStatus::OrSymbol,
           transaction_hash: T.nilable(String),
           wallet_id: String,
+          gas_credits_charged: T.nilable(Privy::CurrencyAmount::OrHash),
           reference_id: T.nilable(String),
           sponsored: T::Boolean,
           user_operation_hash: String
@@ -63,6 +75,8 @@ module Privy
         status:,
         transaction_hash:,
         wallet_id:,
+        # A monetary value with its currency denomination.
+        gas_credits_charged: nil,
         # Developer-provided reference ID, if one was included in the request.
         reference_id: nil,
         sponsored: nil,
@@ -79,6 +93,7 @@ module Privy
             status: Privy::BlockchainTransactionStatus::TaggedSymbol,
             transaction_hash: T.nilable(String),
             wallet_id: String,
+            gas_credits_charged: T.nilable(Privy::CurrencyAmount),
             reference_id: T.nilable(String),
             sponsored: T::Boolean,
             user_operation_hash: String

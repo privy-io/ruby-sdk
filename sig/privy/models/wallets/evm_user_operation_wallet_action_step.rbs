@@ -11,7 +11,8 @@ module Privy
           user_operation_hash: String?,
           failure_reason: Privy::Wallets::FailureReason,
           finalized: bool,
-          gas_credits_charged_usd: String
+          gas_credits_charged: Privy::CurrencyAmount?,
+          gas_credits_charged_usd: String?
         }
 
       class EvmUserOperationWalletActionStep < Privy::Internal::Type::BaseModel
@@ -37,9 +38,9 @@ module Privy
 
         def finalized=: (bool) -> bool
 
-        attr_reader gas_credits_charged_usd: String?
+        attr_accessor gas_credits_charged: Privy::CurrencyAmount?
 
-        def gas_credits_charged_usd=: (String) -> String
+        attr_accessor gas_credits_charged_usd: String?
 
         def initialize: (
           bundle_transaction_hash: String?,
@@ -50,7 +51,8 @@ module Privy
           user_operation_hash: String?,
           ?failure_reason: Privy::Wallets::FailureReason,
           ?finalized: bool,
-          ?gas_credits_charged_usd: String
+          ?gas_credits_charged: Privy::CurrencyAmount?,
+          ?gas_credits_charged_usd: String?
         ) -> void
 
         def to_hash: -> {
@@ -62,7 +64,8 @@ module Privy
           user_operation_hash: String?,
           failure_reason: Privy::Wallets::FailureReason,
           finalized: bool,
-          gas_credits_charged_usd: String
+          gas_credits_charged: Privy::CurrencyAmount?,
+          gas_credits_charged_usd: String?
         }
 
         type type_ = :evm_user_operation

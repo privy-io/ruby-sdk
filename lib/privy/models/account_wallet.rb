@@ -16,10 +16,10 @@ module Privy
       required :address, String
 
       # @!attribute chain_type
-      #   The wallet chain types that offer first class support.
+      #   The wallet chain types supported in digital asset accounts.
       #
-      #   @return [Symbol, Privy::Models::FirstClassChainType]
-      required :chain_type, enum: -> { Privy::FirstClassChainType }
+      #   @return [Symbol, String, Privy::Models::AccountWalletChainType]
+      required :chain_type, union: -> { Privy::AccountWalletChainType }
 
       # @!method initialize(id:, address:, chain_type:)
       #   A wallet belonging to a digital asset account.
@@ -28,7 +28,7 @@ module Privy
       #
       #   @param address [String] The on-chain address of the wallet.
       #
-      #   @param chain_type [Symbol, Privy::Models::FirstClassChainType] The wallet chain types that offer first class support.
+      #   @param chain_type [Symbol, String, Privy::Models::AccountWalletChainType] The wallet chain types supported in digital asset accounts.
     end
   end
 end

@@ -23,6 +23,8 @@ module Privy
 
   AccountWallet = Privy::Models::AccountWallet
 
+  AccountWalletChainType = Privy::Models::AccountWalletChainType
+
   AccountWalletConfigurationItem = Privy::Models::AccountWalletConfigurationItem
 
   AccountWalletIDs =
@@ -1155,6 +1157,10 @@ module Privy
 
   IntentDeleteConditionSetParams = Privy::Models::IntentDeleteConditionSetParams
 
+  IntentDeleteKeyQuorumParams = Privy::Models::IntentDeleteKeyQuorumParams
+
+  IntentDeletePolicyParams = Privy::Models::IntentDeletePolicyParams
+
   IntentDeletePolicyRuleParams = Privy::Models::IntentDeletePolicyRuleParams
 
   IntentExecutedWebhookPayload = Privy::Models::IntentExecutedWebhookPayload
@@ -1200,17 +1206,32 @@ module Privy
 
   KeyQuorumCreateRequestBody = Privy::Models::KeyQuorumCreateRequestBody
 
+  KeyQuorumDeleteIntentResponse = Privy::Models::KeyQuorumDeleteIntentResponse
+
   KeyQuorumDeleteParams = Privy::Models::KeyQuorumDeleteParams
 
   KeyQuorumGetParams = Privy::Models::KeyQuorumGetParams
 
   KeyQuorumID = Privy::Models::KeyQuorumID
 
+  KeyQuorumIntentDeleteRequestBody =
+    Privy::Models::KeyQuorumIntentDeleteRequestBody
+
+  KeyQuorumIntentDeleteRequestDetails =
+    Privy::Models::KeyQuorumIntentDeleteRequestDetails
+
+  KeyQuorumIntentRequestDetails = Privy::Models::KeyQuorumIntentRequestDetails
+
+  KeyQuorumIntentRequestDetailsUnion =
+    Privy::Models::KeyQuorumIntentRequestDetailsUnion
+
   KeyQuorumIntentResponse = Privy::Models::KeyQuorumIntentResponse
 
   KeyQuorumListParams = Privy::Models::KeyQuorumListParams
 
   KeyQuorumsResponse = Privy::Models::KeyQuorumsResponse
+
+  KeyQuorumUpdateIntentResponse = Privy::Models::KeyQuorumUpdateIntentResponse
 
   KeyQuorumUpdateParams = Privy::Models::KeyQuorumUpdateParams
 
@@ -2024,6 +2045,8 @@ module Privy
 
   PolicyCreateRuleParams = Privy::Models::PolicyCreateRuleParams
 
+  PolicyDeleteIntentResponse = Privy::Models::PolicyDeleteIntentResponse
+
   PolicyDeleteParams = Privy::Models::PolicyDeleteParams
 
   PolicyDeleteRuleParams = Privy::Models::PolicyDeleteRuleParams
@@ -2035,7 +2058,15 @@ module Privy
   PolicyInput =
     T.let(Privy::Models::PolicyInput, Privy::Internal::Type::Converter)
 
+  PolicyIntentDeleteRequestBody = Privy::Models::PolicyIntentDeleteRequestBody
+
+  PolicyIntentDeleteRequestDetails =
+    Privy::Models::PolicyIntentDeleteRequestDetails
+
   PolicyIntentRequestDetails = Privy::Models::PolicyIntentRequestDetails
+
+  PolicyIntentRequestDetailsUnion =
+    Privy::Models::PolicyIntentRequestDetailsUnion
 
   PolicyIntentResponse = Privy::Models::PolicyIntentResponse
 
@@ -2052,6 +2083,8 @@ module Privy
   PolicyRuleRequestParams = Privy::Models::PolicyRuleRequestParams
 
   PolicyRuleResponse = Privy::Models::PolicyRuleResponse
+
+  PolicyUpdateIntentResponse = Privy::Models::PolicyUpdateIntentResponse
 
   PolicyUpdateParams = Privy::Models::PolicyUpdateParams
 

@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type account_wallet_chain_type = :ethereum | :solana | :tron | String
+
+    module AccountWalletChainType
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::account_wallet_chain_type]
+
+      ETHEREUM: :ethereum
+      SOLANA: :solana
+      TRON: :tron
+    end
+  end
+end

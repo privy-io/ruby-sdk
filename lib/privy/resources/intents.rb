@@ -189,6 +189,62 @@ module Privy
       end
 
       # Some parameter documentations has been truncated, see
+      # {Privy::Models::IntentDeleteKeyQuorumParams} for more details.
+      #
+      # Create an intent to delete a key quorum. The intent must be authorized by the
+      # key quorum members before it can be executed.
+      #
+      # @overload delete_key_quorum(key_quorum_id, privy_request_expiry: nil, request_options: {})
+      #
+      # @param key_quorum_id [String] ID of the key quorum.
+      #
+      # @param privy_request_expiry [String] Request expiry. Value is a Unix timestamp in milliseconds representing the deadl
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::KeyQuorumDeleteIntentResponse]
+      #
+      # @see Privy::Models::IntentDeleteKeyQuorumParams
+      def delete_key_quorum(key_quorum_id, params = {})
+        parsed, options = Privy::IntentDeleteKeyQuorumParams.dump_request(params)
+        @client.request(
+          method: :delete,
+          path: ["v1/intents/key_quorums/%1$s", key_quorum_id],
+          headers: parsed.transform_keys(privy_request_expiry: "privy-request-expiry"),
+          model: Privy::KeyQuorumDeleteIntentResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::IntentDeletePolicyParams} for more details.
+      #
+      # Create an intent to delete a policy. The intent must be authorized by the policy
+      # owner before it can be executed.
+      #
+      # @overload delete_policy(policy_id, privy_request_expiry: nil, request_options: {})
+      #
+      # @param policy_id [String] ID of the policy.
+      #
+      # @param privy_request_expiry [String] Request expiry. Value is a Unix timestamp in milliseconds representing the deadl
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::PolicyDeleteIntentResponse]
+      #
+      # @see Privy::Models::IntentDeletePolicyParams
+      def delete_policy(policy_id, params = {})
+        parsed, options = Privy::IntentDeletePolicyParams.dump_request(params)
+        @client.request(
+          method: :delete,
+          path: ["v1/intents/policies/%1$s", policy_id],
+          headers: parsed.transform_keys(privy_request_expiry: "privy-request-expiry"),
+          model: Privy::PolicyDeleteIntentResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Privy::Models::IntentDeletePolicyRuleParams} for more details.
       #
       # Create an intent to delete a rule from a policy. The intent must be authorized
@@ -435,7 +491,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::KeyQuorumIntentResponse]
+      # @return [Privy::Models::KeyQuorumUpdateIntentResponse]
       #
       # @see Privy::Models::IntentUpdateKeyQuorumParams
       def update_key_quorum(key_quorum_id, params = {})
@@ -446,7 +502,7 @@ module Privy
           path: ["v1/intents/key_quorums/%1$s", key_quorum_id],
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Privy::KeyQuorumIntentResponse,
+          model: Privy::KeyQuorumUpdateIntentResponse,
           options: options
         )
       end
@@ -473,7 +529,7 @@ module Privy
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Privy::Models::PolicyIntentResponse]
+      # @return [Privy::Models::PolicyUpdateIntentResponse]
       #
       # @see Privy::Models::IntentUpdatePolicyParams
       def update_policy(policy_id, params = {})
@@ -484,7 +540,7 @@ module Privy
           path: ["v1/intents/policies/%1$s", policy_id],
           headers: parsed.slice(*header_params.keys).transform_keys(header_params),
           body: parsed.except(*header_params.keys),
-          model: Privy::PolicyIntentResponse,
+          model: Privy::PolicyUpdateIntentResponse,
           options: options
         )
       end

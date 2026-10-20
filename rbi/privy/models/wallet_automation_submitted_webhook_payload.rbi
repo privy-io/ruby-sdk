@@ -36,6 +36,10 @@ module Privy
       sig { returns(String) }
       attr_accessor :trigger_id
 
+      # Transaction hash of the triggering deposit, or null when triggered by a reindex.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :trigger_tx_hash
+
       # The type of webhook event.
       sig do
         returns(
@@ -57,6 +61,7 @@ module Privy
           trigger_asset_address: String,
           trigger_caip2: String,
           trigger_id: String,
+          trigger_tx_hash: T.nilable(String),
           type: Privy::WalletAutomationSubmittedWebhookPayload::Type::OrSymbol,
           wallet_id: String
         ).returns(T.attached_class)
@@ -75,6 +80,8 @@ module Privy
         trigger_caip2:,
         # The ID of the automation execution that fired.
         trigger_id:,
+        # Transaction hash of the triggering deposit, or null when triggered by a reindex.
+        trigger_tx_hash:,
         # The type of webhook event.
         type:,
         # The ID of the wallet the automation fired for.
@@ -91,6 +98,7 @@ module Privy
             trigger_asset_address: String,
             trigger_caip2: String,
             trigger_id: String,
+            trigger_tx_hash: T.nilable(String),
             type:
               Privy::WalletAutomationSubmittedWebhookPayload::Type::TaggedSymbol,
             wallet_id: String

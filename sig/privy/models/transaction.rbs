@@ -8,6 +8,7 @@ module Privy
         status: Privy::Models::blockchain_transaction_status,
         transaction_hash: String?,
         wallet_id: String,
+        gas_credits_charged: Privy::CurrencyAmount?,
         reference_id: String?,
         sponsored: bool,
         user_operation_hash: String
@@ -26,6 +27,8 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_accessor gas_credits_charged: Privy::CurrencyAmount?
+
       attr_accessor reference_id: String?
 
       attr_reader sponsored: bool?
@@ -43,6 +46,7 @@ module Privy
         status: Privy::Models::blockchain_transaction_status,
         transaction_hash: String?,
         wallet_id: String,
+        ?gas_credits_charged: Privy::CurrencyAmount?,
         ?reference_id: String?,
         ?sponsored: bool,
         ?user_operation_hash: String
@@ -55,6 +59,7 @@ module Privy
         status: Privy::Models::blockchain_transaction_status,
         transaction_hash: String?,
         wallet_id: String,
+        gas_credits_charged: Privy::CurrencyAmount?,
         reference_id: String?,
         sponsored: bool,
         user_operation_hash: String

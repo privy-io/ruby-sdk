@@ -14,8 +14,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :address
 
-      # The wallet chain types that offer first class support.
-      sig { returns(Privy::FirstClassChainType::OrSymbol) }
+      # The wallet chain types supported in digital asset accounts.
+      sig { returns(T.any(Privy::AccountWalletChainType::OrSymbol, String)) }
       attr_accessor :chain_type
 
       # A wallet belonging to a digital asset account.
@@ -23,7 +23,7 @@ module Privy
         params(
           id: String,
           address: String,
-          chain_type: Privy::FirstClassChainType::OrSymbol
+          chain_type: T.any(Privy::AccountWalletChainType::OrSymbol, String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -31,7 +31,7 @@ module Privy
         id:,
         # The on-chain address of the wallet.
         address:,
-        # The wallet chain types that offer first class support.
+        # The wallet chain types supported in digital asset accounts.
         chain_type:
       )
       end
@@ -41,7 +41,7 @@ module Privy
           {
             id: String,
             address: String,
-            chain_type: Privy::FirstClassChainType::OrSymbol
+            chain_type: T.any(Privy::AccountWalletChainType::OrSymbol, String)
           }
         )
       end

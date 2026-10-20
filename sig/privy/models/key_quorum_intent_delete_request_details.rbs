@@ -1,0 +1,44 @@
+module Privy
+  module Models
+    type key_quorum_intent_delete_request_details =
+      {
+        method_: Privy::Models::KeyQuorumIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::KeyQuorumIntentDeleteRequestBody
+      }
+
+    class KeyQuorumIntentDeleteRequestDetails < Privy::Internal::Type::BaseModel
+      attr_accessor method_: Privy::Models::KeyQuorumIntentDeleteRequestDetails::method_
+
+      attr_accessor url: String
+
+      attr_reader body: Privy::KeyQuorumIntentDeleteRequestBody?
+
+      def body=: (
+        Privy::KeyQuorumIntentDeleteRequestBody
+      ) -> Privy::KeyQuorumIntentDeleteRequestBody
+
+      def initialize: (
+        method_: Privy::Models::KeyQuorumIntentDeleteRequestDetails::method_,
+        url: String,
+        ?body: Privy::KeyQuorumIntentDeleteRequestBody
+      ) -> void
+
+      def to_hash: -> {
+        method_: Privy::Models::KeyQuorumIntentDeleteRequestDetails::method_,
+        url: String,
+        body: Privy::KeyQuorumIntentDeleteRequestBody
+      }
+
+      type method_ = :DELETE
+
+      module Method
+        extend Privy::Internal::Type::Enum
+
+        DELETE: :DELETE
+
+        def self?.values: -> ::Array[Privy::Models::KeyQuorumIntentDeleteRequestDetails::method_]
+      end
+    end
+  end
+end

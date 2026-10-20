@@ -8,24 +8,26 @@ module Privy
           T.any(Privy::AccountWalletConfigurationItem, Privy::Internal::AnyHash)
         end
 
-      # The wallet chain types that offer first class support.
-      sig { returns(Privy::FirstClassChainType::OrSymbol) }
+      # The wallet chain types supported in digital asset accounts.
+      sig { returns(T.any(Privy::AccountWalletChainType::OrSymbol, String)) }
       attr_accessor :chain_type
 
       # Configuration for a wallet to create within an account.
       sig do
-        params(chain_type: Privy::FirstClassChainType::OrSymbol).returns(
-          T.attached_class
-        )
+        params(
+          chain_type: T.any(Privy::AccountWalletChainType::OrSymbol, String)
+        ).returns(T.attached_class)
       end
       def self.new(
-        # The wallet chain types that offer first class support.
+        # The wallet chain types supported in digital asset accounts.
         chain_type:
       )
       end
 
       sig do
-        override.returns({ chain_type: Privy::FirstClassChainType::OrSymbol })
+        override.returns(
+          { chain_type: T.any(Privy::AccountWalletChainType::OrSymbol, String) }
+        )
       end
       def to_hash
       end

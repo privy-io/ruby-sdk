@@ -7,7 +7,7 @@ module Privy
         T.type_alias { T.any(Privy::CurrencyAmount, Privy::Internal::AnyHash) }
 
       # Currency code
-      sig { returns(Privy::CurrencyAmount::Currency::OrSymbol) }
+      sig { returns(Privy::CurrencyAmount::Currency::TaggedSymbol) }
       attr_accessor :currency
 
       # The monetary value as a string.
@@ -31,7 +31,10 @@ module Privy
 
       sig do
         override.returns(
-          { currency: Privy::CurrencyAmount::Currency::OrSymbol, value: String }
+          {
+            currency: Privy::CurrencyAmount::Currency::TaggedSymbol,
+            value: String
+          }
         )
       end
       def to_hash

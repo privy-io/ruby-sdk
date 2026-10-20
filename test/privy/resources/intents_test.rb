@@ -89,6 +89,26 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_delete_key_quorum
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.intents.delete_key_quorum("key_quorum_id")
+
+    assert_pattern do
+      response => Privy::KeyQuorumDeleteIntentResponse
+    end
+  end
+
+  def test_delete_policy
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.intents.delete_policy("policy_id")
+
+    assert_pattern do
+      response => Privy::PolicyDeleteIntentResponse
+    end
+  end
+
   def test_delete_policy_rule_required_params
     skip("Mock server tests are disabled")
 
@@ -206,7 +226,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
     response = @privy_api.intents.update_key_quorum("key_quorum_id")
 
     assert_pattern do
-      response => Privy::KeyQuorumIntentResponse
+      response => Privy::KeyQuorumUpdateIntentResponse
     end
   end
 
@@ -216,7 +236,7 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
     response = @privy_api.intents.update_policy("policy_id")
 
     assert_pattern do
-      response => Privy::PolicyIntentResponse
+      response => Privy::PolicyUpdateIntentResponse
     end
   end
 

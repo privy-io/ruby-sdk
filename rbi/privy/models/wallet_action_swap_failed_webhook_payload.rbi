@@ -54,8 +54,10 @@ module Privy
       end
       attr_accessor :status
 
-      # The steps of the wallet action. Completed steps will have transaction hashes;
-      # the failing step will have a failure_reason.
+      # The steps of the wallet action, where completed steps have transaction hashes
+      # and the failing step has a failure_reason; `gas_credits_charged` on a step may
+      # still be `null` when this webhook fires, so fetch the wallet action directly for
+      # up-to-date gas data.
       sig { returns(T::Array[Privy::Wallets::WalletActionStep::Variants]) }
       attr_accessor :steps
 
@@ -126,8 +128,10 @@ module Privy
         output_token:,
         # The status of the wallet action.
         status:,
-        # The steps of the wallet action. Completed steps will have transaction hashes;
-        # the failing step will have a failure_reason.
+        # The steps of the wallet action, where completed steps have transaction hashes
+        # and the failing step has a failure_reason; `gas_credits_charged` on a step may
+        # still be `null` when this webhook fires, so fetch the wallet action directly for
+        # up-to-date gas data.
         steps:,
         # The type of webhook event.
         type:,
