@@ -15,6 +15,7 @@ module Privy
               destination: Privy::PayoutDestination::OrHash,
               source: Privy::PayoutSource::OrHash,
               developer_fee_percent: String,
+              travel_rule: Privy::PayoutTravelRule::OrHash,
               privy_authorization_signature: String,
               privy_idempotency_key: String,
               privy_request_expiry: String,
@@ -31,6 +32,8 @@ module Privy
             # Body param: A developer fee as a percentage string from 0 up to (not including)
             # 100, e.g. "1.5" for 1.5%.
             developer_fee_percent: nil,
+            # Body param: Travel rule information about who receives a payout.
+            travel_rule: nil,
             # Header param: Request authorization signature. If multiple signatures are
             # required, they should be comma separated.
             privy_authorization_signature: nil,

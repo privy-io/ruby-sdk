@@ -8,6 +8,7 @@ module Privy
             destination: Privy::PayoutDestination,
             source: Privy::PayoutSource,
             ?developer_fee_percent: String,
+            ?travel_rule: Privy::PayoutTravelRule,
             ?privy_authorization_signature: String,
             ?privy_idempotency_key: String,
             ?privy_request_expiry: String,

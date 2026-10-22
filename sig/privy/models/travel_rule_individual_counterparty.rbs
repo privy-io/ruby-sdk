@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    type travel_rule_individual_counterparty =
+      {
+        name: String,
+        type: Privy::Models::TravelRuleIndividualCounterparty::type_,
+        address: Privy::VerificationAddress
+      }
+
+    class TravelRuleIndividualCounterparty < Privy::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor type: Privy::Models::TravelRuleIndividualCounterparty::type_
+
+      attr_reader address: Privy::VerificationAddress?
+
+      def address=: (Privy::VerificationAddress) -> Privy::VerificationAddress
+
+      def initialize: (
+        name: String,
+        type: Privy::Models::TravelRuleIndividualCounterparty::type_,
+        ?address: Privy::VerificationAddress
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        type: Privy::Models::TravelRuleIndividualCounterparty::type_,
+        address: Privy::VerificationAddress
+      }
+
+      type type_ = :individual
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        INDIVIDUAL: :individual
+
+        def self?.values: -> ::Array[Privy::Models::TravelRuleIndividualCounterparty::type_]
+      end
+    end
+  end
+end

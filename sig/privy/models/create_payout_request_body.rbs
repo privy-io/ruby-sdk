@@ -4,7 +4,8 @@ module Privy
       {
         destination: Privy::PayoutDestination,
         source: Privy::PayoutSource,
-        developer_fee_percent: String
+        developer_fee_percent: String,
+        travel_rule: Privy::PayoutTravelRule
       }
 
     class CreatePayoutRequestBody < Privy::Internal::Type::BaseModel
@@ -16,16 +17,22 @@ module Privy
 
       def developer_fee_percent=: (String) -> String
 
+      attr_reader travel_rule: Privy::PayoutTravelRule?
+
+      def travel_rule=: (Privy::PayoutTravelRule) -> Privy::PayoutTravelRule
+
       def initialize: (
         destination: Privy::PayoutDestination,
         source: Privy::PayoutSource,
-        ?developer_fee_percent: String
+        ?developer_fee_percent: String,
+        ?travel_rule: Privy::PayoutTravelRule
       ) -> void
 
       def to_hash: -> {
         destination: Privy::PayoutDestination,
         source: Privy::PayoutSource,
-        developer_fee_percent: String
+        developer_fee_percent: String,
+        travel_rule: Privy::PayoutTravelRule
       }
     end
   end

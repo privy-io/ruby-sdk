@@ -13,7 +13,7 @@ module Privy
           # deposit instructions will be converted to the specified crypto asset and
           # delivered to the wallet.
           #
-          # @overload create(wallet_id, destination:, provider:, source:, developer_fee_percent: nil, environment: nil, request_options: {})
+          # @overload create(wallet_id, destination:, provider:, source:, developer_fee_percent: nil, environment: nil, travel_rule: nil, request_options: {})
           #
           # @param wallet_id [String] The ID of the wallet.
           #
@@ -26,6 +26,8 @@ module Privy
           # @param developer_fee_percent [String] A developer fee as a percentage string from 0 up to (not including) 100, e.g. "1
           #
           # @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
+          #
+          # @param travel_rule [Privy::Models::DepositTravelRule] Travel rule information about who sends deposits into a fiat deposit account.
           #
           # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
           #

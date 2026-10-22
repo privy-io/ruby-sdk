@@ -10,6 +10,7 @@ module Privy
             source: Privy::CreateFiatDepositAccountSource,
             ?developer_fee_percent: String,
             ?environment: Privy::Models::environment,
+            ?travel_rule: Privy::DepositTravelRule,
             ?request_options: Privy::request_opts
           ) -> Privy::FiatDepositAccountResponse
 

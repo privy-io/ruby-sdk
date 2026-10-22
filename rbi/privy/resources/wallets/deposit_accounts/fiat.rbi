@@ -18,6 +18,7 @@ module Privy
               source: Privy::CreateFiatDepositAccountSource::OrHash,
               developer_fee_percent: String,
               environment: Privy::Environment::OrSymbol,
+              travel_rule: Privy::DepositTravelRule::OrHash,
               request_options: Privy::RequestOptions::OrHash
             ).returns(Privy::FiatDepositAccountResponse)
           end
@@ -35,6 +36,8 @@ module Privy
             developer_fee_percent: nil,
             # The Privy API environment.
             environment: nil,
+            # Travel rule information about who sends deposits into a fiat deposit account.
+            travel_rule: nil,
             request_options: {}
           )
           end

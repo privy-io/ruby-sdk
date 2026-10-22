@@ -6,7 +6,8 @@ module Privy
         provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
         source: Privy::CreateFiatDepositAccountSource,
         developer_fee_percent: String,
-        environment: Privy::Models::environment
+        environment: Privy::Models::environment,
+        travel_rule: Privy::DepositTravelRule
       }
 
     class CreateFiatDepositAccountRequestBody < Privy::Internal::Type::BaseModel
@@ -26,12 +27,17 @@ module Privy
         Privy::Models::environment
       ) -> Privy::Models::environment
 
+      attr_reader travel_rule: Privy::DepositTravelRule?
+
+      def travel_rule=: (Privy::DepositTravelRule) -> Privy::DepositTravelRule
+
       def initialize: (
         destination: Privy::FiatDepositAccountDestination,
         provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
         source: Privy::CreateFiatDepositAccountSource,
         ?developer_fee_percent: String,
-        ?environment: Privy::Models::environment
+        ?environment: Privy::Models::environment,
+        ?travel_rule: Privy::DepositTravelRule
       ) -> void
 
       def to_hash: -> {
@@ -39,7 +45,8 @@ module Privy
         provider: Privy::Models::CreateFiatDepositAccountRequestBody::provider,
         source: Privy::CreateFiatDepositAccountSource,
         developer_fee_percent: String,
-        environment: Privy::Models::environment
+        environment: Privy::Models::environment,
+        travel_rule: Privy::DepositTravelRule
       }
 
       type provider = :bridge

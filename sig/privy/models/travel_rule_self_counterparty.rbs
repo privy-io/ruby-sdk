@@ -1,0 +1,26 @@
+module Privy
+  module Models
+    type travel_rule_self_counterparty =
+      { type: Privy::Models::TravelRuleSelfCounterparty::type_ }
+
+    class TravelRuleSelfCounterparty < Privy::Internal::Type::BaseModel
+      attr_accessor type: Privy::Models::TravelRuleSelfCounterparty::type_
+
+      def initialize: (
+        type: Privy::Models::TravelRuleSelfCounterparty::type_
+      ) -> void
+
+      def to_hash: -> { type: Privy::Models::TravelRuleSelfCounterparty::type_ }
+
+      type type_ = :self
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        SELF: :self
+
+        def self?.values: -> ::Array[Privy::Models::TravelRuleSelfCounterparty::type_]
+      end
+    end
+  end
+end

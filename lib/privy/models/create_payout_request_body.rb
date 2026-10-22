@@ -22,7 +22,13 @@ module Privy
       #   @return [String, nil]
       optional :developer_fee_percent, String
 
-      # @!method initialize(destination:, source:, developer_fee_percent: nil)
+      # @!attribute travel_rule
+      #   Travel rule information about who receives a payout.
+      #
+      #   @return [Privy::Models::PayoutTravelRule, nil]
+      optional :travel_rule, -> { Privy::PayoutTravelRule }
+
+      # @!method initialize(destination:, source:, developer_fee_percent: nil, travel_rule: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CreatePayoutRequestBody} for more details.
       #
@@ -33,6 +39,8 @@ module Privy
       #   @param source [Privy::Models::PayoutSource] The source crypto asset, chain, and amount for a payout.
       #
       #   @param developer_fee_percent [String] A developer fee as a percentage string from 0 up to (not including) 100, e.g. "1
+      #
+      #   @param travel_rule [Privy::Models::PayoutTravelRule] Travel rule information about who receives a payout.
     end
   end
 end

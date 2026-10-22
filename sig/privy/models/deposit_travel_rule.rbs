@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type deposit_travel_rule =
+      { source: Privy::Models::travel_rule_counterparty }
+
+    class DepositTravelRule < Privy::Internal::Type::BaseModel
+      attr_accessor source: Privy::Models::travel_rule_counterparty
+
+      def initialize: (source: Privy::Models::travel_rule_counterparty) -> void
+
+      def to_hash: -> { source: Privy::Models::travel_rule_counterparty }
+    end
+  end
+end

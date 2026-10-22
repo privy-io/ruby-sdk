@@ -1,0 +1,14 @@
+module Privy
+  module Models
+    type travel_rule_counterparty =
+      Privy::TravelRuleSelfCounterparty
+      | Privy::TravelRuleIndividualCounterparty
+      | Privy::TravelRuleBusinessCounterparty
+
+    module TravelRuleCounterparty
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::travel_rule_counterparty]
+    end
+  end
+end

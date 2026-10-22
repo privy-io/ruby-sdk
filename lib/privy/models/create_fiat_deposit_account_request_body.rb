@@ -34,7 +34,13 @@ module Privy
       #   @return [Symbol, Privy::Models::Environment, nil]
       optional :environment, enum: -> { Privy::Environment }
 
-      # @!method initialize(destination:, provider:, source:, developer_fee_percent: nil, environment: nil)
+      # @!attribute travel_rule
+      #   Travel rule information about who sends deposits into a fiat deposit account.
+      #
+      #   @return [Privy::Models::DepositTravelRule, nil]
+      optional :travel_rule, -> { Privy::DepositTravelRule }
+
+      # @!method initialize(destination:, provider:, source:, developer_fee_percent: nil, environment: nil, travel_rule: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::CreateFiatDepositAccountRequestBody} for more details.
       #
@@ -49,6 +55,8 @@ module Privy
       #   @param developer_fee_percent [String] A developer fee as a percentage string from 0 up to (not including) 100, e.g. "1
       #
       #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
+      #
+      #   @param travel_rule [Privy::Models::DepositTravelRule] Travel rule information about who sends deposits into a fiat deposit account.
 
       # Discriminator: the fiat deposit account is orchestrated via Bridge.
       #

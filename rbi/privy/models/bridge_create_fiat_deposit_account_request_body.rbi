@@ -50,6 +50,13 @@ module Privy
       sig { params(environment: Privy::Environment::OrSymbol).void }
       attr_writer :environment
 
+      # Travel rule information about who sends deposits into a fiat deposit account.
+      sig { returns(T.nilable(Privy::DepositTravelRule)) }
+      attr_reader :travel_rule
+
+      sig { params(travel_rule: Privy::DepositTravelRule::OrHash).void }
+      attr_writer :travel_rule
+
       # Request body for creating a Bridge fiat deposit account linked to a wallet.
       sig do
         params(
@@ -58,7 +65,8 @@ module Privy
             Privy::BridgeCreateFiatDepositAccountRequestBody::Provider::OrSymbol,
           source: Privy::CreateFiatDepositAccountSource::OrHash,
           developer_fee_percent: String,
-          environment: Privy::Environment::OrSymbol
+          environment: Privy::Environment::OrSymbol,
+          travel_rule: Privy::DepositTravelRule::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -72,7 +80,9 @@ module Privy
         # "1.5" for 1.5%.
         developer_fee_percent: nil,
         # The Privy API environment.
-        environment: nil
+        environment: nil,
+        # Travel rule information about who sends deposits into a fiat deposit account.
+        travel_rule: nil
       )
       end
 
@@ -84,7 +94,8 @@ module Privy
               Privy::BridgeCreateFiatDepositAccountRequestBody::Provider::OrSymbol,
             source: Privy::CreateFiatDepositAccountSource,
             developer_fee_percent: String,
-            environment: Privy::Environment::OrSymbol
+            environment: Privy::Environment::OrSymbol,
+            travel_rule: Privy::DepositTravelRule
           }
         )
       end

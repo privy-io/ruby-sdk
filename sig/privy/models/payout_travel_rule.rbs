@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    type payout_travel_rule =
+      { destination: Privy::Models::travel_rule_counterparty }
+
+    class PayoutTravelRule < Privy::Internal::Type::BaseModel
+      attr_accessor destination: Privy::Models::travel_rule_counterparty
+
+      def initialize: (
+        destination: Privy::Models::travel_rule_counterparty
+      ) -> void
+
+      def to_hash: -> { destination: Privy::Models::travel_rule_counterparty }
+    end
+  end
+end

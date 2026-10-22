@@ -571,6 +571,8 @@ module Privy
 
   class DepositStartedSource = Privy::Models::DepositStartedSource
 
+  class DepositTravelRule = Privy::Models::DepositTravelRule
+
   class DerivationInput = Privy::Models::DerivationInput
 
   class DetachWalletAutomationRequestBody = Privy::Models::DetachWalletAutomationRequestBody
@@ -1753,6 +1755,8 @@ module Privy
 
   class PayoutSource = Privy::Models::PayoutSource
 
+  class PayoutTravelRule = Privy::Models::PayoutTravelRule
+
   class PhoneInviteInput = Privy::Models::PhoneInviteInput
 
   module Policies = Privy::Models::Policies
@@ -2328,6 +2332,14 @@ module Privy
   class TransferSiwsInput = Privy::Models::TransferSiwsInput
 
   class TransferTelegramInput = Privy::Models::TransferTelegramInput
+
+  class TravelRuleBusinessCounterparty = Privy::Models::TravelRuleBusinessCounterparty
+
+  module TravelRuleCounterparty = Privy::Models::TravelRuleCounterparty
+
+  class TravelRuleIndividualCounterparty = Privy::Models::TravelRuleIndividualCounterparty
+
+  class TravelRuleSelfCounterparty = Privy::Models::TravelRuleSelfCounterparty
 
   class TronAddress = Privy::Models::TronAddress
 
