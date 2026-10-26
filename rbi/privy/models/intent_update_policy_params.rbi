@@ -15,7 +15,7 @@ module Privy
       sig { returns(String) }
       attr_accessor :policy_id
 
-      # Name to assign to policy.
+      # Name to assign to the policy, up to 100 characters.
       sig { returns(T.nilable(String)) }
       attr_reader :name
 
@@ -70,7 +70,7 @@ module Privy
       def self.new(
         # ID of the policy.
         policy_id:,
-        # Name to assign to policy.
+        # Name to assign to the policy, up to 100 characters.
         name: nil,
         # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
         # null to remove the current owner.

@@ -29,7 +29,7 @@ module Privy
       attr_writer :transaction_id
 
       # An unsigned Ethereum transaction object. Supports standard EVM transaction types
-      # (0, 1, 2, 4) and Tempo transactions (type 118).
+      # (0, 2, 4) and Tempo transactions (type 118).
       sig { returns(T.nilable(Privy::UnsignedEthereumTransaction::Variants)) }
       attr_reader :transaction_request
 
@@ -73,7 +73,7 @@ module Privy
         reference_id: nil,
         transaction_id: nil,
         # An unsigned Ethereum transaction object. Supports standard EVM transaction types
-        # (0, 1, 2, 4) and Tempo transactions (type 118).
+        # (0, 2, 4) and Tempo transactions (type 118).
         transaction_request: nil,
         user_operation_hash: nil
       )

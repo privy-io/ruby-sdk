@@ -517,7 +517,7 @@ module Privy
       #
       # @param policy_id [String] Path param: ID of the policy.
       #
-      # @param name [String] Body param: Name to assign to policy.
+      # @param name [String] Body param: Name to assign to the policy, up to 100 characters.
       #
       # @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] Body param: The owner of the resource, specified as a Privy user ID, a P-256 pub
       #

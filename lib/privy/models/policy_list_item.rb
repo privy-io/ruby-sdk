@@ -24,7 +24,7 @@ module Privy
       required :created_at, Float
 
       # @!attribute name
-      #   Name to assign to policy.
+      #   Name to assign to the policy, up to 100 characters.
       #
       #   @return [String]
       required :name, String
@@ -53,7 +53,7 @@ module Privy
       #
       #   @param created_at [Float] Unix timestamp of when the policy was created in milliseconds.
       #
-      #   @param name [String] Name to assign to policy.
+      #   @param name [String] Name to assign to the policy, up to 100 characters.
       #
       #   @param owner_id [String, nil] A unique identifier for a key quorum.
       #

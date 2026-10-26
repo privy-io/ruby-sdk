@@ -17,7 +17,7 @@ module Privy
       #
       # @param chain_type [Symbol, Privy::Models::WalletChainType] Body param: The wallet chain types.
       #
-      # @param name [String] Body param: Name to assign to policy.
+      # @param name [String] Body param: Name to assign to the policy, up to 100 characters.
       #
       # @param rules [Array<Privy::Models::PolicyCreateParams::Rule>] Body param
       #
@@ -56,7 +56,7 @@ module Privy
       #
       # @param policy_id [String] Path param
       #
-      # @param name [String] Body param: Name to assign to policy.
+      # @param name [String] Body param: Name to assign to the policy, up to 100 characters.
       #
       # @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] Body param: The owner of the resource, specified as a Privy user ID, a P-256 pub
       #

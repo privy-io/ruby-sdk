@@ -18,7 +18,7 @@ module Privy
       sig { returns(Float) }
       attr_accessor :created_at
 
-      # Name to assign to policy.
+      # Name to assign to the policy, up to 100 characters.
       sig { returns(String) }
       attr_accessor :name
 
@@ -53,7 +53,7 @@ module Privy
         chain_type:,
         # Unix timestamp of when the policy was created in milliseconds.
         created_at:,
-        # Name to assign to policy.
+        # Name to assign to the policy, up to 100 characters.
         name:,
         # A unique identifier for a key quorum.
         owner_id:,

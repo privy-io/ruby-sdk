@@ -113,7 +113,7 @@ module Privy
       attr_writer :value
 
       # An unsigned standard Ethereum transaction object. Supports EVM transaction types
-      # 0, 1, 2, and 4.
+      # 0, 2, and 4.
       sig do
         params(
           authorization_list:
@@ -196,11 +196,6 @@ module Privy
         TYPE_0 =
           T.let(
             0,
-            Privy::UnsignedStandardEthereumTransaction::Type::TaggedFloat
-          )
-        TYPE_1 =
-          T.let(
-            1,
             Privy::UnsignedStandardEthereumTransaction::Type::TaggedFloat
           )
         TYPE_2 =

@@ -84,7 +84,7 @@ module Privy
       #   {Privy::Models::UnsignedStandardEthereumTransaction} for more details.
       #
       #   An unsigned standard Ethereum transaction object. Supports EVM transaction types
-      #   0, 1, 2, and 4.
+      #   0, 2, and 4.
       #
       #   @param authorization_list [Array<Privy::Models::EthereumSign7702Authorization>]
       #
@@ -115,7 +115,6 @@ module Privy
         extend Privy::Internal::Type::Enum
 
         TYPE_0 = 0
-        TYPE_1 = 1
         TYPE_2 = 2
         TYPE_4 = 4
 

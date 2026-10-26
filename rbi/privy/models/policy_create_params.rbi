@@ -15,7 +15,7 @@ module Privy
       sig { returns(Privy::WalletChainType::OrSymbol) }
       attr_accessor :chain_type
 
-      # Name to assign to policy.
+      # Name to assign to the policy, up to 100 characters.
       sig { returns(String) }
       attr_accessor :name
 
@@ -69,7 +69,7 @@ module Privy
       def self.new(
         # The wallet chain types.
         chain_type:,
-        # Name to assign to policy.
+        # Name to assign to the policy, up to 100 characters.
         name:,
         rules:,
         # Version of the policy. Currently, 1.0 is the only version.

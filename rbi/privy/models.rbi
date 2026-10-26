@@ -3220,8 +3220,6 @@ module Privy
 
   XrplTransactionConditionField = Privy::Models::XrplTransactionConditionField
 
-  YieldAuthorizationHeaders = Privy::Models::YieldAuthorizationHeaders
-
   YieldClaimConfirmedWebhookPayload =
     Privy::Models::YieldClaimConfirmedWebhookPayload
 

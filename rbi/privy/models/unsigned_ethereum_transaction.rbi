@@ -3,7 +3,7 @@
 module Privy
   module Models
     # An unsigned Ethereum transaction object. Supports standard EVM transaction types
-    # (0, 1, 2, 4) and Tempo transactions (type 118).
+    # (0, 2, 4) and Tempo transactions (type 118).
     module UnsignedEthereumTransaction
       extend Privy::Internal::Type::Union
 

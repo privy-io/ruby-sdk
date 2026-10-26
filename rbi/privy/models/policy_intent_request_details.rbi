@@ -52,7 +52,7 @@ module Privy
             )
           end
 
-        # Name to assign to policy.
+        # Name to assign to the policy, up to 100 characters.
         sig { returns(T.nilable(String)) }
         attr_reader :name
 
@@ -92,7 +92,7 @@ module Privy
           ).returns(T.attached_class)
         end
         def self.new(
-          # Name to assign to policy.
+          # Name to assign to the policy, up to 100 characters.
           name: nil,
           # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
           # null to remove the current owner.

@@ -30,7 +30,7 @@ module Privy
       def create(
         # Body param: The wallet chain types.
         chain_type:,
-        # Body param: Name to assign to policy.
+        # Body param: Name to assign to the policy, up to 100 characters.
         name:,
         # Body param
         rules:,
@@ -71,7 +71,7 @@ module Privy
       def update(
         # Path param
         policy_id,
-        # Body param: Name to assign to policy.
+        # Body param: Name to assign to the policy, up to 100 characters.
         name: nil,
         # Body param: The owner of the resource, specified as a Privy user ID, a P-256
         # public key, or null to remove the current owner.

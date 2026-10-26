@@ -14,7 +14,7 @@ module Privy
       required :chain_type, enum: -> { Privy::WalletChainType }
 
       # @!attribute name
-      #   Name to assign to policy.
+      #   Name to assign to the policy, up to 100 characters.
       #
       #   @return [String]
       required :name, String
@@ -57,7 +57,7 @@ module Privy
       #
       #   @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
       #
-      #   @param name [String] Name to assign to policy.
+      #   @param name [String] Name to assign to the policy, up to 100 characters.
       #
       #   @param rules [Array<Privy::Models::PolicyCreateParams::Rule>]
       #

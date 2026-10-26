@@ -27,7 +27,7 @@ module Privy
 
       # @!attribute transaction_request
       #   An unsigned Ethereum transaction object. Supports standard EVM transaction types
-      #   (0, 1, 2, 4) and Tempo transactions (type 118).
+      #   (0, 2, 4) and Tempo transactions (type 118).
       #
       #   @return [Privy::Models::UnsignedStandardEthereumTransaction, Privy::Models::UnsignedTempoTransaction, nil]
       optional :transaction_request, union: -> { Privy::UnsignedEthereumTransaction }

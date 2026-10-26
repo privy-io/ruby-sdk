@@ -478,7 +478,7 @@ module Privy
       def update_policy(
         # Path param: ID of the policy.
         policy_id,
-        # Body param: Name to assign to policy.
+        # Body param: Name to assign to the policy, up to 100 characters.
         name: nil,
         # Body param: The owner of the resource, specified as a Privy user ID, a P-256
         # public key, or null to remove the current owner.

@@ -25,7 +25,7 @@ module Privy
       attr_accessor :transaction_id
 
       # An unsigned standard Ethereum transaction object. Supports EVM transaction types
-      # 0, 1, 2, and 4.
+      # 0, 2, and 4.
       sig { returns(Privy::UnsignedStandardEthereumTransaction) }
       attr_reader :transaction_request
 
@@ -76,7 +76,7 @@ module Privy
         # The Privy-assigned ID for this transaction.
         transaction_id:,
         # An unsigned standard Ethereum transaction object. Supports EVM transaction types
-        # 0, 1, 2, and 4.
+        # 0, 2, and 4.
         transaction_request:,
         # The type of webhook event.
         type:,
