@@ -2413,6 +2413,8 @@ module Privy
 
   class UpdateOrganizationSecretSigningKeyInput = Privy::Models::UpdateOrganizationSecretSigningKeyInput
 
+  class UsageAtaDepositRecordedWebhookPayload = Privy::Models::UsageAtaDepositRecordedWebhookPayload
+
   class UsageGasSponsorshipRecordedWebhookPayload = Privy::Models::UsageGasSponsorshipRecordedWebhookPayload
 
   module UsageSourceType = Privy::Models::UsageSourceType

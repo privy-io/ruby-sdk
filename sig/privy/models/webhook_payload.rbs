@@ -32,6 +32,7 @@ module Privy
       | Privy::UserOperationCompletedWebhookPayload
       | Privy::UsageGasSponsorshipRecordedWebhookPayload
       | Privy::UsageSwapProviderFeeRecordedWebhookPayload
+      | Privy::UsageAtaDepositRecordedWebhookPayload
       | Privy::IntentCreatedWebhookPayload
       | Privy::IntentAuthorizedWebhookPayload
       | Privy::IntentRejectedWebhookPayload

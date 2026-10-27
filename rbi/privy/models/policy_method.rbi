@@ -43,6 +43,8 @@ module Privy
         T.let(:xrpl_signTransaction, Privy::PolicyMethod::TaggedSymbol)
       EARN_DEPOSIT = T.let(:earn_deposit, Privy::PolicyMethod::TaggedSymbol)
       EARN_WITHDRAW = T.let(:earn_withdraw, Privy::PolicyMethod::TaggedSymbol)
+      EARN_INCENTIVE_CLAIM =
+        T.let(:earn_incentive_claim, Privy::PolicyMethod::TaggedSymbol)
       TRANSFER = T.let(:transfer, Privy::PolicyMethod::TaggedSymbol)
       STAR = T.let(:"*", Privy::PolicyMethod::TaggedSymbol)
 

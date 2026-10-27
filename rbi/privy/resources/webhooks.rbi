@@ -21,6 +21,7 @@ module Privy
             Privy::TransactionProviderErrorWebhookPayload,
             Privy::TransactionReplacedWebhookPayload,
             Privy::TransactionStillPendingWebhookPayload,
+            Privy::UsageAtaDepositRecordedWebhookPayload,
             Privy::UsageGasSponsorshipRecordedWebhookPayload,
             Privy::UsageSwapProviderFeeRecordedWebhookPayload,
             Privy::UserAuthenticatedWebhookPayload,

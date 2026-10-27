@@ -2772,6 +2772,9 @@ module Privy
   UpdateOrganizationSecretSigningKeyInput =
     Privy::Models::UpdateOrganizationSecretSigningKeyInput
 
+  UsageAtaDepositRecordedWebhookPayload =
+    Privy::Models::UsageAtaDepositRecordedWebhookPayload
+
   UsageGasSponsorshipRecordedWebhookPayload =
     Privy::Models::UsageGasSponsorshipRecordedWebhookPayload
 

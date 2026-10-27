@@ -25,6 +25,7 @@ module Privy
       XRPL_SIGN_TRANSACTION = :xrpl_signTransaction
       EARN_DEPOSIT = :earn_deposit
       EARN_WITHDRAW = :earn_withdraw
+      EARN_INCENTIVE_CLAIM = :earn_incentive_claim
       TRANSFER = :transfer
       STAR = :*
 
