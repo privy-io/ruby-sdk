@@ -18,7 +18,7 @@ module Privy
               ),
             cursor: String,
             include_archived: T::Boolean,
-            limit: T.nilable(Float),
+            limit: Integer,
             tx_hash: String,
             request_options: Privy::RequestOptions::OrHash
           ).returns(Privy::Models::Wallets::TransactionGetResponse)

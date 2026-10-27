@@ -23,7 +23,7 @@ module Privy
       #
       # @param intent_type [Symbol, String, Privy::Models::IntentType] Type of intent.
       #
-      # @param limit [Float, nil]
+      # @param limit [Integer]
       #
       # @param pending_member_id [String] Filter by a user whose approval is still pending. For user-token requests, Privy
       #

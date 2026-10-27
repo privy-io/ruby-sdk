@@ -15,12 +15,13 @@ module Privy
       attr_accessor :id
 
       # Client extension results returned by the WebAuthn authenticator.
-      sig { returns(Privy::PasskeyClientExtensionResults) }
+      sig { returns(Privy::Users::MfaPasskeyClientExtensionResults) }
       attr_reader :client_extension_results
 
       sig do
         params(
-          client_extension_results: Privy::PasskeyClientExtensionResults::OrHash
+          client_extension_results:
+            Privy::Users::MfaPasskeyClientExtensionResults::OrHash
         ).void
       end
       attr_writer :client_extension_results
@@ -29,10 +30,12 @@ module Privy
       attr_accessor :raw_id
 
       # The authenticator assertion response from a WebAuthn authentication ceremony.
-      sig { returns(Privy::PasskeyAssertionResponse) }
+      sig { returns(Privy::Users::MfaPasskeyAssertionResponse) }
       attr_reader :response
 
-      sig { params(response: Privy::PasskeyAssertionResponse::OrHash).void }
+      sig do
+        params(response: Privy::Users::MfaPasskeyAssertionResponse::OrHash).void
+      end
       attr_writer :response
 
       sig { returns(Privy::PasskeyAuthenticatorVerifyResponse::Type::OrSymbol) }
@@ -50,9 +53,9 @@ module Privy
         params(
           id: String,
           client_extension_results:
-            Privy::PasskeyClientExtensionResults::OrHash,
+            Privy::Users::MfaPasskeyClientExtensionResults::OrHash,
           raw_id: String,
-          response: Privy::PasskeyAssertionResponse::OrHash,
+          response: Privy::Users::MfaPasskeyAssertionResponse::OrHash,
           type: Privy::PasskeyAuthenticatorVerifyResponse::Type::OrSymbol,
           authenticator_attachment: String
         ).returns(T.attached_class)
@@ -73,9 +76,10 @@ module Privy
         override.returns(
           {
             id: String,
-            client_extension_results: Privy::PasskeyClientExtensionResults,
+            client_extension_results:
+              Privy::Users::MfaPasskeyClientExtensionResults,
             raw_id: String,
-            response: Privy::PasskeyAssertionResponse,
+            response: Privy::Users::MfaPasskeyAssertionResponse,
             type: Privy::PasskeyAuthenticatorVerifyResponse::Type::OrSymbol,
             authenticator_attachment: String
           }

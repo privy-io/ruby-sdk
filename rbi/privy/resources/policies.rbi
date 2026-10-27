@@ -95,7 +95,7 @@ module Privy
       sig do
         params(
           cursor: String,
-          limit: T.nilable(Float),
+          limit: Integer,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Internal::Cursor[Privy::PolicyListItem])
       end

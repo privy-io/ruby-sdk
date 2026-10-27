@@ -144,7 +144,7 @@ module Privy
           entity_id: String,
           external_id: String,
           include_archived: T::Boolean,
-          limit: T.nilable(Float),
+          limit: Integer,
           user_id: String,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Internal::Cursor[Privy::Wallet])

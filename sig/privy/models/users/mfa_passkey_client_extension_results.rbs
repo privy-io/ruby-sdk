@@ -1,0 +1,40 @@
+module Privy
+  module Models
+    module Users
+      type mfa_passkey_client_extension_results =
+        {
+          app_id: bool,
+          cred_props: Privy::Users::MfaPasskeyCredPropsResult,
+          hmac_create_secret: bool
+        }
+
+      class MfaPasskeyClientExtensionResults < Privy::Internal::Type::BaseModel
+        attr_reader app_id: bool?
+
+        def app_id=: (bool) -> bool
+
+        attr_reader cred_props: Privy::Users::MfaPasskeyCredPropsResult?
+
+        def cred_props=: (
+          Privy::Users::MfaPasskeyCredPropsResult
+        ) -> Privy::Users::MfaPasskeyCredPropsResult
+
+        attr_reader hmac_create_secret: bool?
+
+        def hmac_create_secret=: (bool) -> bool
+
+        def initialize: (
+          ?app_id: bool,
+          ?cred_props: Privy::Users::MfaPasskeyCredPropsResult,
+          ?hmac_create_secret: bool
+        ) -> void
+
+        def to_hash: -> {
+          app_id: bool,
+          cred_props: Privy::Users::MfaPasskeyCredPropsResult,
+          hmac_create_secret: bool
+        }
+      end
+    end
+  end
+end

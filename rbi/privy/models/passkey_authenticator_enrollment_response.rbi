@@ -15,12 +15,13 @@ module Privy
       attr_accessor :id
 
       # Client extension results returned by the WebAuthn authenticator.
-      sig { returns(Privy::PasskeyClientExtensionResults) }
+      sig { returns(Privy::Users::MfaPasskeyClientExtensionResults) }
       attr_reader :client_extension_results
 
       sig do
         params(
-          client_extension_results: Privy::PasskeyClientExtensionResults::OrHash
+          client_extension_results:
+            Privy::Users::MfaPasskeyClientExtensionResults::OrHash
         ).void
       end
       attr_writer :client_extension_results
@@ -29,10 +30,14 @@ module Privy
       attr_accessor :raw_id
 
       # The authenticator attestation response from a WebAuthn registration ceremony.
-      sig { returns(Privy::PasskeyAttestationResponse) }
+      sig { returns(Privy::Users::MfaPasskeyAttestationResponse) }
       attr_reader :response
 
-      sig { params(response: Privy::PasskeyAttestationResponse::OrHash).void }
+      sig do
+        params(
+          response: Privy::Users::MfaPasskeyAttestationResponse::OrHash
+        ).void
+      end
       attr_writer :response
 
       sig do
@@ -52,9 +57,9 @@ module Privy
         params(
           id: String,
           client_extension_results:
-            Privy::PasskeyClientExtensionResults::OrHash,
+            Privy::Users::MfaPasskeyClientExtensionResults::OrHash,
           raw_id: String,
-          response: Privy::PasskeyAttestationResponse::OrHash,
+          response: Privy::Users::MfaPasskeyAttestationResponse::OrHash,
           type: Privy::PasskeyAuthenticatorEnrollmentResponse::Type::OrSymbol,
           authenticator_attachment: String
         ).returns(T.attached_class)
@@ -75,9 +80,10 @@ module Privy
         override.returns(
           {
             id: String,
-            client_extension_results: Privy::PasskeyClientExtensionResults,
+            client_extension_results:
+              Privy::Users::MfaPasskeyClientExtensionResults,
             raw_id: String,
-            response: Privy::PasskeyAttestationResponse,
+            response: Privy::Users::MfaPasskeyAttestationResponse,
             type: Privy::PasskeyAuthenticatorEnrollmentResponse::Type::OrSymbol,
             authenticator_attachment: String
           }

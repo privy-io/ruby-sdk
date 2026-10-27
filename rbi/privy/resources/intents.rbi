@@ -16,7 +16,7 @@ module Privy
             Privy::IntentListParams::CurrentUserHasSigned::OrSymbol,
           cursor: String,
           intent_type: T.any(Privy::IntentType::OrSymbol, String),
-          limit: T.nilable(Float),
+          limit: Integer,
           pending_member_id: String,
           resource_id: String,
           sort_by: Privy::IntentListParams::SortBy::OrSymbol,

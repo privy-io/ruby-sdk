@@ -1,0 +1,61 @@
+module Privy
+  module Models
+    module Users
+      type mfa_passkey_authenticator_verify_options =
+        {
+          challenge: String,
+          allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+          extensions: Privy::Users::MfaPasskeyVerifyExtensions,
+          rp_id: String,
+          timeout: Float,
+          user_verification: String
+        }
+
+      class MfaPasskeyAuthenticatorVerifyOptions < Privy::Internal::Type::BaseModel
+        attr_accessor challenge: String
+
+        attr_reader allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor]?
+
+        def allow_credentials=: (
+          ::Array[Privy::Users::MfaPasskeyCredentialDescriptor]
+        ) -> ::Array[Privy::Users::MfaPasskeyCredentialDescriptor]
+
+        attr_reader extensions: Privy::Users::MfaPasskeyVerifyExtensions?
+
+        def extensions=: (
+          Privy::Users::MfaPasskeyVerifyExtensions
+        ) -> Privy::Users::MfaPasskeyVerifyExtensions
+
+        attr_reader rp_id: String?
+
+        def rp_id=: (String) -> String
+
+        attr_reader timeout: Float?
+
+        def timeout=: (Float) -> Float
+
+        attr_reader user_verification: String?
+
+        def user_verification=: (String) -> String
+
+        def initialize: (
+          challenge: String,
+          ?allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+          ?extensions: Privy::Users::MfaPasskeyVerifyExtensions,
+          ?rp_id: String,
+          ?timeout: Float,
+          ?user_verification: String
+        ) -> void
+
+        def to_hash: -> {
+          challenge: String,
+          allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+          extensions: Privy::Users::MfaPasskeyVerifyExtensions,
+          rp_id: String,
+          timeout: Float,
+          user_verification: String
+        }
+      end
+    end
+  end
+end

@@ -19,8 +19,11 @@ module Privy
         sig { params(cursor: String).void }
         attr_writer :cursor
 
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :limit
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :limit
+
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         # Type of wallet action
         sig { returns(T.nilable(Privy::Wallets::WalletActionType::OrSymbol)) }
@@ -33,7 +36,7 @@ module Privy
         sig do
           params(
             cursor: String,
-            limit: T.nilable(Float),
+            limit: Integer,
             type: Privy::Wallets::WalletActionType::OrSymbol
           ).returns(T.attached_class)
         end
@@ -50,7 +53,7 @@ module Privy
           override.returns(
             {
               cursor: String,
-              limit: T.nilable(Float),
+              limit: Integer,
               type: Privy::Wallets::WalletActionType::OrSymbol
             }
           )

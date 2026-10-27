@@ -1,0 +1,37 @@
+module Privy
+  module Models
+    module Users
+      type mfa_passkey_pub_key_cred_param =
+        {
+          alg: Float,
+          type: Privy::Models::Users::MfaPasskeyPubKeyCredParam::type_
+        }
+
+      class MfaPasskeyPubKeyCredParam < Privy::Internal::Type::BaseModel
+        attr_accessor alg: Float
+
+        attr_accessor type: Privy::Models::Users::MfaPasskeyPubKeyCredParam::type_
+
+        def initialize: (
+          alg: Float,
+          type: Privy::Models::Users::MfaPasskeyPubKeyCredParam::type_
+        ) -> void
+
+        def to_hash: -> {
+          alg: Float,
+          type: Privy::Models::Users::MfaPasskeyPubKeyCredParam::type_
+        }
+
+        type type_ = :"public-key"
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          PUBLIC_KEY: :"public-key"
+
+          def self?.values: -> ::Array[Privy::Models::Users::MfaPasskeyPubKeyCredParam::type_]
+        end
+      end
+    end
+  end
+end

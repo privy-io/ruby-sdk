@@ -55,8 +55,8 @@ module Privy
 
       # @!attribute limit
       #
-      #   @return [Float, nil]
-      optional :limit, Float, nil?: true
+      #   @return [Integer, nil]
+      optional :limit, Integer
 
       # @!attribute user_id
       #   Filter wallets by user ID. Cannot be used together with authorization_key.
@@ -82,7 +82,7 @@ module Privy
       #
       #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
       #
-      #   @param limit [Float, nil]
+      #   @param limit [Integer]
       #
       #   @param user_id [String] Filter wallets by user ID. Cannot be used together with authorization_key.
       #

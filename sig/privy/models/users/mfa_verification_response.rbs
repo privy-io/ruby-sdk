@@ -1,0 +1,28 @@
+module Privy
+  module Models
+    module Users
+      type mfa_verification_response =
+        { token: String, expires_at: Integer, user: Privy::User }
+
+      class MfaVerificationResponse < Privy::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor expires_at: Integer
+
+        attr_accessor user: Privy::User
+
+        def initialize: (
+          token: String,
+          expires_at: Integer,
+          user: Privy::User
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          expires_at: Integer,
+          user: Privy::User
+        }
+      end
+    end
+  end
+end

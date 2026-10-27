@@ -68,7 +68,7 @@ module Privy
       #
       # @param cursor [String] Cursor returned by the previous page.
       #
-      # @param limit [Float, nil]
+      # @param limit [Integer]
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #

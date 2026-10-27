@@ -12,6 +12,9 @@ module Privy
       # @return [Privy::Resources::Users::KYC]
       attr_reader :kyc
 
+      # @return [Privy::Resources::Users::Mfa]
+      attr_reader :mfa
+
       # Create a new user with linked accounts. Optionally pre-generate embedded wallets
       # for the user.
       #
@@ -39,7 +42,7 @@ module Privy
       #
       # @param cursor [String] Cursor returned by the previous page.
       #
-      # @param limit [Float, nil]
+      # @param limit [Integer]
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -495,6 +498,7 @@ module Privy
         @client = client
         @external_fiat_accounts = Privy::Resources::Users::ExternalFiatAccounts.new(client: client)
         @kyc = Privy::Resources::Users::KYC.new(client: client)
+        @mfa = Privy::Resources::Users::Mfa.new(client: client)
       end
     end
   end

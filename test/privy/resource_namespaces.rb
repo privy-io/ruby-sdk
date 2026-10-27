@@ -22,6 +22,14 @@ module Privy
       module Ethereum
       end
 
+      module Mfa
+        module SMS
+        end
+
+        module Totp
+        end
+      end
+
       module Organizations
       end
 
@@ -31,7 +39,20 @@ module Privy
       module Policies
       end
 
+      module SMS
+      end
+
+      module Totp
+      end
+
       module Users
+        module Mfa
+          module SMS
+          end
+
+          module Totp
+          end
+        end
       end
 
       module Wallets

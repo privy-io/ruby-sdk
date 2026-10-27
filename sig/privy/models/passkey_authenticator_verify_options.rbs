@@ -3,8 +3,8 @@ module Privy
     type passkey_authenticator_verify_options =
       {
         challenge: String,
-        allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
-        extensions: Privy::PasskeyVerifyExtensions,
+        allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+        extensions: Privy::Users::MfaPasskeyVerifyExtensions,
         rp_id: String,
         timeout: Float,
         user_verification: String
@@ -13,17 +13,17 @@ module Privy
     class PasskeyAuthenticatorVerifyOptions < Privy::Internal::Type::BaseModel
       attr_accessor challenge: String
 
-      attr_reader allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor]?
+      attr_reader allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor]?
 
       def allow_credentials=: (
-        ::Array[Privy::PasskeyCredentialDescriptor]
-      ) -> ::Array[Privy::PasskeyCredentialDescriptor]
+        ::Array[Privy::Users::MfaPasskeyCredentialDescriptor]
+      ) -> ::Array[Privy::Users::MfaPasskeyCredentialDescriptor]
 
-      attr_reader extensions: Privy::PasskeyVerifyExtensions?
+      attr_reader extensions: Privy::Users::MfaPasskeyVerifyExtensions?
 
       def extensions=: (
-        Privy::PasskeyVerifyExtensions
-      ) -> Privy::PasskeyVerifyExtensions
+        Privy::Users::MfaPasskeyVerifyExtensions
+      ) -> Privy::Users::MfaPasskeyVerifyExtensions
 
       attr_reader rp_id: String?
 
@@ -39,8 +39,8 @@ module Privy
 
       def initialize: (
         challenge: String,
-        ?allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
-        ?extensions: Privy::PasskeyVerifyExtensions,
+        ?allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+        ?extensions: Privy::Users::MfaPasskeyVerifyExtensions,
         ?rp_id: String,
         ?timeout: Float,
         ?user_verification: String
@@ -48,8 +48,8 @@ module Privy
 
       def to_hash: -> {
         challenge: String,
-        allow_credentials: ::Array[Privy::PasskeyCredentialDescriptor],
-        extensions: Privy::PasskeyVerifyExtensions,
+        allow_credentials: ::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+        extensions: Privy::Users::MfaPasskeyVerifyExtensions,
         rp_id: String,
         timeout: Float,
         user_verification: String

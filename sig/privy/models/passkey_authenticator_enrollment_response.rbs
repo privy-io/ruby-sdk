@@ -3,9 +3,9 @@ module Privy
     type passkey_authenticator_enrollment_response =
       {
         id: String,
-        client_extension_results: Privy::PasskeyClientExtensionResults,
+        client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults,
         raw_id: String,
-        response: Privy::PasskeyAttestationResponse,
+        response: Privy::Users::MfaPasskeyAttestationResponse,
         type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_,
         authenticator_attachment: String
       }
@@ -13,11 +13,11 @@ module Privy
     class PasskeyAuthenticatorEnrollmentResponse < Privy::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor client_extension_results: Privy::PasskeyClientExtensionResults
+      attr_accessor client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults
 
       attr_accessor raw_id: String
 
-      attr_accessor response: Privy::PasskeyAttestationResponse
+      attr_accessor response: Privy::Users::MfaPasskeyAttestationResponse
 
       attr_accessor type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_
 
@@ -27,18 +27,18 @@ module Privy
 
       def initialize: (
         id: String,
-        client_extension_results: Privy::PasskeyClientExtensionResults,
+        client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults,
         raw_id: String,
-        response: Privy::PasskeyAttestationResponse,
+        response: Privy::Users::MfaPasskeyAttestationResponse,
         type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_,
         ?authenticator_attachment: String
       ) -> void
 
       def to_hash: -> {
         id: String,
-        client_extension_results: Privy::PasskeyClientExtensionResults,
+        client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults,
         raw_id: String,
-        response: Privy::PasskeyAttestationResponse,
+        response: Privy::Users::MfaPasskeyAttestationResponse,
         type: Privy::Models::PasskeyAuthenticatorEnrollmentResponse::type_,
         authenticator_attachment: String
       }

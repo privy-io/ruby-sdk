@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Users
+      type sms_mfa_enrollment_init_request_body = { phone_number: String }
+
+      class SMSMfaEnrollmentInitRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor phone_number: String
+
+        def initialize: (phone_number: String) -> void
+
+        def to_hash: -> { phone_number: String }
+      end
+    end
+  end
+end

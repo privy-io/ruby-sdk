@@ -15,10 +15,12 @@ module Privy
       attr_writer :app_id
 
       # The result of the WebAuthn credProps extension.
-      sig { returns(T.nilable(Privy::PasskeyCredPropsResult)) }
+      sig { returns(T.nilable(Privy::Users::MfaPasskeyCredPropsResult)) }
       attr_reader :cred_props
 
-      sig { params(cred_props: Privy::PasskeyCredPropsResult::OrHash).void }
+      sig do
+        params(cred_props: Privy::Users::MfaPasskeyCredPropsResult::OrHash).void
+      end
       attr_writer :cred_props
 
       sig { returns(T.nilable(T::Boolean)) }
@@ -31,7 +33,7 @@ module Privy
       sig do
         params(
           app_id: T::Boolean,
-          cred_props: Privy::PasskeyCredPropsResult::OrHash,
+          cred_props: Privy::Users::MfaPasskeyCredPropsResult::OrHash,
           hmac_create_secret: T::Boolean
         ).returns(T.attached_class)
       end
@@ -47,7 +49,7 @@ module Privy
         override.returns(
           {
             app_id: T::Boolean,
-            cred_props: Privy::PasskeyCredPropsResult,
+            cred_props: Privy::Users::MfaPasskeyCredPropsResult,
             hmac_create_secret: T::Boolean
           }
         )

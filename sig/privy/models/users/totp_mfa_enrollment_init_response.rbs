@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    module Users
+      type totp_mfa_enrollment_init_response =
+        { options: Privy::Users::TotpMfaEnrollmentOptions }
+
+      class TotpMfaEnrollmentInitResponse < Privy::Internal::Type::BaseModel
+        attr_accessor options: Privy::Users::TotpMfaEnrollmentOptions
+
+        def initialize: (
+          options: Privy::Users::TotpMfaEnrollmentOptions
+        ) -> void
+
+        def to_hash: -> { options: Privy::Users::TotpMfaEnrollmentOptions }
+      end
+    end
+  end
+end

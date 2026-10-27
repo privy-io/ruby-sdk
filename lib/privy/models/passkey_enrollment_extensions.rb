@@ -11,8 +11,8 @@ module Privy
       # @!attribute cred_props
       #   The result of the WebAuthn credProps extension.
       #
-      #   @return [Privy::Models::PasskeyCredPropsResult, nil]
-      optional :cred_props, -> { Privy::PasskeyCredPropsResult }
+      #   @return [Privy::Models::Users::MfaPasskeyCredPropsResult, nil]
+      optional :cred_props, -> { Privy::Users::MfaPasskeyCredPropsResult }
 
       # @!attribute hmac_create_secret
       #
@@ -24,7 +24,7 @@ module Privy
       #
       #   @param app_id [String]
       #
-      #   @param cred_props [Privy::Models::PasskeyCredPropsResult] The result of the WebAuthn credProps extension.
+      #   @param cred_props [Privy::Models::Users::MfaPasskeyCredPropsResult] The result of the WebAuthn credProps extension.
       #
       #   @param hmac_create_secret [Boolean]
     end

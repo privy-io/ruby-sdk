@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    module Users
+      type totp_mfa_enrollment_options = { secret: String, uri: String }
+
+      class TotpMfaEnrollmentOptions < Privy::Internal::Type::BaseModel
+        attr_accessor secret: String
+
+        attr_accessor uri: String
+
+        def initialize: (secret: String, uri: String) -> void
+
+        def to_hash: -> { secret: String, uri: String }
+      end
+    end
+  end
+end

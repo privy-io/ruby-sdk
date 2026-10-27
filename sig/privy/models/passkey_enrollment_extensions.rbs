@@ -3,7 +3,7 @@ module Privy
     type passkey_enrollment_extensions =
       {
         app_id: String,
-        cred_props: Privy::PasskeyCredPropsResult,
+        cred_props: Privy::Users::MfaPasskeyCredPropsResult,
         hmac_create_secret: bool
       }
 
@@ -12,11 +12,11 @@ module Privy
 
       def app_id=: (String) -> String
 
-      attr_reader cred_props: Privy::PasskeyCredPropsResult?
+      attr_reader cred_props: Privy::Users::MfaPasskeyCredPropsResult?
 
       def cred_props=: (
-        Privy::PasskeyCredPropsResult
-      ) -> Privy::PasskeyCredPropsResult
+        Privy::Users::MfaPasskeyCredPropsResult
+      ) -> Privy::Users::MfaPasskeyCredPropsResult
 
       attr_reader hmac_create_secret: bool?
 
@@ -24,13 +24,13 @@ module Privy
 
       def initialize: (
         ?app_id: String,
-        ?cred_props: Privy::PasskeyCredPropsResult,
+        ?cred_props: Privy::Users::MfaPasskeyCredPropsResult,
         ?hmac_create_secret: bool
       ) -> void
 
       def to_hash: -> {
         app_id: String,
-        cred_props: Privy::PasskeyCredPropsResult,
+        cred_props: Privy::Users::MfaPasskeyCredPropsResult,
         hmac_create_secret: bool
       }
     end

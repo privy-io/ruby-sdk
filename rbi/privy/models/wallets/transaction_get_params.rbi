@@ -80,8 +80,11 @@ module Privy
         sig { params(include_archived: T::Boolean).void }
         attr_writer :include_archived
 
-        sig { returns(T.nilable(Float)) }
-        attr_accessor :limit
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :limit
+
+        sig { params(limit: Integer).void }
+        attr_writer :limit
 
         sig { returns(T.nilable(String)) }
         attr_reader :tx_hash
@@ -101,7 +104,7 @@ module Privy
               ),
             cursor: String,
             include_archived: T::Boolean,
-            limit: T.nilable(Float),
+            limit: Integer,
             tx_hash: String,
             request_options: Privy::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -140,7 +143,7 @@ module Privy
                 ),
               cursor: String,
               include_archived: T::Boolean,
-              limit: T.nilable(Float),
+              limit: Integer,
               tx_hash: String,
               request_options: Privy::RequestOptions
             }

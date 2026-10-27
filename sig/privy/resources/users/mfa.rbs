@@ -1,0 +1,13 @@
+module Privy
+  module Resources
+    class Users
+      class Mfa
+        attr_reader sms: Privy::Resources::Users::Mfa::SMS
+
+        attr_reader totp: Privy::Resources::Users::Mfa::Totp
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

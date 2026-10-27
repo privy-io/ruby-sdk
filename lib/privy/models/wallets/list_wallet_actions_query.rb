@@ -12,8 +12,8 @@ module Privy
 
         # @!attribute limit
         #
-        #   @return [Float, nil]
-        optional :limit, Float, nil?: true
+        #   @return [Integer, nil]
+        optional :limit, Integer
 
         # @!attribute type
         #   Type of wallet action
@@ -26,7 +26,7 @@ module Privy
         #
         #   @param cursor [String] Cursor returned by the previous page.
         #
-        #   @param limit [Float, nil]
+        #   @param limit [Integer]
         #
         #   @param type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
       end

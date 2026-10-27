@@ -27,7 +27,7 @@ module Privy
 
       def list: (
         ?cursor: String,
-        ?limit: Float?,
+        ?limit: Integer,
         ?request_options: Privy::request_opts
       ) -> Privy::Internal::Cursor[Privy::PolicyListItem]
 

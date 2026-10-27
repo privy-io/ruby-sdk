@@ -14,22 +14,30 @@ module Privy
       sig { returns(String) }
       attr_accessor :challenge
 
-      sig { returns(T.nilable(T::Array[Privy::PasskeyCredentialDescriptor])) }
+      sig do
+        returns(
+          T.nilable(T::Array[Privy::Users::MfaPasskeyCredentialDescriptor])
+        )
+      end
       attr_reader :allow_credentials
 
       sig do
         params(
           allow_credentials:
-            T::Array[Privy::PasskeyCredentialDescriptor::OrHash]
+            T::Array[Privy::Users::MfaPasskeyCredentialDescriptor::OrHash]
         ).void
       end
       attr_writer :allow_credentials
 
       # Extensions for a WebAuthn authentication ceremony.
-      sig { returns(T.nilable(Privy::PasskeyVerifyExtensions)) }
+      sig { returns(T.nilable(Privy::Users::MfaPasskeyVerifyExtensions)) }
       attr_reader :extensions
 
-      sig { params(extensions: Privy::PasskeyVerifyExtensions::OrHash).void }
+      sig do
+        params(
+          extensions: Privy::Users::MfaPasskeyVerifyExtensions::OrHash
+        ).void
+      end
       attr_writer :extensions
 
       sig { returns(T.nilable(String)) }
@@ -56,8 +64,8 @@ module Privy
         params(
           challenge: String,
           allow_credentials:
-            T::Array[Privy::PasskeyCredentialDescriptor::OrHash],
-          extensions: Privy::PasskeyVerifyExtensions::OrHash,
+            T::Array[Privy::Users::MfaPasskeyCredentialDescriptor::OrHash],
+          extensions: Privy::Users::MfaPasskeyVerifyExtensions::OrHash,
           rp_id: String,
           timeout: Float,
           user_verification: String
@@ -78,8 +86,9 @@ module Privy
         override.returns(
           {
             challenge: String,
-            allow_credentials: T::Array[Privy::PasskeyCredentialDescriptor],
-            extensions: Privy::PasskeyVerifyExtensions,
+            allow_credentials:
+              T::Array[Privy::Users::MfaPasskeyCredentialDescriptor],
+            extensions: Privy::Users::MfaPasskeyVerifyExtensions,
             rp_id: String,
             timeout: Float,
             user_verification: String

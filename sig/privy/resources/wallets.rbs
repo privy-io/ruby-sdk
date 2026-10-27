@@ -50,7 +50,7 @@ module Privy
         ?entity_id: String,
         ?external_id: String,
         ?include_archived: bool,
-        ?limit: Float?,
+        ?limit: Integer,
         ?user_id: String,
         ?request_options: Privy::request_opts
       ) -> Privy::Internal::Cursor[Privy::Wallet]

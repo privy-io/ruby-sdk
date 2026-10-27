@@ -36,7 +36,7 @@ module Privy
           params(
             app_id: String,
             cursor: String,
-            limit: T.nilable(Float),
+            limit: Integer,
             request_options: Privy::RequestOptions::OrHash
           ).returns(Privy::Internal::Cursor[Privy::DenylistEntry])
         end

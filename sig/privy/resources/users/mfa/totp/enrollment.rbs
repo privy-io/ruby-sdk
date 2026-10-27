@@ -1,0 +1,27 @@
+module Privy
+  module Resources
+    class Users
+      class Mfa
+        class Totp
+          class Enrollment
+            def init: (
+              String user_id,
+              privy_user_token: String,
+              ?privy_mfa_token: String,
+              ?request_options: Privy::request_opts
+            ) -> Privy::Users::TotpMfaEnrollmentInitResponse
+
+            def verify: (
+              String user_id,
+              code: String,
+              privy_user_token: String,
+              ?request_options: Privy::request_opts
+            ) -> Privy::Users::MfaVerificationResponse
+
+            def initialize: (client: Privy::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

@@ -64,8 +64,11 @@ module Privy
       sig { params(include_archived: T::Boolean).void }
       attr_writer :include_archived
 
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :limit
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :limit
+
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter wallets by user ID. Cannot be used together with authorization_key.
       sig { returns(T.nilable(String)) }
@@ -83,7 +86,7 @@ module Privy
           entity_id: String,
           external_id: String,
           include_archived: T::Boolean,
-          limit: T.nilable(Float),
+          limit: Integer,
           user_id: String,
           request_options: Privy::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -124,7 +127,7 @@ module Privy
             entity_id: String,
             external_id: String,
             include_archived: T::Boolean,
-            limit: T.nilable(Float),
+            limit: Integer,
             user_id: String,
             request_options: Privy::RequestOptions
           }

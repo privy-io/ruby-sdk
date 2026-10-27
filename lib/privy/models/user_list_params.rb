@@ -15,13 +15,13 @@ module Privy
 
       # @!attribute limit
       #
-      #   @return [Float, nil]
-      optional :limit, Float, nil?: true
+      #   @return [Integer, nil]
+      optional :limit, Integer
 
       # @!method initialize(cursor: nil, limit: nil, request_options: {})
       #   @param cursor [String] Cursor returned by the previous page.
       #
-      #   @param limit [Float, nil]
+      #   @param limit [Integer]
       #
       #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
     end

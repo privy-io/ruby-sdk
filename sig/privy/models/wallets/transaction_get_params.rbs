@@ -9,7 +9,7 @@ module Privy
           asset: Privy::Models::Wallets::TransactionGetParams::asset,
           cursor: String,
           include_archived: bool,
-          limit: Float?,
+          limit: Integer,
           tx_hash: String
         }
         & Privy::Internal::Type::request_parameters
@@ -42,7 +42,9 @@ module Privy
 
         def include_archived=: (bool) -> bool
 
-        attr_accessor limit: Float?
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
 
         attr_reader tx_hash: String?
 
@@ -55,7 +57,7 @@ module Privy
           ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
           ?cursor: String,
           ?include_archived: bool,
-          ?limit: Float?,
+          ?limit: Integer,
           ?tx_hash: String,
           ?request_options: Privy::request_opts
         ) -> void
@@ -67,7 +69,7 @@ module Privy
           asset: Privy::Models::Wallets::TransactionGetParams::asset,
           cursor: String,
           include_archived: bool,
-          limit: Float?,
+          limit: Integer,
           tx_hash: String,
           request_options: Privy::RequestOptions
         }

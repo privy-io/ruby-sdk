@@ -1,0 +1,59 @@
+module Privy
+  module Models
+    module Users
+      type mfa_passkey_authenticator_verify_response =
+        {
+          id: String,
+          client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults,
+          raw_id: String,
+          response: Privy::Users::MfaPasskeyAssertionResponse,
+          type: Privy::Models::Users::MfaPasskeyAuthenticatorVerifyResponse::type_,
+          authenticator_attachment: String
+        }
+
+      class MfaPasskeyAuthenticatorVerifyResponse < Privy::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults
+
+        attr_accessor raw_id: String
+
+        attr_accessor response: Privy::Users::MfaPasskeyAssertionResponse
+
+        attr_accessor type: Privy::Models::Users::MfaPasskeyAuthenticatorVerifyResponse::type_
+
+        attr_reader authenticator_attachment: String?
+
+        def authenticator_attachment=: (String) -> String
+
+        def initialize: (
+          id: String,
+          client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults,
+          raw_id: String,
+          response: Privy::Users::MfaPasskeyAssertionResponse,
+          type: Privy::Models::Users::MfaPasskeyAuthenticatorVerifyResponse::type_,
+          ?authenticator_attachment: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          client_extension_results: Privy::Users::MfaPasskeyClientExtensionResults,
+          raw_id: String,
+          response: Privy::Users::MfaPasskeyAssertionResponse,
+          type: Privy::Models::Users::MfaPasskeyAuthenticatorVerifyResponse::type_,
+          authenticator_attachment: String
+        }
+
+        type type_ = :"public-key"
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          PUBLIC_KEY: :"public-key"
+
+          def self?.values: -> ::Array[Privy::Models::Users::MfaPasskeyAuthenticatorVerifyResponse::type_]
+        end
+      end
+    end
+  end
+end

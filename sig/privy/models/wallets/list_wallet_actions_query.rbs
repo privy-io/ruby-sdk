@@ -4,7 +4,7 @@ module Privy
       type list_wallet_actions_query =
         {
           cursor: String,
-          limit: Float?,
+          limit: Integer,
           type: Privy::Models::Wallets::wallet_action_type
         }
 
@@ -13,7 +13,9 @@ module Privy
 
         def cursor=: (String) -> String
 
-        attr_accessor limit: Float?
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
 
         attr_reader type: Privy::Models::Wallets::wallet_action_type?
 
@@ -23,13 +25,13 @@ module Privy
 
         def initialize: (
           ?cursor: String,
-          ?limit: Float?,
+          ?limit: Integer,
           ?type: Privy::Models::Wallets::wallet_action_type
         ) -> void
 
         def to_hash: -> {
           cursor: String,
-          limit: Float?,
+          limit: Integer,
           type: Privy::Models::Wallets::wallet_action_type
         }
       end

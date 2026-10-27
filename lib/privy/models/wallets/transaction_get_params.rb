@@ -48,8 +48,8 @@ module Privy
 
         # @!attribute limit
         #
-        #   @return [Float, nil]
-        optional :limit, Float, nil?: true
+        #   @return [Integer, nil]
+        optional :limit, Integer
 
         # @!attribute tx_hash
         #
@@ -72,7 +72,7 @@ module Privy
         #
         #   @param include_archived [Boolean] Include archived wallets in lookup. Defaults to false.
         #
-        #   @param limit [Float, nil]
+        #   @param limit [Integer]
         #
         #   @param tx_hash [String]
         #

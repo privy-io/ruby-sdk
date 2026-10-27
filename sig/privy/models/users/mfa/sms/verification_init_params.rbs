@@ -1,0 +1,34 @@
+module Privy
+  module Models
+    module Users
+      module Mfa
+        module SMS
+          type verification_init_params =
+            { user_id: String, privy_user_token: String }
+            & Privy::Internal::Type::request_parameters
+
+          class VerificationInitParams < Privy::Internal::Type::BaseModel
+            extend Privy::Internal::Type::RequestParameters::Converter
+            include Privy::Internal::Type::RequestParameters
+
+            attr_accessor user_id: String
+
+            attr_accessor privy_user_token: String
+
+            def initialize: (
+              user_id: String,
+              privy_user_token: String,
+              ?request_options: Privy::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              user_id: String,
+              privy_user_token: String,
+              request_options: Privy::RequestOptions
+            }
+          end
+        end
+      end
+    end
+  end
+end

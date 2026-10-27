@@ -12,6 +12,9 @@ module Privy
       sig { returns(Privy::Resources::Users::KYC) }
       attr_reader :kyc
 
+      sig { returns(Privy::Resources::Users::Mfa) }
+      attr_reader :mfa
+
       # Create a new user with linked accounts. Optionally pre-generate embedded wallets
       # for the user.
       sig do
@@ -58,7 +61,7 @@ module Privy
       sig do
         params(
           cursor: String,
-          limit: T.nilable(Float),
+          limit: Integer,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Internal::Cursor[Privy::User])
       end

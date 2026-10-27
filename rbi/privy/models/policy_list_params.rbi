@@ -18,13 +18,16 @@ module Privy
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :limit
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :limit
+
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       sig do
         params(
           cursor: String,
-          limit: T.nilable(Float),
+          limit: Integer,
           request_options: Privy::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -40,7 +43,7 @@ module Privy
         override.returns(
           {
             cursor: String,
-            limit: T.nilable(Float),
+            limit: Integer,
             request_options: Privy::RequestOptions
           }
         )

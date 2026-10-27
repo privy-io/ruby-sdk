@@ -5,6 +5,8 @@ module Privy
 
       attr_reader kyc: Privy::Resources::Users::KYC
 
+      attr_reader mfa: Privy::Resources::Users::Mfa
+
       def create: (
         linked_accounts: ::Array[Privy::Models::linked_account_input],
         ?custom_metadata: Privy::Models::custom_metadata,
@@ -14,7 +16,7 @@ module Privy
 
       def list: (
         ?cursor: String,
-        ?limit: Float?,
+        ?limit: Integer,
         ?request_options: Privy::request_opts
       ) -> Privy::Internal::Cursor[Privy::User]
 

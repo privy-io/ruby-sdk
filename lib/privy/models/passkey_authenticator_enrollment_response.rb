@@ -11,8 +11,8 @@ module Privy
       # @!attribute client_extension_results
       #   Client extension results returned by the WebAuthn authenticator.
       #
-      #   @return [Privy::Models::PasskeyClientExtensionResults]
-      required :client_extension_results, -> { Privy::PasskeyClientExtensionResults }
+      #   @return [Privy::Models::Users::MfaPasskeyClientExtensionResults]
+      required :client_extension_results, -> { Privy::Users::MfaPasskeyClientExtensionResults }
 
       # @!attribute raw_id
       #
@@ -22,8 +22,8 @@ module Privy
       # @!attribute response
       #   The authenticator attestation response from a WebAuthn registration ceremony.
       #
-      #   @return [Privy::Models::PasskeyAttestationResponse]
-      required :response, -> { Privy::PasskeyAttestationResponse }
+      #   @return [Privy::Models::Users::MfaPasskeyAttestationResponse]
+      required :response, -> { Privy::Users::MfaPasskeyAttestationResponse }
 
       # @!attribute type
       #
@@ -41,11 +41,11 @@ module Privy
       #
       #   @param id [String]
       #
-      #   @param client_extension_results [Privy::Models::PasskeyClientExtensionResults] Client extension results returned by the WebAuthn authenticator.
+      #   @param client_extension_results [Privy::Models::Users::MfaPasskeyClientExtensionResults] Client extension results returned by the WebAuthn authenticator.
       #
       #   @param raw_id [String]
       #
-      #   @param response [Privy::Models::PasskeyAttestationResponse] The authenticator attestation response from a WebAuthn registration ceremony.
+      #   @param response [Privy::Models::Users::MfaPasskeyAttestationResponse] The authenticator attestation response from a WebAuthn registration ceremony.
       #
       #   @param type [Symbol, Privy::Models::PasskeyAuthenticatorEnrollmentResponse::Type]
       #

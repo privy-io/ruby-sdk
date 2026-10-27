@@ -2,7 +2,7 @@ module Privy
   module Models
     module Policies
       type condition_set_list_params =
-        { cursor: String, limit: Float? }
+        { cursor: String, limit: Integer }
         & Privy::Internal::Type::request_parameters
 
       class ConditionSetListParams < Privy::Internal::Type::BaseModel
@@ -13,17 +13,19 @@ module Privy
 
         def cursor=: (String) -> String
 
-        attr_accessor limit: Float?
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
 
         def initialize: (
           ?cursor: String,
-          ?limit: Float?,
+          ?limit: Integer,
           ?request_options: Privy::request_opts
         ) -> void
 
         def to_hash: -> {
           cursor: String,
-          limit: Float?,
+          limit: Integer,
           request_options: Privy::RequestOptions
         }
       end

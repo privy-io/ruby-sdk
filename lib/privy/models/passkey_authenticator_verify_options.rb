@@ -10,14 +10,15 @@ module Privy
 
       # @!attribute allow_credentials
       #
-      #   @return [Array<Privy::Models::PasskeyCredentialDescriptor>, nil]
-      optional :allow_credentials, -> { Privy::Internal::Type::ArrayOf[Privy::PasskeyCredentialDescriptor] }
+      #   @return [Array<Privy::Models::Users::MfaPasskeyCredentialDescriptor>, nil]
+      optional :allow_credentials,
+               -> { Privy::Internal::Type::ArrayOf[Privy::Users::MfaPasskeyCredentialDescriptor] }
 
       # @!attribute extensions
       #   Extensions for a WebAuthn authentication ceremony.
       #
-      #   @return [Privy::Models::PasskeyVerifyExtensions, nil]
-      optional :extensions, -> { Privy::PasskeyVerifyExtensions }
+      #   @return [Privy::Models::Users::MfaPasskeyVerifyExtensions, nil]
+      optional :extensions, -> { Privy::Users::MfaPasskeyVerifyExtensions }
 
       # @!attribute rp_id
       #
@@ -40,9 +41,9 @@ module Privy
       #
       #   @param challenge [String]
       #
-      #   @param allow_credentials [Array<Privy::Models::PasskeyCredentialDescriptor>]
+      #   @param allow_credentials [Array<Privy::Models::Users::MfaPasskeyCredentialDescriptor>]
       #
-      #   @param extensions [Privy::Models::PasskeyVerifyExtensions] Extensions for a WebAuthn authentication ceremony.
+      #   @param extensions [Privy::Models::Users::MfaPasskeyVerifyExtensions] Extensions for a WebAuthn authentication ceremony.
       #
       #   @param rp_id [String]
       #

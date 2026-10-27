@@ -9,7 +9,7 @@ module Privy
           ?asset: Privy::Models::Wallets::TransactionGetParams::asset,
           ?cursor: String,
           ?include_archived: bool,
-          ?limit: Float?,
+          ?limit: Integer,
           ?tx_hash: String,
           ?request_options: Privy::request_opts
         ) -> Privy::Models::Wallets::TransactionGetResponse

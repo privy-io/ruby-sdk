@@ -1,0 +1,38 @@
+module Privy
+  module Models
+    module Users
+      module Mfa
+        module Totp
+          type verification_verify_params =
+            { user_id: String, privy_user_token: String }
+            & Privy::Internal::Type::request_parameters
+
+          class VerificationVerifyParams < Privy::Models::Users::TotpMfaVerifyRequestBody
+            extend Privy::Internal::Type::RequestParameters::Converter
+            include Privy::Internal::Type::RequestParameters
+
+            def user_id: -> String
+
+            def user_id=: (String _) -> String
+
+            def privy_user_token: -> String
+
+            def privy_user_token=: (String _) -> String
+
+            def initialize: (
+              user_id: String,
+              privy_user_token: String,
+              ?request_options: Privy::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              user_id: String,
+              privy_user_token: String,
+              request_options: Privy::RequestOptions
+            }
+          end
+        end
+      end
+    end
+  end
+end

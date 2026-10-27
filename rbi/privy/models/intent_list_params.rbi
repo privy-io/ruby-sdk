@@ -50,8 +50,11 @@ module Privy
       end
       attr_writer :intent_type
 
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :limit
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :limit
+
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter by a user whose approval is still pending. For user-token requests, Privy
       # uses the authenticated user ID to scope intent visibility. This filter only
@@ -88,7 +91,7 @@ module Privy
             Privy::IntentListParams::CurrentUserHasSigned::OrSymbol,
           cursor: String,
           intent_type: T.any(Privy::IntentType::OrSymbol, String),
-          limit: T.nilable(Float),
+          limit: Integer,
           pending_member_id: String,
           resource_id: String,
           sort_by: Privy::IntentListParams::SortBy::OrSymbol,
@@ -126,7 +129,7 @@ module Privy
               Privy::IntentListParams::CurrentUserHasSigned::OrSymbol,
             cursor: String,
             intent_type: T.any(Privy::IntentType::OrSymbol, String),
-            limit: T.nilable(Float),
+            limit: Integer,
             pending_member_id: String,
             resource_id: String,
             sort_by: Privy::IntentListParams::SortBy::OrSymbol,

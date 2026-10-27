@@ -11,7 +11,7 @@ module Privy
         def list: (
           String app_id,
           ?cursor: String,
-          ?limit: Float?,
+          ?limit: Integer,
           ?request_options: Privy::request_opts
         ) -> Privy::Internal::Cursor[Privy::DenylistEntry]
 

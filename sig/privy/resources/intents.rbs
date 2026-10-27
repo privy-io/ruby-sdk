@@ -6,7 +6,7 @@ module Privy
         ?current_user_has_signed: Privy::Models::IntentListParams::current_user_has_signed,
         ?cursor: String,
         ?intent_type: Privy::Models::intent_type,
-        ?limit: Float?,
+        ?limit: Integer,
         ?pending_member_id: String,
         ?resource_id: String,
         ?sort_by: Privy::Models::IntentListParams::sort_by,
