@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module Users
+      type passkey_mfa_verification_verify_request_body =
+        { credential: Privy::Users::MfaPasskeyAuthenticatorVerifyResponse }
+
+      class PasskeyMfaVerificationVerifyRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor credential: Privy::Users::MfaPasskeyAuthenticatorVerifyResponse
+
+        def initialize: (
+          credential: Privy::Users::MfaPasskeyAuthenticatorVerifyResponse
+        ) -> void
+
+        def to_hash: -> {
+          credential: Privy::Users::MfaPasskeyAuthenticatorVerifyResponse
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module Users
+      type passkey_mfa_enrollment_init_response =
+        { options: Privy::Users::MfaPasskeyAuthenticatorEnrollmentOptions }
+
+      class PasskeyMfaEnrollmentInitResponse < Privy::Internal::Type::BaseModel
+        attr_accessor options: Privy::Users::MfaPasskeyAuthenticatorEnrollmentOptions
+
+        def initialize: (
+          options: Privy::Users::MfaPasskeyAuthenticatorEnrollmentOptions
+        ) -> void
+
+        def to_hash: -> {
+          options: Privy::Users::MfaPasskeyAuthenticatorEnrollmentOptions
+        }
+      end
+    end
+  end
+end

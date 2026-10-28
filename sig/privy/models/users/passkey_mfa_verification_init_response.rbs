@@ -1,0 +1,20 @@
+module Privy
+  module Models
+    module Users
+      type passkey_mfa_verification_init_response =
+        { options: Privy::Users::MfaPasskeyAuthenticatorVerifyOptions }
+
+      class PasskeyMfaVerificationInitResponse < Privy::Internal::Type::BaseModel
+        attr_accessor options: Privy::Users::MfaPasskeyAuthenticatorVerifyOptions
+
+        def initialize: (
+          options: Privy::Users::MfaPasskeyAuthenticatorVerifyOptions
+        ) -> void
+
+        def to_hash: -> {
+          options: Privy::Users::MfaPasskeyAuthenticatorVerifyOptions
+        }
+      end
+    end
+  end
+end

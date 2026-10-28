@@ -15,7 +15,9 @@ module Privy
         sig { returns(Float) }
         attr_accessor :alg
 
-        sig { returns(Privy::Users::MfaPasskeyPubKeyCredParam::Type::OrSymbol) }
+        sig do
+          returns(Privy::Users::MfaPasskeyPubKeyCredParam::Type::TaggedSymbol)
+        end
         attr_accessor :type
 
         # A public key credential parameter specifying the algorithm and credential type.
@@ -32,7 +34,7 @@ module Privy
           override.returns(
             {
               alg: Float,
-              type: Privy::Users::MfaPasskeyPubKeyCredParam::Type::OrSymbol
+              type: Privy::Users::MfaPasskeyPubKeyCredParam::Type::TaggedSymbol
             }
           )
         end

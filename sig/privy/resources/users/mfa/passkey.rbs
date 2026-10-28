@@ -1,0 +1,15 @@
+module Privy
+  module Resources
+    class Users
+      class Mfa
+        class Passkey
+          attr_reader enrollment: Privy::Resources::Users::Mfa::Passkey::Enrollment
+
+          attr_reader verification: Privy::Resources::Users::Mfa::Passkey::Verification
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

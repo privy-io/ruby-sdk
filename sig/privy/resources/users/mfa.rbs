@@ -2,6 +2,8 @@ module Privy
   module Resources
     class Users
       class Mfa
+        attr_reader passkey: Privy::Resources::Users::Mfa::Passkey
+
         attr_reader sms: Privy::Resources::Users::Mfa::SMS
 
         attr_reader totp: Privy::Resources::Users::Mfa::Totp

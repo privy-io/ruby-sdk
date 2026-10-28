@@ -23,6 +23,9 @@ module Privy
       end
 
       module Mfa
+        module Passkey
+        end
+
         module SMS
         end
 
@@ -31,6 +34,9 @@ module Privy
       end
 
       module Organizations
+      end
+
+      module Passkey
       end
 
       module Payout
@@ -47,6 +53,9 @@ module Privy
 
       module Users
         module Mfa
+          module Passkey
+          end
+
           module SMS
           end
 

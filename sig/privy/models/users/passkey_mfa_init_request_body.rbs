@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Users
+      type passkey_mfa_init_request_body = { relying_party: String }
+
+      class PasskeyMfaInitRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor relying_party: String
+
+        def initialize: (relying_party: String) -> void
+
+        def to_hash: -> { relying_party: String }
+      end
+    end
+  end
+end
