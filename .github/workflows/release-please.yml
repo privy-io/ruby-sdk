@@ -11,14 +11,15 @@ permissions:
 
 jobs:
   release-please:
-    if: github.repository == 'privy-io/ruby-sdk'
+    if: github.repository == 'privy-io/ruby-sdk-private'
     runs-on: ubuntu-latest
-    environment: builder-blobby-sdk-release-and-sync
+    environment: builder-blobby-sdk-sync-and-seal
     steps:
       # Mint a short-lived builder-blobby installation token scoped to this repo. An app
       # token (not the default GITHUB_TOKEN) is required so the GitHub Release that
-      # release-please creates triggers the standalone publish-gem workflow (on: release) —
-      # the default token cannot trigger other workflows. release-please writes the
+      # release-please creates triggers stlc-promote (on: release), which promotes the
+      # release to privy-io/ruby-sdk where publish-gem runs — the default token cannot
+      # trigger other workflows. release-please writes the
       # version-bump commit through the GitHub API, so GitHub signs it server-side and it
       # shows as Verified (builder-blobby[bot]); no GPG key needed.
       - name: Mint builder-blobby token
@@ -28,7 +29,7 @@ jobs:
           app-id: ${{ secrets.BUILDER_BLOBBY_APP_ID }}
           private-key: ${{ secrets.BUILDER_BLOBBY_APP_PRIVATE_KEY }}
           owner: privy-io
-          repositories: ruby-sdk
+          repositories: ruby-sdk-private
           permission-contents: write
           permission-pull-requests: write
 
