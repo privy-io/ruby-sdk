@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Users
+      type email_mfa_enrollment_init_request_body = { email_address: String }
+
+      class EmailMfaEnrollmentInitRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor email_address: String
+
+        def initialize: (email_address: String) -> void
+
+        def to_hash: -> { email_address: String }
+      end
+    end
+  end
+end

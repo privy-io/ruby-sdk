@@ -19,10 +19,16 @@ module Privy
         end
       end
 
+      module Email
+      end
+
       module Ethereum
       end
 
       module Mfa
+        module Email
+        end
+
         module Passkey
         end
 
@@ -53,6 +59,9 @@ module Privy
 
       module Users
         module Mfa
+          module Email
+          end
+
           module Passkey
           end
 

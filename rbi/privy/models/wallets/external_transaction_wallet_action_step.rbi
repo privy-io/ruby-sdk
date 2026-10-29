@@ -12,6 +12,14 @@ module Privy
             )
           end
 
+        # External provider that fills an external transaction step.
+        sig do
+          returns(
+            T.nilable(Privy::Wallets::ExternalTransactionStepProvider::Variants)
+          )
+        end
+        attr_accessor :provider
+
         # Status of an external transaction step in a wallet action.
         sig do
           returns(
@@ -40,6 +48,13 @@ module Privy
         # provider.
         sig do
           params(
+            provider:
+              T.nilable(
+                T.any(
+                  Privy::Wallets::ExternalTransactionStepProvider::OrSymbol,
+                  String
+                )
+              ),
             status:
               Privy::Wallets::ExternalTransactionWalletActionStepStatus::OrSymbol,
             type:
@@ -48,6 +63,8 @@ module Privy
           ).returns(T.attached_class)
         end
         def self.new(
+          # External provider that fills an external transaction step.
+          provider:,
           # Status of an external transaction step in a wallet action.
           status:,
           type:,
@@ -59,6 +76,10 @@ module Privy
         sig do
           override.returns(
             {
+              provider:
+                T.nilable(
+                  Privy::Wallets::ExternalTransactionStepProvider::Variants
+                ),
               status:
                 Privy::Wallets::ExternalTransactionWalletActionStepStatus::TaggedSymbol,
               type:

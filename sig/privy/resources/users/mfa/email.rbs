@@ -1,0 +1,15 @@
+module Privy
+  module Resources
+    class Users
+      class Mfa
+        class Email
+          attr_reader enrollment: Privy::Resources::Users::Mfa::Email::Enrollment
+
+          attr_reader verification: Privy::Resources::Users::Mfa::Email::Verification
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

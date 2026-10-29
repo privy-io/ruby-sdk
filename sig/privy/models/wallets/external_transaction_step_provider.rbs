@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    module Wallets
+      type external_transaction_step_provider =
+        :relay | :tempo_routes | :bridge | String
+
+      module ExternalTransactionStepProvider
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::external_transaction_step_provider]
+
+        RELAY: :relay
+        TEMPO_ROUTES: :tempo_routes
+        BRIDGE: :bridge
+      end
+    end
+  end
+end

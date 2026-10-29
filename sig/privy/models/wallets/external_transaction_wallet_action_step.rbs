@@ -3,12 +3,15 @@ module Privy
     module Wallets
       type external_transaction_wallet_action_step =
         {
+          provider: Privy::Models::Wallets::external_transaction_step_provider?,
           status: Privy::Models::Wallets::external_transaction_wallet_action_step_status,
           type: Privy::Models::Wallets::ExternalTransactionWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason
         }
 
       class ExternalTransactionWalletActionStep < Privy::Internal::Type::BaseModel
+        attr_accessor provider: Privy::Models::Wallets::external_transaction_step_provider?
+
         attr_accessor status: Privy::Models::Wallets::external_transaction_wallet_action_step_status
 
         attr_accessor type: Privy::Models::Wallets::ExternalTransactionWalletActionStep::type_
@@ -20,12 +23,14 @@ module Privy
         ) -> Privy::Wallets::FailureReason
 
         def initialize: (
+          provider: Privy::Models::Wallets::external_transaction_step_provider?,
           status: Privy::Models::Wallets::external_transaction_wallet_action_step_status,
           type: Privy::Models::Wallets::ExternalTransactionWalletActionStep::type_,
           ?failure_reason: Privy::Wallets::FailureReason
         ) -> void
 
         def to_hash: -> {
+          provider: Privy::Models::Wallets::external_transaction_step_provider?,
           status: Privy::Models::Wallets::external_transaction_wallet_action_step_status,
           type: Privy::Models::Wallets::ExternalTransactionWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason

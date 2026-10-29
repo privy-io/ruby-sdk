@@ -4,6 +4,12 @@ module Privy
   module Models
     module Wallets
       class ExternalTransactionWalletActionStep < Privy::Internal::Type::BaseModel
+        # @!attribute provider
+        #   External provider that fills an external transaction step.
+        #
+        #   @return [Symbol, String, Privy::Models::Wallets::ExternalTransactionStepProvider, nil]
+        required :provider, union: -> { Privy::Wallets::ExternalTransactionStepProvider }, nil?: true
+
         # @!attribute status
         #   Status of an external transaction step in a wallet action.
         #
@@ -21,9 +27,11 @@ module Privy
         #   @return [Privy::Models::Wallets::FailureReason, nil]
         optional :failure_reason, -> { Privy::Wallets::FailureReason }
 
-        # @!method initialize(status:, type:, failure_reason: nil)
+        # @!method initialize(provider:, status:, type:, failure_reason: nil)
         #   A wallet action step representing a cross-chain/cross-asset fill by an external
         #   provider.
+        #
+        #   @param provider [Symbol, String, Privy::Models::Wallets::ExternalTransactionStepProvider, nil] External provider that fills an external transaction step.
         #
         #   @param status [Symbol, Privy::Models::Wallets::ExternalTransactionWalletActionStepStatus] Status of an external transaction step in a wallet action.
         #

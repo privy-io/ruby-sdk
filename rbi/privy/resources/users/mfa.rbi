@@ -4,6 +4,9 @@ module Privy
   module Resources
     class Users
       class Mfa
+        sig { returns(Privy::Resources::Users::Mfa::Email) }
+        attr_reader :email
+
         sig { returns(Privy::Resources::Users::Mfa::Passkey) }
         attr_reader :passkey
 
