@@ -12,15 +12,15 @@ module Privy
             #
             # Returns WebAuthn registration options for a new MFA passkey.
             #
-            # @overload init(user_id, relying_party:, privy_user_token:, privy_mfa_token: nil, request_options: {})
+            # @overload init(user_id, relying_party:, user_jwt:, mfa_token: nil, request_options: {})
             #
             # @param user_id [String] Path param
             #
             # @param relying_party [String] Body param: Origin where the authenticator runs, such as https://app.example.com
             #
-            # @param privy_user_token [String] Header param: Access token or custom authentication JWT for the user the request
+            # @param user_jwt [String] Header param: Access token or custom authentication JWT for the user the request
             #
-            # @param privy_mfa_token [String] Header param: MFA token from a completed MFA verification, required on MFA-prote
+            # @param mfa_token [String] Header param: MFA token from a completed MFA verification, required on MFA-prote
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -29,7 +29,7 @@ module Privy
             # @see Privy::Models::Users::Mfa::Passkey::EnrollmentInitParams
             def init(user_id, params)
               parsed, options = Privy::Users::Mfa::Passkey::EnrollmentInitParams.dump_request(params)
-              header_params = {privy_user_token: "privy-user-token", privy_mfa_token: "privy-mfa-token"}
+              header_params = {user_jwt: "privy-user-token", mfa_token: "privy-mfa-token"}
               @client.request(
                 method: :post,
                 path: ["v1/users/%1$s/mfa/passkey/enrollment/init", user_id],
@@ -45,13 +45,13 @@ module Privy
             #
             # Enrolls a passkey in MFA using the WebAuthn registration response.
             #
-            # @overload verify(user_id, credential:, privy_user_token:, request_options: {})
+            # @overload verify(user_id, credential:, user_jwt:, request_options: {})
             #
             # @param user_id [String] Path param
             #
             # @param credential [Privy::Models::Users::MfaPasskeyAuthenticatorEnrollmentResponse] Body param: WebAuthn registration response as defined by the Web Authentication
             #
-            # @param privy_user_token [String] Header param: Access token or custom authentication JWT for the user the request
+            # @param user_jwt [String] Header param: Access token or custom authentication JWT for the user the request
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -60,7 +60,7 @@ module Privy
             # @see Privy::Models::Users::Mfa::Passkey::EnrollmentVerifyParams
             def verify(user_id, params)
               parsed, options = Privy::Users::Mfa::Passkey::EnrollmentVerifyParams.dump_request(params)
-              header_params = {privy_user_token: "privy-user-token"}
+              header_params = {user_jwt: "privy-user-token"}
               @client.request(
                 method: :post,
                 path: ["v1/users/%1$s/mfa/passkey/enrollment/verify", user_id],

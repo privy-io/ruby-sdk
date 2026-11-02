@@ -15,28 +15,28 @@ module Privy
             #   @return [String]
             required :user_id, String
 
-            # @!attribute privy_user_token
+            # @!attribute user_jwt
             #   Access token or custom authentication JWT for the user the request acts on.
             #
             #   @return [String]
-            required :privy_user_token, String
+            required :user_jwt, String
 
-            # @!attribute privy_mfa_token
+            # @!attribute mfa_token
             #   MFA token from a completed MFA verification, required on MFA-protected requests
             #   for users with MFA enrolled.
             #
             #   @return [String, nil]
-            optional :privy_mfa_token, String
+            optional :mfa_token, String
 
-            # @!method initialize(user_id:, privy_user_token:, privy_mfa_token: nil, request_options: {})
+            # @!method initialize(user_id:, user_jwt:, mfa_token: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Privy::Models::Users::Mfa::SMS::EnrollmentInitParams} for more details.
             #
             #   @param user_id [String]
             #
-            #   @param privy_user_token [String] Access token or custom authentication JWT for the user the request acts on.
+            #   @param user_jwt [String] Access token or custom authentication JWT for the user the request acts on.
             #
-            #   @param privy_mfa_token [String] MFA token from a completed MFA verification, required on MFA-protected requests
+            #   @param mfa_token [String] MFA token from a completed MFA verification, required on MFA-protected requests
             #
             #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
           end

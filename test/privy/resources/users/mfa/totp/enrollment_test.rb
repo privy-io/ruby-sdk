@@ -6,7 +6,7 @@ class Privy::Test::Resources::Users::Mfa::Totp::EnrollmentTest < Privy::Test::Re
   def test_init_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.users.mfa.totp.enrollment.init("user_id", privy_user_token: "x")
+    response = @privy_api.users.mfa.totp.enrollment.init("user_id", user_jwt: "x")
 
     assert_pattern do
       response => Privy::Users::TotpMfaEnrollmentInitResponse
@@ -22,7 +22,7 @@ class Privy::Test::Resources::Users::Mfa::Totp::EnrollmentTest < Privy::Test::Re
   def test_verify_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.users.mfa.totp.enrollment.verify("user_id", code: "xxxxxx", privy_user_token: "x")
+    response = @privy_api.users.mfa.totp.enrollment.verify("user_id", code: "xxxxxx", user_jwt: "x")
 
     assert_pattern do
       response => Privy::Users::MfaVerificationResponse

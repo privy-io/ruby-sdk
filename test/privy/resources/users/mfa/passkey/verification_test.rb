@@ -10,7 +10,7 @@ class Privy::Test::Resources::Users::Mfa::Passkey::VerificationTest < Privy::Tes
       @privy_api.users.mfa.passkey.verification.init(
         "user_id",
         relying_party: "https://example.com",
-        privy_user_token: "x"
+        user_jwt: "x"
       )
 
     assert_pattern do
@@ -41,7 +41,7 @@ class Privy::Test::Resources::Users::Mfa::Passkey::VerificationTest < Privy::Tes
           },
           type: :"public-key"
         },
-        privy_user_token: "x"
+        user_jwt: "x"
       )
 
     assert_pattern do

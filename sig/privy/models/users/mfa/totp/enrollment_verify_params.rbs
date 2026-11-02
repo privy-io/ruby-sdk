@@ -4,7 +4,7 @@ module Privy
       module Mfa
         module Totp
           type enrollment_verify_params =
-            { user_id: String, privy_user_token: String }
+            { user_id: String, user_jwt: String }
             & Privy::Internal::Type::request_parameters
 
           class EnrollmentVerifyParams < Privy::Models::Users::TotpMfaVerifyRequestBody
@@ -15,19 +15,19 @@ module Privy
 
             def user_id=: (String _) -> String
 
-            def privy_user_token: -> String
+            def user_jwt: -> String
 
-            def privy_user_token=: (String _) -> String
+            def user_jwt=: (String _) -> String
 
             def initialize: (
               user_id: String,
-              privy_user_token: String,
+              user_jwt: String,
               ?request_options: Privy::request_opts
             ) -> void
 
             def to_hash: -> {
               user_id: String,
-              privy_user_token: String,
+              user_jwt: String,
               request_options: Privy::RequestOptions
             }
           end

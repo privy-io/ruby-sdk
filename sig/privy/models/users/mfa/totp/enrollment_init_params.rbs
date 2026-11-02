@@ -4,11 +4,7 @@ module Privy
       module Mfa
         module Totp
           type enrollment_init_params =
-            {
-              user_id: String,
-              privy_user_token: String,
-              privy_mfa_token: String
-            }
+            { user_id: String, user_jwt: String, mfa_token: String }
             & Privy::Internal::Type::request_parameters
 
           class EnrollmentInitParams < Privy::Internal::Type::BaseModel
@@ -17,23 +13,23 @@ module Privy
 
             attr_accessor user_id: String
 
-            attr_accessor privy_user_token: String
+            attr_accessor user_jwt: String
 
-            attr_reader privy_mfa_token: String?
+            attr_reader mfa_token: String?
 
-            def privy_mfa_token=: (String) -> String
+            def mfa_token=: (String) -> String
 
             def initialize: (
               user_id: String,
-              privy_user_token: String,
-              ?privy_mfa_token: String,
+              user_jwt: String,
+              ?mfa_token: String,
               ?request_options: Privy::request_opts
             ) -> void
 
             def to_hash: -> {
               user_id: String,
-              privy_user_token: String,
-              privy_mfa_token: String,
+              user_jwt: String,
+              mfa_token: String,
               request_options: Privy::RequestOptions
             }
           end

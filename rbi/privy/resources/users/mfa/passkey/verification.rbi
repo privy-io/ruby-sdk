@@ -12,7 +12,7 @@ module Privy
               params(
                 user_id: String,
                 relying_party: String,
-                privy_user_token: String,
+                user_jwt: String,
                 request_options: Privy::RequestOptions::OrHash
               ).returns(Privy::Users::PasskeyMfaVerificationInitResponse)
             end
@@ -24,7 +24,7 @@ module Privy
               relying_party:,
               # Header param: Access token or custom authentication JWT for the user the request
               # acts on.
-              privy_user_token:,
+              user_jwt:,
               request_options: {}
             )
             end
@@ -35,7 +35,7 @@ module Privy
                 user_id: String,
                 credential:
                   Privy::Users::MfaPasskeyAuthenticatorVerifyResponse::OrHash,
-                privy_user_token: String,
+                user_jwt: String,
                 request_options: Privy::RequestOptions::OrHash
               ).returns(Privy::Users::MfaVerificationResponse)
             end
@@ -47,7 +47,7 @@ module Privy
               credential:,
               # Header param: Access token or custom authentication JWT for the user the request
               # acts on.
-              privy_user_token:,
+              user_jwt:,
               request_options: {}
             )
             end

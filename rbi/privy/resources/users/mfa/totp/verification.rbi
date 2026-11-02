@@ -12,7 +12,7 @@ module Privy
               params(
                 user_id: String,
                 code: String,
-                privy_user_token: String,
+                user_jwt: String,
                 request_options: Privy::RequestOptions::OrHash
               ).returns(Privy::Users::MfaVerificationResponse)
             end
@@ -23,7 +23,7 @@ module Privy
               code:,
               # Header param: Access token or custom authentication JWT for the user the request
               # acts on.
-              privy_user_token:,
+              user_jwt:,
               request_options: {}
             )
             end

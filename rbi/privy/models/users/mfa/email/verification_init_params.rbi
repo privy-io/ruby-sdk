@@ -22,19 +22,19 @@ module Privy
 
             # Access token or custom authentication JWT for the user the request acts on.
             sig { returns(String) }
-            attr_accessor :privy_user_token
+            attr_accessor :user_jwt
 
             sig do
               params(
                 user_id: String,
-                privy_user_token: String,
+                user_jwt: String,
                 request_options: Privy::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
               user_id:,
               # Access token or custom authentication JWT for the user the request acts on.
-              privy_user_token:,
+              user_jwt:,
               request_options: {}
             )
             end
@@ -43,7 +43,7 @@ module Privy
               override.returns(
                 {
                   user_id: String,
-                  privy_user_token: String,
+                  user_jwt: String,
                   request_options: Privy::RequestOptions
                 }
               )

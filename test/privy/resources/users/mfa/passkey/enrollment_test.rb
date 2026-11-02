@@ -10,7 +10,7 @@ class Privy::Test::Resources::Users::Mfa::Passkey::EnrollmentTest < Privy::Test:
       @privy_api.users.mfa.passkey.enrollment.init(
         "user_id",
         relying_party: "https://example.com",
-        privy_user_token: "x"
+        user_jwt: "x"
       )
 
     assert_pattern do
@@ -37,7 +37,7 @@ class Privy::Test::Resources::Users::Mfa::Passkey::EnrollmentTest < Privy::Test:
           response: {attestation_object: "attestation_object", client_data_json: "client_data_json"},
           type: :"public-key"
         },
-        privy_user_token: "x"
+        user_jwt: "x"
       )
 
     assert_pattern do

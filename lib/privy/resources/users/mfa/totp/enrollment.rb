@@ -12,13 +12,13 @@ module Privy
             #
             # Creates a TOTP secret for the user to add to an authenticator app.
             #
-            # @overload init(user_id, privy_user_token:, privy_mfa_token: nil, request_options: {})
+            # @overload init(user_id, user_jwt:, mfa_token: nil, request_options: {})
             #
             # @param user_id [String]
             #
-            # @param privy_user_token [String] Access token or custom authentication JWT for the user the request acts on.
+            # @param user_jwt [String] Access token or custom authentication JWT for the user the request acts on.
             #
-            # @param privy_mfa_token [String] MFA token from a completed MFA verification, required on MFA-protected requests
+            # @param mfa_token [String] MFA token from a completed MFA verification, required on MFA-protected requests
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -30,10 +30,7 @@ module Privy
               @client.request(
                 method: :post,
                 path: ["v1/users/%1$s/mfa/totp/enrollment/init", user_id],
-                headers: parsed.transform_keys(
-                  privy_user_token: "privy-user-token",
-                  privy_mfa_token: "privy-mfa-token"
-                ),
+                headers: parsed.transform_keys(user_jwt: "privy-user-token", mfa_token: "privy-mfa-token"),
                 model: Privy::Users::TotpMfaEnrollmentInitResponse,
                 options: options
               )
@@ -44,13 +41,13 @@ module Privy
             #
             # Enrolls the authenticator from init using a code it generated.
             #
-            # @overload verify(user_id, code:, privy_user_token:, request_options: {})
+            # @overload verify(user_id, code:, user_jwt:, request_options: {})
             #
             # @param user_id [String] Path param
             #
             # @param code [String] Body param
             #
-            # @param privy_user_token [String] Header param: Access token or custom authentication JWT for the user the request
+            # @param user_jwt [String] Header param: Access token or custom authentication JWT for the user the request
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -59,7 +56,7 @@ module Privy
             # @see Privy::Models::Users::Mfa::Totp::EnrollmentVerifyParams
             def verify(user_id, params)
               parsed, options = Privy::Users::Mfa::Totp::EnrollmentVerifyParams.dump_request(params)
-              header_params = {privy_user_token: "privy-user-token"}
+              header_params = {user_jwt: "privy-user-token"}
               @client.request(
                 method: :post,
                 path: ["v1/users/%1$s/mfa/totp/enrollment/verify", user_id],

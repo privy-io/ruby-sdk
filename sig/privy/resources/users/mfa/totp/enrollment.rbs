@@ -6,15 +6,15 @@ module Privy
           class Enrollment
             def init: (
               String user_id,
-              privy_user_token: String,
-              ?privy_mfa_token: String,
+              user_jwt: String,
+              ?mfa_token: String,
               ?request_options: Privy::request_opts
             ) -> Privy::Users::TotpMfaEnrollmentInitResponse
 
             def verify: (
               String user_id,
               code: String,
-              privy_user_token: String,
+              user_jwt: String,
               ?request_options: Privy::request_opts
             ) -> Privy::Users::MfaVerificationResponse
 

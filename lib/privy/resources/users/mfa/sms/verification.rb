@@ -9,11 +9,11 @@ module Privy
           class Verification
             # Sends an SMS MFA verification code to the enrolled phone number.
             #
-            # @overload init(user_id, privy_user_token:, request_options: {})
+            # @overload init(user_id, user_jwt:, request_options: {})
             #
             # @param user_id [String]
             #
-            # @param privy_user_token [String] Access token or custom authentication JWT for the user the request acts on.
+            # @param user_jwt [String] Access token or custom authentication JWT for the user the request acts on.
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -25,7 +25,7 @@ module Privy
               @client.request(
                 method: :post,
                 path: ["v1/users/%1$s/mfa/sms/verification/init", user_id],
-                headers: parsed.transform_keys(privy_user_token: "privy-user-token"),
+                headers: parsed.transform_keys(user_jwt: "privy-user-token"),
                 model: Privy::SuccessResponse,
                 options: options
               )
@@ -36,13 +36,13 @@ module Privy
             #
             # Verifies the code sent to the enrolled phone number.
             #
-            # @overload verify(user_id, code:, privy_user_token:, request_options: {})
+            # @overload verify(user_id, code:, user_jwt:, request_options: {})
             #
             # @param user_id [String] Path param
             #
             # @param code [String] Body param
             #
-            # @param privy_user_token [String] Header param: Access token or custom authentication JWT for the user the request
+            # @param user_jwt [String] Header param: Access token or custom authentication JWT for the user the request
             #
             # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -51,7 +51,7 @@ module Privy
             # @see Privy::Models::Users::Mfa::SMS::VerificationVerifyParams
             def verify(user_id, params)
               parsed, options = Privy::Users::Mfa::SMS::VerificationVerifyParams.dump_request(params)
-              header_params = {privy_user_token: "privy-user-token"}
+              header_params = {user_jwt: "privy-user-token"}
               @client.request(
                 method: :post,
                 path: ["v1/users/%1$s/mfa/sms/verification/verify", user_id],

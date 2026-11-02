@@ -4,11 +4,7 @@ module Privy
       module Mfa
         module Passkey
           type enrollment_init_params =
-            {
-              user_id: String,
-              privy_user_token: String,
-              privy_mfa_token: String
-            }
+            { user_id: String, user_jwt: String, mfa_token: String }
             & Privy::Internal::Type::request_parameters
 
           class EnrollmentInitParams < Privy::Models::Users::PasskeyMfaInitRequestBody
@@ -19,25 +15,25 @@ module Privy
 
             def user_id=: (String _) -> String
 
-            def privy_user_token: -> String
+            def user_jwt: -> String
 
-            def privy_user_token=: (String _) -> String
+            def user_jwt=: (String _) -> String
 
-            def privy_mfa_token: -> String?
+            def mfa_token: -> String?
 
-            def privy_mfa_token=: (String _) -> String
+            def mfa_token=: (String _) -> String
 
             def initialize: (
               user_id: String,
-              privy_user_token: String,
-              ?privy_mfa_token: String,
+              user_jwt: String,
+              ?mfa_token: String,
               ?request_options: Privy::request_opts
             ) -> void
 
             def to_hash: -> {
               user_id: String,
-              privy_user_token: String,
-              privy_mfa_token: String,
+              user_jwt: String,
+              mfa_token: String,
               request_options: Privy::RequestOptions
             }
           end

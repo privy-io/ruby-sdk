@@ -6,7 +6,7 @@ class Privy::Test::Resources::Users::Mfa::SMS::VerificationTest < Privy::Test::R
   def test_init_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.users.mfa.sms.verification.init("user_id", privy_user_token: "x")
+    response = @privy_api.users.mfa.sms.verification.init("user_id", user_jwt: "x")
 
     assert_pattern do
       response => Privy::SuccessResponse
@@ -22,7 +22,7 @@ class Privy::Test::Resources::Users::Mfa::SMS::VerificationTest < Privy::Test::R
   def test_verify_required_params
     skip("Mock server tests are disabled")
 
-    response = @privy_api.users.mfa.sms.verification.verify("user_id", code: "xxxxxx", privy_user_token: "x")
+    response = @privy_api.users.mfa.sms.verification.verify("user_id", code: "xxxxxx", user_jwt: "x")
 
     assert_pattern do
       response => Privy::Users::MfaVerificationResponse

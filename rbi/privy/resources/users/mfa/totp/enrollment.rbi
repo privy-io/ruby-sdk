@@ -11,18 +11,18 @@ module Privy
             sig do
               params(
                 user_id: String,
-                privy_user_token: String,
-                privy_mfa_token: String,
+                user_jwt: String,
+                mfa_token: String,
                 request_options: Privy::RequestOptions::OrHash
               ).returns(Privy::Users::TotpMfaEnrollmentInitResponse)
             end
             def init(
               user_id,
               # Access token or custom authentication JWT for the user the request acts on.
-              privy_user_token:,
+              user_jwt:,
               # MFA token from a completed MFA verification, required on MFA-protected requests
               # for users with MFA enrolled.
-              privy_mfa_token: nil,
+              mfa_token: nil,
               request_options: {}
             )
             end
@@ -32,7 +32,7 @@ module Privy
               params(
                 user_id: String,
                 code: String,
-                privy_user_token: String,
+                user_jwt: String,
                 request_options: Privy::RequestOptions::OrHash
               ).returns(Privy::Users::MfaVerificationResponse)
             end
@@ -43,7 +43,7 @@ module Privy
               code:,
               # Header param: Access token or custom authentication JWT for the user the request
               # acts on.
-              privy_user_token:,
+              user_jwt:,
               request_options: {}
             )
             end
