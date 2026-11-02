@@ -8,6 +8,7 @@ module Privy
         destination_fiat_account_id: String,
         destination_payment_rail: String,
         environment: Privy::Models::environment,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         provider: Privy::Models::orchestration_provider,
@@ -34,6 +35,8 @@ module Privy
       attr_accessor destination_payment_rail: String
 
       attr_accessor environment: Privy::Models::environment
+
+      attr_accessor event_id: String
 
       attr_accessor failed_at: String
 
@@ -66,6 +69,7 @@ module Privy
         destination_fiat_account_id: String,
         destination_payment_rail: String,
         environment: Privy::Models::environment,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         provider: Privy::Models::orchestration_provider,
@@ -87,6 +91,7 @@ module Privy
         destination_fiat_account_id: String,
         destination_payment_rail: String,
         environment: Privy::Models::environment,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         provider: Privy::Models::orchestration_provider,

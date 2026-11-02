@@ -5,6 +5,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
+        event_id: String,
         failure_reason: Privy::Wallets::FailureReason,
         rejected_at: String,
         rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
@@ -22,6 +23,8 @@ module Privy
       attr_accessor chain: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor failure_reason: Privy::Wallets::FailureReason
 
@@ -45,6 +48,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
+        event_id: String,
         failure_reason: Privy::Wallets::FailureReason,
         rejected_at: String,
         rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,
@@ -60,6 +64,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         chain: String,
         created_at: String,
+        event_id: String,
         failure_reason: Privy::Wallets::FailureReason,
         rejected_at: String,
         rewards: ::Array[Privy::Wallets::EarnIncetiveClaimRewardEntry]?,

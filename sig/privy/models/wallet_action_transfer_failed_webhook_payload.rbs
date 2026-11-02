@@ -5,6 +5,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
         destination_address: String,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         source_chain: String,
@@ -26,6 +27,8 @@ module Privy
       attr_accessor created_at: String
 
       attr_accessor destination_address: String
+
+      attr_accessor event_id: String
 
       attr_accessor failed_at: String
 
@@ -65,6 +68,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
         destination_address: String,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         source_chain: String,
@@ -84,6 +88,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         created_at: String,
         destination_address: String,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         source_chain: String,

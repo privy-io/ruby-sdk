@@ -35,6 +35,11 @@ module Privy
       sig { returns(Privy::Environment::TaggedSymbol) }
       attr_accessor :environment
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(Privy::Wallets::FailureReason) }
       attr_reader :failure_reason
@@ -105,6 +110,7 @@ module Privy
           destination_fiat_account_id: String,
           destination_payment_rail: String,
           environment: Privy::Environment::OrSymbol,
+          event_id: String,
           failure_reason: Privy::Wallets::FailureReason::OrHash,
           provider: Privy::OrchestrationProvider::OrSymbol,
           rejected_at: String,
@@ -144,6 +150,9 @@ module Privy
         destination_payment_rail:,
         # The Privy API environment.
         environment:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason:,
         # Supported fiat orchestration providers.
@@ -182,6 +191,7 @@ module Privy
             destination_fiat_account_id: String,
             destination_payment_rail: String,
             environment: Privy::Environment::TaggedSymbol,
+            event_id: String,
             failure_reason: Privy::Wallets::FailureReason,
             provider: Privy::OrchestrationProvider::TaggedSymbol,
             rejected_at: String,

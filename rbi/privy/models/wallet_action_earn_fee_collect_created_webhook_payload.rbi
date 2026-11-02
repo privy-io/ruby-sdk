@@ -27,6 +27,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Base-unit amount of fees collected (e.g. "1500000").
       sig { returns(String) }
       attr_accessor :raw_amount
@@ -98,6 +103,7 @@ module Privy
           asset_address: String,
           caip2: String,
           created_at: String,
+          event_id: String,
           raw_amount: String,
           status:
             Privy::WalletActionEarnFeeCollectCreatedWebhookPayload::Status::OrSymbol,
@@ -122,6 +128,9 @@ module Privy
         caip2:,
         # ISO 8601 timestamp of when the wallet action was created.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Base-unit amount of fees collected (e.g. "1500000").
         raw_amount:,
         # The status of the wallet action.
@@ -157,6 +166,7 @@ module Privy
             asset_address: String,
             caip2: String,
             created_at: String,
+            event_id: String,
             raw_amount: String,
             status:
               Privy::WalletActionEarnFeeCollectCreatedWebhookPayload::Status::TaggedSymbol,

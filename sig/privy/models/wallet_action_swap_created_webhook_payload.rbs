@@ -5,6 +5,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         :caip2 => String,
         created_at: String,
+        event_id: String,
         input_amount: String?,
         input_token: String,
         output_token: String,
@@ -21,6 +22,8 @@ module Privy
       attr_accessor caip2: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor input_amount: String?
 
@@ -42,6 +45,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         caip2: String,
         created_at: String,
+        event_id: String,
         input_amount: String?,
         input_token: String,
         output_token: String,
@@ -56,6 +60,7 @@ module Privy
         action_type: Privy::Models::Wallets::wallet_action_type,
         :caip2 => String,
         created_at: String,
+        event_id: String,
         input_amount: String?,
         input_token: String,
         output_token: String,

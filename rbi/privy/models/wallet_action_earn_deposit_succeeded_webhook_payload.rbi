@@ -31,6 +31,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Base-unit amount of asset deposited (e.g. "1500000").
       sig { returns(String) }
       attr_accessor :raw_amount
@@ -113,6 +118,7 @@ module Privy
           caip2: String,
           completed_at: String,
           created_at: String,
+          event_id: String,
           raw_amount: String,
           share_amount: String,
           status:
@@ -152,6 +158,9 @@ module Privy
         completed_at:,
         # ISO 8601 timestamp of when the wallet action was created.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Base-unit amount of asset deposited (e.g. "1500000").
         raw_amount:,
         # Vault shares received in base units.
@@ -194,6 +203,7 @@ module Privy
             caip2: String,
             completed_at: String,
             created_at: String,
+            event_id: String,
             raw_amount: String,
             share_amount: String,
             status:

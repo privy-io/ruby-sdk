@@ -7,6 +7,7 @@ module Privy
         :caip2 => String,
         completed_at: String,
         created_at: String,
+        event_id: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnFeeCollectSucceededWebhookPayload::status,
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
@@ -31,6 +32,8 @@ module Privy
       attr_accessor completed_at: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor raw_amount: String
 
@@ -68,6 +71,7 @@ module Privy
         caip2: String,
         completed_at: String,
         created_at: String,
+        event_id: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnFeeCollectSucceededWebhookPayload::status,
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
@@ -88,6 +92,7 @@ module Privy
         :caip2 => String,
         completed_at: String,
         created_at: String,
+        event_id: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnFeeCollectSucceededWebhookPayload::status,
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],

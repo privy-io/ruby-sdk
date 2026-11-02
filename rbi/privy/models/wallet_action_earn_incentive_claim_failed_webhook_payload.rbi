@@ -23,6 +23,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # ISO 8601 timestamp of when the wallet action failed.
       sig { returns(String) }
       attr_accessor :failed_at
@@ -83,6 +88,7 @@ module Privy
           action_type: Privy::Wallets::WalletActionType::OrSymbol,
           chain: String,
           created_at: String,
+          event_id: String,
           failed_at: String,
           failure_reason: Privy::Wallets::FailureReason::OrHash,
           rewards:
@@ -117,6 +123,9 @@ module Privy
         chain:,
         # ISO 8601 timestamp of when the wallet action was created.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # ISO 8601 timestamp of when the wallet action failed.
         failed_at:,
         # A description of why a wallet action (or a step within a wallet action) failed.
@@ -147,6 +156,7 @@ module Privy
             action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             chain: String,
             created_at: String,
+            event_id: String,
             failed_at: String,
             failure_reason: Privy::Wallets::FailureReason,
             rewards:

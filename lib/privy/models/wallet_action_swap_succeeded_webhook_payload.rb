@@ -27,6 +27,13 @@ module Privy
       #   @return [String]
       required :created_at, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute input_amount
       #   Amount of input token in base units. Populated after onchain confirmation.
       #
@@ -90,7 +97,7 @@ module Privy
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(action_type:, caip2:, completed_at:, created_at:, input_amount:, input_token:, output_amount:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      # @!method initialize(action_type:, caip2:, completed_at:, created_at:, event_id:, input_amount:, input_token:, output_amount:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionSwapSucceededWebhookPayload} for more details.
       #
@@ -103,6 +110,8 @@ module Privy
       #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param input_amount [String, nil] Amount of input token in base units. Populated after onchain confirmation.
       #

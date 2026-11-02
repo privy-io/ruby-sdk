@@ -6,6 +6,7 @@ module Privy
         :caip2 => String,
         completed_at: String,
         created_at: String,
+        event_id: String,
         input_amount: String?,
         input_token: String,
         output_amount: String?,
@@ -26,6 +27,8 @@ module Privy
       attr_accessor completed_at: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor input_amount: String?
 
@@ -52,6 +55,7 @@ module Privy
         caip2: String,
         completed_at: String,
         created_at: String,
+        event_id: String,
         input_amount: String?,
         input_token: String,
         output_amount: String?,
@@ -69,6 +73,7 @@ module Privy
         :caip2 => String,
         completed_at: String,
         created_at: String,
+        event_id: String,
         input_amount: String?,
         input_token: String,
         output_amount: String?,

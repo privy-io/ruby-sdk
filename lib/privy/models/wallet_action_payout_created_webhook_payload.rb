@@ -39,6 +39,13 @@ module Privy
       #   @return [Symbol, Privy::Models::Environment]
       required :environment, enum: -> { Privy::Environment }
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute provider
       #   Supported fiat orchestration providers.
       #
@@ -93,7 +100,10 @@ module Privy
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(action_type:, created_at:, destination_currency:, destination_fiat_account_id:, destination_payment_rail:, environment:, provider:, source_amount:, source_asset:, source_chain:, status:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      # @!method initialize(action_type:, created_at:, destination_currency:, destination_fiat_account_id:, destination_payment_rail:, environment:, event_id:, provider:, source_amount:, source_asset:, source_chain:, status:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::WalletActionPayoutCreatedWebhookPayload} for more details.
+      #
       #   Payload for the wallet_action.payout.created webhook event.
       #
       #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
@@ -107,6 +117,8 @@ module Privy
       #   @param destination_payment_rail [String] The fiat payment rail the payout settles over (e.g. "ach", "sepa", "wire").
       #
       #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param provider [Symbol, Privy::Models::OrchestrationProvider] Supported fiat orchestration providers.
       #

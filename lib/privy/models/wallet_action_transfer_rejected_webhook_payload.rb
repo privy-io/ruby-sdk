@@ -21,6 +21,13 @@ module Privy
       #   @return [String]
       required :destination_address, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute failure_reason
       #   A description of why a wallet action (or a step within a wallet action) failed.
       #
@@ -105,7 +112,7 @@ module Privy
       #   @return [Integer, nil]
       optional :source_asset_decimals, Integer
 
-      # @!method initialize(action_type:, created_at:, destination_address:, failure_reason:, rejected_at:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
+      # @!method initialize(action_type:, created_at:, destination_address:, event_id:, failure_reason:, rejected_at:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionTransferRejectedWebhookPayload} for more details.
       #
@@ -116,6 +123,8 @@ module Privy
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param destination_address [String] Recipient address.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
       #

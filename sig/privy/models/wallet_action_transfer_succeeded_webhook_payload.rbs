@@ -6,6 +6,7 @@ module Privy
         completed_at: String,
         created_at: String,
         destination_address: String,
+        event_id: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status,
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
@@ -27,6 +28,8 @@ module Privy
       attr_accessor created_at: String
 
       attr_accessor destination_address: String
+
+      attr_accessor event_id: String
 
       attr_accessor source_chain: String
 
@@ -63,6 +66,7 @@ module Privy
         completed_at: String,
         created_at: String,
         destination_address: String,
+        event_id: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status,
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],
@@ -81,6 +85,7 @@ module Privy
         completed_at: String,
         created_at: String,
         destination_address: String,
+        event_id: String,
         source_chain: String,
         status: Privy::Models::WalletActionTransferSucceededWebhookPayload::status,
         steps: ::Array[Privy::Models::Wallets::wallet_action_step],

@@ -27,6 +27,13 @@ module Privy
       #   @return [String]
       required :created_at, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute rewards
       #   Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #
@@ -73,7 +80,7 @@ module Privy
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(action_type:, chain:, completed_at:, created_at:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      # @!method initialize(action_type:, chain:, completed_at:, created_at:, event_id:, rewards:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload} for more
       #   details.
@@ -87,6 +94,8 @@ module Privy
       #   @param completed_at [String] ISO 8601 timestamp of when the wallet action completed successfully.
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param rewards [Array<Privy::Models::Wallets::EarnIncetiveClaimRewardEntry>, nil] Claimed reward tokens. Populated after the preparation step fetches from Merkl.
       #

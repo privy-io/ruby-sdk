@@ -6,6 +6,7 @@ module Privy
         asset_address: String,
         :caip2 => String,
         created_at: String,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         raw_amount: String,
@@ -30,6 +31,8 @@ module Privy
       attr_accessor caip2: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor failed_at: String
 
@@ -70,6 +73,7 @@ module Privy
         asset_address: String,
         caip2: String,
         created_at: String,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         raw_amount: String,
@@ -91,6 +95,7 @@ module Privy
         asset_address: String,
         :caip2 => String,
         created_at: String,
+        event_id: String,
         failed_at: String,
         failure_reason: Privy::Wallets::FailureReason,
         raw_amount: String,

@@ -9,6 +9,7 @@ module Privy
         destination_fiat_account_id: String,
         destination_payment_rail: String,
         environment: Privy::Models::environment,
+        event_id: String,
         provider: Privy::Models::orchestration_provider,
         source_amount: String,
         source_asset: String,
@@ -35,6 +36,8 @@ module Privy
       attr_accessor destination_payment_rail: String
 
       attr_accessor environment: Privy::Models::environment
+
+      attr_accessor event_id: String
 
       attr_accessor provider: Privy::Models::orchestration_provider
 
@@ -64,6 +67,7 @@ module Privy
         destination_fiat_account_id: String,
         destination_payment_rail: String,
         environment: Privy::Models::environment,
+        event_id: String,
         provider: Privy::Models::orchestration_provider,
         source_amount: String,
         source_asset: String,
@@ -84,6 +88,7 @@ module Privy
         destination_fiat_account_id: String,
         destination_payment_rail: String,
         environment: Privy::Models::environment,
+        event_id: String,
         provider: Privy::Models::orchestration_provider,
         source_amount: String,
         source_asset: String,

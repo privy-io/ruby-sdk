@@ -27,6 +27,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Amount of input token in base units. Populated after onchain confirmation.
       sig { returns(T.nilable(String)) }
       attr_accessor :input_amount
@@ -85,6 +90,7 @@ module Privy
           caip2: String,
           completed_at: String,
           created_at: String,
+          event_id: String,
           input_amount: T.nilable(String),
           input_token: String,
           output_amount: T.nilable(String),
@@ -118,6 +124,9 @@ module Privy
         completed_at:,
         # ISO 8601 timestamp of when the wallet action was created.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Amount of input token in base units. Populated after onchain confirmation.
         input_amount:,
         # Token address being sold.
@@ -151,6 +160,7 @@ module Privy
             caip2: String,
             completed_at: String,
             created_at: String,
+            event_id: String,
             input_amount: T.nilable(String),
             input_token: String,
             output_amount: T.nilable(String),

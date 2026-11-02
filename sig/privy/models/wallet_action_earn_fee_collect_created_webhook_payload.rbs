@@ -6,6 +6,7 @@ module Privy
         asset_address: String,
         :caip2 => String,
         created_at: String,
+        event_id: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_,
@@ -27,6 +28,8 @@ module Privy
       attr_accessor caip2: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor raw_amount: String
 
@@ -61,6 +64,7 @@ module Privy
         asset_address: String,
         caip2: String,
         created_at: String,
+        event_id: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_,
@@ -79,6 +83,7 @@ module Privy
         asset_address: String,
         :caip2 => String,
         created_at: String,
+        event_id: String,
         raw_amount: String,
         status: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::status,
         type: Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload::type_,

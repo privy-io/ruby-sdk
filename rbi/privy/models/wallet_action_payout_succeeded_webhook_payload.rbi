@@ -39,6 +39,11 @@ module Privy
       sig { returns(Privy::Environment::TaggedSymbol) }
       attr_accessor :environment
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Supported fiat orchestration providers.
       sig { returns(Privy::OrchestrationProvider::TaggedSymbol) }
       attr_accessor :provider
@@ -99,6 +104,7 @@ module Privy
           destination_fiat_account_id: String,
           destination_payment_rail: String,
           environment: Privy::Environment::OrSymbol,
+          event_id: String,
           provider: Privy::OrchestrationProvider::OrSymbol,
           source_amount: String,
           source_asset: String,
@@ -139,6 +145,9 @@ module Privy
         destination_payment_rail:,
         # The Privy API environment.
         environment:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Supported fiat orchestration providers.
         provider:,
         # Decimal amount offramped, in the asset's standard units (e.g. "100.00").
@@ -174,6 +183,7 @@ module Privy
             destination_fiat_account_id: String,
             destination_payment_rail: String,
             environment: Privy::Environment::TaggedSymbol,
+            event_id: String,
             provider: Privy::OrchestrationProvider::TaggedSymbol,
             source_amount: String,
             source_asset: String,

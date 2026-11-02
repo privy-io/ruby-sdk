@@ -27,6 +27,13 @@ module Privy
       #   @return [String]
       required :destination_address, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute source_chain
       #   Chain name (e.g. "tempo", "base").
       #
@@ -99,7 +106,7 @@ module Privy
       #   @return [Integer, nil]
       optional :source_asset_decimals, Integer
 
-      # @!method initialize(action_type:, completed_at:, created_at:, destination_address:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
+      # @!method initialize(action_type:, completed_at:, created_at:, destination_address:, event_id:, source_chain:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil, source_amount: nil, source_asset: nil, source_asset_address: nil, source_asset_decimals: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionTransferSucceededWebhookPayload} for more details.
       #
@@ -112,6 +119,8 @@ module Privy
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #
       #   @param destination_address [String] Recipient address.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param source_chain [String] Chain name (e.g. "tempo", "base").
       #

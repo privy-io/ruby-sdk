@@ -23,6 +23,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :destination_address
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # A description of why a wallet action (or a step within a wallet action) failed.
       sig { returns(Privy::Wallets::FailureReason) }
       attr_reader :failure_reason
@@ -110,6 +115,7 @@ module Privy
           action_type: Privy::Wallets::WalletActionType::OrSymbol,
           created_at: String,
           destination_address: String,
+          event_id: String,
           failure_reason: Privy::Wallets::FailureReason::OrHash,
           rejected_at: String,
           source_chain: String,
@@ -145,6 +151,9 @@ module Privy
         created_at:,
         # Recipient address.
         destination_address:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # A description of why a wallet action (or a step within a wallet action) failed.
         failure_reason:,
         # ISO 8601 timestamp of when the wallet action was rejected.
@@ -186,6 +195,7 @@ module Privy
             action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
             created_at: String,
             destination_address: String,
+            event_id: String,
             failure_reason: Privy::Wallets::FailureReason,
             rejected_at: String,
             source_chain: String,

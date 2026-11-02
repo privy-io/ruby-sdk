@@ -27,6 +27,13 @@ module Privy
       #   @return [String]
       required :created_at, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute failed_at
       #   ISO 8601 timestamp of when the wallet action failed.
       #
@@ -117,7 +124,7 @@ module Privy
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, failed_at:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil, reference_id: nil)
+      # @!method initialize(action_type:, asset_address:, caip2:, created_at:, event_id:, failed_at:, failure_reason:, raw_amount:, status:, steps:, type:, vault_address:, vault_id:, wallet_action_id:, wallet_id:, amount: nil, asset: nil, decimals: nil, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload} for more details.
       #
@@ -130,6 +137,8 @@ module Privy
       #   @param caip2 [String] CAIP-2 chain identifier.
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param failed_at [String] ISO 8601 timestamp of when the wallet action failed.
       #

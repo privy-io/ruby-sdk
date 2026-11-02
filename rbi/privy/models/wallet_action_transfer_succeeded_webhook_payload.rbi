@@ -27,6 +27,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :destination_address
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Chain name (e.g. "tempo", "base").
       sig { returns(String) }
       attr_accessor :source_chain
@@ -104,6 +109,7 @@ module Privy
           completed_at: String,
           created_at: String,
           destination_address: String,
+          event_id: String,
           source_chain: String,
           status:
             Privy::WalletActionTransferSucceededWebhookPayload::Status::OrSymbol,
@@ -139,6 +145,9 @@ module Privy
         created_at:,
         # Recipient address.
         destination_address:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Chain name (e.g. "tempo", "base").
         source_chain:,
         # The status of the wallet action.
@@ -177,6 +186,7 @@ module Privy
             completed_at: String,
             created_at: String,
             destination_address: String,
+            event_id: String,
             source_chain: String,
             status:
               Privy::WalletActionTransferSucceededWebhookPayload::Status::TaggedSymbol,
