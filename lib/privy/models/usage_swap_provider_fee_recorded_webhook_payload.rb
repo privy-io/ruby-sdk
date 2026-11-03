@@ -9,8 +9,8 @@ module Privy
       required :amount_usd, String
 
       # @!attribute event_id
-      #   An opaque, stable identifier for this charge. Use it to deduplicate webhook
-      #   deliveries.
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
       #
       #   @return [String]
       required :event_id, String
@@ -46,7 +46,7 @@ module Privy
       #
       #   @param amount_usd [String]
       #
-      #   @param event_id [String] An opaque, stable identifier for this charge. Use it to deduplicate webhook deli
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param recorded_at [Integer]
       #

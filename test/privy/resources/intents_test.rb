@@ -34,6 +34,30 @@ class Privy::Test::Resources::IntentsTest < Privy::Test::ResourceTest
     end
   end
 
+  def test_authorize_required_params
+    skip("Mock server tests are disabled")
+
+    response = @privy_api.intents.authorize("intent_id", signature: "signature", timestamp: 0)
+
+    assert_pattern do
+      response => Privy::IntentResponse
+    end
+
+    assert_pattern do
+      case response
+      in Privy::RpcIntentResponse
+      in Privy::TransferIntentResponse
+      in Privy::RawSignIntentResponse
+      in Privy::WalletIntentResponse
+      in Privy::PolicyIntentResponse
+      in Privy::RuleIntentResponse
+      in Privy::KeyQuorumIntentResponse
+      in Privy::ConditionSetIntentResponse
+      in Privy::ConditionSetItemIntentResponse
+      end
+    end
+  end
+
   def test_create_condition_set_items_required_params
     skip("Mock server tests are disabled")
 

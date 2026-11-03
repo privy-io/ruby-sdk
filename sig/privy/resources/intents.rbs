@@ -14,6 +14,13 @@ module Privy
         ?request_options: Privy::request_opts
       ) -> Privy::Internal::Cursor[Privy::Models::intent_response]
 
+      def authorize: (
+        String intent_id,
+        signature: String,
+        timestamp: Float,
+        ?request_options: Privy::request_opts
+      ) -> Privy::Models::intent_response
+
       def create_condition_set_items: (
         String condition_set_id,
         condition_set_items_request_body: Privy::Models::condition_set_items_request_body,

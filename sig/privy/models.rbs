@@ -983,6 +983,8 @@ module Privy
 
   class IntentAuthorizeInput = Privy::Models::IntentAuthorizeInput
 
+  class IntentAuthorizeParams = Privy::Models::IntentAuthorizeParams
+
   class IntentBinding = Privy::Models::IntentBinding
 
   class IntentCreateConditionSetItemsParams = Privy::Models::IntentCreateConditionSetItemsParams
@@ -1639,6 +1641,10 @@ module Privy
 
   class OrganizationCreateRequestBody = Privy::Models::OrganizationCreateRequestBody
 
+  class OrganizationDefaultWalletConfigurations = Privy::Models::OrganizationDefaultWalletConfigurations
+
+  class OrganizationDefaultWalletConfigurationsUpdate = Privy::Models::OrganizationDefaultWalletConfigurationsUpdate
+
   class OrganizationDeleteParams = Privy::Models::OrganizationDeleteParams
 
   class OrganizationExternalFiatAccount = Privy::Models::OrganizationExternalFiatAccount
@@ -1670,6 +1676,8 @@ module Privy
   class OrganizationUpdateParams = Privy::Models::OrganizationUpdateParams
 
   class OrganizationUpdateRequestBody = Privy::Models::OrganizationUpdateRequestBody
+
+  class OrganizationWalletConfiguration = Privy::Models::OrganizationWalletConfiguration
 
   class OutputWithPreviousTransactionData = Privy::Models::OutputWithPreviousTransactionData
 

@@ -1,0 +1,30 @@
+module Privy
+  module Models
+    type organization_default_wallet_configurations_update =
+      {
+        ethereum: Privy::OrganizationWalletConfiguration?,
+        solana: Privy::OrganizationWalletConfiguration?,
+        tron: Privy::OrganizationWalletConfiguration?
+      }
+
+    class OrganizationDefaultWalletConfigurationsUpdate < Privy::Internal::Type::BaseModel
+      attr_accessor ethereum: Privy::OrganizationWalletConfiguration?
+
+      attr_accessor solana: Privy::OrganizationWalletConfiguration?
+
+      attr_accessor tron: Privy::OrganizationWalletConfiguration?
+
+      def initialize: (
+        ?ethereum: Privy::OrganizationWalletConfiguration?,
+        ?solana: Privy::OrganizationWalletConfiguration?,
+        ?tron: Privy::OrganizationWalletConfiguration?
+      ) -> void
+
+      def to_hash: -> {
+        ethereum: Privy::OrganizationWalletConfiguration?,
+        solana: Privy::OrganizationWalletConfiguration?,
+        tron: Privy::OrganizationWalletConfiguration?
+      }
+    end
+  end
+end

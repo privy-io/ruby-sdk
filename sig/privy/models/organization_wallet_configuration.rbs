@@ -1,0 +1,33 @@
+module Privy
+  module Models
+    type organization_wallet_configuration =
+      {
+        additional_signers: Privy::Models::additional_signer_input,
+        policy_ids: Privy::Models::policy_input
+      }
+
+    class OrganizationWalletConfiguration < Privy::Internal::Type::BaseModel
+      attr_reader additional_signers: Privy::Models::additional_signer_input?
+
+      def additional_signers=: (
+        Privy::Models::additional_signer_input
+      ) -> Privy::Models::additional_signer_input
+
+      attr_reader policy_ids: Privy::Models::policy_input?
+
+      def policy_ids=: (
+        Privy::Models::policy_input
+      ) -> Privy::Models::policy_input
+
+      def initialize: (
+        ?additional_signers: Privy::Models::additional_signer_input,
+        ?policy_ids: Privy::Models::policy_input
+      ) -> void
+
+      def to_hash: -> {
+        additional_signers: Privy::Models::additional_signer_input,
+        policy_ids: Privy::Models::policy_input
+      }
+    end
+  end
+end

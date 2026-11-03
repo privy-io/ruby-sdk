@@ -46,6 +46,28 @@ module Privy
       )
       end
 
+      # Authorize a pending intent by providing a signature. Can be called by the wallet
+      # owner (via user token) or with the app secret.
+      sig do
+        params(
+          intent_id: String,
+          signature: String,
+          timestamp: Float,
+          request_options: Privy::RequestOptions::OrHash
+        ).returns(Privy::IntentResponse::Variants)
+      end
+      def authorize(
+        # ID of the intent.
+        intent_id,
+        # Signature authorizing the intent.
+        signature:,
+        # Unix timestamp (in milliseconds) when the signature was created. Used to verify
+        # the signature was created when the signing key was valid.
+        timestamp:,
+        request_options: {}
+      )
+      end
+
       # Create an intent to add items to a condition set. The intent must be authorized
       # by the condition set owner before it can be executed.
       sig do

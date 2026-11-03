@@ -52,6 +52,36 @@ module Privy
       end
 
       # Some parameter documentations has been truncated, see
+      # {Privy::Models::IntentAuthorizeParams} for more details.
+      #
+      # Authorize a pending intent by providing a signature. Can be called by the wallet
+      # owner (via user token) or with the app secret.
+      #
+      # @overload authorize(intent_id, signature:, timestamp:, request_options: {})
+      #
+      # @param intent_id [String] ID of the intent.
+      #
+      # @param signature [String] Signature authorizing the intent.
+      #
+      # @param timestamp [Float] Unix timestamp (in milliseconds) when the signature was created. Used to verify
+      #
+      # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Privy::Models::RpcIntentResponse, Privy::Models::TransferIntentResponse, Privy::Models::RawSignIntentResponse, Privy::Models::WalletIntentResponse, Privy::Models::PolicyIntentResponse, Privy::Models::RuleIntentResponse, Privy::Models::KeyQuorumIntentResponse, Privy::Models::ConditionSetIntentResponse, Privy::Models::ConditionSetItemIntentResponse]
+      #
+      # @see Privy::Models::IntentAuthorizeParams
+      def authorize(intent_id, params)
+        parsed, options = Privy::IntentAuthorizeParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/intents/%1$s/authorize", intent_id],
+          body: parsed,
+          model: Privy::IntentResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Privy::Models::IntentCreateConditionSetItemsParams} for more details.
       #
       # Create an intent to add items to a condition set. The intent must be authorized

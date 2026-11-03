@@ -14,8 +14,8 @@ module Privy
       sig { returns(String) }
       attr_accessor :amount_usd
 
-      # An opaque, stable identifier for this charge. Use it to deduplicate webhook
-      # deliveries.
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
       sig { returns(String) }
       attr_accessor :event_id
 
@@ -51,8 +51,8 @@ module Privy
       end
       def self.new(
         amount_usd:,
-        # An opaque, stable identifier for this charge. Use it to deduplicate webhook
-        # deliveries.
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
         event_id:,
         recorded_at:,
         source_id:,
