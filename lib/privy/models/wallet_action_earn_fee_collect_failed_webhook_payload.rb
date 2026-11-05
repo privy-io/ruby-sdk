@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
-      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
+      #   @return [Symbol, String, Privy::Models::Wallets::WalletActionType]
+      required :action_type, union: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute asset_address
       #   Underlying asset token address.
@@ -64,7 +64,7 @@ module Privy
       #   still be `null` when this webhook fires, so fetch the wallet action directly for
       #   up-to-date gas data.
       #
-      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>]
+      #   @return [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep, Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep>]
       required :steps, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep] }
 
       # @!attribute type
@@ -131,7 +131,7 @@ module Privy
       #
       #   Payload for the wallet_action.earn_fee_collect.failed webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, String, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param asset_address [String] Underlying asset token address.
       #
@@ -149,7 +149,7 @@ module Privy
       #
       #   @param status [Symbol, Privy::Models::WalletActionEarnFeeCollectFailedWebhookPayload::Status] The status of the wallet action.
       #
-      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep>] The steps of the wallet action, where completed steps have transaction hashes an
+      #   @param steps [Array<Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep, Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep>] The steps of the wallet action, where completed steps have transaction hashes an
       #
       #   @param type [Symbol, Privy::Models::WalletActionEarnFeeCollectFailedWebhookPayload::Type] The type of webhook event.
       #

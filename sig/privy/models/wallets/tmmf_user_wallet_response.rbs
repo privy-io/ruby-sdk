@@ -1,0 +1,42 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_user_wallet_response =
+        {
+          address: String,
+          chain: String,
+          provider: Privy::Models::Wallets::tmmf_provider,
+          status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
+          wallet_id: String
+        }
+
+      class TmmfUserWalletResponse < Privy::Internal::Type::BaseModel
+        attr_accessor address: String
+
+        attr_accessor chain: String
+
+        attr_accessor provider: Privy::Models::Wallets::tmmf_provider
+
+        attr_accessor status: Privy::Models::Wallets::tmmf_provider_wallet_status?
+
+        attr_accessor wallet_id: String
+
+        def initialize: (
+          address: String,
+          chain: String,
+          provider: Privy::Models::Wallets::tmmf_provider,
+          status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
+          wallet_id: String
+        ) -> void
+
+        def to_hash: -> {
+          address: String,
+          chain: String,
+          provider: Privy::Models::Wallets::tmmf_provider,
+          status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
+          wallet_id: String
+        }
+      end
+    end
+  end
+end

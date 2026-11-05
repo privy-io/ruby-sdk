@@ -115,7 +115,8 @@ module Privy
                   Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
                   Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
                   Privy::Wallets::CustodianTransactionWalletActionStep::OrHash,
-                  Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash
+                  Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash,
+                  Privy::Wallets::WisdomTreeSettlementWalletActionStep::OrHash
                 )
               ]
           ).void
@@ -150,7 +151,8 @@ module Privy
                   Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
                   Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
                   Privy::Wallets::CustodianTransactionWalletActionStep::OrHash,
-                  Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash
+                  Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash,
+                  Privy::Wallets::WisdomTreeSettlementWalletActionStep::OrHash
                 )
               ]
           ).returns(T.attached_class)

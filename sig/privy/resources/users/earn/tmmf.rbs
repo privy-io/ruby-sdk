@@ -1,0 +1,20 @@
+module Privy
+  module Resources
+    class Users
+      class Earn
+        class Tmmf
+          def get: (
+            String user_id,
+            ?provider: Privy::Models::Wallets::tmmf_provider,
+            ?wallet_id: String,
+            ?wallets_cursor: String,
+            ?wallets_limit: Integer,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::TmmfUserResponse
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

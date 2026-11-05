@@ -1,6 +1,8 @@
 module Privy
   module Resources
     class Users
+      attr_reader earn: Privy::Resources::Users::Earn
+
       attr_reader external_fiat_accounts: Privy::Resources::Users::ExternalFiatAccounts
 
       attr_reader kyc: Privy::Resources::Users::KYC

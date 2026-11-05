@@ -1,0 +1,75 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_withdraw_action_response =
+        {
+          id: String,
+          created_at: Time,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::TmmfWithdrawActionResponse::type_,
+          wallet_id: String,
+          failure_reason: Privy::Wallets::FailureReason,
+          reference_id: String?,
+          steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        }
+
+      class TmmfWithdrawActionResponse < Privy::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor status: Privy::Models::Wallets::wallet_action_status
+
+        attr_accessor type: Privy::Models::Wallets::TmmfWithdrawActionResponse::type_
+
+        attr_accessor wallet_id: String
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        attr_accessor reference_id: String?
+
+        attr_reader steps: ::Array[Privy::Models::Wallets::wallet_action_step]?
+
+        def steps=: (
+          ::Array[Privy::Models::Wallets::wallet_action_step]
+        ) -> ::Array[Privy::Models::Wallets::wallet_action_step]
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::TmmfWithdrawActionResponse::type_,
+          wallet_id: String,
+          ?failure_reason: Privy::Wallets::FailureReason,
+          ?reference_id: String?,
+          ?steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::TmmfWithdrawActionResponse::type_,
+          wallet_id: String,
+          failure_reason: Privy::Wallets::FailureReason,
+          reference_id: String?,
+          steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        }
+
+        type type_ = :tmmf_withdraw
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          TMMF_WITHDRAW: :tmmf_withdraw
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::TmmfWithdrawActionResponse::type_]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,24 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_register_request_body =
+        { chain: String, provider: Privy::Models::Wallets::tmmf_provider }
+
+      class TmmfRegisterRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor chain: String
+
+        attr_accessor provider: Privy::Models::Wallets::tmmf_provider
+
+        def initialize: (
+          chain: String,
+          provider: Privy::Models::Wallets::tmmf_provider
+        ) -> void
+
+        def to_hash: -> {
+          chain: String,
+          provider: Privy::Models::Wallets::tmmf_provider
+        }
+      end
+    end
+  end
+end

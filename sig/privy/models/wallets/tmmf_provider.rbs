@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_provider = :wisdomtree | String
+
+      module TmmfProvider
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::tmmf_provider]
+
+        WISDOMTREE: :wisdomtree
+      end
+    end
+  end
+end

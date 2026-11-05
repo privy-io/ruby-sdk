@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_registration_status =
+        :pending
+        | :action_required
+        | :approved
+        | :rejected
+        | :suspended
+        | String
+
+      module TmmfRegistrationStatus
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::tmmf_registration_status]
+
+        PENDING: :pending
+        ACTION_REQUIRED: :action_required
+        APPROVED: :approved
+        REJECTED: :rejected
+        SUSPENDED: :suspended
+      end
+    end
+  end
+end

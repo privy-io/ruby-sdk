@@ -7,7 +7,18 @@ module Privy
     module Wallets
       # Type of wallet action
       module WalletActionType
-        extend Privy::Internal::Type::Enum
+        extend Privy::Internal::Type::Union
+
+        Variants =
+          T.type_alias do
+            T.any(Privy::Wallets::WalletActionType::TaggedSymbol, String)
+          end
+
+        sig do
+          override.returns(T::Array[Privy::Wallets::WalletActionType::Variants])
+        end
+        def self.variants
+        end
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Privy::Wallets::WalletActionType) }
@@ -31,14 +42,10 @@ module Privy
             Privy::Wallets::WalletActionType::TaggedSymbol
           )
         PAYOUT = T.let(:payout, Privy::Wallets::WalletActionType::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Privy::Wallets::WalletActionType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        TMMF_DEPOSIT =
+          T.let(:tmmf_deposit, Privy::Wallets::WalletActionType::TaggedSymbol)
+        TMMF_WITHDRAW =
+          T.let(:tmmf_withdraw, Privy::Wallets::WalletActionType::TaggedSymbol)
       end
     end
   end

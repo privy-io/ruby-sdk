@@ -31,6 +31,9 @@ module Privy
 
       variant :"organization.kyb.updated", -> { Privy::OrganizationKYBUpdatedWebhookEvent }
 
+      # Payload for the tmmf.wallet.updated webhook event: a register request created or confirmed a tMMF wallet.
+      variant :"tmmf.wallet.updated", -> { Privy::TmmfWalletUpdatedWebhookPayload }
+
       # Payload for the transaction.broadcasted webhook event.
       variant :"transaction.broadcasted", -> { Privy::TransactionBroadcastedWebhookPayload }
 
@@ -205,6 +208,35 @@ module Privy
       # Payload for the wallet_action.swap.succeeded webhook event.
       variant :"wallet_action.swap.succeeded", -> { Privy::WalletActionSwapSucceededWebhookPayload }
 
+      # Payload for the wallet_action.tmmf_deposit.created webhook event.
+      variant :"wallet_action.tmmf_deposit.created", -> { Privy::WalletActionTmmfDepositCreatedWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_deposit.failed webhook event.
+      variant :"wallet_action.tmmf_deposit.failed", -> { Privy::WalletActionTmmfDepositFailedWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_deposit.rejected webhook event.
+      variant :"wallet_action.tmmf_deposit.rejected",
+              -> { Privy::WalletActionTmmfDepositRejectedWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_deposit.succeeded webhook event.
+      variant :"wallet_action.tmmf_deposit.succeeded",
+              -> { Privy::WalletActionTmmfDepositSucceededWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_withdraw.created webhook event.
+      variant :"wallet_action.tmmf_withdraw.created",
+              -> { Privy::WalletActionTmmfWithdrawCreatedWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_withdraw.failed webhook event.
+      variant :"wallet_action.tmmf_withdraw.failed", -> { Privy::WalletActionTmmfWithdrawFailedWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_withdraw.rejected webhook event.
+      variant :"wallet_action.tmmf_withdraw.rejected",
+              -> { Privy::WalletActionTmmfWithdrawRejectedWebhookPayload }
+
+      # Payload for the wallet_action.tmmf_withdraw.succeeded webhook event.
+      variant :"wallet_action.tmmf_withdraw.succeeded",
+              -> { Privy::WalletActionTmmfWithdrawSucceededWebhookPayload }
+
       # Payload for the wallet_action.transfer.created webhook event.
       variant :"wallet_action.transfer.created", -> { Privy::WalletActionTransferCreatedWebhookPayload }
 
@@ -230,7 +262,7 @@ module Privy
       variant :"yield.withdraw.confirmed", -> { Privy::YieldWithdrawConfirmedWebhookPayload }
 
       # @!method self.variants
-      #   @return [Array(Privy::Models::IntentAuthorizedWebhookPayload, Privy::Models::IntentCreatedWebhookPayload, Privy::Models::IntentExecutedWebhookPayload, Privy::Models::IntentFailedWebhookPayload, Privy::Models::IntentRejectedWebhookPayload, Privy::Models::MfaDisabledWebhookPayload, Privy::Models::MfaEnabledWebhookPayload, Privy::Models::OrganizationKYBUpdatedWebhookEvent, Privy::Models::TransactionBroadcastedWebhookPayload, Privy::Models::TransactionConfirmedWebhookPayload, Privy::Models::TransactionExecutionRevertedWebhookPayload, Privy::Models::TransactionFailedWebhookPayload, Privy::Models::TransactionProviderErrorWebhookPayload, Privy::Models::TransactionReplacedWebhookPayload, Privy::Models::TransactionStillPendingWebhookPayload, Privy::Models::UsageAtaDepositRecordedWebhookPayload, Privy::Models::UsageGasSponsorshipRecordedWebhookPayload, Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload, Privy::Models::UserAuthenticatedWebhookPayload, Privy::Models::UserCreatedWebhookPayload, Privy::Models::UserDeletedWebhookPayload, Privy::Models::UserKYCUpdatedWebhookEvent, Privy::Models::UserLinkedAccountWebhookPayload, Privy::Models::UserTransferredAccountWebhookPayload, Privy::Models::UserUnlinkedAccountWebhookPayload, Privy::Models::UserUpdatedAccountWebhookPayload, Privy::Models::UserWalletCreatedWebhookPayload, Privy::Models::UserOperationCompletedWebhookPayload, Privy::Models::WalletArchivedWebhookPayload, Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent, Privy::Models::WalletDepositAccountDepositFailedWebhookEvent, Privy::Models::WalletDepositAccountDepositStartedWebhookEvent, Privy::Models::FundsDepositedWebhookPayload, Privy::Models::FundsWithdrawnWebhookPayload, Privy::Models::PrivateKeyExportWebhookPayload, Privy::Models::WalletRecoveredWebhookPayload, Privy::Models::WalletRecoverySetupWebhookPayload, Privy::Models::WalletRestoredWebhookPayload, Privy::Models::WalletActionEarnDepositCreatedWebhookPayload, Privy::Models::WalletActionEarnDepositFailedWebhookPayload, Privy::Models::WalletActionEarnDepositRejectedWebhookPayload, Privy::Models::WalletActionEarnDepositSucceededWebhookPayload, Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload, Privy::Models::WalletActionEarnFeeCollectFailedWebhookPayload, Privy::Models::WalletActionEarnFeeCollectRejectedWebhookPayload, Privy::Models::WalletActionEarnFeeCollectSucceededWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimRejectedWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload, Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload, Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload, Privy::Models::WalletActionEarnWithdrawRejectedWebhookPayload, Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload, Privy::Models::WalletActionPayoutCreatedWebhookPayload, Privy::Models::WalletActionPayoutFailedWebhookPayload, Privy::Models::WalletActionPayoutRejectedWebhookPayload, Privy::Models::WalletActionPayoutSucceededWebhookPayload, Privy::Models::WalletActionSwapCreatedWebhookPayload, Privy::Models::WalletActionSwapFailedWebhookPayload, Privy::Models::WalletActionSwapRejectedWebhookPayload, Privy::Models::WalletActionSwapSucceededWebhookPayload, Privy::Models::WalletActionTransferCreatedWebhookPayload, Privy::Models::WalletActionTransferFailedWebhookPayload, Privy::Models::WalletActionTransferRejectedWebhookPayload, Privy::Models::WalletActionTransferSucceededWebhookPayload, Privy::Models::WalletAutomationSubmittedWebhookPayload, Privy::Models::YieldClaimConfirmedWebhookPayload, Privy::Models::YieldDepositConfirmedWebhookPayload, Privy::Models::YieldWithdrawConfirmedWebhookPayload)]
+      #   @return [Array(Privy::Models::IntentAuthorizedWebhookPayload, Privy::Models::IntentCreatedWebhookPayload, Privy::Models::IntentExecutedWebhookPayload, Privy::Models::IntentFailedWebhookPayload, Privy::Models::IntentRejectedWebhookPayload, Privy::Models::MfaDisabledWebhookPayload, Privy::Models::MfaEnabledWebhookPayload, Privy::Models::OrganizationKYBUpdatedWebhookEvent, Privy::Models::TmmfWalletUpdatedWebhookPayload, Privy::Models::TransactionBroadcastedWebhookPayload, Privy::Models::TransactionConfirmedWebhookPayload, Privy::Models::TransactionExecutionRevertedWebhookPayload, Privy::Models::TransactionFailedWebhookPayload, Privy::Models::TransactionProviderErrorWebhookPayload, Privy::Models::TransactionReplacedWebhookPayload, Privy::Models::TransactionStillPendingWebhookPayload, Privy::Models::UsageAtaDepositRecordedWebhookPayload, Privy::Models::UsageGasSponsorshipRecordedWebhookPayload, Privy::Models::UsageSwapProviderFeeRecordedWebhookPayload, Privy::Models::UserAuthenticatedWebhookPayload, Privy::Models::UserCreatedWebhookPayload, Privy::Models::UserDeletedWebhookPayload, Privy::Models::UserKYCUpdatedWebhookEvent, Privy::Models::UserLinkedAccountWebhookPayload, Privy::Models::UserTransferredAccountWebhookPayload, Privy::Models::UserUnlinkedAccountWebhookPayload, Privy::Models::UserUpdatedAccountWebhookPayload, Privy::Models::UserWalletCreatedWebhookPayload, Privy::Models::UserOperationCompletedWebhookPayload, Privy::Models::WalletArchivedWebhookPayload, Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent, Privy::Models::WalletDepositAccountDepositFailedWebhookEvent, Privy::Models::WalletDepositAccountDepositStartedWebhookEvent, Privy::Models::FundsDepositedWebhookPayload, Privy::Models::FundsWithdrawnWebhookPayload, Privy::Models::PrivateKeyExportWebhookPayload, Privy::Models::WalletRecoveredWebhookPayload, Privy::Models::WalletRecoverySetupWebhookPayload, Privy::Models::WalletRestoredWebhookPayload, Privy::Models::WalletActionEarnDepositCreatedWebhookPayload, Privy::Models::WalletActionEarnDepositFailedWebhookPayload, Privy::Models::WalletActionEarnDepositRejectedWebhookPayload, Privy::Models::WalletActionEarnDepositSucceededWebhookPayload, Privy::Models::WalletActionEarnFeeCollectCreatedWebhookPayload, Privy::Models::WalletActionEarnFeeCollectFailedWebhookPayload, Privy::Models::WalletActionEarnFeeCollectRejectedWebhookPayload, Privy::Models::WalletActionEarnFeeCollectSucceededWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimCreatedWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimFailedWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimRejectedWebhookPayload, Privy::Models::WalletActionEarnIncentiveClaimSucceededWebhookPayload, Privy::Models::WalletActionEarnWithdrawCreatedWebhookPayload, Privy::Models::WalletActionEarnWithdrawFailedWebhookPayload, Privy::Models::WalletActionEarnWithdrawRejectedWebhookPayload, Privy::Models::WalletActionEarnWithdrawSucceededWebhookPayload, Privy::Models::WalletActionPayoutCreatedWebhookPayload, Privy::Models::WalletActionPayoutFailedWebhookPayload, Privy::Models::WalletActionPayoutRejectedWebhookPayload, Privy::Models::WalletActionPayoutSucceededWebhookPayload, Privy::Models::WalletActionSwapCreatedWebhookPayload, Privy::Models::WalletActionSwapFailedWebhookPayload, Privy::Models::WalletActionSwapRejectedWebhookPayload, Privy::Models::WalletActionSwapSucceededWebhookPayload, Privy::Models::WalletActionTmmfDepositCreatedWebhookPayload, Privy::Models::WalletActionTmmfDepositFailedWebhookPayload, Privy::Models::WalletActionTmmfDepositRejectedWebhookPayload, Privy::Models::WalletActionTmmfDepositSucceededWebhookPayload, Privy::Models::WalletActionTmmfWithdrawCreatedWebhookPayload, Privy::Models::WalletActionTmmfWithdrawFailedWebhookPayload, Privy::Models::WalletActionTmmfWithdrawRejectedWebhookPayload, Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload, Privy::Models::WalletActionTransferCreatedWebhookPayload, Privy::Models::WalletActionTransferFailedWebhookPayload, Privy::Models::WalletActionTransferRejectedWebhookPayload, Privy::Models::WalletActionTransferSucceededWebhookPayload, Privy::Models::WalletAutomationSubmittedWebhookPayload, Privy::Models::YieldClaimConfirmedWebhookPayload, Privy::Models::YieldDepositConfirmedWebhookPayload, Privy::Models::YieldWithdrawConfirmedWebhookPayload)]
     end
   end
 end

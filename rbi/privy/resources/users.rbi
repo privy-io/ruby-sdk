@@ -4,6 +4,9 @@ module Privy
   module Resources
     # Operations related to users
     class Users
+      sig { returns(Privy::Resources::Users::Earn) }
+      attr_reader :earn
+
       # Operations related to fiat onramping and offramping
       sig { returns(Privy::Resources::Users::ExternalFiatAccounts) }
       attr_reader :external_fiat_accounts

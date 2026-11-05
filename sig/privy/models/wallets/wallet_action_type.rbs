@@ -11,9 +11,14 @@ module Privy
         | :earn_incentive_claim
         | :earn_fee_collect
         | :payout
+        | :tmmf_deposit
+        | :tmmf_withdraw
+        | String
 
       module WalletActionType
-        extend Privy::Internal::Type::Enum
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::wallet_action_type]
 
         SWAP: :swap
         TRANSFER: :transfer
@@ -22,8 +27,8 @@ module Privy
         EARN_INCENTIVE_CLAIM: :earn_incentive_claim
         EARN_FEE_COLLECT: :earn_fee_collect
         PAYOUT: :payout
-
-        def self?.values: -> ::Array[Privy::Models::Wallets::wallet_action_type]
+        TMMF_DEPOSIT: :tmmf_deposit
+        TMMF_WITHDRAW: :tmmf_withdraw
       end
     end
   end

@@ -21,6 +21,8 @@ module Privy
 
         variant const: -> { Privy::Models::Wallets::WalletActionStepType::TEMPO_ZONE_SETTLEMENT }
 
+        variant const: -> { Privy::Models::Wallets::WalletActionStepType::WISDOMTREE_SETTLEMENT }
+
         variant String
 
         # @!method self.variants
@@ -39,6 +41,7 @@ module Privy
         EXTERNAL_TRANSACTION = :external_transaction
         CUSTODIAN_TRANSACTION = :custodian_transaction
         TEMPO_ZONE_SETTLEMENT = :tempo_zone_settlement
+        WISDOMTREE_SETTLEMENT = :wisdomtree_settlement
 
         # @!endgroup
       end

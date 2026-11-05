@@ -1,0 +1,27 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_user_registration =
+        {
+          provider: Privy::Models::Wallets::tmmf_provider,
+          status: Privy::Models::Wallets::tmmf_registration_status
+        }
+
+      class TmmfUserRegistration < Privy::Internal::Type::BaseModel
+        attr_accessor provider: Privy::Models::Wallets::tmmf_provider
+
+        attr_accessor status: Privy::Models::Wallets::tmmf_registration_status
+
+        def initialize: (
+          provider: Privy::Models::Wallets::tmmf_provider,
+          status: Privy::Models::Wallets::tmmf_registration_status
+        ) -> void
+
+        def to_hash: -> {
+          provider: Privy::Models::Wallets::tmmf_provider,
+          status: Privy::Models::Wallets::tmmf_registration_status
+        }
+      end
+    end
+  end
+end

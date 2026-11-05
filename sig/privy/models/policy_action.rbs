@@ -1,12 +1,13 @@
 module Privy
   module Models
-    type policy_action = :ALLOW | :DENY
+    type policy_action = :ALLOW | :DENY | :ALLOW_WITH_MFA
 
     module PolicyAction
       extend Privy::Internal::Type::Enum
 
       ALLOW: :ALLOW
       DENY: :DENY
+      ALLOW_WITH_MFA: :ALLOW_WITH_MFA
 
       def self?.values: -> ::Array[Privy::Models::policy_action]
     end

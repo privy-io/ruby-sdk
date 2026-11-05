@@ -1,0 +1,11 @@
+module Privy
+  module Resources
+    class Users
+      class Earn
+        attr_reader tmmf: Privy::Resources::Users::Earn::Tmmf
+
+        def initialize: (client: Privy::Client) -> void
+      end
+    end
+  end
+end

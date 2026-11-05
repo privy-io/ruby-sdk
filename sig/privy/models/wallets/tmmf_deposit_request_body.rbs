@@ -1,0 +1,56 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_deposit_request_body =
+        {
+          amount: String,
+          chain: String,
+          deposit_asset: String,
+          fund: String,
+          order_type: Privy::Models::Wallets::tmmf_order_type,
+          nonce: String,
+          reference_id: String
+        }
+
+      class TmmfDepositRequestBody < Privy::Internal::Type::BaseModel
+        attr_accessor amount: String
+
+        attr_accessor chain: String
+
+        attr_accessor deposit_asset: String
+
+        attr_accessor fund: String
+
+        attr_accessor order_type: Privy::Models::Wallets::tmmf_order_type
+
+        attr_reader nonce: String?
+
+        def nonce=: (String) -> String
+
+        attr_reader reference_id: String?
+
+        def reference_id=: (String) -> String
+
+        def initialize: (
+          amount: String,
+          chain: String,
+          deposit_asset: String,
+          fund: String,
+          order_type: Privy::Models::Wallets::tmmf_order_type,
+          ?nonce: String,
+          ?reference_id: String
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          chain: String,
+          deposit_asset: String,
+          fund: String,
+          order_type: Privy::Models::Wallets::tmmf_order_type,
+          nonce: String,
+          reference_id: String
+        }
+      end
+    end
+  end
+end

@@ -11,6 +11,7 @@ module Privy
 
       ALLOW = T.let(:ALLOW, Privy::PolicyAction::TaggedSymbol)
       DENY = T.let(:DENY, Privy::PolicyAction::TaggedSymbol)
+      ALLOW_WITH_MFA = T.let(:ALLOW_WITH_MFA, Privy::PolicyAction::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::PolicyAction::TaggedSymbol]) }
       def self.values

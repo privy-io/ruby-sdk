@@ -6,7 +6,7 @@ module Privy
       class ListWalletActionsResponse < Privy::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse, Privy::Models::Wallets::PayoutResponse>]
+        #   @return [Array<Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse, Privy::Models::Wallets::PayoutResponse, Privy::Models::Wallets::TmmfDepositActionResponse, Privy::Models::Wallets::TmmfWithdrawActionResponse>]
         required :data, -> { Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionResponse] }
 
         # @!attribute next_cursor
@@ -17,7 +17,7 @@ module Privy
         # @!method initialize(data:, next_cursor:)
         #   Paginated list of wallet actions.
         #
-        #   @param data [Array<Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse, Privy::Models::Wallets::PayoutResponse>]
+        #   @param data [Array<Privy::Models::Wallets::SwapActionResponse, Privy::Models::Wallets::TransferActionResponse, Privy::Models::Wallets::EarnDepositActionResponse, Privy::Models::Wallets::EarnWithdrawActionResponse, Privy::Models::Wallets::EarnIncentiveClaimActionResponse, Privy::Models::Wallets::EarnFeeCollectActionResponse, Privy::Models::Wallets::PayoutResponse, Privy::Models::Wallets::TmmfDepositActionResponse, Privy::Models::Wallets::TmmfWithdrawActionResponse>]
         #   @param next_cursor [String, nil]
       end
     end

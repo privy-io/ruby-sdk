@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    module Wallets
+      class TmmfFund = String
+    end
+  end
+end

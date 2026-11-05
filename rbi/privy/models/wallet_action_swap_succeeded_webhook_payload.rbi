@@ -12,7 +12,7 @@ module Privy
         end
 
       # Type of wallet action
-      sig { returns(Privy::Wallets::WalletActionType::TaggedSymbol) }
+      sig { returns(Privy::Wallets::WalletActionType::Variants) }
       attr_accessor :action_type
 
       # Chain identifier.
@@ -86,7 +86,8 @@ module Privy
       # Payload for the wallet_action.swap.succeeded webhook event.
       sig do
         params(
-          action_type: Privy::Wallets::WalletActionType::OrSymbol,
+          action_type:
+            T.any(Privy::Wallets::WalletActionType::OrSymbol, String),
           caip2: String,
           completed_at: String,
           created_at: String,
@@ -106,7 +107,8 @@ module Privy
                 Privy::Wallets::TvmTransactionWalletActionStep::OrHash,
                 Privy::Wallets::ExternalTransactionWalletActionStep::OrHash,
                 Privy::Wallets::CustodianTransactionWalletActionStep::OrHash,
-                Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash
+                Privy::Wallets::TempoZoneSettlementWalletActionStep::OrHash,
+                Privy::Wallets::WisdomTreeSettlementWalletActionStep::OrHash
               )
             ],
           type: Privy::WalletActionSwapSucceededWebhookPayload::Type::OrSymbol,
@@ -156,7 +158,7 @@ module Privy
       sig do
         override.returns(
           {
-            action_type: Privy::Wallets::WalletActionType::TaggedSymbol,
+            action_type: Privy::Wallets::WalletActionType::Variants,
             caip2: String,
             completed_at: String,
             created_at: String,

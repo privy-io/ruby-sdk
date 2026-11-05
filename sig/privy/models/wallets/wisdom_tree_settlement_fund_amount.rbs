@@ -1,0 +1,17 @@
+module Privy
+  module Models
+    module Wallets
+      type wisdom_tree_settlement_fund_amount = { amount: String, fund: String }
+
+      class WisdomTreeSettlementFundAmount < Privy::Internal::Type::BaseModel
+        attr_accessor amount: String
+
+        attr_accessor fund: String
+
+        def initialize: (amount: String, fund: String) -> void
+
+        def to_hash: -> { amount: String, fund: String }
+      end
+    end
+  end
+end

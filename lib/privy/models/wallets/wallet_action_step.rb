@@ -30,8 +30,11 @@ module Privy
         # A wallet action step representing a Tempo Zone settlement on its parent chain.
         variant :tempo_zone_settlement, -> { Privy::Wallets::TempoZoneSettlementWalletActionStep }
 
+        # A wallet action step representing the settlement of a tokenized money market fund (tMMF) order by WisdomTree.
+        variant :wisdomtree_settlement, -> { Privy::Wallets::WisdomTreeSettlementWalletActionStep }
+
         # @!method self.variants
-        #   @return [Array(Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep)]
+        #   @return [Array(Privy::Models::Wallets::EvmTransactionWalletActionStep, Privy::Models::Wallets::EvmUserOperationWalletActionStep, Privy::Models::Wallets::SvmTransactionWalletActionStep, Privy::Models::Wallets::TvmTransactionWalletActionStep, Privy::Models::Wallets::ExternalTransactionWalletActionStep, Privy::Models::Wallets::CustodianTransactionWalletActionStep, Privy::Models::Wallets::TempoZoneSettlementWalletActionStep, Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep)]
       end
     end
 

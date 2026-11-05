@@ -1,0 +1,60 @@
+module Privy
+  module Models
+    module Users
+      module Earn
+        type tmmf_get_params =
+          {
+            user_id: String,
+            provider: Privy::Models::Wallets::tmmf_provider,
+            wallet_id: String,
+            wallets_cursor: String,
+            wallets_limit: Integer
+          }
+          & Privy::Internal::Type::request_parameters
+
+        class TmmfGetParams < Privy::Internal::Type::BaseModel
+          extend Privy::Internal::Type::RequestParameters::Converter
+          include Privy::Internal::Type::RequestParameters
+
+          attr_accessor user_id: String
+
+          attr_reader provider: Privy::Models::Wallets::tmmf_provider?
+
+          def provider=: (
+            Privy::Models::Wallets::tmmf_provider
+          ) -> Privy::Models::Wallets::tmmf_provider
+
+          attr_reader wallet_id: String?
+
+          def wallet_id=: (String) -> String
+
+          attr_reader wallets_cursor: String?
+
+          def wallets_cursor=: (String) -> String
+
+          attr_reader wallets_limit: Integer?
+
+          def wallets_limit=: (Integer) -> Integer
+
+          def initialize: (
+            user_id: String,
+            ?provider: Privy::Models::Wallets::tmmf_provider,
+            ?wallet_id: String,
+            ?wallets_cursor: String,
+            ?wallets_limit: Integer,
+            ?request_options: Privy::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            user_id: String,
+            provider: Privy::Models::Wallets::tmmf_provider,
+            wallet_id: String,
+            wallets_cursor: String,
+            wallets_limit: Integer,
+            request_options: Privy::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

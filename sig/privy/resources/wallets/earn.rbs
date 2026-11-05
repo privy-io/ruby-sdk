@@ -4,6 +4,8 @@ module Privy
       class Earn
         attr_reader ethereum: Privy::Resources::Wallets::Earn::Ethereum
 
+        attr_reader tmmf: Privy::Resources::Wallets::Earn::Tmmf
+
         def initialize: (client: Privy::Client) -> void
       end
     end

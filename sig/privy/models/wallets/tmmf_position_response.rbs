@@ -1,0 +1,32 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_position_response =
+        {
+          next_cursor: String?,
+          positions: ::Array[Privy::Wallets::TmmfPosition],
+          wallet_id: String
+        }
+
+      class TmmfPositionResponse < Privy::Internal::Type::BaseModel
+        attr_accessor next_cursor: String?
+
+        attr_accessor positions: ::Array[Privy::Wallets::TmmfPosition]
+
+        attr_accessor wallet_id: String
+
+        def initialize: (
+          next_cursor: String?,
+          positions: ::Array[Privy::Wallets::TmmfPosition],
+          wallet_id: String
+        ) -> void
+
+        def to_hash: -> {
+          next_cursor: String?,
+          positions: ::Array[Privy::Wallets::TmmfPosition],
+          wallet_id: String
+        }
+      end
+    end
+  end
+end

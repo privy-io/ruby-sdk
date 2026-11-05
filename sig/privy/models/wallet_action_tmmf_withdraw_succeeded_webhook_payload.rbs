@@ -1,0 +1,85 @@
+module Privy
+  module Models
+    type wallet_action_tmmf_withdraw_succeeded_webhook_payload =
+      {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        completed_at: String,
+        created_at: String,
+        event_id: String,
+        status: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
+        type: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String,
+        reference_id: String?
+      }
+
+    class WalletActionTmmfWithdrawSucceededWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor action_type: Privy::Models::Wallets::wallet_action_type
+
+      attr_accessor completed_at: String
+
+      attr_accessor created_at: String
+
+      attr_accessor event_id: String
+
+      attr_accessor status: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::status
+
+      attr_accessor steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+
+      attr_accessor type: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::type_
+
+      attr_accessor wallet_action_id: String
+
+      attr_accessor wallet_id: String
+
+      attr_accessor reference_id: String?
+
+      def initialize: (
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        completed_at: String,
+        created_at: String,
+        event_id: String,
+        status: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
+        type: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String,
+        ?reference_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        action_type: Privy::Models::Wallets::wallet_action_type,
+        completed_at: String,
+        created_at: String,
+        event_id: String,
+        status: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::status,
+        steps: ::Array[Privy::Models::Wallets::wallet_action_step],
+        type: Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::type_,
+        wallet_action_id: String,
+        wallet_id: String,
+        reference_id: String?
+      }
+
+      type status = :succeeded
+
+      module Status
+        extend Privy::Internal::Type::Enum
+
+        SUCCEEDED: :succeeded
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::status]
+      end
+
+      type type_ = :"wallet_action.tmmf_withdraw.succeeded"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        WALLET_ACTION_TMMF_WITHDRAW_SUCCEEDED: :"wallet_action.tmmf_withdraw.succeeded"
+
+        def self?.values: -> ::Array[Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload::type_]
+      end
+    end
+  end
+end

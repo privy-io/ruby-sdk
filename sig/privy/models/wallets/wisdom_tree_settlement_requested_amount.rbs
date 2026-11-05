@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    module Wallets
+      type wisdom_tree_settlement_requested_amount =
+        Privy::Wallets::WisdomTreeSettlementDepositAssetAmount
+        | Privy::Wallets::WisdomTreeSettlementFundAmount
+
+      module WisdomTreeSettlementRequestedAmount
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::wisdom_tree_settlement_requested_amount]
+      end
+    end
+  end
+end

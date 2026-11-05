@@ -26,10 +26,18 @@ module Privy
         attr_writer :limit
 
         # Type of wallet action
-        sig { returns(T.nilable(Privy::Wallets::WalletActionType::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(T.any(Privy::Wallets::WalletActionType::OrSymbol, String))
+          )
+        end
         attr_reader :type
 
-        sig { params(type: Privy::Wallets::WalletActionType::OrSymbol).void }
+        sig do
+          params(
+            type: T.any(Privy::Wallets::WalletActionType::OrSymbol, String)
+          ).void
+        end
         attr_writer :type
 
         # Query parameters for listing wallet actions.
@@ -37,7 +45,7 @@ module Privy
           params(
             cursor: String,
             limit: Integer,
-            type: Privy::Wallets::WalletActionType::OrSymbol
+            type: T.any(Privy::Wallets::WalletActionType::OrSymbol, String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -54,7 +62,7 @@ module Privy
             {
               cursor: String,
               limit: Integer,
-              type: Privy::Wallets::WalletActionType::OrSymbol
+              type: T.any(Privy::Wallets::WalletActionType::OrSymbol, String)
             }
           )
         end

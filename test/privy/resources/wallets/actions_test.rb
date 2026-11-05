@@ -21,6 +21,8 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
       in Privy::Wallets::EarnIncentiveClaimActionResponse
       in Privy::Wallets::EarnFeeCollectActionResponse
       in Privy::Wallets::PayoutResponse
+      in Privy::Wallets::TmmfDepositActionResponse
+      in Privy::Wallets::TmmfWithdrawActionResponse
       end
     end
 
@@ -148,6 +150,26 @@ class Privy::Test::Resources::Wallets::ActionsTest < Privy::Test::ResourceTest
         environment: Privy::Environment,
         provider: Privy::OrchestrationProvider,
         source: Privy::PayoutSource,
+        status: Privy::Wallets::WalletActionStatus,
+        wallet_id: String,
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
+      }
+      in {
+        type: :tmmf_deposit,
+        id: String,
+        created_at: Time,
+        status: Privy::Wallets::WalletActionStatus,
+        wallet_id: String,
+        failure_reason: Privy::Wallets::FailureReason | nil,
+        reference_id: String | nil,
+        steps: ^(Privy::Internal::Type::ArrayOf[union: Privy::Wallets::WalletActionStep]) | nil
+      }
+      in {
+        type: :tmmf_withdraw,
+        id: String,
+        created_at: Time,
         status: Privy::Wallets::WalletActionStatus,
         wallet_id: String,
         failure_reason: Privy::Wallets::FailureReason | nil,

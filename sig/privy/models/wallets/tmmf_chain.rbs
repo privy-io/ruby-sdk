@@ -1,0 +1,7 @@
+module Privy
+  module Models
+    module Wallets
+      class TmmfChain = String
+    end
+  end
+end

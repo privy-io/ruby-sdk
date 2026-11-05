@@ -4,6 +4,9 @@ module Privy
   module Resources
     # Operations related to users
     class Users
+      # @return [Privy::Resources::Users::Earn]
+      attr_reader :earn
+
       # Operations related to fiat onramping and offramping
       # @return [Privy::Resources::Users::ExternalFiatAccounts]
       attr_reader :external_fiat_accounts
@@ -496,6 +499,7 @@ module Privy
       # @param client [Privy::Client]
       def initialize(client:)
         @client = client
+        @earn = Privy::Resources::Users::Earn.new(client: client)
         @external_fiat_accounts = Privy::Resources::Users::ExternalFiatAccounts.new(client: client)
         @kyc = Privy::Resources::Users::KYC.new(client: client)
         @mfa = Privy::Resources::Users::Mfa.new(client: client)

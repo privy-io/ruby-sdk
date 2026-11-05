@@ -61,6 +61,11 @@ module Privy
             :tempo_zone_settlement,
             Privy::Wallets::WalletActionStepType::TaggedSymbol
           )
+        WISDOMTREE_SETTLEMENT =
+          T.let(
+            :wisdomtree_settlement,
+            Privy::Wallets::WalletActionStepType::TaggedSymbol
+          )
       end
     end
   end

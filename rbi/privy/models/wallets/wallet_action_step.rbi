@@ -18,7 +18,8 @@ module Privy
               Privy::Wallets::TvmTransactionWalletActionStep,
               Privy::Wallets::ExternalTransactionWalletActionStep,
               Privy::Wallets::CustodianTransactionWalletActionStep,
-              Privy::Wallets::TempoZoneSettlementWalletActionStep
+              Privy::Wallets::TempoZoneSettlementWalletActionStep,
+              Privy::Wallets::WisdomTreeSettlementWalletActionStep
             )
           end
 

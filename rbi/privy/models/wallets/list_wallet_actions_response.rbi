@@ -22,7 +22,9 @@ module Privy
                 Privy::Wallets::EarnWithdrawActionResponse,
                 Privy::Wallets::EarnIncentiveClaimActionResponse,
                 Privy::Wallets::EarnFeeCollectActionResponse,
-                Privy::Wallets::PayoutResponse
+                Privy::Wallets::PayoutResponse,
+                Privy::Wallets::TmmfDepositActionResponse,
+                Privy::Wallets::TmmfWithdrawActionResponse
               )
             ]
           )
@@ -44,7 +46,9 @@ module Privy
                   Privy::Wallets::EarnWithdrawActionResponse::OrHash,
                   Privy::Wallets::EarnIncentiveClaimActionResponse::OrHash,
                   Privy::Wallets::EarnFeeCollectActionResponse::OrHash,
-                  Privy::Wallets::PayoutResponse::OrHash
+                  Privy::Wallets::PayoutResponse::OrHash,
+                  Privy::Wallets::TmmfDepositActionResponse::OrHash,
+                  Privy::Wallets::TmmfWithdrawActionResponse::OrHash
                 )
               ],
             next_cursor: T.nilable(String)
@@ -65,7 +69,9 @@ module Privy
                     Privy::Wallets::EarnWithdrawActionResponse,
                     Privy::Wallets::EarnIncentiveClaimActionResponse,
                     Privy::Wallets::EarnFeeCollectActionResponse,
-                    Privy::Wallets::PayoutResponse
+                    Privy::Wallets::PayoutResponse,
+                    Privy::Wallets::TmmfDepositActionResponse,
+                    Privy::Wallets::TmmfWithdrawActionResponse
                   )
                 ],
               next_cursor: T.nilable(String)

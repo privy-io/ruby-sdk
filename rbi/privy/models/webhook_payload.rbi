@@ -37,6 +37,7 @@ module Privy
             Privy::YieldDepositConfirmedWebhookPayload,
             Privy::YieldWithdrawConfirmedWebhookPayload,
             Privy::YieldClaimConfirmedWebhookPayload,
+            Privy::TmmfWalletUpdatedWebhookPayload,
             Privy::UserOperationCompletedWebhookPayload,
             Privy::UsageGasSponsorshipRecordedWebhookPayload,
             Privy::UsageSwapProviderFeeRecordedWebhookPayload,
@@ -74,6 +75,14 @@ module Privy
             Privy::WalletActionPayoutSucceededWebhookPayload,
             Privy::WalletActionPayoutRejectedWebhookPayload,
             Privy::WalletActionPayoutFailedWebhookPayload,
+            Privy::WalletActionTmmfDepositCreatedWebhookPayload,
+            Privy::WalletActionTmmfDepositSucceededWebhookPayload,
+            Privy::WalletActionTmmfDepositRejectedWebhookPayload,
+            Privy::WalletActionTmmfDepositFailedWebhookPayload,
+            Privy::WalletActionTmmfWithdrawCreatedWebhookPayload,
+            Privy::WalletActionTmmfWithdrawSucceededWebhookPayload,
+            Privy::WalletActionTmmfWithdrawRejectedWebhookPayload,
+            Privy::WalletActionTmmfWithdrawFailedWebhookPayload,
             Privy::WalletAutomationSubmittedWebhookPayload
           )
         end

@@ -1,0 +1,75 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_deposit_action_response =
+        {
+          id: String,
+          created_at: Time,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::TmmfDepositActionResponse::type_,
+          wallet_id: String,
+          failure_reason: Privy::Wallets::FailureReason,
+          reference_id: String?,
+          steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        }
+
+      class TmmfDepositActionResponse < Privy::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor status: Privy::Models::Wallets::wallet_action_status
+
+        attr_accessor type: Privy::Models::Wallets::TmmfDepositActionResponse::type_
+
+        attr_accessor wallet_id: String
+
+        attr_reader failure_reason: Privy::Wallets::FailureReason?
+
+        def failure_reason=: (
+          Privy::Wallets::FailureReason
+        ) -> Privy::Wallets::FailureReason
+
+        attr_accessor reference_id: String?
+
+        attr_reader steps: ::Array[Privy::Models::Wallets::wallet_action_step]?
+
+        def steps=: (
+          ::Array[Privy::Models::Wallets::wallet_action_step]
+        ) -> ::Array[Privy::Models::Wallets::wallet_action_step]
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::TmmfDepositActionResponse::type_,
+          wallet_id: String,
+          ?failure_reason: Privy::Wallets::FailureReason,
+          ?reference_id: String?,
+          ?steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          status: Privy::Models::Wallets::wallet_action_status,
+          type: Privy::Models::Wallets::TmmfDepositActionResponse::type_,
+          wallet_id: String,
+          failure_reason: Privy::Wallets::FailureReason,
+          reference_id: String?,
+          steps: ::Array[Privy::Models::Wallets::wallet_action_step]
+        }
+
+        type type_ = :tmmf_deposit
+
+        module Type
+          extend Privy::Internal::Type::Enum
+
+          TMMF_DEPOSIT: :tmmf_deposit
+
+          def self?.values: -> ::Array[Privy::Models::Wallets::TmmfDepositActionResponse::type_]
+        end
+      end
+    end
+  end
+end

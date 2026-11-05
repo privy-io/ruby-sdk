@@ -1,0 +1,58 @@
+module Privy
+  module Resources
+    class Wallets
+      class Earn
+        class Tmmf
+          def deposit: (
+            String wallet_id,
+            amount: String,
+            chain: String,
+            deposit_asset: String,
+            fund: String,
+            order_type: Privy::Models::Wallets::tmmf_order_type,
+            ?nonce: String,
+            ?reference_id: String,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::TmmfDepositActionResponse
+
+          def list_positions: (
+            String wallet_id,
+            ?chain: String,
+            ?cursor: String,
+            ?fund: String,
+            ?limit: Integer,
+            ?provider: Privy::Models::Wallets::tmmf_provider,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::TmmfPositionResponse
+
+          def register: (
+            String wallet_id,
+            chain: String,
+            provider: Privy::Models::Wallets::tmmf_provider,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::TmmfWalletResponse
+
+          def withdraw: (
+            String wallet_id,
+            chain: String,
+            fund: String,
+            order_type: Privy::Models::Wallets::tmmf_order_type,
+            shares: String,
+            withdraw_asset: String,
+            ?nonce: String,
+            ?reference_id: String,
+            ?privy_authorization_signature: String,
+            ?privy_idempotency_key: String,
+            ?privy_request_expiry: String,
+            ?request_options: Privy::request_opts
+          ) -> Privy::Wallets::TmmfWithdrawActionResponse
+
+          def initialize: (client: Privy::Client) -> void
+        end
+      end
+    end
+  end
+end

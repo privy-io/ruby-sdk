@@ -1,0 +1,27 @@
+module Privy
+  module Models
+    module Wallets
+      type wisdom_tree_settlement_wallet_action_step_status =
+        :preparing
+        | :queued
+        | :pending
+        | :confirmed
+        | :rejected
+        | :failed
+        | String
+
+      module WisdomTreeSettlementWalletActionStepStatus
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::wisdom_tree_settlement_wallet_action_step_status]
+
+        PREPARING: :preparing
+        QUEUED: :queued
+        PENDING: :pending
+        CONFIRMED: :confirmed
+        REJECTED: :rejected
+        FAILED: :failed
+      end
+    end
+  end
+end

@@ -58,6 +58,9 @@ module Privy
       end
 
       module Users
+        module Earn
+        end
+
         module Mfa
           module Email
           end

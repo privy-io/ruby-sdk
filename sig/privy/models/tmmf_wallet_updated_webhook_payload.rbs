@@ -1,0 +1,70 @@
+module Privy
+  module Models
+    type tmmf_wallet_updated_webhook_payload =
+      {
+        address: String,
+        chain: String,
+        created_at: Integer,
+        provider: Privy::Models::Wallets::tmmf_provider,
+        status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
+        type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
+        updated_at: Integer,
+        user_id: String,
+        wallet_id: String
+      }
+
+    class TmmfWalletUpdatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor address: String
+
+      attr_accessor chain: String
+
+      attr_accessor created_at: Integer
+
+      attr_accessor provider: Privy::Models::Wallets::tmmf_provider
+
+      attr_accessor status: Privy::Models::Wallets::tmmf_provider_wallet_status?
+
+      attr_accessor type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_
+
+      attr_accessor updated_at: Integer
+
+      attr_accessor user_id: String
+
+      attr_accessor wallet_id: String
+
+      def initialize: (
+        address: String,
+        chain: String,
+        created_at: Integer,
+        provider: Privy::Models::Wallets::tmmf_provider,
+        status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
+        type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
+        updated_at: Integer,
+        user_id: String,
+        wallet_id: String
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        chain: String,
+        created_at: Integer,
+        provider: Privy::Models::Wallets::tmmf_provider,
+        status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
+        type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
+        updated_at: Integer,
+        user_id: String,
+        wallet_id: String
+      }
+
+      type type_ = :"tmmf.wallet.updated"
+
+      module Type
+        extend Privy::Internal::Type::Enum
+
+        TMMF_WALLET_UPDATED: :"tmmf.wallet.updated"
+
+        def self?.values: -> ::Array[Privy::Models::TmmfWalletUpdatedWebhookPayload::type_]
+      end
+    end
+  end
+end

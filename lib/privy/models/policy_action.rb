@@ -8,6 +8,7 @@ module Privy
 
       ALLOW = :ALLOW
       DENY = :DENY
+      ALLOW_WITH_MFA = :ALLOW_WITH_MFA
 
       # @!method self.values
       #   @return [Array<Symbol>]

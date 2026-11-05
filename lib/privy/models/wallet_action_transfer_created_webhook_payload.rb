@@ -6,8 +6,8 @@ module Privy
       # @!attribute action_type
       #   Type of wallet action
       #
-      #   @return [Symbol, Privy::Models::Wallets::WalletActionType]
-      required :action_type, enum: -> { Privy::Wallets::WalletActionType }
+      #   @return [Symbol, String, Privy::Models::Wallets::WalletActionType]
+      required :action_type, union: -> { Privy::Wallets::WalletActionType }
 
       # @!attribute created_at
       #   ISO 8601 timestamp of when the wallet action was created.
@@ -98,7 +98,7 @@ module Privy
       #
       #   Payload for the wallet_action.transfer.created webhook event.
       #
-      #   @param action_type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
+      #   @param action_type [Symbol, String, Privy::Models::Wallets::WalletActionType] Type of wallet action
       #
       #   @param created_at [String] ISO 8601 timestamp of when the wallet action was created.
       #

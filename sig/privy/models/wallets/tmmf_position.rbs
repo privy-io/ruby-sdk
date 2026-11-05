@@ -1,0 +1,72 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_position =
+        {
+          chain: String,
+          fund: String,
+          nav_date: String?,
+          nav_usd: String?,
+          pending_dividends_usd: String?,
+          pending_orders: ::Array[Privy::Models::Wallets::tmmf_order_action_response],
+          pending_since: String?,
+          provider: Privy::Models::Wallets::tmmf_provider,
+          share_value_usd: String?,
+          shares: String,
+          total_position_value_usd: String?
+        }
+
+      class TmmfPosition < Privy::Internal::Type::BaseModel
+        attr_accessor chain: String
+
+        attr_accessor fund: String
+
+        attr_accessor nav_date: String?
+
+        attr_accessor nav_usd: String?
+
+        attr_accessor pending_dividends_usd: String?
+
+        attr_accessor pending_orders: ::Array[Privy::Models::Wallets::tmmf_order_action_response]
+
+        attr_accessor pending_since: String?
+
+        attr_accessor provider: Privy::Models::Wallets::tmmf_provider
+
+        attr_accessor share_value_usd: String?
+
+        attr_accessor shares: String
+
+        attr_accessor total_position_value_usd: String?
+
+        def initialize: (
+          chain: String,
+          fund: String,
+          nav_date: String?,
+          nav_usd: String?,
+          pending_dividends_usd: String?,
+          pending_orders: ::Array[Privy::Models::Wallets::tmmf_order_action_response],
+          pending_since: String?,
+          provider: Privy::Models::Wallets::tmmf_provider,
+          share_value_usd: String?,
+          shares: String,
+          total_position_value_usd: String?
+        ) -> void
+
+        def to_hash: -> {
+          chain: String,
+          fund: String,
+          nav_date: String?,
+          nav_usd: String?,
+          pending_dividends_usd: String?,
+          pending_orders: ::Array[Privy::Models::Wallets::tmmf_order_action_response],
+          pending_since: String?,
+          provider: Privy::Models::Wallets::tmmf_provider,
+          share_value_usd: String?,
+          shares: String,
+          total_position_value_usd: String?
+        }
+      end
+    end
+  end
+end

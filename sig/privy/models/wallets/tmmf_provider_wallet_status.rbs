@@ -1,0 +1,18 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_provider_wallet_status =
+        :created | :approved | :rejected | String
+
+      module TmmfProviderWalletStatus
+        extend Privy::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Privy::Models::Wallets::tmmf_provider_wallet_status]
+
+        CREATED: :created
+        APPROVED: :approved
+        REJECTED: :rejected
+      end
+    end
+  end
+end

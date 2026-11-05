@@ -2231,6 +2231,8 @@ module Privy
 
   class TestAccountsResponse = Privy::Models::TestAccountsResponse
 
+  class TmmfWalletUpdatedWebhookPayload = Privy::Models::TmmfWalletUpdatedWebhookPayload
+
   class TokenIdentifier = Privy::Models::TokenIdentifier
 
   class TokenOutput = Privy::Models::TokenOutput
@@ -2574,6 +2576,22 @@ module Privy
   class WalletActionSwapRejectedWebhookPayload = Privy::Models::WalletActionSwapRejectedWebhookPayload
 
   class WalletActionSwapSucceededWebhookPayload = Privy::Models::WalletActionSwapSucceededWebhookPayload
+
+  class WalletActionTmmfDepositCreatedWebhookPayload = Privy::Models::WalletActionTmmfDepositCreatedWebhookPayload
+
+  class WalletActionTmmfDepositFailedWebhookPayload = Privy::Models::WalletActionTmmfDepositFailedWebhookPayload
+
+  class WalletActionTmmfDepositRejectedWebhookPayload = Privy::Models::WalletActionTmmfDepositRejectedWebhookPayload
+
+  class WalletActionTmmfDepositSucceededWebhookPayload = Privy::Models::WalletActionTmmfDepositSucceededWebhookPayload
+
+  class WalletActionTmmfWithdrawCreatedWebhookPayload = Privy::Models::WalletActionTmmfWithdrawCreatedWebhookPayload
+
+  class WalletActionTmmfWithdrawFailedWebhookPayload = Privy::Models::WalletActionTmmfWithdrawFailedWebhookPayload
+
+  class WalletActionTmmfWithdrawRejectedWebhookPayload = Privy::Models::WalletActionTmmfWithdrawRejectedWebhookPayload
+
+  class WalletActionTmmfWithdrawSucceededWebhookPayload = Privy::Models::WalletActionTmmfWithdrawSucceededWebhookPayload
 
   class WalletActionTransferCreatedWebhookPayload = Privy::Models::WalletActionTransferCreatedWebhookPayload
 

@@ -18,8 +18,8 @@ module Privy
         # @!attribute type
         #   Type of wallet action
         #
-        #   @return [Symbol, Privy::Models::Wallets::WalletActionType, nil]
-        optional :type, enum: -> { Privy::Wallets::WalletActionType }
+        #   @return [Symbol, String, Privy::Models::Wallets::WalletActionType, nil]
+        optional :type, union: -> { Privy::Wallets::WalletActionType }
 
         # @!method initialize(cursor: nil, limit: nil, type: nil)
         #   Query parameters for listing wallet actions.
@@ -28,7 +28,7 @@ module Privy
         #
         #   @param limit [Integer]
         #
-        #   @param type [Symbol, Privy::Models::Wallets::WalletActionType] Type of wallet action
+        #   @param type [Symbol, String, Privy::Models::Wallets::WalletActionType] Type of wallet action
       end
     end
   end

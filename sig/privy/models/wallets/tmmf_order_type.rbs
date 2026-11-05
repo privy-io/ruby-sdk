@@ -1,0 +1,16 @@
+module Privy
+  module Models
+    module Wallets
+      type tmmf_order_type = :primary | :secondary
+
+      module TmmfOrderType
+        extend Privy::Internal::Type::Enum
+
+        PRIMARY: :primary
+        SECONDARY: :secondary
+
+        def self?.values: -> ::Array[Privy::Models::Wallets::tmmf_order_type]
+      end
+    end
+  end
+end
