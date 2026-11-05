@@ -11,11 +11,23 @@ module Privy
       # @return [Privy::Services::Tron]
       attr_reader :tron
 
+      # @return [Privy::Services::DepositAccounts]
+      attr_reader :deposit_accounts
+
+      # @return [Privy::Services::Payout]
+      attr_reader :payout
+
+      # @return [Privy::Services::Swap]
+      attr_reader :swap
+
       def initialize(client:, privy_client:)
         super(client: client)
         @privy_client = privy_client
         @earn = Privy::Services::Earn.new(client: client, privy_client: privy_client)
         @tron = Privy::Services::Tron.new(wallets: self)
+        @deposit_accounts = Privy::Services::DepositAccounts.new(client: client, privy_client: privy_client)
+        @payout = Privy::Services::Payout.new(client: client, privy_client: privy_client)
+        @swap = Privy::Services::Swap.new(client: client, privy_client: privy_client)
       end
 
       # Create a new wallet on the requested chain and for the requested owner.
@@ -304,6 +316,65 @@ module Privy
         super(wallet_id, combined_params)
       end
 
+      # Attach one or more automations to a wallet.
+      #
+      # @param wallet_id [String] ID of the wallet.
+      # @param wallet_attach_automations_params [Hash] Body parameters.
+      # @option wallet_attach_automations_params [Array<String>] :automation_ids Automations to attach (required).
+      # @option wallet_attach_automations_params [Hash, nil] :params Per-attachment parameters for swap automations.
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::WalletAutomationAttachmentListResponse]
+      def attach_automations(
+        wallet_id,
+        wallet_attach_automations_params:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
+        signed_automations_request(
+          wallet_id,
+          "attach",
+          wallet_attach_automations_params,
+          authorization_context: authorization_context,
+          request_expiry: request_expiry,
+          request_options: request_options
+        ) { |params| super(wallet_id, params) }
+      end
+
+      # Detach one or more automations from a wallet.
+      #
+      # @param wallet_id [String] ID of the wallet.
+      # @param wallet_detach_automations_params [Hash] Body parameters.
+      # @option wallet_detach_automations_params [Array<String>] :automation_ids Automations to detach (required).
+      # @param authorization_context [Privy::Authorization::AuthorizationContext, nil] Authorization context for owned wallets.
+      # @param request_expiry [Integer, nil] Absolute Unix-ms timestamp at which the
+      #   request expires. Defaults to the value computed by the client's
+      #   PrivyRequestExpiryOptions.
+      # @param request_options [Privy::RequestOptions, Hash, nil] Transport-level config (timeouts, retries).
+      #
+      # @return [Privy::Models::WalletAutomationSuccessResponse]
+      def detach_automations(
+        wallet_id,
+        wallet_detach_automations_params:,
+        authorization_context: nil,
+        request_expiry: nil,
+        request_options: nil
+      )
+        signed_automations_request(
+          wallet_id,
+          "detach",
+          wallet_detach_automations_params,
+          authorization_context: authorization_context,
+          request_expiry: request_expiry,
+          request_options: request_options
+        ) { |params| super(wallet_id, params) }
+      end
+
       # Export a wallet's private key or seed phrase via HPKE.
       #
       # @param wallet_id [String] ID of the wallet to export.
@@ -376,6 +447,29 @@ module Privy
           request_options: request_options
         )
         {seed_phrase: exported.fetch(:private_key)}
+      end
+
+      private
+
+      def signed_automations_request(
+        wallet_id,
+        action,
+        params,
+        authorization_context:,
+        request_expiry:,
+        request_options:
+      )
+        prepared = Privy::Authorization.prepare_request(
+          privy_client,
+          method: :post,
+          url: Privy::Authorization.signed_url(privy_client, "v1/wallets/#{wallet_id}/automations/#{action}"),
+          body: params,
+          authorization_context: authorization_context,
+          request_expiry: privy_client.compute_request_expiry(request_expiry)
+        )
+        combined_params = params.merge(request_options: request_options)
+        Privy::Authorization.merge_prepared_headers!(combined_params, prepared.headers)
+        yield(combined_params)
       end
     end
   end
