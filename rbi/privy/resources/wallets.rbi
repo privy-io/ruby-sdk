@@ -315,18 +315,22 @@ module Privy
             Privy::WalletAuthenticateRequestBody::EncryptionType::OrSymbol,
           recipient_public_key: String,
           user_jwt: String,
+          mfa_token: String,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::WalletAuthenticateWithJwtResponse::Variants)
       end
       def authenticate_with_jwt(
-        # The encryption type for the authentication response. Currently only supports
-        # HPKE.
+        # Body param: The encryption type for the authentication response. Currently only
+        # supports HPKE.
         encryption_type:,
-        # The public key of your ECDH keypair, in base64-encoded, SPKI-format, whose
-        # private key will be able to decrypt the session key.
+        # Body param: The public key of your ECDH keypair, in base64-encoded, SPKI-format,
+        # whose private key will be able to decrypt the session key.
         recipient_public_key:,
-        # The user's JWT, to be used to authenticate the user.
+        # Body param: The user's JWT, to be used to authenticate the user.
         user_jwt:,
+        # Header param: MFA token from a completed MFA verification, required on
+        # MFA-protected requests for users with MFA enrolled.
+        mfa_token: nil,
         request_options: {}
       )
       end

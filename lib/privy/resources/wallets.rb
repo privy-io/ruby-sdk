@@ -317,13 +317,15 @@ module Privy
       # Exchange a user JWT for a session key authorized to act on the user's wallets.
       # Returns the encrypted authorization key and the list of wallets it can access.
       #
-      # @overload authenticate_with_jwt(encryption_type:, recipient_public_key:, user_jwt:, request_options: {})
+      # @overload authenticate_with_jwt(encryption_type:, recipient_public_key:, user_jwt:, mfa_token: nil, request_options: {})
       #
-      # @param encryption_type [Symbol, Privy::Models::WalletAuthenticateRequestBody::EncryptionType] The encryption type for the authentication response. Currently only supports HPK
+      # @param encryption_type [Symbol, Privy::Models::WalletAuthenticateRequestBody::EncryptionType] Body param: The encryption type for the authentication response. Currently only
       #
-      # @param recipient_public_key [String] The public key of your ECDH keypair, in base64-encoded, SPKI-format, whose priva
+      # @param recipient_public_key [String] Body param: The public key of your ECDH keypair, in base64-encoded, SPKI-format,
       #
-      # @param user_jwt [String] The user's JWT, to be used to authenticate the user.
+      # @param user_jwt [String] Body param: The user's JWT, to be used to authenticate the user.
+      #
+      # @param mfa_token [String] Header param: MFA token from a completed MFA verification, required on MFA-prote
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -332,10 +334,12 @@ module Privy
       # @see Privy::Models::WalletAuthenticateWithJwtParams
       def authenticate_with_jwt(params)
         parsed, options = Privy::WalletAuthenticateWithJwtParams.dump_request(params)
+        header_params = {mfa_token: "privy-mfa-token"}
         @client.request(
           method: :post,
           path: "v1/wallets/authenticate",
-          body: parsed,
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
           model: Privy::WalletAuthenticateWithJwtResponse,
           options: options
         )

@@ -97,6 +97,7 @@ module Privy
         encryption_type: Privy::Models::WalletAuthenticateRequestBody::encryption_type,
         recipient_public_key: String,
         user_jwt: String,
+        ?mfa_token: String,
         ?request_options: Privy::request_opts
       ) -> Privy::Models::wallet_authenticate_with_jwt_response
 
