@@ -17,6 +17,7 @@ class Privy::Test::Resources::OrganizationsTest < Privy::Test::ResourceTest
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       }
@@ -37,6 +38,7 @@ class Privy::Test::Resources::OrganizationsTest < Privy::Test::ResourceTest
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       }
@@ -64,6 +66,7 @@ class Privy::Test::Resources::OrganizationsTest < Privy::Test::ResourceTest
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       }
@@ -94,6 +97,7 @@ class Privy::Test::Resources::OrganizationsTest < Privy::Test::ResourceTest
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       }

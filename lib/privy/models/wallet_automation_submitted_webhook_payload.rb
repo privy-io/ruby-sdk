@@ -21,6 +21,13 @@ module Privy
       #   @return [String]
       required :created_at, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute trigger_asset_address
       #   Contract address of the triggering deposit's asset, or 'native-token' for the
       #   native asset.
@@ -58,7 +65,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(action_id:, automation_id:, created_at:, trigger_asset_address:, trigger_caip2:, trigger_id:, trigger_tx_hash:, type:, wallet_id:)
+      # @!method initialize(action_id:, automation_id:, created_at:, event_id:, trigger_asset_address:, trigger_caip2:, trigger_id:, trigger_tx_hash:, type:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletAutomationSubmittedWebhookPayload} for more details.
       #
@@ -69,6 +76,8 @@ module Privy
       #   @param automation_id [String] The ID of the automation that fired.
       #
       #   @param created_at [String] ISO 8601 timestamp of when the automation was submitted.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param trigger_asset_address [String] Contract address of the triggering deposit's asset, or 'native-token' for the na
       #

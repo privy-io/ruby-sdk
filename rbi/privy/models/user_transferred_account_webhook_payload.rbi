@@ -22,6 +22,11 @@ module Privy
       end
       attr_accessor :deleted_user
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # A reference to a user by their unique identifier.
       sig { returns(Privy::UserReference) }
       attr_reader :from_user
@@ -78,6 +83,7 @@ module Privy
             ),
           deleted_user:
             Privy::UserTransferredAccountWebhookPayload::DeletedUser::OrBoolean,
+          event_id: String,
           from_user: Privy::UserReference::OrHash,
           to_user: Privy::User::OrHash,
           type: Privy::UserTransferredAccountWebhookPayload::Type::OrSymbol
@@ -87,6 +93,9 @@ module Privy
         # A linked account for the user.
         account:,
         deleted_user:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # A reference to a user by their unique identifier.
         from_user:,
         # A Privy user object.
@@ -102,6 +111,7 @@ module Privy
             account: Privy::LinkedAccount::Variants,
             deleted_user:
               Privy::UserTransferredAccountWebhookPayload::DeletedUser::TaggedBoolean,
+            event_id: String,
             from_user: Privy::UserReference,
             to_user: Privy::User,
             type:

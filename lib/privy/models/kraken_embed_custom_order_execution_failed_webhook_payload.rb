@@ -9,6 +9,13 @@ module Privy
       #   @return [String]
       required :custom_order_id, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute failed_at
       #   ISO 8601 timestamp of when the custom order execution failed.
       #
@@ -34,7 +41,7 @@ module Privy
       #   @return [String]
       required :user_id, String
 
-      # @!method initialize(custom_order_id:, failed_at:, reason:, type:, user_id:)
+      # @!method initialize(custom_order_id:, event_id:, failed_at:, reason:, type:, user_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KrakenEmbedCustomOrderExecutionFailedWebhookPayload} for more
       #   details.
@@ -42,6 +49,8 @@ module Privy
       #   Payload for the kraken_embed.custom_order.execution_failed webhook event.
       #
       #   @param custom_order_id [String] The ID of the custom order that failed to execute.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param failed_at [String] ISO 8601 timestamp of when the custom order execution failed.
       #

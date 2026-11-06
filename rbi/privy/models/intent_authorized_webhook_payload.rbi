@@ -16,6 +16,11 @@ module Privy
       sig { returns(Float) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Unix timestamp when the intent expires.
       sig { returns(Float) }
       attr_accessor :expires_at
@@ -59,6 +64,7 @@ module Privy
         params(
           authorized_at: Float,
           created_at: Float,
+          event_id: String,
           expires_at: Float,
           intent_id: String,
           intent_type: T.any(Privy::IntentType::OrSymbol, String),
@@ -78,6 +84,9 @@ module Privy
         authorized_at:,
         # Unix timestamp when the intent was created.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Unix timestamp when the intent expires.
         expires_at:,
         # The unique ID of the intent.
@@ -102,6 +111,7 @@ module Privy
           {
             authorized_at: Float,
             created_at: Float,
+            event_id: String,
             expires_at: Float,
             intent_id: String,
             intent_type: Privy::IntentType::Variants,

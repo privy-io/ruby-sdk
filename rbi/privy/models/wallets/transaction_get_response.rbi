@@ -66,7 +66,7 @@ module Privy
           attr_accessor :created_at
 
           # Details of a wallet transaction, varying by transaction type.
-          sig { returns(Privy::TransactionDetail::Variants) }
+          sig { returns(T.nilable(Privy::TransactionDetail::Variants)) }
           attr_accessor :details
 
           # Privy's ID for the transaction, or `null` if the transaction was not broadcasted
@@ -104,9 +104,11 @@ module Privy
               caip2: String,
               created_at: Float,
               details:
-                T.any(
-                  Privy::TransferSentTransactionDetail::OrHash,
-                  Privy::TransferReceivedTransactionDetail::OrHash
+                T.nilable(
+                  T.any(
+                    Privy::TransferSentTransactionDetail::OrHash,
+                    Privy::TransferReceivedTransactionDetail::OrHash
+                  )
                 ),
               privy_transaction_id: T.nilable(String),
               status: Privy::BlockchainTransactionStatus::OrSymbol,
@@ -141,7 +143,7 @@ module Privy
               {
                 caip2: String,
                 created_at: Float,
-                details: Privy::TransactionDetail::Variants,
+                details: T.nilable(Privy::TransactionDetail::Variants),
                 privy_transaction_id: T.nilable(String),
                 status: Privy::BlockchainTransactionStatus::TaggedSymbol,
                 transaction_hash: T.nilable(String),

@@ -8,6 +8,11 @@ module Privy
           T.any(Privy::UserCreatedWebhookPayload, Privy::Internal::AnyHash)
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig { returns(Privy::UserCreatedWebhookPayload::Type::TaggedSymbol) }
       attr_accessor :type
@@ -22,11 +27,15 @@ module Privy
       # Payload for the user.created webhook event.
       sig do
         params(
+          event_id: String,
           type: Privy::UserCreatedWebhookPayload::Type::OrSymbol,
           user: Privy::User::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # A Privy user object.
@@ -37,6 +46,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             type: Privy::UserCreatedWebhookPayload::Type::TaggedSymbol,
             user: Privy::User
           }

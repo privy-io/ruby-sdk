@@ -17,6 +17,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       sig { returns(String) }
       attr_accessor :owner
 
@@ -43,6 +48,7 @@ module Privy
         params(
           assets: String,
           caip2: String,
+          event_id: String,
           owner: String,
           receiver: String,
           sender: String,
@@ -54,6 +60,9 @@ module Privy
       def self.new(
         assets:,
         caip2:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         owner:,
         receiver:,
         sender:,
@@ -69,6 +78,7 @@ module Privy
           {
             assets: String,
             caip2: String,
+            event_id: String,
             owner: String,
             receiver: String,
             sender: String,

@@ -8,6 +8,11 @@ module Privy
           T.any(Privy::MfaDisabledWebhookPayload, Privy::Internal::AnyHash)
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # A multi-factor authentication method supported by the app.
       sig { returns(Privy::MfaMethod::TaggedSymbol) }
       attr_accessor :method_
@@ -23,12 +28,16 @@ module Privy
       # Payload for the mfa.disabled webhook event.
       sig do
         params(
+          event_id: String,
           method_: Privy::MfaMethod::OrSymbol,
           type: Privy::MfaDisabledWebhookPayload::Type::OrSymbol,
           user_id: String
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # A multi-factor authentication method supported by the app.
         method_:,
         # The type of webhook event.
@@ -41,6 +50,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             method_: Privy::MfaMethod::TaggedSymbol,
             type: Privy::MfaDisabledWebhookPayload::Type::TaggedSymbol,
             user_id: String

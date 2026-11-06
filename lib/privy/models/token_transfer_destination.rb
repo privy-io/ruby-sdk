@@ -4,7 +4,8 @@ module Privy
   module Models
     class TokenTransferDestination < Privy::Internal::Type::BaseModel
       # @!attribute address
-      #   Recipient address (hex for EVM, base58 for Solana, base58check for Tron)
+      #   Stellar account address: an ed25519 public key in StrKey encoding, starting with
+      #   G.
       #
       #   @return [String]
       required :address, String
@@ -30,7 +31,7 @@ module Privy
       #   The destination address for a token transfer. Optionally specify a different
       #   asset or chain for cross-asset or cross-chain transfers.
       #
-      #   @param address [String] Recipient address (hex for EVM, base58 for Solana, base58check for Tron)
+      #   @param address [String] Stellar account address: an ed25519 public key in StrKey encoding, starting with
       #
       #   @param asset [String] The destination asset. Required for cross-asset transfers (e.g., source 'usdt' t
       #

@@ -5,6 +5,7 @@ module Privy
         changes: ::Hash[Symbol, ::Array[top]],
         data: Privy::UserKYCUpdatedData,
         environment: Privy::Models::kyx_environment,
+        event_id: String,
         provider: Privy::Models::kyx_provider,
         type: Privy::Models::UserKYCUpdatedWebhookEvent::type_,
         user_id: String
@@ -17,6 +18,8 @@ module Privy
 
       attr_accessor environment: Privy::Models::kyx_environment
 
+      attr_accessor event_id: String
+
       attr_accessor provider: Privy::Models::kyx_provider
 
       attr_accessor type: Privy::Models::UserKYCUpdatedWebhookEvent::type_
@@ -27,6 +30,7 @@ module Privy
         changes: ::Hash[Symbol, ::Array[top]],
         data: Privy::UserKYCUpdatedData,
         environment: Privy::Models::kyx_environment,
+        event_id: String,
         provider: Privy::Models::kyx_provider,
         type: Privy::Models::UserKYCUpdatedWebhookEvent::type_,
         user_id: String
@@ -36,6 +40,7 @@ module Privy
         changes: ::Hash[Symbol, ::Array[top]],
         data: Privy::UserKYCUpdatedData,
         environment: Privy::Models::kyx_environment,
+        event_id: String,
         provider: Privy::Models::kyx_provider,
         type: Privy::Models::UserKYCUpdatedWebhookEvent::type_,
         user_id: String

@@ -3,6 +3,13 @@
 module Privy
   module Models
     class KrakenEmbedQuoteExecutionFailedWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute failed_at
       #   ISO 8601 timestamp of when the quote execution failed.
       #
@@ -34,11 +41,13 @@ module Privy
       #   @return [String]
       required :user_id, String
 
-      # @!method initialize(failed_at:, quote_id:, reason:, type:, user_id:)
+      # @!method initialize(event_id:, failed_at:, quote_id:, reason:, type:, user_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KrakenEmbedQuoteExecutionFailedWebhookPayload} for more details.
       #
       #   Payload for the kraken_embed.quote.execution_failed webhook event.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param failed_at [String] ISO 8601 timestamp of when the quote execution failed.
       #

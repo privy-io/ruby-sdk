@@ -11,6 +11,11 @@ module Privy
           )
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # ISO 8601 timestamp of when the quote execution failed.
       sig { returns(String) }
       attr_accessor :failed_at
@@ -39,6 +44,7 @@ module Privy
       # Payload for the kraken_embed.quote.execution_failed webhook event.
       sig do
         params(
+          event_id: String,
           failed_at: String,
           quote_id: String,
           reason: String,
@@ -48,6 +54,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # ISO 8601 timestamp of when the quote execution failed.
         failed_at:,
         # The ID of the quote that failed to execute.
@@ -65,6 +74,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             failed_at: String,
             quote_id: String,
             reason: String,

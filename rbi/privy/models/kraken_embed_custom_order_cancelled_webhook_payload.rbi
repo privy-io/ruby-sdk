@@ -19,6 +19,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :custom_order_id
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # A human-readable description of why the custom order was cancelled. Intended for
       # display and logging purposes only.
       sig { returns(String) }
@@ -41,6 +46,7 @@ module Privy
         params(
           cancelled_at: String,
           custom_order_id: String,
+          event_id: String,
           reason: String,
           type:
             Privy::KrakenEmbedCustomOrderCancelledWebhookPayload::Type::OrSymbol,
@@ -52,6 +58,9 @@ module Privy
         cancelled_at:,
         # The ID of the cancelled custom order.
         custom_order_id:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # A human-readable description of why the custom order was cancelled. Intended for
         # display and logging purposes only.
         reason:,
@@ -67,6 +76,7 @@ module Privy
           {
             cancelled_at: String,
             custom_order_id: String,
+            event_id: String,
             reason: String,
             type:
               Privy::KrakenEmbedCustomOrderCancelledWebhookPayload::Type::OrSymbol,

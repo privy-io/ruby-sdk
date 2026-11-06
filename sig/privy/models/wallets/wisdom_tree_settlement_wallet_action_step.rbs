@@ -5,8 +5,8 @@ module Privy
         {
           :caip2 => String?,
           order_type: Privy::Models::Wallets::tmmf_order_type?,
-          received: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received,
-          requested: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested,
+          received: Privy::Models::Wallets::wisdom_tree_settlement_received_amount?,
+          requested: Privy::Models::Wallets::wisdom_tree_settlement_requested_amount?,
           settlement_transaction_hash: String?,
           status: Privy::Models::Wallets::wisdom_tree_settlement_wallet_action_step_status,
           type: Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::type_,
@@ -18,9 +18,9 @@ module Privy
 
         attr_accessor order_type: Privy::Models::Wallets::tmmf_order_type?
 
-        attr_accessor received: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received
+        attr_accessor received: Privy::Models::Wallets::wisdom_tree_settlement_received_amount?
 
-        attr_accessor requested: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested
+        attr_accessor requested: Privy::Models::Wallets::wisdom_tree_settlement_requested_amount?
 
         attr_accessor settlement_transaction_hash: String?
 
@@ -37,8 +37,8 @@ module Privy
         def initialize: (
           caip2: String?,
           order_type: Privy::Models::Wallets::tmmf_order_type?,
-          received: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received,
-          requested: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested,
+          received: Privy::Models::Wallets::wisdom_tree_settlement_received_amount?,
+          requested: Privy::Models::Wallets::wisdom_tree_settlement_requested_amount?,
           settlement_transaction_hash: String?,
           status: Privy::Models::Wallets::wisdom_tree_settlement_wallet_action_step_status,
           type: Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::type_,
@@ -48,29 +48,13 @@ module Privy
         def to_hash: -> {
           :caip2 => String?,
           order_type: Privy::Models::Wallets::tmmf_order_type?,
-          received: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received,
-          requested: Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested,
+          received: Privy::Models::Wallets::wisdom_tree_settlement_received_amount?,
+          requested: Privy::Models::Wallets::wisdom_tree_settlement_requested_amount?,
           settlement_transaction_hash: String?,
           status: Privy::Models::Wallets::wisdom_tree_settlement_wallet_action_step_status,
           type: Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::type_,
           failure_reason: Privy::Wallets::FailureReason
         }
-
-        type received = {  }
-
-        class Received < Privy::Internal::Type::BaseModel
-          def initialize: -> void
-
-          def to_hash: -> {  }
-        end
-
-        type requested = {  }
-
-        class Requested < Privy::Internal::Type::BaseModel
-          def initialize: -> void
-
-          def to_hash: -> {  }
-        end
 
         type type_ = :wisdomtree_settlement
 

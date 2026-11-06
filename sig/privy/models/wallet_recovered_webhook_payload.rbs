@@ -2,6 +2,7 @@ module Privy
   module Models
     type wallet_recovered_webhook_payload =
       {
+        event_id: String,
         type: Privy::Models::WalletRecoveredWebhookPayload::type_,
         user_id: String,
         wallet_address: String,
@@ -9,6 +10,8 @@ module Privy
       }
 
     class WalletRecoveredWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor event_id: String
+
       attr_accessor type: Privy::Models::WalletRecoveredWebhookPayload::type_
 
       attr_accessor user_id: String
@@ -18,6 +21,7 @@ module Privy
       attr_accessor wallet_id: String
 
       def initialize: (
+        event_id: String,
         type: Privy::Models::WalletRecoveredWebhookPayload::type_,
         user_id: String,
         wallet_address: String,
@@ -25,6 +29,7 @@ module Privy
       ) -> void
 
       def to_hash: -> {
+        event_id: String,
         type: Privy::Models::WalletRecoveredWebhookPayload::type_,
         user_id: String,
         wallet_address: String,

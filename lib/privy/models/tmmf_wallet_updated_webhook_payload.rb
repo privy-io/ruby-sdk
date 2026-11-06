@@ -21,6 +21,13 @@ module Privy
       #   @return [Integer]
       required :created_at, Integer
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute provider
       #   The fund provider.
       #
@@ -58,7 +65,7 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(address:, chain:, created_at:, provider:, status:, type:, updated_at:, user_id:, wallet_id:)
+      # @!method initialize(address:, chain:, created_at:, event_id:, provider:, status:, type:, updated_at:, user_id:, wallet_id:)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TmmfWalletUpdatedWebhookPayload} for more details.
       #
@@ -70,6 +77,8 @@ module Privy
       #   @param chain [String] Chain the fund is held on, e.g. "ethereum_sepolia".
       #
       #   @param created_at [Integer] Unix timestamp in milliseconds when the wallet registration was created.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param provider [Symbol, String, Privy::Models::Wallets::TmmfProvider] The fund provider.
       #

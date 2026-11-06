@@ -23,6 +23,11 @@ module Privy
       sig { returns(Integer) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The fund provider.
       sig { returns(Privy::Wallets::TmmfProvider::Variants) }
       attr_accessor :provider
@@ -59,6 +64,7 @@ module Privy
           address: String,
           chain: String,
           created_at: Integer,
+          event_id: String,
           provider: T.any(Privy::Wallets::TmmfProvider::OrSymbol, String),
           status:
             T.nilable(
@@ -77,6 +83,9 @@ module Privy
         chain:,
         # Unix timestamp in milliseconds when the wallet registration was created.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The fund provider.
         provider:,
         # A registered wallet's status with its tMMF provider, read live from the
@@ -99,6 +108,7 @@ module Privy
             address: String,
             chain: String,
             created_at: Integer,
+            event_id: String,
             provider: Privy::Wallets::TmmfProvider::Variants,
             status:
               T.nilable(Privy::Wallets::TmmfProviderWalletStatus::Variants),

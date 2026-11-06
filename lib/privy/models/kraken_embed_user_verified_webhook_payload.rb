@@ -3,6 +3,13 @@
 module Privy
   module Models
     class KrakenEmbedUserVerifiedWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute type
       #   The type of webhook event.
       #
@@ -21,8 +28,13 @@ module Privy
       #   @return [String]
       required :verified_at, String
 
-      # @!method initialize(type:, user_id:, verified_at:)
+      # @!method initialize(event_id:, type:, user_id:, verified_at:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::KrakenEmbedUserVerifiedWebhookPayload} for more details.
+      #
       #   Payload for the kraken_embed.user.verified webhook event.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param type [Symbol, Privy::Models::KrakenEmbedUserVerifiedWebhookPayload::Type] The type of webhook event.
       #

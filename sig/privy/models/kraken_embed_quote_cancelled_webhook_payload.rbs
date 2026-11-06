@@ -3,6 +3,7 @@ module Privy
     type kraken_embed_quote_cancelled_webhook_payload =
       {
         cancelled_at: String,
+        event_id: String,
         quote_id: String,
         reason: String,
         type: Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload::type_,
@@ -11,6 +12,8 @@ module Privy
 
     class KrakenEmbedQuoteCancelledWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor cancelled_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor quote_id: String
 
@@ -22,6 +25,7 @@ module Privy
 
       def initialize: (
         cancelled_at: String,
+        event_id: String,
         quote_id: String,
         reason: String,
         type: Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload::type_,
@@ -30,6 +34,7 @@ module Privy
 
       def to_hash: -> {
         cancelled_at: String,
+        event_id: String,
         quote_id: String,
         reason: String,
         type: Privy::Models::KrakenEmbedQuoteCancelledWebhookPayload::type_,

@@ -4,8 +4,8 @@ module Privy
   module Models
     class CustomTokenTransferSource < Privy::Internal::Type::BaseModel
       # @!attribute asset_address
-      #   The token contract address (EVM) or mint address (Solana) of the asset to
-      #   transfer.
+      #   Stellar account address: an ed25519 public key in StrKey encoding, starting with
+      #   G.
       #
       #   @return [String]
       required :asset_address, String
@@ -36,7 +36,7 @@ module Privy
       #   Source for a transfer identified by a token contract address (EVM) or mint
       #   address (Solana). Use this variant for tokens that are not first-class assets.
       #
-      #   @param asset_address [String] The token contract address (EVM) or mint address (Solana) of the asset to transf
+      #   @param asset_address [String] Stellar account address: an ed25519 public key in StrKey encoding, starting with
       #
       #   @param chain [String] The blockchain network on which to perform the transfer. Supported chains includ
       #

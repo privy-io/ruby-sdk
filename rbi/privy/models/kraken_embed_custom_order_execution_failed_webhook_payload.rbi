@@ -15,6 +15,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :custom_order_id
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # ISO 8601 timestamp of when the custom order execution failed.
       sig { returns(String) }
       attr_accessor :failed_at
@@ -40,6 +45,7 @@ module Privy
       sig do
         params(
           custom_order_id: String,
+          event_id: String,
           failed_at: String,
           reason: String,
           type:
@@ -50,6 +56,9 @@ module Privy
       def self.new(
         # The ID of the custom order that failed to execute.
         custom_order_id:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # ISO 8601 timestamp of when the custom order execution failed.
         failed_at:,
         # A human-readable description of why the custom order execution failed. Intended
@@ -66,6 +75,7 @@ module Privy
         override.returns(
           {
             custom_order_id: String,
+            event_id: String,
             failed_at: String,
             reason: String,
             type:

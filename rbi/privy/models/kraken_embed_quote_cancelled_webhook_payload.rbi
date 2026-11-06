@@ -15,6 +15,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :cancelled_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The ID of the cancelled quote.
       sig { returns(String) }
       attr_accessor :quote_id
@@ -38,6 +43,7 @@ module Privy
       sig do
         params(
           cancelled_at: String,
+          event_id: String,
           quote_id: String,
           reason: String,
           type: Privy::KrakenEmbedQuoteCancelledWebhookPayload::Type::OrSymbol,
@@ -47,6 +53,9 @@ module Privy
       def self.new(
         # ISO 8601 timestamp of when the quote was cancelled.
         cancelled_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The ID of the cancelled quote.
         quote_id:,
         # A human-readable description of why the quote was cancelled. Intended for
@@ -63,6 +72,7 @@ module Privy
         override.returns(
           {
             cancelled_at: String,
+            event_id: String,
             quote_id: String,
             reason: String,
             type:

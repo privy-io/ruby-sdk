@@ -2,6 +2,7 @@ module Privy
   module Models
     type kraken_embed_quote_executed_webhook_payload =
       {
+        event_id: String,
         executed_at: String,
         quote_id: String,
         type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_,
@@ -9,6 +10,8 @@ module Privy
       }
 
     class KrakenEmbedQuoteExecutedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor event_id: String
+
       attr_accessor executed_at: String
 
       attr_accessor quote_id: String
@@ -18,6 +21,7 @@ module Privy
       attr_accessor user_id: String
 
       def initialize: (
+        event_id: String,
         executed_at: String,
         quote_id: String,
         type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_,
@@ -25,6 +29,7 @@ module Privy
       ) -> void
 
       def to_hash: -> {
+        event_id: String,
         executed_at: String,
         quote_id: String,
         type: Privy::Models::KrakenEmbedQuoteExecutedWebhookPayload::type_,

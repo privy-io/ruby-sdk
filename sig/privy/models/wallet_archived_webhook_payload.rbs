@@ -4,6 +4,7 @@ module Privy
       {
         archived_at: Float,
         chain_type: String,
+        event_id: String,
         type: Privy::Models::WalletArchivedWebhookPayload::type_,
         wallet_address: String,
         wallet_id: String
@@ -14,6 +15,8 @@ module Privy
 
       attr_accessor chain_type: String
 
+      attr_accessor event_id: String
+
       attr_accessor type: Privy::Models::WalletArchivedWebhookPayload::type_
 
       attr_accessor wallet_address: String
@@ -23,6 +26,7 @@ module Privy
       def initialize: (
         archived_at: Float,
         chain_type: String,
+        event_id: String,
         type: Privy::Models::WalletArchivedWebhookPayload::type_,
         wallet_address: String,
         wallet_id: String
@@ -31,6 +35,7 @@ module Privy
       def to_hash: -> {
         archived_at: Float,
         chain_type: String,
+        event_id: String,
         type: Privy::Models::WalletArchivedWebhookPayload::type_,
         wallet_address: String,
         wallet_id: String

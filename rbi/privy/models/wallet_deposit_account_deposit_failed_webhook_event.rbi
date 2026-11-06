@@ -32,6 +32,11 @@ module Privy
       sig { returns(Privy::Environment::TaggedSymbol) }
       attr_accessor :environment
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Supported fiat orchestration providers.
       sig { returns(Privy::OrchestrationProvider::TaggedSymbol) }
       attr_accessor :provider
@@ -62,6 +67,7 @@ module Privy
           deposit_type:
             Privy::WalletDepositAccountDepositFailedWebhookEvent::DepositType::OrSymbol,
           environment: Privy::Environment::OrSymbol,
+          event_id: String,
           provider: Privy::OrchestrationProvider::OrSymbol,
           type:
             Privy::WalletDepositAccountDepositFailedWebhookEvent::Type::OrSymbol,
@@ -76,6 +82,9 @@ module Privy
         deposit_type:,
         # The Privy API environment.
         environment:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Supported fiat orchestration providers.
         provider:,
         # The type of webhook event.
@@ -95,6 +104,7 @@ module Privy
             deposit_type:
               Privy::WalletDepositAccountDepositFailedWebhookEvent::DepositType::TaggedSymbol,
             environment: Privy::Environment::TaggedSymbol,
+            event_id: String,
             provider: Privy::OrchestrationProvider::TaggedSymbol,
             type:
               Privy::WalletDepositAccountDepositFailedWebhookEvent::Type::TaggedSymbol,

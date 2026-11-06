@@ -8,7 +8,8 @@ module Privy
           T.any(Privy::TokenTransferDestination, Privy::Internal::AnyHash)
         end
 
-      # Recipient address (hex for EVM, base58 for Solana, base58check for Tron)
+      # Stellar account address: an ed25519 public key in StrKey encoding, starting with
+      # G.
       sig { returns(String) }
       attr_accessor :address
 
@@ -36,7 +37,8 @@ module Privy
         )
       end
       def self.new(
-        # Recipient address (hex for EVM, base58 for Solana, base58check for Tron)
+        # Stellar account address: an ed25519 public key in StrKey encoding, starting with
+        # G.
         address:,
         # The destination asset. Required for cross-asset transfers (e.g., source 'usdt'
         # to destination 'usdc').

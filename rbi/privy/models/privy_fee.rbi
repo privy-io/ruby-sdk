@@ -12,6 +12,8 @@ module Privy
       sig { returns(Privy::PrivyFee::Type::TaggedSymbol) }
       attr_accessor :type
 
+      # Stellar account address: an ed25519 public key in StrKey encoding, starting with
+      # G.
       sig { returns(T.nilable(String)) }
       attr_reader :recipient
 
@@ -30,6 +32,8 @@ module Privy
         # Amount in USD (in decimals).
         amount:,
         type:,
+        # Stellar account address: an ed25519 public key in StrKey encoding, starting with
+        # G.
         recipient: nil
       )
       end

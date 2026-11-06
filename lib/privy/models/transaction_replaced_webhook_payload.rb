@@ -10,6 +10,13 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute transaction_hash
       #   The blockchain transaction hash.
       #
@@ -41,13 +48,15 @@ module Privy
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(caip2:, transaction_hash:, transaction_id:, type:, wallet_id:, reference_id: nil)
+      # @!method initialize(caip2:, event_id:, transaction_hash:, transaction_id:, type:, wallet_id:, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TransactionReplacedWebhookPayload} for more details.
       #
       #   Payload for the transaction.replaced webhook event.
       #
       #   @param caip2 [String] The CAIP-2 chain identifier (e.g., eip155:4217 for Tempo, eip155:1 for Ethereum
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param transaction_hash [String] The blockchain transaction hash.
       #

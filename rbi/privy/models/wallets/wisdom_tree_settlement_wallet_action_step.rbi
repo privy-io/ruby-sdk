@@ -25,35 +25,23 @@ module Privy
         # withdrawal.
         sig do
           returns(
-            Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received
+            T.nilable(
+              Privy::Wallets::WisdomTreeSettlementReceivedAmount::Variants
+            )
           )
         end
-        attr_reader :received
-
-        sig do
-          params(
-            received:
-              Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received::OrHash
-          ).void
-        end
-        attr_writer :received
+        attr_accessor :received
 
         # What a tMMF order sends: the deposit asset for a deposit, fund shares for a
         # withdrawal.
         sig do
           returns(
-            Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested
+            T.nilable(
+              Privy::Wallets::WisdomTreeSettlementRequestedAmount::Variants
+            )
           )
         end
-        attr_reader :requested
-
-        sig do
-          params(
-            requested:
-              Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested::OrHash
-          ).void
-        end
-        attr_writer :requested
+        attr_accessor :requested
 
         # The transaction that delivered the received asset. Null until Privy verifies the
         # settlement.
@@ -91,9 +79,19 @@ module Privy
             caip2: T.nilable(String),
             order_type: T.nilable(Privy::Wallets::TmmfOrderType::OrSymbol),
             received:
-              Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received::OrHash,
+              T.nilable(
+                T.any(
+                  Privy::Wallets::WisdomTreeSettlementFundAmount::OrHash,
+                  Privy::Wallets::WisdomTreeSettlementWithdrawAssetAmount::OrHash
+                )
+              ),
             requested:
-              Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested::OrHash,
+              T.nilable(
+                T.any(
+                  Privy::Wallets::WisdomTreeSettlementDepositAssetAmount::OrHash,
+                  Privy::Wallets::WisdomTreeSettlementFundAmount::OrHash
+                )
+              ),
             settlement_transaction_hash: T.nilable(String),
             status:
               T.any(
@@ -135,9 +133,13 @@ module Privy
               order_type:
                 T.nilable(Privy::Wallets::TmmfOrderType::TaggedSymbol),
               received:
-                Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received,
+                T.nilable(
+                  Privy::Wallets::WisdomTreeSettlementReceivedAmount::Variants
+                ),
               requested:
-                Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested,
+                T.nilable(
+                  Privy::Wallets::WisdomTreeSettlementRequestedAmount::Variants
+                ),
               settlement_transaction_hash: T.nilable(String),
               status:
                 Privy::Wallets::WisdomTreeSettlementWalletActionStepStatus::Variants,
@@ -148,46 +150,6 @@ module Privy
           )
         end
         def to_hash
-        end
-
-        class Received < Privy::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received,
-                Privy::Internal::AnyHash
-              )
-            end
-
-          # What a tMMF order receives: fund shares for a deposit, the withdraw asset for a
-          # withdrawal.
-          sig { returns(T.attached_class) }
-          def self.new
-          end
-
-          sig { override.returns({}) }
-          def to_hash
-          end
-        end
-
-        class Requested < Privy::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested,
-                Privy::Internal::AnyHash
-              )
-            end
-
-          # What a tMMF order sends: the deposit asset for a deposit, fund shares for a
-          # withdrawal.
-          sig { returns(T.attached_class) }
-          def self.new
-          end
-
-          sig { override.returns({}) }
-          def to_hash
-          end
         end
 
         module Type

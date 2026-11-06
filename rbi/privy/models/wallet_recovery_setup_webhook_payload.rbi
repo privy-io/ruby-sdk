@@ -11,6 +11,11 @@ module Privy
           )
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Recovery method types for embedded wallet recovery setup webhooks.
       sig { returns(Privy::WalletRecoverySetupMethod::TaggedSymbol) }
       attr_accessor :method_
@@ -36,6 +41,7 @@ module Privy
       # Payload for the wallet.recovery_setup webhook event.
       sig do
         params(
+          event_id: String,
           method_: Privy::WalletRecoverySetupMethod::OrSymbol,
           type: Privy::WalletRecoverySetupWebhookPayload::Type::OrSymbol,
           user_id: String,
@@ -44,6 +50,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Recovery method types for embedded wallet recovery setup webhooks.
         method_:,
         # The type of webhook event.
@@ -60,6 +69,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             method_: Privy::WalletRecoverySetupMethod::TaggedSymbol,
             type: Privy::WalletRecoverySetupWebhookPayload::Type::TaggedSymbol,
             user_id: String,

@@ -4,6 +4,7 @@ module Privy
       {
         cancelled_at: String,
         custom_order_id: String,
+        event_id: String,
         reason: String,
         type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_,
         user_id: String
@@ -14,6 +15,8 @@ module Privy
 
       attr_accessor custom_order_id: String
 
+      attr_accessor event_id: String
+
       attr_accessor reason: String
 
       attr_accessor type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_
@@ -23,6 +26,7 @@ module Privy
       def initialize: (
         cancelled_at: String,
         custom_order_id: String,
+        event_id: String,
         reason: String,
         type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_,
         user_id: String
@@ -31,6 +35,7 @@ module Privy
       def to_hash: -> {
         cancelled_at: String,
         custom_order_id: String,
+        event_id: String,
         reason: String,
         type: Privy::Models::KrakenEmbedCustomOrderCancelledWebhookPayload::type_,
         user_id: String

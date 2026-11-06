@@ -3,6 +3,7 @@ module Privy
     type kraken_embed_user_closed_webhook_payload =
       {
         closed_at: String,
+        event_id: String,
         type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_,
         user_id: String
       }
@@ -10,18 +11,22 @@ module Privy
     class KrakenEmbedUserClosedWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor closed_at: String
 
+      attr_accessor event_id: String
+
       attr_accessor type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_
 
       attr_accessor user_id: String
 
       def initialize: (
         closed_at: String,
+        event_id: String,
         type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_,
         user_id: String
       ) -> void
 
       def to_hash: -> {
         closed_at: String,
+        event_id: String,
         type: Privy::Models::KrakenEmbedUserClosedWebhookPayload::type_,
         user_id: String
       }

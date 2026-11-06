@@ -2,21 +2,26 @@ module Privy
   module Models
     type user_created_webhook_payload =
       {
+        event_id: String,
         type: Privy::Models::UserCreatedWebhookPayload::type_,
         user: Privy::User
       }
 
     class UserCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor event_id: String
+
       attr_accessor type: Privy::Models::UserCreatedWebhookPayload::type_
 
       attr_accessor user: Privy::User
 
       def initialize: (
+        event_id: String,
         type: Privy::Models::UserCreatedWebhookPayload::type_,
         user: Privy::User
       ) -> void
 
       def to_hash: -> {
+        event_id: String,
         type: Privy::Models::UserCreatedWebhookPayload::type_,
         user: Privy::User
       }

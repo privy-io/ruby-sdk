@@ -16,6 +16,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The blockchain transaction hash.
       sig { returns(String) }
       attr_accessor :transaction_hash
@@ -58,6 +63,7 @@ module Privy
       sig do
         params(
           caip2: String,
+          event_id: String,
           transaction_hash: String,
           transaction_id: String,
           transaction_request:
@@ -71,6 +77,9 @@ module Privy
         # The CAIP-2 chain identifier (e.g., eip155:4217 for Tempo, eip155:1 for Ethereum
         # mainnet).
         caip2:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The blockchain transaction hash.
         transaction_hash:,
         # The Privy-assigned ID for this transaction.
@@ -92,6 +101,7 @@ module Privy
         override.returns(
           {
             caip2: String,
+            event_id: String,
             transaction_hash: String,
             transaction_id: String,
             transaction_request: Privy::UnsignedStandardEthereumTransaction,

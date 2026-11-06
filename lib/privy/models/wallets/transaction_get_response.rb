@@ -34,8 +34,8 @@ module Privy
           # @!attribute details
           #   Details of a wallet transaction, varying by transaction type.
           #
-          #   @return [Privy::Models::TransferSentTransactionDetail, Privy::Models::TransferReceivedTransactionDetail]
-          required :details, union: -> { Privy::TransactionDetail }
+          #   @return [Privy::Models::TransferSentTransactionDetail, Privy::Models::TransferReceivedTransactionDetail, nil]
+          required :details, union: -> { Privy::TransactionDetail }, nil?: true
 
           # @!attribute privy_transaction_id
           #   Privy's ID for the transaction, or `null` if the transaction was not broadcasted
@@ -81,7 +81,7 @@ module Privy
           #
           #   @param created_at [Float]
           #
-          #   @param details [Privy::Models::TransferSentTransactionDetail, Privy::Models::TransferReceivedTransactionDetail] Details of a wallet transaction, varying by transaction type.
+          #   @param details [Privy::Models::TransferSentTransactionDetail, Privy::Models::TransferReceivedTransactionDetail, nil] Details of a wallet transaction, varying by transaction type.
           #
           #   @param privy_transaction_id [String, nil] Privy's ID for the transaction, or `null` if the transaction was not broadcasted
           #

@@ -3,6 +3,7 @@ module Privy
     type intent_rejected_webhook_payload =
       {
         created_at: Float,
+        event_id: String,
         expires_at: Float,
         intent_id: String,
         intent_type: Privy::Models::intent_type,
@@ -15,6 +16,8 @@ module Privy
 
     class IntentRejectedWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor created_at: Float
+
+      attr_accessor event_id: String
 
       attr_accessor expires_at: Float
 
@@ -38,6 +41,7 @@ module Privy
 
       def initialize: (
         created_at: Float,
+        event_id: String,
         expires_at: Float,
         intent_id: String,
         intent_type: Privy::Models::intent_type,
@@ -50,6 +54,7 @@ module Privy
 
       def to_hash: -> {
         created_at: Float,
+        event_id: String,
         expires_at: Float,
         intent_id: String,
         intent_type: Privy::Models::intent_type,

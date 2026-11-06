@@ -2475,6 +2475,8 @@ module Privy
 
   SparkWithdrawRpcResponse = Privy::Models::SparkWithdrawRpcResponse
 
+  StellarAddress = Privy::Models::StellarAddress
+
   StripeConsumerWallet = Privy::Models::StripeConsumerWallet
 
   StripeCryptoCustomerActive = Privy::Models::StripeCryptoCustomerActive
@@ -2780,6 +2782,9 @@ module Privy
   UpdateAccountInput = Privy::Models::UpdateAccountInput
 
   UpdateAutomationRequestBody = Privy::Models::UpdateAutomationRequestBody
+
+  UpdateConditionSetItemRequestBody =
+    Privy::Models::UpdateConditionSetItemRequestBody
 
   UpdateConditionSetRequestBody = Privy::Models::UpdateConditionSetRequestBody
 

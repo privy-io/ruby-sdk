@@ -24,13 +24,18 @@ module Privy
       sig { returns(String) }
       attr_accessor :value
 
+      # Label for the item, or null if it has none.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :name
+
       # A single item in a condition set.
       sig do
         params(
           id: String,
           condition_set_id: String,
           created_at: Float,
-          value: String
+          value: String,
+          name: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -41,7 +46,9 @@ module Privy
         # Unix timestamp of when the condition set item was created in milliseconds.
         created_at:,
         # The value stored in this condition set item.
-        value:
+        value:,
+        # Label for the item, or null if it has none.
+        name: nil
       )
       end
 
@@ -51,7 +58,8 @@ module Privy
             id: String,
             condition_set_id: String,
             created_at: Float,
-            value: String
+            value: String,
+            name: T.nilable(String)
           }
         )
       end

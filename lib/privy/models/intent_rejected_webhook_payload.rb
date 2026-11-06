@@ -9,6 +9,13 @@ module Privy
       #   @return [Float]
       required :created_at, Float
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute expires_at
       #   Unix timestamp when the intent expires.
       #
@@ -57,10 +64,15 @@ module Privy
       #   @return [String, nil]
       optional :created_by_id, String
 
-      # @!method initialize(created_at:, expires_at:, intent_id:, intent_type:, rejected_at:, status:, type:, created_by_display_name: nil, created_by_id: nil)
+      # @!method initialize(created_at:, event_id:, expires_at:, intent_id:, intent_type:, rejected_at:, status:, type:, created_by_display_name: nil, created_by_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::IntentRejectedWebhookPayload} for more details.
+      #
       #   Payload for the intent.rejected webhook event.
       #
       #   @param created_at [Float] Unix timestamp when the intent was created.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param expires_at [Float] Unix timestamp when the intent expires.
       #

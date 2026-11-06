@@ -9,6 +9,13 @@ module Privy
       #   @return [String]
       required :custom_order_id, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute executed_at
       #   ISO 8601 timestamp of when the custom order was executed.
       #
@@ -27,10 +34,15 @@ module Privy
       #   @return [String]
       required :user_id, String
 
-      # @!method initialize(custom_order_id:, executed_at:, type:, user_id:)
+      # @!method initialize(custom_order_id:, event_id:, executed_at:, type:, user_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload} for more details.
+      #
       #   Payload for the kraken_embed.custom_order.executed webhook event.
       #
       #   @param custom_order_id [String] The ID of the executed custom order.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param executed_at [String] ISO 8601 timestamp of when the custom order was executed.
       #

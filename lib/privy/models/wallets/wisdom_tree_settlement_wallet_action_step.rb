@@ -21,15 +21,15 @@ module Privy
         #   What a tMMF order receives: fund shares for a deposit, the withdraw asset for a
         #   withdrawal.
         #
-        #   @return [Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::Received]
-        required :received, -> { Privy::Wallets::WisdomTreeSettlementWalletActionStep::Received }
+        #   @return [Privy::Models::Wallets::WisdomTreeSettlementFundAmount, Privy::Models::Wallets::WisdomTreeSettlementWithdrawAssetAmount, nil]
+        required :received, union: -> { Privy::Wallets::WisdomTreeSettlementReceivedAmount }, nil?: true
 
         # @!attribute requested
         #   What a tMMF order sends: the deposit asset for a deposit, fund shares for a
         #   withdrawal.
         #
-        #   @return [Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::Requested]
-        required :requested, -> { Privy::Wallets::WisdomTreeSettlementWalletActionStep::Requested }
+        #   @return [Privy::Models::Wallets::WisdomTreeSettlementDepositAssetAmount, Privy::Models::Wallets::WisdomTreeSettlementFundAmount, nil]
+        required :requested, union: -> { Privy::Wallets::WisdomTreeSettlementRequestedAmount }, nil?: true
 
         # @!attribute settlement_transaction_hash
         #   The transaction that delivered the received asset. Null until Privy verifies the
@@ -66,9 +66,9 @@ module Privy
         #
         #   @param order_type [Symbol, Privy::Models::Wallets::TmmfOrderType, nil] How a tMMF order fills: `secondary` from the provider pool in minutes, or `prima
         #
-        #   @param received [Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::Received] What a tMMF order receives: fund shares for a deposit, the withdraw asset for a
+        #   @param received [Privy::Models::Wallets::WisdomTreeSettlementFundAmount, Privy::Models::Wallets::WisdomTreeSettlementWithdrawAssetAmount, nil] What a tMMF order receives: fund shares for a deposit, the withdraw asset for a
         #
-        #   @param requested [Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::Requested] What a tMMF order sends: the deposit asset for a deposit, fund shares for a with
+        #   @param requested [Privy::Models::Wallets::WisdomTreeSettlementDepositAssetAmount, Privy::Models::Wallets::WisdomTreeSettlementFundAmount, nil] What a tMMF order sends: the deposit asset for a deposit, fund shares for a with
         #
         #   @param settlement_transaction_hash [String, nil] The transaction that delivered the received asset. Null until Privy verifies the
         #
@@ -77,20 +77,6 @@ module Privy
         #   @param type [Symbol, Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep::Type]
         #
         #   @param failure_reason [Privy::Models::Wallets::FailureReason] A description of why a wallet action (or a step within a wallet action) failed.
-
-        # @see Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep#received
-        class Received < Privy::Internal::Type::BaseModel
-          # @!method initialize
-          #   What a tMMF order receives: fund shares for a deposit, the withdraw asset for a
-          #   withdrawal.
-        end
-
-        # @see Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep#requested
-        class Requested < Privy::Internal::Type::BaseModel
-          # @!method initialize
-          #   What a tMMF order sends: the deposit asset for a deposit, fund shares for a
-          #   withdrawal.
-        end
 
         # @see Privy::Models::Wallets::WisdomTreeSettlementWalletActionStep#type
         module Type

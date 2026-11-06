@@ -21,6 +21,13 @@ module Privy
       #   @return [Symbol, Privy::Models::KyxEnvironment]
       required :environment, enum: -> { Privy::KyxEnvironment }
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute provider
       #   KYC/KYB provider identifier.
       #
@@ -38,12 +45,17 @@ module Privy
       #   @return [String]
       required :user_id, String
 
-      # @!method initialize(changes:, data:, environment:, provider:, type:, user_id:)
+      # @!method initialize(changes:, data:, environment:, event_id:, provider:, type:, user_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::UserKYCUpdatedWebhookEvent} for more details.
+      #
       #   @param changes [Hash{Symbol=>Array<Object>}]
       #
       #   @param data [Privy::Models::UserKYCUpdatedData] Full KYC state snapshot in a KYC update event.
       #
       #   @param environment [Symbol, Privy::Models::KyxEnvironment] Provider environment (production or sandbox).
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param provider [Symbol, Privy::Models::KyxProvider] KYC/KYB provider identifier.
       #

@@ -8,6 +8,11 @@ module Privy
           T.any(Privy::PrivateKeyExportWebhookPayload, Privy::Internal::AnyHash)
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig { returns(Privy::PrivateKeyExportWebhookPayload::Type::TaggedSymbol) }
       attr_accessor :type
@@ -35,6 +40,7 @@ module Privy
       # Payload for the wallet.private_key_export webhook event.
       sig do
         params(
+          event_id: String,
           type: Privy::PrivateKeyExportWebhookPayload::Type::OrSymbol,
           user_id: String,
           wallet_address: String,
@@ -43,6 +49,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # The ID of the user who exported the key.
@@ -60,6 +69,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             type: Privy::PrivateKeyExportWebhookPayload::Type::TaggedSymbol,
             user_id: String,
             wallet_address: String,

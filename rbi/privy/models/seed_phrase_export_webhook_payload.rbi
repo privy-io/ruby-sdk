@@ -8,8 +8,13 @@ module Privy
           T.any(Privy::SeedPhraseExportWebhookPayload, Privy::Internal::AnyHash)
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
-      sig { returns(Privy::SeedPhraseExportWebhookPayload::Type::OrSymbol) }
+      sig { returns(Privy::SeedPhraseExportWebhookPayload::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The ID of the user who exported the seed phrase.
@@ -26,7 +31,7 @@ module Privy
 
       # The export type. 'display' is for showing the key to the user in the UI,
       # 'client' is for exporting to the client application.
-      sig { returns(T.nilable(Privy::ExportType::OrSymbol)) }
+      sig { returns(T.nilable(Privy::ExportType::TaggedSymbol)) }
       attr_reader :export_source
 
       sig { params(export_source: Privy::ExportType::OrSymbol).void }
@@ -35,6 +40,7 @@ module Privy
       # Payload for the wallet.seed_phrase_export webhook event.
       sig do
         params(
+          event_id: String,
           type: Privy::SeedPhraseExportWebhookPayload::Type::OrSymbol,
           user_id: String,
           wallet_address: String,
@@ -43,6 +49,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # The ID of the user who exported the seed phrase.
@@ -60,11 +69,12 @@ module Privy
       sig do
         override.returns(
           {
-            type: Privy::SeedPhraseExportWebhookPayload::Type::OrSymbol,
+            event_id: String,
+            type: Privy::SeedPhraseExportWebhookPayload::Type::TaggedSymbol,
             user_id: String,
             wallet_address: String,
             wallet_id: String,
-            export_source: Privy::ExportType::OrSymbol
+            export_source: Privy::ExportType::TaggedSymbol
           }
         )
       end

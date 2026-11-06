@@ -25,6 +25,11 @@ module Privy
       sig { returns(Privy::KyxEnvironment::TaggedSymbol) }
       attr_accessor :environment
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       sig { returns(String) }
       attr_accessor :organization_id
 
@@ -43,6 +48,7 @@ module Privy
           changes: T::Hash[Symbol, T::Array[T.anything]],
           data: Privy::OrganizationKYBUpdatedData::OrHash,
           environment: Privy::KyxEnvironment::OrSymbol,
+          event_id: String,
           organization_id: String,
           provider: Privy::KyxProvider::OrSymbol,
           type: Privy::OrganizationKYBUpdatedWebhookEvent::Type::OrSymbol
@@ -54,6 +60,9 @@ module Privy
         data:,
         # Provider environment (production or sandbox).
         environment:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         organization_id:,
         # KYC/KYB provider identifier.
         provider:,
@@ -68,6 +77,7 @@ module Privy
             changes: T::Hash[Symbol, T::Array[T.anything]],
             data: Privy::OrganizationKYBUpdatedData,
             environment: Privy::KyxEnvironment::TaggedSymbol,
+            event_id: String,
             organization_id: String,
             provider: Privy::KyxProvider::TaggedSymbol,
             type: Privy::OrganizationKYBUpdatedWebhookEvent::Type::TaggedSymbol

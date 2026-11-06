@@ -27,7 +27,13 @@ module Privy
       #   @return [String]
       required :value, String
 
-      # @!method initialize(id:, condition_set_id:, created_at:, value:)
+      # @!attribute name
+      #   Label for the item, or null if it has none.
+      #
+      #   @return [String, nil]
+      optional :name, String, nil?: true
+
+      # @!method initialize(id:, condition_set_id:, created_at:, value:, name: nil)
       #   A single item in a condition set.
       #
       #   @param id [String] Unique ID of the created condition set item.
@@ -37,6 +43,8 @@ module Privy
       #   @param created_at [Float] Unix timestamp of when the condition set item was created in milliseconds.
       #
       #   @param value [String] The value stored in this condition set item.
+      #
+      #   @param name [String, nil] Label for the item, or null if it has none.
     end
   end
 end

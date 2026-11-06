@@ -3,6 +3,13 @@
 module Privy
   module Models
     class UserCreatedWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute type
       #   The type of webhook event.
       #
@@ -15,8 +22,13 @@ module Privy
       #   @return [Privy::Models::User]
       required :user, -> { Privy::User }
 
-      # @!method initialize(type:, user:)
+      # @!method initialize(event_id:, type:, user:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::UserCreatedWebhookPayload} for more details.
+      #
       #   Payload for the user.created webhook event.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param type [Symbol, Privy::Models::UserCreatedWebhookPayload::Type] The type of webhook event.
       #

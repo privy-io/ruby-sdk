@@ -6,6 +6,7 @@ module Privy
         deposit_account_id: String,
         deposit_type: Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent::deposit_type,
         environment: Privy::Models::environment,
+        event_id: String,
         provider: Privy::Models::orchestration_provider,
         provider_deposit_id: String,
         type: Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent::type_,
@@ -21,6 +22,8 @@ module Privy
 
       attr_accessor environment: Privy::Models::environment
 
+      attr_accessor event_id: String
+
       attr_accessor provider: Privy::Models::orchestration_provider
 
       attr_accessor provider_deposit_id: String
@@ -34,6 +37,7 @@ module Privy
         deposit_account_id: String,
         deposit_type: Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent::deposit_type,
         environment: Privy::Models::environment,
+        event_id: String,
         provider: Privy::Models::orchestration_provider,
         provider_deposit_id: String,
         type: Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent::type_,
@@ -45,6 +49,7 @@ module Privy
         deposit_account_id: String,
         deposit_type: Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent::deposit_type,
         environment: Privy::Models::environment,
+        event_id: String,
         provider: Privy::Models::orchestration_provider,
         provider_deposit_id: String,
         type: Privy::Models::WalletDepositAccountDepositCompletedWebhookEvent::type_,

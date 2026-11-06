@@ -5,6 +5,7 @@ module Privy
         address: String,
         chain: String,
         created_at: Integer,
+        event_id: String,
         provider: Privy::Models::Wallets::tmmf_provider,
         status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
         type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
@@ -19,6 +20,8 @@ module Privy
       attr_accessor chain: String
 
       attr_accessor created_at: Integer
+
+      attr_accessor event_id: String
 
       attr_accessor provider: Privy::Models::Wallets::tmmf_provider
 
@@ -36,6 +39,7 @@ module Privy
         address: String,
         chain: String,
         created_at: Integer,
+        event_id: String,
         provider: Privy::Models::Wallets::tmmf_provider,
         status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
         type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
@@ -48,6 +52,7 @@ module Privy
         address: String,
         chain: String,
         created_at: Integer,
+        event_id: String,
         provider: Privy::Models::Wallets::tmmf_provider,
         status: Privy::Models::Wallets::tmmf_provider_wallet_status?,
         type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,

@@ -12,13 +12,18 @@ module Privy
       # @return [Privy::Resources::Organizations::KYB]
       attr_reader :kyb
 
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::OrganizationCreateParams} for more details.
+      #
       # Create an organization in an app.
       #
-      # @overload create(default_key_quorum_id:, display_name:, request_options: {})
+      # @overload create(default_key_quorum_id:, display_name:, default_wallet_configurations: nil, request_options: {})
       #
       # @param default_key_quorum_id [String] A unique identifier for a key quorum.
       #
       # @param display_name [String]
+      #
+      # @param default_wallet_configurations [Privy::Models::OrganizationDefaultWalletConfigurations] Defaults applied to wallets created with the organization as their entity, keyed
       #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -36,13 +41,18 @@ module Privy
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::OrganizationUpdateParams} for more details.
+      #
       # Update an organization by ID.
       #
-      # @overload update(organization_id, default_key_quorum_id: nil, display_name: nil, request_options: {})
+      # @overload update(organization_id, default_key_quorum_id: nil, default_wallet_configurations: nil, display_name: nil, request_options: {})
       #
       # @param organization_id [String] ID of the organization.
       #
       # @param default_key_quorum_id [String] A unique identifier for a key quorum.
+      #
+      # @param default_wallet_configurations [Privy::Models::OrganizationDefaultWalletConfigurationsUpdate] Changes to the defaults, keyed by chain type. Omitted chains and fields are unch
       #
       # @param display_name [String]
       #

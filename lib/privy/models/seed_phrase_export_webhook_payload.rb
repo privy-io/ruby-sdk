@@ -3,6 +3,13 @@
 module Privy
   module Models
     class SeedPhraseExportWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute type
       #   The type of webhook event.
       #
@@ -34,11 +41,13 @@ module Privy
       #   @return [Symbol, Privy::Models::ExportType, nil]
       optional :export_source, enum: -> { Privy::ExportType }
 
-      # @!method initialize(type:, user_id:, wallet_address:, wallet_id:, export_source: nil)
+      # @!method initialize(event_id:, type:, user_id:, wallet_address:, wallet_id:, export_source: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::SeedPhraseExportWebhookPayload} for more details.
       #
       #   Payload for the wallet.seed_phrase_export webhook event.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param type [Symbol, Privy::Models::SeedPhraseExportWebhookPayload::Type] The type of webhook event.
       #

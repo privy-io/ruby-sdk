@@ -12,6 +12,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :chain_type
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig { returns(Privy::WalletRestoredWebhookPayload::Type::TaggedSymbol) }
       attr_accessor :type
@@ -28,6 +33,7 @@ module Privy
       sig do
         params(
           chain_type: String,
+          event_id: String,
           type: Privy::WalletRestoredWebhookPayload::Type::OrSymbol,
           wallet_address: String,
           wallet_id: String
@@ -36,6 +42,9 @@ module Privy
       def self.new(
         # The chain type of the restored wallet.
         chain_type:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # The address of the restored wallet.
@@ -49,6 +58,7 @@ module Privy
         override.returns(
           {
             chain_type: String,
+            event_id: String,
             type: Privy::WalletRestoredWebhookPayload::Type::TaggedSymbol,
             wallet_address: String,
             wallet_id: String

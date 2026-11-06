@@ -21,6 +21,13 @@ module Privy
       #   @return [Symbol, Privy::Models::KyxEnvironment]
       required :environment, enum: -> { Privy::KyxEnvironment }
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute organization_id
       #
       #   @return [String]
@@ -38,12 +45,17 @@ module Privy
       #   @return [Symbol, Privy::Models::OrganizationKYBUpdatedWebhookEvent::Type]
       required :type, enum: -> { Privy::OrganizationKYBUpdatedWebhookEvent::Type }
 
-      # @!method initialize(changes:, data:, environment:, organization_id:, provider:, type:)
+      # @!method initialize(changes:, data:, environment:, event_id:, organization_id:, provider:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::OrganizationKYBUpdatedWebhookEvent} for more details.
+      #
       #   @param changes [Hash{Symbol=>Array<Object>}]
       #
       #   @param data [Privy::Models::OrganizationKYBUpdatedData] Full KYB state snapshot in a KYB update event.
       #
       #   @param environment [Symbol, Privy::Models::KyxEnvironment] Provider environment (production or sandbox).
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param organization_id [String]
       #

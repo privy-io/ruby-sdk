@@ -5,6 +5,7 @@ module Privy
         action_id: String,
         automation_id: String,
         created_at: String,
+        event_id: String,
         trigger_asset_address: String,
         :trigger_caip2 => String,
         trigger_id: String,
@@ -19,6 +20,8 @@ module Privy
       attr_accessor automation_id: String
 
       attr_accessor created_at: String
+
+      attr_accessor event_id: String
 
       attr_accessor trigger_asset_address: String
 
@@ -36,6 +39,7 @@ module Privy
         action_id: String,
         automation_id: String,
         created_at: String,
+        event_id: String,
         trigger_asset_address: String,
         trigger_caip2: String,
         trigger_id: String,
@@ -48,6 +52,7 @@ module Privy
         action_id: String,
         automation_id: String,
         created_at: String,
+        event_id: String,
         trigger_asset_address: String,
         :trigger_caip2 => String,
         trigger_id: String,

@@ -3,6 +3,7 @@ module Privy
     type kraken_embed_custom_order_executed_webhook_payload =
       {
         custom_order_id: String,
+        event_id: String,
         executed_at: String,
         type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_,
         user_id: String
@@ -10,6 +11,8 @@ module Privy
 
     class KrakenEmbedCustomOrderExecutedWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor custom_order_id: String
+
+      attr_accessor event_id: String
 
       attr_accessor executed_at: String
 
@@ -19,6 +22,7 @@ module Privy
 
       def initialize: (
         custom_order_id: String,
+        event_id: String,
         executed_at: String,
         type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_,
         user_id: String
@@ -26,6 +30,7 @@ module Privy
 
       def to_hash: -> {
         custom_order_id: String,
+        event_id: String,
         executed_at: String,
         type: Privy::Models::KrakenEmbedCustomOrderExecutedWebhookPayload::type_,
         user_id: String

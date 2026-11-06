@@ -16,6 +16,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :chain_type
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig { returns(Privy::WalletArchivedWebhookPayload::Type::TaggedSymbol) }
       attr_accessor :type
@@ -33,6 +38,7 @@ module Privy
         params(
           archived_at: Float,
           chain_type: String,
+          event_id: String,
           type: Privy::WalletArchivedWebhookPayload::Type::OrSymbol,
           wallet_address: String,
           wallet_id: String
@@ -43,6 +49,9 @@ module Privy
         archived_at:,
         # The chain type of the archived wallet.
         chain_type:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # The address of the archived wallet.
@@ -57,6 +66,7 @@ module Privy
           {
             archived_at: Float,
             chain_type: String,
+            event_id: String,
             type: Privy::WalletArchivedWebhookPayload::Type::TaggedSymbol,
             wallet_address: String,
             wallet_id: String

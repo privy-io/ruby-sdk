@@ -4,6 +4,7 @@ module Privy
       {
         action_result: Privy::BaseActionResult,
         created_at: Float,
+        event_id: String,
         expires_at: Float,
         intent_id: String,
         intent_type: Privy::Models::intent_type,
@@ -17,6 +18,8 @@ module Privy
       attr_accessor action_result: Privy::BaseActionResult
 
       attr_accessor created_at: Float
+
+      attr_accessor event_id: String
 
       attr_accessor expires_at: Float
 
@@ -39,6 +42,7 @@ module Privy
       def initialize: (
         action_result: Privy::BaseActionResult,
         created_at: Float,
+        event_id: String,
         expires_at: Float,
         intent_id: String,
         intent_type: Privy::Models::intent_type,
@@ -51,6 +55,7 @@ module Privy
       def to_hash: -> {
         action_result: Privy::BaseActionResult,
         created_at: Float,
+        event_id: String,
         expires_at: Float,
         intent_id: String,
         intent_type: Privy::Models::intent_type,

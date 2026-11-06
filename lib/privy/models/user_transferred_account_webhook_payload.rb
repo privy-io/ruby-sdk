@@ -16,6 +16,13 @@ module Privy
                enum: -> { Privy::UserTransferredAccountWebhookPayload::DeletedUser },
                api_name: :deletedUser
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute from_user
       #   A reference to a user by their unique identifier.
       #
@@ -34,12 +41,17 @@ module Privy
       #   @return [Symbol, Privy::Models::UserTransferredAccountWebhookPayload::Type]
       required :type, enum: -> { Privy::UserTransferredAccountWebhookPayload::Type }
 
-      # @!method initialize(account:, deleted_user:, from_user:, to_user:, type:)
+      # @!method initialize(account:, deleted_user:, event_id:, from_user:, to_user:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::UserTransferredAccountWebhookPayload} for more details.
+      #
       #   Payload for the user.transferred_account webhook event.
       #
       #   @param account [Privy::Models::LinkedAccountEmail, Privy::Models::LinkedAccountPhone, Privy::Models::LinkedAccountEthereum, Privy::Models::LinkedAccountSolana, Privy::Models::LinkedAccountSmartWallet, Privy::Models::LinkedAccountEthereumEmbeddedWallet, Privy::Models::LinkedAccountSolanaEmbeddedWallet, Privy::Models::LinkedAccountBitcoinSegwitEmbeddedWallet, Privy::Models::LinkedAccountBitcoinTaprootEmbeddedWallet, Privy::Models::LinkedAccountCurveSigningEmbeddedWallet, Privy::Models::LinkedAccountGoogleOAuth, Privy::Models::LinkedAccountTwitterOAuth, Privy::Models::LinkedAccountDiscordOAuth, Privy::Models::LinkedAccountGitHubOAuth, Privy::Models::LinkedAccountSpotifyOAuth, Privy::Models::LinkedAccountInstagramOAuth, Privy::Models::LinkedAccountTiktokOAuth, Privy::Models::LinkedAccountLineOAuth, Privy::Models::LinkedAccountTwitchOAuth, Privy::Models::LinkedAccountLinkedInOAuth, Privy::Models::LinkedAccountAppleOAuth, Privy::Models::LinkedAccountCustomOAuth, Privy::Models::LinkedAccountCustomJwt, Privy::Models::LinkedAccountFarcaster, Privy::Models::LinkedAccountPasskey, Privy::Models::LinkedAccountTelegram, Privy::Models::LinkedAccountCrossApp, Privy::Models::LinkedAccountAuthorizationKey] A linked account for the user.
       #
       #   @param deleted_user [Boolean, Privy::Models::UserTransferredAccountWebhookPayload::DeletedUser]
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param from_user [Privy::Models::UserReference] A reference to a user by their unique identifier.
       #

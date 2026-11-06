@@ -11,6 +11,11 @@ module Privy
           )
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # ISO 8601 timestamp of when the quote was executed.
       sig { returns(String) }
       attr_accessor :executed_at
@@ -32,6 +37,7 @@ module Privy
       # Payload for the kraken_embed.quote_executed webhook event.
       sig do
         params(
+          event_id: String,
           executed_at: String,
           quote_id: String,
           type: Privy::KrakenEmbedQuoteExecutedWebhookPayload::Type::OrSymbol,
@@ -39,6 +45,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # ISO 8601 timestamp of when the quote was executed.
         executed_at:,
         # The ID of the executed quote.
@@ -53,6 +62,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             executed_at: String,
             quote_id: String,
             type: Privy::KrakenEmbedQuoteExecutedWebhookPayload::Type::OrSymbol,

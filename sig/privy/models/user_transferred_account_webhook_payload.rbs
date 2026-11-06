@@ -4,6 +4,7 @@ module Privy
       {
         account: Privy::Models::linked_account,
         deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user,
+        event_id: String,
         from_user: Privy::UserReference,
         to_user: Privy::User,
         type: Privy::Models::UserTransferredAccountWebhookPayload::type_
@@ -14,6 +15,8 @@ module Privy
 
       attr_accessor deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user
 
+      attr_accessor event_id: String
+
       attr_accessor from_user: Privy::UserReference
 
       attr_accessor to_user: Privy::User
@@ -23,6 +26,7 @@ module Privy
       def initialize: (
         account: Privy::Models::linked_account,
         deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user,
+        event_id: String,
         from_user: Privy::UserReference,
         to_user: Privy::User,
         type: Privy::Models::UserTransferredAccountWebhookPayload::type_
@@ -31,6 +35,7 @@ module Privy
       def to_hash: -> {
         account: Privy::Models::linked_account,
         deleted_user: Privy::Models::UserTransferredAccountWebhookPayload::deleted_user,
+        event_id: String,
         from_user: Privy::UserReference,
         to_user: Privy::User,
         type: Privy::Models::UserTransferredAccountWebhookPayload::type_

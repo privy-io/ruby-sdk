@@ -2,12 +2,15 @@ module Privy
   module Models
     type mfa_disabled_webhook_payload =
       {
+        event_id: String,
         method_: Privy::Models::mfa_method,
         type: Privy::Models::MfaDisabledWebhookPayload::type_,
         user_id: String
       }
 
     class MfaDisabledWebhookPayload < Privy::Internal::Type::BaseModel
+      attr_accessor event_id: String
+
       attr_accessor method_: Privy::Models::mfa_method
 
       attr_accessor type: Privy::Models::MfaDisabledWebhookPayload::type_
@@ -15,12 +18,14 @@ module Privy
       attr_accessor user_id: String
 
       def initialize: (
+        event_id: String,
         method_: Privy::Models::mfa_method,
         type: Privy::Models::MfaDisabledWebhookPayload::type_,
         user_id: String
       ) -> void
 
       def to_hash: -> {
+        event_id: String,
         method_: Privy::Models::mfa_method,
         type: Privy::Models::MfaDisabledWebhookPayload::type_,
         user_id: String

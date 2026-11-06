@@ -11,6 +11,11 @@ module Privy
           )
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig do
         returns(Privy::UserWalletCreatedWebhookPayload::Type::TaggedSymbol)
@@ -34,12 +39,16 @@ module Privy
       # Payload for the user.wallet_created webhook event.
       sig do
         params(
+          event_id: String,
           type: Privy::UserWalletCreatedWebhookPayload::Type::OrSymbol,
           user: Privy::User::OrHash,
           wallet: Privy::LinkedAccountBaseWallet::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # A Privy user object.
@@ -52,6 +61,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             type: Privy::UserWalletCreatedWebhookPayload::Type::TaggedSymbol,
             user: Privy::User,
             wallet: Privy::LinkedAccountBaseWallet

@@ -8,8 +8,8 @@ module Privy
           T.any(Privy::CustomTokenTransferSource, Privy::Internal::AnyHash)
         end
 
-      # The token contract address (EVM) or mint address (Solana) of the asset to
-      # transfer.
+      # Stellar account address: an ed25519 public key in StrKey encoding, starting with
+      # G.
       sig { returns(String) }
       attr_accessor :asset_address
 
@@ -37,8 +37,8 @@ module Privy
         )
       end
       def self.new(
-        # The token contract address (EVM) or mint address (Solana) of the asset to
-        # transfer.
+        # Stellar account address: an ed25519 public key in StrKey encoding, starting with
+        # G.
         asset_address:,
         # The blockchain network on which to perform the transfer. Supported chains
         # include: 'tempo', 'ethereum', 'base', 'arbitrum', 'polygon', 'solana', and their

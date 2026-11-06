@@ -15,6 +15,11 @@ module Privy
       sig { returns(Privy::LinkedAccount::Variants) }
       attr_accessor :account
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig do
         returns(Privy::UserUnlinkedAccountWebhookPayload::Type::TaggedSymbol)
@@ -62,6 +67,7 @@ module Privy
               Privy::LinkedAccountCrossApp::OrHash,
               Privy::LinkedAccountAuthorizationKey::OrHash
             ),
+          event_id: String,
           type: Privy::UserUnlinkedAccountWebhookPayload::Type::OrSymbol,
           user: Privy::User::OrHash
         ).returns(T.attached_class)
@@ -69,6 +75,9 @@ module Privy
       def self.new(
         # A linked account for the user.
         account:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # A Privy user object.
@@ -80,6 +89,7 @@ module Privy
         override.returns(
           {
             account: Privy::LinkedAccount::Variants,
+            event_id: String,
             type: Privy::UserUnlinkedAccountWebhookPayload::Type::TaggedSymbol,
             user: Privy::User
           }

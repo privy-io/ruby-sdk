@@ -25,6 +25,13 @@ module Privy
       #   @return [Symbol, Privy::Models::Environment]
       required :environment, enum: -> { Privy::Environment }
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute provider
       #   Supported fiat orchestration providers.
       #
@@ -49,7 +56,7 @@ module Privy
       #   @return [String, nil]
       optional :provider_deposit_id, String
 
-      # @!method initialize(data:, deposit_account_id:, deposit_type:, environment:, provider:, type:, wallet_id:, provider_deposit_id: nil)
+      # @!method initialize(data:, deposit_account_id:, deposit_type:, environment:, event_id:, provider:, type:, wallet_id:, provider_deposit_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletDepositAccountDepositFailedWebhookEvent} for more details.
       #
@@ -60,6 +67,8 @@ module Privy
       #   @param deposit_type [Symbol, Privy::Models::WalletDepositAccountDepositFailedWebhookEvent::DepositType]
       #
       #   @param environment [Symbol, Privy::Models::Environment] The Privy API environment.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param provider [Symbol, Privy::Models::OrchestrationProvider] Supported fiat orchestration providers.
       #

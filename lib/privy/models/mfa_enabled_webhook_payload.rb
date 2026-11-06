@@ -3,6 +3,13 @@
 module Privy
   module Models
     class MfaEnabledWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute method_
       #   A multi-factor authentication method supported by the app.
       #
@@ -21,8 +28,13 @@ module Privy
       #   @return [String]
       required :user_id, String
 
-      # @!method initialize(method_:, type:, user_id:)
+      # @!method initialize(event_id:, method_:, type:, user_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::MfaEnabledWebhookPayload} for more details.
+      #
       #   Payload for the mfa.enabled webhook event.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param method_ [Symbol, Privy::Models::MfaMethod] A multi-factor authentication method supported by the app.
       #

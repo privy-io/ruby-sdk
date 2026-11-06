@@ -22,6 +22,13 @@ module Privy
       #   @return [String]
       required :default_key_quorum_id, String
 
+      # @!attribute default_wallet_configurations
+      #   Defaults applied to wallets created with the organization as their entity, keyed
+      #   by chain type.
+      #
+      #   @return [Privy::Models::OrganizationDefaultWalletConfigurations]
+      required :default_wallet_configurations, -> { Privy::OrganizationDefaultWalletConfigurations }
+
       # @!attribute display_name
       #   Organization display name
       #
@@ -34,7 +41,10 @@ module Privy
       #   @return [Float]
       required :updated_at, Float
 
-      # @!method initialize(id:, created_at:, default_key_quorum_id:, display_name:, updated_at:)
+      # @!method initialize(id:, created_at:, default_key_quorum_id:, default_wallet_configurations:, display_name:, updated_at:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::Organization} for more details.
+      #
       #   A Privy organization object.
       #
       #   @param id [String] Unique organization identifier
@@ -42,6 +52,8 @@ module Privy
       #   @param created_at [Float] Unix timestamp when the organization was created
       #
       #   @param default_key_quorum_id [String] A unique identifier for a key quorum.
+      #
+      #   @param default_wallet_configurations [Privy::Models::OrganizationDefaultWalletConfigurations] Defaults applied to wallets created with the organization as their entity, keyed
       #
       #   @param display_name [String] Organization display name
       #

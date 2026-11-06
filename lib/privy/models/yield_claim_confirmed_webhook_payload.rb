@@ -8,6 +8,13 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute rewards
       #
       #   @return [Array<Privy::Models::YieldClaimReward>]
@@ -29,10 +36,15 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(caip2:, rewards:, transaction_id:, type:, wallet_id:)
+      # @!method initialize(caip2:, event_id:, rewards:, transaction_id:, type:, wallet_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::YieldClaimConfirmedWebhookPayload} for more details.
+      #
       #   Payload for the yield.claim.confirmed webhook event.
       #
       #   @param caip2 [String]
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param rewards [Array<Privy::Models::YieldClaimReward>]
       #

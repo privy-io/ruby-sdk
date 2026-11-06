@@ -15,6 +15,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :custom_order_id
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # ISO 8601 timestamp of when the custom order was executed.
       sig { returns(String) }
       attr_accessor :executed_at
@@ -35,6 +40,7 @@ module Privy
       sig do
         params(
           custom_order_id: String,
+          event_id: String,
           executed_at: String,
           type:
             Privy::KrakenEmbedCustomOrderExecutedWebhookPayload::Type::OrSymbol,
@@ -44,6 +50,9 @@ module Privy
       def self.new(
         # The ID of the executed custom order.
         custom_order_id:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # ISO 8601 timestamp of when the custom order was executed.
         executed_at:,
         # The type of webhook event.
@@ -57,6 +66,7 @@ module Privy
         override.returns(
           {
             custom_order_id: String,
+            event_id: String,
             executed_at: String,
             type:
               Privy::KrakenEmbedCustomOrderExecutedWebhookPayload::Type::OrSymbol,

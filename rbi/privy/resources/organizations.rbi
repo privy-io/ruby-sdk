@@ -17,6 +17,8 @@ module Privy
         params(
           default_key_quorum_id: String,
           display_name: String,
+          default_wallet_configurations:
+            Privy::OrganizationDefaultWalletConfigurations::OrHash,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Organization)
       end
@@ -24,6 +26,9 @@ module Privy
         # A unique identifier for a key quorum.
         default_key_quorum_id:,
         display_name:,
+        # Defaults applied to wallets created with the organization as their entity, keyed
+        # by chain type.
+        default_wallet_configurations: nil,
         request_options: {}
       )
       end
@@ -33,6 +38,8 @@ module Privy
         params(
           organization_id: String,
           default_key_quorum_id: String,
+          default_wallet_configurations:
+            Privy::OrganizationDefaultWalletConfigurationsUpdate::OrHash,
           display_name: String,
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Organization)
@@ -42,6 +49,9 @@ module Privy
         organization_id,
         # A unique identifier for a key quorum.
         default_key_quorum_id: nil,
+        # Changes to the defaults, keyed by chain type. Omitted chains and fields are
+        # unchanged, and `null` removes a chain.
+        default_wallet_configurations: nil,
         display_name: nil,
         request_options: {}
       )

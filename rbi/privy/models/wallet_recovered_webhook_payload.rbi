@@ -8,6 +8,11 @@ module Privy
           T.any(Privy::WalletRecoveredWebhookPayload, Privy::Internal::AnyHash)
         end
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig { returns(Privy::WalletRecoveredWebhookPayload::Type::TaggedSymbol) }
       attr_accessor :type
@@ -27,6 +32,7 @@ module Privy
       # Payload for the wallet.recovered webhook event.
       sig do
         params(
+          event_id: String,
           type: Privy::WalletRecoveredWebhookPayload::Type::OrSymbol,
           user_id: String,
           wallet_address: String,
@@ -34,6 +40,9 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # The ID of the user.
@@ -48,6 +57,7 @@ module Privy
       sig do
         override.returns(
           {
+            event_id: String,
             type: Privy::WalletRecoveredWebhookPayload::Type::TaggedSymbol,
             user_id: String,
             wallet_address: String,

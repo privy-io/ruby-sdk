@@ -48,6 +48,7 @@ module Privy
             Privy::WalletRecoveredWebhookPayload,
             Privy::WalletRecoverySetupWebhookPayload,
             Privy::WalletRestoredWebhookPayload,
+            Privy::SeedPhraseExportWebhookPayload,
             Privy::WalletActionEarnDepositCreatedWebhookPayload,
             Privy::WalletActionEarnDepositFailedWebhookPayload,
             Privy::WalletActionEarnDepositRejectedWebhookPayload,

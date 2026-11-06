@@ -1,13 +1,17 @@
 module Privy
   module Models
-    type condition_set_item_value_input = { value: String }
+    type condition_set_item_value_input = { value: String, name: String }
 
     class ConditionSetItemValueInput < Privy::Internal::Type::BaseModel
       attr_accessor value: String
 
-      def initialize: (value: String) -> void
+      attr_reader name: String?
 
-      def to_hash: -> { value: String }
+      def name=: (String) -> String
+
+      def initialize: (value: String, ?name: String) -> void
+
+      def to_hash: -> { value: String, name: String }
     end
   end
 end

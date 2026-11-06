@@ -15,6 +15,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :disabled_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # The type of webhook event.
       sig do
         returns(Privy::KrakenEmbedUserDisabledWebhookPayload::Type::OrSymbol)
@@ -29,6 +34,7 @@ module Privy
       sig do
         params(
           disabled_at: String,
+          event_id: String,
           type: Privy::KrakenEmbedUserDisabledWebhookPayload::Type::OrSymbol,
           user_id: String
         ).returns(T.attached_class)
@@ -36,6 +42,9 @@ module Privy
       def self.new(
         # ISO 8601 timestamp of when the user was disabled.
         disabled_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # The type of webhook event.
         type:,
         # The ID of the user.
@@ -47,6 +56,7 @@ module Privy
         override.returns(
           {
             disabled_at: String,
+            event_id: String,
             type: Privy::KrakenEmbedUserDisabledWebhookPayload::Type::OrSymbol,
             user_id: String
           }

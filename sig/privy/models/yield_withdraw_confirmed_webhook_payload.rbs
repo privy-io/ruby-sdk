@@ -4,6 +4,7 @@ module Privy
       {
         assets: String,
         :caip2 => String,
+        event_id: String,
         owner: String,
         receiver: String,
         sender: String,
@@ -16,6 +17,8 @@ module Privy
       attr_accessor assets: String
 
       attr_accessor caip2: String
+
+      attr_accessor event_id: String
 
       attr_accessor owner: String
 
@@ -32,6 +35,7 @@ module Privy
       def initialize: (
         assets: String,
         caip2: String,
+        event_id: String,
         owner: String,
         receiver: String,
         sender: String,
@@ -43,6 +47,7 @@ module Privy
       def to_hash: -> {
         assets: String,
         :caip2 => String,
+        event_id: String,
         owner: String,
         receiver: String,
         sender: String,

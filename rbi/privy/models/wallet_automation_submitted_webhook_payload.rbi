@@ -23,6 +23,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :created_at
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # Contract address of the triggering deposit's asset, or 'native-token' for the
       # native asset.
       sig { returns(String) }
@@ -58,6 +63,7 @@ module Privy
           action_id: String,
           automation_id: String,
           created_at: String,
+          event_id: String,
           trigger_asset_address: String,
           trigger_caip2: String,
           trigger_id: String,
@@ -73,6 +79,9 @@ module Privy
         automation_id:,
         # ISO 8601 timestamp of when the automation was submitted.
         created_at:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         # Contract address of the triggering deposit's asset, or 'native-token' for the
         # native asset.
         trigger_asset_address:,
@@ -95,6 +104,7 @@ module Privy
             action_id: String,
             automation_id: String,
             created_at: String,
+            event_id: String,
             trigger_asset_address: String,
             trigger_caip2: String,
             trigger_id: String,

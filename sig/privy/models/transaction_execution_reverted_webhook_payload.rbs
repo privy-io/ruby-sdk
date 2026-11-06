@@ -3,6 +3,7 @@ module Privy
     type transaction_execution_reverted_webhook_payload =
       {
         :caip2 => String,
+        event_id: String,
         transaction_hash: String,
         transaction_id: String,
         type: Privy::Models::TransactionExecutionRevertedWebhookPayload::type_,
@@ -12,6 +13,8 @@ module Privy
 
     class TransactionExecutionRevertedWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor caip2: String
+
+      attr_accessor event_id: String
 
       attr_accessor transaction_hash: String
 
@@ -25,6 +28,7 @@ module Privy
 
       def initialize: (
         caip2: String,
+        event_id: String,
         transaction_hash: String,
         transaction_id: String,
         type: Privy::Models::TransactionExecutionRevertedWebhookPayload::type_,
@@ -34,6 +38,7 @@ module Privy
 
       def to_hash: -> {
         :caip2 => String,
+        event_id: String,
         transaction_hash: String,
         transaction_id: String,
         type: Privy::Models::TransactionExecutionRevertedWebhookPayload::type_,

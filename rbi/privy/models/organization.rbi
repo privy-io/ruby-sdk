@@ -18,6 +18,19 @@ module Privy
       sig { returns(String) }
       attr_accessor :default_key_quorum_id
 
+      # Defaults applied to wallets created with the organization as their entity, keyed
+      # by chain type.
+      sig { returns(Privy::OrganizationDefaultWalletConfigurations) }
+      attr_reader :default_wallet_configurations
+
+      sig do
+        params(
+          default_wallet_configurations:
+            Privy::OrganizationDefaultWalletConfigurations::OrHash
+        ).void
+      end
+      attr_writer :default_wallet_configurations
+
       # Organization display name
       sig { returns(String) }
       attr_accessor :display_name
@@ -32,6 +45,8 @@ module Privy
           id: String,
           created_at: Float,
           default_key_quorum_id: String,
+          default_wallet_configurations:
+            Privy::OrganizationDefaultWalletConfigurations::OrHash,
           display_name: String,
           updated_at: Float
         ).returns(T.attached_class)
@@ -43,6 +58,9 @@ module Privy
         created_at:,
         # A unique identifier for a key quorum.
         default_key_quorum_id:,
+        # Defaults applied to wallets created with the organization as their entity, keyed
+        # by chain type.
+        default_wallet_configurations:,
         # Organization display name
         display_name:,
         # Unix timestamp when the organization was last updated
@@ -56,6 +74,8 @@ module Privy
             id: String,
             created_at: Float,
             default_key_quorum_id: String,
+            default_wallet_configurations:
+              Privy::OrganizationDefaultWalletConfigurations,
             display_name: String,
             updated_at: Float
           }

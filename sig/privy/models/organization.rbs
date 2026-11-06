@@ -5,6 +5,7 @@ module Privy
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       }
@@ -16,6 +17,8 @@ module Privy
 
       attr_accessor default_key_quorum_id: String
 
+      attr_accessor default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations
+
       attr_accessor display_name: String
 
       attr_accessor updated_at: Float
@@ -24,6 +27,7 @@ module Privy
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       ) -> void
@@ -32,6 +36,7 @@ module Privy
         id: String,
         created_at: Float,
         default_key_quorum_id: String,
+        default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         display_name: String,
         updated_at: Float
       }

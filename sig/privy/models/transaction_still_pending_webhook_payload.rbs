@@ -3,6 +3,7 @@ module Privy
     type transaction_still_pending_webhook_payload =
       {
         :caip2 => String,
+        event_id: String,
         transaction_hash: String,
         transaction_id: String,
         transaction_request: Privy::UnsignedStandardEthereumTransaction,
@@ -13,6 +14,8 @@ module Privy
 
     class TransactionStillPendingWebhookPayload < Privy::Internal::Type::BaseModel
       attr_accessor caip2: String
+
+      attr_accessor event_id: String
 
       attr_accessor transaction_hash: String
 
@@ -28,6 +31,7 @@ module Privy
 
       def initialize: (
         caip2: String,
+        event_id: String,
         transaction_hash: String,
         transaction_id: String,
         transaction_request: Privy::UnsignedStandardEthereumTransaction,
@@ -38,6 +42,7 @@ module Privy
 
       def to_hash: -> {
         :caip2 => String,
+        event_id: String,
         transaction_hash: String,
         transaction_id: String,
         transaction_request: Privy::UnsignedStandardEthereumTransaction,

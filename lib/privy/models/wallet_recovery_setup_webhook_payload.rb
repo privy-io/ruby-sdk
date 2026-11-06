@@ -3,6 +3,13 @@
 module Privy
   module Models
     class WalletRecoverySetupWebhookPayload < Privy::Internal::Type::BaseModel
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute method_
       #   Recovery method types for embedded wallet recovery setup webhooks.
       #
@@ -33,8 +40,13 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(method_:, type:, user_id:, wallet_address:, wallet_id:)
+      # @!method initialize(event_id:, method_:, type:, user_id:, wallet_address:, wallet_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::WalletRecoverySetupWebhookPayload} for more details.
+      #
       #   Payload for the wallet.recovery_setup webhook event.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param method_ [Symbol, Privy::Models::WalletRecoverySetupMethod] Recovery method types for embedded wallet recovery setup webhooks.
       #

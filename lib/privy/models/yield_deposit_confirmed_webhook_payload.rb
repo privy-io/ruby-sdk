@@ -13,6 +13,13 @@ module Privy
       #   @return [String]
       required :caip2, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute owner
       #
       #   @return [String]
@@ -39,12 +46,17 @@ module Privy
       #   @return [String]
       required :vault_address, String
 
-      # @!method initialize(assets:, caip2:, owner:, sender:, shares:, type:, vault_address:)
+      # @!method initialize(assets:, caip2:, event_id:, owner:, sender:, shares:, type:, vault_address:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::YieldDepositConfirmedWebhookPayload} for more details.
+      #
       #   Payload for the yield.deposit.confirmed webhook event.
       #
       #   @param assets [String]
       #
       #   @param caip2 [String]
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param owner [String]
       #

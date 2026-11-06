@@ -9,6 +9,13 @@ module Privy
       #   @return [String]
       required :chain_type, String
 
+      # @!attribute event_id
+      #   The ID of this event, stable across repeat deliveries so clients can deduplicate
+      #   on it.
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute type
       #   The type of webhook event.
       #
@@ -27,10 +34,15 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(chain_type:, type:, wallet_address:, wallet_id:)
+      # @!method initialize(chain_type:, event_id:, type:, wallet_address:, wallet_id:)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::WalletRestoredWebhookPayload} for more details.
+      #
       #   Payload for the wallet.restored webhook event.
       #
       #   @param chain_type [String] The chain type of the restored wallet.
+      #
+      #   @param event_id [String] The ID of this event, stable across repeat deliveries so clients can deduplicate
       #
       #   @param type [Symbol, Privy::Models::WalletRestoredWebhookPayload::Type] The type of webhook event.
       #

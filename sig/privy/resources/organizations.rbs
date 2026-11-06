@@ -8,12 +8,14 @@ module Privy
       def create: (
         default_key_quorum_id: String,
         display_name: String,
+        ?default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurations,
         ?request_options: Privy::request_opts
       ) -> Privy::Organization
 
       def update: (
         String organization_id,
         ?default_key_quorum_id: String,
+        ?default_wallet_configurations: Privy::OrganizationDefaultWalletConfigurationsUpdate,
         ?display_name: String,
         ?request_options: Privy::request_opts
       ) -> Privy::Organization

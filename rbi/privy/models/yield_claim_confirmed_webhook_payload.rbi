@@ -14,6 +14,11 @@ module Privy
       sig { returns(String) }
       attr_accessor :caip2
 
+      # The ID of this event, stable across repeat deliveries so clients can deduplicate
+      # on it.
+      sig { returns(String) }
+      attr_accessor :event_id
+
       sig { returns(T::Array[Privy::YieldClaimReward]) }
       attr_accessor :rewards
 
@@ -33,6 +38,7 @@ module Privy
       sig do
         params(
           caip2: String,
+          event_id: String,
           rewards: T::Array[Privy::YieldClaimReward::OrHash],
           transaction_id: String,
           type: Privy::YieldClaimConfirmedWebhookPayload::Type::OrSymbol,
@@ -41,6 +47,9 @@ module Privy
       end
       def self.new(
         caip2:,
+        # The ID of this event, stable across repeat deliveries so clients can deduplicate
+        # on it.
+        event_id:,
         rewards:,
         transaction_id:,
         # The type of webhook event.
@@ -53,6 +62,7 @@ module Privy
         override.returns(
           {
             caip2: String,
+            event_id: String,
             rewards: T::Array[Privy::YieldClaimReward],
             transaction_id: String,
             type: Privy::YieldClaimConfirmedWebhookPayload::Type::TaggedSymbol,
