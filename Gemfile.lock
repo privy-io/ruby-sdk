@@ -14,7 +14,7 @@ PATH
     privy_ruby (0.7.0)
       cgi
       connection_pool
-      hpke
+      hpke (= 1.0.0)
 
 GEM
   remote: https://rubygems.org/
