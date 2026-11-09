@@ -39,21 +39,17 @@
       "section": "Documentation"
     },
     {
-      "type": "style",
-      "section": "Styles"
-    },
-    {
       "type": "refactor",
       "section": "Refactors"
+    },
+    {
+      "type": "deps",
+      "section": "Dependency Updates"
     },
     {
       "type": "test",
       "section": "Tests",
       "hidden": true
-    },
-    {
-      "type": "build",
-      "section": "Build System"
     },
     {
       "type": "ci",
@@ -65,5 +61,6 @@
   "version-file": "lib/privy/version.rb",
   "extra-files": [
     "README.md"
-  ]
+  ],
+  "always-update": true
 }
