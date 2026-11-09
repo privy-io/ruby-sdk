@@ -17,7 +17,7 @@ module Privy
     attr_reader :api
 
     # Service accessors.
-    attr_reader :wallets, :users, :policies, :key_quorums, :transactions, :jwt_exchange
+    attr_reader :wallets, :users, :policies, :key_quorums, :transactions, :intents, :jwt_exchange
 
     # @return [Privy::PrivyRequestExpiryOptions]
     attr_reader :request_expiry_options
@@ -60,6 +60,7 @@ module Privy
       @policies = Privy::Services::Policies.new(client: @api, privy_client: self)
       @key_quorums = Privy::Services::KeyQuorums.new(client: @api, privy_client: self)
       @transactions = Privy::Services::Transactions.new(client: @api, privy_client: self)
+      @intents = Privy::Services::Intents.new(client: @api, privy_client: self)
       @jwt_exchange = Privy::JwtExchangeService.new(
         wallets_resource: @api.wallets,
         cache_max_capacity: authorization_key_cache_max_capacity
