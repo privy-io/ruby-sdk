@@ -11,7 +11,8 @@ module Privy
         organization_id: String,
         provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider,
         bank_name: String,
-        :last_4 => String
+        :last_4 => String,
+        payment_rails: Privy::ExternalFiatAccountPaymentRails
       }
 
     class BridgeOrganizationExternalFiatAccount < Privy::Internal::Type::BaseModel
@@ -39,6 +40,12 @@ module Privy
 
       def last_4=: (String) -> String
 
+      attr_reader payment_rails: Privy::ExternalFiatAccountPaymentRails?
+
+      def payment_rails=: (
+        Privy::ExternalFiatAccountPaymentRails
+      ) -> Privy::ExternalFiatAccountPaymentRails
+
       def initialize: (
         id: String,
         account_owner_name: String,
@@ -49,7 +56,8 @@ module Privy
         organization_id: String,
         provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider,
         ?bank_name: String,
-        ?last_4: String
+        ?last_4: String,
+        ?payment_rails: Privy::ExternalFiatAccountPaymentRails
       ) -> void
 
       def to_hash: -> {
@@ -62,7 +70,8 @@ module Privy
         organization_id: String,
         provider: Privy::Models::BridgeOrganizationExternalFiatAccount::provider,
         bank_name: String,
-        :last_4 => String
+        :last_4 => String,
+        payment_rails: Privy::ExternalFiatAccountPaymentRails
       }
 
       type provider = :bridge

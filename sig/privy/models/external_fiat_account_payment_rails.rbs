@@ -1,0 +1,25 @@
+module Privy
+  module Models
+    type external_fiat_account_payment_rails =
+      {
+        supported: ::Array[String],
+        unsupported_reasons: ::Hash[Symbol, String]
+      }
+
+    class ExternalFiatAccountPaymentRails < Privy::Internal::Type::BaseModel
+      attr_accessor supported: ::Array[String]
+
+      attr_accessor unsupported_reasons: ::Hash[Symbol, String]
+
+      def initialize: (
+        supported: ::Array[String],
+        unsupported_reasons: ::Hash[Symbol, String]
+      ) -> void
+
+      def to_hash: -> {
+        supported: ::Array[String],
+        unsupported_reasons: ::Hash[Symbol, String]
+      }
+    end
+  end
+end

@@ -53,6 +53,18 @@ module Privy
       sig { params(last_4: String).void }
       attr_writer :last_4
 
+      # Payment rails supported by an external fiat account and reasons other rails are
+      # unavailable.
+      sig { returns(T.nilable(Privy::ExternalFiatAccountPaymentRails)) }
+      attr_reader :payment_rails
+
+      sig do
+        params(
+          payment_rails: Privy::ExternalFiatAccountPaymentRails::OrHash
+        ).void
+      end
+      attr_writer :payment_rails
+
       # A Bridge external fiat account linked to an organization.
       sig do
         params(
@@ -66,7 +78,8 @@ module Privy
           provider:
             Privy::BridgeOrganizationExternalFiatAccount::Provider::OrSymbol,
           bank_name: String,
-          last_4: String
+          last_4: String,
+          payment_rails: Privy::ExternalFiatAccountPaymentRails::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -81,7 +94,10 @@ module Privy
         # Discriminator: the external fiat account is orchestrated via Bridge.
         provider:,
         bank_name: nil,
-        last_4: nil
+        last_4: nil,
+        # Payment rails supported by an external fiat account and reasons other rails are
+        # unavailable.
+        payment_rails: nil
       )
       end
 
@@ -98,7 +114,8 @@ module Privy
             provider:
               Privy::BridgeOrganizationExternalFiatAccount::Provider::OrSymbol,
             bank_name: String,
-            last_4: String
+            last_4: String,
+            payment_rails: Privy::ExternalFiatAccountPaymentRails
           }
         )
       end

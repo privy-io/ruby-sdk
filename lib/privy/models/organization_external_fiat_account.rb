@@ -55,7 +55,17 @@ module Privy
       #   @return [String, nil]
       optional :last_4, String
 
-      # @!method initialize(id:, account_owner_name:, account_type:, created_at:, currency:, environment:, organization_id:, provider:, bank_name: nil, last_4: nil)
+      # @!attribute payment_rails
+      #   Payment rails supported by an external fiat account and reasons other rails are
+      #   unavailable.
+      #
+      #   @return [Privy::Models::ExternalFiatAccountPaymentRails, nil]
+      optional :payment_rails, -> { Privy::ExternalFiatAccountPaymentRails }
+
+      # @!method initialize(id:, account_owner_name:, account_type:, created_at:, currency:, environment:, organization_id:, provider:, bank_name: nil, last_4: nil, payment_rails: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Privy::Models::OrganizationExternalFiatAccount} for more details.
+      #
       #   A Bridge external fiat account linked to an organization.
       #
       #   @param id [String]
@@ -77,6 +87,8 @@ module Privy
       #   @param bank_name [String]
       #
       #   @param last_4 [String]
+      #
+      #   @param payment_rails [Privy::Models::ExternalFiatAccountPaymentRails] Payment rails supported by an external fiat account and reasons other rails are
 
       # Discriminator: the external fiat account is orchestrated via Bridge.
       #

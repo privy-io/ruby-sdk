@@ -783,6 +783,8 @@ module Privy
 
   module ExternalFiatAccountOwner = Privy::Models::ExternalFiatAccountOwner
 
+  class ExternalFiatAccountPaymentRails = Privy::Models::ExternalFiatAccountPaymentRails
+
   class ExternalFiatAccountPixData = Privy::Models::ExternalFiatAccountPixData
 
   class ExternalFiatAccountResponse = Privy::Models::ExternalFiatAccountResponse
