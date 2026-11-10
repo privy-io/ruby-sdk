@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type mfa_enroll_response_body = { mfa_token: String }
+
+    class MfaEnrollResponseBody < Privy::Models::User
+      def mfa_token: -> String?
+
+      def mfa_token=: (String _) -> String
+
+      def initialize: (?mfa_token: String) -> void
+
+      def to_hash: -> { mfa_token: String }
+    end
+  end
+end

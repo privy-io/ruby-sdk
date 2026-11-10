@@ -1475,6 +1475,8 @@ module Privy
 
   class MfaEnabledWebhookPayload = Privy::Models::MfaEnabledWebhookPayload
 
+  class MfaEnrollResponseBody = Privy::Models::MfaEnrollResponseBody
+
   module MfaMethod = Privy::Models::MfaMethod
 
   class MfaPasskeyEnrollmentRequestBody = Privy::Models::MfaPasskeyEnrollmentRequestBody
