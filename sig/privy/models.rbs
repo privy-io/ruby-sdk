@@ -451,8 +451,6 @@ module Privy
 
   class CreateLinkAuthIntentResponse = Privy::Models::CreateLinkAuthIntentResponse
 
-  class CreateOrganizationSecretResponse = Privy::Models::CreateOrganizationSecretResponse
-
   class CreateOrUpdateFiatCustomerRequestInput = Privy::Models::CreateOrUpdateFiatCustomerRequestInput
 
   class CreatePayoutRequestBody = Privy::Models::CreatePayoutRequestBody
@@ -1669,12 +1667,6 @@ module Privy
 
   module Organizations = Privy::Models::Organizations
 
-  class OrganizationSecretIDInput = Privy::Models::OrganizationSecretIDInput
-
-  class OrganizationSecretsListResponse = Privy::Models::OrganizationSecretsListResponse
-
-  class OrganizationSecretView = Privy::Models::OrganizationSecretView
-
   class OrganizationsListResponse = Privy::Models::OrganizationsListResponse
 
   class OrganizationUpdateParams = Privy::Models::OrganizationUpdateParams
@@ -2428,8 +2420,6 @@ module Privy
   class UpdateConditionSetItemRequestBody = Privy::Models::UpdateConditionSetItemRequestBody
 
   class UpdateConditionSetRequestBody = Privy::Models::UpdateConditionSetRequestBody
-
-  class UpdateOrganizationSecretSigningKeyInput = Privy::Models::UpdateOrganizationSecretSigningKeyInput
 
   class UsageAtaDepositRecordedWebhookPayload = Privy::Models::UsageAtaDepositRecordedWebhookPayload
 
