@@ -9,6 +9,7 @@ module Privy
       WALLET_ACTION_TRANSFER = :"wallet-action-transfer"
       WALLET_ACTION_SWAP = :"wallet-action-swap"
       RPC = :rpc
+      DEPOSIT_ADDRESS = :"deposit-address"
 
       # @!method self.values
       #   @return [Array<Symbol>]

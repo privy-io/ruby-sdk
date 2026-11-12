@@ -14,6 +14,8 @@ module Privy
       WALLET_ACTION_SWAP =
         T.let(:"wallet-action-swap", Privy::UsageSourceType::TaggedSymbol)
       RPC = T.let(:rpc, Privy::UsageSourceType::TaggedSymbol)
+      DEPOSIT_ADDRESS =
+        T.let(:"deposit-address", Privy::UsageSourceType::TaggedSymbol)
 
       sig { override.returns(T::Array[Privy::UsageSourceType::TaggedSymbol]) }
       def self.values
