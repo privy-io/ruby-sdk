@@ -62,6 +62,7 @@ module Privy
         whatsapp_enabled: bool,
         captcha_site_key: String,
         funding_config: Privy::FundingConfigResponseSchema,
+        mfa_enforcement_mode: Privy::Models::transaction_mfa_enforcement_mode,
         telegram_auth_config: Privy::TelegramAuthConfigSchema,
         telegram_seamless_auth_enabled: bool
       }
@@ -193,6 +194,12 @@ module Privy
         Privy::FundingConfigResponseSchema
       ) -> Privy::FundingConfigResponseSchema
 
+      attr_reader mfa_enforcement_mode: Privy::Models::transaction_mfa_enforcement_mode?
+
+      def mfa_enforcement_mode=: (
+        Privy::Models::transaction_mfa_enforcement_mode
+      ) -> Privy::Models::transaction_mfa_enforcement_mode
+
       attr_reader telegram_auth_config: Privy::TelegramAuthConfigSchema?
 
       def telegram_auth_config=: (
@@ -264,6 +271,7 @@ module Privy
         whatsapp_enabled: bool,
         ?captcha_site_key: String,
         ?funding_config: Privy::FundingConfigResponseSchema,
+        ?mfa_enforcement_mode: Privy::Models::transaction_mfa_enforcement_mode,
         ?telegram_auth_config: Privy::TelegramAuthConfigSchema,
         ?telegram_seamless_auth_enabled: bool
       ) -> void
@@ -329,6 +337,7 @@ module Privy
         whatsapp_enabled: bool,
         captcha_site_key: String,
         funding_config: Privy::FundingConfigResponseSchema,
+        mfa_enforcement_mode: Privy::Models::transaction_mfa_enforcement_mode,
         telegram_auth_config: Privy::TelegramAuthConfigSchema,
         telegram_seamless_auth_enabled: bool
       }

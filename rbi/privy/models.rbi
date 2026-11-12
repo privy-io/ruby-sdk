@@ -2595,6 +2595,8 @@ module Privy
 
   TransactionList = Privy::Models::TransactionList
 
+  TransactionMfaEnforcementMode = Privy::Models::TransactionMfaEnforcementMode
+
   TransactionProviderErrorWebhookPayload =
     Privy::Models::TransactionProviderErrorWebhookPayload
 

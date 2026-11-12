@@ -1,0 +1,15 @@
+module Privy
+  module Models
+    type transaction_mfa_enforcement_mode =
+      :POLICY_BASED | :ALL_WALLET_OPERATIONS | String
+
+    module TransactionMfaEnforcementMode
+      extend Privy::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Privy::Models::transaction_mfa_enforcement_mode]
+
+      POLICY_BASED: :POLICY_BASED
+      ALL_WALLET_OPERATIONS: :ALL_WALLET_OPERATIONS
+    end
+  end
+end

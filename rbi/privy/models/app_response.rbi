@@ -212,6 +212,18 @@ module Privy
       end
       attr_writer :funding_config
 
+      # How the app enforces multi-factor authentication for wallet operations.
+      sig { returns(T.nilable(Privy::TransactionMfaEnforcementMode::Variants)) }
+      attr_reader :mfa_enforcement_mode
+
+      sig do
+        params(
+          mfa_enforcement_mode:
+            T.any(Privy::TransactionMfaEnforcementMode::OrSymbol, String)
+        ).void
+      end
+      attr_writer :mfa_enforcement_mode
+
       # Configuration for Telegram authentication.
       sig { returns(T.nilable(Privy::TelegramAuthConfigSchema)) }
       attr_reader :telegram_auth_config
@@ -297,6 +309,8 @@ module Privy
           whatsapp_enabled: T::Boolean,
           captcha_site_key: String,
           funding_config: Privy::FundingConfigResponseSchema::OrHash,
+          mfa_enforcement_mode:
+            T.any(Privy::TransactionMfaEnforcementMode::OrSymbol, String),
           telegram_auth_config: Privy::TelegramAuthConfigSchema::OrHash,
           telegram_seamless_auth_enabled: T::Boolean
         ).returns(T.attached_class)
@@ -370,6 +384,8 @@ module Privy
         captcha_site_key: nil,
         # Configuration for funding and on-ramp options.
         funding_config: nil,
+        # How the app enforces multi-factor authentication for wallet operations.
+        mfa_enforcement_mode: nil,
         # Configuration for Telegram authentication.
         telegram_auth_config: nil,
         telegram_seamless_auth_enabled: nil
@@ -441,6 +457,8 @@ module Privy
             whatsapp_enabled: T::Boolean,
             captcha_site_key: String,
             funding_config: Privy::FundingConfigResponseSchema,
+            mfa_enforcement_mode:
+              Privy::TransactionMfaEnforcementMode::Variants,
             telegram_auth_config: Privy::TelegramAuthConfigSchema,
             telegram_seamless_auth_enabled: T::Boolean
           }

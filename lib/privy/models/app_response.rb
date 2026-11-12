@@ -312,6 +312,12 @@ module Privy
       #   @return [Privy::Models::FundingConfigResponseSchema, nil]
       optional :funding_config, -> { Privy::FundingConfigResponseSchema }
 
+      # @!attribute mfa_enforcement_mode
+      #   How the app enforces multi-factor authentication for wallet operations.
+      #
+      #   @return [Symbol, String, Privy::Models::TransactionMfaEnforcementMode, nil]
+      optional :mfa_enforcement_mode, union: -> { Privy::TransactionMfaEnforcementMode }
+
       # @!attribute telegram_auth_config
       #   Configuration for Telegram authentication.
       #
@@ -323,7 +329,7 @@ module Privy
       #   @return [Boolean, nil]
       optional :telegram_seamless_auth_enabled, Privy::Internal::Type::Boolean
 
-      # @!method initialize(id:, accent_color:, allowed_domains:, allowed_native_app_ids:, allowed_native_app_url_schemes:, allowlist_config:, allowlist_enabled:, apple_oauth:, captcha_enabled:, custom_api_url:, custom_jwt_auth:, custom_oauth_providers:, data_classification:, disable_plus_emails:, discord_oauth:, email_auth:, embedded_wallet_config:, enabled_captcha_provider:, enforce_wallet_uis:, external_wallets_for_signup_enabled:, farcaster_auth:, farcaster_link_wallets_enabled:, fiat_on_ramp_enabled:, github_oauth:, google_oauth:, guest_auth:, icon_url:, instagram_oauth:, legacy_wallet_ui_config:, legal_name:, line_oauth:, linkedin_oauth:, logo_url:, max_linked_wallets_per_user:, merge_accounts_by_email:, mfa_methods:, name:, passkey_auth:, passkeys_for_signup_enabled:, privacy_policy_url:, require_users_accept_terms:, show_wallet_login_first:, smart_wallet_config:, sms_auth:, solana_wallet_auth:, spotify_oauth:, telegram_auth:, telegram_oauth:, terms_and_conditions_url:, theme:, tiktok_oauth:, twitch_oauth:, twitter_oauth:, twitter_oauth_on_mobile_enabled:, verification_key:, wallet_auth:, wallet_connect_cloud_project_id:, whatsapp_enabled:, captcha_site_key: nil, funding_config: nil, telegram_auth_config: nil, telegram_seamless_auth_enabled: nil)
+      # @!method initialize(id:, accent_color:, allowed_domains:, allowed_native_app_ids:, allowed_native_app_url_schemes:, allowlist_config:, allowlist_enabled:, apple_oauth:, captcha_enabled:, custom_api_url:, custom_jwt_auth:, custom_oauth_providers:, data_classification:, disable_plus_emails:, discord_oauth:, email_auth:, embedded_wallet_config:, enabled_captcha_provider:, enforce_wallet_uis:, external_wallets_for_signup_enabled:, farcaster_auth:, farcaster_link_wallets_enabled:, fiat_on_ramp_enabled:, github_oauth:, google_oauth:, guest_auth:, icon_url:, instagram_oauth:, legacy_wallet_ui_config:, legal_name:, line_oauth:, linkedin_oauth:, logo_url:, max_linked_wallets_per_user:, merge_accounts_by_email:, mfa_methods:, name:, passkey_auth:, passkeys_for_signup_enabled:, privacy_policy_url:, require_users_accept_terms:, show_wallet_login_first:, smart_wallet_config:, sms_auth:, solana_wallet_auth:, spotify_oauth:, telegram_auth:, telegram_oauth:, terms_and_conditions_url:, theme:, tiktok_oauth:, twitch_oauth:, twitter_oauth:, twitter_oauth_on_mobile_enabled:, verification_key:, wallet_auth:, wallet_connect_cloud_project_id:, whatsapp_enabled:, captcha_site_key: nil, funding_config: nil, mfa_enforcement_mode: nil, telegram_auth_config: nil, telegram_seamless_auth_enabled: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::AppResponse} for more details.
       #
@@ -448,6 +454,8 @@ module Privy
       #   @param captcha_site_key [String]
       #
       #   @param funding_config [Privy::Models::FundingConfigResponseSchema] Configuration for funding and on-ramp options.
+      #
+      #   @param mfa_enforcement_mode [Symbol, String, Privy::Models::TransactionMfaEnforcementMode] How the app enforces multi-factor authentication for wallet operations.
       #
       #   @param telegram_auth_config [Privy::Models::TelegramAuthConfigSchema] Configuration for Telegram authentication.
       #
