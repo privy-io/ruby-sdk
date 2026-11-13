@@ -91,13 +91,25 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
+      # @!attribute destination_caip2
+      #   CAIP-2 identifier of the chain that settled the swap output.
+      #
+      #   @return [String, nil]
+      optional :destination_caip2, String
+
+      # @!attribute destination_transaction_hash
+      #   Transaction hash on the destination chain that settled the swap output.
+      #
+      #   @return [String, nil]
+      optional :destination_transaction_hash, String
+
       # @!attribute reference_id
       #   Developer-provided reference ID, if one was included in the request.
       #
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(action_type:, caip2:, completed_at:, created_at:, event_id:, input_amount:, input_token:, output_amount:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:, reference_id: nil)
+      # @!method initialize(action_type:, caip2:, completed_at:, created_at:, event_id:, input_amount:, input_token:, output_amount:, output_token:, status:, steps:, type:, wallet_action_id:, wallet_id:, destination_caip2: nil, destination_transaction_hash: nil, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::WalletActionSwapSucceededWebhookPayload} for more details.
       #
@@ -130,6 +142,10 @@ module Privy
       #   @param wallet_action_id [String] The ID of the wallet action.
       #
       #   @param wallet_id [String] The ID of the wallet involved in the action.
+      #
+      #   @param destination_caip2 [String] CAIP-2 identifier of the chain that settled the swap output.
+      #
+      #   @param destination_transaction_hash [String] Transaction hash on the destination chain that settled the swap output.
       #
       #   @param reference_id [String, nil] Developer-provided reference ID, if one was included in the request.
 

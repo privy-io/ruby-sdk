@@ -16,6 +16,8 @@ module Privy
         type: Privy::Models::WalletActionSwapSucceededWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
+        :destination_caip2 => String,
+        destination_transaction_hash: String,
         reference_id: String?
       }
 
@@ -48,6 +50,14 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_reader destination_caip2: String?
+
+      def destination_caip2=: (String) -> String
+
+      attr_reader destination_transaction_hash: String?
+
+      def destination_transaction_hash=: (String) -> String
+
       attr_accessor reference_id: String?
 
       def initialize: (
@@ -65,6 +75,8 @@ module Privy
         type: Privy::Models::WalletActionSwapSucceededWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
+        ?destination_caip2: String,
+        ?destination_transaction_hash: String,
         ?reference_id: String?
       ) -> void
 
@@ -83,6 +95,8 @@ module Privy
         type: Privy::Models::WalletActionSwapSucceededWebhookPayload::type_,
         wallet_action_id: String,
         wallet_id: String,
+        :destination_caip2 => String,
+        destination_transaction_hash: String,
         reference_id: String?
       }
 

@@ -79,6 +79,20 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
+      # CAIP-2 identifier of the chain that settled the swap output.
+      sig { returns(T.nilable(String)) }
+      attr_reader :destination_caip2
+
+      sig { params(destination_caip2: String).void }
+      attr_writer :destination_caip2
+
+      # Transaction hash on the destination chain that settled the swap output.
+      sig { returns(T.nilable(String)) }
+      attr_reader :destination_transaction_hash
+
+      sig { params(destination_transaction_hash: String).void }
+      attr_writer :destination_transaction_hash
+
       # Developer-provided reference ID, if one was included in the request.
       sig { returns(T.nilable(String)) }
       attr_accessor :reference_id
@@ -114,6 +128,8 @@ module Privy
           type: Privy::WalletActionSwapSucceededWebhookPayload::Type::OrSymbol,
           wallet_action_id: String,
           wallet_id: String,
+          destination_caip2: String,
+          destination_transaction_hash: String,
           reference_id: T.nilable(String)
         ).returns(T.attached_class)
       end
@@ -150,6 +166,10 @@ module Privy
         wallet_action_id:,
         # The ID of the wallet involved in the action.
         wallet_id:,
+        # CAIP-2 identifier of the chain that settled the swap output.
+        destination_caip2: nil,
+        # Transaction hash on the destination chain that settled the swap output.
+        destination_transaction_hash: nil,
         # Developer-provided reference ID, if one was included in the request.
         reference_id: nil
       )
@@ -174,6 +194,8 @@ module Privy
               Privy::WalletActionSwapSucceededWebhookPayload::Type::TaggedSymbol,
             wallet_action_id: String,
             wallet_id: String,
+            destination_caip2: String,
+            destination_transaction_hash: String,
             reference_id: T.nilable(String)
           }
         )
