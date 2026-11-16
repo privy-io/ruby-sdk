@@ -19,6 +19,7 @@ module Privy
       TON = :ton
       STARKNET = :starknet
       XRPL = :xrpl
+      CANTON = :canton
 
       # @!method self.values
       #   @return [Array<Symbol>]

@@ -14,6 +14,7 @@ module Privy
       | :ton
       | :starknet
       | :xrpl
+      | :canton
       | :spark
 
     module ExtendedChainType
@@ -32,6 +33,7 @@ module Privy
       TON: :ton
       STARKNET: :starknet
       XRPL: :xrpl
+      CANTON: :canton
       SPARK: :spark
 
       def self?.values: -> ::Array[Privy::Models::extended_chain_type]
