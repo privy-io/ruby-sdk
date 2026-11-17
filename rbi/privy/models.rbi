@@ -2065,6 +2065,8 @@ module Privy
 
   PolicyGetRuleParams = Privy::Models::PolicyGetRuleParams
 
+  PolicyID = Privy::Models::PolicyID
+
   PolicyInput =
     T.let(Privy::Models::PolicyInput, Privy::Internal::Type::Converter)
 

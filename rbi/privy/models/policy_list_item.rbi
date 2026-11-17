@@ -6,8 +6,7 @@ module Privy
       OrHash =
         T.type_alias { T.any(Privy::PolicyListItem, Privy::Internal::AnyHash) }
 
-      # Unique ID of the created policy. This will be the primary identifier when using
-      # the policy in the future.
+      # A unique identifier for a policy.
       sig { returns(String) }
       attr_accessor :id
 
@@ -43,8 +42,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # Unique ID of the created policy. This will be the primary identifier when using
-        # the policy in the future.
+        # A unique identifier for a policy.
         id:,
         # The wallet chain types.
         chain_type:,

@@ -69,7 +69,7 @@ module Privy
         ).returns(Privy::Policy)
       end
       def update(
-        # Path param
+        # Path param: A unique identifier for a policy.
         policy_id,
         # Body param: Name to assign to the policy, up to 100 characters.
         name: nil,
@@ -117,6 +117,7 @@ module Privy
         ).returns(Privy::SuccessResponse)
       end
       def delete(
+        # A unique identifier for a policy.
         policy_id,
         # Request authorization signature. If multiple signatures are required, they
         # should be comma separated.
@@ -165,7 +166,7 @@ module Privy
         ).returns(Privy::PolicyRuleResponse)
       end
       def create_rule(
-        # Path param
+        # Path param: A unique identifier for a policy.
         policy_id,
         # Body param: The action to take when a policy rule matches.
         action:,
@@ -198,7 +199,7 @@ module Privy
       def delete_rule(
         # Path param
         rule_id,
-        # Path param
+        # Path param: A unique identifier for a policy.
         policy_id:,
         # Header param: Request authorization signature. If multiple signatures are
         # required, they should be comma separated.
@@ -217,7 +218,11 @@ module Privy
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::Policy)
       end
-      def get(policy_id, request_options: {})
+      def get(
+        # A unique identifier for a policy.
+        policy_id,
+        request_options: {}
+      )
       end
 
       # Get a rule by policy ID and rule ID.
@@ -228,7 +233,12 @@ module Privy
           request_options: Privy::RequestOptions::OrHash
         ).returns(Privy::PolicyRuleResponse)
       end
-      def get_rule(rule_id, policy_id:, request_options: {})
+      def get_rule(
+        rule_id,
+        # A unique identifier for a policy.
+        policy_id:,
+        request_options: {}
+      )
       end
 
       # Update a rule by policy ID and rule ID.
@@ -271,7 +281,7 @@ module Privy
       def update_rule(
         # Path param
         rule_id,
-        # Path param
+        # Path param: A unique identifier for a policy.
         policy_id:,
         # Body param: The action to take when a policy rule matches.
         action:,

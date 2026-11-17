@@ -8,6 +8,7 @@ module Privy
           T.any(Privy::PolicyRuleRequestParams, Privy::Internal::AnyHash)
         end
 
+      # A unique identifier for a policy.
       sig { returns(String) }
       attr_accessor :policy_id
 
@@ -18,7 +19,11 @@ module Privy
       sig do
         params(policy_id: String, rule_id: String).returns(T.attached_class)
       end
-      def self.new(policy_id:, rule_id:)
+      def self.new(
+        # A unique identifier for a policy.
+        policy_id:,
+        rule_id:
+      )
       end
 
       sig { override.returns({ policy_id: String, rule_id: String }) }

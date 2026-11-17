@@ -613,8 +613,7 @@ module Privy
         # Body param: The key quorum ID to set as the owner of the resource. If you
         # provide this, do not specify an owner.
         owner_id: nil,
-        # Body param: New policy IDs to enforce on the wallet. Currently, only one policy
-        # is supported per wallet.
+        # Body param: An optional list of up to one policy ID to enforce on the wallet.
         policy_ids: nil,
         # Header param: Request expiry. Value is a Unix timestamp in milliseconds
         # representing the deadline by which the request must be processed.

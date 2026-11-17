@@ -53,9 +53,11 @@ module Privy
 
       class RequestDetails < Privy::Internal::Type::BaseModel
         # @!attribute body
+        #   Request body for updating a wallet. `owner` and `owner_id` are mutually
+        #   exclusive.
         #
-        #   @return [Privy::Models::WalletIntentResponse::RequestDetails::Body]
-        required :body, -> { Privy::WalletIntentResponse::RequestDetails::Body }
+        #   @return [Privy::Models::WalletUpdateRequestBody]
+        required :body, -> { Privy::WalletUpdateRequestBody }
 
         # @!attribute method_
         #
@@ -68,80 +70,16 @@ module Privy
         required :url, String
 
         # @!method initialize(body:, method_:, url:)
+        #   Some parameter documentations has been truncated, see
+        #   {Privy::Models::WalletIntentResponse::RequestDetails} for more details.
+        #
         #   The original wallet update request that would be sent to the wallet endpoint
         #
-        #   @param body [Privy::Models::WalletIntentResponse::RequestDetails::Body]
+        #   @param body [Privy::Models::WalletUpdateRequestBody] Request body for updating a wallet. `owner` and `owner_id` are mutually exclusiv
+        #
         #   @param method_ [Symbol, Privy::Models::WalletIntentResponse::RequestDetails::Method]
+        #
         #   @param url [String]
-
-        # @see Privy::Models::WalletIntentResponse::RequestDetails#body
-        class Body < Privy::Internal::Type::BaseModel
-          # @!attribute additional_signers
-          #   Additional signers for the wallet.
-          #
-          #   @return [Array<Privy::Models::AdditionalSignerItemInput>, nil]
-          optional :additional_signers, -> { Privy::Internal::Type::ArrayOf[Privy::AdditionalSignerItemInput] }
-
-          # @!attribute authorization_key_ids
-          #
-          #   @return [Array<String>, nil]
-          optional :authorization_key_ids, Privy::Internal::Type::ArrayOf[String]
-
-          # @!attribute authorization_threshold
-          #
-          #   @return [Float, nil]
-          optional :authorization_threshold, Float
-
-          # @!attribute display_name
-          #
-          #   @return [String, nil]
-          optional :display_name, String, nil?: true
-
-          # @!attribute external_id
-          #
-          #   @return [String, nil]
-          optional :external_id, String
-
-          # @!attribute owner
-          #   The owner of the resource, specified as a Privy user ID, a P-256 public key, or
-          #   null to remove the current owner.
-          #
-          #   @return [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil]
-          optional :owner, union: -> { Privy::OwnerInput }, nil?: true
-
-          # @!attribute owner_id
-          #   The key quorum ID to set as the owner of the resource. If you provide this, do
-          #   not specify an owner.
-          #
-          #   @return [String, nil]
-          optional :owner_id, String, nil?: true
-
-          # @!attribute policy_ids
-          #   An optional list of up to one policy ID to enforce on the wallet.
-          #
-          #   @return [Array<String>, nil]
-          optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
-
-          # @!method initialize(additional_signers: nil, authorization_key_ids: nil, authorization_threshold: nil, display_name: nil, external_id: nil, owner: nil, owner_id: nil, policy_ids: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Privy::Models::WalletIntentResponse::RequestDetails::Body} for more details.
-          #
-          #   @param additional_signers [Array<Privy::Models::AdditionalSignerItemInput>] Additional signers for the wallet.
-          #
-          #   @param authorization_key_ids [Array<String>]
-          #
-          #   @param authorization_threshold [Float]
-          #
-          #   @param display_name [String, nil]
-          #
-          #   @param external_id [String]
-          #
-          #   @param owner [Privy::Models::OwnerInputUser, Privy::Models::OwnerInputPublicKey, nil] The owner of the resource, specified as a Privy user ID, a P-256 public key, or
-          #
-          #   @param owner_id [String, nil] The key quorum ID to set as the owner of the resource. If you provide this, do n
-          #
-          #   @param policy_ids [Array<String>] An optional list of up to one policy ID to enforce on the wallet.
-        end
 
         # @see Privy::Models::WalletIntentResponse::RequestDetails#method_
         module Method

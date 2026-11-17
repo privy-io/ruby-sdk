@@ -9,6 +9,7 @@ module Privy
       OrHash =
         T.type_alias { T.any(Privy::PolicyGetParams, Privy::Internal::AnyHash) }
 
+      # A unique identifier for a policy.
       sig { returns(String) }
       attr_accessor :policy_id
 
@@ -18,7 +19,11 @@ module Privy
           request_options: Privy::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(policy_id:, request_options: {})
+      def self.new(
+        # A unique identifier for a policy.
+        policy_id:,
+        request_options: {}
+      )
       end
 
       sig do

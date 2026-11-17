@@ -8,12 +8,14 @@ module Privy
       include Privy::Internal::Type::RequestParameters
 
       # @!attribute policy_id
+      #   A unique identifier for a policy.
       #
       #   @return [String]
       required :policy_id, String
 
       # @!method initialize(policy_id:, request_options: {})
-      #   @param policy_id [String]
+      #   @param policy_id [String] A unique identifier for a policy.
+      #
       #   @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}]
     end
   end

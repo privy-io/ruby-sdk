@@ -11,6 +11,7 @@ module Privy
           T.any(Privy::PolicyUpdateParams, Privy::Internal::AnyHash)
         end
 
+      # A unique identifier for a policy.
       sig { returns(String) }
       attr_accessor :policy_id
 
@@ -76,6 +77,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # A unique identifier for a policy.
         policy_id:,
         # Name to assign to the policy, up to 100 characters.
         name: nil,

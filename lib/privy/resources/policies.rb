@@ -54,7 +54,7 @@ module Privy
       #
       # @overload update(policy_id, name: nil, owner: nil, owner_id: nil, rules: nil, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
       #
-      # @param policy_id [String] Path param
+      # @param policy_id [String] Path param: A unique identifier for a policy.
       #
       # @param name [String] Body param: Name to assign to the policy, up to 100 characters.
       #
@@ -123,7 +123,7 @@ module Privy
       #
       # @overload delete(policy_id, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
       #
-      # @param policy_id [String]
+      # @param policy_id [String] A unique identifier for a policy.
       #
       # @param privy_authorization_signature [String] Request authorization signature. If multiple signatures are required, they shoul
       #
@@ -155,7 +155,7 @@ module Privy
       #
       # @overload create_rule(policy_id, action:, conditions:, method_:, name:, privy_authorization_signature: nil, privy_request_expiry: nil, request_options: {})
       #
-      # @param policy_id [String] Path param
+      # @param policy_id [String] Path param: A unique identifier for a policy.
       #
       # @param action [Symbol, Privy::Models::PolicyAction] Body param: The action to take when a policy rule matches.
       #
@@ -200,7 +200,7 @@ module Privy
       #
       # @param rule_id [String] Path param
       #
-      # @param policy_id [String] Path param
+      # @param policy_id [String] Path param: A unique identifier for a policy.
       #
       # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
       #
@@ -233,7 +233,8 @@ module Privy
       #
       # @overload get(policy_id, request_options: {})
       #
-      # @param policy_id [String]
+      # @param policy_id [String] A unique identifier for a policy.
+      #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Privy::Models::Policy]
@@ -253,7 +254,9 @@ module Privy
       # @overload get_rule(rule_id, policy_id:, request_options: {})
       #
       # @param rule_id [String]
-      # @param policy_id [String]
+      #
+      # @param policy_id [String] A unique identifier for a policy.
+      #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Privy::Models::PolicyRuleResponse]
@@ -282,7 +285,7 @@ module Privy
       #
       # @param rule_id [String] Path param
       #
-      # @param policy_id [String] Path param
+      # @param policy_id [String] Path param: A unique identifier for a policy.
       #
       # @param action [Symbol, Privy::Models::PolicyAction] Body param: The action to take when a policy rule matches.
       #

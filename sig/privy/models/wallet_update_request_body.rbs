@@ -7,7 +7,7 @@ module Privy
         external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
-        policy_ids: ::Array[String]
+        policy_ids: Privy::Models::policy_input
       }
 
     class WalletUpdateRequestBody < Privy::Internal::Type::BaseModel
@@ -27,9 +27,11 @@ module Privy
 
       attr_accessor owner_id: String?
 
-      attr_reader policy_ids: ::Array[String]?
+      attr_reader policy_ids: Privy::Models::policy_input?
 
-      def policy_ids=: (::Array[String]) -> ::Array[String]
+      def policy_ids=: (
+        Privy::Models::policy_input
+      ) -> Privy::Models::policy_input
 
       def initialize: (
         ?additional_signers: Privy::Models::additional_signer_input,
@@ -37,7 +39,7 @@ module Privy
         ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,
-        ?policy_ids: ::Array[String]
+        ?policy_ids: Privy::Models::policy_input
       ) -> void
 
       def to_hash: -> {
@@ -46,7 +48,7 @@ module Privy
         external_id: String,
         owner: Privy::Models::owner_input?,
         owner_id: String?,
-        policy_ids: ::Array[String]
+        policy_ids: Privy::Models::policy_input
       }
     end
   end

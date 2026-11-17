@@ -5,8 +5,7 @@ module Privy
     # @see Privy::Resources::Policies#list
     class PolicyListItem < Privy::Internal::Type::BaseModel
       # @!attribute id
-      #   Unique ID of the created policy. This will be the primary identifier when using
-      #   the policy in the future.
+      #   A unique identifier for a policy.
       #
       #   @return [String]
       required :id, String
@@ -42,12 +41,9 @@ module Privy
       required :version, enum: -> { Privy::PolicyListItem::Version }
 
       # @!method initialize(id:, chain_type:, created_at:, name:, owner_id:, version:)
-      #   Some parameter documentations has been truncated, see
-      #   {Privy::Models::PolicyListItem} for more details.
-      #
       #   A policy without its rules, as returned when listing policies.
       #
-      #   @param id [String] Unique ID of the created policy. This will be the primary identifier when using
+      #   @param id [String] A unique identifier for a policy.
       #
       #   @param chain_type [Symbol, Privy::Models::WalletChainType] The wallet chain types.
       #

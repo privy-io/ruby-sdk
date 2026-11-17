@@ -38,8 +38,7 @@ module Privy
       optional :owner_id, String, nil?: true
 
       # @!attribute policy_ids
-      #   New policy IDs to enforce on the wallet. Currently, only one policy is supported
-      #   per wallet.
+      #   An optional list of up to one policy ID to enforce on the wallet.
       #
       #   @return [Array<String>, nil]
       optional :policy_ids, Privy::Internal::Type::ArrayOf[String]
@@ -61,7 +60,7 @@ module Privy
       #
       #   @param owner_id [String, nil] The key quorum ID to set as the owner of the resource. If you provide this, do n
       #
-      #   @param policy_ids [Array<String>] New policy IDs to enforce on the wallet. Currently, only one policy is supported
+      #   @param policy_ids [Array<String>] An optional list of up to one policy ID to enforce on the wallet.
     end
   end
 end

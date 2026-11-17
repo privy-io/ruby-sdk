@@ -1859,6 +1859,8 @@ module Privy
 
   PolicyGetRuleParams = Privy::Models::PolicyGetRuleParams
 
+  PolicyID = Privy::Models::PolicyID
+
   # @type [Privy::Internal::Type::Converter]
   PolicyInput = Privy::Models::PolicyInput
 

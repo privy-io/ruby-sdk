@@ -4,6 +4,7 @@ module Privy
   module Models
     class PolicyRuleRequestParams < Privy::Internal::Type::BaseModel
       # @!attribute policy_id
+      #   A unique identifier for a policy.
       #
       #   @return [String]
       required :policy_id, String
@@ -16,7 +17,8 @@ module Privy
       # @!method initialize(policy_id:, rule_id:)
       #   Unique IDs of the policy and the rule within the policy to take actions on.
       #
-      #   @param policy_id [String]
+      #   @param policy_id [String] A unique identifier for a policy.
+      #
       #   @param rule_id [String]
     end
   end

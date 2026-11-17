@@ -11,6 +11,7 @@ module Privy
           T.any(Privy::PolicyUpdateRuleParams, Privy::Internal::AnyHash)
         end
 
+      # A unique identifier for a policy.
       sig { returns(String) }
       attr_accessor :policy_id
 
@@ -43,6 +44,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # A unique identifier for a policy.
         policy_id:,
         rule_id:,
         # Request authorization signature. If multiple signatures are required, they

@@ -36,7 +36,7 @@ module Privy
         ?external_id: String,
         ?owner: Privy::Models::owner_input?,
         ?owner_id: String?,
-        ?policy_ids: ::Array[String],
+        ?policy_ids: Privy::Models::policy_input,
         ?privy_authorization_signature: String,
         ?privy_request_expiry: String,
         ?request_options: Privy::request_opts

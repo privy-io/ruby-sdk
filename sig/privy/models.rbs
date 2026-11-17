@@ -1789,6 +1789,8 @@ module Privy
 
   class PolicyGetRuleParams = Privy::Models::PolicyGetRuleParams
 
+  class PolicyID = Privy::Models::PolicyID
+
   PolicyInput: Privy::Internal::Type::Converter
 
   class PolicyIntentDeleteRequestBody = Privy::Models::PolicyIntentDeleteRequestBody

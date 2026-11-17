@@ -639,7 +639,7 @@ module Privy
       #
       # @param owner_id [String, nil] Body param: The key quorum ID to set as the owner of the resource. If you provid
       #
-      # @param policy_ids [Array<String>] Body param: New policy IDs to enforce on the wallet. Currently, only one policy
+      # @param policy_ids [Array<String>] Body param: An optional list of up to one policy ID to enforce on the wallet.
       #
       # @param privy_request_expiry [String] Header param: Request expiry. Value is a Unix timestamp in milliseconds represen
       #

@@ -55,95 +55,29 @@ module Privy
 
       type request_details =
         {
-          body: Privy::WalletIntentResponse::RequestDetails::Body,
+          body: Privy::WalletUpdateRequestBody,
           method_: Privy::Models::WalletIntentResponse::RequestDetails::method_,
           url: String
         }
 
       class RequestDetails < Privy::Internal::Type::BaseModel
-        attr_accessor body: Privy::WalletIntentResponse::RequestDetails::Body
+        attr_accessor body: Privy::WalletUpdateRequestBody
 
         attr_accessor method_: Privy::Models::WalletIntentResponse::RequestDetails::method_
 
         attr_accessor url: String
 
         def initialize: (
-          body: Privy::WalletIntentResponse::RequestDetails::Body,
+          body: Privy::WalletUpdateRequestBody,
           method_: Privy::Models::WalletIntentResponse::RequestDetails::method_,
           url: String
         ) -> void
 
         def to_hash: -> {
-          body: Privy::WalletIntentResponse::RequestDetails::Body,
+          body: Privy::WalletUpdateRequestBody,
           method_: Privy::Models::WalletIntentResponse::RequestDetails::method_,
           url: String
         }
-
-        type body =
-          {
-            additional_signers: Privy::Models::additional_signer_input,
-            authorization_key_ids: ::Array[String],
-            authorization_threshold: Float,
-            display_name: String?,
-            external_id: String,
-            owner: Privy::Models::owner_input?,
-            owner_id: String?,
-            policy_ids: Privy::Models::policy_input
-          }
-
-        class Body < Privy::Internal::Type::BaseModel
-          attr_reader additional_signers: Privy::Models::additional_signer_input?
-
-          def additional_signers=: (
-            Privy::Models::additional_signer_input
-          ) -> Privy::Models::additional_signer_input
-
-          attr_reader authorization_key_ids: ::Array[String]?
-
-          def authorization_key_ids=: (::Array[String]) -> ::Array[String]
-
-          attr_reader authorization_threshold: Float?
-
-          def authorization_threshold=: (Float) -> Float
-
-          attr_accessor display_name: String?
-
-          attr_reader external_id: String?
-
-          def external_id=: (String) -> String
-
-          attr_accessor owner: Privy::Models::owner_input?
-
-          attr_accessor owner_id: String?
-
-          attr_reader policy_ids: Privy::Models::policy_input?
-
-          def policy_ids=: (
-            Privy::Models::policy_input
-          ) -> Privy::Models::policy_input
-
-          def initialize: (
-            ?additional_signers: Privy::Models::additional_signer_input,
-            ?authorization_key_ids: ::Array[String],
-            ?authorization_threshold: Float,
-            ?display_name: String?,
-            ?external_id: String,
-            ?owner: Privy::Models::owner_input?,
-            ?owner_id: String?,
-            ?policy_ids: Privy::Models::policy_input
-          ) -> void
-
-          def to_hash: -> {
-            additional_signers: Privy::Models::additional_signer_input,
-            authorization_key_ids: ::Array[String],
-            authorization_threshold: Float,
-            display_name: String?,
-            external_id: String,
-            owner: Privy::Models::owner_input?,
-            owner_id: String?,
-            policy_ids: Privy::Models::policy_input
-          }
-        end
 
         type method_ = :PATCH
 

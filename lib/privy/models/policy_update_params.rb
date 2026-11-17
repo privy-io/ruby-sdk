@@ -8,6 +8,7 @@ module Privy
       include Privy::Internal::Type::RequestParameters
 
       # @!attribute policy_id
+      #   A unique identifier for a policy.
       #
       #   @return [String]
       required :policy_id, String
@@ -55,7 +56,7 @@ module Privy
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::PolicyUpdateParams} for more details.
       #
-      #   @param policy_id [String]
+      #   @param policy_id [String] A unique identifier for a policy.
       #
       #   @param name [String] Name to assign to the policy, up to 100 characters.
       #

@@ -34,11 +34,7 @@ module Privy
 
       # The owner of the resource, specified as a Privy user ID, a P-256 public key, or
       # null to remove the current owner.
-      sig do
-        returns(
-          T.nilable(T.any(Privy::OwnerInputUser, Privy::OwnerInputPublicKey))
-        )
-      end
+      sig { returns(T.nilable(Privy::OwnerInput::Variants)) }
       attr_accessor :owner
 
       # The key quorum ID to set as the owner of the resource. If you provide this, do
@@ -46,8 +42,7 @@ module Privy
       sig { returns(T.nilable(String)) }
       attr_accessor :owner_id
 
-      # New policy IDs to enforce on the wallet. Currently, only one policy is supported
-      # per wallet.
+      # An optional list of up to one policy ID to enforce on the wallet.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :policy_ids
 
@@ -88,8 +83,7 @@ module Privy
         # The key quorum ID to set as the owner of the resource. If you provide this, do
         # not specify an owner.
         owner_id: nil,
-        # New policy IDs to enforce on the wallet. Currently, only one policy is supported
-        # per wallet.
+        # An optional list of up to one policy ID to enforce on the wallet.
         policy_ids: nil
       )
       end
@@ -100,10 +94,7 @@ module Privy
             additional_signers: T::Array[Privy::AdditionalSignerItemInput],
             display_name: T.nilable(String),
             external_id: String,
-            owner:
-              T.nilable(
-                T.any(Privy::OwnerInputUser, Privy::OwnerInputPublicKey)
-              ),
+            owner: T.nilable(Privy::OwnerInput::Variants),
             owner_id: T.nilable(String),
             policy_ids: T::Array[String]
           }
