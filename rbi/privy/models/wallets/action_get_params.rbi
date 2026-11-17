@@ -20,7 +20,7 @@ module Privy
         sig { returns(String) }
         attr_accessor :action_id
 
-        # Expandable relations to include on a wallet action response.
+        # Include step-level details in the response.
         sig do
           returns(T.nilable(Privy::Wallets::WalletActionInclude::OrSymbol))
         end
@@ -53,7 +53,7 @@ module Privy
           wallet_id:,
           # ID of the wallet action.
           action_id:,
-          # Expandable relations to include on a wallet action response.
+          # Include step-level details in the response.
           include: nil,
           # Request authorization signature. If multiple signatures are required, they
           # should be comma separated.

@@ -21,7 +21,7 @@ module Privy
           action_id,
           # Path param: ID of the wallet.
           wallet_id:,
-          # Query param: Expandable relations to include on a wallet action response.
+          # Query param: Include step-level details in the response.
           include: nil,
           # Header param: Request authorization signature. If multiple signatures are
           # required, they should be comma separated.

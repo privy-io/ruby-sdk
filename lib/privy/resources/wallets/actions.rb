@@ -17,7 +17,7 @@ module Privy
         #
         # @param wallet_id [String] Path param: ID of the wallet.
         #
-        # @param include [Symbol, Privy::Models::Wallets::WalletActionInclude] Query param: Expandable relations to include on a wallet action response.
+        # @param include [Symbol, Privy::Models::Wallets::WalletActionInclude] Query param: Include step-level details in the response.
         #
         # @param privy_authorization_signature [String] Header param: Request authorization signature. If multiple signatures are requir
         #

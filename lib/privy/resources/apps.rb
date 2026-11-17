@@ -32,14 +32,20 @@ module Privy
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Privy::Models::AppGetGasSpendParams} for more details.
+      #
       # Get aggregated Privy gas credits charged for a set of wallets over a time range.
       # Maximum 100 wallet IDs and 30-day range per request.
       #
       # @overload get_gas_spend(end_timestamp:, start_timestamp:, wallet_ids:, request_options: {})
       #
-      # @param end_timestamp [Float]
-      # @param start_timestamp [Float]
-      # @param wallet_ids [Array<String>]
+      # @param end_timestamp [Float] Unix timestamp in milliseconds, exclusive. Must be greater than or equal to `sta
+      #
+      # @param start_timestamp [Float] Unix timestamp in milliseconds, inclusive. Must be less than or equal to `end_ti
+      #
+      # @param wallet_ids [Array<String>] List of wallet IDs to query gas spend for. Maximum 100.
+      #
       # @param request_options [Privy::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Privy::Models::GasSpendResponseBody]

@@ -21,7 +21,7 @@ module Privy
         required :action_id, String
 
         # @!attribute include
-        #   Expandable relations to include on a wallet action response.
+        #   Include step-level details in the response.
         #
         #   @return [Symbol, Privy::Models::Wallets::WalletActionInclude, nil]
         optional :include, enum: -> { Privy::Wallets::WalletActionInclude }
@@ -41,7 +41,7 @@ module Privy
         #
         #   @param action_id [String] ID of the wallet action.
         #
-        #   @param include [Symbol, Privy::Models::Wallets::WalletActionInclude] Expandable relations to include on a wallet action response.
+        #   @param include [Symbol, Privy::Models::Wallets::WalletActionInclude] Include step-level details in the response.
         #
         #   @param privy_authorization_signature [String] Request authorization signature. If multiple signatures are required, they shoul
         #
