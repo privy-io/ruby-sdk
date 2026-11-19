@@ -5,7 +5,7 @@ require "yaml"
 target(:lib) do
   configure_code_diagnostics(Steep::Diagnostic::Ruby.strict)
 
-  signature("sig")
+  signature(ENV.fetch("STEEP_SIGNATURE_PATH", "sig"))
 
   YAML.safe_load_file("./manifest.yaml", symbolize_names: true) => {dependencies:}
   # currently these libraries lack the `*.rbs` annotations required by `steep`

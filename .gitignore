@@ -10,3 +10,4 @@ bin/tapioca
 Brewfile.lock.json
 doc/
 sorbet/tapioca/*
+steep-signatures-*.rbs

@@ -4,9 +4,11 @@ require "etc"
 require "pathname"
 require "securerandom"
 require "shellwords"
+require "tempfile"
 
 require "minitest/test_task"
 require "rake/clean"
+require "rbs"
 require "rubocop/rake_task"
 
 tapioca = "sorbet/tapioca"
@@ -154,7 +156,57 @@ multitask(format: [:"format:rb", :"format:rbi", :"format:rbs"])
 
 desc("Typecheck `*.rbs`")
 multitask(:"typecheck:steep") do
-  sh(*%w[steep check])
+  # `steep` validates the types each signature file declares against their definitions merged from every file. As every
+  # generated file reopens the same namespaces, validating the files one by one validates those namespaces once per
+  # file. Validating one file combining every signature validates each type once.
+  sigs = FileList["sig/**/*.rbs"].sort
+
+  # combining the files would change the scope of `use` directives, and could move syntax errors into the files after
+  # them; `steep` stops at syntax errors before validating anything, so it checks those quickly as is
+  combinable = sigs.all? do
+    _, directives, = RBS::Parser.parse_signature(File.read(_1))
+    directives.empty?
+  rescue RBS::ParsingError
+    false
+  end
+  next sh(*%w[steep check]) unless combinable
+
+  Tempfile.create(%w[steep-signatures- .rbs], ".") do |combined|
+    lineno = 1
+    # the line each signature file starts at in the combined file
+    starts = sigs.map do |path|
+      rbs = File.read(path)
+      rbs << "\n" unless rbs.end_with?("\n")
+      combined.write(rbs)
+      [lineno, path].tap { lineno += rbs.count("\n") }
+    end
+    combined.flush
+
+    name = File.basename(combined.path)
+    # the signature file and its line for a line in the combined file
+    at = ->(line) do
+      start, path = starts.fetch((starts.bsearch_index { _1.first > line } || starts.size).pred)
+      [path, line - start + 1]
+    end
+    # report the diagnostics at their signature files, as the combined file is gone once `steep` exits
+    location = /(?:\S*\/)?#{Regexp.escape(name)}:(\d+):(\d+)(?:\.\.\.(\d+):(\d+))?/
+    IO.popen({"STEEP_SIGNATURE_PATH" => name}, %w[steep check], err: %i[child out]) do |io|
+      io.each_line do |output|
+        puts(
+          output.gsub(location) do
+            line, column, end_line, end_column = Regexp.last_match.captures
+            path, line = at.(line.to_i)
+            next "#{path}:#{line}:#{column}" unless end_line
+
+            end_path, end_line = at.(end_line.to_i)
+            "#{path}:#{line}:#{column}...#{end_path == path ? "" : "#{end_path}:"}#{end_line}:#{end_column}"
+          end
+        )
+      end
+    end
+    $stdout.flush
+    fail("Command failed with status (#{$?.exitstatus}): [steep check]") unless $?.success?
+  end
 end
 
 directory(examples)
