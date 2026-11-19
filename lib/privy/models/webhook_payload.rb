@@ -90,7 +90,7 @@ module Privy
       # Payload for the yield.claim.confirmed webhook event.
       variant -> { Privy::YieldClaimConfirmedWebhookPayload }
 
-      # Payload for the tmmf.wallet.updated webhook event: a register request created or confirmed a tMMF wallet.
+      # Payload for the tmmf.wallet.updated webhook event: the status of a tMMF wallet with the provider changed.
       variant -> { Privy::TmmfWalletUpdatedWebhookPayload }
 
       # Payload for the user_operation.completed webhook event.

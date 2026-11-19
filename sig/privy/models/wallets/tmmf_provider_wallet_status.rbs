@@ -2,7 +2,7 @@ module Privy
   module Models
     module Wallets
       type tmmf_provider_wallet_status =
-        :created | :approved | :rejected | String
+        :created | :approved | :rejected | :deactivated | String
 
       module TmmfProviderWalletStatus
         extend Privy::Internal::Type::Union
@@ -12,6 +12,7 @@ module Privy
         CREATED: :created
         APPROVED: :approved
         REJECTED: :rejected
+        DEACTIVATED: :deactivated
       end
     end
   end

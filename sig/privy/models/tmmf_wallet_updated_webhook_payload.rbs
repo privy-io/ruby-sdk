@@ -11,7 +11,9 @@ module Privy
         type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
         updated_at: Integer,
         user_id: String,
-        wallet_id: String
+        wallet_id: String,
+        emitted_at: Integer,
+        sequence: Integer
       }
 
     class TmmfWalletUpdatedWebhookPayload < Privy::Internal::Type::BaseModel
@@ -35,6 +37,14 @@ module Privy
 
       attr_accessor wallet_id: String
 
+      attr_reader emitted_at: Integer?
+
+      def emitted_at=: (Integer) -> Integer
+
+      attr_reader sequence: Integer?
+
+      def sequence=: (Integer) -> Integer
+
       def initialize: (
         address: String,
         chain: String,
@@ -45,7 +55,9 @@ module Privy
         type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
         updated_at: Integer,
         user_id: String,
-        wallet_id: String
+        wallet_id: String,
+        ?emitted_at: Integer,
+        ?sequence: Integer
       ) -> void
 
       def to_hash: -> {
@@ -58,7 +70,9 @@ module Privy
         type: Privy::Models::TmmfWalletUpdatedWebhookPayload::type_,
         updated_at: Integer,
         user_id: String,
-        wallet_id: String
+        wallet_id: String,
+        emitted_at: Integer,
+        sequence: Integer
       }
 
       type type_ = :"tmmf.wallet.updated"

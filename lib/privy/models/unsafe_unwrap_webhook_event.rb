@@ -31,7 +31,7 @@ module Privy
 
       variant :"organization.kyb.updated", -> { Privy::OrganizationKYBUpdatedWebhookEvent }
 
-      # Payload for the tmmf.wallet.updated webhook event: a register request created or confirmed a tMMF wallet.
+      # Payload for the tmmf.wallet.updated webhook event: the status of a tMMF wallet with the provider changed.
       variant :"tmmf.wallet.updated", -> { Privy::TmmfWalletUpdatedWebhookPayload }
 
       # Payload for the transaction.broadcasted webhook event.

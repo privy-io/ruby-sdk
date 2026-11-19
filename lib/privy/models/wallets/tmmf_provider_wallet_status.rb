@@ -14,6 +14,8 @@ module Privy
 
         variant const: -> { Privy::Models::Wallets::TmmfProviderWalletStatus::REJECTED }
 
+        variant const: -> { Privy::Models::Wallets::TmmfProviderWalletStatus::DEACTIVATED }
+
         variant String
 
         # @!method self.variants
@@ -28,6 +30,7 @@ module Privy
         CREATED = :created
         APPROVED = :approved
         REJECTED = :rejected
+        DEACTIVATED = :deactivated
 
         # @!endgroup
       end

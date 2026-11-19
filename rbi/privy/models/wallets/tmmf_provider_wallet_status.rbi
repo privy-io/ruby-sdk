@@ -45,6 +45,11 @@ module Privy
             :rejected,
             Privy::Wallets::TmmfProviderWalletStatus::TaggedSymbol
           )
+        DEACTIVATED =
+          T.let(
+            :deactivated,
+            Privy::Wallets::TmmfProviderWalletStatus::TaggedSymbol
+          )
       end
     end
   end

@@ -65,12 +65,26 @@ module Privy
       #   @return [String]
       required :wallet_id, String
 
-      # @!method initialize(address:, chain:, created_at:, event_id:, provider:, status:, type:, updated_at:, user_id:, wallet_id:)
+      # @!attribute emitted_at
+      #   Unix timestamp in milliseconds when the provider emitted the event of the
+      #   change; absent when no provider event reported it.
+      #
+      #   @return [Integer, nil]
+      optional :emitted_at, Integer
+
+      # @!attribute sequence
+      #   The provider's sequence number of the change, higher for later changes to the
+      #   resource; absent when no provider event reported it.
+      #
+      #   @return [Integer, nil]
+      optional :sequence, Integer
+
+      # @!method initialize(address:, chain:, created_at:, event_id:, provider:, status:, type:, updated_at:, user_id:, wallet_id:, emitted_at: nil, sequence: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::TmmfWalletUpdatedWebhookPayload} for more details.
       #
-      #   Payload for the tmmf.wallet.updated webhook event: a register request created or
-      #   confirmed a tMMF wallet.
+      #   Payload for the tmmf.wallet.updated webhook event: the status of a tMMF wallet
+      #   with the provider changed.
       #
       #   @param address [String] Blockchain address of the registered wallet.
       #
@@ -91,6 +105,10 @@ module Privy
       #   @param user_id [String] ID of the Privy user the wallet is registered for.
       #
       #   @param wallet_id [String] ID of the Privy wallet registered to trade and hold fund shares.
+      #
+      #   @param emitted_at [Integer] Unix timestamp in milliseconds when the provider emitted the event of the change
+      #
+      #   @param sequence [Integer] The provider's sequence number of the change, higher for later changes to the re
 
       # The type of webhook event.
       #

@@ -57,8 +57,24 @@ module Privy
       sig { returns(String) }
       attr_accessor :wallet_id
 
-      # Payload for the tmmf.wallet.updated webhook event: a register request created or
-      # confirmed a tMMF wallet.
+      # Unix timestamp in milliseconds when the provider emitted the event of the
+      # change; absent when no provider event reported it.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :emitted_at
+
+      sig { params(emitted_at: Integer).void }
+      attr_writer :emitted_at
+
+      # The provider's sequence number of the change, higher for later changes to the
+      # resource; absent when no provider event reported it.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :sequence
+
+      sig { params(sequence: Integer).void }
+      attr_writer :sequence
+
+      # Payload for the tmmf.wallet.updated webhook event: the status of a tMMF wallet
+      # with the provider changed.
       sig do
         params(
           address: String,
@@ -73,7 +89,9 @@ module Privy
           type: Privy::TmmfWalletUpdatedWebhookPayload::Type::OrSymbol,
           updated_at: Integer,
           user_id: String,
-          wallet_id: String
+          wallet_id: String,
+          emitted_at: Integer,
+          sequence: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -98,7 +116,13 @@ module Privy
         # ID of the Privy user the wallet is registered for.
         user_id:,
         # ID of the Privy wallet registered to trade and hold fund shares.
-        wallet_id:
+        wallet_id:,
+        # Unix timestamp in milliseconds when the provider emitted the event of the
+        # change; absent when no provider event reported it.
+        emitted_at: nil,
+        # The provider's sequence number of the change, higher for later changes to the
+        # resource; absent when no provider event reported it.
+        sequence: nil
       )
       end
 
@@ -115,7 +139,9 @@ module Privy
             type: Privy::TmmfWalletUpdatedWebhookPayload::Type::TaggedSymbol,
             updated_at: Integer,
             user_id: String,
-            wallet_id: String
+            wallet_id: String,
+            emitted_at: Integer,
+            sequence: Integer
           }
         )
       end
