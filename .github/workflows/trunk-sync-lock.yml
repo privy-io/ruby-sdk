@@ -30,7 +30,7 @@ permissions:
 
 jobs:
   lock:
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-24.04' }}
     if: github.repository == 'privy-io/ruby-sdk-private'
     env:
       PRODUCTION_REPO: privy-io/ruby-sdk

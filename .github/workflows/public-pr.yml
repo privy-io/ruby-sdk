@@ -9,6 +9,6 @@ permissions: {}
 jobs:
   do-not-merge:
     if: github.repository == 'privy-io/ruby-sdk'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - run: echo "::error title=Do not merge here::Import this PR into the private repo (see CONTRIBUTING.md), then close it." && exit 1

@@ -23,7 +23,7 @@ on:
 jobs:
   back-sync:
     # Fast-forward production main back onto staging so the trunks stay identical.
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-24.04' }}
     if: >-
       github.repository == 'privy-io/ruby-sdk-private' &&
       (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch')
@@ -100,7 +100,7 @@ jobs:
     # On a published release, tell staging to back-sync now instead of waiting for the
     # poll. The app token is scoped to staging with the Contents:write permission that
     # repository_dispatch requires, and this job uses it only for that dispatch.
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-24.04' }}
     if: >-
       github.repository == 'privy-io/ruby-sdk' &&
       (github.event_name == 'release' || github.event_name == 'workflow_dispatch')
@@ -145,7 +145,7 @@ jobs:
     # pushes, so the bot's commits can't trigger a re-seal loop. Auth is a short-lived
     # Builder Blobby app token (from the builder-blobby-sdk-sync-and-seal environment),
     # downscoped to the config repo — no long-lived PAT needed.
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-24.04' }}
     if: >-
       github.repository == 'privy-io/ruby-sdk-private' &&
       github.event_name == 'push'

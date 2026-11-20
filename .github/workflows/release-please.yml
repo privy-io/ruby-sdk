@@ -19,7 +19,7 @@ permissions:
 jobs:
   release-please:
     if: github.repository == 'privy-io/ruby-sdk-private'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: builder-blobby-sdk-sync-and-seal
     outputs:
       prs_created: ${{ steps.release.outputs.prs_created }}
@@ -52,7 +52,7 @@ jobs:
     name: Post release proposal
     needs: release-please
     if: needs.release-please.outputs.prs_created == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pull-requests: write

@@ -25,7 +25,7 @@ permissions:
 
 jobs:
   promote:
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-24.04' }}
     if: github.repository == 'privy-io/ruby-sdk-private'
     environment: builder-blobby-sdk-sync-and-seal
     env:

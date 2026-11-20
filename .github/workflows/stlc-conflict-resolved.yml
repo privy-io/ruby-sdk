@@ -16,7 +16,7 @@ jobs:
     # stlc-sync.yml; a skipped job spins up no runner. `!github.event.deleted` also skips a
     # branch-deletion push (which has no head commit to inspect).
     if: ${{ !github.event.deleted && github.event.head_commit.author.name != 'builder-blobby[bot]' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: builder-blobby-sdk-sync-and-seal
     steps:
       - name: Generate Builder Blobby token for config repo
