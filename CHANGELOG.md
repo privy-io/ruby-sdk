@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.0](https://github.com/privy-io/ruby-sdk-private/compare/v0.8.0...v0.9.0) (2026-11-20)
+
+
+### Features
+
+* **api:** api update ([e7d3e11](https://github.com/privy-io/ruby-sdk-private/commit/e7d3e11d505d617a9f31000d40419e8d39d97a72))
+* **api:** api update ([37ab83c](https://github.com/privy-io/ruby-sdk-private/commit/37ab83c2c062d247af7f60b336a77c4ff65cf10c))
+* **api:** api update ([cebc76a](https://github.com/privy-io/ruby-sdk-private/commit/cebc76a551f8eab62773c304c52217dcd421e253))
+* **api:** api update ([b727332](https://github.com/privy-io/ruby-sdk-private/commit/b727332f8db093ca1db1985570646562662042a9))
+* **api:** api update ([be5b6fc](https://github.com/privy-io/ruby-sdk-private/commit/be5b6fcc85e0b51582c4d069773d383a5ac2c4c1))
+* **api:** api update ([901db9a](https://github.com/privy-io/ruby-sdk-private/commit/901db9a4db573ffd20472e751d7a7cbde22b3f03))
+
 ## [0.8.0](https://github.com/privy-io/ruby-sdk-private/compare/v0.7.0...v0.8.0) (2026-11-13)
 
 
