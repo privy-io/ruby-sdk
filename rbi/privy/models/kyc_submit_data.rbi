@@ -6,6 +6,29 @@ module Privy
       OrHash =
         T.type_alias { T.any(Privy::KYCSubmitData, Privy::Internal::AnyHash) }
 
+      # Primary purpose of the individual's account, as one of the provider's
+      # [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      sig { returns(T.nilable(String)) }
+      attr_reader :account_purpose
+
+      sig { params(account_purpose: String).void }
+      attr_writer :account_purpose
+
+      # Free-text account purpose, required by the provider when `account_purpose` is
+      # `other`.
+      sig { returns(T.nilable(String)) }
+      attr_reader :account_purpose_other
+
+      sig { params(account_purpose_other: String).void }
+      attr_writer :account_purpose_other
+
+      # Whether the individual is acting as an intermediary for a third party.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :acting_as_intermediary
+
+      sig { params(acting_as_intermediary: T::Boolean).void }
+      attr_writer :acting_as_intermediary
+
       # Date of birth in YYYY-MM-DD format.
       sig { returns(T.nilable(String)) }
       attr_reader :date_of_birth
@@ -19,6 +42,22 @@ module Privy
 
       sig { params(email: String).void }
       attr_writer :email
+
+      # The individual's employment status, as one of the provider's
+      # [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      sig { returns(T.nilable(String)) }
+      attr_reader :employment_status
+
+      sig { params(employment_status: String).void }
+      attr_writer :employment_status
+
+      # The individual's expected monthly payments, as one of the provider's
+      # [USD buckets](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      sig { returns(T.nilable(String)) }
+      attr_reader :expected_monthly_payments_usd
+
+      sig { params(expected_monthly_payments_usd: String).void }
+      attr_writer :expected_monthly_payments_usd
 
       # Legal first name.
       sig { returns(T.nilable(String)) }
@@ -60,6 +99,14 @@ module Privy
       sig { params(middle_name: String).void }
       attr_writer :middle_name
 
+      # The individual's most recent occupation, as an ISCO code, passed through to the
+      # provider.
+      sig { returns(T.nilable(String)) }
+      attr_reader :most_recent_occupation
+
+      sig { params(most_recent_occupation: String).void }
+      attr_writer :most_recent_occupation
+
       # ISO 3166-1 alpha-3 codes for all nationalities held.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :nationalities
@@ -98,6 +145,14 @@ module Privy
         params(residential_address: Privy::VerificationAddress::OrHash).void
       end
       attr_writer :residential_address
+
+      # Primary source of the individual's funds, as one of the provider's
+      # [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      sig { returns(T.nilable(String)) }
+      attr_reader :source_of_funds
+
+      sig { params(source_of_funds: String).void }
+      attr_writer :source_of_funds
 
       # Stripe Link shared data ID that supplies name, date of birth, address, and US
       # SSN (omit those fields); retrieval errors surface in endorsements[].issues.
@@ -188,19 +243,26 @@ module Privy
       # KYC verification data for headless submission.
       sig do
         params(
+          account_purpose: String,
+          account_purpose_other: String,
+          acting_as_intermediary: T::Boolean,
           date_of_birth: String,
           email: String,
+          employment_status: String,
+          expected_monthly_payments_usd: String,
           first_name: String,
           identifying_information:
             T::Array[Privy::VerificationDocument::OrHash],
           kyc_screen: Privy::KyxScreen::OrHash,
           last_name: String,
           middle_name: String,
+          most_recent_occupation: String,
           nationalities: T::Array[String],
           nonresident_alien_attestation: T::Boolean,
           ofac_screen: Privy::KyxScreen::OrHash,
           phone: String,
           residential_address: Privy::VerificationAddress::OrHash,
+          source_of_funds: String,
           stripe_link_shared_data_id: String,
           transliterated_first_name: String,
           transliterated_last_name: String,
@@ -215,10 +277,24 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
+        # Primary purpose of the individual's account, as one of the provider's
+        # [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+        account_purpose: nil,
+        # Free-text account purpose, required by the provider when `account_purpose` is
+        # `other`.
+        account_purpose_other: nil,
+        # Whether the individual is acting as an intermediary for a third party.
+        acting_as_intermediary: nil,
         # Date of birth in YYYY-MM-DD format.
         date_of_birth: nil,
         # Email address.
         email: nil,
+        # The individual's employment status, as one of the provider's
+        # [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+        employment_status: nil,
+        # The individual's expected monthly payments, as one of the provider's
+        # [USD buckets](https://apidocs.bridge.xyz/platform/customers/customers/api).
+        expected_monthly_payments_usd: nil,
         # Legal first name.
         first_name: nil,
         # Identifying documents.
@@ -230,6 +306,9 @@ module Privy
         last_name: nil,
         # Legal middle name.
         middle_name: nil,
+        # The individual's most recent occupation, as an ISCO code, passed through to the
+        # provider.
+        most_recent_occupation: nil,
         # ISO 3166-1 alpha-3 codes for all nationalities held.
         nationalities: nil,
         # Attests the user is a nonresident alien to satisfy identification without a US
@@ -242,6 +321,9 @@ module Privy
         phone: nil,
         # A postal address used in KYC and KYB data submission.
         residential_address: nil,
+        # Primary source of the individual's funds, as one of the provider's
+        # [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+        source_of_funds: nil,
         # Stripe Link shared data ID that supplies name, date of birth, address, and US
         # SSN (omit those fields); retrieval errors surface in endorsements[].issues.
         stripe_link_shared_data_id: nil,
@@ -268,18 +350,25 @@ module Privy
       sig do
         override.returns(
           {
+            account_purpose: String,
+            account_purpose_other: String,
+            acting_as_intermediary: T::Boolean,
             date_of_birth: String,
             email: String,
+            employment_status: String,
+            expected_monthly_payments_usd: String,
             first_name: String,
             identifying_information: T::Array[Privy::VerificationDocument],
             kyc_screen: Privy::KyxScreen,
             last_name: String,
             middle_name: String,
+            most_recent_occupation: String,
             nationalities: T::Array[String],
             nonresident_alien_attestation: T::Boolean,
             ofac_screen: Privy::KyxScreen,
             phone: String,
             residential_address: Privy::VerificationAddress,
+            source_of_funds: String,
             stripe_link_shared_data_id: String,
             transliterated_first_name: String,
             transliterated_last_name: String,

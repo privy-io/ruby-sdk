@@ -4,7 +4,7 @@ module Privy
   module Models
     class KeyQuorumsResponse < Privy::Internal::Type::BaseModel
       # @!attribute data
-      #   Key quorums in this page.
+      #   Items in this page.
       #
       #   @return [Array<Privy::Models::KeyQuorum>]
       required :data, -> { Privy::Internal::Type::ArrayOf[Privy::KeyQuorum] }
@@ -18,7 +18,7 @@ module Privy
       # @!method initialize(data:, next_cursor:)
       #   Paginated list of key quorums in an app.
       #
-      #   @param data [Array<Privy::Models::KeyQuorum>] Key quorums in this page.
+      #   @param data [Array<Privy::Models::KeyQuorum>] Items in this page.
       #
       #   @param next_cursor [String, nil] Cursor for the next page. Null when there are no further pages.
     end

@@ -4,7 +4,7 @@ module Privy
   module Models
     class PoliciesResponse < Privy::Internal::Type::BaseModel
       # @!attribute data
-      #   Policies in this page.
+      #   Items in this page.
       #
       #   @return [Array<Privy::Models::PolicyListItem>]
       required :data, -> { Privy::Internal::Type::ArrayOf[Privy::PolicyListItem] }
@@ -18,7 +18,7 @@ module Privy
       # @!method initialize(data:, next_cursor:)
       #   Paginated list of policies in an app.
       #
-      #   @param data [Array<Privy::Models::PolicyListItem>] Policies in this page.
+      #   @param data [Array<Privy::Models::PolicyListItem>] Items in this page.
       #
       #   @param next_cursor [String, nil] Cursor for the next page. Null when there are no further pages.
     end

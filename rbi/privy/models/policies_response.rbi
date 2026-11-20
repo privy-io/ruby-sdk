@@ -8,7 +8,7 @@ module Privy
           T.any(Privy::PoliciesResponse, Privy::Internal::AnyHash)
         end
 
-      # Policies in this page.
+      # Items in this page.
       sig { returns(T::Array[Privy::PolicyListItem]) }
       attr_accessor :data
 
@@ -24,7 +24,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # Policies in this page.
+        # Items in this page.
         data:,
         # Cursor for the next page. Null when there are no further pages.
         next_cursor:

@@ -8,9 +8,11 @@ module Privy
           T.any(Privy::CardIssuingCardsResponse, Privy::Internal::AnyHash)
         end
 
+      # Items in this page.
       sig { returns(T::Array[Privy::CardIssuingCardResponse]) }
       attr_accessor :data
 
+      # Cursor for the next page. Null when there are no further pages.
       sig { returns(T.nilable(String)) }
       attr_accessor :next_cursor
 
@@ -21,7 +23,12 @@ module Privy
           next_cursor: T.nilable(String)
         ).returns(T.attached_class)
       end
-      def self.new(data:, next_cursor:)
+      def self.new(
+        # Items in this page.
+        data:,
+        # Cursor for the next page. Null when there are no further pages.
+        next_cursor:
+      )
       end
 
       sig do

@@ -8,7 +8,7 @@ module Privy
           T.any(Privy::KeyQuorumsResponse, Privy::Internal::AnyHash)
         end
 
-      # Key quorums in this page.
+      # Items in this page.
       sig { returns(T::Array[Privy::KeyQuorum]) }
       attr_accessor :data
 
@@ -24,7 +24,7 @@ module Privy
         ).returns(T.attached_class)
       end
       def self.new(
-        # Key quorums in this page.
+        # Items in this page.
         data:,
         # Cursor for the next page. Null when there are no further pages.
         next_cursor:

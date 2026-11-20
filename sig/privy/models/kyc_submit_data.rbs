@@ -2,18 +2,25 @@ module Privy
   module Models
     type kyc_submit_data =
       {
+        account_purpose: String,
+        account_purpose_other: String,
+        acting_as_intermediary: bool,
         date_of_birth: String,
         email: String,
+        employment_status: String,
+        expected_monthly_payments_usd: String,
         first_name: String,
         identifying_information: ::Array[Privy::VerificationDocument],
         kyc_screen: Privy::KyxScreen,
         last_name: String,
         middle_name: String,
+        most_recent_occupation: String,
         nationalities: ::Array[String],
         nonresident_alien_attestation: bool,
         ofac_screen: Privy::KyxScreen,
         phone: String,
         residential_address: Privy::VerificationAddress,
+        source_of_funds: String,
         stripe_link_shared_data_id: String,
         transliterated_first_name: String,
         transliterated_last_name: String,
@@ -25,6 +32,18 @@ module Privy
       }
 
     class KYCSubmitData < Privy::Internal::Type::BaseModel
+      attr_reader account_purpose: String?
+
+      def account_purpose=: (String) -> String
+
+      attr_reader account_purpose_other: String?
+
+      def account_purpose_other=: (String) -> String
+
+      attr_reader acting_as_intermediary: bool?
+
+      def acting_as_intermediary=: (bool) -> bool
+
       attr_reader date_of_birth: String?
 
       def date_of_birth=: (String) -> String
@@ -32,6 +51,14 @@ module Privy
       attr_reader email: String?
 
       def email=: (String) -> String
+
+      attr_reader employment_status: String?
+
+      def employment_status=: (String) -> String
+
+      attr_reader expected_monthly_payments_usd: String?
+
+      def expected_monthly_payments_usd=: (String) -> String
 
       attr_reader first_name: String?
 
@@ -55,6 +82,10 @@ module Privy
 
       def middle_name=: (String) -> String
 
+      attr_reader most_recent_occupation: String?
+
+      def most_recent_occupation=: (String) -> String
+
       attr_reader nationalities: ::Array[String]?
 
       def nationalities=: (::Array[String]) -> ::Array[String]
@@ -76,6 +107,10 @@ module Privy
       def residential_address=: (
         Privy::VerificationAddress
       ) -> Privy::VerificationAddress
+
+      attr_reader source_of_funds: String?
+
+      def source_of_funds=: (String) -> String
 
       attr_reader stripe_link_shared_data_id: String?
 
@@ -118,18 +153,25 @@ module Privy
       ) -> Privy::Models::KYCSubmitData::verified_proof_of_address_at
 
       def initialize: (
+        ?account_purpose: String,
+        ?account_purpose_other: String,
+        ?acting_as_intermediary: bool,
         ?date_of_birth: String,
         ?email: String,
+        ?employment_status: String,
+        ?expected_monthly_payments_usd: String,
         ?first_name: String,
         ?identifying_information: ::Array[Privy::VerificationDocument],
         ?kyc_screen: Privy::KyxScreen,
         ?last_name: String,
         ?middle_name: String,
+        ?most_recent_occupation: String,
         ?nationalities: ::Array[String],
         ?nonresident_alien_attestation: bool,
         ?ofac_screen: Privy::KyxScreen,
         ?phone: String,
         ?residential_address: Privy::VerificationAddress,
+        ?source_of_funds: String,
         ?stripe_link_shared_data_id: String,
         ?transliterated_first_name: String,
         ?transliterated_last_name: String,
@@ -141,18 +183,25 @@ module Privy
       ) -> void
 
       def to_hash: -> {
+        account_purpose: String,
+        account_purpose_other: String,
+        acting_as_intermediary: bool,
         date_of_birth: String,
         email: String,
+        employment_status: String,
+        expected_monthly_payments_usd: String,
         first_name: String,
         identifying_information: ::Array[Privy::VerificationDocument],
         kyc_screen: Privy::KyxScreen,
         last_name: String,
         middle_name: String,
+        most_recent_occupation: String,
         nationalities: ::Array[String],
         nonresident_alien_attestation: bool,
         ofac_screen: Privy::KyxScreen,
         phone: String,
         residential_address: Privy::VerificationAddress,
+        source_of_funds: String,
         stripe_link_shared_data_id: String,
         transliterated_first_name: String,
         transliterated_last_name: String,

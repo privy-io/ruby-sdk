@@ -3,6 +3,26 @@
 module Privy
   module Models
     class KYCSubmitData < Privy::Internal::Type::BaseModel
+      # @!attribute account_purpose
+      #   Primary purpose of the individual's account, as one of the provider's
+      #   [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      #
+      #   @return [String, nil]
+      optional :account_purpose, String
+
+      # @!attribute account_purpose_other
+      #   Free-text account purpose, required by the provider when `account_purpose` is
+      #   `other`.
+      #
+      #   @return [String, nil]
+      optional :account_purpose_other, String
+
+      # @!attribute acting_as_intermediary
+      #   Whether the individual is acting as an intermediary for a third party.
+      #
+      #   @return [Boolean, nil]
+      optional :acting_as_intermediary, Privy::Internal::Type::Boolean
+
       # @!attribute date_of_birth
       #   Date of birth in YYYY-MM-DD format.
       #
@@ -14,6 +34,20 @@ module Privy
       #
       #   @return [String, nil]
       optional :email, String
+
+      # @!attribute employment_status
+      #   The individual's employment status, as one of the provider's
+      #   [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      #
+      #   @return [String, nil]
+      optional :employment_status, String
+
+      # @!attribute expected_monthly_payments_usd
+      #   The individual's expected monthly payments, as one of the provider's
+      #   [USD buckets](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      #
+      #   @return [String, nil]
+      optional :expected_monthly_payments_usd, String
 
       # @!attribute first_name
       #   Legal first name.
@@ -46,6 +80,13 @@ module Privy
       #   @return [String, nil]
       optional :middle_name, String
 
+      # @!attribute most_recent_occupation
+      #   The individual's most recent occupation, as an ISCO code, passed through to the
+      #   provider.
+      #
+      #   @return [String, nil]
+      optional :most_recent_occupation, String
+
       # @!attribute nationalities
       #   ISO 3166-1 alpha-3 codes for all nationalities held.
       #
@@ -77,6 +118,13 @@ module Privy
       #
       #   @return [Privy::Models::VerificationAddress, nil]
       optional :residential_address, -> { Privy::VerificationAddress }
+
+      # @!attribute source_of_funds
+      #   Primary source of the individual's funds, as one of the provider's
+      #   [accepted values](https://apidocs.bridge.xyz/platform/customers/customers/api).
+      #
+      #   @return [String, nil]
+      optional :source_of_funds, String
 
       # @!attribute stripe_link_shared_data_id
       #   Stripe Link shared data ID that supplies name, date of birth, address, and US
@@ -130,15 +178,25 @@ module Privy
       #   @return [Time, Date, nil]
       optional :verified_proof_of_address_at, union: -> { Privy::KYCSubmitData::VerifiedProofOfAddressAt }
 
-      # @!method initialize(date_of_birth: nil, email: nil, first_name: nil, identifying_information: nil, kyc_screen: nil, last_name: nil, middle_name: nil, nationalities: nil, nonresident_alien_attestation: nil, ofac_screen: nil, phone: nil, residential_address: nil, stripe_link_shared_data_id: nil, transliterated_first_name: nil, transliterated_last_name: nil, transliterated_middle_name: nil, transliterated_residential_address: nil, verified_database_at: nil, verified_govid_at: nil, verified_proof_of_address_at: nil)
+      # @!method initialize(account_purpose: nil, account_purpose_other: nil, acting_as_intermediary: nil, date_of_birth: nil, email: nil, employment_status: nil, expected_monthly_payments_usd: nil, first_name: nil, identifying_information: nil, kyc_screen: nil, last_name: nil, middle_name: nil, most_recent_occupation: nil, nationalities: nil, nonresident_alien_attestation: nil, ofac_screen: nil, phone: nil, residential_address: nil, source_of_funds: nil, stripe_link_shared_data_id: nil, transliterated_first_name: nil, transliterated_last_name: nil, transliterated_middle_name: nil, transliterated_residential_address: nil, verified_database_at: nil, verified_govid_at: nil, verified_proof_of_address_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Privy::Models::KYCSubmitData} for more details.
       #
       #   KYC verification data for headless submission.
       #
+      #   @param account_purpose [String] Primary purpose of the individual's account, as one of the provider's [accepted
+      #
+      #   @param account_purpose_other [String] Free-text account purpose, required by the provider when `account_purpose` is `o
+      #
+      #   @param acting_as_intermediary [Boolean] Whether the individual is acting as an intermediary for a third party.
+      #
       #   @param date_of_birth [String] Date of birth in YYYY-MM-DD format.
       #
       #   @param email [String] Email address.
+      #
+      #   @param employment_status [String] The individual's employment status, as one of the provider's [accepted values](h
+      #
+      #   @param expected_monthly_payments_usd [String] The individual's expected monthly payments, as one of the provider's [USD bucket
       #
       #   @param first_name [String] Legal first name.
       #
@@ -150,6 +208,8 @@ module Privy
       #
       #   @param middle_name [String] Legal middle name.
       #
+      #   @param most_recent_occupation [String] The individual's most recent occupation, as an ISCO code, passed through to the
+      #
       #   @param nationalities [Array<String>] ISO 3166-1 alpha-3 codes for all nationalities held.
       #
       #   @param nonresident_alien_attestation [Boolean] Attests the user is a nonresident alien to satisfy identification without a US t
@@ -159,6 +219,8 @@ module Privy
       #   @param phone [String] Phone number in E.164 format.
       #
       #   @param residential_address [Privy::Models::VerificationAddress] A postal address used in KYC and KYB data submission.
+      #
+      #   @param source_of_funds [String] Primary source of the individual's funds, as one of the provider's [accepted val
       #
       #   @param stripe_link_shared_data_id [String] Stripe Link shared data ID that supplies name, date of birth, address, and US SS
       #
